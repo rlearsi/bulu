@@ -1,13 +1,1052 @@
 [
-  { "id": 1, "word": "TERMO", "normalized": "TERMO" },
-  { "id": 2, "word": "SORTE", "normalized": "SORTE" },
-  { "id": 3, "word": "FEZES", "normalized": "FEZES" },
-  { "id": 4, "word": "TURMA", "normalized": "TURMA" },
-  { "id": 5, "word": "VIOLA", "normalized": "VIOLA" },
-  { "id": 6, "word": "PULGA", "normalized": "PULGA" },
-  { "id": 7, "word": "SAGAZ", "normalized": "SAGAZ" },
-  { "id": 8, "word": "NOBRE", "normalized": "NOBRE" },
-  { "id": 9, "word": "FOGAO", "normalized": "FOGAO" },
-  { "id": 10, "word": "PLUMA", "normalized": "PLUMA" }
+  {
+    "word": "TERMO",
+    "normalized": "TERMO",
+    "id": 1
+  },
+  {
+    "word": "SORTE",
+    "normalized": "SORTE",
+    "id": 2
+  },
+  {
+    "word": "FEZES",
+    "normalized": "FEZES",
+    "id": 3
+  },
+  {
+    "word": "TURMA",
+    "normalized": "TURMA",
+    "id": 4
+  },
+  {
+    "word": "VIOLA",
+    "normalized": "VIOLA",
+    "id": 5
+  },
+  {
+    "word": "PULGA",
+    "normalized": "PULGA",
+    "id": 6
+  },
+  {
+    "word": "SAGAZ",
+    "normalized": "SAGAZ",
+    "id": 7
+  },
+  {
+    "word": "NOBRE",
+    "normalized": "NOBRE",
+    "id": 8
+  },
+  {
+    "word": "FOGÃO",
+    "normalized": "FOGAO",
+    "id": 9
+  },
+  {
+    "word": "PLUMA",
+    "normalized": "PLUMA",
+    "id": 10
+  },
+  {
+    "word": "BRUXA",
+    "normalized": "BRUXA",
+    "id": 11
+  },
+  {
+    "word": "ZUMBI",
+    "normalized": "ZUMBI",
+    "id": 12
+  },
+  {
+    "word": "MAGIA",
+    "normalized": "MAGIA",
+    "id": 13
+  },
+  {
+    "word": "CORVO",
+    "normalized": "CORVO",
+    "id": 14
+  },
+  {
+    "word": "TUMBA",
+    "normalized": "TUMBA",
+    "id": 15
+  },
+  {
+    "word": "MORTO",
+    "normalized": "MORTO",
+    "id": 16
+  },
+  {
+    "word": "TREVA",
+    "normalized": "TREVA",
+    "id": 17
+  },
+  {
+    "word": "GRITO",
+    "normalized": "GRITO",
+    "id": 18
+  },
+  {
+    "word": "FUSCO",
+    "normalized": "FUSCO",
+    "id": 19
+  },
+  {
+    "word": "POÇÃO",
+    "normalized": "POCAO",
+    "id": 20
+  },
+  {
+    "word": "ÁUDIO",
+    "normalized": "AUDIO",
+    "id": 21
+  },
+  {
+    "word": "VÍDEO",
+    "normalized": "VIDEO",
+    "id": 22
+  },
+  {
+    "word": "FÁCIL",
+    "normalized": "FACIL",
+    "id": 23
+  },
+  {
+    "word": "ÍCONE",
+    "normalized": "ICONE",
+    "id": 24
+  },
+  {
+    "word": "ÚNICO",
+    "normalized": "UNICO",
+    "id": 25
+  },
+  {
+    "word": "LÁPIS",
+    "normalized": "LAPIS",
+    "id": 26
+  },
+  {
+    "word": "LÍDER",
+    "normalized": "LIDER",
+    "id": 27
+  },
+  {
+    "word": "RÁDIO",
+    "normalized": "RADIO",
+    "id": 28
+  },
+  {
+    "word": "SÁBIO",
+    "normalized": "SABIO",
+    "id": 29
+  },
+  {
+    "word": "ÓBVIO",
+    "normalized": "OBVIO",
+    "id": 30
+  },
+  {
+    "word": "MÁGOA",
+    "normalized": "MAGOA",
+    "id": 31
+  },
+  {
+    "word": "ÉPOCA",
+    "normalized": "EPOCA",
+    "id": 32
+  },
+  {
+    "word": "ÉTICA",
+    "normalized": "ETICA",
+    "id": 33
+  },
+  {
+    "word": "ÍNDIO",
+    "normalized": "INDIO",
+    "id": 34
+  },
+  {
+    "word": "AJUDA",
+    "normalized": "AJUDA",
+    "id": 35
+  },
+  {
+    "word": "AMIGO",
+    "normalized": "AMIGO",
+    "id": 36
+  },
+  {
+    "word": "AREIA",
+    "normalized": "AREIA",
+    "id": 37
+  },
+  {
+    "word": "AROMA",
+    "normalized": "AROMA",
+    "id": 38
+  },
+  {
+    "word": "ASTRO",
+    "normalized": "ASTRO",
+    "id": 39
+  },
+  {
+    "word": "AUTOR",
+    "normalized": "AUTOR",
+    "id": 40
+  },
+  {
+    "word": "AVIÃO",
+    "normalized": "AVIAO",
+    "id": 41
+  },
+  {
+    "word": "BACIA",
+    "normalized": "BACIA",
+    "id": 42
+  },
+  {
+    "word": "BAILE",
+    "normalized": "BAILE",
+    "id": 43
+  },
+  {
+    "word": "BANCO",
+    "normalized": "BANCO",
+    "id": 44
+  },
+  {
+    "word": "BARCO",
+    "normalized": "BARCO",
+    "id": 45
+  },
+  {
+    "word": "BARRA",
+    "normalized": "BARRA",
+    "id": 46
+  },
+  {
+    "word": "BATOM",
+    "normalized": "BATOM",
+    "id": 47
+  },
+  {
+    "word": "BEIJO",
+    "normalized": "BEIJO",
+    "id": 48
+  },
+  {
+    "word": "BICHO",
+    "normalized": "BICHO",
+    "id": 49
+  },
+  {
+    "word": "BLOCO",
+    "normalized": "BLOCO",
+    "id": 50
+  },
+  {
+    "word": "BOLSA",
+    "normalized": "BOLSA",
+    "id": 51
+  },
+  {
+    "word": "BRAVO",
+    "normalized": "BRAVO",
+    "id": 52
+  },
+  {
+    "word": "BRISA",
+    "normalized": "BRISA",
+    "id": 53
+  },
+  {
+    "word": "BURRO",
+    "normalized": "BURRO",
+    "id": 54
+  },
+  {
+    "word": "CABOS",
+    "normalized": "CABOS",
+    "id": 55
+  },
+  {
+    "word": "CALOR",
+    "normalized": "CALOR",
+    "id": 56
+  },
+  {
+    "word": "CAMPO",
+    "normalized": "CAMPO",
+    "id": 57
+  },
+  {
+    "word": "CANAL",
+    "normalized": "CANAL",
+    "id": 58
+  },
+  {
+    "word": "CANTO",
+    "normalized": "CANTO",
+    "id": 59
+  },
+  {
+    "word": "CAPAZ",
+    "normalized": "CAPAZ",
+    "id": 60
+  },
+  {
+    "word": "CARNE",
+    "normalized": "CARNE",
+    "id": 61
+  },
+  {
+    "word": "CARRO",
+    "normalized": "CARRO",
+    "id": 62
+  },
+  {
+    "word": "CARTA",
+    "normalized": "CARTA",
+    "id": 63
+  },
+  {
+    "word": "CASAL",
+    "normalized": "CASAL",
+    "id": 64
+  },
+  {
+    "word": "CASCA",
+    "normalized": "CASCA",
+    "id": 65
+  },
+  {
+    "word": "CAUSA",
+    "normalized": "CAUSA",
+    "id": 66
+  },
+  {
+    "word": "CHAVE",
+    "normalized": "CHAVE",
+    "id": 67
+  },
+  {
+    "word": "CHEFE",
+    "normalized": "CHEFE",
+    "id": 68
+  },
+  {
+    "word": "CHUVA",
+    "normalized": "CHUVA",
+    "id": 69
+  },
+  {
+    "word": "CINTO",
+    "normalized": "CINTO",
+    "id": 70
+  },
+  {
+    "word": "CISNE",
+    "normalized": "CISNE",
+    "id": 71
+  },
+  {
+    "word": "CLARO",
+    "normalized": "CLARO",
+    "id": 72
+  },
+  {
+    "word": "CLUBE",
+    "normalized": "CLUBE",
+    "id": 73
+  },
+  {
+    "word": "COBRA",
+    "normalized": "COBRA",
+    "id": 74
+  },
+  {
+    "word": "COFRE",
+    "normalized": "COFRE",
+    "id": 75
+  },
+  {
+    "word": "COISA",
+    "normalized": "COISA",
+    "id": 76
+  },
+  {
+    "word": "CONTO",
+    "normalized": "CONTO",
+    "id": 77
+  },
+  {
+    "word": "CORDA",
+    "normalized": "CORDA",
+    "id": 78
+  },
+  {
+    "word": "CORPO",
+    "normalized": "CORPO",
+    "id": 79
+  },
+  {
+    "word": "CORTE",
+    "normalized": "CORTE",
+    "id": 80
+  },
+  {
+    "word": "CRAVO",
+    "normalized": "CRAVO",
+    "id": 81
+  },
+  {
+    "word": "CREME",
+    "normalized": "CREME",
+    "id": 82
+  },
+  {
+    "word": "CRISE",
+    "normalized": "CRISE",
+    "id": 83
+  },
+  {
+    "word": "CULPA",
+    "normalized": "CULPA",
+    "id": 84
+  },
+  {
+    "word": "CURSO",
+    "normalized": "CURSO",
+    "id": 85
+  },
+  {
+    "word": "CURTO",
+    "normalized": "CURTO",
+    "id": 86
+  },
+  {
+    "word": "DANÇA",
+    "normalized": "DANCA",
+    "id": 87
+  },
+  {
+    "word": "DENTE",
+    "normalized": "DENTE",
+    "id": 88
+  },
+  {
+    "word": "DISCO",
+    "normalized": "DISCO",
+    "id": 89
+  },
+  {
+    "word": "DOBRO",
+    "normalized": "DOBRO",
+    "id": 90
+  },
+  {
+    "word": "DRAMA",
+    "normalized": "DRAMA",
+    "id": 91
+  },
+  {
+    "word": "DUPLA",
+    "normalized": "DUPLA",
+    "id": 92
+  },
+  {
+    "word": "DUCHA",
+    "normalized": "DUCHA",
+    "id": 93
+  },
+  {
+    "word": "ENVIO",
+    "normalized": "ENVIO",
+    "id": 94
+  },
+  {
+    "word": "EXAME",
+    "normalized": "EXAME",
+    "id": 95
+  },
+  {
+    "word": "FAIXA",
+    "normalized": "FAIXA",
+    "id": 96
+  },
+  {
+    "word": "FAROL",
+    "normalized": "FAROL",
+    "id": 97
+  },
+  {
+    "word": "FESTA",
+    "normalized": "FESTA",
+    "id": 98
+  },
+  {
+    "word": "FILME",
+    "normalized": "FILME",
+    "id": 99
+  },
+  {
+    "word": "FINAL",
+    "normalized": "FINAL",
+    "id": 100
+  },
+  {
+    "word": "FIRME",
+    "normalized": "FIRME",
+    "id": 101
+  },
+  {
+    "word": "FLORA",
+    "normalized": "FLORA",
+    "id": 102
+  },
+  {
+    "word": "FOCAL",
+    "normalized": "FOCAL",
+    "id": 103
+  },
+  {
+    "word": "FOLHA",
+    "normalized": "FOLHA",
+    "id": 104
+  },
+  {
+    "word": "FORNO",
+    "normalized": "FORNO",
+    "id": 105
+  },
+  {
+    "word": "FORTE",
+    "normalized": "FORTE",
+    "id": 106
+  },
+  {
+    "word": "FOSSO",
+    "normalized": "FOSSO",
+    "id": 107
+  },
+  {
+    "word": "FRACO",
+    "normalized": "FRACO",
+    "id": 108
+  },
+  {
+    "word": "FRUTA",
+    "normalized": "FRUTA",
+    "id": 109
+  },
+  {
+    "word": "FUGIR",
+    "normalized": "FUGIR",
+    "id": 110
+  },
+  {
+    "word": "FUNDO",
+    "normalized": "FUNDO",
+    "id": 111
+  },
+  {
+    "word": "FUROR",
+    "normalized": "FUROR",
+    "id": 112
+  },
+  {
+    "word": "GOLPE",
+    "normalized": "GOLPE",
+    "id": 113
+  },
+  {
+    "word": "GORDO",
+    "normalized": "GORDO",
+    "id": 114
+  },
+  {
+    "word": "GRADE",
+    "normalized": "GRADE",
+    "id": 115
+  },
+  {
+    "word": "GRAMA",
+    "normalized": "GRAMA",
+    "id": 116
+  },
+  {
+    "word": "GRAVE",
+    "normalized": "GRAVE",
+    "id": 117
+  },
+  {
+    "word": "GRUPO",
+    "normalized": "GRUPO",
+    "id": 118
+  },
+  {
+    "word": "HERÓI",
+    "normalized": "HEROI",
+    "id": 119
+  },
+  {
+    "word": "HORAS",
+    "normalized": "HORAS",
+    "id": 120
+  },
+  {
+    "word": "HOTEL",
+    "normalized": "HOTEL",
+    "id": 121
+  },
+  {
+    "word": "HUMOR",
+    "normalized": "HUMOR",
+    "id": 122
+  },
+  {
+    "word": "IDEIA",
+    "normalized": "IDEIA",
+    "id": 123
+  },
+  {
+    "word": "IGUAL",
+    "normalized": "IGUAL",
+    "id": 124
+  },
+  {
+    "word": "IRMÃO",
+    "normalized": "IRMAO",
+    "id": 125
+  },
+  {
+    "word": "JANTA",
+    "normalized": "JANTA",
+    "id": 126
+  },
+  {
+    "word": "JEITO",
+    "normalized": "JEITO",
+    "id": 127
+  },
+  {
+    "word": "JOVEM",
+    "normalized": "JOVEM",
+    "id": 128
+  },
+  {
+    "word": "JUÍZO",
+    "normalized": "JUIZO",
+    "id": 129
+  },
+  {
+    "word": "JUNTO",
+    "normalized": "JUNTO",
+    "id": 130
+  },
+  {
+    "word": "LASCA",
+    "normalized": "LASCA",
+    "id": 131
+  },
+  {
+    "word": "LAUDO",
+    "normalized": "LAUDO",
+    "id": 132
+  },
+  {
+    "word": "LEITE",
+    "normalized": "LEITE",
+    "id": 133
+  },
+  {
+    "word": "LENTO",
+    "normalized": "LENTO",
+    "id": 134
+  },
+  {
+    "word": "LIMÃO",
+    "normalized": "LIMAO",
+    "id": 135
+  },
+  {
+    "word": "LINDO",
+    "normalized": "LINDO",
+    "id": 136
+  },
+  {
+    "word": "LINHA",
+    "normalized": "LINHA",
+    "id": 137
+  },
+  {
+    "word": "LIVRO",
+    "normalized": "LIVRO",
+    "id": 138
+  },
+  {
+    "word": "LOUCO",
+    "normalized": "LOUCO",
+    "id": 139
+  },
+  {
+    "word": "LUGAR",
+    "normalized": "LUGAR",
+    "id": 140
+  },
+  {
+    "word": "LUZES",
+    "normalized": "LUZES",
+    "id": 141
+  },
+  {
+    "word": "MACIO",
+    "normalized": "MACIO",
+    "id": 142
+  },
+  {
+    "word": "MALHA",
+    "normalized": "MALHA",
+    "id": 143
+  },
+  {
+    "word": "MANGA",
+    "normalized": "MANGA",
+    "id": 144
+  },
+  {
+    "word": "MANTO",
+    "normalized": "MANTO",
+    "id": 145
+  },
+  {
+    "word": "MARCA",
+    "normalized": "MARCA",
+    "id": 146
+  },
+  {
+    "word": "MASSA",
+    "normalized": "MASSA",
+    "id": 147
+  },
+  {
+    "word": "MELÃO",
+    "normalized": "MELAO",
+    "id": 148
+  },
+  {
+    "word": "MENTE",
+    "normalized": "MENTE",
+    "id": 149
+  },
+  {
+    "word": "METAL",
+    "normalized": "METAL",
+    "id": 150
+  },
+  {
+    "word": "METRO",
+    "normalized": "METRO",
+    "id": 151
+  },
+  {
+    "word": "MILHO",
+    "normalized": "MILHO",
+    "id": 152
+  },
+  {
+    "word": "MINAS",
+    "normalized": "MINAS",
+    "id": 153
+  },
+  {
+    "word": "MOEDA",
+    "normalized": "MOEDA",
+    "id": 154
+  },
+  {
+    "word": "MOLHO",
+    "normalized": "MOLHO",
+    "id": 155
+  },
+  {
+    "word": "MONTE",
+    "normalized": "MONTE",
+    "id": 156
+  },
+  {
+    "word": "MORAL",
+    "normalized": "MORAL",
+    "id": 157
+  },
+  {
+    "word": "MOTOR",
+    "normalized": "MOTOR",
+    "id": 158
+  },
+  {
+    "word": "MUNDO",
+    "normalized": "MUNDO",
+    "id": 159
+  },
+  {
+    "word": "MUSEU",
+    "normalized": "MUSEU",
+    "id": 160
+  },
+  {
+    "word": "NAVIO",
+    "normalized": "NAVIO",
+    "id": 161
+  },
+  {
+    "word": "NEGRO",
+    "normalized": "NEGRO",
+    "id": 162
+  },
+  {
+    "word": "NINHO",
+    "normalized": "NINHO",
+    "id": 163
+  },
+  {
+    "word": "NÍVEL",
+    "normalized": "NIVEL",
+    "id": 164
+  },
+  {
+    "word": "NORTE",
+    "normalized": "NORTE",
+    "id": 165
+  },
+  {
+    "word": "NUVEM",
+    "normalized": "NUVEM",
+    "id": 166
+  },
+  {
+    "word": "OLHOS",
+    "normalized": "OLHOS",
+    "id": 167
+  },
+  {
+    "word": "ONTEM",
+    "normalized": "ONTEM",
+    "id": 168
+  },
+  {
+    "word": "OPÇÃO",
+    "normalized": "OPCAO",
+    "id": 169
+  },
+  {
+    "word": "ORDEM",
+    "normalized": "ORDEM",
+    "id": 170
+  },
+  {
+    "word": "ÓRGÃO",
+    "normalized": "ORGAO",
+    "id": 171
+  },
+  {
+    "word": "OSSOS",
+    "normalized": "OSSOS",
+    "id": 172
+  },
+  {
+    "word": "OUTRO",
+    "normalized": "OUTRO",
+    "id": 173
+  },
+  {
+    "word": "OUVIR",
+    "normalized": "OUVIR",
+    "id": 174
+  },
+  {
+    "word": "PADRE",
+    "normalized": "PADRE",
+    "id": 175
+  },
+  {
+    "word": "PAGAR",
+    "normalized": "PAGAR",
+    "id": 176
+  },
+  {
+    "word": "PALCO",
+    "normalized": "PALCO",
+    "id": 177
+  },
+  {
+    "word": "PAPEL",
+    "normalized": "PAPEL",
+    "id": 178
+  },
+  {
+    "word": "PARDO",
+    "normalized": "PARDO",
+    "id": 179
+  },
+  {
+    "word": "PARTE",
+    "normalized": "PARTE",
+    "id": 180
+  },
+  {
+    "word": "PASSO",
+    "normalized": "PASSO",
+    "id": 181
+  },
+  {
+    "word": "PASTA",
+    "normalized": "PASTA",
+    "id": 182
+  },
+  {
+    "word": "PASTO",
+    "normalized": "PASTO",
+    "id": 183
+  },
+  {
+    "word": "PATOS",
+    "normalized": "PATOS",
+    "id": 184
+  },
+  {
+    "word": "PAUSA",
+    "normalized": "PAUSA",
+    "id": 185
+  },
+  {
+    "word": "PEDRA",
+    "normalized": "PEDRA",
+    "id": 186
+  },
+  {
+    "word": "PEIXE",
+    "normalized": "PEIXE",
+    "id": 187
+  },
+  {
+    "word": "PENTE",
+    "normalized": "PENTE",
+    "id": 188
+  },
+  {
+    "word": "PERDA",
+    "normalized": "PERDA",
+    "id": 189
+  },
+  {
+    "word": "PERNA",
+    "normalized": "PERNA",
+    "id": 190
+  },
+  {
+    "word": "PIANO",
+    "normalized": "PIANO",
+    "id": 191
+  },
+  {
+    "word": "PINTO",
+    "normalized": "PINTO",
+    "id": 192
+  },
+  {
+    "word": "PISTA",
+    "normalized": "PISTA",
+    "id": 193
+  },
+  {
+    "word": "PLANO",
+    "normalized": "PLANO",
+    "id": 194
+  },
+  {
+    "word": "POETA",
+    "normalized": "POETA",
+    "id": 195
+  },
+  {
+    "word": "PONTO",
+    "normalized": "PONTO",
+    "id": 196
+  },
+  {
+    "word": "PORCO",
+    "normalized": "PORCO",
+    "id": 197
+  },
+  {
+    "word": "PORTA",
+    "normalized": "PORTA",
+    "id": 198
+  },
+  {
+    "word": "PORTO",
+    "normalized": "PORTO",
+    "id": 199
+  },
+  {
+    "word": "POSTO",
+    "normalized": "POSTO",
+    "id": 200
+  },
+  {
+    "word": "PRAIA",
+    "normalized": "PRAIA",
+    "id": 201
+  },
+  {
+    "word": "PRATA",
+    "normalized": "PRATA",
+    "id": 202
+  },
+  {
+    "word": "PRATO",
+    "normalized": "PRATO",
+    "id": 203
+  },
+  {
+    "word": "PREÇO",
+    "normalized": "PRECO",
+    "id": 204
+  },
+  {
+    "word": "PROVA",
+    "normalized": "PROVA",
+    "id": 205
+  },
+  {
+    "word": "PUDIM",
+    "normalized": "PUDIM",
+    "id": 206
+  },
+  {
+    "word": "QUASE",
+    "normalized": "QUASE",
+    "id": 207
+  },
+  {
+    "word": "QUEDA",
+    "normalized": "QUEDA",
+    "id": 208
+  },
+  {
+    "word": "QUILO",
+    "normalized": "QUILO",
+    "id": 209
+  },
+  {
+    "word": "RAMAL",
+    "normalized": "RAMAL",
+    "id": 210
+  }
 ]
-
