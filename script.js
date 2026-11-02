@@ -499,6 +499,7 @@ class TermoMultiplayerGame {
     this.boardMatrix[this.currentRow][col] = letter;
     const tileEl = this.getTileElement(this.currentRow, col);
     tileEl.textContent = letter;
+    tileEl.classList.remove('opponent-typing');
     tileEl.classList.add('filled');
     this.currentTile++;
 
@@ -521,7 +522,7 @@ class TermoMultiplayerGame {
     this.boardMatrix[this.currentRow][col] = '';
     const tileEl = this.getTileElement(this.currentRow, col);
     tileEl.textContent = '';
-    tileEl.classList.remove('filled');
+    tileEl.classList.remove('filled', 'opponent-typing');
 
     if (this.role !== 'solo') {
       this.sendP2P({
@@ -543,7 +544,7 @@ class TermoMultiplayerGame {
         const tileEl = this.getTileElement(targetRow, targetCol);
         if (tileEl) {
           tileEl.textContent = letter;
-          tileEl.classList.add('filled');
+          tileEl.classList.add('filled', 'opponent-typing');
         }
         this.currentTile = targetCol + 1;
       }
@@ -553,7 +554,7 @@ class TermoMultiplayerGame {
         const tileEl = this.getTileElement(targetRow, targetCol);
         if (tileEl) {
           tileEl.textContent = '';
-          tileEl.classList.remove('filled');
+          tileEl.classList.remove('filled', 'opponent-typing');
         }
         this.currentTile = targetCol;
       }
@@ -705,6 +706,7 @@ class TermoMultiplayerGame {
       const letter = guess[c];
 
       setTimeout(() => {
+        tile.classList.remove('opponent-typing');
         tile.classList.add('flip');
 
         // Na metade da rotação (90 graus) troca a cor do bloco
