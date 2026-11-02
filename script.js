@@ -639,15 +639,21 @@ class TermoMultiplayerGame {
 
   // Quando o oponente joga
   handleOpponentGuess(guess, evaluation, nextTurnRole, isWin, winnerRole) {
+    const opponentRow = this.currentRow;
+    const rowEl = this.getRowElement(opponentRow);
+    if (rowEl) {
+      rowEl.classList.add('opponent-row');
+    }
+
     // Escreve a palavra do oponente na linha atual
     for (let c = 0; c < this.wordLength; c++) {
-      this.boardMatrix[this.currentRow][c] = guess[c];
-      const tile = this.getTileElement(this.currentRow, c);
+      this.boardMatrix[opponentRow][c] = guess[c];
+      const tile = this.getTileElement(opponentRow, c);
       tile.textContent = guess[c];
       tile.classList.add('filled');
     }
 
-    this.animateRowReveal(this.currentRow, guess, evaluation, () => {
+    this.animateRowReveal(opponentRow, guess, evaluation, () => {
       if (isWin) {
         this.triggerWin(this.oppName, false);
       } else {

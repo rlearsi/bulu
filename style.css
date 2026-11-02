@@ -209,12 +209,23 @@ body {
   animation: popLetter 0.12s ease-in-out;
 }
 
-/* DESTAQUE DIFERENCIADO: LETRAS DIGITADAS PELO OPONENTE (LEVE ALPHA / TRANSLÚCIDO) */
+/* DESTAQUE DIFERENCIADO: LINHAS E LETRAS DO OPONENTE (LEVE ALPHA / TRANSLÚCIDO) */
 .tile.opponent-typing {
   opacity: 0.65;
   color: rgba(255, 255, 255, 0.7);
   border-color: rgba(255, 255, 255, 0.25);
   background-color: rgba(97, 82, 86, 0.7);
+}
+
+.board-row.opponent-row .tile {
+  opacity: 0.68;
+  filter: contrast(0.9);
+}
+
+.board-row.opponent-row .tile.correct,
+.board-row.opponent-row .tile.present,
+.board-row.opponent-row .tile.absent {
+  opacity: 0.68;
 }
 
 /* ANIMAÇÃO CLÁSSICA DO TERMO: POP QUANDO DIGITA */
