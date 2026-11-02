@@ -1,0 +1,13 @@
+[
+  { "id": 1, "word": "TERMO", "normalized": "TERMO" },
+  { "id": 2, "word": "SORTE", "normalized": "SORTE" },
+  { "id": 3, "word": "FEZES", "normalized": "FEZES" },
+  { "id": 4, "word": "TURMA", "normalized": "TURMA" },
+  { "id": 5, "word": "VIOLA", "normalized": "VIOLA" },
+  { "id": 6, "word": "PULGA", "normalized": "PULGA" },
+  { "id": 7, "word": "SAGAZ", "normalized": "SAGAZ" },
+  { "id": 8, "word": "NOBRE", "normalized": "NOBRE" },
+  { "id": 9, "word": "FOGAO", "normalized": "FOGAO" },
+  { "id": 10, "word": "PLUMA", "normalized": "PLUMA" }
+]
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TERMO MULTIPLAYER P2P</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <!-- Confetti para comemoração da vitória -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- CABEÇALHO -->
+    <header class="header">
+      <div class="header-left">
+        <button id="btn-help" class="icon-btn" title="Ajuda">?</button>
+      </div>
+      <h1 class="logo-title">TERMO <span>DUELO</span></h1>
+      <div class="header-right">
+        <button id="btn-restart" class="icon-btn" title="Nova Sala / Sair">↺</button>
+      </div>
+    </header>
+
+    <!-- STATUS BAR / TURNO -->
+    <div id="game-status-bar" class="status-bar hidden">
+      <div class="players-info">
+        <div id="p1-badge" class="player-pill">
+          <span class="dot"></span>
+          <span class="p-name">Você</span>
+        </div>
+        <div class="turn-indicator" id="turn-indicator">Aguardando oponente...</div>
+        <div id="p2-badge" class="player-pill">
+          <span class="dot"></span>
+          <span class="p-name">Oponente</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA DO LOBBY / MULTIPLAYER CONEXÃO -->
+    <div id="lobby-screen" class="lobby-card">
+      <h2 class="lobby-title">Duelo Multiplayer P2P</h2>
+      <p class="lobby-desc">Jogue em tempo real via WebRTC direto no navegador ou celular sem precisar de servidor central!</p>
+
+      <div class="lobby-section">
+        <label>Seu Apelido:</label>
+        <input type="text" id="player-nickname" maxlength="12" placeholder="Digite seu nome" value="Jogador 1">
+      </div>
+
+      <div class="lobby-actions">
+        <!-- CRIAR SALA -->
+        <div class="action-box">
+          <h3>Criar Partida (Host)</h3>
+          <p>Crie uma sala e compartilhe o código de 6 dígitos com seu amigo.</p>
+          <button id="btn-create-room" class="btn btn-primary">Criar Sala</button>
+          
+          <div id="host-code-display" class="code-box hidden">
+            <span>Código da Sala:</span>
+            <div id="room-code-val" class="room-code-number">------</div>
+            <button id="btn-copy-code" class="btn btn-secondary">Copiar Código</button>
+            <div id="host-status" class="status-text pulse">Aguardando adversário entrar...</div>
+          </div>
+        </div>
+
+        <div class="divider">OU</div>
+
+        <!-- ENTRAR EM SALA -->
+        <div class="action-box">
+          <h3>Entrar em Sala</h3>
+          <p>Digite o código da sala gerado pelo seu amigo.</p>
+          <div class="join-input-group">
+            <input type="text" id="input-room-code" maxlength="6" placeholder="Ex: 123456" inputmode="numeric">
+            <button id="btn-join-room" class="btn btn-secondary">Entrar</button>
+          </div>
+          <div id="join-status" class="status-text hidden">Conectando ao oponente...</div>
+        </div>
+      </div>
+
+      <!-- BOTÃO TREINO SOLO -->
+      <div class="lobby-solo">
+        <button id="btn-practice" class="btn btn-outline">Treinar Sozinho (Modo Solo)</button>
+      </div>
+    </div>
+
+    <!-- TABULEIRO DO JOGO (6 LINHAS X 5 COLUNAS) -->
+    <main id="board-container" class="board-wrapper hidden">
+      <div id="board" class="board"></div>
+      
+      <!-- Aviso de feedback rápido (Ex: 'Palavra não encontrada', 'Não é sua vez') -->
+      <div id="toast-message" class="toast hidden"></div>
+    </main>
+
+    <!-- TECLADO VIRTUAL -->
+    <footer id="keyboard-container" class="keyboard-wrapper hidden">
+      <div id="keyboard" class="keyboard"></div>
+    </footer>
+  </div>
+
+  <!-- MODAL DE REGRAS E COMO JOGAR -->
+  <div id="help-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="btn-close-help">×</button>
+      <h2>COMO JOGAR TERMO DUELO</h2>
+      <p class="modal-intro">Descubra a palavra secreta de 5 letras em 6 tentativas revezando com seu adversário.</p>
+
+      <div class="rule-example">
+        <div class="mini-row">
+          <div class="tile correct">T</div>
+          <div class="tile default">U</div>
+          <div class="tile default">R</div>
+          <div class="tile default">M</div>
+          <div class="tile default">A</div>
+        </div>
+        <p>A letra <span class="badge correct">T</span> faz parte da palavra e está na <strong>posição correta</strong>.</p>
+      </div>
+
+      <div class="rule-example">
+        <div class="mini-row">
+          <div class="tile default">V</div>
+          <div class="tile default">I</div>
+          <div class="tile present">O</div>
+          <div class="tile default">L</div>
+          <div class="tile default">A</div>
+        </div>
+        <p>A letra <span class="badge present">O</span> faz parte da palavra mas em <strong>outra posição</strong>.</p>
+      </div>
+
+      <div class="rule-example">
+        <div class="mini-row">
+          <div class="tile default">P</div>
+          <div class="tile default">U</div>
+          <div class="tile default">L</div>
+          <div class="tile absent">G</div>
+          <div class="tile default">A</div>
+        </div>
+        <p>A letra <span class="badge absent">G</span> <strong>não faz parte</strong> da palavra.</p>
+      </div>
+
+      <div class="multiplayer-rules-highlight">
+        <h3>⚔️ Regras do Multiplayer WebRTC:</h3>
+        <ul>
+          <li><strong>Turnos alternados:</strong> Cada oponente digita uma linha.</li>
+          <li><strong>Bloqueio de turno:</strong> Enquanto um digita, o teclado do outro fica travado.</li>
+          <li><strong>Estratégia compartilhada:</strong> Na sua vez, você aproveita as letras já reveladas pelo rival!</li>
+          <li><strong>Vitória:</strong> O primeiro que acertar a palavra ganha a partida imediatamente!</li>
+        </ul>
+      </div>
+
+      <button id="btn-help-ok" class="btn btn-primary btn-block">Entendi!</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE FIM DE JOGO (VITÓRIA / DERROTA) -->
+  <div id="gameover-modal" class="modal-overlay hidden">
+    <div class="modal-content modal-gameover">
+      <h2 id="go-title">VITÓRIA!</h2>
+      <p id="go-subtitle">Você acertou a palavra secreta!</p>
+
+      <div class="reveal-secret-box">
+        <span>Palavra Secreta:</span>
+        <h1 id="go-secret-word">TERMO</h1>
+      </div>
+
+      <div id="go-stats" class="go-stats">
+        <div class="stat-item">
+          <span class="stat-label">Vencedor</span>
+          <span class="stat-val" id="go-winner-name">Você</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Tentativas</span>
+          <span class="stat-val" id="go-attempts-count">4/6</span>
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <button id="btn-play-again" class="btn btn-primary">Jogar Novamente</button>
+        <button id="btn-back-lobby" class="btn btn-secondary">Voltar ao Lobby</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+

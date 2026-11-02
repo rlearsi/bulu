@@ -1,0 +1,14 @@
+.vscode/
+.idea/
+.gradle/
+node_modules/
+*.log
+.DS_Store
+build/
+dist/
+.android-panel/
+.relatum/
+.env
+.env.local
+__pycache__/
+.agents
