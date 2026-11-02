@@ -334,6 +334,10 @@ class TermoMultiplayerGame {
         }
         break;
 
+      case 'LIVE_KEYSTROKE':
+        this.handleOpponentKeystroke(data.action, data.letter, data.row, data.col);
+        break;
+
       case 'SUBMIT_GUESS':
         // Recebe o palpite jogado pelo oponente
         this.handleOpponentGuess(data.guess, data.evaluation, data.nextTurnRole, data.isWin, data.winnerRole);
@@ -491,21 +495,69 @@ class TermoMultiplayerGame {
   addLetter(letter) {
     if (this.currentTile >= this.wordLength || this.currentRow >= this.maxRows) return;
 
-    this.boardMatrix[this.currentRow][this.currentTile] = letter;
-    const tileEl = this.getTileElement(this.currentRow, this.currentTile);
+    const col = this.currentTile;
+    this.boardMatrix[this.currentRow][col] = letter;
+    const tileEl = this.getTileElement(this.currentRow, col);
     tileEl.textContent = letter;
     tileEl.classList.add('filled');
     this.currentTile++;
+
+    if (this.role !== 'solo') {
+      this.sendP2P({
+        type: 'LIVE_KEYSTROKE',
+        action: 'ADD',
+        letter: letter,
+        row: this.currentRow,
+        col: col
+      });
+    }
   }
 
   deleteLetter() {
     if (this.currentTile <= 0) return;
 
     this.currentTile--;
-    this.boardMatrix[this.currentRow][this.currentTile] = '';
-    const tileEl = this.getTileElement(this.currentRow, this.currentTile);
+    const col = this.currentTile;
+    this.boardMatrix[this.currentRow][col] = '';
+    const tileEl = this.getTileElement(this.currentRow, col);
     tileEl.textContent = '';
     tileEl.classList.remove('filled');
+
+    if (this.role !== 'solo') {
+      this.sendP2P({
+        type: 'LIVE_KEYSTROKE',
+        action: 'DELETE',
+        row: this.currentRow,
+        col: col
+      });
+    }
+  }
+
+  handleOpponentKeystroke(action, letter, row, col) {
+    const targetRow = row !== undefined ? row : this.currentRow;
+    const targetCol = col !== undefined ? col : this.currentTile;
+
+    if (action === 'ADD' && letter) {
+      if (targetCol >= 0 && targetCol < this.wordLength && targetRow < this.maxRows) {
+        this.boardMatrix[targetRow][targetCol] = letter;
+        const tileEl = this.getTileElement(targetRow, targetCol);
+        if (tileEl) {
+          tileEl.textContent = letter;
+          tileEl.classList.add('filled');
+        }
+        this.currentTile = targetCol + 1;
+      }
+    } else if (action === 'DELETE') {
+      if (targetCol >= 0 && targetCol < this.wordLength && targetRow < this.maxRows) {
+        this.boardMatrix[targetRow][targetCol] = '';
+        const tileEl = this.getTileElement(targetRow, targetCol);
+        if (tileEl) {
+          tileEl.textContent = '';
+          tileEl.classList.remove('filled');
+        }
+        this.currentTile = targetCol;
+      }
+    }
   }
 
   getTileElement(r, c) {
