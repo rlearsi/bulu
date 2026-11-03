@@ -20,6 +20,7 @@
   - **Sem linhas e bordas excessivas:** Eliminar bordas tracejadas ou divisórias pesadas, priorizando acabamento minimalista.
 
 - **Cache Busting e Versionamento de Assets ([`.agents/rules/cache_busting.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/cache_busting.md)):**
-  - **Atualização obrigatória de `?v=X.Y.Z`:** Em toda modificação futura em `style.css`, `script.js` ou `words.js`, manter e atualizar a query string de versão em `index.html` (`style.css?v=X.Y.Z` e `script.js?v=X.Y.Z`) e em `script.js` (`./words.js?v=X.Y.Z`), garantindo a invalidação de cache no GitHub Pages.
+  - **Proibição de alterar `VERSION`:** O arquivo `VERSION` é somente leitura; o agente **NUNCA** deve editá-lo ou incrementá-lo sem pedido expresso do usuário.
+  - **Sincronização de `?v=X.Y.Z`:** Manter a query string de versão em `index.html` (`style.css?v=X.Y.Z` e `script.js?v=X.Y.Z`) e em `script.js` (`./words.js?v=X.Y.Z`) alinhada ao valor lido em `VERSION`.
 
 
