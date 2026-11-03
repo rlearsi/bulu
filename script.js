@@ -538,11 +538,11 @@ class TermoMultiplayerGame {
 
       case 'SUBMIT_GUESS':
         // Recebe o palpite jogado pelo oponente
-        this.handleOpponentGuess(data.guess, data.evaluation, data.nextTurnRole, data.isWin, data.winnerRole);
+        this.handleOpponentGuess(data.guess, data.evaluation, data.nextTurnRole, data.isWin, data.winnerRole, data.row);
         break;
 
       case 'TIME_EXPIRED':
-        this.handleTimeExpiredByOpponent(data.timedOutRole, data.nextTurnRole);
+        this.handleTimeExpiredByOpponent(data.timedOutRole, data.nextTurnRole, data.row);
         break;
 
       case 'SYNC_SCORE':
@@ -892,19 +892,20 @@ class TermoMultiplayerGame {
 
   handleTurnTimeout() {
     this.stopTurnTimer();
-    if (this.isGameOver || this.role === 'solo') return;
+    if (this.isGameOver || this.isRevealing || this.role === 'solo') return;
 
-    // Multiplayer: quem estiver no turno atual teve o tempo esgotado
+    // Multiplayer: quem estiver no turno atual teve o tempo esgotado; mantém a mesma linha (currentRow)
     if (this.isMyTurn()) {
       const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
       this.showToast('Tempo esgotado! Vez passada para o oponente.');
       this.clearUnsubmittedRow(this.currentRow);
 
-      // Notifica o oponente via P2P
+      // Notifica o oponente via P2P mantendo a mesma linha
       this.sendP2P({
         type: 'TIME_EXPIRED',
         timedOutRole: this.role,
-        nextTurnRole: nextTurnRole
+        nextTurnRole: nextTurnRole,
+        row: this.currentRow
       });
 
       this.currentTurnRole = nextTurnRole;
@@ -912,8 +913,11 @@ class TermoMultiplayerGame {
     }
   }
 
-  handleTimeExpiredByOpponent(timedOutRole, nextTurnRole) {
+  handleTimeExpiredByOpponent(timedOutRole, nextTurnRole, row) {
     this.stopTurnTimer();
+    if (typeof row === 'number' && row >= 0 && row < this.maxRows) {
+      this.currentRow = row;
+    }
     this.clearUnsubmittedRow(this.currentRow);
     this.showToast(`Tempo de ${this.oppName} esgotou! Sua vez.`);
     this.currentTurnRole = nextTurnRole;
@@ -1120,7 +1124,8 @@ class TermoMultiplayerGame {
     this.updateActiveTileHighlight();
 
     // Executa a revelação com a animação flip idêntica
-    this.animateRowReveal(this.currentRow, guess, evaluation, () => {
+    const submittedRow = this.currentRow;
+    this.animateRowReveal(submittedRow, guess, evaluation, () => {
       this.isRevealing = false;
       if (isWin) {
         this.triggerWin(this.myName, true);
@@ -1131,11 +1136,12 @@ class TermoMultiplayerGame {
             evaluation: evaluation,
             nextTurnRole: nextTurnRole,
             isWin: true,
-            winnerRole: this.role
+            winnerRole: this.role,
+            row: submittedRow
           });
         }
       } else {
-        this.currentRow++;
+        this.currentRow = submittedRow + 1;
         this.currentTile = 0;
 
         if (this.currentRow >= this.maxRows) {
@@ -1148,7 +1154,8 @@ class TermoMultiplayerGame {
               evaluation: evaluation,
               nextTurnRole: nextTurnRole,
               isWin: false,
-              winnerRole: null
+              winnerRole: null,
+              row: submittedRow
             });
           }
         } else {
@@ -1161,7 +1168,8 @@ class TermoMultiplayerGame {
               evaluation: evaluation,
               nextTurnRole: nextTurnRole,
               isWin: false,
-              winnerRole: null
+              winnerRole: null,
+              row: submittedRow
             });
           }
           this.updateStatusBar();
@@ -1171,11 +1179,12 @@ class TermoMultiplayerGame {
   }
 
   // Quando o oponente joga
-  handleOpponentGuess(guess, evaluation, nextTurnRole, isWin, winnerRole) {
+  handleOpponentGuess(guess, evaluation, nextTurnRole, isWin, winnerRole, row) {
     this.stopTurnTimer();
     this.isRevealing = true;
     this.updateActiveTileHighlight();
-    const opponentRow = this.currentRow;
+    const opponentRow = (typeof row === 'number' && row >= 0 && row < this.maxRows) ? row : this.currentRow;
+    this.currentRow = opponentRow;
     const rowEl = this.getRowElement(opponentRow);
     if (rowEl) {
       rowEl.classList.add('opponent-row');
@@ -1194,7 +1203,7 @@ class TermoMultiplayerGame {
       if (isWin) {
         this.triggerWin(this.oppName, false);
       } else {
-        this.currentRow++;
+        this.currentRow = opponentRow + 1;
         this.currentTile = 0;
 
         if (this.currentRow >= this.maxRows) {
