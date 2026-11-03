@@ -14,14 +14,15 @@
   <div class="app-container">
     <!-- CABEÇALHO -->
     <header class="header">
-      <div class="header-left">
-        <button id="btn-help" class="icon-btn" title="Ajuda">?</button>
-      </div>
       <h1 class="logo-title">TERMO <span>DUELO</span></h1>
-      <div class="header-right">
-        <button id="btn-restart" class="icon-btn" title="Nova Sala / Sair">↺</button>
-      </div>
     </header>
+
+    <!-- BARRA DE AÇÕES (LINHA ÚNICA ABAIXO DA LOGO: AJUDA, DESISTIR, REINICIAR) -->
+    <div id="game-actions-bar" class="game-actions-bar">
+      <button id="btn-help" class="action-btn" title="Ajuda">?</button>
+      <button id="btn-surrender" class="action-btn hidden" title="Desistir da partida">Desistir</button>
+      <button id="btn-restart" class="action-btn" title="Nova Sala / Sair">↺</button>
+    </div>
 
     <!-- STATUS BAR / JOGADORES -->
     <div id="game-status-bar" class="status-bar hidden">

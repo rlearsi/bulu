@@ -124,6 +124,8 @@ class TermoMultiplayerGame {
     this.boardElement = document.getElementById('board');
     this.keyboardElement = document.getElementById('keyboard');
     this.statusBar = document.getElementById('game-status-bar');
+    this.gameActionsBar = document.getElementById('game-actions-bar');
+    this.btnSurrender = document.getElementById('btn-surrender');
     this.turnIndicator = document.getElementById('turn-indicator');
     this.toastMessage = document.getElementById('toast-message');
 
@@ -177,6 +179,7 @@ class TermoMultiplayerGame {
     this.btnHelpOk.addEventListener('click', () => this.showHelpModal(false));
     this.btnBackLobby.addEventListener('click', () => this.resetToLobby());
     this.btnRestart.addEventListener('click', () => this.resetToLobby());
+    this.btnSurrender.addEventListener('click', () => this.handleSurrender());
     this.btnPlayAgain.addEventListener('click', () => this.handlePlayAgainRequest());
   }
 
@@ -398,6 +401,10 @@ class TermoMultiplayerGame {
         this.handleOpponentGuess(data.guess, data.evaluation, data.nextTurnRole, data.isWin, data.winnerRole);
         break;
 
+      case 'SURRENDER':
+        this.handleOpponentSurrender();
+        break;
+
       case 'PLAY_AGAIN_REQUEST':
         this.showToast(`${this.oppName} quer jogar novamente!`);
         if (this.role === 'host') {
@@ -444,6 +451,7 @@ class TermoMultiplayerGame {
     this.boardContainer.classList.remove('hidden');
     this.keyboardContainer.classList.remove('hidden');
     this.statusBar.classList.remove('hidden');
+    if (this.btnSurrender) this.btnSurrender.classList.remove('hidden');
 
     this.updateStatusBar();
     this.showToast('Jogo Solo iniciado! Boa sorte!');
@@ -455,6 +463,7 @@ class TermoMultiplayerGame {
     this.boardContainer.classList.remove('hidden');
     this.keyboardContainer.classList.remove('hidden');
     this.statusBar.classList.remove('hidden');
+    if (this.btnSurrender) this.btnSurrender.classList.remove('hidden');
 
     this.updateStatusBar();
   }
@@ -484,7 +493,8 @@ class TermoMultiplayerGame {
         this.turnIndicator.textContent = `Tentativa ${this.currentRow + 1} de ${this.maxRows}`;
       }
       this.keyboardElement.classList.remove('locked');
-      this.p1Badge.classList.add('active-turn');
+      this.p1Badge.classList.remove('opponent-turn');
+      this.p1Badge.classList.add('my-turn');
       return;
     }
 
@@ -499,14 +509,16 @@ class TermoMultiplayerGame {
     const myTurn = this.isMyTurn();
     if (myTurn) {
       if (this.turnIndicator) this.turnIndicator.textContent = '';
-      this.p1Badge.classList.add('active-turn');
-      this.p2Badge.classList.remove('active-turn');
+      this.p1Badge.classList.remove('opponent-turn');
+      this.p1Badge.classList.add('my-turn');
+      this.p2Badge.classList.remove('my-turn', 'opponent-turn');
       this.keyboardElement.classList.remove('locked');
       this.showToast('Sua vez de jogar');
     } else {
       if (this.turnIndicator) this.turnIndicator.textContent = '';
-      this.p1Badge.classList.remove('active-turn');
-      this.p2Badge.classList.add('active-turn');
+      this.p1Badge.classList.remove('my-turn', 'opponent-turn');
+      this.p2Badge.classList.remove('my-turn');
+      this.p2Badge.classList.add('opponent-turn');
       this.keyboardElement.classList.add('locked');
     }
   }
@@ -878,6 +890,54 @@ class TermoMultiplayerGame {
     }, 1200);
   }
 
+  handleSurrender() {
+    if (this.isGameOver) return;
+
+    if (this.role === 'solo') {
+      this.isGameOver = true;
+      this.goTitle.textContent = 'DERROTA!';
+      this.goTitle.style.color = 'var(--color-present)';
+      this.goSubtitle.textContent = 'Você desistiu da partida.';
+      this.goSecretWord.textContent = this.secretWord;
+      this.goWinnerName.textContent = 'Computador';
+      this.goAttemptsCount.textContent = `${this.currentRow}/${this.maxRows}`;
+      this.gameoverModal.classList.remove('hidden');
+      return;
+    }
+
+    // Multiplayer: desistência do próprio jogador
+    this.sendP2P({ type: 'SURRENDER' });
+    this.isGameOver = true;
+    this.goTitle.textContent = 'DERROTA!';
+    this.goTitle.style.color = 'var(--color-present)';
+    this.goSubtitle.textContent = 'Você desistiu da partida.';
+    this.goSecretWord.textContent = this.secretWord;
+    this.goWinnerName.textContent = this.oppName;
+    this.goAttemptsCount.textContent = `${this.currentRow}/${this.maxRows}`;
+    this.gameoverModal.classList.remove('hidden');
+  }
+
+  handleOpponentSurrender() {
+    if (this.isGameOver) return;
+    this.isGameOver = true;
+
+    if (window.confetti) {
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+
+    this.goTitle.textContent = '🏆 VITÓRIA!';
+    this.goTitle.style.color = 'var(--color-correct)';
+    this.goSubtitle.textContent = `${this.oppName} desistiu da partida!`;
+    this.goSecretWord.textContent = this.secretWord;
+    this.goWinnerName.textContent = this.myName;
+    this.goAttemptsCount.textContent = `${this.currentRow}/${this.maxRows}`;
+    this.gameoverModal.classList.remove('hidden');
+  }
+
   handlePlayAgainRequest() {
     if (this.role === 'solo') {
       this.startSoloGame();
@@ -918,6 +978,7 @@ class TermoMultiplayerGame {
     this.boardContainer.classList.add('hidden');
     this.keyboardContainer.classList.add('hidden');
     this.statusBar.classList.add('hidden');
+    if (this.btnSurrender) this.btnSurrender.classList.add('hidden');
     this.hostCodeDisplay.classList.add('hidden');
     this.joinStatus.classList.add('hidden');
     this.btnCreateRoom.disabled = false;
