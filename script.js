@@ -3,14 +3,14 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData } from './words.js?v=1.6.3';
-import { AudioManager } from './js/audio.js?v=1.6.3';
-import { GameRules } from './js/game-rules.js?v=1.6.3';
-import { TurnTimer } from './js/timer.js?v=1.6.3';
-import { ProfileManager } from './js/profile.js?v=1.6.3';
-import { P2PNetwork } from './js/network.js?v=1.6.3';
-import { ChatManager } from './js/chat.js?v=1.6.3';
-import { BoardUI } from './js/board-ui.js?v=1.6.3';
+import { wordsData } from './words.js?v=1.6.6';
+import { AudioManager } from './js/audio.js?v=1.6.6';
+import { GameRules } from './js/game-rules.js?v=1.6.6';
+import { TurnTimer } from './js/timer.js?v=1.6.6';
+import { ProfileManager } from './js/profile.js?v=1.6.6';
+import { P2PNetwork } from './js/network.js?v=1.6.6';
+import { ChatManager } from './js/chat.js?v=1.6.6';
+import { BoardUI } from './js/board-ui.js?v=1.6.6';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -156,11 +156,12 @@ class TermoMultiplayerGame {
     const isJoiningRoom = this.ui.joinStatus && !this.ui.joinStatus.classList.contains('hidden');
 
     if (isInMatch) {
-      // Se o modal de Fim de Jogo já estiver na tela, pergunta se deseja voltar ao Lobby
       this.pendingExitAction = 'lobby';
       this.ui.showExitConfirmModal(true, {
-        title: 'Deseja sair da partida?',
-        desc: 'Se você sair agora, a partida atual será encerrada e você voltará para o início.'
+        title: 'Confirmação de saída',
+        desc: 'Se você voltar ao início agora, a partida atual será encerrada e a conexão com a sala será finalizada.',
+        cancelText: 'Continuar jogando',
+        confirmText: 'Voltar ao lobby'
       });
       return;
     }
@@ -169,7 +170,9 @@ class TermoMultiplayerGame {
       this.pendingExitAction = 'lobby';
       this.ui.showExitConfirmModal(true, {
         title: 'Cancelar conexão da sala?',
-        desc: 'Deseja cancelar a sala atual e voltar ao menu inicial?'
+        desc: 'Deseja cancelar a sala atual e voltar ao menu inicial?',
+        cancelText: 'Continuar aqui',
+        confirmText: 'Voltar ao lobby'
       });
       return;
     }
@@ -178,7 +181,9 @@ class TermoMultiplayerGame {
     this.pendingExitAction = 'leave_app';
     this.ui.showExitConfirmModal(true, {
       title: 'Deseja sair do jogo?',
-      desc: 'Toque em "Continuar aqui" para permanecer no Termo Duelo.'
+      desc: 'Toque em "Continuar aqui" para permanecer no Termo Duelo.',
+      cancelText: 'Continuar aqui',
+      confirmText: 'Sair'
     });
   }
 
@@ -186,6 +191,8 @@ class TermoMultiplayerGame {
     this.ui.showExitConfirmModal(false);
     if (this.pendingExitAction === 'lobby') {
       this.resetToLobby();
+    } else if (this.pendingExitAction === 'restart_match') {
+      this.executeRestartMatch();
     } else if (this.pendingExitAction === 'leave_app') {
       this.allowPageExit = true;
       window.history.go(-2);
@@ -196,14 +203,57 @@ class TermoMultiplayerGame {
   requestLeaveMatchConfirmation() {
     const isInMatch = this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden');
     const isWaitingHost = this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
-    if (isInMatch && !this.isGameOver) {
+    const isJoiningRoom = this.ui.joinStatus && !this.ui.joinStatus.classList.contains('hidden');
+
+    if (isInMatch || isWaitingHost || isJoiningRoom) {
       this.pendingExitAction = 'lobby';
       this.ui.showExitConfirmModal(true, {
-        title: 'Deseja sair da partida?',
-        desc: 'Se você sair agora, a partida atual será encerrada e você voltará para o início.'
+        title: 'Confirmação de saída',
+        desc: 'Se você voltar ao início agora, a partida atual será encerrada e a conexão com a sala será finalizada.',
+        cancelText: 'Continuar jogando',
+        confirmText: 'Voltar ao lobby'
       });
-    } else if (isInMatch || isWaitingHost) {
-      this.resetToLobby();
+    }
+  }
+
+  handleRestartMatch() {
+    const isInMatch = this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden');
+    if (!isInMatch) return;
+
+    this.pendingExitAction = 'restart_match';
+    this.ui.showExitConfirmModal(true, {
+      title: 'Reiniciar partida?',
+      desc: 'O tabuleiro atual será zerado e uma nova palavra secreta será sorteada.',
+      cancelText: 'Continuar jogando',
+      confirmText: 'Reiniciar partida'
+    });
+  }
+
+  executeRestartMatch() {
+    const isInMatch = this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden');
+    if (!isInMatch) return;
+
+    if (this.role === 'solo') {
+      this.secretWord = this.rules.getRandomSecretWord();
+      this.resetBoardState();
+      this.updateStatusBar();
+      this.ui.showToast('Partida reiniciada!');
+      return;
+    }
+
+    if (this.network.isConnected()) {
+      const nextSecret = this.rules.getRandomSecretWord();
+      this.secretWord = nextSecret;
+      this.currentTurnRole = 'host';
+      this.network.send({
+        type: 'RESTART_MATCH',
+        secretWord: nextSecret,
+        startingRole: 'host',
+        senderName: this.profile.myName
+      });
+      this.resetBoardState();
+      this.startMultiplayerMatch();
+      this.ui.showToast('Partida reiniciada!');
     }
   }
 
@@ -232,8 +282,8 @@ class TermoMultiplayerGame {
     this.ui.btnCloseHelp.addEventListener('click', () => this.ui.showHelpModal(false));
     this.ui.btnHelpOk.addEventListener('click', () => this.ui.showHelpModal(false));
     this.ui.btnBackLobby.addEventListener('click', () => this.resetToLobby());
-    this.ui.btnRestart.addEventListener('click', () => this.requestLeaveMatchConfirmation());
-    this.ui.btnSurrender.addEventListener('click', () => this.handleSurrender());
+    this.ui.btnRestart.addEventListener('click', () => this.handleRestartMatch());
+    if (this.ui.btnHome) this.ui.btnHome.addEventListener('click', () => this.requestLeaveMatchConfirmation());
     this.ui.btnPlayAgain.addEventListener('click', () => this.handlePlayAgainRequest());
 
     if (this.ui.btnPrivacy) this.ui.btnPrivacy.addEventListener('click', () => this.ui.showPrivacyModal(true));
@@ -394,8 +444,14 @@ class TermoMultiplayerGame {
         this.updateStatusBar();
         break;
 
-      case 'SURRENDER':
-        this.handleOpponentSurrender();
+      case 'RESTART_MATCH':
+        if (data.secretWord) {
+          this.secretWord = data.secretWord;
+          this.currentTurnRole = data.startingRole || 'host';
+          this.resetBoardState();
+          this.startMultiplayerMatch();
+          this.ui.showToast(`${data.senderName || this.oppName} reiniciou a partida!`);
+        }
         break;
 
       case 'CHAT_MESSAGE':
@@ -441,7 +497,7 @@ class TermoMultiplayerGame {
     this.ui.boardContainer.classList.remove('hidden');
     this.ui.keyboardContainer.classList.remove('hidden');
     this.ui.statusBar.classList.add('hidden');
-    if (this.ui.btnSurrender) this.ui.btnSurrender.classList.remove('hidden');
+    if (this.ui.btnHome) this.ui.btnHome.classList.remove('hidden');
 
     this.updateStatusBar();
     this.ui.showToast('Jogo Solo iniciado! Boa sorte!');
@@ -453,7 +509,7 @@ class TermoMultiplayerGame {
     this.ui.boardContainer.classList.remove('hidden');
     this.ui.keyboardContainer.classList.remove('hidden');
     this.ui.statusBar.classList.remove('hidden');
-    if (this.ui.btnSurrender) this.ui.btnSurrender.classList.remove('hidden');
+    if (this.ui.btnHome) this.ui.btnHome.classList.remove('hidden');
 
     this.updateStatusBar();
   }
@@ -900,64 +956,6 @@ class TermoMultiplayerGame {
     }, 1200);
   }
 
-  handleSurrender() {
-    if (this.isGameOver) return;
-    this.timer.stop();
-
-    this.oppScore++;
-    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
-
-    if (this.role === 'solo') {
-      this.isGameOver = true;
-      this.ui.showGameOverModal({
-        title: 'DERROTA!',
-        color: 'var(--color-present)',
-        subtitle: 'Você desistiu da partida.',
-        secretWord: this.secretWord,
-        winnerName: 'Computador',
-        attemptsText: `${this.currentRow}/${this.maxRows}`
-      });
-      return;
-    }
-
-    this.network.send({ type: 'SURRENDER' });
-    this.isGameOver = true;
-    this.ui.showGameOverModal({
-      title: 'DERROTA!',
-      color: 'var(--color-present)',
-      subtitle: 'Você desistiu da partida.',
-      secretWord: this.secretWord,
-      winnerName: this.oppName,
-      attemptsText: `${this.currentRow}/${this.maxRows}`
-    });
-  }
-
-  handleOpponentSurrender() {
-    if (this.isGameOver) return;
-    this.timer.stop();
-    this.isGameOver = true;
-
-    this.myScore++;
-    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
-
-    if (window.confetti) {
-      confetti({
-        particleCount: 120,
-        spread: 80,
-        origin: { y: 0.6 }
-      });
-    }
-
-    this.ui.showGameOverModal({
-      title: 'VITÓRIA!',
-      color: 'var(--color-correct)',
-      subtitle: `${this.oppName} desistiu da partida!`,
-      secretWord: this.secretWord,
-      winnerName: this.profile.myName,
-      attemptsText: `${this.currentRow}/${this.maxRows}`
-    });
-  }
-
   handlePlayAgainRequest() {
     if (this.role === 'solo') {
       this.startSoloGame();
@@ -997,7 +995,7 @@ class TermoMultiplayerGame {
     this.ui.boardContainer.classList.add('hidden');
     this.ui.keyboardContainer.classList.add('hidden');
     this.ui.statusBar.classList.add('hidden');
-    if (this.ui.btnSurrender) this.ui.btnSurrender.classList.add('hidden');
+    if (this.ui.btnHome) this.ui.btnHome.classList.add('hidden');
     this.ui.hostCodeDisplay.classList.add('hidden');
     this.ui.joinStatus.classList.add('hidden');
     this.ui.btnCreateRoom.disabled = false;

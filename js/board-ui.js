@@ -3,7 +3,7 @@
  * Responsável pela manipulação de elementos visuais do tabuleiro 6x5, teclado virtual, animações e modais.
  */
 
-import { ProfileManager } from './profile.js?v=1.6.3';
+import { ProfileManager } from './profile.js?v=1.6.6';
 
 export class BoardUI {
   constructor({ maxRows = 6, wordLength = 5, audio, onTileClick, onVirtualKeyPress }) {
@@ -25,7 +25,7 @@ export class BoardUI {
     this.keyboardElement = document.getElementById('keyboard');
     this.statusBar = document.getElementById('game-status-bar');
     this.gameActionsBar = document.getElementById('game-actions-bar');
-    this.btnSurrender = document.getElementById('btn-surrender');
+    this.btnHome = document.getElementById('btn-home');
     this.turnIndicator = document.getElementById('turn-indicator');
     this.toastMessage = document.getElementById('toast-message');
     this.turnTimerElement = document.getElementById('turn-timer');
@@ -306,11 +306,13 @@ export class BoardUI {
     this.gameoverModal.classList.remove('hidden');
   }
 
-  showExitConfirmModal(show, { title, desc } = {}) {
+  showExitConfirmModal(show, { title, desc, cancelText, confirmText } = {}) {
     if (!this.exitConfirmModal) return;
     if (show) {
       if (title && this.exitModalTitle) this.exitModalTitle.textContent = title;
       if (desc && this.exitModalDesc) this.exitModalDesc.textContent = desc;
+      if (this.btnCancelExit) this.btnCancelExit.textContent = cancelText || 'Continuar jogando';
+      if (this.btnConfirmExit) this.btnConfirmExit.textContent = confirmText || 'Voltar ao lobby';
       this.exitConfirmModal.classList.remove('hidden');
     } else {
       this.exitConfirmModal.classList.add('hidden');
