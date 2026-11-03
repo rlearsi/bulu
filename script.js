@@ -1,15 +1,19 @@
 /**
- * TERMO MULTIPLAYER P2P (WebRTC)
- * Baseado na tecnologia de conexão P2P WebRTC usada no Relatum (PeerJS)
+ * TERMO MULTIPLAYER P2P (WebRTC) - Orquestrador Principal
+ * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData } from './words.js?v=1.4.5';
+import { wordsData } from './words.js?v=1.5.0';
+import { AudioManager } from './js/audio.js?v=1.5.0';
+import { GameRules } from './js/game-rules.js?v=1.5.0';
+import { TurnTimer } from './js/timer.js?v=1.5.0';
+import { ProfileManager } from './js/profile.js?v=1.5.0';
+import { P2PNetwork } from './js/network.js?v=1.5.0';
+import { ChatManager } from './js/chat.js?v=1.5.0';
+import { BoardUI } from './js/board-ui.js?v=1.5.0';
 
 class TermoMultiplayerGame {
   constructor() {
-    this.wordsList = wordsData;
-
-    // Configurações do jogo
     this.maxRows = 6;
     this.wordLength = 5;
     this.currentRow = 0;
@@ -18,545 +22,173 @@ class TermoMultiplayerGame {
     this.isGameOver = false;
     this.isRevealing = false;
 
-    // Multiplayer / P2P
+    // Estado Multiplayer / Placar
     this.role = 'solo'; // 'host', 'guest', 'solo'
-    this.peer = null;
-    this.peerConn = null;
-    this.roomCode = '';
-
-    // Gerador de Apelidos Aleatórios (máx 12 caracteres)
-    this.randomNickPool = [
-      'Juvenal', 'Astolfo', 'Bartolomeu', 'Epaminondas', 'Teobaldo', 'Godofredo',
-      'Valdomiro', 'Clementina', 'Genoveva', 'Mafalda', 'Filomena', 'Serafim',
-      'ZéPequeno', 'PomboSujo', 'Capivara', 'Calabreso', 'Mussarelo', 'Biscoito',
-      'Coxinha', 'Paçoca', 'Pamonha', 'Brigadeiro', 'Tucano', 'Guaxinim',
-      'Camaleão', 'Sabichão', 'MestreZen', 'Relâmpago', 'Fofoqueiro', 'Sonolento',
-      'Preguiça', 'Soneca', 'Pipoca', 'Azeitona', 'Pimentinha', 'Abacate',
-      'Tangerina', 'Maracujá', 'Cajuína', 'Rapadura', 'Farofa', 'Tapioca',
-      'Curupira', 'SaciPererê', 'BotoRosa', 'Mandachuva', 'PéDeVento', 'ZigueZague',
-      'Berenice', 'Gertrudes', 'Gumercindo', 'Orozimbo', 'Tibúrcio', 'Quitéria',
-      'Fulgêncio', 'Eustáquio', 'Ludovico', 'Virgulino', 'Lampião', 'Cangaceiro',
-      'Tropeiro', 'Garimpeiro', 'Alquimista', 'Astronauta', 'Detetive', 'Forasteiro'
-    ];
-
-    // Perfil do Jogador (Nome e Foto em base64)
-    const savedName = localStorage.getItem('termo_player_name');
-    this.isNameSaved = Boolean(savedName && savedName.trim());
-    this.myName = this.isNameSaved ? savedName.trim() : this.generateRandomNickname();
-    this.myAvatar = localStorage.getItem('termo_player_avatar') || '';
+    this.currentTurnRole = 'host';
     this.oppName = 'Oponente';
     this.oppAvatar = '';
-    this.tempAvatar = this.myAvatar;
-    this.currentTurnRole = 'host'; // Quem joga agora ('host' ou 'guest' ou 'solo')
-
-    // Matriz de letras no tabuleiro [linha][coluna]
-    this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
-    // Status das letras no teclado: { 'A': 'correct' | 'present' | 'absent' }
-    this.keyboardStatus = {};
-    this.validWordsSet = new Set(this.wordsList.map(w => (w.normalized || w.word).toUpperCase()));
-    this.audioCtx = null;
-
-    // Sistema de Pontuação / Placar
     this.myScore = 0;
     this.oppScore = 0;
 
-    // Sistema de Tempo (3 minutos por jogador / 180 segundos)
-    this.turnDuration = 180;
-    this.timeLeft = this.turnDuration;
-    this.timerInterval = null;
+    // Matriz de letras no tabuleiro [linha][coluna]
+    this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
 
-    // Chat
-    this.unreadMessagesCount = 0;
-    this.isChatOpen = false;
+    // Inicialização dos Módulos com Responsabilidade Única
+    this.audio = new AudioManager();
+    this.rules = new GameRules(wordsData, this.wordLength);
 
-    this.initDOM();
+    this.ui = new BoardUI({
+      maxRows: this.maxRows,
+      wordLength: this.wordLength,
+      audio: this.audio,
+      onTileClick: (r, c) => this.handleTileClick(r, c),
+      onVirtualKeyPress: (k) => this.handleVirtualKeyPress(k)
+    });
+
+    this.timer = new TurnTimer(this.ui.turnTimerElement, 180);
+
+    this.profile = new ProfileManager({
+      onShowToast: (msg) => this.ui.showToast(msg),
+      onProfileUpdated: () => this.syncProfileWithPeer()
+    });
+
+    this.network = new P2PNetwork({
+      onMessage: (data) => this.handleP2PMessage(data),
+      onDisconnect: () => {
+        this.ui.showToast('Oponente se desconectou.');
+        setTimeout(() => this.resetToLobby(), 2500);
+      }
+    });
+
+    this.chat = new ChatManager({
+      audio: this.audio,
+      getContextInfo: () => ({
+        myName: this.profile.myName,
+        oppName: this.oppName,
+        role: this.role,
+        isConnected: this.network.isConnected()
+      }),
+      onSendP2P: (msgData) => this.network.send(msgData)
+    });
+
     this.initEvents();
-    this.createBoard();
-    this.createKeyboard();
-  }
-
-  getAudioContext() {
-    if (!this.audioCtx) {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (AudioContextClass) {
-        this.audioCtx = new AudioContextClass();
-      }
-    }
-    if (this.audioCtx && this.audioCtx.state === 'suspended') {
-      this.audioCtx.resume();
-    }
-    return this.audioCtx;
-  }
-
-  playFeedbackSound(type) {
-    try {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = 'sine';
-      const now = ctx.currentTime;
-
-      if (type === 'correct') {
-        // Som suave, harmônico e agudo suave para letra correta (verde)
-        osc.frequency.setValueAtTime(587.33, now); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, now + 0.12); // A5
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.linearRampToValueAtTime(0.06, now + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.18);
-      } else if (type === 'present') {
-        // Som suave e acolhedor para letra no lugar errado (amarelo)
-        osc.frequency.setValueAtTime(440, now); // A4
-        osc.frequency.exponentialRampToValueAtTime(554.37, now + 0.12); // C#5
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.linearRampToValueAtTime(0.045, now + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now);
-        osc.stop(now + 0.18);
-      }
-    } catch (e) {
-      // Áudio silencioso se bloqueado pelo browser
-    }
-  }
-
-  playChatNotificationSound() {
-    try {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-
-      const now = ctx.currentTime;
-
-      // Primeiro tom (C5 -> E5 suave)
-      const osc1 = ctx.createOscillator();
-      const gain1 = ctx.createGain();
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(523.25, now); // C5
-      gain1.gain.setValueAtTime(0.0001, now);
-      gain1.gain.linearRampToValueAtTime(0.07, now + 0.015);
-      gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.11);
-      osc1.connect(gain1);
-      gain1.connect(ctx.destination);
-      osc1.start(now);
-      osc1.stop(now + 0.11);
-
-      // Segundo tom harmônico (G5) para efeito de notificação de chat
-      const osc2 = ctx.createOscillator();
-      const gain2 = ctx.createGain();
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(783.99, now + 0.08); // G5
-      gain2.gain.setValueAtTime(0.0001, now + 0.08);
-      gain2.gain.linearRampToValueAtTime(0.08, now + 0.1);
-      gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.28);
-      osc2.connect(gain2);
-      gain2.connect(ctx.destination);
-      osc2.start(now + 0.08);
-      osc2.stop(now + 0.28);
-    } catch (e) {
-      // Áudio silencioso se bloqueado pelo browser
-    }
-  }
-
-  initDOM() {
-    this.lobbyScreen = document.getElementById('lobby-screen');
-    this.boardContainer = document.getElementById('board-container');
-    this.keyboardContainer = document.getElementById('keyboard-container');
-    this.boardElement = document.getElementById('board');
-    this.keyboardElement = document.getElementById('keyboard');
-    this.statusBar = document.getElementById('game-status-bar');
-    this.gameActionsBar = document.getElementById('game-actions-bar');
-    this.btnSurrender = document.getElementById('btn-surrender');
-    this.turnIndicator = document.getElementById('turn-indicator');
-    this.toastMessage = document.getElementById('toast-message');
-    this.turnTimerElement = document.getElementById('turn-timer');
-
-    // Elementos do Chat
-    this.btnChat = document.getElementById('btn-chat');
-    this.chatBadge = document.getElementById('chat-badge');
-    this.chatOverlay = document.getElementById('chat-overlay');
-    this.btnCloseChat = document.getElementById('btn-close-chat');
-    this.chatMessages = document.getElementById('chat-messages');
-    this.chatForm = document.getElementById('chat-form');
-    this.chatInput = document.getElementById('chat-input');
-
-    // Badges jogadores e placar
-    this.p1Badge = document.getElementById('p1-badge');
-    this.p2Badge = document.getElementById('p2-badge');
-    this.p1ScoreElement = document.getElementById('p1-score');
-    this.p2ScoreElement = document.getElementById('p2-score');
-    this.scoreVsElement = document.querySelector('.score-vs');
-
-    // Elementos de Perfil / Avatar
-    this.p1AvatarImg = document.getElementById('p1-avatar-img');
-    this.p1AvatarPh = document.getElementById('p1-avatar-ph');
-    this.p2AvatarImg = document.getElementById('p2-avatar-img');
-    this.p2AvatarPh = document.getElementById('p2-avatar-ph');
-
-    this.homeAvatarImg = document.getElementById('home-avatar-img');
-    this.homeAvatarPh = document.getElementById('home-avatar-ph');
-    this.homePlayerName = document.getElementById('home-player-name');
-    this.lobbyAvatarTrigger = document.getElementById('lobby-avatar-trigger');
-    this.btnQuickEditName = document.getElementById('btn-quick-edit-name');
-
-    // Modal de Perfil
-    this.profileModal = document.getElementById('profile-modal');
-    this.btnProfile = document.getElementById('btn-profile');
-    this.btnCloseProfile = document.getElementById('btn-close-profile');
-    this.modalAvatarTrigger = document.getElementById('modal-avatar-trigger');
-    this.modalAvatarPreview = document.getElementById('modal-avatar-preview');
-    this.modalAvatarPlaceholder = document.getElementById('modal-avatar-placeholder');
-    this.btnRemoveAvatar = document.getElementById('btn-remove-avatar');
-    this.inputAvatarFile = document.getElementById('input-avatar-file');
-    this.inputProfileName = document.getElementById('input-profile-name');
-    this.btnModalRandomName = document.getElementById('btn-modal-random-name');
-    this.btnSaveProfile = document.getElementById('btn-save-profile');
-
-    // Botões do Lobby
-    this.btnCreateRoom = document.getElementById('btn-create-room');
-    this.hostCodeDisplay = document.getElementById('host-code-display');
-    this.roomCodeVal = document.getElementById('room-code-val');
-    this.btnCopyCode = document.getElementById('btn-copy-code');
-    this.hostStatus = document.getElementById('host-status');
-
-    this.inputRoomCode = document.getElementById('input-room-code');
-    this.btnJoinRoom = document.getElementById('btn-join-room');
-    this.joinStatus = document.getElementById('join-status');
-    this.btnPractice = document.getElementById('btn-practice');
-
-    // Modais
-    this.helpModal = document.getElementById('help-modal');
-    this.btnHelp = document.getElementById('btn-help');
-    this.btnCloseHelp = document.getElementById('btn-close-help');
-    this.btnHelpOk = document.getElementById('btn-help-ok');
-
-    this.gameoverModal = document.getElementById('gameover-modal');
-    this.privacyModal = document.getElementById('privacy-modal');
-    this.btnPrivacy = document.getElementById('btn-privacy');
-    this.btnClosePrivacy = document.getElementById('btn-close-privacy');
-    this.btnPrivacyOk = document.getElementById('btn-privacy-ok');
-    this.goTitle = document.getElementById('go-title');
-    this.goSubtitle = document.getElementById('go-subtitle');
-    this.goSecretWord = document.getElementById('go-secret-word');
-    this.goWinnerName = document.getElementById('go-winner-name');
-    this.goAttemptsCount = document.getElementById('go-attempts-count');
-    this.btnPlayAgain = document.getElementById('btn-play-again');
-    this.btnBackLobby = document.getElementById('btn-back-lobby');
-    this.btnRestart = document.getElementById('btn-restart');
+    this.ui.createBoard();
+    this.ui.createKeyboard();
+    this.refreshHighlight();
   }
 
   initEvents() {
     // Ações do Lobby
-    this.btnCreateRoom.addEventListener('click', () => this.handleCreateRoom());
-    this.btnJoinRoom.addEventListener('click', () => this.handleJoinRoom());
-    this.btnPractice.addEventListener('click', () => this.startSoloGame());
-    this.btnCopyCode.addEventListener('click', () => this.copyRoomCode());
+    this.ui.btnCreateRoom.addEventListener('click', () => this.handleCreateRoom());
+    this.ui.btnJoinRoom.addEventListener('click', () => this.handleJoinRoom());
+    this.ui.btnPractice.addEventListener('click', () => this.startSoloGame());
+    this.ui.btnCopyCode.addEventListener('click', () => this.copyRoomCode());
 
     // Teclado Físico
     window.addEventListener('keydown', (e) => this.handlePhysicalKeyPress(e));
 
-    // Modais
-    this.btnHelp.addEventListener('click', () => this.showHelpModal(true));
-    this.btnCloseHelp.addEventListener('click', () => this.showHelpModal(false));
-    this.btnHelpOk.addEventListener('click', () => this.showHelpModal(false));
-    this.btnBackLobby.addEventListener('click', () => this.resetToLobby());
-    this.btnRestart.addEventListener('click', () => this.resetToLobby());
-    this.btnSurrender.addEventListener('click', () => this.handleSurrender());
-    this.btnPlayAgain.addEventListener('click', () => this.handlePlayAgainRequest());
+    // Modais e Ações da Partida
+    this.ui.btnHelp.addEventListener('click', () => this.ui.showHelpModal(true));
+    this.ui.btnCloseHelp.addEventListener('click', () => this.ui.showHelpModal(false));
+    this.ui.btnHelpOk.addEventListener('click', () => this.ui.showHelpModal(false));
+    this.ui.btnBackLobby.addEventListener('click', () => this.resetToLobby());
+    this.ui.btnRestart.addEventListener('click', () => this.resetToLobby());
+    this.ui.btnSurrender.addEventListener('click', () => this.handleSurrender());
+    this.ui.btnPlayAgain.addEventListener('click', () => this.handlePlayAgainRequest());
 
-    if (this.btnPrivacy) this.btnPrivacy.addEventListener('click', () => this.showPrivacyModal(true));
-    if (this.btnClosePrivacy) this.btnClosePrivacy.addEventListener('click', () => this.showPrivacyModal(false));
-    if (this.btnPrivacyOk) this.btnPrivacyOk.addEventListener('click', () => this.showPrivacyModal(false));
+    if (this.ui.btnPrivacy) this.ui.btnPrivacy.addEventListener('click', () => this.ui.showPrivacyModal(true));
+    if (this.ui.btnClosePrivacy) this.ui.btnClosePrivacy.addEventListener('click', () => this.ui.showPrivacyModal(false));
+    if (this.ui.btnPrivacyOk) this.ui.btnPrivacyOk.addEventListener('click', () => this.ui.showPrivacyModal(false));
 
-    // Eventos de Perfil (Nome e Foto)
-    if (this.btnProfile) this.btnProfile.addEventListener('click', () => this.showProfileModal(true));
-    if (this.btnCloseProfile) this.btnCloseProfile.addEventListener('click', () => this.showProfileModal(false));
-    if (this.lobbyAvatarTrigger) this.lobbyAvatarTrigger.addEventListener('click', () => this.showProfileModal(true));
-    if (this.btnQuickEditName) this.btnQuickEditName.addEventListener('click', () => this.showProfileModal(true));
-    if (this.modalAvatarTrigger) this.modalAvatarTrigger.addEventListener('click', () => this.inputAvatarFile.click());
-    if (this.inputAvatarFile) this.inputAvatarFile.addEventListener('change', (e) => this.handleAvatarFileSelect(e));
-    if (this.btnRemoveAvatar) this.btnRemoveAvatar.addEventListener('click', () => this.handleAvatarRemove());
-    if (this.btnModalRandomName) this.btnModalRandomName.addEventListener('click', () => this.handleModalRandomNickname());
-    if (this.btnSaveProfile) this.btnSaveProfile.addEventListener('click', () => this.handleSaveProfile());
-
-    // Eventos do Chat
-    if (this.btnChat) this.btnChat.addEventListener('click', () => this.toggleChat());
-    if (this.btnCloseChat) this.btnCloseChat.addEventListener('click', () => this.toggleChat(false));
-    if (this.chatForm) {
-      this.chatForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handleSendChatMessage();
-      });
-    }
-
-    // Desbloqueia contexto de áudio no primeiro toque/clique do usuário para garantir sons P2P
-    const unlockAudio = () => this.getAudioContext();
+    // Desbloqueia contexto de áudio no primeiro toque/clique
+    const unlockAudio = () => this.audio.getAudioContext();
     window.addEventListener('pointerdown', unlockAudio, { once: true });
     window.addEventListener('keydown', unlockAudio, { once: true });
-
-    // Inicializa display do perfil na Home
-    this.updateProfileDisplay();
   }
 
-  // ==========================================
-  // CONSTRUÇÃO DA INTERFACE (TABULEIRO & TECLADO)
-  // ==========================================
-  createBoard() {
-    this.boardElement.innerHTML = '';
-    for (let r = 0; r < this.maxRows; r++) {
-      const rowDiv = document.createElement('div');
-      rowDiv.className = 'board-row';
-      rowDiv.dataset.row = r;
-
-      for (let c = 0; c < this.wordLength; c++) {
-        const tileDiv = document.createElement('div');
-        tileDiv.className = 'tile';
-        tileDiv.dataset.row = r;
-        tileDiv.dataset.col = c;
-
-        // Suporte a clique ou toque direto para focar tile específico
-        tileDiv.addEventListener('pointerdown', (e) => {
-          e.preventDefault();
-          this.handleTileClick(r, c);
-        });
-
-        rowDiv.appendChild(tileDiv);
-      }
-      this.boardElement.appendChild(rowDiv);
-    }
-    this.updateActiveTileHighlight();
+  isMyTurn() {
+    if (this.role === 'solo') return true;
+    return this.role === this.currentTurnRole;
   }
 
-  handleTileClick(r, c) {
-    if (this.isGameOver || this.isRevealing || !this.isMyTurn()) return;
-    if (r !== this.currentRow) return; // Permite focar apenas nos tiles da linha da rodada atual
-
-    this.currentTile = Math.max(0, Math.min(this.wordLength - 1, c));
-    this.updateActiveTileHighlight();
-  }
-
-  updateActiveTileHighlight() {
-    // Remove cursor ativo anterior de todos os tiles
-    const allActive = this.boardElement.querySelectorAll('.tile.active-cursor');
-    allActive.forEach(t => t.classList.remove('active-cursor'));
-
-    const allRows = this.boardElement.querySelectorAll('.board-row');
-    allRows.forEach(row => {
-      if (parseInt(row.dataset.row, 10) === this.currentRow && this.isMyTurn() && !this.isGameOver && !this.isRevealing) {
-        row.classList.add('current-turn-row');
-      } else {
-        row.classList.remove('current-turn-row');
-      }
-    });
-
-    if (this.isGameOver || this.isRevealing || !this.isMyTurn() || this.currentRow >= this.maxRows) return;
-
-    // Destaca o tile atual selecionado
-    const colToHighlight = Math.min(this.currentTile, this.wordLength - 1);
-    const activeTile = this.getTileElement(this.currentRow, colToHighlight);
-    if (activeTile) {
-      activeTile.classList.add('active-cursor');
-    }
-  }
-
-  moveToNextEmptyTile() {
-    const rowLetters = this.boardMatrix[this.currentRow];
-    // Procura a primeira vazia a partir do próximo slot ou volta para o início se necessário
-    let nextEmpty = -1;
-    for (let i = this.currentTile + 1; i < this.wordLength; i++) {
-      if (!rowLetters[i]) {
-        nextEmpty = i;
-        break;
-      }
-    }
-    if (nextEmpty === -1) {
-      for (let i = 0; i < this.wordLength; i++) {
-        if (!rowLetters[i]) {
-          nextEmpty = i;
-          break;
-        }
-      }
-    }
-
-    if (nextEmpty !== -1) {
-      this.currentTile = nextEmpty;
-      this.updateActiveTileHighlight();
-    }
-  }
-
-  moveCursorLeft() {
-    if (this.currentTile > 0) {
-      this.currentTile--;
-      this.updateActiveTileHighlight();
-    }
-  }
-
-  moveCursorRight() {
-    if (this.currentTile < this.wordLength - 1) {
-      this.currentTile++;
-      this.updateActiveTileHighlight();
-    }
-  }
-
-  createKeyboard() {
-    this.keyboardElement.innerHTML = '';
-    const layout = [
-      ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-      ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'BACKSPACE'],
-      ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER']
-    ];
-
-    layout.forEach(rowKeys => {
-      const rowDiv = document.createElement('div');
-      rowDiv.className = 'keyboard-row';
-
-      rowKeys.forEach(k => {
-        const btn = document.createElement('button');
-        btn.className = 'key-btn';
-        btn.dataset.key = k;
-
-        if (k === 'ENTER') {
-          btn.textContent = 'ENTER';
-          btn.classList.add('action-key');
-        } else if (k === 'BACKSPACE') {
-          btn.innerHTML = '⌫';
-          btn.classList.add('action-key');
-        } else {
-          btn.textContent = k;
-        }
-
-        btn.addEventListener('click', () => this.handleVirtualKeyPress(k));
-        rowDiv.appendChild(btn);
-      });
-
-      this.keyboardElement.appendChild(rowDiv);
+  refreshHighlight() {
+    this.ui.updateActiveTileHighlight({
+      currentRow: this.currentRow,
+      currentTile: this.currentTile,
+      isMyTurn: this.isMyTurn(),
+      isGameOver: this.isGameOver,
+      isRevealing: this.isRevealing
     });
   }
 
   // ==========================================
-  // WEBRTC P2P CONEXÃO (MESMO MECANISMO RELATUM)
+  // SALAS E CONEXÃO P2P
   // ==========================================
-  getIceServers() {
-    return [
-      { urls: 'stun:stun.l.google.com:19302' },
-      { urls: 'stun:stun1.l.google.com:19302' },
-      { urls: 'stun:stun.cloudflare.com:3478' }
-    ];
-  }
-
   handleCreateRoom() {
     this.role = 'host';
-    const code = String(Math.floor(100000 + Math.random() * 900000));
-    this.roomCode = code;
-    const peerId = `termo-room-${code}`;
+    this.ui.btnCreateRoom.disabled = true;
+    this.ui.hostCodeDisplay.classList.remove('hidden');
+    this.ui.hostStatus.textContent = 'Inicializando rede P2P...';
 
-    this.btnCreateRoom.disabled = true;
-    this.hostCodeDisplay.classList.remove('hidden');
-    this.roomCodeVal.textContent = code;
-    this.hostStatus.textContent = 'Inicializando rede P2P...';
+    const code = this.network.createRoom({
+      onOpen: () => {
+        this.ui.hostStatus.textContent = 'Aguardando adversário entrar...';
+      },
+      onError: () => {
+        this.ui.hostStatus.textContent = 'Erro ao criar sala. Tente outro código.';
+        this.ui.btnCreateRoom.disabled = false;
+      }
+    });
 
-    if (this.peer) {
-      try { this.peer.destroy(); } catch (e) {}
-    }
-
-    try {
-      this.peer = new Peer(peerId, {
-        config: { iceServers: this.getIceServers() }
-      });
-
-      this.peer.on('open', (id) => {
-        this.hostStatus.textContent = 'Aguardando adversário entrar...';
-      });
-
-      this.peer.on('connection', (conn) => {
-        this.peerConn = conn;
-        this.setupConnectionListeners(conn);
-      });
-
-      this.peer.on('error', (err) => {
-        console.error('Peer error:', err);
-        this.hostStatus.textContent = 'Erro ao criar sala. Tente outro código.';
-        this.btnCreateRoom.disabled = false;
-      });
-    } catch (e) {
-      this.hostStatus.textContent = 'Erro ao conectar no servidor WebRTC.';
-      this.btnCreateRoom.disabled = false;
-    }
+    this.ui.roomCodeVal.textContent = code;
   }
 
   handleJoinRoom() {
-    const code = this.inputRoomCode.value.trim();
+    const code = this.ui.inputRoomCode.value.trim();
     if (!code || code.length < 6) {
-      this.showToast('Digite um código de 6 dígitos');
+      this.ui.showToast('Digite um código de 6 dígitos');
       return;
     }
 
     this.role = 'guest';
-    const targetPeerId = `termo-room-${code}`;
+    this.ui.joinStatus.classList.remove('hidden');
+    this.ui.joinStatus.textContent = 'Conectando ao oponente...';
+    this.ui.btnJoinRoom.disabled = true;
 
-    this.joinStatus.classList.remove('hidden');
-    this.joinStatus.textContent = 'Conectando ao oponente...';
-    this.btnJoinRoom.disabled = true;
-
-    if (this.peer) {
-      try { this.peer.destroy(); } catch (e) {}
-    }
-
-    try {
-      this.peer = new Peer({
-        config: { iceServers: this.getIceServers() }
-      });
-
-      this.peer.on('open', () => {
-        const conn = this.peer.connect(targetPeerId, { reliable: true });
-        this.peerConn = conn;
-        this.setupConnectionListeners(conn);
-
-        conn.on('open', () => {
-          this.joinStatus.textContent = 'Conectado! Iniciando jogo...';
-          this.sendP2P({
-            type: 'JOIN_GAME',
-            name: this.myName,
-            avatar: this.myAvatar
-          });
+    this.network.joinRoom(code, {
+      onConnected: () => {
+        this.ui.joinStatus.textContent = 'Conectado! Iniciando jogo...';
+        this.network.send({
+          type: 'JOIN_GAME',
+          name: this.profile.myName,
+          avatar: this.profile.myAvatar
         });
-      });
+      },
+      onError: () => {
+        this.ui.joinStatus.textContent = 'Sala não encontrada ou indisponível.';
+        this.ui.btnJoinRoom.disabled = false;
+      }
+    });
+  }
 
-      this.peer.on('error', (err) => {
-        console.error('Guest peer error:', err);
-        this.joinStatus.textContent = 'Sala não encontrada ou indisponível.';
-        this.btnJoinRoom.disabled = false;
-      });
-    } catch (e) {
-      this.joinStatus.textContent = 'Erro ao inicializar conexão.';
-      this.btnJoinRoom.disabled = false;
+  copyRoomCode() {
+    if (!this.network.roomCode) return;
+    navigator.clipboard.writeText(this.network.roomCode).then(() => {
+      this.ui.btnCopyCode.textContent = 'Copiado! ✓';
+      setTimeout(() => { this.ui.btnCopyCode.textContent = 'Copiar Código'; }, 2000);
+    });
+  }
+
+  syncProfileWithPeer() {
+    if (this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden')) {
+      this.updateStatusBar();
     }
-  }
-
-  setupConnectionListeners(conn) {
-    conn.on('data', (data) => {
-      this.handleP2PMessage(data);
-    });
-
-    conn.on('close', () => {
-      this.showToast('Oponente se desconectou.');
-      setTimeout(() => this.resetToLobby(), 2500);
-    });
-
-    conn.on('error', (err) => {
-      console.warn('P2P Conn error:', err);
-    });
-  }
-
-  sendP2P(data) {
-    if (this.peerConn && this.peerConn.open) {
-      this.peerConn.send(data);
+    if (this.role !== 'solo' && this.network.isConnected()) {
+      this.network.send({
+        type: 'UPDATE_PROFILE',
+        name: this.profile.myName,
+        avatar: this.profile.myAvatar
+      });
     }
   }
 
@@ -566,16 +198,13 @@ class TermoMultiplayerGame {
         if (this.role === 'host') {
           this.oppName = data.name || 'Jogador 2';
           this.oppAvatar = data.avatar || '';
-          // O Host sorteia a palavra e envia para ambos
-          const randomIndex = Math.floor(Math.random() * this.wordsList.length);
-          const chosen = this.wordsList[randomIndex].normalized.toUpperCase();
-          this.secretWord = chosen;
-          this.currentTurnRole = 'host'; // Host começa
+          this.secretWord = this.rules.getRandomSecretWord();
+          this.currentTurnRole = 'host';
 
-          this.sendP2P({
+          this.network.send({
             type: 'START_MATCH',
-            hostName: this.myName,
-            hostAvatar: this.myAvatar,
+            hostName: this.profile.myName,
+            hostAvatar: this.profile.myAvatar,
             secretWord: this.secretWord,
             startingRole: 'host'
           });
@@ -599,7 +228,6 @@ class TermoMultiplayerGame {
         break;
 
       case 'SUBMIT_GUESS':
-        // Recebe o palpite jogado pelo oponente
         this.handleOpponentGuess(data.guess, data.evaluation, data.nextTurnRole, data.isWin, data.winnerRole, data.row);
         break;
 
@@ -609,10 +237,9 @@ class TermoMultiplayerGame {
 
       case 'SYNC_SCORE':
         if (typeof data.myScore === 'number' && typeof data.oppScore === 'number') {
-          // Sincroniza os placares entre os pares
           this.oppScore = data.myScore;
           this.myScore = data.oppScore;
-          this.updateScoreDisplay();
+          this.ui.updateScoreDisplay(this.myScore, this.oppScore);
         }
         break;
 
@@ -627,19 +254,18 @@ class TermoMultiplayerGame {
         break;
 
       case 'CHAT_MESSAGE':
-        this.handleIncomingChatMessage(data);
+        this.chat.handleIncomingMessage(data);
         break;
 
       case 'PLAY_AGAIN_REQUEST':
-        this.showToast(`${this.oppName} quer jogar novamente!`);
+        this.ui.showToast(`${this.oppName} quer jogar novamente!`);
         if (this.role === 'host') {
-          const randomIndex = Math.floor(Math.random() * this.wordsList.length);
-          this.secretWord = this.wordsList[randomIndex].normalized.toUpperCase();
+          this.secretWord = this.rules.getRandomSecretWord();
           this.currentTurnRole = 'host';
-          this.sendP2P({
+          this.network.send({
             type: 'START_MATCH',
-            hostName: this.myName,
-            hostAvatar: this.myAvatar,
+            hostName: this.profile.myName,
+            hostAvatar: this.profile.myAvatar,
             secretWord: this.secretWord,
             startingRole: 'host'
           });
@@ -653,16 +279,8 @@ class TermoMultiplayerGame {
     }
   }
 
-  copyRoomCode() {
-    if (!this.roomCode) return;
-    navigator.clipboard.writeText(this.roomCode).then(() => {
-      this.btnCopyCode.textContent = 'Copiado! ✓';
-      setTimeout(() => { this.btnCopyCode.textContent = 'Copiar Código'; }, 2000);
-    });
-  }
-
   // ==========================================
-  // INICIALIZAÇÃO DE PARTIDAS
+  // FLUXO DE PARTIDAS E TURNOS
   // ==========================================
   startSoloGame() {
     this.role = 'solo';
@@ -671,319 +289,83 @@ class TermoMultiplayerGame {
     this.oppScore = 0;
     this.oppName = 'Computador';
     this.oppAvatar = '';
-    const randomIndex = Math.floor(Math.random() * this.wordsList.length);
-    this.secretWord = this.wordsList[randomIndex].normalized.toUpperCase();
+    this.secretWord = this.rules.getRandomSecretWord();
 
     this.resetBoardState();
-    this.lobbyScreen.classList.add('hidden');
-    this.boardContainer.classList.remove('hidden');
-    this.keyboardContainer.classList.remove('hidden');
-    this.statusBar.classList.add('hidden');
-    if (this.btnSurrender) this.btnSurrender.classList.remove('hidden');
+    this.ui.lobbyScreen.classList.add('hidden');
+    this.ui.boardContainer.classList.remove('hidden');
+    this.ui.keyboardContainer.classList.remove('hidden');
+    this.ui.statusBar.classList.add('hidden');
+    if (this.ui.btnSurrender) this.ui.btnSurrender.classList.remove('hidden');
 
     this.updateStatusBar();
-    this.showToast('Jogo Solo iniciado! Boa sorte!');
+    this.ui.showToast('Jogo Solo iniciado! Boa sorte!');
   }
 
   startMultiplayerMatch() {
     this.resetBoardState();
-    this.lobbyScreen.classList.add('hidden');
-    this.boardContainer.classList.remove('hidden');
-    this.keyboardContainer.classList.remove('hidden');
-    this.statusBar.classList.remove('hidden');
-    if (this.btnSurrender) this.btnSurrender.classList.remove('hidden');
+    this.ui.lobbyScreen.classList.add('hidden');
+    this.ui.boardContainer.classList.remove('hidden');
+    this.ui.keyboardContainer.classList.remove('hidden');
+    this.ui.statusBar.classList.remove('hidden');
+    if (this.ui.btnSurrender) this.ui.btnSurrender.classList.remove('hidden');
 
     this.updateStatusBar();
   }
 
   resetBoardState() {
-    this.stopTurnTimer();
+    this.timer.stop();
     this.currentRow = 0;
     this.currentTile = 0;
     this.isGameOver = false;
     this.isRevealing = false;
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
-    this.keyboardStatus = {};
 
-    this.createBoard();
-    this.createKeyboard();
-    this.gameoverModal.classList.add('hidden');
-  }
-
-  isMyTurn() {
-    if (this.role === 'solo') return true;
-    return this.role === this.currentTurnRole;
+    this.ui.createBoard();
+    this.ui.createKeyboard();
+    this.ui.gameoverModal.classList.add('hidden');
+    this.refreshHighlight();
   }
 
   updateStatusBar() {
     if (this.role === 'solo') {
-      this.stopTurnTimer();
-      this.statusBar.classList.add('hidden');
-      if (this.turnTimerElement) this.turnTimerElement.classList.add('hidden');
-      this.keyboardElement.classList.remove('locked');
-      this.updateActiveTileHighlight();
+      this.timer.hide();
+      this.ui.statusBar.classList.add('hidden');
+      this.ui.keyboardElement.classList.remove('locked');
+      this.refreshHighlight();
       return;
     }
 
-    this.statusBar.classList.remove('hidden');
-    this.updateScoreDisplay();
+    this.ui.renderScoreboard({
+      role: this.role,
+      myName: this.profile.myName,
+      myAvatar: this.profile.myAvatar,
+      oppName: this.oppName,
+      oppAvatar: this.oppAvatar,
+      myScore: this.myScore,
+      oppScore: this.oppScore,
+      isMyTurn: this.isMyTurn()
+    });
 
-    // Renderiza avatar e nome do Jogador 1 (Você)
-    if (this.p1Badge) {
-      const p1Label = this.role === 'host' ? `${this.myName} (Host)` : this.myName;
-      const p1NameEl = this.p1Badge.querySelector('.p-name');
-      if (p1NameEl) p1NameEl.textContent = p1Label;
-      this.renderAvatarElement(this.p1AvatarImg, this.p1AvatarPh, this.myAvatar);
-    }
-
-    this.p2Badge.classList.remove('hidden');
-    if (this.p1ScoreElement) this.p1ScoreElement.classList.remove('hidden');
-    if (this.p2ScoreElement) this.p2ScoreElement.classList.remove('hidden');
-    if (this.scoreVsElement) this.scoreVsElement.classList.remove('hidden');
-
-    // Renderiza avatar e nome do Jogador 2 (Oponente)
-    const p2Label = this.role === 'host' ? this.oppName : `${this.oppName} (Host)`;
-    const p2NameEl = this.p2Badge.querySelector('.p-name');
-    if (p2NameEl) p2NameEl.textContent = p2Label;
-    this.renderAvatarElement(this.p2AvatarImg, this.p2AvatarPh, this.oppAvatar);
-
-    const myTurn = this.isMyTurn();
-    if (myTurn) {
-      if (this.turnIndicator) this.turnIndicator.textContent = '';
-      this.p1Badge.classList.remove('opponent-turn');
-      this.p1Badge.classList.add('my-turn');
-      this.p2Badge.classList.remove('my-turn', 'opponent-turn');
-      this.keyboardElement.classList.remove('locked');
-      this.showToast('Sua vez de jogar');
-    } else {
-      if (this.turnIndicator) this.turnIndicator.textContent = '';
-      this.p1Badge.classList.remove('my-turn', 'opponent-turn');
-      this.p2Badge.classList.remove('my-turn');
-      this.p2Badge.classList.add('opponent-turn');
-      this.keyboardElement.classList.add('locked');
-    }
-    this.updateActiveTileHighlight();
-    this.startTurnTimer();
-  }
-
-  renderAvatarElement(imgEl, phEl, avatarData) {
-    if (!imgEl || !phEl) return;
-    if (avatarData) {
-      imgEl.src = avatarData;
-      imgEl.classList.remove('hidden');
-      phEl.classList.add('hidden');
-    } else {
-      imgEl.removeAttribute('src');
-      imgEl.classList.add('hidden');
-      phEl.classList.remove('hidden');
-    }
-  }
-
-  updateScoreDisplay() {
-    if (this.p1ScoreElement) this.p1ScoreElement.textContent = this.myScore;
-    if (this.p2ScoreElement) this.p2ScoreElement.textContent = this.oppScore;
-  }
-
-  // ==========================================
-  // GERENCIAMENTO DE PERFIL DO USUÁRIO & GERADOR DE NICKS
-  // ==========================================
-  generateRandomNickname(currentName = '') {
-    const pool = this.randomNickPool || ['Juvenal', 'Astolfo', 'Calabreso', 'Capivara'];
-    const candidates = pool.filter(n => n.toLowerCase() !== (currentName || '').toLowerCase());
-    const list = candidates.length > 0 ? candidates : pool;
-    const picked = list[Math.floor(Math.random() * list.length)];
-    return picked.slice(0, 12);
-  }
-
-  handleModalRandomNickname() {
-    const currentVal = this.inputProfileName ? this.inputProfileName.value.trim() : this.myName;
-    const nextNick = this.generateRandomNickname(currentVal);
-    if (this.inputProfileName) {
-      this.inputProfileName.value = nextNick;
-      this.inputProfileName.focus();
-    }
-  }
-
-  syncProfileWithPeer() {
-    if (this.lobbyScreen && this.lobbyScreen.classList.contains('hidden')) {
-      this.updateStatusBar();
-    }
-    if (this.role !== 'solo' && this.peerConn && this.peerConn.open) {
-      this.sendP2P({
-        type: 'UPDATE_PROFILE',
-        name: this.myName,
-        avatar: this.myAvatar
-      });
-    }
-  }
-
-  updateProfileDisplay() {
-    if (this.homePlayerName) this.homePlayerName.textContent = this.myName;
-    this.renderAvatarElement(this.homeAvatarImg, this.homeAvatarPh, this.myAvatar);
-    if (this.inputProfileName) this.inputProfileName.value = this.myName;
-    this.updateModalAvatarPreview();
-  }
-
-  updateModalAvatarPreview() {
-    this.renderAvatarElement(this.modalAvatarPreview, this.modalAvatarPlaceholder, this.tempAvatar);
-    if (this.btnRemoveAvatar) {
-      if (this.tempAvatar) {
-        this.btnRemoveAvatar.classList.remove('hidden');
-      } else {
-        this.btnRemoveAvatar.classList.add('hidden');
-      }
-    }
-  }
-
-  showProfileModal(show) {
-    if (!this.profileModal) return;
-    if (show) {
-      this.tempAvatar = this.myAvatar;
-      if (this.inputProfileName) this.inputProfileName.value = this.myName;
-      this.updateModalAvatarPreview();
-      this.profileModal.classList.remove('hidden');
-    } else {
-      this.profileModal.classList.add('hidden');
-    }
-  }
-
-  handleAvatarFileSelect(e) {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-
-    if (!file.type.startsWith('image/')) {
-      this.showToast('Por favor, selecione um arquivo de imagem.');
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const img = new Image();
-      img.onload = () => {
-        // Redimensiona para avatar leve (128x128 max) em canvas
-        const canvas = document.createElement('canvas');
-        const size = 128;
-        canvas.width = size;
-        canvas.height = size;
-        const ctx = canvas.getContext('2d');
-
-        // Crop centralizado proporcional
-        const minDim = Math.min(img.width, img.height);
-        const sx = (img.width - minDim) / 2;
-        const sy = (img.height - minDim) / 2;
-
-        ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, size, size);
-        this.tempAvatar = canvas.toDataURL('image/jpeg', 0.85);
-        this.updateModalAvatarPreview();
-      };
-      img.src = event.target.result;
-    };
-    reader.readAsDataURL(file);
-    e.target.value = ''; // Permite selecionar o mesmo arquivo novamente
-  }
-
-  handleAvatarRemove() {
-    this.tempAvatar = '';
-    this.updateModalAvatarPreview();
-  }
-
-  handleSaveProfile() {
-    const newName = this.inputProfileName ? this.inputProfileName.value.trim() : '';
-    this.myName = newName || this.generateRandomNickname(this.myName);
-    this.myAvatar = this.tempAvatar;
-    this.isNameSaved = true;
-
-    try {
-      localStorage.setItem('termo_player_name', this.myName);
-      localStorage.setItem('termo_player_avatar', this.myAvatar);
-    } catch (e) {
-      console.warn('Erro ao salvar no localStorage:', e);
-    }
-
-    this.updateProfileDisplay();
-    this.syncProfileWithPeer();
-
-    this.showProfileModal(false);
-    this.showToast('Perfil salvo com sucesso! ✓');
-  }
-
-  // ==========================================
-  // SISTEMA DE CRONÔMETRO DE TURNO (3 MINUTOS)
-  // ==========================================
-  startTurnTimer() {
-    this.stopTurnTimer();
-    if (this.isGameOver || this.role === 'solo') {
-      if (this.turnTimerElement) this.turnTimerElement.classList.add('hidden');
-      return;
-    }
-
-    this.timeLeft = this.turnDuration;
-    this.updateTimerDisplay();
-
-    if (this.turnTimerElement) {
-      this.turnTimerElement.classList.remove('hidden');
-    }
-
-    this.timerInterval = setInterval(() => {
-      this.timeLeft--;
-      if (this.timeLeft <= 0) {
-        this.timeLeft = 0;
-        this.updateTimerDisplay();
-        this.handleTurnTimeout();
-      } else {
-        this.updateTimerDisplay();
-      }
-    }, 1000);
-  }
-
-  stopTurnTimer() {
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-      this.timerInterval = null;
-    }
-    if (this.turnTimerElement) {
-      this.turnTimerElement.classList.remove('warning');
-    }
-  }
-
-  updateTimerDisplay() {
-    if (!this.turnTimerElement) return;
-
-    const minutes = Math.floor(this.timeLeft / 60);
-    const seconds = this.timeLeft % 60;
-    const formatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
-    this.turnTimerElement.textContent = formatted;
-
-    const myTurn = this.isMyTurn();
-    if (myTurn) {
-      this.turnTimerElement.classList.add('my-turn');
-      this.turnTimerElement.classList.remove('opponent-turn');
-    } else {
-      this.turnTimerElement.classList.add('opponent-turn');
-      this.turnTimerElement.classList.remove('my-turn');
-    }
-
-    // Aos 30 segundos ou menos, fica vermelho
-    if (this.timeLeft <= 30) {
-      this.turnTimerElement.classList.add('warning');
-    } else {
-      this.turnTimerElement.classList.remove('warning');
-    }
+    this.refreshHighlight();
+    this.timer.start({
+      isGameOver: this.isGameOver,
+      role: this.role,
+      isMyTurnFn: () => this.isMyTurn(),
+      onTimeout: () => this.handleTurnTimeout()
+    });
   }
 
   handleTurnTimeout() {
-    this.stopTurnTimer();
+    this.timer.stop();
     if (this.isGameOver || this.isRevealing || this.role === 'solo') return;
 
-    // Multiplayer: quem estiver no turno atual teve o tempo esgotado; mantém a mesma linha (currentRow)
     if (this.isMyTurn()) {
       const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
-      this.showToast('Tempo esgotado! Vez passada para o oponente.');
+      this.ui.showToast('Tempo esgotado! Vez passada para o oponente.');
       this.clearUnsubmittedRow(this.currentRow);
 
-      // Notifica o oponente via P2P mantendo a mesma linha
-      this.sendP2P({
+      this.network.send({
         type: 'TIME_EXPIRED',
         timedOutRole: this.role,
         nextTurnRole: nextTurnRole,
@@ -996,12 +378,12 @@ class TermoMultiplayerGame {
   }
 
   handleTimeExpiredByOpponent(timedOutRole, nextTurnRole, row) {
-    this.stopTurnTimer();
+    this.timer.stop();
     if (typeof row === 'number' && row >= 0 && row < this.maxRows) {
       this.currentRow = row;
     }
     this.clearUnsubmittedRow(this.currentRow);
-    this.showToast(`Tempo de ${this.oppName} esgotou! Sua vez.`);
+    this.ui.showToast(`Tempo de ${this.oppName} esgotou! Sua vez.`);
     this.currentTurnRole = nextTurnRole;
     this.updateStatusBar();
   }
@@ -1010,7 +392,7 @@ class TermoMultiplayerGame {
     if (row < 0 || row >= this.maxRows) return;
     for (let c = 0; c < this.wordLength; c++) {
       this.boardMatrix[row][c] = '';
-      const tile = this.getTileElement(row, c);
+      const tile = this.ui.getTileElement(row, c);
       if (tile && !tile.classList.contains('flip')) {
         tile.textContent = '';
         tile.classList.remove('filled', 'opponent-typing', 'active-cursor');
@@ -1020,19 +402,64 @@ class TermoMultiplayerGame {
   }
 
   // ==========================================
-  // ENTRADA DE DADOS E PALPITES
+  // NAVEGAÇÃO DO CURSOR E ENTRADA DE DADOS
   // ==========================================
-  handlePhysicalKeyPress(e) {
-    if (this.isGameOver || this.isRevealing || this.lobbyScreen.offsetParent !== null) return;
-    if (this.helpModal.offsetParent !== null || this.gameoverModal.offsetParent !== null) return;
-    if (this.profileModal && this.profileModal.offsetParent !== null) return;
-    if (this.privacyModal && this.privacyModal.offsetParent !== null) return;
+  handleTileClick(r, c) {
+    if (this.isGameOver || this.isRevealing || !this.isMyTurn()) return;
+    if (r !== this.currentRow) return;
 
-    // Se o usuário estiver digitando em qualquer input de texto, não envia tecla para os tiles
+    this.currentTile = Math.max(0, Math.min(this.wordLength - 1, c));
+    this.refreshHighlight();
+  }
+
+  moveToNextEmptyTile() {
+    const rowLetters = this.boardMatrix[this.currentRow];
+    let nextEmpty = -1;
+    for (let i = this.currentTile + 1; i < this.wordLength; i++) {
+      if (!rowLetters[i]) {
+        nextEmpty = i;
+        break;
+      }
+    }
+    if (nextEmpty === -1) {
+      for (let i = 0; i < this.wordLength; i++) {
+        if (!rowLetters[i]) {
+          nextEmpty = i;
+          break;
+        }
+      }
+    }
+
+    if (nextEmpty !== -1) {
+      this.currentTile = nextEmpty;
+      this.refreshHighlight();
+    }
+  }
+
+  moveCursorLeft() {
+    if (this.currentTile > 0) {
+      this.currentTile--;
+      this.refreshHighlight();
+    }
+  }
+
+  moveCursorRight() {
+    if (this.currentTile < this.wordLength - 1) {
+      this.currentTile++;
+      this.refreshHighlight();
+    }
+  }
+
+  handlePhysicalKeyPress(e) {
+    if (this.isGameOver || this.isRevealing || this.ui.lobbyScreen.offsetParent !== null) return;
+    if (this.ui.helpModal.offsetParent !== null || this.ui.gameoverModal.offsetParent !== null) return;
+    if (this.profile.isModalOpen()) return;
+    if (this.ui.privacyModal && this.ui.privacyModal.offsetParent !== null) return;
+
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
 
     if (!this.isMyTurn()) {
-      this.showToast('Aguarde a vez do seu oponente!');
+      this.ui.showToast('Aguarde a vez do seu oponente!');
       return;
     }
 
@@ -1058,7 +485,7 @@ class TermoMultiplayerGame {
   handleVirtualKeyPress(key) {
     if (this.isGameOver || this.isRevealing) return;
     if (!this.isMyTurn()) {
-      this.showToast('Aguarde a vez do seu oponente!');
+      this.ui.showToast('Aguarde a vez do seu oponente!');
       return;
     }
 
@@ -1077,7 +504,7 @@ class TermoMultiplayerGame {
     if (col < 0 || col >= this.wordLength) return;
 
     this.boardMatrix[this.currentRow][col] = letter;
-    const tileEl = this.getTileElement(this.currentRow, col);
+    const tileEl = this.ui.getTileElement(this.currentRow, col);
     if (tileEl) {
       tileEl.textContent = letter;
       tileEl.classList.remove('opponent-typing');
@@ -1089,10 +516,10 @@ class TermoMultiplayerGame {
     } else {
       this.currentTile = this.wordLength;
     }
-    this.updateActiveTileHighlight();
+    this.refreshHighlight();
 
     if (this.role !== 'solo') {
-      this.sendP2P({
+      this.network.send({
         type: 'LIVE_KEYSTROKE',
         action: 'ADD',
         letter: letter,
@@ -1105,13 +532,11 @@ class TermoMultiplayerGame {
   deleteLetter() {
     if (this.isRevealing || this.currentRow >= this.maxRows) return;
 
-    // Se estiver após o último tile (fim da linha), apaga o último
     let col = this.currentTile;
     if (col >= this.wordLength) {
       col = this.wordLength - 1;
       this.currentTile = col;
     } else if (this.boardMatrix[this.currentRow][col] === '') {
-      // Se a posição atual já estiver vazia, apaga a anterior
       if (col > 0) {
         col--;
         this.currentTile = col;
@@ -1119,15 +544,15 @@ class TermoMultiplayerGame {
     }
 
     this.boardMatrix[this.currentRow][col] = '';
-    const tileEl = this.getTileElement(this.currentRow, col);
+    const tileEl = this.ui.getTileElement(this.currentRow, col);
     if (tileEl) {
       tileEl.textContent = '';
       tileEl.classList.remove('filled', 'opponent-typing');
     }
-    this.updateActiveTileHighlight();
+    this.refreshHighlight();
 
     if (this.role !== 'solo') {
-      this.sendP2P({
+      this.network.send({
         type: 'LIVE_KEYSTROKE',
         action: 'DELETE',
         row: this.currentRow,
@@ -1143,7 +568,7 @@ class TermoMultiplayerGame {
     if (action === 'ADD' && letter) {
       if (targetCol >= 0 && targetCol < this.wordLength && targetRow < this.maxRows) {
         this.boardMatrix[targetRow][targetCol] = letter;
-        const tileEl = this.getTileElement(targetRow, targetCol);
+        const tileEl = this.ui.getTileElement(targetRow, targetCol);
         if (tileEl) {
           tileEl.textContent = letter;
           tileEl.classList.add('filled', 'opponent-typing');
@@ -1153,7 +578,7 @@ class TermoMultiplayerGame {
     } else if (action === 'DELETE') {
       if (targetCol >= 0 && targetCol < this.wordLength && targetRow < this.maxRows) {
         this.boardMatrix[targetRow][targetCol] = '';
-        const tileEl = this.getTileElement(targetRow, targetCol);
+        const tileEl = this.ui.getTileElement(targetRow, targetCol);
         if (tileEl) {
           tileEl.textContent = '';
           tileEl.classList.remove('filled', 'opponent-typing');
@@ -1163,16 +588,8 @@ class TermoMultiplayerGame {
     }
   }
 
-  getTileElement(r, c) {
-    return this.boardElement.querySelector(`.tile[data-row="${r}"][data-col="${c}"]`);
-  }
-
-  getRowElement(r) {
-    return this.boardElement.querySelector(`.board-row[data-row="${r}"]`);
-  }
-
   // ==========================================
-  // REGRAS DE VALIDAÇÃO DO TERMO & REVEAL
+  // SUBMISSÃO DE PALPITES E FIM DE PARTIDA
   // ==========================================
   submitCurrentRow() {
     if (this.isRevealing || this.isGameOver || this.currentRow >= this.maxRows) return;
@@ -1180,39 +597,36 @@ class TermoMultiplayerGame {
     const letters = this.boardMatrix[this.currentRow];
     const isComplete = letters.every(l => l && l.trim().length === 1);
     if (!isComplete) {
-      this.shakeCurrentRow();
-      this.showToast('Palavra incompleta');
+      this.ui.shakeRow(this.currentRow);
+      this.ui.showToast('Palavra incompleta');
       return;
     }
 
     const guess = letters.join('');
 
-    // Validação de existência no banco de dados / dicionário
-    if (!this.validWordsSet.has(guess)) {
-      this.shakeCurrentRow();
-      this.showToast('Essa palavra não existe em nosso banco de dados');
+    if (!this.rules.isValidWord(guess)) {
+      this.ui.shakeRow(this.currentRow);
+      this.ui.showToast('Essa palavra não existe em nosso banco de dados');
       return;
     }
 
-    const evaluation = this.evaluateGuess(guess, this.secretWord);
+    const evaluation = this.rules.evaluateGuess(guess, this.secretWord);
     const isWin = evaluation.every(s => s === 'correct');
     const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
 
-    this.stopTurnTimer();
+    this.timer.stop();
 
-    // Bloqueia temporariamente para a animação
     this.isRevealing = true;
-    this.keyboardElement.classList.add('locked');
-    this.updateActiveTileHighlight();
+    this.ui.keyboardElement.classList.add('locked');
+    this.refreshHighlight();
 
-    // Executa a revelação com a animação flip idêntica
     const submittedRow = this.currentRow;
-    this.animateRowReveal(submittedRow, guess, evaluation, () => {
+    this.ui.animateRowReveal(submittedRow, guess, evaluation, () => {
       this.isRevealing = false;
       if (isWin) {
-        this.triggerWin(this.myName, true);
+        this.triggerWin(this.profile.myName, true);
         if (this.role !== 'solo') {
-          this.sendP2P({
+          this.network.send({
             type: 'SUBMIT_GUESS',
             guess: guess,
             evaluation: evaluation,
@@ -1227,10 +641,9 @@ class TermoMultiplayerGame {
         this.currentTile = 0;
 
         if (this.currentRow >= this.maxRows) {
-          // Empate / derrota após 6 tentativas
           this.triggerGameOverLoss();
           if (this.role !== 'solo') {
-            this.sendP2P({
+            this.network.send({
               type: 'SUBMIT_GUESS',
               guess: guess,
               evaluation: evaluation,
@@ -1241,10 +654,9 @@ class TermoMultiplayerGame {
             });
           }
         } else {
-          // Passa a vez
           if (this.role !== 'solo') {
             this.currentTurnRole = nextTurnRole;
-            this.sendP2P({
+            this.network.send({
               type: 'SUBMIT_GUESS',
               guess: guess,
               evaluation: evaluation,
@@ -1260,27 +672,25 @@ class TermoMultiplayerGame {
     });
   }
 
-  // Quando o oponente joga
   handleOpponentGuess(guess, evaluation, nextTurnRole, isWin, winnerRole, row) {
-    this.stopTurnTimer();
+    this.timer.stop();
     this.isRevealing = true;
-    this.updateActiveTileHighlight();
+    this.refreshHighlight();
     const opponentRow = (typeof row === 'number' && row >= 0 && row < this.maxRows) ? row : this.currentRow;
     this.currentRow = opponentRow;
-    const rowEl = this.getRowElement(opponentRow);
+    const rowEl = this.ui.getRowElement(opponentRow);
     if (rowEl) {
       rowEl.classList.add('opponent-row');
     }
 
-    // Escreve a palavra do oponente na linha atual
     for (let c = 0; c < this.wordLength; c++) {
       this.boardMatrix[opponentRow][c] = guess[c];
-      const tile = this.getTileElement(opponentRow, c);
+      const tile = this.ui.getTileElement(opponentRow, c);
       tile.textContent = guess[c];
       tile.classList.add('filled');
     }
 
-    this.animateRowReveal(opponentRow, guess, evaluation, () => {
+    this.ui.animateRowReveal(opponentRow, guess, evaluation, () => {
       this.isRevealing = false;
       if (isWin) {
         this.triggerWin(this.oppName, false);
@@ -1298,107 +708,8 @@ class TermoMultiplayerGame {
     });
   }
 
-  // Algoritmo clássico do Termo para gerenciar letras duplicadas
-  evaluateGuess(guess, secret) {
-    const result = Array(this.wordLength).fill('absent');
-    const secretArr = secret.split('');
-    const guessArr = guess.split('');
-
-    // 1ª passada: Verificar letras corretas (Verdes)
-    for (let i = 0; i < this.wordLength; i++) {
-      if (guessArr[i] === secretArr[i]) {
-        result[i] = 'correct';
-        secretArr[i] = null;
-        guessArr[i] = null;
-      }
-    }
-
-    // 2ª passada: Verificar letras existentes mas em outra posição (Amarelas)
-    for (let i = 0; i < this.wordLength; i++) {
-      if (guessArr[i] !== null) {
-        const foundIndex = secretArr.indexOf(guessArr[i]);
-        if (foundIndex !== -1) {
-          result[i] = 'present';
-          secretArr[foundIndex] = null;
-        }
-      }
-    }
-
-    return result;
-  }
-
-  // ==========================================
-  // ANIMAÇÃO DE REVELAÇÃO (FLIP EXATO DO TERMO)
-  // ==========================================
-  animateRowReveal(row, guess, evaluation, callback) {
-    const flipDuration = 550; // ms
-    const staggerDelay = 280; // ms entre cada letra
-
-    for (let c = 0; c < this.wordLength; c++) {
-      const tile = this.getTileElement(row, c);
-      const status = evaluation[c];
-      const letter = guess[c];
-
-      setTimeout(() => {
-        tile.classList.remove('opponent-typing');
-        tile.classList.add('flip');
-
-        // Na metade da rotação (90 graus) troca a cor do bloco
-        setTimeout(() => {
-          tile.classList.add(status);
-          this.updateKeyboardKeyColor(letter, status);
-          if (status === 'correct' || status === 'present') {
-            this.playFeedbackSound(status);
-          }
-        }, flipDuration / 2);
-
-        // Se for a última letra, aguarda o fim completo e dispara o callback
-        if (c === this.wordLength - 1) {
-          setTimeout(() => {
-            if (callback) callback();
-          }, flipDuration + 100);
-        }
-      }, c * staggerDelay);
-    }
-  }
-
-  // Atualiza as cores do teclado virtual respeitando a precedência: correct > present > absent
-  updateKeyboardKeyColor(letter, status) {
-    const current = this.keyboardStatus[letter];
-    if (current === 'correct') return;
-    if (current === 'present' && status === 'absent') return;
-
-    this.keyboardStatus[letter] = status;
-    const keyBtn = this.keyboardElement.querySelector(`.key-btn[data-key="${letter}"]`);
-    if (keyBtn) {
-      keyBtn.classList.remove('correct', 'present', 'absent');
-      keyBtn.classList.add(status);
-    }
-  }
-
-  shakeCurrentRow() {
-    const rowEl = this.getRowElement(this.currentRow);
-    if (rowEl) {
-      rowEl.classList.remove('shake');
-      void rowEl.offsetWidth; // Force reflow
-      rowEl.classList.add('shake');
-    }
-  }
-
-  showToast(msg) {
-    this.toastMessage.textContent = msg;
-    this.toastMessage.classList.remove('hidden');
-    // Animação CSS dura 2.2s
-    setTimeout(() => {
-      this.toastMessage.classList.add('hidden');
-    }, 2200);
-  }
-
-  // ==========================================
-  // FINAL DE PARTIDA & MODAIS
-  // ==========================================
   triggerWin(winnerName, isMe) {
-    this.stopTurnTimer();
+    this.timer.stop();
     this.isGameOver = true;
 
     if (isMe) {
@@ -1406,7 +717,7 @@ class TermoMultiplayerGame {
     } else {
       this.oppScore++;
     }
-    this.updateScoreDisplay();
+    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
 
     if (window.confetti && isMe) {
       confetti({
@@ -1417,68 +728,71 @@ class TermoMultiplayerGame {
     }
 
     setTimeout(() => {
-      this.goTitle.textContent = isMe ? 'VITÓRIA!' : 'DERROTA!';
-      this.goTitle.style.color = isMe ? 'var(--color-correct)' : 'var(--color-present)';
-      this.goSubtitle.textContent = isMe ? 'Você acertou a palavra secreta!' : `${winnerName} acertou a palavra primeiro!`;
-      this.goSecretWord.textContent = this.secretWord;
-      this.goWinnerName.textContent = winnerName;
-      this.goAttemptsCount.textContent = `${this.currentRow + 1}/${this.maxRows}`;
-      this.gameoverModal.classList.remove('hidden');
+      this.ui.showGameOverModal({
+        title: isMe ? 'VITÓRIA!' : 'DERROTA!',
+        color: isMe ? 'var(--color-correct)' : 'var(--color-present)',
+        subtitle: isMe ? 'Você acertou a palavra secreta!' : `${winnerName} acertou a palavra primeiro!`,
+        secretWord: this.secretWord,
+        winnerName: winnerName,
+        attemptsText: `${this.currentRow + 1}/${this.maxRows}`
+      });
     }, 1800);
   }
 
   triggerGameOverLoss() {
-    this.stopTurnTimer();
+    this.timer.stop();
     this.isGameOver = true;
     setTimeout(() => {
-      this.goTitle.textContent = 'FIM DE JOGO';
-      this.goTitle.style.color = '#fff';
-      this.goSubtitle.textContent = 'Ninguém acertou em 6 tentativas.';
-      this.goSecretWord.textContent = this.secretWord;
-      this.goWinnerName.textContent = 'Empate';
-      this.goAttemptsCount.textContent = `6/${this.maxRows}`;
-      this.gameoverModal.classList.remove('hidden');
+      this.ui.showGameOverModal({
+        title: 'FIM DE JOGO',
+        color: '#fff',
+        subtitle: 'Ninguém acertou em 6 tentativas.',
+        secretWord: this.secretWord,
+        winnerName: 'Empate',
+        attemptsText: `6/${this.maxRows}`
+      });
     }, 1200);
   }
 
   handleSurrender() {
     if (this.isGameOver) return;
-    this.stopTurnTimer();
+    this.timer.stop();
 
     this.oppScore++;
-    this.updateScoreDisplay();
+    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
 
     if (this.role === 'solo') {
       this.isGameOver = true;
-      this.goTitle.textContent = 'DERROTA!';
-      this.goTitle.style.color = 'var(--color-present)';
-      this.goSubtitle.textContent = 'Você desistiu da partida.';
-      this.goSecretWord.textContent = this.secretWord;
-      this.goWinnerName.textContent = 'Computador';
-      this.goAttemptsCount.textContent = `${this.currentRow}/${this.maxRows}`;
-      this.gameoverModal.classList.remove('hidden');
+      this.ui.showGameOverModal({
+        title: 'DERROTA!',
+        color: 'var(--color-present)',
+        subtitle: 'Você desistiu da partida.',
+        secretWord: this.secretWord,
+        winnerName: 'Computador',
+        attemptsText: `${this.currentRow}/${this.maxRows}`
+      });
       return;
     }
 
-    // Multiplayer: desistência do próprio jogador
-    this.sendP2P({ type: 'SURRENDER' });
+    this.network.send({ type: 'SURRENDER' });
     this.isGameOver = true;
-    this.goTitle.textContent = 'DERROTA!';
-    this.goTitle.style.color = 'var(--color-present)';
-    this.goSubtitle.textContent = 'Você desistiu da partida.';
-    this.goSecretWord.textContent = this.secretWord;
-    this.goWinnerName.textContent = this.oppName;
-    this.goAttemptsCount.textContent = `${this.currentRow}/${this.maxRows}`;
-    this.gameoverModal.classList.remove('hidden');
+    this.ui.showGameOverModal({
+      title: 'DERROTA!',
+      color: 'var(--color-present)',
+      subtitle: 'Você desistiu da partida.',
+      secretWord: this.secretWord,
+      winnerName: this.oppName,
+      attemptsText: `${this.currentRow}/${this.maxRows}`
+    });
   }
 
   handleOpponentSurrender() {
     if (this.isGameOver) return;
-    this.stopTurnTimer();
+    this.timer.stop();
     this.isGameOver = true;
 
     this.myScore++;
-    this.updateScoreDisplay();
+    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
 
     if (window.confetti) {
       confetti({
@@ -1488,29 +802,29 @@ class TermoMultiplayerGame {
       });
     }
 
-    this.goTitle.textContent = 'VITÓRIA!';
-    this.goTitle.style.color = 'var(--color-correct)';
-    this.goSubtitle.textContent = `${this.oppName} desistiu da partida!`;
-    this.goSecretWord.textContent = this.secretWord;
-    this.goWinnerName.textContent = this.myName;
-    this.goAttemptsCount.textContent = `${this.currentRow}/${this.maxRows}`;
-    this.gameoverModal.classList.remove('hidden');
+    this.ui.showGameOverModal({
+      title: 'VITÓRIA!',
+      color: 'var(--color-correct)',
+      subtitle: `${this.oppName} desistiu da partida!`,
+      secretWord: this.secretWord,
+      winnerName: this.profile.myName,
+      attemptsText: `${this.currentRow}/${this.maxRows}`
+    });
   }
 
   handlePlayAgainRequest() {
     if (this.role === 'solo') {
       this.startSoloGame();
     } else {
-      this.sendP2P({ type: 'PLAY_AGAIN_REQUEST' });
-      this.showToast('Pedido enviado ao oponente...');
+      this.network.send({ type: 'PLAY_AGAIN_REQUEST' });
+      this.ui.showToast('Pedido enviado ao oponente...');
       if (this.role === 'host') {
-        const randomIndex = Math.floor(Math.random() * this.wordsList.length);
-        this.secretWord = this.wordsList[randomIndex].normalized.toUpperCase();
+        this.secretWord = this.rules.getRandomSecretWord();
         this.currentTurnRole = 'host';
-        this.sendP2P({
+        this.network.send({
           type: 'START_MATCH',
-          hostName: this.myName,
-          hostAvatar: this.myAvatar,
+          hostName: this.profile.myName,
+          hostAvatar: this.profile.myAvatar,
           secretWord: this.secretWord,
           startingRole: 'host'
         });
@@ -1521,177 +835,30 @@ class TermoMultiplayerGame {
   }
 
   resetToLobby() {
-    this.stopTurnTimer();
+    this.timer.stop();
     this.isGameOver = true;
     this.myScore = 0;
     this.oppScore = 0;
-    this.updateScoreDisplay();
-    if (this.peerConn) {
-      try { this.peerConn.close(); } catch (e) {}
-    }
-    if (this.peer) {
-      try { this.peer.destroy(); } catch (e) {}
-    }
+    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
+    this.network.destroy();
 
     this.role = 'solo';
-    this.peerConn = null;
-    this.peer = null;
 
-    this.gameoverModal.classList.add('hidden');
-    if (this.privacyModal) this.privacyModal.classList.add('hidden');
-    this.helpModal.classList.add('hidden');
-    this.boardContainer.classList.add('hidden');
-    this.keyboardContainer.classList.add('hidden');
-    this.statusBar.classList.add('hidden');
-    if (this.btnSurrender) this.btnSurrender.classList.add('hidden');
-    this.hostCodeDisplay.classList.add('hidden');
-    this.joinStatus.classList.add('hidden');
-    this.btnCreateRoom.disabled = false;
-    this.btnJoinRoom.disabled = false;
+    this.ui.gameoverModal.classList.add('hidden');
+    if (this.ui.privacyModal) this.ui.privacyModal.classList.add('hidden');
+    this.ui.helpModal.classList.add('hidden');
+    this.ui.boardContainer.classList.add('hidden');
+    this.ui.keyboardContainer.classList.add('hidden');
+    this.ui.statusBar.classList.add('hidden');
+    if (this.ui.btnSurrender) this.ui.btnSurrender.classList.add('hidden');
+    this.ui.hostCodeDisplay.classList.add('hidden');
+    this.ui.joinStatus.classList.add('hidden');
+    this.ui.btnCreateRoom.disabled = false;
+    this.ui.btnJoinRoom.disabled = false;
 
-    this.toggleChat(false);
-    this.unreadMessagesCount = 0;
-    this.updateChatBadge();
+    this.chat.reset();
 
-    this.lobbyScreen.classList.remove('hidden');
-  }
-
-  showHelpModal(show) {
-    if (show) {
-      this.helpModal.classList.remove('hidden');
-    } else {
-      this.helpModal.classList.add('hidden');
-    }
-  }
-
-  showPrivacyModal(show) {
-    if (!this.privacyModal) return;
-    if (show) {
-      this.privacyModal.classList.remove('hidden');
-    } else {
-      this.privacyModal.classList.add('hidden');
-    }
-  }
-
-  // ==========================================
-  // SISTEMA DE CHAT
-  // ==========================================
-  toggleChat(forceOpen = null) {
-    if (!this.chatOverlay) return;
-
-    if (forceOpen === null) {
-      this.isChatOpen = !this.isChatOpen;
-    } else {
-      this.isChatOpen = !!forceOpen;
-    }
-
-    if (this.isChatOpen) {
-      this.chatOverlay.classList.remove('hidden');
-      this.unreadMessagesCount = 0;
-      this.updateChatBadge();
-      if (this.chatInput) {
-        setTimeout(() => this.chatInput.focus(), 80);
-      }
-      this.scrollChatToBottom();
-    } else {
-      this.chatOverlay.classList.add('hidden');
-      if (this.chatInput) {
-        this.chatInput.blur();
-      }
-    }
-  }
-
-  updateChatBadge() {
-    if (!this.chatBadge) return;
-    if (this.unreadMessagesCount > 0) {
-      this.chatBadge.textContent = this.unreadMessagesCount > 99 ? '99+' : this.unreadMessagesCount;
-      this.chatBadge.classList.remove('hidden');
-    } else {
-      this.chatBadge.classList.add('hidden');
-      this.chatBadge.textContent = '0';
-    }
-  }
-
-  scrollChatToBottom() {
-    if (!this.chatMessages) return;
-    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-  }
-
-  handleSendChatMessage() {
-    if (!this.chatInput) return;
-    const text = this.chatInput.value.trim();
-    if (!text) return;
-
-    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const msgData = {
-      type: 'CHAT_MESSAGE',
-      sender: this.myName,
-      text: text,
-      time: timeStr
-    };
-
-    // Renderiza a mensagem enviada pelo usuário
-    this.appendChatMessage(msgData.sender, msgData.text, msgData.time, 'sent');
-
-    // Se estiver em partida P2P conectada, envia para o oponente
-    if (this.peerConn && this.peerConn.open) {
-      this.sendP2P(msgData);
-    } else if (this.role === 'solo') {
-      // Resposta automática / amigável em modo solo/treino
-      setTimeout(() => {
-        this.handleIncomingChatMessage({
-          sender: 'Computador',
-          text: 'Estou focado em adivinhar as palavras!',
-          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        });
-      }, 700);
-    }
-
-    this.chatInput.value = '';
-    this.chatInput.focus();
-  }
-
-  handleIncomingChatMessage(data) {
-    if (!data || !data.text) return;
-
-    const timeStr = data.time || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const sender = data.sender || this.oppName || 'Oponente';
-
-    this.appendChatMessage(sender, data.text, timeStr, 'received');
-
-    if (!this.isChatOpen) {
-      this.unreadMessagesCount++;
-      this.updateChatBadge();
-      // Som de notificação apenas se o chat estiver fechado
-      this.playChatNotificationSound();
-    }
-  }
-
-  appendChatMessage(sender, text, time, type = 'received') {
-    if (!this.chatMessages) return;
-
-    const row = document.createElement('div');
-    row.className = `chat-msg-row ${type}`;
-
-    if (type === 'received') {
-      const senderEl = document.createElement('span');
-      senderEl.className = 'chat-msg-sender';
-      senderEl.textContent = sender;
-      row.appendChild(senderEl);
-    }
-
-    const bubble = document.createElement('div');
-    bubble.className = 'chat-msg-bubble';
-    bubble.textContent = text;
-    row.appendChild(bubble);
-
-    const timeEl = document.createElement('span');
-    timeEl.className = 'chat-msg-time';
-    timeEl.textContent = time;
-    row.appendChild(timeEl);
-
-    this.chatMessages.appendChild(row);
-    this.scrollChatToBottom();
+    this.ui.lobbyScreen.classList.remove('hidden');
   }
 }
 
@@ -1699,4 +866,3 @@ class TermoMultiplayerGame {
 window.addEventListener('DOMContentLoaded', () => {
   window.termoGame = new TermoMultiplayerGame();
 });
-

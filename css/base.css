@@ -1,0 +1,130 @@
+/* ========================================================
+   BASE: VARIÁVEIS GLOBAIS, RESET, LAYOUT E UTILITÁRIOS
+   ======================================================== */
+
+:root {
+  --bg-color: #6e5c62;
+  --bg-darker: #4d4044;
+  --board-bg: #6e5c62;
+  --tile-empty: #615256;
+  --tile-border: #4c4347;
+  --tile-active-border: #8d7981;
+  --color-absent: #312a2c;
+  /* Cinza escuro da letra errada */
+  --color-present: #d3ad69;
+  /* Amarelo/Dourado do Termo */
+  --color-correct: #3aa394;
+  /* Verde água do Termo */
+  --key-bg: #4c4347;
+  --key-active: #5c5257;
+  --text-primary: #ffffff;
+  --text-muted: #dcd0d4;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 14px;
+  position: relative;
+}
+
+/* BOTÕES GENÉRICOS */
+.btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: var(--color-correct);
+  color: #fff;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  background: var(--color-present);
+  color: #1f1b1d;
+  font-weight: 800;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 100%;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.link-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.link-btn:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+/* HELPER UTILS */
+.hidden {
+  display: none !important;
+}
+

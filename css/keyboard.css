@@ -1,0 +1,71 @@
+/* ========================================================
+   TECLADO VIRTUAL
+   ======================================================== */
+
+.keyboard-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.key-btn {
+  background-color: var(--key-bg);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  height: 52px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.08s;
+}
+
+.key-btn:active {
+  transform: scale(0.92);
+  filter: brightness(1.2);
+}
+
+.key-btn.action-key {
+  flex: 1.6;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.key-btn.correct {
+  background-color: var(--color-correct);
+}
+
+.key-btn.present {
+  background-color: var(--color-present);
+}
+
+.key-btn.absent {
+  background-color: var(--color-absent);
+  opacity: 0.55;
+}
+
+/* BLOQUEIO DO TECLADO NO TURNO DO ADVERSÁRIO */
+.keyboard.locked {
+  pointer-events: none;
+  opacity: 0.45;
+  filter: grayscale(40%);
+}
+

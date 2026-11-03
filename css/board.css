@@ -1,0 +1,208 @@
+/* ========================================================
+   TABULEIRO (GRID 6X5), TILES, ANIMAÇÕES E TOAST
+   ======================================================== */
+
+.board-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 6px;
+  width: 100%;
+  max-width: 340px;
+  height: 380px;
+  max-height: 52vh;
+  margin: 0 auto;
+}
+
+.board-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 6px;
+}
+
+/* BLOCO DAS LETRAS */
+.tile {
+  width: 100%;
+  height: 100%;
+  background-color: var(--tile-empty);
+  border: 2px solid var(--tile-border);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  transition: transform 0.12s ease;
+  perspective: 1000px;
+}
+
+.tile.filled {
+  border-color: var(--tile-active-border);
+  animation: popLetter 0.12s ease-in-out;
+}
+
+/* TILE ATIVO / SELECIONADO NA LINHA ATUAL */
+.tile.active-cursor {
+  border-color: var(--color-present) !important;
+  box-shadow: 0 0 8px rgba(211, 173, 105, 0.45);
+  cursor: pointer;
+}
+
+.board-row[data-row] .tile {
+  cursor: default;
+}
+
+.board-row.current-turn-row .tile {
+  cursor: pointer;
+}
+
+/* DESTAQUE DIFERENCIADO: LINHAS E LETRAS DO OPONENTE (LEVE ALPHA / TRANSLÚCIDO) */
+.tile.opponent-typing {
+  opacity: 0.65;
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(97, 82, 86, 0.7);
+}
+
+.board-row.opponent-row .tile {
+  opacity: 0.68;
+  filter: contrast(0.9);
+}
+
+.board-row.opponent-row .tile.correct,
+.board-row.opponent-row .tile.present,
+.board-row.opponent-row .tile.absent {
+  opacity: 0.68;
+}
+
+/* ANIMAÇÃO CLÁSSICA DO TERMO: POP QUANDO DIGITA */
+@keyframes popLetter {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ANIMAÇÃO DE SHAKE QUANDO PALAVRA É INVÁLIDA */
+.board-row.shake {
+  animation: shakeRow 0.3s ease-in-out;
+}
+
+@keyframes shakeRow {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-3px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+/* ANIMAÇÃO DE VIRADA (REVEAL FLIP) EXATA DO TERMO */
+.tile.flip {
+  animation: flipTile 0.55s ease forwards;
+}
+
+@keyframes flipTile {
+  0% {
+    transform: rotateX(0);
+  }
+
+  49% {
+    transform: rotateX(90deg);
+  }
+
+  50% {
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+/* CORES DOS STATUS DAS LETRAS */
+.tile.correct {
+  background-color: var(--color-correct) !important;
+  border-color: var(--color-correct) !important;
+}
+
+.tile.present {
+  background-color: var(--color-present) !important;
+  border-color: var(--color-present) !important;
+}
+
+.tile.absent {
+  background-color: var(--color-absent) !important;
+  border-color: var(--color-absent) !important;
+}
+
+/* TOAST MENSAGEM */
+.toast {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+  border: none;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 100;
+  animation: fadeInOut 1.8s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+}
+
