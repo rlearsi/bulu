@@ -429,19 +429,20 @@ body {
 
 .lobby-section input, .join-input-group input {
   width: 100%;
-  background: var(--tile-empty);
-  border: 2px solid var(--tile-border);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 10px 14px;
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
   outline: none;
-  transition: border 0.2s;
+  transition: border 0.2s, background 0.2s;
 }
 
 .lobby-section input:focus, .join-input-group input:focus {
-  border-color: var(--color-present);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .lobby-actions {
@@ -451,10 +452,10 @@ body {
 }
 
 .action-box {
-  background: rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.04);
   padding: 14px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: none;
 }
 
 .action-box h3 {
@@ -537,11 +538,11 @@ body {
 
 .code-box {
   margin-top: 12px;
-  background: #252022;
+  background: rgba(255, 255, 255, 0.04);
   padding: 12px;
   border-radius: 8px;
   text-align: center;
-  border: 1px dashed var(--color-present);
+  border: none;
 }
 
 .code-box span {
@@ -660,17 +661,17 @@ body {
 .badge.absent { background: var(--color-absent); }
 
 .multiplayer-rules-highlight {
-  background: rgba(0,0,0,0.3);
-  padding: 12px;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px;
+  border-radius: 12px;
   margin-top: 16px;
-  border-left: 3px solid var(--color-present);
+  border: none;
 }
 
 .multiplayer-rules-highlight h3 {
   font-size: 0.95rem;
   color: var(--color-present);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .multiplayer-rules-highlight ul {
@@ -694,10 +695,11 @@ body {
 }
 
 .reveal-secret-box {
-  background: #252022;
+  background: rgba(255, 255, 255, 0.04);
   padding: 16px;
   border-radius: 12px;
   margin: 18px 0;
+  border: none;
 }
 
 .reveal-secret-box span {
@@ -721,10 +723,11 @@ body {
 }
 
 .stat-item {
-  background: rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.04);
   padding: 10px 16px;
   border-radius: 8px;
   min-width: 100px;
+  border: none;
 }
 
 .stat-label {

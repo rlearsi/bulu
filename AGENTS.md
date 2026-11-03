@@ -14,3 +14,8 @@
   - **Proibição Total de Commits Automáticos:** O assistente nunca deve executar `git commit` sem solicitação expressa do usuário.
   - **Verificação de `git status`:** Antes de finalizar respostas com alterações pendentes, inspecionar `git status -s` e exibir a sugestão formatada em bloco `text` em inglês (Conventional Commits) no final da resposta. Se o git estiver limpo, não exibir sugestão.
 
+- **Padrão Visual Clean e Moderno ([`.agents/rules/ui_design_system.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/ui_design_system.md)):**
+  - **Evitar backgrounds agressivos:** Empregar tons e transparências suaves integradas ao fundo principal (`rgba(255, 255, 255, 0.04-0.06)`).
+  - **Sem estilo quote:** Não utilizar barras laterais de citação (`border-left` chamativo).
+  - **Sem linhas e bordas excessivas:** Eliminar bordas tracejadas ou divisórias pesadas, priorizando acabamento minimalista.
+
