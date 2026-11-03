@@ -3,20 +3,11 @@
  * Baseado na tecnologia de conexão P2P WebRTC usada no Relatum (PeerJS)
  */
 
+import wordsData from './words.json';
+
 class TermoMultiplayerGame {
   constructor() {
-    this.wordsList = [
-      { id: 1, word: 'TERMO', normalized: 'TERMO' },
-      { id: 2, word: 'SORTE', normalized: 'SORTE' },
-      { id: 3, word: 'FEZES', normalized: 'FEZES' },
-      { id: 4, word: 'TURMA', normalized: 'TURMA' },
-      { id: 5, word: 'VIOLA', normalized: 'VIOLA' },
-      { id: 6, word: 'PULGA', normalized: 'PULGA' },
-      { id: 7, word: 'SAGAZ', normalized: 'SAGAZ' },
-      { id: 8, word: 'NOBRE', normalized: 'NOBRE' },
-      { id: 9, word: 'FOGAO', normalized: 'FOGAO' },
-      { id: 10, word: 'PLUMA', normalized: 'PLUMA' }
-    ];
+    this.wordsList = wordsData;
 
     // Configurações do jogo
     this.maxRows = 6;
@@ -59,7 +50,6 @@ class TermoMultiplayerGame {
     this.initEvents();
     this.createBoard();
     this.createKeyboard();
-    this.loadWordsDatabase();
   }
 
   getAudioContext() {
@@ -111,22 +101,6 @@ class TermoMultiplayerGame {
       }
     } catch (e) {
       // Áudio silencioso se bloqueado pelo browser
-    }
-  }
-
-  // Carrega palavras do JSON caso disponível
-  async loadWordsDatabase() {
-    try {
-      const res = await fetch('words.json');
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          this.wordsList = data;
-          this.validWordsSet = new Set(this.wordsList.map(w => (w.normalized || w.word).toUpperCase()));
-        }
-      }
-    } catch (e) {
-      console.warn('Usando lista de palavras interna padrão');
     }
   }
 
