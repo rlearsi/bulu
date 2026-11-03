@@ -195,8 +195,10 @@ body {
 }
 
 .player-avatar-ph {
-  font-size: 1.3rem;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 /* Ponto de vez (ativo no avatar) */
@@ -332,7 +334,7 @@ body {
   min-width: 52px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
-  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -341,7 +343,7 @@ body {
 }
 
 .lobby-avatar-picker:hover {
-  border-color: #00ff88;
+  border-color: rgba(255, 255, 255, 0.25);
   transform: scale(1.03);
 }
 
@@ -353,7 +355,10 @@ body {
 }
 
 .lobby-avatar-ph {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .avatar-badge-edit {
@@ -365,11 +370,11 @@ body {
   border-radius: 50%;
   background: #3aa394;
   color: #fff;
-  font-size: 0.65rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--board-bg);
 }
 
 .lobby-profile-info {
@@ -403,15 +408,19 @@ body {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 0.95rem;
   padding: 4px;
-  border-radius: 4px;
-  transition: transform 0.15s ease;
-  line-height: 1;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.15s ease;
 }
 
 .btn-icon-edit:hover {
-  transform: scale(1.15);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.08);
 }
 
 /* MODAL DE PERFIL */
@@ -443,7 +452,10 @@ body {
 }
 
 .profile-avatar-ph {
-  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .profile-avatar-actions {

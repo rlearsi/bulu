@@ -1312,7 +1312,7 @@ class TermoMultiplayerGame {
     }
 
     setTimeout(() => {
-      this.goTitle.textContent = isMe ? '🏆 VITÓRIA!' : 'DERROTA!';
+      this.goTitle.textContent = isMe ? 'VITÓRIA!' : 'DERROTA!';
       this.goTitle.style.color = isMe ? 'var(--color-correct)' : 'var(--color-present)';
       this.goSubtitle.textContent = isMe ? 'Você acertou a palavra secreta!' : `${winnerName} acertou a palavra primeiro!`;
       this.goSecretWord.textContent = this.secretWord;
@@ -1383,7 +1383,7 @@ class TermoMultiplayerGame {
       });
     }
 
-    this.goTitle.textContent = '🏆 VITÓRIA!';
+    this.goTitle.textContent = 'VITÓRIA!';
     this.goTitle.style.color = 'var(--color-correct)';
     this.goSubtitle.textContent = `${this.oppName} desistiu da partida!`;
     this.goSecretWord.textContent = this.secretWord;
