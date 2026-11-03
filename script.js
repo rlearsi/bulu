@@ -42,6 +42,11 @@ class TermoMultiplayerGame {
     this.validWordsSet = new Set(this.wordsList.map(w => (w.normalized || w.word).toUpperCase()));
     this.audioCtx = null;
 
+    // Sistema de Tempo (3 minutos por jogador / 180 segundos)
+    this.turnDuration = 180;
+    this.timeLeft = this.turnDuration;
+    this.timerInterval = null;
+
     this.initDOM();
     this.initEvents();
     this.createBoard();
@@ -128,6 +133,7 @@ class TermoMultiplayerGame {
     this.btnSurrender = document.getElementById('btn-surrender');
     this.turnIndicator = document.getElementById('turn-indicator');
     this.toastMessage = document.getElementById('toast-message');
+    this.turnTimerElement = document.getElementById('turn-timer');
 
     // Badges jogadores
     this.p1Badge = document.getElementById('p1-badge');
@@ -488,6 +494,10 @@ class TermoMultiplayerGame {
         this.handleOpponentGuess(data.guess, data.evaluation, data.nextTurnRole, data.isWin, data.winnerRole);
         break;
 
+      case 'TIME_EXPIRED':
+        this.handleTimeExpiredByOpponent(data.timedOutRole, data.nextTurnRole);
+        break;
+
       case 'SURRENDER':
         this.handleOpponentSurrender();
         break;
@@ -556,6 +566,7 @@ class TermoMultiplayerGame {
   }
 
   resetBoardState() {
+    this.stopTurnTimer();
     this.currentRow = 0;
     this.currentTile = 0;
     this.isGameOver = false;
@@ -582,6 +593,7 @@ class TermoMultiplayerGame {
       this.keyboardElement.classList.remove('locked');
       this.p1Badge.classList.remove('opponent-turn');
       this.p1Badge.classList.add('my-turn');
+      this.startTurnTimer();
       return;
     }
 
@@ -609,6 +621,128 @@ class TermoMultiplayerGame {
       this.keyboardElement.classList.add('locked');
     }
     this.updateActiveTileHighlight();
+    this.startTurnTimer();
+  }
+
+  // ==========================================
+  // SISTEMA DE CRONÔMETRO DE TURNO (3 MINUTOS)
+  // ==========================================
+  startTurnTimer() {
+    this.stopTurnTimer();
+    if (this.isGameOver) {
+      if (this.turnTimerElement) this.turnTimerElement.classList.add('hidden');
+      return;
+    }
+
+    this.timeLeft = this.turnDuration;
+    this.updateTimerDisplay();
+
+    if (this.turnTimerElement) {
+      this.turnTimerElement.classList.remove('hidden');
+    }
+
+    this.timerInterval = setInterval(() => {
+      this.timeLeft--;
+      if (this.timeLeft <= 0) {
+        this.timeLeft = 0;
+        this.updateTimerDisplay();
+        this.handleTurnTimeout();
+      } else {
+        this.updateTimerDisplay();
+      }
+    }, 1000);
+  }
+
+  stopTurnTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    if (this.turnTimerElement) {
+      this.turnTimerElement.classList.remove('warning');
+    }
+  }
+
+  updateTimerDisplay() {
+    if (!this.turnTimerElement) return;
+
+    const minutes = Math.floor(this.timeLeft / 60);
+    const seconds = this.timeLeft % 60;
+    const formatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    this.turnTimerElement.textContent = formatted;
+
+    const myTurn = this.isMyTurn();
+    if (myTurn) {
+      this.turnTimerElement.classList.add('my-turn');
+      this.turnTimerElement.classList.remove('opponent-turn');
+    } else {
+      this.turnTimerElement.classList.add('opponent-turn');
+      this.turnTimerElement.classList.remove('my-turn');
+    }
+
+    // Aos 30 segundos ou menos, fica vermelho
+    if (this.timeLeft <= 30) {
+      this.turnTimerElement.classList.add('warning');
+    } else {
+      this.turnTimerElement.classList.remove('warning');
+    }
+  }
+
+  handleTurnTimeout() {
+    this.stopTurnTimer();
+    if (this.isGameOver) return;
+
+    if (this.role === 'solo') {
+      this.showToast('Tempo esgotado!');
+      this.clearUnsubmittedRow(this.currentRow);
+      this.currentRow++;
+      this.currentTile = 0;
+      if (this.currentRow >= this.maxRows) {
+        this.triggerGameOverLoss();
+      } else {
+        this.updateStatusBar();
+      }
+      return;
+    }
+
+    // Multiplayer: quem estiver no turno atual teve o tempo esgotado
+    if (this.isMyTurn()) {
+      const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
+      this.showToast('Tempo esgotado! Vez passada para o oponente.');
+      this.clearUnsubmittedRow(this.currentRow);
+
+      // Notifica o oponente via P2P
+      this.sendP2P({
+        type: 'TIME_EXPIRED',
+        timedOutRole: this.role,
+        nextTurnRole: nextTurnRole
+      });
+
+      this.currentTurnRole = nextTurnRole;
+      this.updateStatusBar();
+    }
+  }
+
+  handleTimeExpiredByOpponent(timedOutRole, nextTurnRole) {
+    this.stopTurnTimer();
+    this.clearUnsubmittedRow(this.currentRow);
+    this.showToast(`Tempo de ${this.oppName} esgotou! Sua vez.`);
+    this.currentTurnRole = nextTurnRole;
+    this.updateStatusBar();
+  }
+
+  clearUnsubmittedRow(row) {
+    if (row < 0 || row >= this.maxRows) return;
+    for (let c = 0; c < this.wordLength; c++) {
+      this.boardMatrix[row][c] = '';
+      const tile = this.getTileElement(row, c);
+      if (tile && !tile.classList.contains('flip')) {
+        tile.textContent = '';
+        tile.classList.remove('filled', 'opponent-typing', 'active-cursor');
+      }
+    }
+    this.currentTile = 0;
   }
 
   // ==========================================
@@ -783,6 +917,8 @@ class TermoMultiplayerGame {
     const isWin = evaluation.every(s => s === 'correct');
     const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
 
+    this.stopTurnTimer();
+
     // Bloqueia temporariamente para a animação
     this.keyboardElement.classList.add('locked');
 
@@ -838,6 +974,7 @@ class TermoMultiplayerGame {
 
   // Quando o oponente joga
   handleOpponentGuess(guess, evaluation, nextTurnRole, isWin, winnerRole) {
+    this.stopTurnTimer();
     const opponentRow = this.currentRow;
     const rowEl = this.getRowElement(opponentRow);
     if (rowEl) {
@@ -969,6 +1106,7 @@ class TermoMultiplayerGame {
   // FINAL DE PARTIDA & MODAIS
   // ==========================================
   triggerWin(winnerName, isMe) {
+    this.stopTurnTimer();
     this.isGameOver = true;
 
     // Animação de pulo (bounce) nas letras vencedoras
@@ -1000,6 +1138,7 @@ class TermoMultiplayerGame {
   }
 
   triggerGameOverLoss() {
+    this.stopTurnTimer();
     this.isGameOver = true;
     setTimeout(() => {
       this.goTitle.textContent = 'FIM DE JOGO';
@@ -1014,6 +1153,7 @@ class TermoMultiplayerGame {
 
   handleSurrender() {
     if (this.isGameOver) return;
+    this.stopTurnTimer();
 
     if (this.role === 'solo') {
       this.isGameOver = true;
@@ -1041,6 +1181,7 @@ class TermoMultiplayerGame {
 
   handleOpponentSurrender() {
     if (this.isGameOver) return;
+    this.stopTurnTimer();
     this.isGameOver = true;
 
     if (window.confetti) {
@@ -1083,6 +1224,7 @@ class TermoMultiplayerGame {
   }
 
   resetToLobby() {
+    this.stopTurnTimer();
     this.isGameOver = true;
     if (this.peerConn) {
       try { this.peerConn.close(); } catch (e) {}

@@ -189,10 +189,38 @@ body {
 .board-wrapper {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   padding: 10px 0;
+}
+
+/* CRONÔMETRO DE TURNO */
+.turn-timer {
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+  color: #00ff88;
+  margin-bottom: 10px;
+  user-select: none;
+  transition: color 0.25s ease;
+}
+
+/* Vez do jogador local: cor verde */
+.turn-timer.my-turn {
+  color: #00ff88;
+}
+
+/* Vez do oponente: cor cinza */
+.turn-timer.opponent-turn {
+  color: #8e8e93;
+}
+
+/* Últimos 30 segundos: vermelho limpo sem brilho */
+.turn-timer.warning {
+  color: #ff3b30 !important;
 }
 
 .board {
