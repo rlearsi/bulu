@@ -17,13 +17,19 @@
       <h1 class="logo-title">TERMO <span>DUELO</span></h1>
     </header>
 
-    <!-- BARRA DE AÇÕES (LINHA ÚNICA ABAIXO DA LOGO: PERFIL, AJUDA, DESISTIR, REINICIAR) -->
+    <!-- BARRA DE AÇÕES (LINHA ÚNICA ABAIXO DA LOGO: PERFIL, CHAT, AJUDA, DESISTIR, REINICIAR) -->
     <div id="game-actions-bar" class="game-actions-bar">
       <button id="btn-profile" class="action-btn" title="Perfil (Nome e Foto)">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
           <circle cx="12" cy="7" r="4"></circle>
         </svg>
+      </button>
+      <button id="btn-chat" class="action-btn chat-action-btn" title="Chat do Jogo">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span id="chat-badge" class="chat-badge hidden">0</span>
       </button>
       <button id="btn-help" class="action-btn" title="Ajuda">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -163,6 +169,38 @@
     <!-- TABULEIRO DO JOGO (6 LINHAS X 5 COLUNAS) -->
     <main id="board-container" class="board-wrapper hidden">
       <div id="board" class="board"></div>
+
+      <!-- PAINEL DE CHAT EM OVERLAY TRANSPARENTE SOBRE OS TILES -->
+      <div id="chat-overlay" class="chat-overlay hidden">
+        <div class="chat-header">
+          <div class="chat-header-title">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>Chat da Partida</span>
+          </div>
+          <button id="btn-close-chat" class="chat-close-btn" title="Fechar Chat">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div id="chat-messages" class="chat-messages">
+          <div class="chat-system-msg">Converse com seu oponente durante a partida.</div>
+        </div>
+
+        <form id="chat-form" class="chat-form">
+          <input type="text" id="chat-input" class="chat-input" placeholder="Digite uma mensagem..." maxlength="120" autocomplete="off">
+          <button type="submit" id="btn-chat-send" class="chat-send-btn" title="Enviar mensagem">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </div>
       
       <!-- Aviso de feedback rápido (Ex: 'Palavra não encontrada', 'Não é sua vez') -->
       <div id="toast-message" class="toast hidden"></div>

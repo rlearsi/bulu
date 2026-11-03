@@ -46,6 +46,10 @@ class TermoMultiplayerGame {
     this.timeLeft = this.turnDuration;
     this.timerInterval = null;
 
+    // Chat
+    this.unreadMessagesCount = 0;
+    this.isChatOpen = false;
+
     this.initDOM();
     this.initEvents();
     this.createBoard();
@@ -116,6 +120,15 @@ class TermoMultiplayerGame {
     this.turnIndicator = document.getElementById('turn-indicator');
     this.toastMessage = document.getElementById('toast-message');
     this.turnTimerElement = document.getElementById('turn-timer');
+
+    // Elementos do Chat
+    this.btnChat = document.getElementById('btn-chat');
+    this.chatBadge = document.getElementById('chat-badge');
+    this.chatOverlay = document.getElementById('chat-overlay');
+    this.btnCloseChat = document.getElementById('btn-close-chat');
+    this.chatMessages = document.getElementById('chat-messages');
+    this.chatForm = document.getElementById('chat-form');
+    this.chatInput = document.getElementById('chat-input');
 
     // Badges jogadores e placar
     this.p1Badge = document.getElementById('p1-badge');
@@ -213,6 +226,16 @@ class TermoMultiplayerGame {
     if (this.inputAvatarFile) this.inputAvatarFile.addEventListener('change', (e) => this.handleAvatarFileSelect(e));
     if (this.btnRemoveAvatar) this.btnRemoveAvatar.addEventListener('click', () => this.handleAvatarRemove());
     if (this.btnSaveProfile) this.btnSaveProfile.addEventListener('click', () => this.handleSaveProfile());
+
+    // Eventos do Chat
+    if (this.btnChat) this.btnChat.addEventListener('click', () => this.toggleChat());
+    if (this.btnCloseChat) this.btnCloseChat.addEventListener('click', () => this.toggleChat(false));
+    if (this.chatForm) {
+      this.chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.handleSendChatMessage();
+      });
+    }
 
     // Inicializa display do perfil na Home
     this.updateProfileDisplay();
@@ -538,6 +561,10 @@ class TermoMultiplayerGame {
 
       case 'SURRENDER':
         this.handleOpponentSurrender();
+        break;
+
+      case 'CHAT_MESSAGE':
+        this.handleIncomingChatMessage(data);
         break;
 
       case 'PLAY_AGAIN_REQUEST':
@@ -1444,6 +1471,10 @@ class TermoMultiplayerGame {
     this.btnCreateRoom.disabled = false;
     this.btnJoinRoom.disabled = false;
 
+    this.toggleChat(false);
+    this.unreadMessagesCount = 0;
+    this.updateChatBadge();
+
     this.lobbyScreen.classList.remove('hidden');
   }
 
@@ -1462,6 +1493,123 @@ class TermoMultiplayerGame {
     } else {
       this.privacyModal.classList.add('hidden');
     }
+  }
+
+  // ==========================================
+  // SISTEMA DE CHAT
+  // ==========================================
+  toggleChat(forceOpen = null) {
+    if (!this.chatOverlay) return;
+
+    if (forceOpen === null) {
+      this.isChatOpen = !this.isChatOpen;
+    } else {
+      this.isChatOpen = !!forceOpen;
+    }
+
+    if (this.isChatOpen) {
+      this.chatOverlay.classList.remove('hidden');
+      this.unreadMessagesCount = 0;
+      this.updateChatBadge();
+      if (this.chatInput) {
+        setTimeout(() => this.chatInput.focus(), 80);
+      }
+      this.scrollChatToBottom();
+    } else {
+      this.chatOverlay.classList.add('hidden');
+      if (this.chatInput) {
+        this.chatInput.blur();
+      }
+    }
+  }
+
+  updateChatBadge() {
+    if (!this.chatBadge) return;
+    if (this.unreadMessagesCount > 0) {
+      this.chatBadge.textContent = this.unreadMessagesCount > 99 ? '99+' : this.unreadMessagesCount;
+      this.chatBadge.classList.remove('hidden');
+    } else {
+      this.chatBadge.classList.add('hidden');
+      this.chatBadge.textContent = '0';
+    }
+  }
+
+  scrollChatToBottom() {
+    if (!this.chatMessages) return;
+    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+  }
+
+  handleSendChatMessage() {
+    if (!this.chatInput) return;
+    const text = this.chatInput.value.trim();
+    if (!text) return;
+
+    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const msgData = {
+      type: 'CHAT_MESSAGE',
+      sender: this.myName,
+      text: text,
+      time: timeStr
+    };
+
+    // Renderiza a mensagem enviada pelo usuário
+    this.appendChatMessage(msgData.sender, msgData.text, msgData.time, 'sent');
+
+    // Se estiver em partida P2P conectada, envia para o oponente
+    if (this.peerConn && this.peerConn.open) {
+      this.sendP2P(msgData);
+    } else if (this.role === 'solo') {
+      // Resposta automática / amigável em modo solo/treino
+      setTimeout(() => {
+        this.appendChatMessage('Computador', 'Estou focado em adivinhar as palavras!', new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), 'received');
+      }, 700);
+    }
+
+    this.chatInput.value = '';
+    this.chatInput.focus();
+  }
+
+  handleIncomingChatMessage(data) {
+    if (!data || !data.text) return;
+
+    const timeStr = data.time || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const sender = data.sender || this.oppName || 'Oponente';
+
+    this.appendChatMessage(sender, data.text, timeStr, 'received');
+
+    if (!this.isChatOpen) {
+      this.unreadMessagesCount++;
+      this.updateChatBadge();
+      // Som sutil de mensagem recebida
+      this.playKeySound('present');
+    }
+  }
+
+  appendChatMessage(sender, text, time, type = 'received') {
+    if (!this.chatMessages) return;
+
+    const row = document.createElement('div');
+    row.className = `chat-msg-row ${type}`;
+
+    if (type === 'received') {
+      const senderEl = document.createElement('span');
+      senderEl.className = 'chat-msg-sender';
+      senderEl.textContent = sender;
+      row.appendChild(senderEl);
+    }
+
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.textContent = text;
+    row.appendChild(bubble);
+
+    const timeEl = document.createElement('span');
+    timeEl.className = 'chat-msg-time';
+    timeEl.textContent = time;
+    row.appendChild(timeEl);
+
+    this.chatMessages.appendChild(row);
+    this.scrollChatToBottom();
   }
 }
 
