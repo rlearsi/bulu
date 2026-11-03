@@ -39,12 +39,66 @@ class TermoMultiplayerGame {
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
     // Status das letras no teclado: { 'A': 'correct' | 'present' | 'absent' }
     this.keyboardStatus = {};
+    this.validWordsSet = new Set(this.wordsList.map(w => (w.normalized || w.word).toUpperCase()));
+    this.audioCtx = null;
 
     this.initDOM();
     this.initEvents();
     this.createBoard();
     this.createKeyboard();
     this.loadWordsDatabase();
+  }
+
+  getAudioContext() {
+    if (!this.audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        this.audioCtx = new AudioContextClass();
+      }
+    }
+    if (this.audioCtx && this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume();
+    }
+    return this.audioCtx;
+  }
+
+  playFeedbackSound(type) {
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+      const now = ctx.currentTime;
+
+      if (type === 'correct') {
+        // Som suave, harmônico e agudo suave para letra correta (verde)
+        osc.frequency.setValueAtTime(587.33, now); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.12); // A5
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.linearRampToValueAtTime(0.06, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      } else if (type === 'present') {
+        // Som suave e acolhedor para letra no lugar errado (amarelo)
+        osc.frequency.setValueAtTime(440, now); // A4
+        osc.frequency.exponentialRampToValueAtTime(554.37, now + 0.12); // C#5
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.linearRampToValueAtTime(0.045, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      }
+    } catch (e) {
+      // Áudio silencioso se bloqueado pelo browser
+    }
   }
 
   // Carrega palavras do JSON caso disponível
@@ -55,6 +109,7 @@ class TermoMultiplayerGame {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
           this.wordsList = data;
+          this.validWordsSet = new Set(this.wordsList.map(w => (w.normalized || w.word).toUpperCase()));
         }
       }
     } catch (e) {
@@ -402,11 +457,6 @@ class TermoMultiplayerGame {
     this.statusBar.classList.remove('hidden');
 
     this.updateStatusBar();
-    if (this.isMyTurn()) {
-      this.showToast(`É a sua vez de jogar!`);
-    } else {
-      this.showToast(`Vez de ${this.oppName}!`);
-    }
   }
 
   resetBoardState() {
@@ -430,24 +480,31 @@ class TermoMultiplayerGame {
     if (this.role === 'solo') {
       this.p1Badge.querySelector('.p-name').textContent = this.myName;
       this.p2Badge.classList.add('hidden');
-      this.turnIndicator.textContent = `Tentativa ${this.currentRow + 1} de ${this.maxRows}`;
+      if (this.turnIndicator) {
+        this.turnIndicator.textContent = `Tentativa ${this.currentRow + 1} de ${this.maxRows}`;
+      }
       this.keyboardElement.classList.remove('locked');
       this.p1Badge.classList.add('active-turn');
       return;
     }
 
     this.p2Badge.classList.remove('hidden');
-    this.p1Badge.querySelector('.p-name').textContent = `${this.myName} (${this.role === 'host' ? 'Host' : 'Guest'})`;
-    this.p2Badge.querySelector('.p-name').textContent = `${this.oppName} (${this.role === 'host' ? 'Guest' : 'Host'})`;
+
+    const p1Label = this.role === 'host' ? `${this.myName} (Host)` : this.myName;
+    const p2Label = this.role === 'host' ? this.oppName : `${this.oppName} (Host)`;
+
+    this.p1Badge.querySelector('.p-name').textContent = p1Label;
+    this.p2Badge.querySelector('.p-name').textContent = p2Label;
 
     const myTurn = this.isMyTurn();
     if (myTurn) {
-      this.turnIndicator.textContent = '🟢 SUA VEZ DE JOGAR';
+      if (this.turnIndicator) this.turnIndicator.textContent = '';
       this.p1Badge.classList.add('active-turn');
       this.p2Badge.classList.remove('active-turn');
       this.keyboardElement.classList.remove('locked');
+      this.showToast('Sua vez de jogar');
     } else {
-      this.turnIndicator.textContent = `⏳ VEZ DE ${this.oppName.toUpperCase()} (BLOQUEADO)`;
+      if (this.turnIndicator) this.turnIndicator.textContent = '';
       this.p1Badge.classList.remove('active-turn');
       this.p2Badge.classList.add('active-turn');
       this.keyboardElement.classList.add('locked');
@@ -580,6 +637,14 @@ class TermoMultiplayerGame {
     }
 
     const guess = this.boardMatrix[this.currentRow].join('');
+
+    // Validação de existência no banco de dados / dicionário
+    if (!this.validWordsSet.has(guess)) {
+      this.shakeCurrentRow();
+      this.showToast('Essa palavra não existe em nosso banco de dados');
+      return;
+    }
+
     const evaluation = this.evaluateGuess(guess, this.secretWord);
     const isWin = evaluation.every(s => s === 'correct');
     const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
@@ -719,6 +784,9 @@ class TermoMultiplayerGame {
         setTimeout(() => {
           tile.classList.add(status);
           this.updateKeyboardKeyColor(letter, status);
+          if (status === 'correct' || status === 'present') {
+            this.playFeedbackSound(status);
+          }
         }, flipDuration / 2);
 
         // Se for a última letra, aguarda o fim completo e dispara o callback
