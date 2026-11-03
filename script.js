@@ -25,6 +25,7 @@ class TermoMultiplayerGame {
     // Estado Multiplayer / Placar
     this.role = 'solo'; // 'host', 'guest', 'solo'
     this.currentTurnRole = 'host';
+    this.isRoomLocked = false; // false = Sala Pública (sem código), true = Sala Privada (com código)
     this.oppName = 'Oponente';
     this.oppAvatar = '';
     this.myScore = 0;
@@ -151,6 +152,12 @@ class TermoMultiplayerGame {
       return;
     }
 
+    // 5b. Se o modal de Salas Públicas estiver aberto, fecha ele
+    if (this.ui.publicRoomsModal && !this.ui.publicRoomsModal.classList.contains('hidden')) {
+      this.closePublicRoomsModal();
+      return;
+    }
+
     // 6. Se estiver em uma partida (tabuleiro visível) ou aguardando na sala criada/conectando
     const isInMatch = this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden');
     const isWaitingHost = this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
@@ -260,8 +267,21 @@ class TermoMultiplayerGame {
 
   initEvents() {
     // Ações do Lobby
+    this.ui.updateRoomLockUI(this.isRoomLocked);
     this.ui.btnCreateRoom.addEventListener('click', () => this.handleCreateRoom());
+    if (this.ui.btnLockRoom) {
+      this.ui.btnLockRoom.addEventListener('click', () => this.toggleRoomLock());
+    }
     this.ui.btnJoinRoom.addEventListener('click', () => this.handleJoinRoom());
+    if (this.ui.btnJoinPublicRoom) {
+      this.ui.btnJoinPublicRoom.addEventListener('click', () => this.openPublicRoomsModal());
+    }
+    if (this.ui.btnClosePublicRooms) {
+      this.ui.btnClosePublicRooms.addEventListener('click', () => this.closePublicRoomsModal());
+    }
+    if (this.ui.btnRefreshPublicRooms) {
+      this.ui.btnRefreshPublicRooms.addEventListener('click', () => this.refreshPublicRoomsList());
+    }
     if (this.ui.inputRoomCode) {
       this.ui.inputRoomCode.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -274,6 +294,13 @@ class TermoMultiplayerGame {
     }
     this.ui.btnPractice.addEventListener('click', () => this.startSoloGame());
     this.ui.btnCopyCode.addEventListener('click', () => this.copyRoomCode());
+
+    // Libera imediatamente o ID no PeerJS ao atualizar a página (F5) ou fechar a aba
+    const cleanupNetworkOnUnload = () => {
+      if (this.network) this.network.destroy();
+    };
+    window.addEventListener('beforeunload', cleanupNetworkOnUnload);
+    window.addEventListener('pagehide', cleanupNetworkOnUnload);
 
     // Teclado Físico
     window.addEventListener('keydown', (e) => this.handlePhysicalKeyPress(e));
@@ -320,23 +347,110 @@ class TermoMultiplayerGame {
   // ==========================================
   // SALAS E CONEXÃO P2P
   // ==========================================
+  toggleRoomLock() {
+    this.isRoomLocked = !this.isRoomLocked;
+    this.ui.updateRoomLockUI(this.isRoomLocked);
+
+    // Se já estiver aguardando adversário com sala aberta no Lobby, alterna o modo da sala em tempo real
+    const isWaitingHost = this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
+    const isInLobby = this.ui.lobbyScreen && !this.ui.lobbyScreen.classList.contains('hidden');
+    if (isWaitingHost && isInLobby && !this.network.isConnected()) {
+      this.handleCreateRoom();
+    }
+  }
+
   handleCreateRoom() {
     this.role = 'host';
     this.ui.btnCreateRoom.disabled = true;
     this.ui.hostCodeDisplay.classList.remove('hidden');
     this.ui.hostStatus.textContent = 'Inicializando rede P2P...';
 
-    const code = this.network.createRoom({
-      onOpen: () => {
-        this.ui.hostStatus.textContent = 'Aguardando adversário entrar...';
+    if (this.isRoomLocked) {
+      // Sala Privada (Trancada): gera e exibe código de 6 dígitos
+      if (this.ui.hostPrivateCodeArea) {
+        this.ui.hostPrivateCodeArea.classList.remove('hidden');
+      }
+      const code = this.network.createRoom({
+        onOpen: () => {
+          this.ui.hostStatus.textContent = 'Aguardando adversário entrar...';
+        },
+        onError: () => {
+          this.ui.hostStatus.textContent = 'Erro ao criar sala. Tente novamente.';
+          this.ui.btnCreateRoom.disabled = false;
+        }
+      });
+      this.ui.roomCodeVal.textContent = code;
+    } else {
+      // Sala Pública (Aberta): não libera código e registra vaga na listagem pública
+      if (this.ui.hostPrivateCodeArea) {
+        this.ui.hostPrivateCodeArea.classList.add('hidden');
+      }
+      this.network.createPublicRoom({
+        getHostProfile: () => ({
+          name: this.profile.myName,
+          avatar: this.profile.myAvatar
+        }),
+        onOpen: () => {
+          this.ui.hostStatus.textContent = 'Sala pública aberta! Aguardando oponente...';
+        },
+        onError: (err) => {
+          this.ui.hostStatus.textContent = (err && err.message) || 'Erro ao abrir sala pública.';
+          this.ui.btnCreateRoom.disabled = false;
+        }
+      });
+    }
+  }
+
+  openPublicRoomsModal() {
+    this.ui.showPublicRoomsModal(true);
+    this.refreshPublicRoomsList();
+  }
+
+  closePublicRoomsModal() {
+    this.network.destroyScanner();
+    this.ui.showPublicRoomsModal(false);
+  }
+
+  refreshPublicRoomsList() {
+    this.ui.setPublicRoomsLoading();
+    const discoveredRooms = [];
+
+    this.network.scanPublicRooms({
+      onRoomFound: (room) => {
+        discoveredRooms.push(room);
+        this.ui.renderPublicRoomsList(discoveredRooms, (slotId) => this.handleJoinPublicSlot(slotId));
       },
-      onError: () => {
-        this.ui.hostStatus.textContent = 'Erro ao criar sala. Tente outro código.';
-        this.ui.btnCreateRoom.disabled = false;
+      onComplete: (allRooms) => {
+        this.ui.renderPublicRoomsList(allRooms, (slotId) => this.handleJoinPublicSlot(slotId));
       }
     });
+  }
 
-    this.ui.roomCodeVal.textContent = code;
+  handleJoinPublicSlot(slotId) {
+    if (!slotId) return;
+    this.closePublicRoomsModal();
+
+    this.role = 'guest';
+    this.ui.joinStatus.classList.remove('hidden');
+    this.ui.joinStatus.textContent = 'Entrando na sala pública...';
+    this.ui.btnJoinRoom.disabled = true;
+    if (this.ui.btnJoinPublicRoom) this.ui.btnJoinPublicRoom.disabled = true;
+
+    this.network.joinPublicRoom(slotId, {
+      onConnected: () => {
+        this.ui.joinStatus.textContent = 'Conectado! Iniciando jogo...';
+        this.network.send({
+          type: 'JOIN_GAME',
+          name: this.profile.myName,
+          avatar: this.profile.myAvatar
+        });
+      },
+      onError: () => {
+        this.ui.joinStatus.textContent = 'Esta sala pública já foi preenchida ou fechada.';
+        this.ui.btnJoinRoom.disabled = false;
+        if (this.ui.btnJoinPublicRoom) this.ui.btnJoinPublicRoom.disabled = false;
+      }
+    });
   }
 
   handleJoinRoom() {
@@ -991,6 +1105,7 @@ class TermoMultiplayerGame {
 
     this.ui.gameoverModal.classList.add('hidden');
     if (this.ui.privacyModal) this.ui.privacyModal.classList.add('hidden');
+    if (this.ui.publicRoomsModal) this.ui.publicRoomsModal.classList.add('hidden');
     if (this.ui.exitConfirmModal) this.ui.exitConfirmModal.classList.add('hidden');
     this.ui.helpModal.classList.add('hidden');
     this.ui.boardContainer.classList.add('hidden');
@@ -1001,6 +1116,8 @@ class TermoMultiplayerGame {
     this.ui.joinStatus.classList.add('hidden');
     this.ui.btnCreateRoom.disabled = false;
     this.ui.btnJoinRoom.disabled = false;
+    if (this.ui.btnJoinPublicRoom) this.ui.btnJoinPublicRoom.disabled = false;
+    this.ui.updateRoomLockUI(this.isRoomLocked);
 
     this.chat.reset();
 

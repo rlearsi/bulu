@@ -98,6 +98,194 @@
   gap: 8px;
 }
 
+.create-room-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.create-room-row .btn-primary {
+  flex: 1;
+}
+
+.btn-lock-room {
+  width: 44px;
+  min-width: 44px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-lock-room:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.btn-lock-room:active {
+  transform: scale(0.95);
+}
+
+.btn-lock-room.locked {
+  background: rgba(211, 173, 105, 0.2);
+  border-color: rgba(211, 173, 105, 0.55);
+  color: var(--color-present);
+}
+
+.btn-public-rooms {
+  width: 100%;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.btn-public-rooms:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================================
+   MODAL DE SALAS PÚBLICAS ABERTAS
+   ======================================================== */
+.public-rooms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 28px;
+  margin-bottom: 6px;
+}
+
+.public-rooms-header h2 {
+  margin-bottom: 0;
+}
+
+.btn-refresh-rooms {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-refresh-rooms:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.btn-refresh-rooms.spinning svg {
+  animation: spinRefresh 0.8s linear infinite;
+}
+
+@keyframes spinRefresh {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.public-rooms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 290px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.public-rooms-empty {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 24px 14px;
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.public-room-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.public-room-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.public-room-host {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.public-room-avatar {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--text-muted);
+}
+
+.public-room-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.public-room-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.public-room-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.public-room-sub {
+  font-size: 0.74rem;
+  color: var(--color-correct);
+  font-weight: 600;
+}
+
+.public-room-join-btn {
+  width: auto;
+  padding: 7px 14px;
+  font-size: 0.82rem;
+  border-radius: 8px;
+}
+
 .join-input-group input {
   letter-spacing: 3px;
   text-align: center;

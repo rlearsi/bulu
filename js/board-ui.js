@@ -3,7 +3,7 @@
  * Responsável pela manipulação de elementos visuais do tabuleiro 6x5, teclado virtual, animações e modais.
  */
 
-import { ProfileManager } from './profile.js?v=1.6.6';
+import { ProfileManager } from './profile.js?v=1.6.11';
 
 export class BoardUI {
   constructor({ maxRows = 6, wordLength = 5, audio, onTileClick, onVirtualKeyPress }) {
@@ -44,15 +44,27 @@ export class BoardUI {
 
     // Elementos do Lobby
     this.btnCreateRoom = document.getElementById('btn-create-room');
+    this.btnLockRoom = document.getElementById('btn-lock-room');
+    this.iconLockOpen = document.getElementById('icon-lock-open');
+    this.iconLockClosed = document.getElementById('icon-lock-closed');
+    this.createRoomDesc = document.getElementById('create-room-desc');
     this.hostCodeDisplay = document.getElementById('host-code-display');
+    this.hostPrivateCodeArea = document.getElementById('host-private-code-area');
     this.roomCodeVal = document.getElementById('room-code-val');
     this.btnCopyCode = document.getElementById('btn-copy-code');
     this.hostStatus = document.getElementById('host-status');
 
     this.inputRoomCode = document.getElementById('input-room-code');
     this.btnJoinRoom = document.getElementById('btn-join-room');
+    this.btnJoinPublicRoom = document.getElementById('btn-join-public-room');
     this.joinStatus = document.getElementById('join-status');
     this.btnPractice = document.getElementById('btn-practice');
+
+    // Modal de Salas Públicas
+    this.publicRoomsModal = document.getElementById('public-rooms-modal');
+    this.btnClosePublicRooms = document.getElementById('btn-close-public-rooms');
+    this.btnRefreshPublicRooms = document.getElementById('btn-refresh-public-rooms');
+    this.publicRoomsList = document.getElementById('public-rooms-list');
 
     // Modais
     this.helpModal = document.getElementById('help-modal');
@@ -317,6 +329,101 @@ export class BoardUI {
     } else {
       this.exitConfirmModal.classList.add('hidden');
     }
+  }
+
+  updateRoomLockUI(isLocked) {
+    if (this.btnLockRoom) {
+      this.btnLockRoom.classList.toggle('locked', isLocked);
+      this.btnLockRoom.title = isLocked
+        ? 'Sala trancada (Privada com código) — Toque para tornar pública'
+        : 'Sala aberta (Pública sem código) — Toque para trancar';
+    }
+    if (this.iconLockOpen) this.iconLockOpen.classList.toggle('hidden', isLocked);
+    if (this.iconLockClosed) this.iconLockClosed.classList.toggle('hidden', !isLocked);
+    if (this.btnCreateRoom) {
+      this.btnCreateRoom.textContent = isLocked ? 'Criar Sala Privada' : 'Criar Sala Pública';
+    }
+    if (this.createRoomDesc) {
+      this.createRoomDesc.textContent = isLocked
+        ? 'Crie uma sala e compartilhe o código de 6 dígitos com quem você ama.'
+        : 'Sala aberta para qualquer jogador entrar sem código. Toque no cadeado para trancar.';
+    }
+  }
+
+  showPublicRoomsModal(show) {
+    if (!this.publicRoomsModal) return;
+    if (show) {
+      this.publicRoomsModal.classList.remove('hidden');
+    } else {
+      this.publicRoomsModal.classList.add('hidden');
+    }
+  }
+
+  setPublicRoomsLoading() {
+    if (!this.publicRoomsList) return;
+    if (this.btnRefreshPublicRooms) this.btnRefreshPublicRooms.classList.add('spinning');
+    this.publicRoomsList.innerHTML = '<div class="public-rooms-empty">Buscando salas públicas abertas...</div>';
+  }
+
+  renderPublicRoomsList(rooms, onSelectRoom) {
+    if (!this.publicRoomsList) return;
+    if (this.btnRefreshPublicRooms) this.btnRefreshPublicRooms.classList.remove('spinning');
+
+    if (!rooms || rooms.length === 0) {
+      this.publicRoomsList.innerHTML = '<div class="public-rooms-empty">Nenhuma sala pública aberta no momento.</div>';
+      return;
+    }
+
+    this.publicRoomsList.innerHTML = '';
+    rooms.forEach((room) => {
+      const item = document.createElement('div');
+      item.className = 'public-room-item';
+
+      const hostWrap = document.createElement('div');
+      hostWrap.className = 'public-room-host';
+
+      const avatarDiv = document.createElement('div');
+      avatarDiv.className = 'public-room-avatar';
+      if (room.hostAvatar && room.hostAvatar.startsWith('data:image')) {
+        const img = document.createElement('img');
+        img.src = room.hostAvatar;
+        img.alt = room.hostName;
+        avatarDiv.appendChild(img);
+      } else {
+        avatarDiv.innerHTML = `
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        `;
+      }
+
+      const infoDiv = document.createElement('div');
+      infoDiv.className = 'public-room-info';
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'public-room-name';
+      nameSpan.textContent = `Sala de ${room.hostName}`;
+      const subSpan = document.createElement('span');
+      subSpan.className = 'public-room-sub';
+      subSpan.textContent = 'Aberta • Aguardando oponente';
+      infoDiv.appendChild(nameSpan);
+      infoDiv.appendChild(subSpan);
+
+      hostWrap.appendChild(avatarDiv);
+      hostWrap.appendChild(infoDiv);
+
+      const joinBtn = document.createElement('button');
+      joinBtn.type = 'button';
+      joinBtn.className = 'btn btn-primary public-room-join-btn';
+      joinBtn.textContent = 'Entrar';
+      joinBtn.addEventListener('click', () => {
+        if (onSelectRoom) onSelectRoom(room.slotId);
+      });
+
+      item.appendChild(hostWrap);
+      item.appendChild(joinBtn);
+      this.publicRoomsList.appendChild(item);
+    });
   }
 }
 
