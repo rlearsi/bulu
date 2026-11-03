@@ -75,9 +75,13 @@
         </div>
       </div>
 
-      <!-- BOTÃO TREINO SOLO -->
+      <!-- BOTÃO TREINO SOLO E PRIVACIDADE -->
       <div class="lobby-solo">
         <button id="btn-practice" class="btn btn-outline">Jogar sozinho</button>
+      </div>
+
+      <div class="lobby-footer">
+        <button id="btn-privacy" class="link-btn">Privacidade</button>
       </div>
     </div>
 
@@ -175,6 +179,35 @@
         <button id="btn-play-again" class="btn btn-primary">Jogar Novamente</button>
         <button id="btn-back-lobby" class="btn btn-secondary">Voltar ao Lobby</button>
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE PRIVACIDADE -->
+  <div id="privacy-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <button id="btn-close-privacy" class="modal-close-btn">&times;</button>
+      <h2>Política de Privacidade</h2>
+      <p class="modal-intro">Transparência sobre a operação do Termo Duelo e hospedagem.</p>
+
+      <div class="privacy-content">
+        <section class="privacy-section">
+          <h3>1. Coleta de Dados pelo Jogo</h3>
+          <p>O <strong>Termo Duelo</strong> não coleta, não armazena e não compartilha dados pessoais. Todo o processamento de regras, tentativas e palpites ocorre diretamente no seu navegador de forma local e P2P.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h3>2. Hospedagem e Logs do Servidor (GitHub Pages)</h3>
+          <p>Este site está hospedado na infraestrutura do <strong>GitHub Pages</strong> (fornecida pela GitHub, Inc.). De acordo com as diretrizes e a documentação oficial do GitHub Pages, quando você visita um site hospedado na plataforma, o servidor pode registrar automaticamente informações técnicas e de segurança, incluindo o <strong>endereço IP do usuário</strong>, tipo de navegador, sistema operacional e horário de acesso, com o propósito exclusivo de manter a integridade, diagnósticos operacionais e proteção contra abusos do serviço.</p>
+          <p>Para mais informações sobre as práticas da infraestrutura, consulte a declaração oficial na <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Declaração de Privacidade do GitHub</a>.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h3>3. Comunicação Peer-to-Peer</h3>
+          <p>As partidas multijogador utilizam tecnologia Peer-to-Peer (WebRTC) para conexão direta entre os dois navegadores participantes, sem retenção de conteúdo de jogo em banco de dados externo.</p>
+        </section>
+      </div>
+
+      <button id="btn-privacy-ok" class="btn btn-primary btn-block">Entendi</button>
     </div>
   </div>
 

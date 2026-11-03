@@ -153,6 +153,10 @@ class TermoMultiplayerGame {
     this.btnHelpOk = document.getElementById('btn-help-ok');
 
     this.gameoverModal = document.getElementById('gameover-modal');
+    this.privacyModal = document.getElementById('privacy-modal');
+    this.btnPrivacy = document.getElementById('btn-privacy');
+    this.btnClosePrivacy = document.getElementById('btn-close-privacy');
+    this.btnPrivacyOk = document.getElementById('btn-privacy-ok');
     this.goTitle = document.getElementById('go-title');
     this.goSubtitle = document.getElementById('go-subtitle');
     this.goSecretWord = document.getElementById('go-secret-word');
@@ -181,6 +185,10 @@ class TermoMultiplayerGame {
     this.btnRestart.addEventListener('click', () => this.resetToLobby());
     this.btnSurrender.addEventListener('click', () => this.handleSurrender());
     this.btnPlayAgain.addEventListener('click', () => this.handlePlayAgainRequest());
+
+    if (this.btnPrivacy) this.btnPrivacy.addEventListener('click', () => this.showPrivacyModal(true));
+    if (this.btnClosePrivacy) this.btnClosePrivacy.addEventListener('click', () => this.showPrivacyModal(false));
+    if (this.btnPrivacyOk) this.btnPrivacyOk.addEventListener('click', () => this.showPrivacyModal(false));
   }
 
   // ==========================================
@@ -1088,6 +1096,7 @@ class TermoMultiplayerGame {
     this.peer = null;
 
     this.gameoverModal.classList.add('hidden');
+    if (this.privacyModal) this.privacyModal.classList.add('hidden');
     this.helpModal.classList.add('hidden');
     this.boardContainer.classList.add('hidden');
     this.keyboardContainer.classList.add('hidden');
@@ -1106,6 +1115,15 @@ class TermoMultiplayerGame {
       this.helpModal.classList.remove('hidden');
     } else {
       this.helpModal.classList.add('hidden');
+    }
+  }
+
+  showPrivacyModal(show) {
+    if (!this.privacyModal) return;
+    if (show) {
+      this.privacyModal.classList.remove('hidden');
+    } else {
+      this.privacyModal.classList.add('hidden');
     }
   }
 }
