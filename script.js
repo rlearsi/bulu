@@ -556,6 +556,12 @@ class TermoMultiplayerGame {
         }
         break;
 
+      case 'UPDATE_PROFILE':
+        if (data.name) this.oppName = data.name;
+        if (typeof data.avatar === 'string') this.oppAvatar = data.avatar;
+        this.updateStatusBar();
+        break;
+
       case 'SURRENDER':
         this.handleOpponentSurrender();
         break;
@@ -802,6 +808,17 @@ class TermoMultiplayerGame {
     }
 
     this.updateProfileDisplay();
+    this.updateStatusBar();
+
+    // Se estiver em partida P2P conectada, sincroniza o perfil atualizado para o adversário
+    if (this.role !== 'solo' && this.peerConn && this.peerConn.open) {
+      this.sendP2P({
+        type: 'UPDATE_PROFILE',
+        name: this.myName,
+        avatar: this.myAvatar
+      });
+    }
+
     this.showProfileModal(false);
     this.showToast('Perfil atualizado com sucesso! ✓');
   }
@@ -933,6 +950,11 @@ class TermoMultiplayerGame {
   handlePhysicalKeyPress(e) {
     if (this.isGameOver || this.lobbyScreen.offsetParent !== null) return;
     if (this.helpModal.offsetParent !== null || this.gameoverModal.offsetParent !== null) return;
+    if (this.profileModal && this.profileModal.offsetParent !== null) return;
+    if (this.privacyModal && this.privacyModal.offsetParent !== null) return;
+
+    // Se o usuário estiver digitando em qualquer input de texto, não envia tecla para os tiles
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
 
     if (!this.isMyTurn()) {
       this.showToast('Aguarde a vez do seu oponente!');
