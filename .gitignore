@@ -12,3 +12,4 @@ dist/
 .env.local
 __pycache__/
 .agents
+todo.md

@@ -40,19 +40,17 @@
 
     <!-- TELA DO LOBBY / MULTIPLAYER CONEXÃO -->
     <div id="lobby-screen" class="lobby-card">
-      <h2 class="lobby-title">Duelo Multiplayer P2P</h2>
-      <p class="lobby-desc">Jogue em tempo real via WebRTC direto no navegador ou celular sem precisar de servidor central!</p>
+      <h2 class="lobby-title">Duelo Multiplayer</h2>
 
       <div class="lobby-section">
-        <label>Seu Apelido:</label>
-        <input type="text" id="player-nickname" maxlength="12" placeholder="Digite seu nome" value="Jogador 1">
+        <input type="text" id="player-nickname" maxlength="12" placeholder="Your Nickname" value="Jogador 1">
       </div>
 
       <div class="lobby-actions">
         <!-- CRIAR SALA -->
         <div class="action-box">
           <h3>Criar Partida (Host)</h3>
-          <p>Crie uma sala e compartilhe o código de 6 dígitos com seu amigo.</p>
+          <p>Crie uma sala e compartilhe o código de 6 dígitos com quem você ama.</p>
           <button id="btn-create-room" class="btn btn-primary">Criar Sala</button>
           
           <div id="host-code-display" class="code-box hidden">
@@ -68,7 +66,7 @@
         <!-- ENTRAR EM SALA -->
         <div class="action-box">
           <h3>Entrar em Sala</h3>
-          <p>Digite o código da sala gerado pelo seu amigo.</p>
+          <p>Você possui um código de sala? Digite abaixo para entrar.</p>
           <div class="join-input-group">
             <input type="text" id="input-room-code" maxlength="6" placeholder="Ex: 123456" inputmode="numeric">
             <button id="btn-join-room" class="btn btn-secondary">Entrar</button>
@@ -79,7 +77,7 @@
 
       <!-- BOTÃO TREINO SOLO -->
       <div class="lobby-solo">
-        <button id="btn-practice" class="btn btn-outline">Treinar Sozinho (Modo Solo)</button>
+        <button id="btn-practice" class="btn btn-outline">Jogar sozinho</button>
       </div>
     </div>
 
