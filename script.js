@@ -3,7 +3,7 @@
  * Baseado na tecnologia de conexão P2P WebRTC usada no Relatum (PeerJS)
  */
 
-import { wordsData } from './words.js';
+import { wordsData } from './words.js?v=1.4.1';
 
 class TermoMultiplayerGame {
   constructor() {
