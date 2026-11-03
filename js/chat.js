@@ -148,8 +148,11 @@ export class ChatManager {
       this.shouldSendRecordedAudio = true;
 
       const mimeType = this.getSupportedMimeType();
-      const options = mimeType ? { mimeType, audioBitsPerSecond: 32000 } : { audioBitsPerSecond: 32000 };
-      this.mediaRecorder = new MediaRecorder(stream, options);
+      try {
+        this.mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+      } catch (e) {
+        this.mediaRecorder = new MediaRecorder(stream);
+      }
 
       this.mediaRecorder.ondataavailable = (e) => {
         if (e.data && e.data.size > 0) {
