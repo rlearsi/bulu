@@ -1279,7 +1279,11 @@ body {
   font-size: 0.83rem;
   line-height: 1.45;
   color: var(--text-muted);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.privacy-section strong {
+  color: #fff;
 }
 
 .privacy-section p:last-child {

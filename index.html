@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TERMO MULTIPLAYER P2P</title>
-  <link rel="stylesheet" href="style.css?v=1.4.1">
+  <link rel="stylesheet" href="style.css?v=1.4.2">
   <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <!-- Confetti para comemoração da vitória -->
@@ -306,19 +306,22 @@
 
       <div class="privacy-content">
         <section class="privacy-section">
-          <h3>1. Coleta de Dados pelo Jogo</h3>
-          <p>O <strong>Termo Duelo</strong> não coleta, não armazena e não compartilha dados pessoais. Todo o processamento de regras, tentativas e palpites ocorre diretamente no seu navegador de forma local e P2P.</p>
+          <h3>1. Coleta de Dados e Armazenamento Local</h3>
+          <p>O <strong>Termo Duelo</strong> não coleta, não armazena em servidores próprios e não compartilha dados pessoais com terceiros. Todo o processamento das regras e partidas ocorre diretamente no seu navegador. Suas preferências de perfil (apelido e foto de avatar) ficam salvas exclusivamente no armazenamento local (<em>LocalStorage</em>) do seu próprio dispositivo.</p>
         </section>
 
         <section class="privacy-section">
-          <h3>2. Hospedagem e Logs do Servidor (GitHub Pages)</h3>
-          <p>Este site está hospedado na infraestrutura do <strong>GitHub Pages</strong> (fornecida pela GitHub, Inc.). De acordo com as diretrizes e a documentação oficial do GitHub Pages, quando você visita um site hospedado na plataforma, o servidor pode registrar automaticamente informações técnicas e de segurança, incluindo o <strong>endereço IP do usuário</strong>, tipo de navegador, sistema operacional e horário de acesso, com o propósito exclusivo de manter a integridade, diagnósticos operacionais e proteção contra abusos do serviço.</p>
-          <p>Para mais informações sobre as práticas da infraestrutura, consulte a declaração oficial na <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Declaração de Privacidade do GitHub</a>.</p>
+          <h3>2. Tecnologia WebRTC e Criptografia de Ponta a Ponta (E2EE)</h3>
+          <p>As partidas multijogador utilizam a tecnologia <strong>WebRTC</strong> para estabelecer uma conexão direta entre os navegadores dos dois jogadores, sem passar por bancos de dados ou servidores intermediários de conteúdo.</p>
+          <p><strong>Criptografia de Ponta a Ponta (E2EE):</strong> O tráfego direto entre os participantes é protegido nativamente por criptografia obrigatória (DTLS/SCTP). Isso significa que qualquer informação da partida — como o palpite da palavra, o avatar em Base64, o status de vitória/derrota e as mensagens do chat — sai do seu smartphone ou PC já cifrada e só é decifrada diretamente no dispositivo do seu oponente.</p>
+          <p><strong>Proteção em Rede:</strong> Nenhum dado trafega em texto puro (como HTTP/TCP sem criptografia). A comunicação é criptografada de ponta a ponta (E2EE) e segura contra interceptações em redes locais ou externas (como Wi-Fi público ou operadoras móveis).</p>
+          <p><strong>Servidores de Sinalização e STUN:</strong> Para localizar o oponente pelo código da sala e atravessar roteadores (NAT), o jogo utiliza apenas um broker de sinalização inicial e servidores STUN públicos. Os servidores STUN servem estritamente para que o seu dispositivo descubra o seu próprio endereço IP público para abrir a rota direta — <strong>nenhum dado do jogo, chat ou perfil passa ou fica retido no STUN</strong>.</p>
         </section>
 
         <section class="privacy-section">
-          <h3>3. Comunicação Peer-to-Peer</h3>
-          <p>As partidas multijogador utilizam tecnologia Peer-to-Peer (WebRTC) para conexão direta entre os dois navegadores participantes, sem retenção de conteúdo de jogo em banco de dados externo.</p>
+          <h3>3. Hospedagem e Logs do Servidor (GitHub Pages)</h3>
+          <p>Este site está hospedado na infraestrutura do <strong>GitHub Pages</strong> (fornecida pela GitHub, Inc.). De acordo com a documentação oficial da plataforma, quando você acessa a página, os servidores de hospedagem podem registrar automaticamente informações técnicas padrão de requisição web, incluindo o <strong>endereço IP do visitante</strong>, tipo de navegador e horário de acesso, com a finalidade estrita de segurança, diagnóstico operacional e prevenção contra abusos.</p>
+          <p>Para mais detalhes sobre a infraestrutura de hospedagem, consulte a <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">Declaração de Privacidade do GitHub</a>.</p>
         </section>
       </div>
 
@@ -361,7 +364,7 @@
     </div>
   </div>
 
-  <script type="module" src="script.js?v=1.4.1"></script>
+  <script type="module" src="script.js?v=1.4.2"></script>
 </body>
 </html>
 
