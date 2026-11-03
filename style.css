@@ -238,6 +238,21 @@ body {
   animation: popLetter 0.12s ease-in-out;
 }
 
+/* TILE ATIVO / SELECIONADO NA LINHA ATUAL */
+.tile.active-cursor {
+  border-color: var(--color-present) !important;
+  box-shadow: 0 0 8px rgba(211, 173, 105, 0.45);
+  cursor: pointer;
+}
+
+.board-row[data-row] .tile {
+  cursor: default;
+}
+
+.board-row.current-turn-row .tile {
+  cursor: pointer;
+}
+
 /* DESTAQUE DIFERENCIADO: LINHAS E LETRAS DO OPONENTE (LEVE ALPHA / TRANSLÚCIDO) */
 .tile.opponent-typing {
   opacity: 0.65;

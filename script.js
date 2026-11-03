@@ -198,9 +198,88 @@ class TermoMultiplayerGame {
         tileDiv.className = 'tile';
         tileDiv.dataset.row = r;
         tileDiv.dataset.col = c;
+
+        // Suporte a clique ou toque direto para focar tile específico
+        tileDiv.addEventListener('pointerdown', (e) => {
+          e.preventDefault();
+          this.handleTileClick(r, c);
+        });
+
         rowDiv.appendChild(tileDiv);
       }
       this.boardElement.appendChild(rowDiv);
+    }
+    this.updateActiveTileHighlight();
+  }
+
+  handleTileClick(r, c) {
+    if (this.isGameOver || !this.isMyTurn()) return;
+    if (r !== this.currentRow) return; // Permite focar apenas nos tiles da linha da rodada atual
+
+    this.currentTile = Math.max(0, Math.min(this.wordLength - 1, c));
+    this.updateActiveTileHighlight();
+  }
+
+  updateActiveTileHighlight() {
+    // Remove cursor ativo anterior de todos os tiles
+    const allActive = this.boardElement.querySelectorAll('.tile.active-cursor');
+    allActive.forEach(t => t.classList.remove('active-cursor'));
+
+    const allRows = this.boardElement.querySelectorAll('.board-row');
+    allRows.forEach(row => {
+      if (parseInt(row.dataset.row, 10) === this.currentRow && this.isMyTurn() && !this.isGameOver) {
+        row.classList.add('current-turn-row');
+      } else {
+        row.classList.remove('current-turn-row');
+      }
+    });
+
+    if (this.isGameOver || !this.isMyTurn() || this.currentRow >= this.maxRows) return;
+
+    // Destaca o tile atual selecionado
+    const colToHighlight = Math.min(this.currentTile, this.wordLength - 1);
+    const activeTile = this.getTileElement(this.currentRow, colToHighlight);
+    if (activeTile) {
+      activeTile.classList.add('active-cursor');
+    }
+  }
+
+  moveToNextEmptyTile() {
+    const rowLetters = this.boardMatrix[this.currentRow];
+    // Procura a primeira vazia a partir do próximo slot ou volta para o início se necessário
+    let nextEmpty = -1;
+    for (let i = this.currentTile + 1; i < this.wordLength; i++) {
+      if (!rowLetters[i]) {
+        nextEmpty = i;
+        break;
+      }
+    }
+    if (nextEmpty === -1) {
+      for (let i = 0; i < this.wordLength; i++) {
+        if (!rowLetters[i]) {
+          nextEmpty = i;
+          break;
+        }
+      }
+    }
+
+    if (nextEmpty !== -1) {
+      this.currentTile = nextEmpty;
+      this.updateActiveTileHighlight();
+    }
+  }
+
+  moveCursorLeft() {
+    if (this.currentTile > 0) {
+      this.currentTile--;
+      this.updateActiveTileHighlight();
+    }
+  }
+
+  moveCursorRight() {
+    if (this.currentTile < this.wordLength - 1) {
+      this.currentTile++;
+      this.updateActiveTileHighlight();
     }
   }
 
@@ -521,6 +600,7 @@ class TermoMultiplayerGame {
       this.p2Badge.classList.add('opponent-turn');
       this.keyboardElement.classList.add('locked');
     }
+    this.updateActiveTileHighlight();
   }
 
   // ==========================================
@@ -540,6 +620,15 @@ class TermoMultiplayerGame {
       this.submitCurrentRow();
     } else if (key === 'BACKSPACE') {
       this.deleteLetter();
+    } else if (key === 'ARROWLEFT') {
+      e.preventDefault();
+      this.moveCursorLeft();
+    } else if (key === 'ARROWRIGHT') {
+      e.preventDefault();
+      this.moveCursorRight();
+    } else if (key === ' ' || key === 'SPACE' || e.code === 'Space') {
+      e.preventDefault();
+      this.moveToNextEmptyTile();
     } else if (/^[A-Z]$/.test(key)) {
       this.addLetter(key);
     }
@@ -562,15 +651,24 @@ class TermoMultiplayerGame {
   }
 
   addLetter(letter) {
-    if (this.currentTile >= this.wordLength || this.currentRow >= this.maxRows) return;
+    if (this.currentRow >= this.maxRows) return;
+    const col = Math.min(this.currentTile, this.wordLength - 1);
+    if (col < 0 || col >= this.wordLength) return;
 
-    const col = this.currentTile;
     this.boardMatrix[this.currentRow][col] = letter;
     const tileEl = this.getTileElement(this.currentRow, col);
-    tileEl.textContent = letter;
-    tileEl.classList.remove('opponent-typing');
-    tileEl.classList.add('filled');
-    this.currentTile++;
+    if (tileEl) {
+      tileEl.textContent = letter;
+      tileEl.classList.remove('opponent-typing');
+      tileEl.classList.add('filled');
+    }
+
+    if (this.currentTile < this.wordLength - 1) {
+      this.currentTile++;
+    } else {
+      this.currentTile = this.wordLength;
+    }
+    this.updateActiveTileHighlight();
 
     if (this.role !== 'solo') {
       this.sendP2P({
@@ -584,14 +682,28 @@ class TermoMultiplayerGame {
   }
 
   deleteLetter() {
-    if (this.currentTile <= 0) return;
+    if (this.currentRow >= this.maxRows) return;
 
-    this.currentTile--;
-    const col = this.currentTile;
+    // Se estiver após o último tile (fim da linha), apaga o último
+    let col = this.currentTile;
+    if (col >= this.wordLength) {
+      col = this.wordLength - 1;
+      this.currentTile = col;
+    } else if (this.boardMatrix[this.currentRow][col] === '') {
+      // Se a posição atual já estiver vazia, apaga a anterior
+      if (col > 0) {
+        col--;
+        this.currentTile = col;
+      }
+    }
+
     this.boardMatrix[this.currentRow][col] = '';
     const tileEl = this.getTileElement(this.currentRow, col);
-    tileEl.textContent = '';
-    tileEl.classList.remove('filled', 'opponent-typing');
+    if (tileEl) {
+      tileEl.textContent = '';
+      tileEl.classList.remove('filled', 'opponent-typing');
+    }
+    this.updateActiveTileHighlight();
 
     if (this.role !== 'solo') {
       this.sendP2P({
@@ -642,13 +754,15 @@ class TermoMultiplayerGame {
   // REGRAS DE VALIDAÇÃO DO TERMO & REVEAL
   // ==========================================
   submitCurrentRow() {
-    if (this.currentTile < this.wordLength) {
+    const letters = this.boardMatrix[this.currentRow];
+    const isComplete = letters.every(l => l && l.trim().length === 1);
+    if (!isComplete) {
       this.shakeCurrentRow();
       this.showToast('Palavra incompleta');
       return;
     }
 
-    const guess = this.boardMatrix[this.currentRow].join('');
+    const guess = letters.join('');
 
     // Validação de existência no banco de dados / dicionário
     if (!this.validWordsSet.has(guess)) {
