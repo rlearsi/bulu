@@ -3,7 +3,7 @@
  * Responsável pela manipulação de elementos visuais do tabuleiro 6x5, teclado virtual, animações e modais.
  */
 
-import { ProfileManager } from './profile.js?v=1.5.0';
+import { ProfileManager } from './profile.js?v=1.6.2';
 
 export class BoardUI {
   constructor({ maxRows = 6, wordLength = 5, audio, onTileClick, onVirtualKeyPress }) {
@@ -73,6 +73,14 @@ export class BoardUI {
     this.btnPlayAgain = document.getElementById('btn-play-again');
     this.btnBackLobby = document.getElementById('btn-back-lobby');
     this.btnRestart = document.getElementById('btn-restart');
+
+    // Modal de confirmação de saída (Botão Voltar / Sair)
+    this.exitConfirmModal = document.getElementById('exit-confirm-modal');
+    this.exitModalTitle = document.getElementById('exit-modal-title');
+    this.exitModalDesc = document.getElementById('exit-modal-desc');
+    this.btnCloseExit = document.getElementById('btn-close-exit');
+    this.btnCancelExit = document.getElementById('btn-cancel-exit');
+    this.btnConfirmExit = document.getElementById('btn-confirm-exit');
   }
 
   createBoard() {
@@ -296,6 +304,17 @@ export class BoardUI {
     this.goWinnerName.textContent = winnerName;
     this.goAttemptsCount.textContent = attemptsText;
     this.gameoverModal.classList.remove('hidden');
+  }
+
+  showExitConfirmModal(show, { title, desc } = {}) {
+    if (!this.exitConfirmModal) return;
+    if (show) {
+      if (title && this.exitModalTitle) this.exitModalTitle.textContent = title;
+      if (desc && this.exitModalDesc) this.exitModalDesc.textContent = desc;
+      this.exitConfirmModal.classList.remove('hidden');
+    } else {
+      this.exitConfirmModal.classList.add('hidden');
+    }
   }
 }
 

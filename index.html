@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TERMO MULTIPLAYER P2P</title>
-  <link rel="stylesheet" href="style.css?v=1.5.2">
+  <link rel="stylesheet" href="style.css?v=1.6.2">
   <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <!-- Confetti para comemoração da vitória -->
@@ -387,7 +387,21 @@
     </div>
   </div>
 
-  <script type="module" src="script.js?v=1.5.2"></script>
+  <!-- MODAL DE CONFIRMAÇÃO DE SAÍDA (BOTÃO VOLTAR ANDROID / NAVEGADOR) -->
+  <div id="exit-confirm-modal" class="modal-overlay hidden">
+    <div class="modal-content modal-confirm">
+      <button class="modal-close-btn" id="btn-close-exit">&times;</button>
+      <h2 id="exit-modal-title">Deseja sair da partida?</h2>
+      <p id="exit-modal-desc" class="modal-intro">Se você voltar agora, a partida atual será encerrada e você retornará ao menu inicial.</p>
+
+      <div class="modal-buttons">
+        <button id="btn-cancel-exit" class="btn btn-primary">Continuar aqui</button>
+        <button id="btn-confirm-exit" class="btn btn-outline">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js?v=1.6.2"></script>
 </body>
 </html>
 

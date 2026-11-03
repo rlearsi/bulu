@@ -3,14 +3,14 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData } from './words.js?v=1.5.2';
-import { AudioManager } from './js/audio.js?v=1.5.2';
-import { GameRules } from './js/game-rules.js?v=1.5.2';
-import { TurnTimer } from './js/timer.js?v=1.5.2';
-import { ProfileManager } from './js/profile.js?v=1.5.2';
-import { P2PNetwork } from './js/network.js?v=1.5.2';
-import { ChatManager } from './js/chat.js?v=1.5.2';
-import { BoardUI } from './js/board-ui.js?v=1.5.2';
+import { wordsData } from './words.js?v=1.6.2';
+import { AudioManager } from './js/audio.js?v=1.6.2';
+import { GameRules } from './js/game-rules.js?v=1.6.2';
+import { TurnTimer } from './js/timer.js?v=1.6.2';
+import { ProfileManager } from './js/profile.js?v=1.6.2';
+import { P2PNetwork } from './js/network.js?v=1.6.2';
+import { ChatManager } from './js/chat.js?v=1.6.2';
+import { BoardUI } from './js/board-ui.js?v=1.6.2';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -72,9 +72,139 @@ class TermoMultiplayerGame {
     });
 
     this.initEvents();
+    this.initBackButtonProtection();
     this.ui.createBoard();
     this.ui.createKeyboard();
     this.refreshHighlight();
+  }
+
+  // ==========================================
+  // PROTEÇÃO DO BOTÃO VOLTAR (ANDROID / MOBILE)
+  // ==========================================
+  initBackButtonProtection() {
+    this.allowPageExit = false;
+
+    const pushGuardState = () => {
+      try {
+        window.history.pushState({ termoBackGuard: true }, '', window.location.href);
+      } catch (e) {
+        // Ignora caso o navegador restrinja manipulação de histórico local
+      }
+    };
+
+    // Empurra estado inicial para interceptar o gesto/botão "Voltar" no smartphone
+    if (!window.history.state || !window.history.state.termoBackGuard) {
+      try {
+        window.history.replaceState({ termoBackGuard: false }, '', window.location.href);
+      } catch (e) {}
+      pushGuardState();
+    }
+
+    // Garante que o guardião esteja ativo após a primeira interação do usuário
+    // (Necessário para contornar a proteção de "sticky activation" do Chrome no Android)
+    const ensureHistoryGuard = () => {
+      if (!window.history.state || !window.history.state.termoBackGuard) {
+        pushGuardState();
+      }
+    };
+    window.addEventListener('pointerdown', ensureHistoryGuard, { passive: true });
+
+    window.addEventListener('popstate', () => {
+      if (this.allowPageExit) return;
+
+      // Re-insere o estado imediatamente para impedir que a página feche ou saia do jogo
+      pushGuardState();
+
+      this.handleAndroidBackNavigation();
+    });
+  }
+
+  handleAndroidBackNavigation() {
+    // 1. Se o modal de confirmação de saída já estiver aberto, fecha ele
+    if (this.ui.exitConfirmModal && !this.ui.exitConfirmModal.classList.contains('hidden')) {
+      this.ui.showExitConfirmModal(false);
+      return;
+    }
+
+    // 2. Se o chat sobreposto estiver aberto, fecha apenas o chat
+    if (this.chat && this.chat.isChatOpen) {
+      this.chat.toggle(false);
+      return;
+    }
+
+    // 3. Se o modal de Perfil estiver aberto, fecha apenas o modal de Perfil
+    if (this.profile && this.profile.isModalOpen()) {
+      this.profile.showModal(false);
+      return;
+    }
+
+    // 4. Se o modal de Ajuda estiver aberto, fecha apenas o modal de Ajuda
+    if (this.ui.helpModal && !this.ui.helpModal.classList.contains('hidden')) {
+      this.ui.showHelpModal(false);
+      return;
+    }
+
+    // 5. Se o modal de Privacidade estiver aberto, fecha apenas o modal de Privacidade
+    if (this.ui.privacyModal && !this.ui.privacyModal.classList.contains('hidden')) {
+      this.ui.showPrivacyModal(false);
+      return;
+    }
+
+    // 6. Se estiver em uma partida (tabuleiro visível) ou aguardando na sala criada/conectando
+    const isInMatch = this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden');
+    const isWaitingHost = this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
+    const isJoiningRoom = this.ui.joinStatus && !this.ui.joinStatus.classList.contains('hidden');
+
+    if (isInMatch) {
+      // Se o modal de Fim de Jogo já estiver na tela, pergunta se deseja voltar ao Lobby
+      this.pendingExitAction = 'lobby';
+      this.ui.showExitConfirmModal(true, {
+        title: 'Deseja sair da partida?',
+        desc: 'Se você sair agora, a partida atual será encerrada e você voltará para o início.'
+      });
+      return;
+    }
+
+    if (isWaitingHost || isJoiningRoom) {
+      this.pendingExitAction = 'lobby';
+      this.ui.showExitConfirmModal(true, {
+        title: 'Cancelar conexão da sala?',
+        desc: 'Deseja cancelar a sala atual e voltar ao menu inicial?'
+      });
+      return;
+    }
+
+    // 7. Se já estiver no Lobby com tudo fechado, pergunta se deseja sair do jogo
+    this.pendingExitAction = 'leave_app';
+    this.ui.showExitConfirmModal(true, {
+      title: 'Deseja sair do jogo?',
+      desc: 'Toque em "Continuar aqui" para permanecer no Termo Duelo.'
+    });
+  }
+
+  handleConfirmExitAction() {
+    this.ui.showExitConfirmModal(false);
+    if (this.pendingExitAction === 'lobby') {
+      this.resetToLobby();
+    } else if (this.pendingExitAction === 'leave_app') {
+      this.allowPageExit = true;
+      window.history.go(-2);
+    }
+    this.pendingExitAction = null;
+  }
+
+  requestLeaveMatchConfirmation() {
+    const isInMatch = this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden');
+    const isWaitingHost = this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
+    if (isInMatch && !this.isGameOver) {
+      this.pendingExitAction = 'lobby';
+      this.ui.showExitConfirmModal(true, {
+        title: 'Deseja sair da partida?',
+        desc: 'Se você sair agora, a partida atual será encerrada e você voltará para o início.'
+      });
+    } else if (isInMatch || isWaitingHost) {
+      this.resetToLobby();
+    }
   }
 
   initEvents() {
@@ -92,13 +222,18 @@ class TermoMultiplayerGame {
     this.ui.btnCloseHelp.addEventListener('click', () => this.ui.showHelpModal(false));
     this.ui.btnHelpOk.addEventListener('click', () => this.ui.showHelpModal(false));
     this.ui.btnBackLobby.addEventListener('click', () => this.resetToLobby());
-    this.ui.btnRestart.addEventListener('click', () => this.resetToLobby());
+    this.ui.btnRestart.addEventListener('click', () => this.requestLeaveMatchConfirmation());
     this.ui.btnSurrender.addEventListener('click', () => this.handleSurrender());
     this.ui.btnPlayAgain.addEventListener('click', () => this.handlePlayAgainRequest());
 
     if (this.ui.btnPrivacy) this.ui.btnPrivacy.addEventListener('click', () => this.ui.showPrivacyModal(true));
     if (this.ui.btnClosePrivacy) this.ui.btnClosePrivacy.addEventListener('click', () => this.ui.showPrivacyModal(false));
     if (this.ui.btnPrivacyOk) this.ui.btnPrivacyOk.addEventListener('click', () => this.ui.showPrivacyModal(false));
+
+    // Eventos do Modal de Confirmação de Saída
+    if (this.ui.btnCloseExit) this.ui.btnCloseExit.addEventListener('click', () => this.ui.showExitConfirmModal(false));
+    if (this.ui.btnCancelExit) this.ui.btnCancelExit.addEventListener('click', () => this.ui.showExitConfirmModal(false));
+    if (this.ui.btnConfirmExit) this.ui.btnConfirmExit.addEventListener('click', () => this.handleConfirmExitAction());
 
     // Desbloqueia contexto de áudio no primeiro toque/clique
     const unlockAudio = () => this.audio.getAudioContext();
@@ -455,6 +590,7 @@ class TermoMultiplayerGame {
     if (this.ui.helpModal.offsetParent !== null || this.ui.gameoverModal.offsetParent !== null) return;
     if (this.profile.isModalOpen()) return;
     if (this.ui.privacyModal && this.ui.privacyModal.offsetParent !== null) return;
+    if (this.ui.exitConfirmModal && this.ui.exitConfirmModal.offsetParent !== null) return;
 
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
 
@@ -846,6 +982,7 @@ class TermoMultiplayerGame {
 
     this.ui.gameoverModal.classList.add('hidden');
     if (this.ui.privacyModal) this.ui.privacyModal.classList.add('hidden');
+    if (this.ui.exitConfirmModal) this.ui.exitConfirmModal.classList.add('hidden');
     this.ui.helpModal.classList.add('hidden');
     this.ui.boardContainer.classList.add('hidden');
     this.ui.keyboardContainer.classList.add('hidden');

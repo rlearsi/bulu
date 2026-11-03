@@ -229,3 +229,20 @@
   filter: brightness(1.2);
 }
 
+/* MODAL DE CONFIRMAÇÃO DE SAÍDA */
+.modal-confirm {
+  text-align: center;
+  max-width: 380px;
+}
+
+.modal-confirm h2 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.modal-confirm .modal-intro {
+  line-height: 1.45;
+  margin-bottom: 22px;
+}
+
+
