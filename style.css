@@ -867,19 +867,6 @@ body {
   }
 }
 
-/* ANIMAÇÃO DE PULO QUANDO VENCE (BOUNCE) */
-.tile.bounce {
-  animation: bounceTile 0.6s ease;
-}
-
-@keyframes bounceTile {
-  0%, 20% { transform: translateY(0); }
-  40% { transform: translateY(-20px); }
-  50% { transform: translateY(0); }
-  60% { transform: translateY(-10px); }
-  80%, 100% { transform: translateY(0); }
-}
-
 /* CORES DOS STATUS DAS LETRAS */
 .tile.correct {
   background-color: var(--color-correct) !important;

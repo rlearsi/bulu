@@ -16,6 +16,7 @@ class TermoMultiplayerGame {
     this.currentTile = 0;
     this.secretWord = '';
     this.isGameOver = false;
+    this.isRevealing = false;
 
     // Multiplayer / P2P
     this.role = 'solo'; // 'host', 'guest', 'solo'
@@ -271,7 +272,7 @@ class TermoMultiplayerGame {
   }
 
   handleTileClick(r, c) {
-    if (this.isGameOver || !this.isMyTurn()) return;
+    if (this.isGameOver || this.isRevealing || !this.isMyTurn()) return;
     if (r !== this.currentRow) return; // Permite focar apenas nos tiles da linha da rodada atual
 
     this.currentTile = Math.max(0, Math.min(this.wordLength - 1, c));
@@ -285,14 +286,14 @@ class TermoMultiplayerGame {
 
     const allRows = this.boardElement.querySelectorAll('.board-row');
     allRows.forEach(row => {
-      if (parseInt(row.dataset.row, 10) === this.currentRow && this.isMyTurn() && !this.isGameOver) {
+      if (parseInt(row.dataset.row, 10) === this.currentRow && this.isMyTurn() && !this.isGameOver && !this.isRevealing) {
         row.classList.add('current-turn-row');
       } else {
         row.classList.remove('current-turn-row');
       }
     });
 
-    if (this.isGameOver || !this.isMyTurn() || this.currentRow >= this.maxRows) return;
+    if (this.isGameOver || this.isRevealing || !this.isMyTurn() || this.currentRow >= this.maxRows) return;
 
     // Destaca o tile atual selecionado
     const colToHighlight = Math.min(this.currentTile, this.wordLength - 1);
@@ -615,7 +616,7 @@ class TermoMultiplayerGame {
     this.lobbyScreen.classList.add('hidden');
     this.boardContainer.classList.remove('hidden');
     this.keyboardContainer.classList.remove('hidden');
-    this.statusBar.classList.remove('hidden');
+    this.statusBar.classList.add('hidden');
     if (this.btnSurrender) this.btnSurrender.classList.remove('hidden');
 
     this.updateStatusBar();
@@ -638,6 +639,7 @@ class TermoMultiplayerGame {
     this.currentRow = 0;
     this.currentTile = 0;
     this.isGameOver = false;
+    this.isRevealing = false;
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
     this.keyboardStatus = {};
 
@@ -652,31 +654,28 @@ class TermoMultiplayerGame {
   }
 
   updateStatusBar() {
+    if (this.role === 'solo') {
+      this.stopTurnTimer();
+      this.statusBar.classList.add('hidden');
+      if (this.turnTimerElement) this.turnTimerElement.classList.add('hidden');
+      this.keyboardElement.classList.remove('locked');
+      this.updateActiveTileHighlight();
+      return;
+    }
+
+    this.statusBar.classList.remove('hidden');
     this.updateScoreDisplay();
 
     // Renderiza avatar e nome do Jogador 1 (Você)
     if (this.p1Badge) {
-      const p1Label = this.role === 'host' ? `${this.myName} (Host)` : (this.role === 'solo' ? this.myName : this.myName);
+      const p1Label = this.role === 'host' ? `${this.myName} (Host)` : this.myName;
       const p1NameEl = this.p1Badge.querySelector('.p-name');
       if (p1NameEl) p1NameEl.textContent = p1Label;
       this.renderAvatarElement(this.p1AvatarImg, this.p1AvatarPh, this.myAvatar);
     }
 
-    if (this.role === 'solo') {
-      this.p2Badge.classList.add('hidden');
-      if (this.p2ScoreElement) this.p2ScoreElement.classList.add('hidden');
-      if (this.scoreVsElement) this.scoreVsElement.classList.add('hidden');
-      if (this.turnIndicator) {
-        this.turnIndicator.textContent = `Tentativa ${this.currentRow + 1} de ${this.maxRows}`;
-      }
-      this.keyboardElement.classList.remove('locked');
-      this.p1Badge.classList.remove('opponent-turn');
-      this.p1Badge.classList.add('my-turn');
-      this.startTurnTimer();
-      return;
-    }
-
     this.p2Badge.classList.remove('hidden');
+    if (this.p1ScoreElement) this.p1ScoreElement.classList.remove('hidden');
     if (this.p2ScoreElement) this.p2ScoreElement.classList.remove('hidden');
     if (this.scoreVsElement) this.scoreVsElement.classList.remove('hidden');
 
@@ -809,7 +808,9 @@ class TermoMultiplayerGame {
     }
 
     this.updateProfileDisplay();
-    this.updateStatusBar();
+    if (this.lobbyScreen && this.lobbyScreen.classList.contains('hidden')) {
+      this.updateStatusBar();
+    }
 
     // Se estiver em partida P2P conectada, sincroniza o perfil atualizado para o adversário
     if (this.role !== 'solo' && this.peerConn && this.peerConn.open) {
@@ -829,7 +830,7 @@ class TermoMultiplayerGame {
   // ==========================================
   startTurnTimer() {
     this.stopTurnTimer();
-    if (this.isGameOver) {
+    if (this.isGameOver || this.role === 'solo') {
       if (this.turnTimerElement) this.turnTimerElement.classList.add('hidden');
       return;
     }
@@ -891,20 +892,7 @@ class TermoMultiplayerGame {
 
   handleTurnTimeout() {
     this.stopTurnTimer();
-    if (this.isGameOver) return;
-
-    if (this.role === 'solo') {
-      this.showToast('Tempo esgotado!');
-      this.clearUnsubmittedRow(this.currentRow);
-      this.currentRow++;
-      this.currentTile = 0;
-      if (this.currentRow >= this.maxRows) {
-        this.triggerGameOverLoss();
-      } else {
-        this.updateStatusBar();
-      }
-      return;
-    }
+    if (this.isGameOver || this.role === 'solo') return;
 
     // Multiplayer: quem estiver no turno atual teve o tempo esgotado
     if (this.isMyTurn()) {
@@ -949,7 +937,7 @@ class TermoMultiplayerGame {
   // ENTRADA DE DADOS E PALPITES
   // ==========================================
   handlePhysicalKeyPress(e) {
-    if (this.isGameOver || this.lobbyScreen.offsetParent !== null) return;
+    if (this.isGameOver || this.isRevealing || this.lobbyScreen.offsetParent !== null) return;
     if (this.helpModal.offsetParent !== null || this.gameoverModal.offsetParent !== null) return;
     if (this.profileModal && this.profileModal.offsetParent !== null) return;
     if (this.privacyModal && this.privacyModal.offsetParent !== null) return;
@@ -982,7 +970,7 @@ class TermoMultiplayerGame {
   }
 
   handleVirtualKeyPress(key) {
-    if (this.isGameOver) return;
+    if (this.isGameOver || this.isRevealing) return;
     if (!this.isMyTurn()) {
       this.showToast('Aguarde a vez do seu oponente!');
       return;
@@ -998,7 +986,7 @@ class TermoMultiplayerGame {
   }
 
   addLetter(letter) {
-    if (this.currentRow >= this.maxRows) return;
+    if (this.isRevealing || this.currentRow >= this.maxRows) return;
     const col = Math.min(this.currentTile, this.wordLength - 1);
     if (col < 0 || col >= this.wordLength) return;
 
@@ -1029,7 +1017,7 @@ class TermoMultiplayerGame {
   }
 
   deleteLetter() {
-    if (this.currentRow >= this.maxRows) return;
+    if (this.isRevealing || this.currentRow >= this.maxRows) return;
 
     // Se estiver após o último tile (fim da linha), apaga o último
     let col = this.currentTile;
@@ -1101,6 +1089,8 @@ class TermoMultiplayerGame {
   // REGRAS DE VALIDAÇÃO DO TERMO & REVEAL
   // ==========================================
   submitCurrentRow() {
+    if (this.isRevealing || this.isGameOver || this.currentRow >= this.maxRows) return;
+
     const letters = this.boardMatrix[this.currentRow];
     const isComplete = letters.every(l => l && l.trim().length === 1);
     if (!isComplete) {
@@ -1125,10 +1115,13 @@ class TermoMultiplayerGame {
     this.stopTurnTimer();
 
     // Bloqueia temporariamente para a animação
+    this.isRevealing = true;
     this.keyboardElement.classList.add('locked');
+    this.updateActiveTileHighlight();
 
     // Executa a revelação com a animação flip idêntica
     this.animateRowReveal(this.currentRow, guess, evaluation, () => {
+      this.isRevealing = false;
       if (isWin) {
         this.triggerWin(this.myName, true);
         if (this.role !== 'solo') {
@@ -1180,6 +1173,8 @@ class TermoMultiplayerGame {
   // Quando o oponente joga
   handleOpponentGuess(guess, evaluation, nextTurnRole, isWin, winnerRole) {
     this.stopTurnTimer();
+    this.isRevealing = true;
+    this.updateActiveTileHighlight();
     const opponentRow = this.currentRow;
     const rowEl = this.getRowElement(opponentRow);
     if (rowEl) {
@@ -1195,6 +1190,7 @@ class TermoMultiplayerGame {
     }
 
     this.animateRowReveal(opponentRow, guess, evaluation, () => {
+      this.isRevealing = false;
       if (isWin) {
         this.triggerWin(this.oppName, false);
       } else {
@@ -1320,15 +1316,6 @@ class TermoMultiplayerGame {
       this.oppScore++;
     }
     this.updateScoreDisplay();
-
-    // Animação de pulo (bounce) nas letras vencedoras
-    const winRow = this.currentRow;
-    for (let c = 0; c < this.wordLength; c++) {
-      const tile = this.getTileElement(winRow, c);
-      setTimeout(() => {
-        tile.classList.add('bounce');
-      }, c * 100);
-    }
 
     if (window.confetti && isMe) {
       confetti({
