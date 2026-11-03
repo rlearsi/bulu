@@ -10,9 +10,12 @@
   --tile-empty: #615256;
   --tile-border: #4c4347;
   --tile-active-border: #8d7981;
-  --color-absent: #312a2c;       /* Cinza escuro da letra errada */
-  --color-present: #d3ad69;      /* Amarelo/Dourado do Termo */
-  --color-correct: #3aa394;      /* Verde água do Termo */
+  --color-absent: #312a2c;
+  /* Cinza escuro da letra errada */
+  --color-present: #d3ad69;
+  /* Amarelo/Dourado do Termo */
+  --color-correct: #3aa394;
+  /* Verde água do Termo */
   --key-bg: #4c4347;
   --key-active: #5c5257;
   --text-primary: #ffffff;
@@ -66,7 +69,7 @@ body {
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
@@ -147,8 +150,15 @@ body {
 }
 
 @keyframes badgePop {
-  0% { transform: scale(0.3); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .action-btn:hover {
@@ -302,8 +312,8 @@ body {
   transition: color 0.25s ease;
 }
 
-.scoreboard-team.my-turn ~ #p1-score,
-#p1-badge.my-turn + #p1-score {
+.scoreboard-team.my-turn~#p1-score,
+#p1-badge.my-turn+#p1-score {
   color: #00ff88;
 }
 
@@ -585,6 +595,7 @@ body {
     opacity: 0;
     transform: translate(-50%, -47%) scale(0.97);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
@@ -642,6 +653,7 @@ body {
 .chat-messages::-webkit-scrollbar {
   width: 4px;
 }
+
 .chat-messages::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
@@ -663,8 +675,15 @@ body {
 }
 
 @keyframes chatMsgAppear {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .chat-msg-row.sent {
@@ -768,10 +787,6 @@ body {
   grid-gap: 6px;
 }
 
-.board-row.current-row {
-  /* Linha atual em foco */
-}
-
 /* BLOCO DAS LETRAS */
 .tile {
   width: 100%;
@@ -831,9 +846,17 @@ body {
 
 /* ANIMAÇÃO CLÁSSICA DO TERMO: POP QUANDO DIGITA */
 @keyframes popLetter {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ANIMAÇÃO DE SHAKE QUANDO PALAVRA É INVÁLIDA */
@@ -842,9 +865,21 @@ body {
 }
 
 @keyframes shakeRow {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-3px); }
-  40%, 80% { transform: translateX(3px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-3px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(3px);
+  }
 }
 
 /* ANIMAÇÃO DE VIRADA (REVEAL FLIP) EXATA DO TERMO */
@@ -856,12 +891,15 @@ body {
   0% {
     transform: rotateX(0);
   }
+
   49% {
     transform: rotateX(90deg);
   }
+
   50% {
     transform: rotateX(90deg);
   }
+
   100% {
     transform: rotateX(0deg);
   }
@@ -973,19 +1011,34 @@ body {
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; transform: translate(-50%, -6px); }
-  20% { opacity: 1; transform: translate(-50%, 0); }
-  75% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, -6px); }
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
 }
 
 /* TELA DO LOBBY */
 .lobby-card {
   background: rgba(49, 42, 44, 0.92);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 24px 20px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
   max-width: 440px;
   margin: auto;
   width: 100%;
@@ -1018,7 +1071,8 @@ body {
   color: var(--text-muted);
 }
 
-.lobby-section input, .join-input-group input {
+.lobby-section input,
+.join-input-group input {
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1031,7 +1085,8 @@ body {
   transition: border 0.2s, background 0.2s;
 }
 
-.lobby-section input:focus, .join-input-group input:focus {
+.lobby-section input:focus,
+.join-input-group input:focus {
   border-color: rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.08);
 }
@@ -1093,13 +1148,13 @@ body {
 
 .btn-outline {
   background: transparent;
-  border: 2px solid rgba(255,255,255,0.25);
+  border: 2px solid rgba(255, 255, 255, 0.25);
   color: #fff;
   width: 100%;
 }
 
 .btn-outline:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-block {
@@ -1112,7 +1167,7 @@ body {
   position: relative;
   font-size: 0.8rem;
   font-weight: 800;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .join-input-group {
@@ -1161,8 +1216,15 @@ body {
 }
 
 @keyframes pulseOpacity {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .lobby-solo {
@@ -1249,7 +1311,7 @@ body {
 
 .modal-content {
   background: #312a2c;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 24px;
   max-width: 440px;
@@ -1311,9 +1373,17 @@ body {
   color: #fff;
 }
 
-.badge.correct { background: var(--color-correct); }
-.badge.present { background: var(--color-present); }
-.badge.absent { background: var(--color-absent); }
+.badge.correct {
+  background: var(--color-correct);
+}
+
+.badge.present {
+  background: var(--color-present);
+}
+
+.badge.absent {
+  background: var(--color-absent);
+}
 
 .multiplayer-rules-highlight {
   background: rgba(255, 255, 255, 0.04);
@@ -1411,4 +1481,3 @@ body {
 .hidden {
   display: none !important;
 }
-

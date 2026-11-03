@@ -109,6 +109,43 @@ class TermoMultiplayerGame {
     }
   }
 
+  playChatNotificationSound() {
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+
+      // Primeiro tom (C5 -> E5 suave)
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(523.25, now); // C5
+      gain1.gain.setValueAtTime(0.0001, now);
+      gain1.gain.linearRampToValueAtTime(0.07, now + 0.015);
+      gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.11);
+      osc1.connect(gain1);
+      gain1.connect(ctx.destination);
+      osc1.start(now);
+      osc1.stop(now + 0.11);
+
+      // Segundo tom harmônico (G5) para efeito de notificação de chat
+      const osc2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(783.99, now + 0.08); // G5
+      gain2.gain.setValueAtTime(0.0001, now + 0.08);
+      gain2.gain.linearRampToValueAtTime(0.08, now + 0.1);
+      gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.28);
+      osc2.connect(gain2);
+      gain2.connect(ctx.destination);
+      osc2.start(now + 0.08);
+      osc2.stop(now + 0.28);
+    } catch (e) {
+      // Áudio silencioso se bloqueado pelo browser
+    }
+  }
+
   initDOM() {
     this.lobbyScreen = document.getElementById('lobby-screen');
     this.boardContainer = document.getElementById('board-container');
@@ -237,6 +274,11 @@ class TermoMultiplayerGame {
         this.handleSendChatMessage();
       });
     }
+
+    // Desbloqueia contexto de áudio no primeiro toque/clique do usuário para garantir sons P2P
+    const unlockAudio = () => this.getAudioContext();
+    window.addEventListener('pointerdown', unlockAudio, { once: true });
+    window.addEventListener('keydown', unlockAudio, { once: true });
 
     // Inicializa display do perfil na Home
     this.updateProfileDisplay();
@@ -1557,7 +1599,11 @@ class TermoMultiplayerGame {
     } else if (this.role === 'solo') {
       // Resposta automática / amigável em modo solo/treino
       setTimeout(() => {
-        this.appendChatMessage('Computador', 'Estou focado em adivinhar as palavras!', new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), 'received');
+        this.handleIncomingChatMessage({
+          sender: 'Computador',
+          text: 'Estou focado em adivinhar as palavras!',
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
       }, 700);
     }
 
@@ -1576,8 +1622,8 @@ class TermoMultiplayerGame {
     if (!this.isChatOpen) {
       this.unreadMessagesCount++;
       this.updateChatBadge();
-      // Som sutil de mensagem recebida
-      this.playKeySound('present');
+      // Som de notificação apenas se o chat estiver fechado
+      this.playChatNotificationSound();
     }
   }
 
