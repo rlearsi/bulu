@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TERMO MULTIPLAYER P2P</title>
-  <link rel="stylesheet" href="style.css?v=1.6.10">
+  <link rel="stylesheet" href="style.css?v=1.6.11">
   <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <!-- Confetti para comemoração da vitória -->
@@ -198,6 +198,14 @@
 
         <form id="chat-form" class="chat-form">
           <input type="text" id="chat-input" class="chat-input" placeholder="Digite uma mensagem..." maxlength="120" autocomplete="off">
+          <button type="button" id="btn-chat-mic" class="chat-mic-btn" title="Gravar áudio (até 3s)">
+            <svg class="mic-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="22"></line>
+            </svg>
+            <span id="chat-mic-timer" class="chat-mic-timer hidden">3s</span>
+          </button>
           <button type="submit" id="btn-chat-send" class="chat-send-btn" title="Enviar mensagem">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -406,7 +414,7 @@
     </div>
   </div>
 
-  <script type="module" src="script.js?v=1.6.10"></script>
+  <script type="module" src="script.js?v=1.6.11"></script>
 </body>
 </html>
 
