@@ -17,22 +17,49 @@
       <h1 class="logo-title">TERMO <span>DUELO</span></h1>
     </header>
 
-    <!-- BARRA DE AÇÕES (LINHA ÚNICA ABAIXO DA LOGO: AJUDA, DESISTIR, REINICIAR) -->
+    <!-- BARRA DE AÇÕES (LINHA ÚNICA ABAIXO DA LOGO: PERFIL, AJUDA, DESISTIR, REINICIAR) -->
     <div id="game-actions-bar" class="game-actions-bar">
+      <button id="btn-profile" class="action-btn" title="Perfil (Nome e Foto)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </button>
       <button id="btn-help" class="action-btn" title="Ajuda">?</button>
       <button id="btn-surrender" class="action-btn hidden" title="Desistir da partida">Desistir</button>
       <button id="btn-restart" class="action-btn" title="Nova Sala / Sair">↺</button>
     </div>
 
-    <!-- STATUS BAR / JOGADORES -->
+    <!-- STATUS BAR / JOGADORES E PLACAR -->
     <div id="game-status-bar" class="status-bar hidden">
-      <div class="players-info">
-        <div id="p1-badge" class="player-pill">
-          <span class="dot"></span>
+      <div class="match-scoreboard">
+        <!-- Jogador 1 (Você) -->
+        <div id="p1-badge" class="scoreboard-team">
+          <div class="avatar-wrap">
+            <img id="p1-avatar-img" class="player-avatar hidden" alt="Avatar">
+            <span id="p1-avatar-ph" class="player-avatar-ph">👤</span>
+            <span class="dot"></span>
+          </div>
           <span class="p-name">Você</span>
         </div>
-        <div id="p2-badge" class="player-pill">
-          <span class="dot"></span>
+
+        <span id="p1-score" class="score-num">0</span>
+
+        <!-- Centro: X e Timer abaixo -->
+        <div class="scoreboard-center">
+          <span class="score-vs">×</span>
+          <div id="turn-timer" class="turn-timer hidden">03:00</div>
+        </div>
+
+        <span id="p2-score" class="score-num">0</span>
+
+        <!-- Jogador 2 (Oponente) -->
+        <div id="p2-badge" class="scoreboard-team">
+          <div class="avatar-wrap">
+            <img id="p2-avatar-img" class="player-avatar hidden" alt="Avatar">
+            <span id="p2-avatar-ph" class="player-avatar-ph">👤</span>
+            <span class="dot"></span>
+          </div>
           <span class="p-name">Oponente</span>
         </div>
       </div>
@@ -42,8 +69,20 @@
     <div id="lobby-screen" class="lobby-card">
       <h2 class="lobby-title">Duelo Multiplayer</h2>
 
-      <div class="lobby-section">
-        <input type="text" id="player-nickname" maxlength="12" placeholder="Your Nickname" value="Jogador 1">
+      <!-- CARTÃO DE PERFIL DO JOGADOR NA HOME -->
+      <div class="lobby-profile-card">
+        <div class="lobby-avatar-picker" id="lobby-avatar-trigger" title="Clique para alterar a foto">
+          <img id="home-avatar-img" class="lobby-avatar-img hidden" alt="Sua foto">
+          <span id="home-avatar-ph" class="lobby-avatar-ph">👤</span>
+          <div class="avatar-badge-edit">📷</div>
+        </div>
+        <div class="lobby-profile-info">
+          <span class="lobby-profile-label">Seu Jogador</span>
+          <div class="lobby-profile-name-row">
+            <span id="home-player-name" class="lobby-player-name">Jogador 1</span>
+            <button id="btn-quick-edit-name" class="btn-icon-edit" title="Editar perfil">✏️</button>
+          </div>
+        </div>
       </div>
 
       <div class="lobby-actions">
@@ -87,9 +126,6 @@
 
     <!-- TABULEIRO DO JOGO (6 LINHAS X 5 COLUNAS) -->
     <main id="board-container" class="board-wrapper hidden">
-      <!-- CRONÔMETRO DE TURNO -->
-      <div id="turn-timer" class="turn-timer hidden">03:00</div>
-
       <div id="board" class="board"></div>
       
       <!-- Aviso de feedback rápido (Ex: 'Palavra não encontrada', 'Não é sua vez') -->
@@ -213,6 +249,36 @@
       </div>
 
       <button id="btn-privacy-ok" class="btn btn-primary btn-block">Entendi</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE PERFIL (ALTERAR NOME E FOTO) -->
+  <div id="profile-modal" class="modal-overlay hidden">
+    <div class="modal-content modal-profile">
+      <button class="modal-close-btn" id="btn-close-profile">&times;</button>
+      <h2>Perfil do Jogador</h2>
+      <p class="modal-intro">Personalize seu apelido e sua foto para os duelos.</p>
+
+      <div class="profile-avatar-edit-box">
+        <div class="profile-avatar-preview-wrap">
+          <img id="modal-avatar-preview" class="profile-avatar-preview hidden" alt="Avatar">
+          <span id="modal-avatar-placeholder" class="profile-avatar-ph">👤</span>
+        </div>
+        <div class="profile-avatar-actions">
+          <button id="btn-choose-avatar" class="btn btn-secondary">Escolher Foto</button>
+          <button id="btn-remove-avatar" class="btn btn-outline btn-sm hidden">Remover Foto</button>
+          <input type="file" id="input-avatar-file" accept="image/*" class="hidden">
+        </div>
+      </div>
+
+      <div class="profile-name-edit-box">
+        <label for="input-profile-name">Seu Apelido:</label>
+        <input type="text" id="input-profile-name" maxlength="12" placeholder="Digite seu nome">
+      </div>
+
+      <div class="modal-buttons">
+        <button id="btn-save-profile" class="btn btn-primary btn-block">Salvar Perfil</button>
+      </div>
     </div>
   </div>
 

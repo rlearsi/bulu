@@ -31,8 +31,12 @@ class TermoMultiplayerGame {
     this.peer = null;
     this.peerConn = null;
     this.roomCode = '';
-    this.myName = 'Jogador 1';
+    // Perfil do Jogador (Nome e Foto em base64)
+    this.myName = localStorage.getItem('termo_player_name') || 'Jogador 1';
+    this.myAvatar = localStorage.getItem('termo_player_avatar') || '';
     this.oppName = 'Oponente';
+    this.oppAvatar = '';
+    this.tempAvatar = this.myAvatar;
     this.currentTurnRole = 'host'; // Quem joga agora ('host' ou 'guest' ou 'solo')
 
     // Matriz de letras no tabuleiro [linha][coluna]
@@ -41,6 +45,10 @@ class TermoMultiplayerGame {
     this.keyboardStatus = {};
     this.validWordsSet = new Set(this.wordsList.map(w => (w.normalized || w.word).toUpperCase()));
     this.audioCtx = null;
+
+    // Sistema de Pontuação / Placar
+    this.myScore = 0;
+    this.oppScore = 0;
 
     // Sistema de Tempo (3 minutos por jogador / 180 segundos)
     this.turnDuration = 180;
@@ -135,10 +143,36 @@ class TermoMultiplayerGame {
     this.toastMessage = document.getElementById('toast-message');
     this.turnTimerElement = document.getElementById('turn-timer');
 
-    // Badges jogadores
+    // Badges jogadores e placar
     this.p1Badge = document.getElementById('p1-badge');
     this.p2Badge = document.getElementById('p2-badge');
-    this.playerNicknameInput = document.getElementById('player-nickname');
+    this.p1ScoreElement = document.getElementById('p1-score');
+    this.p2ScoreElement = document.getElementById('p2-score');
+    this.scoreVsElement = document.querySelector('.score-vs');
+
+    // Elementos de Perfil / Avatar
+    this.p1AvatarImg = document.getElementById('p1-avatar-img');
+    this.p1AvatarPh = document.getElementById('p1-avatar-ph');
+    this.p2AvatarImg = document.getElementById('p2-avatar-img');
+    this.p2AvatarPh = document.getElementById('p2-avatar-ph');
+
+    this.homeAvatarImg = document.getElementById('home-avatar-img');
+    this.homeAvatarPh = document.getElementById('home-avatar-ph');
+    this.homePlayerName = document.getElementById('home-player-name');
+    this.lobbyAvatarTrigger = document.getElementById('lobby-avatar-trigger');
+    this.btnQuickEditName = document.getElementById('btn-quick-edit-name');
+
+    // Modal de Perfil
+    this.profileModal = document.getElementById('profile-modal');
+    this.btnProfile = document.getElementById('btn-profile');
+    this.btnCloseProfile = document.getElementById('btn-close-profile');
+    this.modalAvatarPreview = document.getElementById('modal-avatar-preview');
+    this.modalAvatarPlaceholder = document.getElementById('modal-avatar-placeholder');
+    this.btnChooseAvatar = document.getElementById('btn-choose-avatar');
+    this.btnRemoveAvatar = document.getElementById('btn-remove-avatar');
+    this.inputAvatarFile = document.getElementById('input-avatar-file');
+    this.inputProfileName = document.getElementById('input-profile-name');
+    this.btnSaveProfile = document.getElementById('btn-save-profile');
 
     // Botões do Lobby
     this.btnCreateRoom = document.getElementById('btn-create-room');
@@ -195,6 +229,19 @@ class TermoMultiplayerGame {
     if (this.btnPrivacy) this.btnPrivacy.addEventListener('click', () => this.showPrivacyModal(true));
     if (this.btnClosePrivacy) this.btnClosePrivacy.addEventListener('click', () => this.showPrivacyModal(false));
     if (this.btnPrivacyOk) this.btnPrivacyOk.addEventListener('click', () => this.showPrivacyModal(false));
+
+    // Eventos de Perfil (Nome e Foto)
+    if (this.btnProfile) this.btnProfile.addEventListener('click', () => this.showProfileModal(true));
+    if (this.btnCloseProfile) this.btnCloseProfile.addEventListener('click', () => this.showProfileModal(false));
+    if (this.lobbyAvatarTrigger) this.lobbyAvatarTrigger.addEventListener('click', () => this.showProfileModal(true));
+    if (this.btnQuickEditName) this.btnQuickEditName.addEventListener('click', () => this.showProfileModal(true));
+    if (this.btnChooseAvatar) this.btnChooseAvatar.addEventListener('click', () => this.inputAvatarFile.click());
+    if (this.inputAvatarFile) this.inputAvatarFile.addEventListener('change', (e) => this.handleAvatarFileSelect(e));
+    if (this.btnRemoveAvatar) this.btnRemoveAvatar.addEventListener('click', () => this.handleAvatarRemove());
+    if (this.btnSaveProfile) this.btnSaveProfile.addEventListener('click', () => this.handleSaveProfile());
+
+    // Inicializa display do perfil na Home
+    this.updateProfileDisplay();
   }
 
   // ==========================================
@@ -344,7 +391,6 @@ class TermoMultiplayerGame {
   }
 
   handleCreateRoom() {
-    this.myName = this.playerNicknameInput.value.trim() || 'Jogador 1';
     this.role = 'host';
     const code = String(Math.floor(100000 + Math.random() * 900000));
     this.roomCode = code;
@@ -391,7 +437,6 @@ class TermoMultiplayerGame {
       return;
     }
 
-    this.myName = this.playerNicknameInput.value.trim() || 'Jogador 2';
     this.role = 'guest';
     const targetPeerId = `termo-room-${code}`;
 
@@ -417,7 +462,8 @@ class TermoMultiplayerGame {
           this.joinStatus.textContent = 'Conectado! Iniciando jogo...';
           this.sendP2P({
             type: 'JOIN_GAME',
-            name: this.myName
+            name: this.myName,
+            avatar: this.myAvatar
           });
         });
       });
@@ -459,6 +505,7 @@ class TermoMultiplayerGame {
       case 'JOIN_GAME':
         if (this.role === 'host') {
           this.oppName = data.name || 'Jogador 2';
+          this.oppAvatar = data.avatar || '';
           // O Host sorteia a palavra e envia para ambos
           const randomIndex = Math.floor(Math.random() * this.wordsList.length);
           const chosen = this.wordsList[randomIndex].normalized.toUpperCase();
@@ -468,6 +515,7 @@ class TermoMultiplayerGame {
           this.sendP2P({
             type: 'START_MATCH',
             hostName: this.myName,
+            hostAvatar: this.myAvatar,
             secretWord: this.secretWord,
             startingRole: 'host'
           });
@@ -479,6 +527,7 @@ class TermoMultiplayerGame {
       case 'START_MATCH':
         if (this.role === 'guest') {
           this.oppName = data.hostName || 'Jogador 1';
+          this.oppAvatar = data.hostAvatar || '';
           this.secretWord = data.secretWord;
           this.currentTurnRole = data.startingRole;
           this.startMultiplayerMatch();
@@ -498,6 +547,15 @@ class TermoMultiplayerGame {
         this.handleTimeExpiredByOpponent(data.timedOutRole, data.nextTurnRole);
         break;
 
+      case 'SYNC_SCORE':
+        if (typeof data.myScore === 'number' && typeof data.oppScore === 'number') {
+          // Sincroniza os placares entre os pares
+          this.oppScore = data.myScore;
+          this.myScore = data.oppScore;
+          this.updateScoreDisplay();
+        }
+        break;
+
       case 'SURRENDER':
         this.handleOpponentSurrender();
         break;
@@ -511,6 +569,7 @@ class TermoMultiplayerGame {
           this.sendP2P({
             type: 'START_MATCH',
             hostName: this.myName,
+            hostAvatar: this.myAvatar,
             secretWord: this.secretWord,
             startingRole: 'host'
           });
@@ -537,11 +596,13 @@ class TermoMultiplayerGame {
   // ==========================================
   startSoloGame() {
     this.role = 'solo';
-    this.myName = this.playerNicknameInput.value.trim() || 'Você';
     this.currentTurnRole = 'solo';
+    this.myScore = 0;
+    this.oppScore = 0;
+    this.oppName = 'Computador';
+    this.oppAvatar = '';
     const randomIndex = Math.floor(Math.random() * this.wordsList.length);
     this.secretWord = this.wordsList[randomIndex].normalized.toUpperCase();
-    this.oppName = 'Computador';
 
     this.resetBoardState();
     this.lobbyScreen.classList.add('hidden');
@@ -584,9 +645,20 @@ class TermoMultiplayerGame {
   }
 
   updateStatusBar() {
+    this.updateScoreDisplay();
+
+    // Renderiza avatar e nome do Jogador 1 (Você)
+    if (this.p1Badge) {
+      const p1Label = this.role === 'host' ? `${this.myName} (Host)` : (this.role === 'solo' ? this.myName : this.myName);
+      const p1NameEl = this.p1Badge.querySelector('.p-name');
+      if (p1NameEl) p1NameEl.textContent = p1Label;
+      this.renderAvatarElement(this.p1AvatarImg, this.p1AvatarPh, this.myAvatar);
+    }
+
     if (this.role === 'solo') {
-      this.p1Badge.querySelector('.p-name').textContent = this.myName;
       this.p2Badge.classList.add('hidden');
+      if (this.p2ScoreElement) this.p2ScoreElement.classList.add('hidden');
+      if (this.scoreVsElement) this.scoreVsElement.classList.add('hidden');
       if (this.turnIndicator) {
         this.turnIndicator.textContent = `Tentativa ${this.currentRow + 1} de ${this.maxRows}`;
       }
@@ -598,12 +670,14 @@ class TermoMultiplayerGame {
     }
 
     this.p2Badge.classList.remove('hidden');
+    if (this.p2ScoreElement) this.p2ScoreElement.classList.remove('hidden');
+    if (this.scoreVsElement) this.scoreVsElement.classList.remove('hidden');
 
-    const p1Label = this.role === 'host' ? `${this.myName} (Host)` : this.myName;
+    // Renderiza avatar e nome do Jogador 2 (Oponente)
     const p2Label = this.role === 'host' ? this.oppName : `${this.oppName} (Host)`;
-
-    this.p1Badge.querySelector('.p-name').textContent = p1Label;
-    this.p2Badge.querySelector('.p-name').textContent = p2Label;
+    const p2NameEl = this.p2Badge.querySelector('.p-name');
+    if (p2NameEl) p2NameEl.textContent = p2Label;
+    this.renderAvatarElement(this.p2AvatarImg, this.p2AvatarPh, this.oppAvatar);
 
     const myTurn = this.isMyTurn();
     if (myTurn) {
@@ -622,6 +696,114 @@ class TermoMultiplayerGame {
     }
     this.updateActiveTileHighlight();
     this.startTurnTimer();
+  }
+
+  renderAvatarElement(imgEl, phEl, avatarData) {
+    if (!imgEl || !phEl) return;
+    if (avatarData) {
+      imgEl.src = avatarData;
+      imgEl.classList.remove('hidden');
+      phEl.classList.add('hidden');
+    } else {
+      imgEl.removeAttribute('src');
+      imgEl.classList.add('hidden');
+      phEl.classList.remove('hidden');
+    }
+  }
+
+  updateScoreDisplay() {
+    if (this.p1ScoreElement) this.p1ScoreElement.textContent = this.myScore;
+    if (this.p2ScoreElement) this.p2ScoreElement.textContent = this.oppScore;
+  }
+
+  // ==========================================
+  // GERENCIAMENTO DE PERFIL DO USUÁRIO
+  // ==========================================
+  updateProfileDisplay() {
+    if (this.homePlayerName) this.homePlayerName.textContent = this.myName;
+    this.renderAvatarElement(this.homeAvatarImg, this.homeAvatarPh, this.myAvatar);
+    if (this.inputProfileName) this.inputProfileName.value = this.myName;
+    this.updateModalAvatarPreview();
+  }
+
+  updateModalAvatarPreview() {
+    this.renderAvatarElement(this.modalAvatarPreview, this.modalAvatarPlaceholder, this.tempAvatar);
+    if (this.btnRemoveAvatar) {
+      if (this.tempAvatar) {
+        this.btnRemoveAvatar.classList.remove('hidden');
+      } else {
+        this.btnRemoveAvatar.classList.add('hidden');
+      }
+    }
+  }
+
+  showProfileModal(show) {
+    if (!this.profileModal) return;
+    if (show) {
+      this.tempAvatar = this.myAvatar;
+      if (this.inputProfileName) this.inputProfileName.value = this.myName;
+      this.updateModalAvatarPreview();
+      this.profileModal.classList.remove('hidden');
+    } else {
+      this.profileModal.classList.add('hidden');
+    }
+  }
+
+  handleAvatarFileSelect(e) {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      this.showToast('Por favor, selecione um arquivo de imagem.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        // Redimensiona para avatar leve (128x128 max) em canvas
+        const canvas = document.createElement('canvas');
+        const size = 128;
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+
+        // Crop centralizado proporcional
+        const minDim = Math.min(img.width, img.height);
+        const sx = (img.width - minDim) / 2;
+        const sy = (img.height - minDim) / 2;
+
+        ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, size, size);
+        this.tempAvatar = canvas.toDataURL('image/jpeg', 0.85);
+        this.updateModalAvatarPreview();
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+    e.target.value = ''; // Permite selecionar o mesmo arquivo novamente
+  }
+
+  handleAvatarRemove() {
+    this.tempAvatar = '';
+    this.updateModalAvatarPreview();
+  }
+
+  handleSaveProfile() {
+    const newName = this.inputProfileName ? this.inputProfileName.value.trim() : '';
+    this.myName = newName || 'Jogador 1';
+    this.myAvatar = this.tempAvatar;
+
+    try {
+      localStorage.setItem('termo_player_name', this.myName);
+      localStorage.setItem('termo_player_avatar', this.myAvatar);
+    } catch (e) {
+      console.warn('Erro ao salvar no localStorage:', e);
+    }
+
+    this.updateProfileDisplay();
+    this.showProfileModal(false);
+    this.showToast('Perfil atualizado com sucesso! ✓');
   }
 
   // ==========================================
@@ -1109,6 +1291,13 @@ class TermoMultiplayerGame {
     this.stopTurnTimer();
     this.isGameOver = true;
 
+    if (isMe) {
+      this.myScore++;
+    } else {
+      this.oppScore++;
+    }
+    this.updateScoreDisplay();
+
     // Animação de pulo (bounce) nas letras vencedoras
     const winRow = this.currentRow;
     for (let c = 0; c < this.wordLength; c++) {
@@ -1155,6 +1344,9 @@ class TermoMultiplayerGame {
     if (this.isGameOver) return;
     this.stopTurnTimer();
 
+    this.oppScore++;
+    this.updateScoreDisplay();
+
     if (this.role === 'solo') {
       this.isGameOver = true;
       this.goTitle.textContent = 'DERROTA!';
@@ -1183,6 +1375,9 @@ class TermoMultiplayerGame {
     if (this.isGameOver) return;
     this.stopTurnTimer();
     this.isGameOver = true;
+
+    this.myScore++;
+    this.updateScoreDisplay();
 
     if (window.confetti) {
       confetti({
@@ -1214,6 +1409,7 @@ class TermoMultiplayerGame {
         this.sendP2P({
           type: 'START_MATCH',
           hostName: this.myName,
+          hostAvatar: this.myAvatar,
           secretWord: this.secretWord,
           startingRole: 'host'
         });
@@ -1226,6 +1422,9 @@ class TermoMultiplayerGame {
   resetToLobby() {
     this.stopTurnTimer();
     this.isGameOver = true;
+    this.myScore = 0;
+    this.oppScore = 0;
+    this.updateScoreDisplay();
     if (this.peerConn) {
       try { this.peerConn.close(); } catch (e) {}
     }

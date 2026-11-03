@@ -127,62 +127,365 @@ body {
   background: var(--key-active);
 }
 
-/* STATUS BAR / MULTIPLAYER */
+/* STATUS BAR / MULTIPLAYER PLACAR (ESTILO PARTIDA ESPORTIVA) */
 .status-bar {
-  margin: 4px 0;
-  padding: 6px 0;
+  margin: 4px 0 8px 0;
+  padding: 0;
   background: transparent;
   border: none;
   box-shadow: none;
+  width: 100%;
 }
 
-.players-info {
-  display: flex;
-  justify-content: space-between;
+.match-scoreboard {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto 1fr;
   align-items: center;
-  gap: 16px;
+  justify-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 8px 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.player-pill {
+/* Colunas dos jogadores (foto redonda no topo, nome embaixo) */
+.scoreboard-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  max-width: 100px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.scoreboard-team#p1-badge {
+  justify-self: start;
+}
+
+.scoreboard-team#p2-badge {
+  justify-self: end;
+}
+
+.avatar-wrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.player-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.player-avatar-ph {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* Ponto de vez (ativo no avatar) */
+.avatar-wrap .dot {
+  position: absolute;
+  bottom: 0px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: none;
+  border: 2px solid #201b1d;
+  transition: all 0.25s ease;
+}
+
+.scoreboard-team .p-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85px;
+  transition: color 0.25s ease;
+}
+
+/* Vez ativa (meu turno) */
+.scoreboard-team.my-turn .avatar-wrap {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.35);
+}
+
+.scoreboard-team.my-turn .avatar-wrap .dot {
+  display: inline-block;
+  background: #00ff88;
+  box-shadow: 0 0 8px #00ff88;
+}
+
+.scoreboard-team.my-turn .p-name {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Vez ativa (oponente) */
+.scoreboard-team.opponent-turn .avatar-wrap {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.scoreboard-team.opponent-turn .p-name {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.scoreboard-team.opponent-turn .dot {
+  display: none !important;
+}
+
+/* Pontuação destacada ao lado do centro */
+.score-num {
+  font-size: 1.7rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1;
+  min-width: 28px;
+  text-align: center;
+  transition: color 0.25s ease;
+}
+
+.scoreboard-team.my-turn ~ #p1-score,
+#p1-badge.my-turn + #p1-score {
+  color: #00ff88;
+}
+
+/* Centro: X e Timer posicionado abaixo */
+.scoreboard-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  gap: 3px;
+}
+
+.score-vs {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1;
+}
+
+/* CRONÔMETRO DE TURNO NO PLACAR (Local de Final) */
+.turn-timer {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: #00ff88;
+  user-select: none;
+  line-height: 1;
+  transition: color 0.25s ease;
+}
+
+/* Cores do cronômetro */
+.turn-timer.my-turn {
+  color: #00ff88;
+}
+
+.turn-timer.opponent-turn {
+  color: #8e8e93;
+}
+
+.turn-timer.warning {
+  color: #ff3b30 !important;
+}
+
+/* CARTÃO DE PERFIL NA HOME */
+.lobby-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.lobby-avatar-picker {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lobby-avatar-picker:hover {
+  border-color: #00ff88;
+  transform: scale(1.03);
+}
+
+.lobby-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.lobby-avatar-ph {
+  font-size: 1.5rem;
+}
+
+.avatar-badge-edit {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3aa394;
+  color: #fff;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.lobby-profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lobby-profile-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.lobby-profile-name-row {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.lobby-player-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.btn-icon-edit {
   background: transparent;
-  padding: 4px 0;
-  border-radius: 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.35);
-  transition: all 0.25s ease;
   border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: transform 0.15s ease;
+  line-height: 1;
 }
 
-.player-pill .dot {
-  width: 7px;
-  height: 7px;
+.btn-icon-edit:hover {
+  transform: scale(1.15);
+}
+
+/* MODAL DE PERFIL */
+.modal-profile .profile-avatar-edit-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 20px 0;
+}
+
+.profile-avatar-preview-wrap {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  display: none;
-  transition: all 0.25s ease;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Vez do jogador local: ponto verde neon e texto claro */
-.player-pill.my-turn {
-  color: #ffffff;
+.profile-avatar-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-.player-pill.my-turn .dot {
-  display: inline-block;
-  background: #00ff88;
-  box-shadow: 0 0 8px #00ff88, 0 0 14px rgba(0, 255, 136, 0.6);
+.profile-avatar-ph {
+  font-size: 2.2rem;
 }
 
-/* Vez do oponente: texto claro e cor forte, mas sem dot */
-.player-pill.opponent-turn {
-  color: #ffffff;
+.profile-avatar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-.player-pill.opponent-turn .dot {
-  display: none !important;
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.profile-name-edit-box {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.profile-name-edit-box label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.profile-name-edit-box input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+}
+
+.profile-name-edit-box input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* TABULEIRO (GRID) */
@@ -193,34 +496,8 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
   padding: 10px 0;
-}
-
-/* CRONÔMETRO DE TURNO */
-.turn-timer {
-  font-size: 1.15rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.05em;
-  color: #00ff88;
-  margin-bottom: 10px;
-  user-select: none;
-  transition: color 0.25s ease;
-}
-
-/* Vez do jogador local: cor verde */
-.turn-timer.my-turn {
-  color: #00ff88;
-}
-
-/* Vez do oponente: cor cinza */
-.turn-timer.opponent-turn {
-  color: #8e8e93;
-}
-
-/* Últimos 30 segundos: vermelho limpo sem brilho */
-.turn-timer.warning {
-  color: #ff3b30 !important;
 }
 
 .board {
@@ -231,6 +508,7 @@ body {
   max-width: 340px;
   height: 380px;
   max-height: 52vh;
+  margin: 0 auto;
 }
 
 .board-row {
