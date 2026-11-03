@@ -3,14 +3,14 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData } from './words.js?v=1.5.0';
-import { AudioManager } from './js/audio.js?v=1.5.0';
-import { GameRules } from './js/game-rules.js?v=1.5.0';
-import { TurnTimer } from './js/timer.js?v=1.5.0';
-import { ProfileManager } from './js/profile.js?v=1.5.0';
-import { P2PNetwork } from './js/network.js?v=1.5.0';
-import { ChatManager } from './js/chat.js?v=1.5.0';
-import { BoardUI } from './js/board-ui.js?v=1.5.0';
+import { wordsData } from './words.js?v=1.5.2';
+import { AudioManager } from './js/audio.js?v=1.5.2';
+import { GameRules } from './js/game-rules.js?v=1.5.2';
+import { TurnTimer } from './js/timer.js?v=1.5.2';
+import { ProfileManager } from './js/profile.js?v=1.5.2';
+import { P2PNetwork } from './js/network.js?v=1.5.2';
+import { ChatManager } from './js/chat.js?v=1.5.2';
+import { BoardUI } from './js/board-ui.js?v=1.5.2';
 
 class TermoMultiplayerGame {
   constructor() {
