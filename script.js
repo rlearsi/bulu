@@ -3,7 +3,7 @@
  * Baseado na tecnologia de conexão P2P WebRTC usada no Relatum (PeerJS)
  */
 
-import { wordsData } from './words.js?v=1.4.2';
+import { wordsData } from './words.js?v=1.4.5';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -23,8 +23,26 @@ class TermoMultiplayerGame {
     this.peer = null;
     this.peerConn = null;
     this.roomCode = '';
+
+    // Gerador de Apelidos Aleatórios (máx 12 caracteres)
+    this.randomNickPool = [
+      'Juvenal', 'Astolfo', 'Bartolomeu', 'Epaminondas', 'Teobaldo', 'Godofredo',
+      'Valdomiro', 'Clementina', 'Genoveva', 'Mafalda', 'Filomena', 'Serafim',
+      'ZéPequeno', 'PomboSujo', 'Capivara', 'Calabreso', 'Mussarelo', 'Biscoito',
+      'Coxinha', 'Paçoca', 'Pamonha', 'Brigadeiro', 'Tucano', 'Guaxinim',
+      'Camaleão', 'Sabichão', 'MestreZen', 'Relâmpago', 'Fofoqueiro', 'Sonolento',
+      'Preguiça', 'Soneca', 'Pipoca', 'Azeitona', 'Pimentinha', 'Abacate',
+      'Tangerina', 'Maracujá', 'Cajuína', 'Rapadura', 'Farofa', 'Tapioca',
+      'Curupira', 'SaciPererê', 'BotoRosa', 'Mandachuva', 'PéDeVento', 'ZigueZague',
+      'Berenice', 'Gertrudes', 'Gumercindo', 'Orozimbo', 'Tibúrcio', 'Quitéria',
+      'Fulgêncio', 'Eustáquio', 'Ludovico', 'Virgulino', 'Lampião', 'Cangaceiro',
+      'Tropeiro', 'Garimpeiro', 'Alquimista', 'Astronauta', 'Detetive', 'Forasteiro'
+    ];
+
     // Perfil do Jogador (Nome e Foto em base64)
-    this.myName = localStorage.getItem('termo_player_name') || 'Jogador 1';
+    const savedName = localStorage.getItem('termo_player_name');
+    this.isNameSaved = Boolean(savedName && savedName.trim());
+    this.myName = this.isNameSaved ? savedName.trim() : this.generateRandomNickname();
     this.myAvatar = localStorage.getItem('termo_player_avatar') || '';
     this.oppName = 'Oponente';
     this.oppAvatar = '';
@@ -191,12 +209,13 @@ class TermoMultiplayerGame {
     this.profileModal = document.getElementById('profile-modal');
     this.btnProfile = document.getElementById('btn-profile');
     this.btnCloseProfile = document.getElementById('btn-close-profile');
+    this.modalAvatarTrigger = document.getElementById('modal-avatar-trigger');
     this.modalAvatarPreview = document.getElementById('modal-avatar-preview');
     this.modalAvatarPlaceholder = document.getElementById('modal-avatar-placeholder');
-    this.btnChooseAvatar = document.getElementById('btn-choose-avatar');
     this.btnRemoveAvatar = document.getElementById('btn-remove-avatar');
     this.inputAvatarFile = document.getElementById('input-avatar-file');
     this.inputProfileName = document.getElementById('input-profile-name');
+    this.btnModalRandomName = document.getElementById('btn-modal-random-name');
     this.btnSaveProfile = document.getElementById('btn-save-profile');
 
     // Botões do Lobby
@@ -260,9 +279,10 @@ class TermoMultiplayerGame {
     if (this.btnCloseProfile) this.btnCloseProfile.addEventListener('click', () => this.showProfileModal(false));
     if (this.lobbyAvatarTrigger) this.lobbyAvatarTrigger.addEventListener('click', () => this.showProfileModal(true));
     if (this.btnQuickEditName) this.btnQuickEditName.addEventListener('click', () => this.showProfileModal(true));
-    if (this.btnChooseAvatar) this.btnChooseAvatar.addEventListener('click', () => this.inputAvatarFile.click());
+    if (this.modalAvatarTrigger) this.modalAvatarTrigger.addEventListener('click', () => this.inputAvatarFile.click());
     if (this.inputAvatarFile) this.inputAvatarFile.addEventListener('change', (e) => this.handleAvatarFileSelect(e));
     if (this.btnRemoveAvatar) this.btnRemoveAvatar.addEventListener('click', () => this.handleAvatarRemove());
+    if (this.btnModalRandomName) this.btnModalRandomName.addEventListener('click', () => this.handleModalRandomNickname());
     if (this.btnSaveProfile) this.btnSaveProfile.addEventListener('click', () => this.handleSaveProfile());
 
     // Eventos do Chat
@@ -765,8 +785,38 @@ class TermoMultiplayerGame {
   }
 
   // ==========================================
-  // GERENCIAMENTO DE PERFIL DO USUÁRIO
+  // GERENCIAMENTO DE PERFIL DO USUÁRIO & GERADOR DE NICKS
   // ==========================================
+  generateRandomNickname(currentName = '') {
+    const pool = this.randomNickPool || ['Juvenal', 'Astolfo', 'Calabreso', 'Capivara'];
+    const candidates = pool.filter(n => n.toLowerCase() !== (currentName || '').toLowerCase());
+    const list = candidates.length > 0 ? candidates : pool;
+    const picked = list[Math.floor(Math.random() * list.length)];
+    return picked.slice(0, 12);
+  }
+
+  handleModalRandomNickname() {
+    const currentVal = this.inputProfileName ? this.inputProfileName.value.trim() : this.myName;
+    const nextNick = this.generateRandomNickname(currentVal);
+    if (this.inputProfileName) {
+      this.inputProfileName.value = nextNick;
+      this.inputProfileName.focus();
+    }
+  }
+
+  syncProfileWithPeer() {
+    if (this.lobbyScreen && this.lobbyScreen.classList.contains('hidden')) {
+      this.updateStatusBar();
+    }
+    if (this.role !== 'solo' && this.peerConn && this.peerConn.open) {
+      this.sendP2P({
+        type: 'UPDATE_PROFILE',
+        name: this.myName,
+        avatar: this.myAvatar
+      });
+    }
+  }
+
   updateProfileDisplay() {
     if (this.homePlayerName) this.homePlayerName.textContent = this.myName;
     this.renderAvatarElement(this.homeAvatarImg, this.homeAvatarPh, this.myAvatar);
@@ -839,8 +889,9 @@ class TermoMultiplayerGame {
 
   handleSaveProfile() {
     const newName = this.inputProfileName ? this.inputProfileName.value.trim() : '';
-    this.myName = newName || 'Jogador 1';
+    this.myName = newName || this.generateRandomNickname(this.myName);
     this.myAvatar = this.tempAvatar;
+    this.isNameSaved = true;
 
     try {
       localStorage.setItem('termo_player_name', this.myName);
@@ -850,21 +901,10 @@ class TermoMultiplayerGame {
     }
 
     this.updateProfileDisplay();
-    if (this.lobbyScreen && this.lobbyScreen.classList.contains('hidden')) {
-      this.updateStatusBar();
-    }
-
-    // Se estiver em partida P2P conectada, sincroniza o perfil atualizado para o adversário
-    if (this.role !== 'solo' && this.peerConn && this.peerConn.open) {
-      this.sendP2P({
-        type: 'UPDATE_PROFILE',
-        name: this.myName,
-        avatar: this.myAvatar
-      });
-    }
+    this.syncProfileWithPeer();
 
     this.showProfileModal(false);
-    this.showToast('Perfil atualizado com sucesso! ✓');
+    this.showToast('Perfil salvo com sucesso! ✓');
   }
 
   // ==========================================

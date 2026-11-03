@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TERMO MULTIPLAYER P2P</title>
-  <link rel="stylesheet" href="style.css?v=1.4.2">
+  <link rel="stylesheet" href="style.css?v=1.4.5">
   <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <!-- Confetti para comemoração da vitória -->
@@ -336,35 +336,58 @@
       <h2>Perfil do Jogador</h2>
       <p class="modal-intro">Personalize seu apelido e sua foto para os duelos.</p>
 
-      <div class="profile-avatar-edit-box">
-        <div class="profile-avatar-preview-wrap">
+      <!-- CARTÃO MODERNO E CLEAN DE PERFIL NO MODAL -->
+      <div class="profile-modern-card">
+        <div class="profile-avatar-picker" id="modal-avatar-trigger" title="Clique para escolher uma foto">
           <img id="modal-avatar-preview" class="profile-avatar-preview hidden" alt="Avatar">
           <span id="modal-avatar-placeholder" class="profile-avatar-ph">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </span>
+          <div class="avatar-badge-edit">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+          </div>
         </div>
-        <div class="profile-avatar-actions">
-          <button id="btn-choose-avatar" class="btn btn-secondary">Escolher Foto</button>
-          <button id="btn-remove-avatar" class="btn btn-outline btn-sm hidden">Remover Foto</button>
-          <input type="file" id="input-avatar-file" accept="image/*" class="hidden">
-        </div>
-      </div>
 
-      <div class="profile-name-edit-box">
-        <label for="input-profile-name">Seu Apelido:</label>
-        <input type="text" id="input-profile-name" maxlength="12" placeholder="Digite seu nome">
+        <div class="profile-modern-info">
+          <div class="profile-modern-label-row">
+            <label for="input-profile-name" class="lobby-profile-label">Seu Jogador</label>
+            <button type="button" id="btn-remove-avatar" class="profile-remove-link hidden" title="Remover foto atual">Remover foto</button>
+          </div>
+          <div class="profile-input-group">
+            <input type="text" id="input-profile-name" maxlength="12" placeholder="Digite seu apelido">
+            <button type="button" id="btn-modal-random-name" class="btn-icon-random" title="Gerar apelido aleatório">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="12" height="12" x="2" y="10" rx="2" ry="2"></rect>
+                <path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"></path>
+                <path d="M6 18h.01"></path>
+                <path d="M10 14h.01"></path>
+                <path d="M15 6h.01"></path>
+                <path d="M18 9h.01"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <input type="file" id="input-avatar-file" accept="image/*" class="hidden">
       </div>
 
       <div class="modal-buttons">
-        <button id="btn-save-profile" class="btn btn-primary btn-block">Salvar Perfil</button>
+        <button id="btn-save-profile" class="btn btn-primary btn-block">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Salvar Perfil</span>
+        </button>
       </div>
     </div>
   </div>
 
-  <script type="module" src="script.js?v=1.4.2"></script>
+  <script type="module" src="script.js?v=1.4.5"></script>
 </body>
 </html>
 
