@@ -1,0 +1,33568 @@
+export const wordsData = [
+  {
+    "word": "TERMO",
+    "normalized": "TERMO",
+    "id": 1
+  },
+  {
+    "word": "SORTE",
+    "normalized": "SORTE",
+    "id": 2
+  },
+  {
+    "word": "FEZES",
+    "normalized": "FEZES",
+    "id": 3
+  },
+  {
+    "word": "TURMA",
+    "normalized": "TURMA",
+    "id": 4
+  },
+  {
+    "word": "VIOLA",
+    "normalized": "VIOLA",
+    "id": 5
+  },
+  {
+    "word": "PULGA",
+    "normalized": "PULGA",
+    "id": 6
+  },
+  {
+    "word": "SAGAZ",
+    "normalized": "SAGAZ",
+    "id": 7
+  },
+  {
+    "word": "NOBRE",
+    "normalized": "NOBRE",
+    "id": 8
+  },
+  {
+    "word": "FOGÃO",
+    "normalized": "FOGAO",
+    "id": 9
+  },
+  {
+    "word": "PLUMA",
+    "normalized": "PLUMA",
+    "id": 10
+  },
+  {
+    "word": "BRUXA",
+    "normalized": "BRUXA",
+    "id": 11
+  },
+  {
+    "word": "ZUMBI",
+    "normalized": "ZUMBI",
+    "id": 12
+  },
+  {
+    "word": "MAGIA",
+    "normalized": "MAGIA",
+    "id": 13
+  },
+  {
+    "word": "CORVO",
+    "normalized": "CORVO",
+    "id": 14
+  },
+  {
+    "word": "TUMBA",
+    "normalized": "TUMBA",
+    "id": 15
+  },
+  {
+    "word": "MORTO",
+    "normalized": "MORTO",
+    "id": 16
+  },
+  {
+    "word": "TREVA",
+    "normalized": "TREVA",
+    "id": 17
+  },
+  {
+    "word": "GRITO",
+    "normalized": "GRITO",
+    "id": 18
+  },
+  {
+    "word": "FUSCO",
+    "normalized": "FUSCO",
+    "id": 19
+  },
+  {
+    "word": "POÇÃO",
+    "normalized": "POCAO",
+    "id": 20
+  },
+  {
+    "word": "ÁUDIO",
+    "normalized": "AUDIO",
+    "id": 21
+  },
+  {
+    "word": "VÍDEO",
+    "normalized": "VIDEO",
+    "id": 22
+  },
+  {
+    "word": "FÁCIL",
+    "normalized": "FACIL",
+    "id": 23
+  },
+  {
+    "word": "ÍCONE",
+    "normalized": "ICONE",
+    "id": 24
+  },
+  {
+    "word": "ÚNICO",
+    "normalized": "UNICO",
+    "id": 25
+  },
+  {
+    "word": "LÁPIS",
+    "normalized": "LAPIS",
+    "id": 26
+  },
+  {
+    "word": "LÍDER",
+    "normalized": "LIDER",
+    "id": 27
+  },
+  {
+    "word": "RÁDIO",
+    "normalized": "RADIO",
+    "id": 28
+  },
+  {
+    "word": "SÁBIO",
+    "normalized": "SABIO",
+    "id": 29
+  },
+  {
+    "word": "ÓBVIO",
+    "normalized": "OBVIO",
+    "id": 30
+  },
+  {
+    "word": "MÁGOA",
+    "normalized": "MAGOA",
+    "id": 31
+  },
+  {
+    "word": "ÉPOCA",
+    "normalized": "EPOCA",
+    "id": 32
+  },
+  {
+    "word": "ÉTICA",
+    "normalized": "ETICA",
+    "id": 33
+  },
+  {
+    "word": "ÍNDIO",
+    "normalized": "INDIO",
+    "id": 34
+  },
+  {
+    "word": "AJUDA",
+    "normalized": "AJUDA",
+    "id": 35
+  },
+  {
+    "word": "AMIGO",
+    "normalized": "AMIGO",
+    "id": 36
+  },
+  {
+    "word": "AREIA",
+    "normalized": "AREIA",
+    "id": 37
+  },
+  {
+    "word": "AROMA",
+    "normalized": "AROMA",
+    "id": 38
+  },
+  {
+    "word": "ASTRO",
+    "normalized": "ASTRO",
+    "id": 39
+  },
+  {
+    "word": "AUTOR",
+    "normalized": "AUTOR",
+    "id": 40
+  },
+  {
+    "word": "AVIÃO",
+    "normalized": "AVIAO",
+    "id": 41
+  },
+  {
+    "word": "BACIA",
+    "normalized": "BACIA",
+    "id": 42
+  },
+  {
+    "word": "BAILE",
+    "normalized": "BAILE",
+    "id": 43
+  },
+  {
+    "word": "BANCO",
+    "normalized": "BANCO",
+    "id": 44
+  },
+  {
+    "word": "BARCO",
+    "normalized": "BARCO",
+    "id": 45
+  },
+  {
+    "word": "BARRA",
+    "normalized": "BARRA",
+    "id": 46
+  },
+  {
+    "word": "BATOM",
+    "normalized": "BATOM",
+    "id": 47
+  },
+  {
+    "word": "BEIJO",
+    "normalized": "BEIJO",
+    "id": 48
+  },
+  {
+    "word": "BICHO",
+    "normalized": "BICHO",
+    "id": 49
+  },
+  {
+    "word": "BLOCO",
+    "normalized": "BLOCO",
+    "id": 50
+  },
+  {
+    "word": "BOLSA",
+    "normalized": "BOLSA",
+    "id": 51
+  },
+  {
+    "word": "BRAVO",
+    "normalized": "BRAVO",
+    "id": 52
+  },
+  {
+    "word": "BRISA",
+    "normalized": "BRISA",
+    "id": 53
+  },
+  {
+    "word": "BURRO",
+    "normalized": "BURRO",
+    "id": 54
+  },
+  {
+    "word": "CABOS",
+    "normalized": "CABOS",
+    "id": 55
+  },
+  {
+    "word": "CALOR",
+    "normalized": "CALOR",
+    "id": 56
+  },
+  {
+    "word": "CAMPO",
+    "normalized": "CAMPO",
+    "id": 57
+  },
+  {
+    "word": "CANAL",
+    "normalized": "CANAL",
+    "id": 58
+  },
+  {
+    "word": "CANTO",
+    "normalized": "CANTO",
+    "id": 59
+  },
+  {
+    "word": "CAPAZ",
+    "normalized": "CAPAZ",
+    "id": 60
+  },
+  {
+    "word": "CARNE",
+    "normalized": "CARNE",
+    "id": 61
+  },
+  {
+    "word": "CARRO",
+    "normalized": "CARRO",
+    "id": 62
+  },
+  {
+    "word": "CARTA",
+    "normalized": "CARTA",
+    "id": 63
+  },
+  {
+    "word": "CASAL",
+    "normalized": "CASAL",
+    "id": 64
+  },
+  {
+    "word": "CASCA",
+    "normalized": "CASCA",
+    "id": 65
+  },
+  {
+    "word": "CAUSA",
+    "normalized": "CAUSA",
+    "id": 66
+  },
+  {
+    "word": "CHAVE",
+    "normalized": "CHAVE",
+    "id": 67
+  },
+  {
+    "word": "CHEFE",
+    "normalized": "CHEFE",
+    "id": 68
+  },
+  {
+    "word": "CHUVA",
+    "normalized": "CHUVA",
+    "id": 69
+  },
+  {
+    "word": "CINTO",
+    "normalized": "CINTO",
+    "id": 70
+  },
+  {
+    "word": "CISNE",
+    "normalized": "CISNE",
+    "id": 71
+  },
+  {
+    "word": "CLARO",
+    "normalized": "CLARO",
+    "id": 72
+  },
+  {
+    "word": "CLUBE",
+    "normalized": "CLUBE",
+    "id": 73
+  },
+  {
+    "word": "COBRA",
+    "normalized": "COBRA",
+    "id": 74
+  },
+  {
+    "word": "COFRE",
+    "normalized": "COFRE",
+    "id": 75
+  },
+  {
+    "word": "COISA",
+    "normalized": "COISA",
+    "id": 76
+  },
+  {
+    "word": "CONTO",
+    "normalized": "CONTO",
+    "id": 77
+  },
+  {
+    "word": "CORDA",
+    "normalized": "CORDA",
+    "id": 78
+  },
+  {
+    "word": "CORPO",
+    "normalized": "CORPO",
+    "id": 79
+  },
+  {
+    "word": "CORTE",
+    "normalized": "CORTE",
+    "id": 80
+  },
+  {
+    "word": "CRAVO",
+    "normalized": "CRAVO",
+    "id": 81
+  },
+  {
+    "word": "CREME",
+    "normalized": "CREME",
+    "id": 82
+  },
+  {
+    "word": "CRISE",
+    "normalized": "CRISE",
+    "id": 83
+  },
+  {
+    "word": "CULPA",
+    "normalized": "CULPA",
+    "id": 84
+  },
+  {
+    "word": "CURSO",
+    "normalized": "CURSO",
+    "id": 85
+  },
+  {
+    "word": "CURTO",
+    "normalized": "CURTO",
+    "id": 86
+  },
+  {
+    "word": "DANÇA",
+    "normalized": "DANCA",
+    "id": 87
+  },
+  {
+    "word": "DENTE",
+    "normalized": "DENTE",
+    "id": 88
+  },
+  {
+    "word": "DISCO",
+    "normalized": "DISCO",
+    "id": 89
+  },
+  {
+    "word": "DOBRO",
+    "normalized": "DOBRO",
+    "id": 90
+  },
+  {
+    "word": "DRAMA",
+    "normalized": "DRAMA",
+    "id": 91
+  },
+  {
+    "word": "DUPLA",
+    "normalized": "DUPLA",
+    "id": 92
+  },
+  {
+    "word": "DUCHA",
+    "normalized": "DUCHA",
+    "id": 93
+  },
+  {
+    "word": "ENVIO",
+    "normalized": "ENVIO",
+    "id": 94
+  },
+  {
+    "word": "EXAME",
+    "normalized": "EXAME",
+    "id": 95
+  },
+  {
+    "word": "FAIXA",
+    "normalized": "FAIXA",
+    "id": 96
+  },
+  {
+    "word": "FAROL",
+    "normalized": "FAROL",
+    "id": 97
+  },
+  {
+    "word": "FESTA",
+    "normalized": "FESTA",
+    "id": 98
+  },
+  {
+    "word": "FILME",
+    "normalized": "FILME",
+    "id": 99
+  },
+  {
+    "word": "FINAL",
+    "normalized": "FINAL",
+    "id": 100
+  },
+  {
+    "word": "FIRME",
+    "normalized": "FIRME",
+    "id": 101
+  },
+  {
+    "word": "FLORA",
+    "normalized": "FLORA",
+    "id": 102
+  },
+  {
+    "word": "FOCAL",
+    "normalized": "FOCAL",
+    "id": 103
+  },
+  {
+    "word": "FOLHA",
+    "normalized": "FOLHA",
+    "id": 104
+  },
+  {
+    "word": "FORNO",
+    "normalized": "FORNO",
+    "id": 105
+  },
+  {
+    "word": "FORTE",
+    "normalized": "FORTE",
+    "id": 106
+  },
+  {
+    "word": "FOSSO",
+    "normalized": "FOSSO",
+    "id": 107
+  },
+  {
+    "word": "FRACO",
+    "normalized": "FRACO",
+    "id": 108
+  },
+  {
+    "word": "FRUTA",
+    "normalized": "FRUTA",
+    "id": 109
+  },
+  {
+    "word": "FUGIR",
+    "normalized": "FUGIR",
+    "id": 110
+  },
+  {
+    "word": "FUNDO",
+    "normalized": "FUNDO",
+    "id": 111
+  },
+  {
+    "word": "FUROR",
+    "normalized": "FUROR",
+    "id": 112
+  },
+  {
+    "word": "GOLPE",
+    "normalized": "GOLPE",
+    "id": 113
+  },
+  {
+    "word": "GORDO",
+    "normalized": "GORDO",
+    "id": 114
+  },
+  {
+    "word": "GRADE",
+    "normalized": "GRADE",
+    "id": 115
+  },
+  {
+    "word": "GRAMA",
+    "normalized": "GRAMA",
+    "id": 116
+  },
+  {
+    "word": "GRAVE",
+    "normalized": "GRAVE",
+    "id": 117
+  },
+  {
+    "word": "GRUPO",
+    "normalized": "GRUPO",
+    "id": 118
+  },
+  {
+    "word": "HERÓI",
+    "normalized": "HEROI",
+    "id": 119
+  },
+  {
+    "word": "HORAS",
+    "normalized": "HORAS",
+    "id": 120
+  },
+  {
+    "word": "HOTEL",
+    "normalized": "HOTEL",
+    "id": 121
+  },
+  {
+    "word": "HUMOR",
+    "normalized": "HUMOR",
+    "id": 122
+  },
+  {
+    "word": "IDEIA",
+    "normalized": "IDEIA",
+    "id": 123
+  },
+  {
+    "word": "IGUAL",
+    "normalized": "IGUAL",
+    "id": 124
+  },
+  {
+    "word": "IRMÃO",
+    "normalized": "IRMAO",
+    "id": 125
+  },
+  {
+    "word": "JANTA",
+    "normalized": "JANTA",
+    "id": 126
+  },
+  {
+    "word": "JEITO",
+    "normalized": "JEITO",
+    "id": 127
+  },
+  {
+    "word": "JOVEM",
+    "normalized": "JOVEM",
+    "id": 128
+  },
+  {
+    "word": "JUÍZO",
+    "normalized": "JUIZO",
+    "id": 129
+  },
+  {
+    "word": "JUNTO",
+    "normalized": "JUNTO",
+    "id": 130
+  },
+  {
+    "word": "LASCA",
+    "normalized": "LASCA",
+    "id": 131
+  },
+  {
+    "word": "LAUDO",
+    "normalized": "LAUDO",
+    "id": 132
+  },
+  {
+    "word": "LEITE",
+    "normalized": "LEITE",
+    "id": 133
+  },
+  {
+    "word": "LENTO",
+    "normalized": "LENTO",
+    "id": 134
+  },
+  {
+    "word": "LIMÃO",
+    "normalized": "LIMAO",
+    "id": 135
+  },
+  {
+    "word": "LINDO",
+    "normalized": "LINDO",
+    "id": 136
+  },
+  {
+    "word": "LINHA",
+    "normalized": "LINHA",
+    "id": 137
+  },
+  {
+    "word": "LIVRO",
+    "normalized": "LIVRO",
+    "id": 138
+  },
+  {
+    "word": "LOUCO",
+    "normalized": "LOUCO",
+    "id": 139
+  },
+  {
+    "word": "LUGAR",
+    "normalized": "LUGAR",
+    "id": 140
+  },
+  {
+    "word": "LUZES",
+    "normalized": "LUZES",
+    "id": 141
+  },
+  {
+    "word": "MACIO",
+    "normalized": "MACIO",
+    "id": 142
+  },
+  {
+    "word": "MALHA",
+    "normalized": "MALHA",
+    "id": 143
+  },
+  {
+    "word": "MANGA",
+    "normalized": "MANGA",
+    "id": 144
+  },
+  {
+    "word": "MANTO",
+    "normalized": "MANTO",
+    "id": 145
+  },
+  {
+    "word": "MARCA",
+    "normalized": "MARCA",
+    "id": 146
+  },
+  {
+    "word": "MASSA",
+    "normalized": "MASSA",
+    "id": 147
+  },
+  {
+    "word": "MELÃO",
+    "normalized": "MELAO",
+    "id": 148
+  },
+  {
+    "word": "MENTE",
+    "normalized": "MENTE",
+    "id": 149
+  },
+  {
+    "word": "METAL",
+    "normalized": "METAL",
+    "id": 150
+  },
+  {
+    "word": "METRO",
+    "normalized": "METRO",
+    "id": 151
+  },
+  {
+    "word": "MILHO",
+    "normalized": "MILHO",
+    "id": 152
+  },
+  {
+    "word": "MINAS",
+    "normalized": "MINAS",
+    "id": 153
+  },
+  {
+    "word": "MOEDA",
+    "normalized": "MOEDA",
+    "id": 154
+  },
+  {
+    "word": "MOLHO",
+    "normalized": "MOLHO",
+    "id": 155
+  },
+  {
+    "word": "MONTE",
+    "normalized": "MONTE",
+    "id": 156
+  },
+  {
+    "word": "MORAL",
+    "normalized": "MORAL",
+    "id": 157
+  },
+  {
+    "word": "MOTOR",
+    "normalized": "MOTOR",
+    "id": 158
+  },
+  {
+    "word": "MUNDO",
+    "normalized": "MUNDO",
+    "id": 159
+  },
+  {
+    "word": "MUSEU",
+    "normalized": "MUSEU",
+    "id": 160
+  },
+  {
+    "word": "NAVIO",
+    "normalized": "NAVIO",
+    "id": 161
+  },
+  {
+    "word": "NEGRO",
+    "normalized": "NEGRO",
+    "id": 162
+  },
+  {
+    "word": "NINHO",
+    "normalized": "NINHO",
+    "id": 163
+  },
+  {
+    "word": "NÍVEL",
+    "normalized": "NIVEL",
+    "id": 164
+  },
+  {
+    "word": "NORTE",
+    "normalized": "NORTE",
+    "id": 165
+  },
+  {
+    "word": "NUVEM",
+    "normalized": "NUVEM",
+    "id": 166
+  },
+  {
+    "word": "OLHOS",
+    "normalized": "OLHOS",
+    "id": 167
+  },
+  {
+    "word": "ONTEM",
+    "normalized": "ONTEM",
+    "id": 168
+  },
+  {
+    "word": "OPÇÃO",
+    "normalized": "OPCAO",
+    "id": 169
+  },
+  {
+    "word": "ORDEM",
+    "normalized": "ORDEM",
+    "id": 170
+  },
+  {
+    "word": "ÓRGÃO",
+    "normalized": "ORGAO",
+    "id": 171
+  },
+  {
+    "word": "OSSOS",
+    "normalized": "OSSOS",
+    "id": 172
+  },
+  {
+    "word": "OUTRO",
+    "normalized": "OUTRO",
+    "id": 173
+  },
+  {
+    "word": "OUVIR",
+    "normalized": "OUVIR",
+    "id": 174
+  },
+  {
+    "word": "PADRE",
+    "normalized": "PADRE",
+    "id": 175
+  },
+  {
+    "word": "PAGAR",
+    "normalized": "PAGAR",
+    "id": 176
+  },
+  {
+    "word": "PALCO",
+    "normalized": "PALCO",
+    "id": 177
+  },
+  {
+    "word": "PAPEL",
+    "normalized": "PAPEL",
+    "id": 178
+  },
+  {
+    "word": "PARDO",
+    "normalized": "PARDO",
+    "id": 179
+  },
+  {
+    "word": "PARTE",
+    "normalized": "PARTE",
+    "id": 180
+  },
+  {
+    "word": "PASSO",
+    "normalized": "PASSO",
+    "id": 181
+  },
+  {
+    "word": "PASTA",
+    "normalized": "PASTA",
+    "id": 182
+  },
+  {
+    "word": "PASTO",
+    "normalized": "PASTO",
+    "id": 183
+  },
+  {
+    "word": "PATOS",
+    "normalized": "PATOS",
+    "id": 184
+  },
+  {
+    "word": "PAUSA",
+    "normalized": "PAUSA",
+    "id": 185
+  },
+  {
+    "word": "PEDRA",
+    "normalized": "PEDRA",
+    "id": 186
+  },
+  {
+    "word": "PEIXE",
+    "normalized": "PEIXE",
+    "id": 187
+  },
+  {
+    "word": "PENTE",
+    "normalized": "PENTE",
+    "id": 188
+  },
+  {
+    "word": "PERDA",
+    "normalized": "PERDA",
+    "id": 189
+  },
+  {
+    "word": "PERNA",
+    "normalized": "PERNA",
+    "id": 190
+  },
+  {
+    "word": "PIANO",
+    "normalized": "PIANO",
+    "id": 191
+  },
+  {
+    "word": "PINTO",
+    "normalized": "PINTO",
+    "id": 192
+  },
+  {
+    "word": "PISTA",
+    "normalized": "PISTA",
+    "id": 193
+  },
+  {
+    "word": "PLANO",
+    "normalized": "PLANO",
+    "id": 194
+  },
+  {
+    "word": "POETA",
+    "normalized": "POETA",
+    "id": 195
+  },
+  {
+    "word": "PONTO",
+    "normalized": "PONTO",
+    "id": 196
+  },
+  {
+    "word": "PORCO",
+    "normalized": "PORCO",
+    "id": 197
+  },
+  {
+    "word": "PORTA",
+    "normalized": "PORTA",
+    "id": 198
+  },
+  {
+    "word": "PORTO",
+    "normalized": "PORTO",
+    "id": 199
+  },
+  {
+    "word": "POSTO",
+    "normalized": "POSTO",
+    "id": 200
+  },
+  {
+    "word": "PRAIA",
+    "normalized": "PRAIA",
+    "id": 201
+  },
+  {
+    "word": "PRATA",
+    "normalized": "PRATA",
+    "id": 202
+  },
+  {
+    "word": "PRATO",
+    "normalized": "PRATO",
+    "id": 203
+  },
+  {
+    "word": "PREÇO",
+    "normalized": "PRECO",
+    "id": 204
+  },
+  {
+    "word": "PROVA",
+    "normalized": "PROVA",
+    "id": 205
+  },
+  {
+    "word": "PUDIM",
+    "normalized": "PUDIM",
+    "id": 206
+  },
+  {
+    "word": "QUASE",
+    "normalized": "QUASE",
+    "id": 207
+  },
+  {
+    "word": "QUEDA",
+    "normalized": "QUEDA",
+    "id": 208
+  },
+  {
+    "word": "QUILO",
+    "normalized": "QUILO",
+    "id": 209
+  },
+  {
+    "word": "RAMAL",
+    "normalized": "RAMAL",
+    "id": 210
+  },
+  {
+    "id": 211,
+    "word": "ABADE",
+    "normalized": "ABADE"
+  },
+  {
+    "id": 212,
+    "word": "ABDON",
+    "normalized": "ABDON"
+  },
+  {
+    "id": 213,
+    "word": "ABEBA",
+    "normalized": "ABEBA"
+  },
+  {
+    "id": 214,
+    "word": "ABNER",
+    "normalized": "ABNER"
+  },
+  {
+    "id": 215,
+    "word": "ABREU",
+    "normalized": "ABREU"
+  },
+  {
+    "id": 216,
+    "word": "ABUJA",
+    "normalized": "ABUJA"
+  },
+  {
+    "id": 217,
+    "word": "ACAIA",
+    "normalized": "ACAIA"
+  },
+  {
+    "id": 218,
+    "word": "ACARI",
+    "normalized": "ACARI"
+  },
+  {
+    "id": 219,
+    "word": "ACIMA",
+    "normalized": "ACIMA"
+  },
+  {
+    "id": 220,
+    "word": "AGANA",
+    "normalized": "AGANA"
+  },
+  {
+    "id": 221,
+    "word": "AGUDO",
+    "normalized": "AGUDO"
+  },
+  {
+    "id": 222,
+    "word": "AIRES",
+    "normalized": "AIRES"
+  },
+  {
+    "id": 223,
+    "word": "AJURU",
+    "normalized": "AJURU"
+  },
+  {
+    "id": 224,
+    "word": "ALAIR",
+    "normalized": "ALAIR"
+  },
+  {
+    "id": 225,
+    "word": "ALCEU",
+    "normalized": "ALCEU"
+  },
+  {
+    "id": 226,
+    "word": "ALGOL",
+    "normalized": "ALGOL"
+  },
+  {
+    "id": 227,
+    "word": "ALMAS",
+    "normalized": "ALMAS"
+  },
+  {
+    "id": 228,
+    "word": "ALPES",
+    "normalized": "ALPES"
+  },
+  {
+    "id": 229,
+    "word": "ALTAS",
+    "normalized": "ALTAS"
+  },
+  {
+    "id": 230,
+    "word": "ALTOS",
+    "normalized": "ALTOS"
+  },
+  {
+    "id": 231,
+    "word": "ALVES",
+    "normalized": "ALVES"
+  },
+  {
+    "id": 232,
+    "word": "AMARO",
+    "normalized": "AMARO"
+  },
+  {
+    "id": 233,
+    "word": "ANAHY",
+    "normalized": "ANAHY"
+  },
+  {
+    "id": 234,
+    "word": "ANAPU",
+    "normalized": "ANAPU"
+  },
+  {
+    "id": 235,
+    "word": "ANARI",
+    "normalized": "ANARI"
+  },
+  {
+    "id": 236,
+    "word": "ANGLO",
+    "normalized": "ANGLO"
+  },
+  {
+    "id": 237,
+    "word": "ANGRA",
+    "normalized": "ANGRA"
+  },
+  {
+    "id": 238,
+    "word": "ANITA",
+    "normalized": "ANITA"
+  },
+  {
+    "id": 239,
+    "word": "ANORI",
+    "normalized": "ANORI"
+  },
+  {
+    "id": 240,
+    "word": "ANTAS",
+    "normalized": "ANTAS"
+  },
+  {
+    "id": 241,
+    "word": "APODI",
+    "normalized": "APODI"
+  },
+  {
+    "id": 242,
+    "word": "ARACI",
+    "normalized": "ARACI"
+  },
+  {
+    "id": 243,
+    "word": "ARAME",
+    "normalized": "ARAME"
+  },
+  {
+    "id": 244,
+    "word": "ARARA",
+    "normalized": "ARARA"
+  },
+  {
+    "id": 245,
+    "word": "ARARI",
+    "normalized": "ARARI"
+  },
+  {
+    "id": 246,
+    "word": "ARCOS",
+    "normalized": "ARCOS"
+  },
+  {
+    "id": 247,
+    "word": "AREAL",
+    "normalized": "AREAL"
+  },
+  {
+    "id": 248,
+    "word": "ARGEL",
+    "normalized": "ARGEL"
+  },
+  {
+    "id": 249,
+    "word": "ARGOS",
+    "normalized": "ARGOS"
+  },
+  {
+    "id": 250,
+    "word": "ARTUR",
+    "normalized": "ARTUR"
+  },
+  {
+    "id": 251,
+    "word": "ARUBA",
+    "normalized": "ARUBA"
+  },
+  {
+    "id": 252,
+    "word": "ARÃªS",
+    "normalized": "ARAªS"
+  },
+  {
+    "id": 253,
+    "word": "ASSIS",
+    "normalized": "ASSIS"
+  },
+  {
+    "id": 254,
+    "word": "AYRES",
+    "normalized": "AYRES"
+  },
+  {
+    "id": 255,
+    "word": "BABEL",
+    "normalized": "BABEL"
+  },
+  {
+    "id": 256,
+    "word": "BAGRE",
+    "normalized": "BAGRE"
+  },
+  {
+    "id": 257,
+    "word": "BAHIA",
+    "normalized": "BAHIA"
+  },
+  {
+    "id": 258,
+    "word": "BAIXA",
+    "normalized": "BAIXA"
+  },
+  {
+    "id": 259,
+    "word": "BAIXO",
+    "normalized": "BAIXO"
+  },
+  {
+    "id": 260,
+    "word": "BALSA",
+    "normalized": "BALSA"
+  },
+  {
+    "id": 261,
+    "word": "BARRO",
+    "normalized": "BARRO"
+  },
+  {
+    "id": 262,
+    "word": "BASSE",
+    "normalized": "BASSE"
+  },
+  {
+    "id": 263,
+    "word": "BATOR",
+    "normalized": "BATOR"
+  },
+  {
+    "id": 264,
+    "word": "BAURU",
+    "normalized": "BAURU"
+  },
+  {
+    "id": 265,
+    "word": "BELAS",
+    "normalized": "BELAS"
+  },
+  {
+    "id": 266,
+    "word": "BELLO",
+    "normalized": "BELLO"
+  },
+  {
+    "id": 267,
+    "word": "BELOS",
+    "normalized": "BELOS"
+  },
+  {
+    "id": 268,
+    "word": "BENIN",
+    "normalized": "BENIN"
+  },
+  {
+    "id": 269,
+    "word": "BENTO",
+    "normalized": "BENTO"
+  },
+  {
+    "id": 270,
+    "word": "BERNA",
+    "normalized": "BERNA"
+  },
+  {
+    "id": 271,
+    "word": "BERTA",
+    "normalized": "BERTA"
+  },
+  {
+    "id": 272,
+    "word": "BETIM",
+    "normalized": "BETIM"
+  },
+  {
+    "id": 273,
+    "word": "BICAS",
+    "normalized": "BICAS"
+  },
+  {
+    "id": 274,
+    "word": "BIELO",
+    "normalized": "BIELO"
+  },
+  {
+    "id": 275,
+    "word": "BILAC",
+    "normalized": "BILAC"
+  },
+  {
+    "id": 276,
+    "word": "BORBA",
+    "normalized": "BORBA"
+  },
+  {
+    "id": 277,
+    "word": "BORDA",
+    "normalized": "BORDA"
+  },
+  {
+    "id": 278,
+    "word": "BORJA",
+    "normalized": "BORJA"
+  },
+  {
+    "id": 279,
+    "word": "BOSCO",
+    "normalized": "BOSCO"
+  },
+  {
+    "id": 280,
+    "word": "BRAGA",
+    "normalized": "BRAGA"
+  },
+  {
+    "id": 281,
+    "word": "BREJO",
+    "normalized": "BREJO"
+  },
+  {
+    "id": 282,
+    "word": "BRIDA",
+    "normalized": "BRIDA"
+  },
+  {
+    "id": 283,
+    "word": "BRITO",
+    "normalized": "BRITO"
+  },
+  {
+    "id": 284,
+    "word": "BRUNO",
+    "normalized": "BRUNO"
+  },
+  {
+    "id": 285,
+    "word": "BUENO",
+    "normalized": "BUENO"
+  },
+  {
+    "id": 286,
+    "word": "BUGRE",
+    "normalized": "BUGRE"
+  },
+  {
+    "id": 287,
+    "word": "CABUL",
+    "normalized": "CABUL"
+  },
+  {
+    "id": 288,
+    "word": "CAIBI",
+    "normalized": "CAIBI"
+  },
+  {
+    "id": 289,
+    "word": "CAIRO",
+    "normalized": "CAIRO"
+  },
+  {
+    "id": 290,
+    "word": "CAIRU",
+    "normalized": "CAIRU"
+  },
+  {
+    "id": 291,
+    "word": "CALVO",
+    "normalized": "CALVO"
+  },
+  {
+    "id": 292,
+    "word": "CANAS",
+    "normalized": "CANAS"
+  },
+  {
+    "id": 293,
+    "word": "CANOA",
+    "normalized": "CANOA"
+  },
+  {
+    "id": 294,
+    "word": "CANTU",
+    "normalized": "CANTU"
+  },
+  {
+    "id": 295,
+    "word": "CAPIM",
+    "normalized": "CAPIM"
+  },
+  {
+    "id": 296,
+    "word": "CARLA",
+    "normalized": "CARLA"
+  },
+  {
+    "id": 297,
+    "word": "CARLO",
+    "normalized": "CARLO"
+  },
+  {
+    "id": 298,
+    "word": "CARMO",
+    "normalized": "CARMO"
+  },
+  {
+    "id": 299,
+    "word": "CARÃº",
+    "normalized": "CARAº"
+  },
+  {
+    "id": 300,
+    "word": "CATAR",
+    "normalized": "CATAR"
+  },
+  {
+    "id": 301,
+    "word": "CATAS",
+    "normalized": "CATAS"
+  },
+  {
+    "id": 302,
+    "word": "CEDRO",
+    "normalized": "CEDRO"
+  },
+  {
+    "id": 303,
+    "word": "CELSO",
+    "normalized": "CELSO"
+  },
+  {
+    "id": 304,
+    "word": "CERES",
+    "normalized": "CERES"
+  },
+  {
+    "id": 305,
+    "word": "CERRO",
+    "normalized": "CERRO"
+  },
+  {
+    "id": 306,
+    "word": "CHADE",
+    "normalized": "CHADE"
+  },
+  {
+    "id": 307,
+    "word": "CHECA",
+    "normalized": "CHECA"
+  },
+  {
+    "id": 308,
+    "word": "CHICA",
+    "normalized": "CHICA"
+  },
+  {
+    "id": 309,
+    "word": "CHICO",
+    "normalized": "CHICO"
+  },
+  {
+    "id": 310,
+    "word": "CHILE",
+    "normalized": "CHILE"
+  },
+  {
+    "id": 311,
+    "word": "CHINA",
+    "normalized": "CHINA"
+  },
+  {
+    "id": 312,
+    "word": "CICCO",
+    "normalized": "CICCO"
+  },
+  {
+    "id": 313,
+    "word": "CLARA",
+    "normalized": "CLARA"
+  },
+  {
+    "id": 314,
+    "word": "COARI",
+    "normalized": "COARI"
+  },
+  {
+    "id": 315,
+    "word": "COCAL",
+    "normalized": "COCAL"
+  },
+  {
+    "id": 316,
+    "word": "COCOS",
+    "normalized": "COCOS"
+  },
+  {
+    "id": 317,
+    "word": "CONDE",
+    "normalized": "CONDE"
+  },
+  {
+    "id": 318,
+    "word": "CONGO",
+    "normalized": "CONGO"
+  },
+  {
+    "id": 319,
+    "word": "COROA",
+    "normalized": "COROA"
+  },
+  {
+    "id": 320,
+    "word": "COSTA",
+    "normalized": "COSTA"
+  },
+  {
+    "id": 321,
+    "word": "COTIA",
+    "normalized": "COTIA"
+  },
+  {
+    "id": 322,
+    "word": "COUTO",
+    "normalized": "COUTO"
+  },
+  {
+    "id": 323,
+    "word": "COXIM",
+    "normalized": "COXIM"
+  },
+  {
+    "id": 324,
+    "word": "CRATO",
+    "normalized": "CRATO"
+  },
+  {
+    "id": 325,
+    "word": "CUMBE",
+    "normalized": "CUMBE"
+  },
+  {
+    "id": 326,
+    "word": "CUNHA",
+    "normalized": "CUNHA"
+  },
+  {
+    "id": 327,
+    "word": "DACAR",
+    "normalized": "DACAR"
+  },
+  {
+    "id": 328,
+    "word": "DAFNE",
+    "normalized": "DAFNE"
+  },
+  {
+    "id": 329,
+    "word": "DALVA",
+    "normalized": "DALVA"
+  },
+  {
+    "id": 330,
+    "word": "DANTA",
+    "normalized": "DANTA"
+  },
+  {
+    "id": 331,
+    "word": "DANTE",
+    "normalized": "DANTE"
+  },
+  {
+    "id": 332,
+    "word": "DARIO",
+    "normalized": "DARIO"
+  },
+  {
+    "id": 333,
+    "word": "DATAS",
+    "normalized": "DATAS"
+  },
+  {
+    "id": 334,
+    "word": "DAVID",
+    "normalized": "DAVID"
+  },
+  {
+    "id": 335,
+    "word": "DELTA",
+    "normalized": "DELTA"
+  },
+  {
+    "id": 336,
+    "word": "DENIS",
+    "normalized": "DENIS"
+  },
+  {
+    "id": 337,
+    "word": "DHABI",
+    "normalized": "DHABI"
+  },
+  {
+    "id": 338,
+    "word": "DIANA",
+    "normalized": "DIANA"
+  },
+  {
+    "id": 339,
+    "word": "DIOGO",
+    "normalized": "DIOGO"
+  },
+  {
+    "id": 340,
+    "word": "DIRCE",
+    "normalized": "DIRCE"
+  },
+  {
+    "id": 341,
+    "word": "DOBLE",
+    "normalized": "DOBLE"
+  },
+  {
+    "id": 342,
+    "word": "DORES",
+    "normalized": "DORES"
+  },
+  {
+    "id": 343,
+    "word": "DUQUE",
+    "normalized": "DUQUE"
+  },
+  {
+    "id": 344,
+    "word": "DUTRA",
+    "normalized": "DUTRA"
+  },
+  {
+    "id": 345,
+    "word": "EDGAR",
+    "normalized": "EDGAR"
+  },
+  {
+    "id": 346,
+    "word": "EDITE",
+    "normalized": "EDITE"
+  },
+  {
+    "id": 347,
+    "word": "EGITO",
+    "normalized": "EGITO"
+  },
+  {
+    "id": 348,
+    "word": "ELIAS",
+    "normalized": "ELIAS"
+  },
+  {
+    "id": 349,
+    "word": "ELISA",
+    "normalized": "ELISA"
+  },
+  {
+    "id": 350,
+    "word": "ELIXA",
+    "normalized": "ELIXA"
+  },
+  {
+    "id": 351,
+    "word": "ENTRE",
+    "normalized": "ENTRE"
+  },
+  {
+    "id": 352,
+    "word": "ERVAL",
+    "normalized": "ERVAL"
+  },
+  {
+    "id": 353,
+    "word": "ESAÃº",
+    "normalized": "ESAAº"
+  },
+  {
+    "id": 354,
+    "word": "ESOPO",
+    "normalized": "ESOPO"
+  },
+  {
+    "id": 355,
+    "word": "ESTER",
+    "normalized": "ESTER"
+  },
+  {
+    "id": 356,
+    "word": "FAINA",
+    "normalized": "FAINA"
+  },
+  {
+    "id": 357,
+    "word": "FARIA",
+    "normalized": "FARIA"
+  },
+  {
+    "id": 358,
+    "word": "FEIRA",
+    "normalized": "FEIRA"
+  },
+  {
+    "id": 359,
+    "word": "FELIZ",
+    "normalized": "FELIZ"
+  },
+  {
+    "id": 360,
+    "word": "FILHO",
+    "normalized": "FILHO"
+  },
+  {
+    "id": 361,
+    "word": "FONTE",
+    "normalized": "FONTE"
+  },
+  {
+    "id": 362,
+    "word": "FRIAS",
+    "normalized": "FRIAS"
+  },
+  {
+    "id": 363,
+    "word": "FUNDA",
+    "normalized": "FUNDA"
+  },
+  {
+    "id": 364,
+    "word": "GALES",
+    "normalized": "GALES"
+  },
+  {
+    "id": 365,
+    "word": "GALHO",
+    "normalized": "GALHO"
+  },
+  {
+    "id": 366,
+    "word": "GANDU",
+    "normalized": "GANDU"
+  },
+  {
+    "id": 367,
+    "word": "GATOS",
+    "normalized": "GATOS"
+  },
+  {
+    "id": 368,
+    "word": "GERAL",
+    "normalized": "GERAL"
+  },
+  {
+    "id": 369,
+    "word": "GERBI",
+    "normalized": "GERBI"
+  },
+  {
+    "id": 370,
+    "word": "GIRAU",
+    "normalized": "GIRAU"
+  },
+  {
+    "id": 371,
+    "word": "GODOY",
+    "normalized": "GODOY"
+  },
+  {
+    "id": 372,
+    "word": "GOMES",
+    "normalized": "GOMES"
+  },
+  {
+    "id": 373,
+    "word": "GORDA",
+    "normalized": "GORDA"
+  },
+  {
+    "id": 374,
+    "word": "HAITI",
+    "normalized": "HAITI"
+  },
+  {
+    "id": 375,
+    "word": "HARTZ",
+    "normalized": "HARTZ"
+  },
+  {
+    "id": 376,
+    "word": "HEARD",
+    "normalized": "HEARD"
+  },
+  {
+    "id": 377,
+    "word": "HULHA",
+    "normalized": "HULHA"
+  },
+  {
+    "id": 378,
+    "word": "IACRI",
+    "normalized": "IACRI"
+  },
+  {
+    "id": 379,
+    "word": "IARAS",
+    "normalized": "IARAS"
+  },
+  {
+    "id": 380,
+    "word": "IBEMA",
+    "normalized": "IBEMA"
+  },
+  {
+    "id": 381,
+    "word": "IBIAM",
+    "normalized": "IBIAM"
+  },
+  {
+    "id": 382,
+    "word": "ICATU",
+    "normalized": "ICATU"
+  },
+  {
+    "id": 383,
+    "word": "IELMO",
+    "normalized": "IELMO"
+  },
+  {
+    "id": 384,
+    "word": "IEPÃª",
+    "normalized": "IEPAª"
+  },
+  {
+    "id": 385,
+    "word": "IGACI",
+    "normalized": "IGACI"
+  },
+  {
+    "id": 386,
+    "word": "IJACI",
+    "normalized": "IJACI"
+  },
+  {
+    "id": 387,
+    "word": "ILHAS",
+    "normalized": "ILHAS"
+  },
+  {
+    "id": 388,
+    "word": "INÃªS",
+    "normalized": "INAªS"
+  },
+  {
+    "id": 389,
+    "word": "IPABA",
+    "normalized": "IPABA"
+  },
+  {
+    "id": 390,
+    "word": "IPIRA",
+    "normalized": "IPIRA"
+  },
+  {
+    "id": 391,
+    "word": "IPUBI",
+    "normalized": "IPUBI"
+  },
+  {
+    "id": 392,
+    "word": "IRANI",
+    "normalized": "IRANI"
+  },
+  {
+    "id": 393,
+    "word": "IRATI",
+    "normalized": "IRATI"
+  },
+  {
+    "id": 394,
+    "word": "IRUPI",
+    "normalized": "IRUPI"
+  },
+  {
+    "id": 395,
+    "word": "ITABI",
+    "normalized": "ITABI"
+  },
+  {
+    "id": 396,
+    "word": "ITAGI",
+    "normalized": "ITAGI"
+  },
+  {
+    "id": 397,
+    "word": "ITAJU",
+    "normalized": "ITAJU"
+  },
+  {
+    "id": 398,
+    "word": "ITAÃº",
+    "normalized": "ITAAº"
+  },
+  {
+    "id": 399,
+    "word": "ITOBI",
+    "normalized": "ITOBI"
+  },
+  {
+    "id": 400,
+    "word": "IUIÃº",
+    "normalized": "IUIAº"
+  },
+  {
+    "id": 401,
+    "word": "IVOTI",
+    "normalized": "IVOTI"
+  },
+  {
+    "id": 402,
+    "word": "IÃºNA",
+    "normalized": "IAºNA"
+  },
+  {
+    "id": 403,
+    "word": "JAIME",
+    "normalized": "JAIME"
+  },
+  {
+    "id": 404,
+    "word": "JALES",
+    "normalized": "JALES"
+  },
+  {
+    "id": 405,
+    "word": "JAMIL",
+    "normalized": "JAMIL"
+  },
+  {
+    "id": 406,
+    "word": "JAURU",
+    "normalized": "JAURU"
+  },
+  {
+    "id": 407,
+    "word": "JESUS",
+    "normalized": "JESUS"
+  },
+  {
+    "id": 408,
+    "word": "JORGE",
+    "normalized": "JORGE"
+  },
+  {
+    "id": 409,
+    "word": "JUARA",
+    "normalized": "JUARA"
+  },
+  {
+    "id": 410,
+    "word": "JUNCO",
+    "normalized": "JUNCO"
+  },
+  {
+    "id": 411,
+    "word": "KAZUO",
+    "normalized": "KAZUO"
+  },
+  {
+    "id": 412,
+    "word": "KIOTO",
+    "normalized": "KIOTO"
+  },
+  {
+    "id": 413,
+    "word": "KUALA",
+    "normalized": "KUALA"
+  },
+  {
+    "id": 414,
+    "word": "LAGES",
+    "normalized": "LAGES"
+  },
+  {
+    "id": 415,
+    "word": "LAGOA",
+    "normalized": "LAGOA"
+  },
+  {
+    "id": 416,
+    "word": "LAJES",
+    "normalized": "LAJES"
+  },
+  {
+    "id": 417,
+    "word": "LAMIM",
+    "normalized": "LAMIM"
+  },
+  {
+    "id": 418,
+    "word": "LANGE",
+    "normalized": "LANGE"
+  },
+  {
+    "id": 419,
+    "word": "LANKA",
+    "normalized": "LANKA"
+  },
+  {
+    "id": 420,
+    "word": "LARGO",
+    "normalized": "LARGO"
+  },
+  {
+    "id": 421,
+    "word": "LAURA",
+    "normalized": "LAURA"
+  },
+  {
+    "id": 422,
+    "word": "LAURO",
+    "normalized": "LAURO"
+  },
+  {
+    "id": 423,
+    "word": "LEBON",
+    "normalized": "LEBON"
+  },
+  {
+    "id": 424,
+    "word": "LEILA",
+    "normalized": "LEILA"
+  },
+  {
+    "id": 425,
+    "word": "LEMOS",
+    "normalized": "LEMOS"
+  },
+  {
+    "id": 426,
+    "word": "LESTE",
+    "normalized": "LESTE"
+  },
+  {
+    "id": 427,
+    "word": "LIMPA",
+    "normalized": "LIMPA"
+  },
+  {
+    "id": 428,
+    "word": "LIMPO",
+    "normalized": "LIMPO"
+  },
+  {
+    "id": 429,
+    "word": "LINDA",
+    "normalized": "LINDA"
+  },
+  {
+    "id": 430,
+    "word": "LONGA",
+    "normalized": "LONGA"
+  },
+  {
+    "id": 431,
+    "word": "LOPES",
+    "normalized": "LOPES"
+  },
+  {
+    "id": 432,
+    "word": "LOUIS",
+    "normalized": "LOUIS"
+  },
+  {
+    "id": 433,
+    "word": "LUCAS",
+    "normalized": "LUCAS"
+  },
+  {
+    "id": 434,
+    "word": "LUZIA",
+    "normalized": "LUZIA"
+  },
+  {
+    "id": 435,
+    "word": "MACAU",
+    "normalized": "MACAU"
+  },
+  {
+    "id": 436,
+    "word": "MADRE",
+    "normalized": "MADRE"
+  },
+  {
+    "id": 437,
+    "word": "MAFRA",
+    "normalized": "MAFRA"
+  },
+  {
+    "id": 438,
+    "word": "MAGDA",
+    "normalized": "MAGDA"
+  },
+  {
+    "id": 439,
+    "word": "MAGRO",
+    "normalized": "MAGRO"
+  },
+  {
+    "id": 440,
+    "word": "MAIOR",
+    "normalized": "MAIOR"
+  },
+  {
+    "id": 441,
+    "word": "MAIRI",
+    "normalized": "MAIRI"
+  },
+  {
+    "id": 442,
+    "word": "MAJOR",
+    "normalized": "MAJOR"
+  },
+  {
+    "id": 443,
+    "word": "MALTA",
+    "normalized": "MALTA"
+  },
+  {
+    "id": 444,
+    "word": "MANSA",
+    "normalized": "MANSA"
+  },
+  {
+    "id": 445,
+    "word": "MANSO",
+    "normalized": "MANSO"
+  },
+  {
+    "id": 446,
+    "word": "MARAU",
+    "normalized": "MARAU"
+  },
+  {
+    "id": 447,
+    "word": "MARCO",
+    "normalized": "MARCO"
+  },
+  {
+    "id": 448,
+    "word": "MARIA",
+    "normalized": "MARIA"
+  },
+  {
+    "id": 449,
+    "word": "MARTA",
+    "normalized": "MARTA"
+  },
+  {
+    "id": 450,
+    "word": "MATAS",
+    "normalized": "MATAS"
+  },
+  {
+    "id": 451,
+    "word": "MATOS",
+    "normalized": "MATOS"
+  },
+  {
+    "id": 452,
+    "word": "MAYEN",
+    "normalized": "MAYEN"
+  },
+  {
+    "id": 453,
+    "word": "MEIRA",
+    "normalized": "MEIRA"
+  },
+  {
+    "id": 454,
+    "word": "MINSK",
+    "normalized": "MINSK"
+  },
+  {
+    "id": 455,
+    "word": "MIRIM",
+    "normalized": "MIRIM"
+  },
+  {
+    "id": 456,
+    "word": "MOEMA",
+    "normalized": "MOEMA"
+  },
+  {
+    "id": 457,
+    "word": "MOGOL",
+    "normalized": "MOGOL"
+  },
+  {
+    "id": 458,
+    "word": "MOITA",
+    "normalized": "MOITA"
+  },
+  {
+    "id": 459,
+    "word": "MORRO",
+    "normalized": "MORRO"
+  },
+  {
+    "id": 460,
+    "word": "MORSE",
+    "normalized": "MORSE"
+  },
+  {
+    "id": 461,
+    "word": "MOURA",
+    "normalized": "MOURA"
+  },
+  {
+    "id": 462,
+    "word": "MUNIZ",
+    "normalized": "MUNIZ"
+  },
+  {
+    "id": 463,
+    "word": "MUQUI",
+    "normalized": "MUQUI"
+  },
+  {
+    "id": 464,
+    "word": "MURTA",
+    "normalized": "MURTA"
+  },
+  {
+    "id": 465,
+    "word": "MUTUM",
+    "normalized": "MUTUM"
+  },
+  {
+    "id": 466,
+    "word": "NACIP",
+    "normalized": "NACIP"
+  },
+  {
+    "id": 467,
+    "word": "NAQUE",
+    "normalized": "NAQUE"
+  },
+  {
+    "id": 468,
+    "word": "NATAL",
+    "normalized": "NATAL"
+  },
+  {
+    "id": 469,
+    "word": "NAURU",
+    "normalized": "NAURU"
+  },
+  {
+    "id": 470,
+    "word": "NEGRA",
+    "normalized": "NEGRA"
+  },
+  {
+    "id": 471,
+    "word": "NEIVA",
+    "normalized": "NEIVA"
+  },
+  {
+    "id": 472,
+    "word": "NEPAL",
+    "normalized": "NEPAL"
+  },
+  {
+    "id": 473,
+    "word": "NEREU",
+    "normalized": "NEREU"
+  },
+  {
+    "id": 474,
+    "word": "NEUSA",
+    "normalized": "NEUSA"
+  },
+  {
+    "id": 475,
+    "word": "NEVES",
+    "normalized": "NEVES"
+  },
+  {
+    "id": 476,
+    "word": "NOSSA",
+    "normalized": "NOSSA"
+  },
+  {
+    "id": 477,
+    "word": "NOVAS",
+    "normalized": "NOVAS"
+  },
+  {
+    "id": 478,
+    "word": "NOVOS",
+    "normalized": "NOVOS"
+  },
+  {
+    "id": 479,
+    "word": "NUNES",
+    "normalized": "NUNES"
+  },
+  {
+    "id": 480,
+    "word": "OCARA",
+    "normalized": "OCARA"
+  },
+  {
+    "id": 481,
+    "word": "OESTE",
+    "normalized": "OESTE"
+  },
+  {
+    "id": 482,
+    "word": "OSCAR",
+    "normalized": "OSCAR"
+  },
+  {
+    "id": 483,
+    "word": "OTAVA",
+    "normalized": "OTAVA"
+  },
+  {
+    "id": 484,
+    "word": "OTONI",
+    "normalized": "OTONI"
+  },
+  {
+    "id": 485,
+    "word": "OUROS",
+    "normalized": "OUROS"
+  },
+  {
+    "id": 486,
+    "word": "PAIAL",
+    "normalized": "PAIAL"
+  },
+  {
+    "id": 487,
+    "word": "PAINS",
+    "normalized": "PAINS"
+  },
+  {
+    "id": 488,
+    "word": "PAIVA",
+    "normalized": "PAIVA"
+  },
+  {
+    "id": 489,
+    "word": "PALAU",
+    "normalized": "PALAU"
+  },
+  {
+    "id": 490,
+    "word": "PALHA",
+    "normalized": "PALHA"
+  },
+  {
+    "id": 491,
+    "word": "PALMA",
+    "normalized": "PALMA"
+  },
+  {
+    "id": 492,
+    "word": "PAPUA",
+    "normalized": "PAPUA"
+  },
+  {
+    "id": 493,
+    "word": "PARIS",
+    "normalized": "PARIS"
+  },
+  {
+    "id": 494,
+    "word": "PASSA",
+    "normalized": "PASSA"
+  },
+  {
+    "id": 495,
+    "word": "PATIS",
+    "normalized": "PATIS"
+  },
+  {
+    "id": 496,
+    "word": "PAULA",
+    "normalized": "PAULA"
+  },
+  {
+    "id": 497,
+    "word": "PAULO",
+    "normalized": "PAULO"
+  },
+  {
+    "id": 498,
+    "word": "PEDRO",
+    "normalized": "PEDRO"
+  },
+  {
+    "id": 499,
+    "word": "PENHA",
+    "normalized": "PENHA"
+  },
+  {
+    "id": 500,
+    "word": "PENSA",
+    "normalized": "PENSA"
+  },
+  {
+    "id": 501,
+    "word": "PEQUI",
+    "normalized": "PEQUI"
+  },
+  {
+    "id": 502,
+    "word": "PHNOM",
+    "normalized": "PHNOM"
+  },
+  {
+    "id": 503,
+    "word": "PICOS",
+    "normalized": "PICOS"
+  },
+  {
+    "id": 504,
+    "word": "PILAR",
+    "normalized": "PILAR"
+  },
+  {
+    "id": 505,
+    "word": "PINGO",
+    "normalized": "PINGO"
+  },
+  {
+    "id": 506,
+    "word": "PIRES",
+    "normalized": "PIRES"
+  },
+  {
+    "id": 507,
+    "word": "PIÃªN",
+    "normalized": "PIAªN"
+  },
+  {
+    "id": 508,
+    "word": "POMBA",
+    "normalized": "POMBA"
+  },
+  {
+    "id": 509,
+    "word": "PONTA",
+    "normalized": "PONTA"
+  },
+  {
+    "id": 510,
+    "word": "PONTE",
+    "normalized": "PONTE"
+  },
+  {
+    "id": 511,
+    "word": "POSSE",
+    "normalized": "POSSE"
+  },
+  {
+    "id": 512,
+    "word": "POTIM",
+    "normalized": "POTIM"
+  },
+  {
+    "id": 513,
+    "word": "POUSO",
+    "normalized": "POUSO"
+  },
+  {
+    "id": 514,
+    "word": "PRADO",
+    "normalized": "PRADO"
+  },
+  {
+    "id": 515,
+    "word": "PRAGA",
+    "normalized": "PRAGA"
+  },
+  {
+    "id": 516,
+    "word": "PRETA",
+    "normalized": "PRETA"
+  },
+  {
+    "id": 517,
+    "word": "PRETO",
+    "normalized": "PRETO"
+  },
+  {
+    "id": 518,
+    "word": "PURUS",
+    "normalized": "PURUS"
+  },
+  {
+    "id": 519,
+    "word": "QATAR",
+    "normalized": "QATAR"
+  },
+  {
+    "id": 520,
+    "word": "QUITO",
+    "normalized": "QUITO"
+  },
+  {
+    "id": 521,
+    "word": "RABAT",
+    "normalized": "RABAT"
+  },
+  {
+    "id": 522,
+    "word": "RAMOS",
+    "normalized": "RAMOS"
+  },
+  {
+    "id": 523,
+    "word": "RATOS",
+    "normalized": "RATOS"
+  },
+  {
+    "id": 524,
+    "word": "REINO",
+    "normalized": "REINO"
+  },
+  {
+    "id": 525,
+    "word": "RIADE",
+    "normalized": "RIADE"
+  },
+  {
+    "id": 526,
+    "word": "RIBAS",
+    "normalized": "RIBAS"
+  },
+  {
+    "id": 527,
+    "word": "ROCHA",
+    "normalized": "ROCHA"
+  },
+  {
+    "id": 528,
+    "word": "ROLIM",
+    "normalized": "ROLIM"
+  },
+  {
+    "id": 529,
+    "word": "RONDA",
+    "normalized": "RONDA"
+  },
+  {
+    "id": 530,
+    "word": "ROQUE",
+    "normalized": "ROQUE"
+  },
+  {
+    "id": 531,
+    "word": "ROUEN",
+    "normalized": "ROUEN"
+  },
+  {
+    "id": 532,
+    "word": "RUBIM",
+    "normalized": "RUBIM"
+  },
+  {
+    "id": 533,
+    "word": "SAARA",
+    "normalized": "SAARA"
+  },
+  {
+    "id": 534,
+    "word": "SAINT",
+    "normalized": "SAINT"
+  },
+  {
+    "id": 535,
+    "word": "SALAM",
+    "normalized": "SALAM"
+  },
+  {
+    "id": 536,
+    "word": "SALES",
+    "normalized": "SALES"
+  },
+  {
+    "id": 537,
+    "word": "SALTO",
+    "normalized": "SALTO"
+  },
+  {
+    "id": 538,
+    "word": "SAMOA",
+    "normalized": "SAMOA"
+  },
+  {
+    "id": 539,
+    "word": "SANTA",
+    "normalized": "SANTA"
+  },
+  {
+    "id": 540,
+    "word": "SANTO",
+    "normalized": "SANTO"
+  },
+  {
+    "id": 541,
+    "word": "SEARA",
+    "normalized": "SEARA"
+  },
+  {
+    "id": 542,
+    "word": "SENTO",
+    "normalized": "SENTO"
+  },
+  {
+    "id": 543,
+    "word": "SERPA",
+    "normalized": "SERPA"
+  },
+  {
+    "id": 544,
+    "word": "SERRA",
+    "normalized": "SERRA"
+  },
+  {
+    "id": 545,
+    "word": "SERRO",
+    "normalized": "SERRO"
+  },
+  {
+    "id": 546,
+    "word": "SILVA",
+    "normalized": "SILVA"
+  },
+  {
+    "id": 547,
+    "word": "SINOP",
+    "normalized": "SINOP"
+  },
+  {
+    "id": 548,
+    "word": "SOTER",
+    "normalized": "SOTER"
+  },
+  {
+    "id": 549,
+    "word": "SOURE",
+    "normalized": "SOURE"
+  },
+  {
+    "id": 550,
+    "word": "SOUSA",
+    "normalized": "SOUSA"
+  },
+  {
+    "id": 551,
+    "word": "SOUTO",
+    "normalized": "SOUTO"
+  },
+  {
+    "id": 552,
+    "word": "SOUZA",
+    "normalized": "SOUZA"
+  },
+  {
+    "id": 553,
+    "word": "SPAIN",
+    "normalized": "SPAIN"
+  },
+  {
+    "id": 554,
+    "word": "TAIPE",
+    "normalized": "TAIPE"
+  },
+  {
+    "id": 555,
+    "word": "TAIPU",
+    "normalized": "TAIPU"
+  },
+  {
+    "id": 556,
+    "word": "TAPES",
+    "normalized": "TAPES"
+  },
+  {
+    "id": 557,
+    "word": "TASSO",
+    "normalized": "TASSO"
+  },
+  {
+    "id": 558,
+    "word": "TEBAS",
+    "normalized": "TEBAS"
+  },
+  {
+    "id": 559,
+    "word": "TELHA",
+    "normalized": "TELHA"
+  },
+  {
+    "id": 560,
+    "word": "TEMPO",
+    "normalized": "TEMPO"
+  },
+  {
+    "id": 561,
+    "word": "TERRA",
+    "normalized": "TERRA"
+  },
+  {
+    "id": 562,
+    "word": "TERRE",
+    "normalized": "TERRE"
+  },
+  {
+    "id": 563,
+    "word": "TEXAS",
+    "normalized": "TEXAS"
+  },
+  {
+    "id": 564,
+    "word": "TIAGO",
+    "normalized": "TIAGO"
+  },
+  {
+    "id": 565,
+    "word": "TIBAU",
+    "normalized": "TIBAU"
+  },
+  {
+    "id": 566,
+    "word": "TIGRE",
+    "normalized": "TIGRE"
+  },
+  {
+    "id": 567,
+    "word": "TIMBU",
+    "normalized": "TIMBU"
+  },
+  {
+    "id": 568,
+    "word": "TIMON",
+    "normalized": "TIMON"
+  },
+  {
+    "id": 569,
+    "word": "TIMOR",
+    "normalized": "TIMOR"
+  },
+  {
+    "id": 570,
+    "word": "TINTO",
+    "normalized": "TINTO"
+  },
+  {
+    "id": 571,
+    "word": "TIROS",
+    "normalized": "TIROS"
+  },
+  {
+    "id": 572,
+    "word": "TOCOS",
+    "normalized": "TOCOS"
+  },
+  {
+    "id": 573,
+    "word": "TOLDO",
+    "normalized": "TOLDO"
+  },
+  {
+    "id": 574,
+    "word": "TOMAR",
+    "normalized": "TOMAR"
+  },
+  {
+    "id": 575,
+    "word": "TONGA",
+    "normalized": "TONGA"
+  },
+  {
+    "id": 576,
+    "word": "TOQUE",
+    "normalized": "TOQUE"
+  },
+  {
+    "id": 577,
+    "word": "TORRE",
+    "normalized": "TORRE"
+  },
+  {
+    "id": 578,
+    "word": "TREZE",
+    "normalized": "TREZE"
+  },
+  {
+    "id": 579,
+    "word": "TRÃªS",
+    "normalized": "TRAªS"
+  },
+  {
+    "id": 580,
+    "word": "TUNAS",
+    "normalized": "TUNAS"
+  },
+  {
+    "id": 581,
+    "word": "TUPIM",
+    "normalized": "TUPIM"
+  },
+  {
+    "id": 582,
+    "word": "TURVO",
+    "normalized": "TURVO"
+  },
+  {
+    "id": 583,
+    "word": "UCHOA",
+    "normalized": "UCHOA"
+  },
+  {
+    "id": 584,
+    "word": "UMARI",
+    "normalized": "UMARI"
+  },
+  {
+    "id": 585,
+    "word": "UNIDO",
+    "normalized": "UNIDO"
+  },
+  {
+    "id": 586,
+    "word": "VADUZ",
+    "normalized": "VADUZ"
+  },
+  {
+    "id": 587,
+    "word": "VALES",
+    "normalized": "VALES"
+  },
+  {
+    "id": 588,
+    "word": "VALOS",
+    "normalized": "VALOS"
+  },
+  {
+    "id": 589,
+    "word": "VARRE",
+    "normalized": "VARRE"
+  },
+  {
+    "id": 590,
+    "word": "VELHA",
+    "normalized": "VELHA"
+  },
+  {
+    "id": 591,
+    "word": "VELHO",
+    "normalized": "VELHO"
+  },
+  {
+    "id": 592,
+    "word": "VENDA",
+    "normalized": "VENDA"
+  },
+  {
+    "id": 593,
+    "word": "VENHA",
+    "normalized": "VENHA"
+  },
+  {
+    "id": 594,
+    "word": "VENTO",
+    "normalized": "VENTO"
+  },
+  {
+    "id": 595,
+    "word": "VERBO",
+    "normalized": "VERBO"
+  },
+  {
+    "id": 596,
+    "word": "VERDE",
+    "normalized": "VERDE"
+  },
+  {
+    "id": 597,
+    "word": "VERÃª",
+    "normalized": "VERAª"
+  },
+  {
+    "id": 598,
+    "word": "VIANA",
+    "normalized": "VIANA"
+  },
+  {
+    "id": 599,
+    "word": "VIDAL",
+    "normalized": "VIDAL"
+  },
+  {
+    "id": 600,
+    "word": "VIENA",
+    "normalized": "VIENA"
+  },
+  {
+    "id": 601,
+    "word": "VIGIA",
+    "normalized": "VIGIA"
+  },
+  {
+    "id": 602,
+    "word": "VINTE",
+    "normalized": "VINTE"
+  },
+  {
+    "id": 603,
+    "word": "VISEU",
+    "normalized": "VISEU"
+  },
+  {
+    "id": 604,
+    "word": "VISTA",
+    "normalized": "VISTA"
+  },
+  {
+    "id": 605,
+    "word": "VITOR",
+    "normalized": "VITOR"
+  },
+  {
+    "id": 606,
+    "word": "VOLTA",
+    "normalized": "VOLTA"
+  },
+  {
+    "id": 607,
+    "word": "XAXIM",
+    "normalized": "XAXIM"
+  },
+  {
+    "id": 608,
+    "word": "XINGU",
+    "normalized": "XINGU"
+  },
+  {
+    "id": 609,
+    "word": "XIQUE",
+    "normalized": "XIQUE"
+  },
+  {
+    "id": 610,
+    "word": "ZAIRE",
+    "normalized": "ZAIRE"
+  },
+  {
+    "id": 611,
+    "word": "ABAFA",
+    "normalized": "ABAFA"
+  },
+  {
+    "id": 612,
+    "word": "ABAFE",
+    "normalized": "ABAFE"
+  },
+  {
+    "id": 613,
+    "word": "ABAFO",
+    "normalized": "ABAFO"
+  },
+  {
+    "id": 614,
+    "word": "ABALA",
+    "normalized": "ABALA"
+  },
+  {
+    "id": 615,
+    "word": "ABALE",
+    "normalized": "ABALE"
+  },
+  {
+    "id": 616,
+    "word": "ABALO",
+    "normalized": "ABALO"
+  },
+  {
+    "id": 617,
+    "word": "ABANA",
+    "normalized": "ABANA"
+  },
+  {
+    "id": 618,
+    "word": "ABANE",
+    "normalized": "ABANE"
+  },
+  {
+    "id": 619,
+    "word": "ABANO",
+    "normalized": "ABANO"
+  },
+  {
+    "id": 620,
+    "word": "ABATA",
+    "normalized": "ABATA"
+  },
+  {
+    "id": 621,
+    "word": "ABATE",
+    "normalized": "ABATE"
+  },
+  {
+    "id": 622,
+    "word": "ABATI",
+    "normalized": "ABATI"
+  },
+  {
+    "id": 623,
+    "word": "ABATO",
+    "normalized": "ABATO"
+  },
+  {
+    "id": 624,
+    "word": "ABETO",
+    "normalized": "ABETO"
+  },
+  {
+    "id": 625,
+    "word": "ABLUA",
+    "normalized": "ABLUA"
+  },
+  {
+    "id": 626,
+    "word": "ABLUI",
+    "normalized": "ABLUI"
+  },
+  {
+    "id": 627,
+    "word": "ABLUO",
+    "normalized": "ABLUO"
+  },
+  {
+    "id": 628,
+    "word": "ABOLE",
+    "normalized": "ABOLE"
+  },
+  {
+    "id": 629,
+    "word": "ABOLI",
+    "normalized": "ABOLI"
+  },
+  {
+    "id": 630,
+    "word": "ABONO",
+    "normalized": "ABONO"
+  },
+  {
+    "id": 631,
+    "word": "ABRAM",
+    "normalized": "ABRAM"
+  },
+  {
+    "id": 632,
+    "word": "ABRAS",
+    "normalized": "ABRAS"
+  },
+  {
+    "id": 633,
+    "word": "ABREM",
+    "normalized": "ABREM"
+  },
+  {
+    "id": 634,
+    "word": "ABRES",
+    "normalized": "ABRES"
+  },
+  {
+    "id": 635,
+    "word": "ABRIA",
+    "normalized": "ABRIA"
+  },
+  {
+    "id": 636,
+    "word": "ABRIL",
+    "normalized": "ABRIL"
+  },
+  {
+    "id": 637,
+    "word": "ABRIR",
+    "normalized": "ABRIR"
+  },
+  {
+    "id": 638,
+    "word": "ABRIS",
+    "normalized": "ABRIS"
+  },
+  {
+    "id": 639,
+    "word": "ABRIU",
+    "normalized": "ABRIU"
+  },
+  {
+    "id": 640,
+    "word": "ABUSA",
+    "normalized": "ABUSA"
+  },
+  {
+    "id": 641,
+    "word": "ABUSE",
+    "normalized": "ABUSE"
+  },
+  {
+    "id": 642,
+    "word": "ABUSO",
+    "normalized": "ABUSO"
+  },
+  {
+    "id": 643,
+    "word": "ACABA",
+    "normalized": "ACABA"
+  },
+  {
+    "id": 644,
+    "word": "ACABE",
+    "normalized": "ACABE"
+  },
+  {
+    "id": 645,
+    "word": "ACABO",
+    "normalized": "ACABO"
+  },
+  {
+    "id": 646,
+    "word": "ACASO",
+    "normalized": "ACASO"
+  },
+  {
+    "id": 647,
+    "word": "ACATA",
+    "normalized": "ACATA"
+  },
+  {
+    "id": 648,
+    "word": "ACATE",
+    "normalized": "ACATE"
+  },
+  {
+    "id": 649,
+    "word": "ACATO",
+    "normalized": "ACATO"
+  },
+  {
+    "id": 650,
+    "word": "ACENA",
+    "normalized": "ACENA"
+  },
+  {
+    "id": 651,
+    "word": "ACENE",
+    "normalized": "ACENE"
+  },
+  {
+    "id": 652,
+    "word": "ACENO",
+    "normalized": "ACENO"
+  },
+  {
+    "id": 653,
+    "word": "ACESA",
+    "normalized": "ACESA"
+  },
+  {
+    "id": 654,
+    "word": "ACESO",
+    "normalized": "ACESO"
+  },
+  {
+    "id": 655,
+    "word": "ACETO",
+    "normalized": "ACETO"
+  },
+  {
+    "id": 656,
+    "word": "ACHAI",
+    "normalized": "ACHAI"
+  },
+  {
+    "id": 657,
+    "word": "ACHAM",
+    "normalized": "ACHAM"
+  },
+  {
+    "id": 658,
+    "word": "ACHAR",
+    "normalized": "ACHAR"
+  },
+  {
+    "id": 659,
+    "word": "ACHAS",
+    "normalized": "ACHAS"
+  },
+  {
+    "id": 660,
+    "word": "ACHEI",
+    "normalized": "ACHEI"
+  },
+  {
+    "id": 661,
+    "word": "ACHEM",
+    "normalized": "ACHEM"
+  },
+  {
+    "id": 662,
+    "word": "ACHES",
+    "normalized": "ACHES"
+  },
+  {
+    "id": 663,
+    "word": "ACHOU",
+    "normalized": "ACHOU"
+  },
+  {
+    "id": 664,
+    "word": "ACOBE",
+    "normalized": "ACOBE"
+  },
+  {
+    "id": 665,
+    "word": "ACUAI",
+    "normalized": "ACUAI"
+  },
+  {
+    "id": 666,
+    "word": "ACUAM",
+    "normalized": "ACUAM"
+  },
+  {
+    "id": 667,
+    "word": "ACUAR",
+    "normalized": "ACUAR"
+  },
+  {
+    "id": 668,
+    "word": "ACUAS",
+    "normalized": "ACUAS"
+  },
+  {
+    "id": 669,
+    "word": "ACUDA",
+    "normalized": "ACUDA"
+  },
+  {
+    "id": 670,
+    "word": "ACUDI",
+    "normalized": "ACUDI"
+  },
+  {
+    "id": 671,
+    "word": "ACUDO",
+    "normalized": "ACUDO"
+  },
+  {
+    "id": 672,
+    "word": "ACUEI",
+    "normalized": "ACUEI"
+  },
+  {
+    "id": 673,
+    "word": "ACUEM",
+    "normalized": "ACUEM"
+  },
+  {
+    "id": 674,
+    "word": "ACUES",
+    "normalized": "ACUES"
+  },
+  {
+    "id": 675,
+    "word": "ACUOU",
+    "normalized": "ACUOU"
+  },
+  {
+    "id": 676,
+    "word": "ACUSA",
+    "normalized": "ACUSA"
+  },
+  {
+    "id": 677,
+    "word": "ACUSE",
+    "normalized": "ACUSE"
+  },
+  {
+    "id": 678,
+    "word": "ACUSO",
+    "normalized": "ACUSO"
+  },
+  {
+    "id": 679,
+    "word": "ADAGA",
+    "normalized": "ADAGA"
+  },
+  {
+    "id": 680,
+    "word": "ADEGA",
+    "normalized": "ADEGA"
+  },
+  {
+    "id": 681,
+    "word": "ADERE",
+    "normalized": "ADERE"
+  },
+  {
+    "id": 682,
+    "word": "ADERI",
+    "normalized": "ADERI"
+  },
+  {
+    "id": 683,
+    "word": "ADEUS",
+    "normalized": "ADEUS"
+  },
+  {
+    "id": 684,
+    "word": "ADIAI",
+    "normalized": "ADIAI"
+  },
+  {
+    "id": 685,
+    "word": "ADIAM",
+    "normalized": "ADIAM"
+  },
+  {
+    "id": 686,
+    "word": "ADIAR",
+    "normalized": "ADIAR"
+  },
+  {
+    "id": 687,
+    "word": "ADIAS",
+    "normalized": "ADIAS"
+  },
+  {
+    "id": 688,
+    "word": "ADIDA",
+    "normalized": "ADIDA"
+  },
+  {
+    "id": 689,
+    "word": "ADIDO",
+    "normalized": "ADIDO"
+  },
+  {
+    "id": 690,
+    "word": "ADIEI",
+    "normalized": "ADIEI"
+  },
+  {
+    "id": 691,
+    "word": "ADIEM",
+    "normalized": "ADIEM"
+  },
+  {
+    "id": 692,
+    "word": "ADIES",
+    "normalized": "ADIES"
+  },
+  {
+    "id": 693,
+    "word": "ADIMO",
+    "normalized": "ADIMO"
+  },
+  {
+    "id": 694,
+    "word": "ADIOU",
+    "normalized": "ADIOU"
+  },
+  {
+    "id": 695,
+    "word": "ADIRA",
+    "normalized": "ADIRA"
+  },
+  {
+    "id": 696,
+    "word": "ADIRO",
+    "normalized": "ADIRO"
+  },
+  {
+    "id": 697,
+    "word": "ADITA",
+    "normalized": "ADITA"
+  },
+  {
+    "id": 698,
+    "word": "ADITE",
+    "normalized": "ADITE"
+  },
+  {
+    "id": 699,
+    "word": "ADITO",
+    "normalized": "ADITO"
+  },
+  {
+    "id": 700,
+    "word": "ADOCE",
+    "normalized": "ADOCE"
+  },
+  {
+    "id": 701,
+    "word": "ADORA",
+    "normalized": "ADORA"
+  },
+  {
+    "id": 702,
+    "word": "ADORE",
+    "normalized": "ADORE"
+  },
+  {
+    "id": 703,
+    "word": "ADORO",
+    "normalized": "ADORO"
+  },
+  {
+    "id": 704,
+    "word": "ADOTA",
+    "normalized": "ADOTA"
+  },
+  {
+    "id": 705,
+    "word": "ADOTE",
+    "normalized": "ADOTE"
+  },
+  {
+    "id": 706,
+    "word": "ADOTO",
+    "normalized": "ADOTO"
+  },
+  {
+    "id": 707,
+    "word": "ADUBA",
+    "normalized": "ADUBA"
+  },
+  {
+    "id": 708,
+    "word": "ADUBE",
+    "normalized": "ADUBE"
+  },
+  {
+    "id": 709,
+    "word": "ADUBO",
+    "normalized": "ADUBO"
+  },
+  {
+    "id": 710,
+    "word": "ADULA",
+    "normalized": "ADULA"
+  },
+  {
+    "id": 711,
+    "word": "ADULE",
+    "normalized": "ADULE"
+  },
+  {
+    "id": 712,
+    "word": "ADULO",
+    "normalized": "ADULO"
+  },
+  {
+    "id": 713,
+    "word": "ADVIM",
+    "normalized": "ADVIM"
+  },
+  {
+    "id": 714,
+    "word": "ADVIR",
+    "normalized": "ADVIR"
+  },
+  {
+    "id": 715,
+    "word": "AFAGA",
+    "normalized": "AFAGA"
+  },
+  {
+    "id": 716,
+    "word": "AFAGO",
+    "normalized": "AFAGO"
+  },
+  {
+    "id": 717,
+    "word": "AFANA",
+    "normalized": "AFANA"
+  },
+  {
+    "id": 718,
+    "word": "AFANE",
+    "normalized": "AFANE"
+  },
+  {
+    "id": 719,
+    "word": "AFANO",
+    "normalized": "AFANO"
+  },
+  {
+    "id": 720,
+    "word": "AFERE",
+    "normalized": "AFERE"
+  },
+  {
+    "id": 721,
+    "word": "AFERI",
+    "normalized": "AFERI"
+  },
+  {
+    "id": 722,
+    "word": "AFETA",
+    "normalized": "AFETA"
+  },
+  {
+    "id": 723,
+    "word": "AFETE",
+    "normalized": "AFETE"
+  },
+  {
+    "id": 724,
+    "word": "AFETO",
+    "normalized": "AFETO"
+  },
+  {
+    "id": 725,
+    "word": "AFIAI",
+    "normalized": "AFIAI"
+  },
+  {
+    "id": 726,
+    "word": "AFIAM",
+    "normalized": "AFIAM"
+  },
+  {
+    "id": 727,
+    "word": "AFIAR",
+    "normalized": "AFIAR"
+  },
+  {
+    "id": 728,
+    "word": "AFIAS",
+    "normalized": "AFIAS"
+  },
+  {
+    "id": 729,
+    "word": "AFIEI",
+    "normalized": "AFIEI"
+  },
+  {
+    "id": 730,
+    "word": "AFIEM",
+    "normalized": "AFIEM"
+  },
+  {
+    "id": 731,
+    "word": "AFIES",
+    "normalized": "AFIES"
+  },
+  {
+    "id": 732,
+    "word": "AFINA",
+    "normalized": "AFINA"
+  },
+  {
+    "id": 733,
+    "word": "AFINE",
+    "normalized": "AFINE"
+  },
+  {
+    "id": 734,
+    "word": "AFINO",
+    "normalized": "AFINO"
+  },
+  {
+    "id": 735,
+    "word": "AFINS",
+    "normalized": "AFINS"
+  },
+  {
+    "id": 736,
+    "word": "AFIOU",
+    "normalized": "AFIOU"
+  },
+  {
+    "id": 737,
+    "word": "AFIRA",
+    "normalized": "AFIRA"
+  },
+  {
+    "id": 738,
+    "word": "AFIRO",
+    "normalized": "AFIRO"
+  },
+  {
+    "id": 739,
+    "word": "AFIXA",
+    "normalized": "AFIXA"
+  },
+  {
+    "id": 740,
+    "word": "AFIXE",
+    "normalized": "AFIXE"
+  },
+  {
+    "id": 741,
+    "word": "AFIXO",
+    "normalized": "AFIXO"
+  },
+  {
+    "id": 742,
+    "word": "AFLUA",
+    "normalized": "AFLUA"
+  },
+  {
+    "id": 743,
+    "word": "AFLUI",
+    "normalized": "AFLUI"
+  },
+  {
+    "id": 744,
+    "word": "AFLUO",
+    "normalized": "AFLUO"
+  },
+  {
+    "id": 745,
+    "word": "AFOBA",
+    "normalized": "AFOBA"
+  },
+  {
+    "id": 746,
+    "word": "AFOBE",
+    "normalized": "AFOBE"
+  },
+  {
+    "id": 747,
+    "word": "AFOBO",
+    "normalized": "AFOBO"
+  },
+  {
+    "id": 748,
+    "word": "AFOFA",
+    "normalized": "AFOFA"
+  },
+  {
+    "id": 749,
+    "word": "AFOFE",
+    "normalized": "AFOFE"
+  },
+  {
+    "id": 750,
+    "word": "AFOFO",
+    "normalized": "AFOFO"
+  },
+  {
+    "id": 751,
+    "word": "AFOGA",
+    "normalized": "AFOGA"
+  },
+  {
+    "id": 752,
+    "word": "AFOGO",
+    "normalized": "AFOGO"
+  },
+  {
+    "id": 753,
+    "word": "AFORA",
+    "normalized": "AFORA"
+  },
+  {
+    "id": 754,
+    "word": "AFORE",
+    "normalized": "AFORE"
+  },
+  {
+    "id": 755,
+    "word": "AFORO",
+    "normalized": "AFORO"
+  },
+  {
+    "id": 756,
+    "word": "AFROS",
+    "normalized": "AFROS"
+  },
+  {
+    "id": 757,
+    "word": "AFTAS",
+    "normalized": "AFTAS"
+  },
+  {
+    "id": 758,
+    "word": "AGIAM",
+    "normalized": "AGIAM"
+  },
+  {
+    "id": 759,
+    "word": "AGIAS",
+    "normalized": "AGIAS"
+  },
+  {
+    "id": 760,
+    "word": "AGIDA",
+    "normalized": "AGIDA"
+  },
+  {
+    "id": 761,
+    "word": "AGIDO",
+    "normalized": "AGIDO"
+  },
+  {
+    "id": 762,
+    "word": "AGIMO",
+    "normalized": "AGIMO"
+  },
+  {
+    "id": 763,
+    "word": "AGIRA",
+    "normalized": "AGIRA"
+  },
+  {
+    "id": 764,
+    "word": "AGITA",
+    "normalized": "AGITA"
+  },
+  {
+    "id": 765,
+    "word": "AGITE",
+    "normalized": "AGITE"
+  },
+  {
+    "id": 766,
+    "word": "AGITO",
+    "normalized": "AGITO"
+  },
+  {
+    "id": 767,
+    "word": "AGORA",
+    "normalized": "AGORA"
+  },
+  {
+    "id": 768,
+    "word": "AGUAI",
+    "normalized": "AGUAI"
+  },
+  {
+    "id": 769,
+    "word": "AGUAR",
+    "normalized": "AGUAR"
+  },
+  {
+    "id": 770,
+    "word": "AGUCE",
+    "normalized": "AGUCE"
+  },
+  {
+    "id": 771,
+    "word": "AGUDA",
+    "normalized": "AGUDA"
+  },
+  {
+    "id": 772,
+    "word": "AGUOU",
+    "normalized": "AGUOU"
+  },
+  {
+    "id": 773,
+    "word": "AINDA",
+    "normalized": "AINDA"
+  },
+  {
+    "id": 774,
+    "word": "AJAIS",
+    "normalized": "AJAIS"
+  },
+  {
+    "id": 775,
+    "word": "AJAMO",
+    "normalized": "AJAMO"
+  },
+  {
+    "id": 776,
+    "word": "AJUDE",
+    "normalized": "AJUDE"
+  },
+  {
+    "id": 777,
+    "word": "AJUDO",
+    "normalized": "AJUDO"
+  },
+  {
+    "id": 778,
+    "word": "ALADA",
+    "normalized": "ALADA"
+  },
+  {
+    "id": 779,
+    "word": "ALADO",
+    "normalized": "ALADO"
+  },
+  {
+    "id": 780,
+    "word": "ALAGA",
+    "normalized": "ALAGA"
+  },
+  {
+    "id": 781,
+    "word": "ALAGO",
+    "normalized": "ALAGO"
+  },
+  {
+    "id": 782,
+    "word": "ALCEI",
+    "normalized": "ALCEI"
+  },
+  {
+    "id": 783,
+    "word": "ALCEM",
+    "normalized": "ALCEM"
+  },
+  {
+    "id": 784,
+    "word": "ALCES",
+    "normalized": "ALCES"
+  },
+  {
+    "id": 785,
+    "word": "ALEGA",
+    "normalized": "ALEGA"
+  },
+  {
+    "id": 786,
+    "word": "ALEGO",
+    "normalized": "ALEGO"
+  },
+  {
+    "id": 787,
+    "word": "ALELO",
+    "normalized": "ALELO"
+  },
+  {
+    "id": 788,
+    "word": "ALGAS",
+    "normalized": "ALGAS"
+  },
+  {
+    "id": 789,
+    "word": "ALGOZ",
+    "normalized": "ALGOZ"
+  },
+  {
+    "id": 790,
+    "word": "ALGUM",
+    "normalized": "ALGUM"
+  },
+  {
+    "id": 791,
+    "word": "ALHOS",
+    "normalized": "ALHOS"
+  },
+  {
+    "id": 792,
+    "word": "ALIAI",
+    "normalized": "ALIAI"
+  },
+  {
+    "id": 793,
+    "word": "ALIAM",
+    "normalized": "ALIAM"
+  },
+  {
+    "id": 794,
+    "word": "ALIAR",
+    "normalized": "ALIAR"
+  },
+  {
+    "id": 795,
+    "word": "ALIAS",
+    "normalized": "ALIAS"
+  },
+  {
+    "id": 796,
+    "word": "ALIEI",
+    "normalized": "ALIEI"
+  },
+  {
+    "id": 797,
+    "word": "ALIEM",
+    "normalized": "ALIEM"
+  },
+  {
+    "id": 798,
+    "word": "ALIES",
+    "normalized": "ALIES"
+  },
+  {
+    "id": 799,
+    "word": "ALIJA",
+    "normalized": "ALIJA"
+  },
+  {
+    "id": 800,
+    "word": "ALIJE",
+    "normalized": "ALIJE"
+  },
+  {
+    "id": 801,
+    "word": "ALIJO",
+    "normalized": "ALIJO"
+  },
+  {
+    "id": 802,
+    "word": "ALIOU",
+    "normalized": "ALIOU"
+  },
+  {
+    "id": 803,
+    "word": "ALISA",
+    "normalized": "ALISA"
+  },
+  {
+    "id": 804,
+    "word": "ALISE",
+    "normalized": "ALISE"
+  },
+  {
+    "id": 805,
+    "word": "ALISO",
+    "normalized": "ALISO"
+  },
+  {
+    "id": 806,
+    "word": "ALOCA",
+    "normalized": "ALOCA"
+  },
+  {
+    "id": 807,
+    "word": "ALOCO",
+    "normalized": "ALOCO"
+  },
+  {
+    "id": 808,
+    "word": "ALOJA",
+    "normalized": "ALOJA"
+  },
+  {
+    "id": 809,
+    "word": "ALOJE",
+    "normalized": "ALOJE"
+  },
+  {
+    "id": 810,
+    "word": "ALOJO",
+    "normalized": "ALOJO"
+  },
+  {
+    "id": 811,
+    "word": "ALTAR",
+    "normalized": "ALTAR"
+  },
+  {
+    "id": 812,
+    "word": "ALUDA",
+    "normalized": "ALUDA"
+  },
+  {
+    "id": 813,
+    "word": "ALUDE",
+    "normalized": "ALUDE"
+  },
+  {
+    "id": 814,
+    "word": "ALUDI",
+    "normalized": "ALUDI"
+  },
+  {
+    "id": 815,
+    "word": "ALUDO",
+    "normalized": "ALUDO"
+  },
+  {
+    "id": 816,
+    "word": "ALUGA",
+    "normalized": "ALUGA"
+  },
+  {
+    "id": 817,
+    "word": "ALUGO",
+    "normalized": "ALUGO"
+  },
+  {
+    "id": 818,
+    "word": "ALUNA",
+    "normalized": "ALUNA"
+  },
+  {
+    "id": 819,
+    "word": "ALUNO",
+    "normalized": "ALUNO"
+  },
+  {
+    "id": 820,
+    "word": "ALVAS",
+    "normalized": "ALVAS"
+  },
+  {
+    "id": 821,
+    "word": "ALVOR",
+    "normalized": "ALVOR"
+  },
+  {
+    "id": 822,
+    "word": "ALVOS",
+    "normalized": "ALVOS"
+  },
+  {
+    "id": 823,
+    "word": "AMADA",
+    "normalized": "AMADA"
+  },
+  {
+    "id": 824,
+    "word": "AMADO",
+    "normalized": "AMADO"
+  },
+  {
+    "id": 825,
+    "word": "AMAIS",
+    "normalized": "AMAIS"
+  },
+  {
+    "id": 826,
+    "word": "AMAMO",
+    "normalized": "AMAMO"
+  },
+  {
+    "id": 827,
+    "word": "AMARA",
+    "normalized": "AMARA"
+  },
+  {
+    "id": 828,
+    "word": "AMAVA",
+    "normalized": "AMAVA"
+  },
+  {
+    "id": 829,
+    "word": "AMBAS",
+    "normalized": "AMBAS"
+  },
+  {
+    "id": 830,
+    "word": "AMBOS",
+    "normalized": "AMBOS"
+  },
+  {
+    "id": 831,
+    "word": "AMEBA",
+    "normalized": "AMEBA"
+  },
+  {
+    "id": 832,
+    "word": "AMEIA",
+    "normalized": "AMEIA"
+  },
+  {
+    "id": 833,
+    "word": "AMEIS",
+    "normalized": "AMEIS"
+  },
+  {
+    "id": 834,
+    "word": "AMEMO",
+    "normalized": "AMEMO"
+  },
+  {
+    "id": 835,
+    "word": "AMENA",
+    "normalized": "AMENA"
+  },
+  {
+    "id": 836,
+    "word": "AMENO",
+    "normalized": "AMENO"
+  },
+  {
+    "id": 837,
+    "word": "AMIDO",
+    "normalized": "AMIDO"
+  },
+  {
+    "id": 838,
+    "word": "AMIGA",
+    "normalized": "AMIGA"
+  },
+  {
+    "id": 839,
+    "word": "AMIMA",
+    "normalized": "AMIMA"
+  },
+  {
+    "id": 840,
+    "word": "AMIME",
+    "normalized": "AMIME"
+  },
+  {
+    "id": 841,
+    "word": "AMIMO",
+    "normalized": "AMIMO"
+  },
+  {
+    "id": 842,
+    "word": "AMOLA",
+    "normalized": "AMOLA"
+  },
+  {
+    "id": 843,
+    "word": "AMOLE",
+    "normalized": "AMOLE"
+  },
+  {
+    "id": 844,
+    "word": "AMOLO",
+    "normalized": "AMOLO"
+  },
+  {
+    "id": 845,
+    "word": "AMORA",
+    "normalized": "AMORA"
+  },
+  {
+    "id": 846,
+    "word": "AMPLA",
+    "normalized": "AMPLA"
+  },
+  {
+    "id": 847,
+    "word": "AMPLO",
+    "normalized": "AMPLO"
+  },
+  {
+    "id": 848,
+    "word": "ANAIS",
+    "normalized": "ANAIS"
+  },
+  {
+    "id": 849,
+    "word": "ANCAS",
+    "normalized": "ANCAS"
+  },
+  {
+    "id": 850,
+    "word": "ANDAI",
+    "normalized": "ANDAI"
+  },
+  {
+    "id": 851,
+    "word": "ANDAM",
+    "normalized": "ANDAM"
+  },
+  {
+    "id": 852,
+    "word": "ANDAR",
+    "normalized": "ANDAR"
+  },
+  {
+    "id": 853,
+    "word": "ANDAS",
+    "normalized": "ANDAS"
+  },
+  {
+    "id": 854,
+    "word": "ANDEI",
+    "normalized": "ANDEI"
+  },
+  {
+    "id": 855,
+    "word": "ANDEM",
+    "normalized": "ANDEM"
+  },
+  {
+    "id": 856,
+    "word": "ANDES",
+    "normalized": "ANDES"
+  },
+  {
+    "id": 857,
+    "word": "ANDOR",
+    "normalized": "ANDOR"
+  },
+  {
+    "id": 858,
+    "word": "ANDOU",
+    "normalized": "ANDOU"
+  },
+  {
+    "id": 859,
+    "word": "ANELA",
+    "normalized": "ANELA"
+  },
+  {
+    "id": 860,
+    "word": "ANELE",
+    "normalized": "ANELE"
+  },
+  {
+    "id": 861,
+    "word": "ANELO",
+    "normalized": "ANELO"
+  },
+  {
+    "id": 862,
+    "word": "ANEXA",
+    "normalized": "ANEXA"
+  },
+  {
+    "id": 863,
+    "word": "ANEXE",
+    "normalized": "ANEXE"
+  },
+  {
+    "id": 864,
+    "word": "ANEXO",
+    "normalized": "ANEXO"
+  },
+  {
+    "id": 865,
+    "word": "ANIMA",
+    "normalized": "ANIMA"
+  },
+  {
+    "id": 866,
+    "word": "ANIME",
+    "normalized": "ANIME"
+  },
+  {
+    "id": 867,
+    "word": "ANIMO",
+    "normalized": "ANIMO"
+  },
+  {
+    "id": 868,
+    "word": "ANJOS",
+    "normalized": "ANJOS"
+  },
+  {
+    "id": 869,
+    "word": "ANOTA",
+    "normalized": "ANOTA"
+  },
+  {
+    "id": 870,
+    "word": "ANOTE",
+    "normalized": "ANOTE"
+  },
+  {
+    "id": 871,
+    "word": "ANOTO",
+    "normalized": "ANOTO"
+  },
+  {
+    "id": 872,
+    "word": "ANTES",
+    "normalized": "ANTES"
+  },
+  {
+    "id": 873,
+    "word": "ANTRO",
+    "normalized": "ANTRO"
+  },
+  {
+    "id": 874,
+    "word": "ANUAL",
+    "normalized": "ANUAL"
+  },
+  {
+    "id": 875,
+    "word": "ANUAM",
+    "normalized": "ANUAM"
+  },
+  {
+    "id": 876,
+    "word": "ANUAS",
+    "normalized": "ANUAS"
+  },
+  {
+    "id": 877,
+    "word": "ANUEM",
+    "normalized": "ANUEM"
+  },
+  {
+    "id": 878,
+    "word": "ANUIR",
+    "normalized": "ANUIR"
+  },
+  {
+    "id": 879,
+    "word": "ANUIS",
+    "normalized": "ANUIS"
+  },
+  {
+    "id": 880,
+    "word": "ANUIU",
+    "normalized": "ANUIU"
+  },
+  {
+    "id": 881,
+    "word": "ANULA",
+    "normalized": "ANULA"
+  },
+  {
+    "id": 882,
+    "word": "ANULE",
+    "normalized": "ANULE"
+  },
+  {
+    "id": 883,
+    "word": "ANULO",
+    "normalized": "ANULO"
+  },
+  {
+    "id": 884,
+    "word": "ANZOL",
+    "normalized": "ANZOL"
+  },
+  {
+    "id": 885,
+    "word": "AONDE",
+    "normalized": "AONDE"
+  },
+  {
+    "id": 886,
+    "word": "AORTA",
+    "normalized": "AORTA"
+  },
+  {
+    "id": 887,
+    "word": "APAGA",
+    "normalized": "APAGA"
+  },
+  {
+    "id": 888,
+    "word": "APAGO",
+    "normalized": "APAGO"
+  },
+  {
+    "id": 889,
+    "word": "APARA",
+    "normalized": "APARA"
+  },
+  {
+    "id": 890,
+    "word": "APARE",
+    "normalized": "APARE"
+  },
+  {
+    "id": 891,
+    "word": "APARO",
+    "normalized": "APARO"
+  },
+  {
+    "id": 892,
+    "word": "APEAI",
+    "normalized": "APEAI"
+  },
+  {
+    "id": 893,
+    "word": "APEAR",
+    "normalized": "APEAR"
+  },
+  {
+    "id": 894,
+    "word": "APEEI",
+    "normalized": "APEEI"
+  },
+  {
+    "id": 895,
+    "word": "APEGA",
+    "normalized": "APEGA"
+  },
+  {
+    "id": 896,
+    "word": "APEGO",
+    "normalized": "APEGO"
+  },
+  {
+    "id": 897,
+    "word": "APEIA",
+    "normalized": "APEIA"
+  },
+  {
+    "id": 898,
+    "word": "APEIE",
+    "normalized": "APEIE"
+  },
+  {
+    "id": 899,
+    "word": "APEIO",
+    "normalized": "APEIO"
+  },
+  {
+    "id": 900,
+    "word": "APELA",
+    "normalized": "APELA"
+  },
+  {
+    "id": 901,
+    "word": "APELE",
+    "normalized": "APELE"
+  },
+  {
+    "id": 902,
+    "word": "APELO",
+    "normalized": "APELO"
+  },
+  {
+    "id": 903,
+    "word": "APENA",
+    "normalized": "APENA"
+  },
+  {
+    "id": 904,
+    "word": "APENE",
+    "normalized": "APENE"
+  },
+  {
+    "id": 905,
+    "word": "APENO",
+    "normalized": "APENO"
+  },
+  {
+    "id": 906,
+    "word": "APEOU",
+    "normalized": "APEOU"
+  },
+  {
+    "id": 907,
+    "word": "APITA",
+    "normalized": "APITA"
+  },
+  {
+    "id": 908,
+    "word": "APITE",
+    "normalized": "APITE"
+  },
+  {
+    "id": 909,
+    "word": "APITO",
+    "normalized": "APITO"
+  },
+  {
+    "id": 910,
+    "word": "APOIO",
+    "normalized": "APOIO"
+  },
+  {
+    "id": 911,
+    "word": "APOLO",
+    "normalized": "APOLO"
+  },
+  {
+    "id": 912,
+    "word": "APTAS",
+    "normalized": "APTAS"
+  },
+  {
+    "id": 913,
+    "word": "APTOS",
+    "normalized": "APTOS"
+  },
+  {
+    "id": 914,
+    "word": "APURA",
+    "normalized": "APURA"
+  },
+  {
+    "id": 915,
+    "word": "APURE",
+    "normalized": "APURE"
+  },
+  {
+    "id": 916,
+    "word": "APURO",
+    "normalized": "APURO"
+  },
+  {
+    "id": 917,
+    "word": "ARADA",
+    "normalized": "ARADA"
+  },
+  {
+    "id": 918,
+    "word": "ARADO",
+    "normalized": "ARADO"
+  },
+  {
+    "id": 919,
+    "word": "ARAIS",
+    "normalized": "ARAIS"
+  },
+  {
+    "id": 920,
+    "word": "ARAMO",
+    "normalized": "ARAMO"
+  },
+  {
+    "id": 921,
+    "word": "ARAVA",
+    "normalized": "ARAVA"
+  },
+  {
+    "id": 922,
+    "word": "ARCAI",
+    "normalized": "ARCAI"
+  },
+  {
+    "id": 923,
+    "word": "ARCAM",
+    "normalized": "ARCAM"
+  },
+  {
+    "id": 924,
+    "word": "ARCAR",
+    "normalized": "ARCAR"
+  },
+  {
+    "id": 925,
+    "word": "ARCAS",
+    "normalized": "ARCAS"
+  },
+  {
+    "id": 926,
+    "word": "ARCOU",
+    "normalized": "ARCOU"
+  },
+  {
+    "id": 927,
+    "word": "ARDAM",
+    "normalized": "ARDAM"
+  },
+  {
+    "id": 928,
+    "word": "ARDAS",
+    "normalized": "ARDAS"
+  },
+  {
+    "id": 929,
+    "word": "ARDEI",
+    "normalized": "ARDEI"
+  },
+  {
+    "id": 930,
+    "word": "ARDEM",
+    "normalized": "ARDEM"
+  },
+  {
+    "id": 931,
+    "word": "ARDER",
+    "normalized": "ARDER"
+  },
+  {
+    "id": 932,
+    "word": "ARDES",
+    "normalized": "ARDES"
+  },
+  {
+    "id": 933,
+    "word": "ARDEU",
+    "normalized": "ARDEU"
+  },
+  {
+    "id": 934,
+    "word": "ARDIA",
+    "normalized": "ARDIA"
+  },
+  {
+    "id": 935,
+    "word": "ARDIL",
+    "normalized": "ARDIL"
+  },
+  {
+    "id": 936,
+    "word": "ARDIS",
+    "normalized": "ARDIS"
+  },
+  {
+    "id": 937,
+    "word": "ARDOR",
+    "normalized": "ARDOR"
+  },
+  {
+    "id": 938,
+    "word": "ARDÃª",
+    "normalized": "ARDAª"
+  },
+  {
+    "id": 939,
+    "word": "AREIS",
+    "normalized": "AREIS"
+  },
+  {
+    "id": 940,
+    "word": "AREJA",
+    "normalized": "AREJA"
+  },
+  {
+    "id": 941,
+    "word": "AREJE",
+    "normalized": "AREJE"
+  },
+  {
+    "id": 942,
+    "word": "AREJO",
+    "normalized": "AREJO"
+  },
+  {
+    "id": 943,
+    "word": "AREMO",
+    "normalized": "AREMO"
+  },
+  {
+    "id": 944,
+    "word": "ARENA",
+    "normalized": "ARENA"
+  },
+  {
+    "id": 945,
+    "word": "ARFAI",
+    "normalized": "ARFAI"
+  },
+  {
+    "id": 946,
+    "word": "ARFAM",
+    "normalized": "ARFAM"
+  },
+  {
+    "id": 947,
+    "word": "ARFAR",
+    "normalized": "ARFAR"
+  },
+  {
+    "id": 948,
+    "word": "ARFAS",
+    "normalized": "ARFAS"
+  },
+  {
+    "id": 949,
+    "word": "ARFEI",
+    "normalized": "ARFEI"
+  },
+  {
+    "id": 950,
+    "word": "ARFEM",
+    "normalized": "ARFEM"
+  },
+  {
+    "id": 951,
+    "word": "ARFES",
+    "normalized": "ARFES"
+  },
+  {
+    "id": 952,
+    "word": "ARFOU",
+    "normalized": "ARFOU"
+  },
+  {
+    "id": 953,
+    "word": "ARGUA",
+    "normalized": "ARGUA"
+  },
+  {
+    "id": 954,
+    "word": "ARGUO",
+    "normalized": "ARGUO"
+  },
+  {
+    "id": 955,
+    "word": "ARMAI",
+    "normalized": "ARMAI"
+  },
+  {
+    "id": 956,
+    "word": "ARMAM",
+    "normalized": "ARMAM"
+  },
+  {
+    "id": 957,
+    "word": "ARMAR",
+    "normalized": "ARMAR"
+  },
+  {
+    "id": 958,
+    "word": "ARMAS",
+    "normalized": "ARMAS"
+  },
+  {
+    "id": 959,
+    "word": "ARMEI",
+    "normalized": "ARMEI"
+  },
+  {
+    "id": 960,
+    "word": "ARMEM",
+    "normalized": "ARMEM"
+  },
+  {
+    "id": 961,
+    "word": "ARMES",
+    "normalized": "ARMES"
+  },
+  {
+    "id": 962,
+    "word": "ARMOU",
+    "normalized": "ARMOU"
+  },
+  {
+    "id": 963,
+    "word": "ARPOA",
+    "normalized": "ARPOA"
+  },
+  {
+    "id": 964,
+    "word": "ARPOE",
+    "normalized": "ARPOE"
+  },
+  {
+    "id": 965,
+    "word": "ARQUE",
+    "normalized": "ARQUE"
+  },
+  {
+    "id": 966,
+    "word": "ARRIA",
+    "normalized": "ARRIA"
+  },
+  {
+    "id": 967,
+    "word": "ARRIE",
+    "normalized": "ARRIE"
+  },
+  {
+    "id": 968,
+    "word": "ARRIO",
+    "normalized": "ARRIO"
+  },
+  {
+    "id": 969,
+    "word": "ARROZ",
+    "normalized": "ARROZ"
+  },
+  {
+    "id": 970,
+    "word": "ARTES",
+    "normalized": "ARTES"
+  },
+  {
+    "id": 971,
+    "word": "ASILA",
+    "normalized": "ASILA"
+  },
+  {
+    "id": 972,
+    "word": "ASILE",
+    "normalized": "ASILE"
+  },
+  {
+    "id": 973,
+    "word": "ASILO",
+    "normalized": "ASILO"
+  },
+  {
+    "id": 974,
+    "word": "ASNOS",
+    "normalized": "ASNOS"
+  },
+  {
+    "id": 975,
+    "word": "ASPAS",
+    "normalized": "ASPAS"
+  },
+  {
+    "id": 976,
+    "word": "ASSAI",
+    "normalized": "ASSAI"
+  },
+  {
+    "id": 977,
+    "word": "ASSAM",
+    "normalized": "ASSAM"
+  },
+  {
+    "id": 978,
+    "word": "ASSAR",
+    "normalized": "ASSAR"
+  },
+  {
+    "id": 979,
+    "word": "ASSAS",
+    "normalized": "ASSAS"
+  },
+  {
+    "id": 980,
+    "word": "ASSAZ",
+    "normalized": "ASSAZ"
+  },
+  {
+    "id": 981,
+    "word": "ASSEI",
+    "normalized": "ASSEI"
+  },
+  {
+    "id": 982,
+    "word": "ASSEM",
+    "normalized": "ASSEM"
+  },
+  {
+    "id": 983,
+    "word": "ASSES",
+    "normalized": "ASSES"
+  },
+  {
+    "id": 984,
+    "word": "ASSIM",
+    "normalized": "ASSIM"
+  },
+  {
+    "id": 985,
+    "word": "ASSOA",
+    "normalized": "ASSOA"
+  },
+  {
+    "id": 986,
+    "word": "ASSOE",
+    "normalized": "ASSOE"
+  },
+  {
+    "id": 987,
+    "word": "ASSOU",
+    "normalized": "ASSOU"
+  },
+  {
+    "id": 988,
+    "word": "ATACA",
+    "normalized": "ATACA"
+  },
+  {
+    "id": 989,
+    "word": "ATACO",
+    "normalized": "ATACO"
+  },
+  {
+    "id": 990,
+    "word": "ATADA",
+    "normalized": "ATADA"
+  },
+  {
+    "id": 991,
+    "word": "ATADO",
+    "normalized": "ATADO"
+  },
+  {
+    "id": 992,
+    "word": "ATAIS",
+    "normalized": "ATAIS"
+  },
+  {
+    "id": 993,
+    "word": "ATAMO",
+    "normalized": "ATAMO"
+  },
+  {
+    "id": 994,
+    "word": "ATARA",
+    "normalized": "ATARA"
+  },
+  {
+    "id": 995,
+    "word": "ATAVA",
+    "normalized": "ATAVA"
+  },
+  {
+    "id": 996,
+    "word": "ATEAI",
+    "normalized": "ATEAI"
+  },
+  {
+    "id": 997,
+    "word": "ATEAR",
+    "normalized": "ATEAR"
+  },
+  {
+    "id": 998,
+    "word": "ATEEI",
+    "normalized": "ATEEI"
+  },
+  {
+    "id": 999,
+    "word": "ATEIA",
+    "normalized": "ATEIA"
+  },
+  {
+    "id": 1000,
+    "word": "ATEIE",
+    "normalized": "ATEIE"
+  },
+  {
+    "id": 1001,
+    "word": "ATEIO",
+    "normalized": "ATEIO"
+  },
+  {
+    "id": 1002,
+    "word": "ATEIS",
+    "normalized": "ATEIS"
+  },
+  {
+    "id": 1003,
+    "word": "ATEMO",
+    "normalized": "ATEMO"
+  },
+  {
+    "id": 1004,
+    "word": "ATEOU",
+    "normalized": "ATEOU"
+  },
+  {
+    "id": 1005,
+    "word": "ATEUS",
+    "normalized": "ATEUS"
+  },
+  {
+    "id": 1006,
+    "word": "ATEVE",
+    "normalized": "ATEVE"
+  },
+  {
+    "id": 1007,
+    "word": "ATICE",
+    "normalized": "ATICE"
+  },
+  {
+    "id": 1008,
+    "word": "ATIDA",
+    "normalized": "ATIDA"
+  },
+  {
+    "id": 1009,
+    "word": "ATIDO",
+    "normalized": "ATIDO"
+  },
+  {
+    "id": 1010,
+    "word": "ATINA",
+    "normalized": "ATINA"
+  },
+  {
+    "id": 1011,
+    "word": "ATINE",
+    "normalized": "ATINE"
+  },
+  {
+    "id": 1012,
+    "word": "ATINO",
+    "normalized": "ATINO"
+  },
+  {
+    "id": 1013,
+    "word": "ATIRA",
+    "normalized": "ATIRA"
+  },
+  {
+    "id": 1014,
+    "word": "ATIRE",
+    "normalized": "ATIRE"
+  },
+  {
+    "id": 1015,
+    "word": "ATIRO",
+    "normalized": "ATIRO"
+  },
+  {
+    "id": 1016,
+    "word": "ATIVA",
+    "normalized": "ATIVA"
+  },
+  {
+    "id": 1017,
+    "word": "ATIVE",
+    "normalized": "ATIVE"
+  },
+  {
+    "id": 1018,
+    "word": "ATIVO",
+    "normalized": "ATIVO"
+  },
+  {
+    "id": 1019,
+    "word": "ATLAS",
+    "normalized": "ATLAS"
+  },
+  {
+    "id": 1020,
+    "word": "ATOLA",
+    "normalized": "ATOLA"
+  },
+  {
+    "id": 1021,
+    "word": "ATOLE",
+    "normalized": "ATOLE"
+  },
+  {
+    "id": 1022,
+    "word": "ATOLO",
+    "normalized": "ATOLO"
+  },
+  {
+    "id": 1023,
+    "word": "ATRAI",
+    "normalized": "ATRAI"
+  },
+  {
+    "id": 1024,
+    "word": "ATRIZ",
+    "normalized": "ATRIZ"
+  },
+  {
+    "id": 1025,
+    "word": "ATUAI",
+    "normalized": "ATUAI"
+  },
+  {
+    "id": 1026,
+    "word": "ATUAL",
+    "normalized": "ATUAL"
+  },
+  {
+    "id": 1027,
+    "word": "ATUAM",
+    "normalized": "ATUAM"
+  },
+  {
+    "id": 1028,
+    "word": "ATUAR",
+    "normalized": "ATUAR"
+  },
+  {
+    "id": 1029,
+    "word": "ATUAS",
+    "normalized": "ATUAS"
+  },
+  {
+    "id": 1030,
+    "word": "ATUEI",
+    "normalized": "ATUEI"
+  },
+  {
+    "id": 1031,
+    "word": "ATUEM",
+    "normalized": "ATUEM"
+  },
+  {
+    "id": 1032,
+    "word": "ATUES",
+    "normalized": "ATUES"
+  },
+  {
+    "id": 1033,
+    "word": "ATUNS",
+    "normalized": "ATUNS"
+  },
+  {
+    "id": 1034,
+    "word": "ATUOU",
+    "normalized": "ATUOU"
+  },
+  {
+    "id": 1035,
+    "word": "ATURA",
+    "normalized": "ATURA"
+  },
+  {
+    "id": 1036,
+    "word": "ATURE",
+    "normalized": "ATURE"
+  },
+  {
+    "id": 1037,
+    "word": "ATURO",
+    "normalized": "ATURO"
+  },
+  {
+    "id": 1038,
+    "word": "ATÃªM",
+    "normalized": "ATAªM"
+  },
+  {
+    "id": 1039,
+    "word": "AUDAZ",
+    "normalized": "AUDAZ"
+  },
+  {
+    "id": 1040,
+    "word": "AULAS",
+    "normalized": "AULAS"
+  },
+  {
+    "id": 1041,
+    "word": "AURAS",
+    "normalized": "AURAS"
+  },
+  {
+    "id": 1042,
+    "word": "AUTOS",
+    "normalized": "AUTOS"
+  },
+  {
+    "id": 1043,
+    "word": "AUTUA",
+    "normalized": "AUTUA"
+  },
+  {
+    "id": 1044,
+    "word": "AUTUE",
+    "normalized": "AUTUE"
+  },
+  {
+    "id": 1045,
+    "word": "AUTUO",
+    "normalized": "AUTUO"
+  },
+  {
+    "id": 1046,
+    "word": "AVAIS",
+    "normalized": "AVAIS"
+  },
+  {
+    "id": 1047,
+    "word": "AVARA",
+    "normalized": "AVARA"
+  },
+  {
+    "id": 1048,
+    "word": "AVARO",
+    "normalized": "AVARO"
+  },
+  {
+    "id": 1049,
+    "word": "AVEIA",
+    "normalized": "AVEIA"
+  },
+  {
+    "id": 1050,
+    "word": "AVEIO",
+    "normalized": "AVEIO"
+  },
+  {
+    "id": 1051,
+    "word": "AVIAI",
+    "normalized": "AVIAI"
+  },
+  {
+    "id": 1052,
+    "word": "AVIAM",
+    "normalized": "AVIAM"
+  },
+  {
+    "id": 1053,
+    "word": "AVIAR",
+    "normalized": "AVIAR"
+  },
+  {
+    "id": 1054,
+    "word": "AVIAS",
+    "normalized": "AVIAS"
+  },
+  {
+    "id": 1055,
+    "word": "AVIEI",
+    "normalized": "AVIEI"
+  },
+  {
+    "id": 1056,
+    "word": "AVIEM",
+    "normalized": "AVIEM"
+  },
+  {
+    "id": 1057,
+    "word": "AVIER",
+    "normalized": "AVIER"
+  },
+  {
+    "id": 1058,
+    "word": "AVIES",
+    "normalized": "AVIES"
+  },
+  {
+    "id": 1059,
+    "word": "AVIMO",
+    "normalized": "AVIMO"
+  },
+  {
+    "id": 1060,
+    "word": "AVIOU",
+    "normalized": "AVIOU"
+  },
+  {
+    "id": 1061,
+    "word": "AVISA",
+    "normalized": "AVISA"
+  },
+  {
+    "id": 1062,
+    "word": "AVISE",
+    "normalized": "AVISE"
+  },
+  {
+    "id": 1063,
+    "word": "AVISO",
+    "normalized": "AVISO"
+  },
+  {
+    "id": 1064,
+    "word": "AVIVA",
+    "normalized": "AVIVA"
+  },
+  {
+    "id": 1065,
+    "word": "AVIVE",
+    "normalized": "AVIVE"
+  },
+  {
+    "id": 1066,
+    "word": "AVIVO",
+    "normalized": "AVIVO"
+  },
+  {
+    "id": 1067,
+    "word": "AXIAL",
+    "normalized": "AXIAL"
+  },
+  {
+    "id": 1068,
+    "word": "AXILA",
+    "normalized": "AXILA"
+  },
+  {
+    "id": 1069,
+    "word": "AZARA",
+    "normalized": "AZARA"
+  },
+  {
+    "id": 1070,
+    "word": "AZARE",
+    "normalized": "AZARE"
+  },
+  {
+    "id": 1071,
+    "word": "AZARO",
+    "normalized": "AZARO"
+  },
+  {
+    "id": 1072,
+    "word": "AZEDA",
+    "normalized": "AZEDA"
+  },
+  {
+    "id": 1073,
+    "word": "AZEDE",
+    "normalized": "AZEDE"
+  },
+  {
+    "id": 1074,
+    "word": "AZEDO",
+    "normalized": "AZEDO"
+  },
+  {
+    "id": 1075,
+    "word": "AZERI",
+    "normalized": "AZERI"
+  },
+  {
+    "id": 1076,
+    "word": "AZIAS",
+    "normalized": "AZIAS"
+  },
+  {
+    "id": 1077,
+    "word": "AZOTO",
+    "normalized": "AZOTO"
+  },
+  {
+    "id": 1078,
+    "word": "AZUIS",
+    "normalized": "AZUIS"
+  },
+  {
+    "id": 1079,
+    "word": "AZULA",
+    "normalized": "AZULA"
+  },
+  {
+    "id": 1080,
+    "word": "AZULE",
+    "normalized": "AZULE"
+  },
+  {
+    "id": 1081,
+    "word": "AZULO",
+    "normalized": "AZULO"
+  },
+  {
+    "id": 1082,
+    "word": "BABAI",
+    "normalized": "BABAI"
+  },
+  {
+    "id": 1083,
+    "word": "BABAM",
+    "normalized": "BABAM"
+  },
+  {
+    "id": 1084,
+    "word": "BABAR",
+    "normalized": "BABAR"
+  },
+  {
+    "id": 1085,
+    "word": "BABAS",
+    "normalized": "BABAS"
+  },
+  {
+    "id": 1086,
+    "word": "BABEI",
+    "normalized": "BABEI"
+  },
+  {
+    "id": 1087,
+    "word": "BABEM",
+    "normalized": "BABEM"
+  },
+  {
+    "id": 1088,
+    "word": "BABES",
+    "normalized": "BABES"
+  },
+  {
+    "id": 1089,
+    "word": "BABOU",
+    "normalized": "BABOU"
+  },
+  {
+    "id": 1090,
+    "word": "BAFOS",
+    "normalized": "BAFOS"
+  },
+  {
+    "id": 1091,
+    "word": "BAGAS",
+    "normalized": "BAGAS"
+  },
+  {
+    "id": 1092,
+    "word": "BAGOS",
+    "normalized": "BAGOS"
+  },
+  {
+    "id": 1093,
+    "word": "BAIAS",
+    "normalized": "BAIAS"
+  },
+  {
+    "id": 1094,
+    "word": "BAILA",
+    "normalized": "BAILA"
+  },
+  {
+    "id": 1095,
+    "word": "BAILO",
+    "normalized": "BAILO"
+  },
+  {
+    "id": 1096,
+    "word": "BAITA",
+    "normalized": "BAITA"
+  },
+  {
+    "id": 1097,
+    "word": "BAIXE",
+    "normalized": "BAIXE"
+  },
+  {
+    "id": 1098,
+    "word": "BALAM",
+    "normalized": "BALAM"
+  },
+  {
+    "id": 1099,
+    "word": "BALAS",
+    "normalized": "BALAS"
+  },
+  {
+    "id": 1100,
+    "word": "BALDE",
+    "normalized": "BALDE"
+  },
+  {
+    "id": 1101,
+    "word": "BALEM",
+    "normalized": "BALEM"
+  },
+  {
+    "id": 1102,
+    "word": "BALES",
+    "normalized": "BALES"
+  },
+  {
+    "id": 1103,
+    "word": "BALIA",
+    "normalized": "BALIA"
+  },
+  {
+    "id": 1104,
+    "word": "BALIR",
+    "normalized": "BALIR"
+  },
+  {
+    "id": 1105,
+    "word": "BALIS",
+    "normalized": "BALIS"
+  },
+  {
+    "id": 1106,
+    "word": "BALIU",
+    "normalized": "BALIU"
+  },
+  {
+    "id": 1107,
+    "word": "BAMBA",
+    "normalized": "BAMBA"
+  },
+  {
+    "id": 1108,
+    "word": "BAMBO",
+    "normalized": "BAMBO"
+  },
+  {
+    "id": 1109,
+    "word": "BAMBU",
+    "normalized": "BAMBU"
+  },
+  {
+    "id": 1110,
+    "word": "BANAL",
+    "normalized": "BANAL"
+  },
+  {
+    "id": 1111,
+    "word": "BANCA",
+    "normalized": "BANCA"
+  },
+  {
+    "id": 1112,
+    "word": "BANDA",
+    "normalized": "BANDA"
+  },
+  {
+    "id": 1113,
+    "word": "BANDO",
+    "normalized": "BANDO"
+  },
+  {
+    "id": 1114,
+    "word": "BANEM",
+    "normalized": "BANEM"
+  },
+  {
+    "id": 1115,
+    "word": "BANES",
+    "normalized": "BANES"
+  },
+  {
+    "id": 1116,
+    "word": "BANHA",
+    "normalized": "BANHA"
+  },
+  {
+    "id": 1117,
+    "word": "BANHE",
+    "normalized": "BANHE"
+  },
+  {
+    "id": 1118,
+    "word": "BANHO",
+    "normalized": "BANHO"
+  },
+  {
+    "id": 1119,
+    "word": "BANIA",
+    "normalized": "BANIA"
+  },
+  {
+    "id": 1120,
+    "word": "BANIR",
+    "normalized": "BANIR"
+  },
+  {
+    "id": 1121,
+    "word": "BANIS",
+    "normalized": "BANIS"
+  },
+  {
+    "id": 1122,
+    "word": "BANIU",
+    "normalized": "BANIU"
+  },
+  {
+    "id": 1123,
+    "word": "BANJO",
+    "normalized": "BANJO"
+  },
+  {
+    "id": 1124,
+    "word": "BAQUE",
+    "normalized": "BAQUE"
+  },
+  {
+    "id": 1125,
+    "word": "BARBA",
+    "normalized": "BARBA"
+  },
+  {
+    "id": 1126,
+    "word": "BARCA",
+    "normalized": "BARCA"
+  },
+  {
+    "id": 1127,
+    "word": "BARDO",
+    "normalized": "BARDO"
+  },
+  {
+    "id": 1128,
+    "word": "BARES",
+    "normalized": "BARES"
+  },
+  {
+    "id": 1129,
+    "word": "BARRE",
+    "normalized": "BARRE"
+  },
+  {
+    "id": 1130,
+    "word": "BASAL",
+    "normalized": "BASAL"
+  },
+  {
+    "id": 1131,
+    "word": "BASES",
+    "normalized": "BASES"
+  },
+  {
+    "id": 1132,
+    "word": "BASTA",
+    "normalized": "BASTA"
+  },
+  {
+    "id": 1133,
+    "word": "BASTE",
+    "normalized": "BASTE"
+  },
+  {
+    "id": 1134,
+    "word": "BASTO",
+    "normalized": "BASTO"
+  },
+  {
+    "id": 1135,
+    "word": "BATAM",
+    "normalized": "BATAM"
+  },
+  {
+    "id": 1136,
+    "word": "BATAS",
+    "normalized": "BATAS"
+  },
+  {
+    "id": 1137,
+    "word": "BATEI",
+    "normalized": "BATEI"
+  },
+  {
+    "id": 1138,
+    "word": "BATEL",
+    "normalized": "BATEL"
+  },
+  {
+    "id": 1139,
+    "word": "BATEM",
+    "normalized": "BATEM"
+  },
+  {
+    "id": 1140,
+    "word": "BATER",
+    "normalized": "BATER"
+  },
+  {
+    "id": 1141,
+    "word": "BATES",
+    "normalized": "BATES"
+  },
+  {
+    "id": 1142,
+    "word": "BATEU",
+    "normalized": "BATEU"
+  },
+  {
+    "id": 1143,
+    "word": "BATIA",
+    "normalized": "BATIA"
+  },
+  {
+    "id": 1144,
+    "word": "BATÃª",
+    "normalized": "BATAª"
+  },
+  {
+    "id": 1145,
+    "word": "BAZAR",
+    "normalized": "BAZAR"
+  },
+  {
+    "id": 1146,
+    "word": "BAÃºS",
+    "normalized": "BAAºS"
+  },
+  {
+    "id": 1147,
+    "word": "BEATA",
+    "normalized": "BEATA"
+  },
+  {
+    "id": 1148,
+    "word": "BEATO",
+    "normalized": "BEATO"
+  },
+  {
+    "id": 1149,
+    "word": "BEBAM",
+    "normalized": "BEBAM"
+  },
+  {
+    "id": 1150,
+    "word": "BEBAS",
+    "normalized": "BEBAS"
+  },
+  {
+    "id": 1151,
+    "word": "BEBEI",
+    "normalized": "BEBEI"
+  },
+  {
+    "id": 1152,
+    "word": "BEBEM",
+    "normalized": "BEBEM"
+  },
+  {
+    "id": 1153,
+    "word": "BEBER",
+    "normalized": "BEBER"
+  },
+  {
+    "id": 1154,
+    "word": "BEBES",
+    "normalized": "BEBES"
+  },
+  {
+    "id": 1155,
+    "word": "BEBEU",
+    "normalized": "BEBEU"
+  },
+  {
+    "id": 1156,
+    "word": "BEBIA",
+    "normalized": "BEBIA"
+  },
+  {
+    "id": 1157,
+    "word": "BEBÃª",
+    "normalized": "BEBAª"
+  },
+  {
+    "id": 1158,
+    "word": "BECAS",
+    "normalized": "BECAS"
+  },
+  {
+    "id": 1159,
+    "word": "BECOS",
+    "normalized": "BECOS"
+  },
+  {
+    "id": 1160,
+    "word": "BEGES",
+    "normalized": "BEGES"
+  },
+  {
+    "id": 1161,
+    "word": "BEIJA",
+    "normalized": "BEIJA"
+  },
+  {
+    "id": 1162,
+    "word": "BEIJE",
+    "normalized": "BEIJE"
+  },
+  {
+    "id": 1163,
+    "word": "BEIRA",
+    "normalized": "BEIRA"
+  },
+  {
+    "id": 1164,
+    "word": "BEIRE",
+    "normalized": "BEIRE"
+  },
+  {
+    "id": 1165,
+    "word": "BEIRO",
+    "normalized": "BEIRO"
+  },
+  {
+    "id": 1166,
+    "word": "BELGA",
+    "normalized": "BELGA"
+  },
+  {
+    "id": 1167,
+    "word": "BEMOL",
+    "normalized": "BEMOL"
+  },
+  {
+    "id": 1168,
+    "word": "BENTA",
+    "normalized": "BENTA"
+  },
+  {
+    "id": 1169,
+    "word": "BENZA",
+    "normalized": "BENZA"
+  },
+  {
+    "id": 1170,
+    "word": "BENZE",
+    "normalized": "BENZE"
+  },
+  {
+    "id": 1171,
+    "word": "BENZI",
+    "normalized": "BENZI"
+  },
+  {
+    "id": 1172,
+    "word": "BENZO",
+    "normalized": "BENZO"
+  },
+  {
+    "id": 1173,
+    "word": "BEQUE",
+    "normalized": "BEQUE"
+  },
+  {
+    "id": 1174,
+    "word": "BERRA",
+    "normalized": "BERRA"
+  },
+  {
+    "id": 1175,
+    "word": "BERRE",
+    "normalized": "BERRE"
+  },
+  {
+    "id": 1176,
+    "word": "BERRO",
+    "normalized": "BERRO"
+  },
+  {
+    "id": 1177,
+    "word": "BESTA",
+    "normalized": "BESTA"
+  },
+  {
+    "id": 1178,
+    "word": "BICAI",
+    "normalized": "BICAI"
+  },
+  {
+    "id": 1179,
+    "word": "BICAM",
+    "normalized": "BICAM"
+  },
+  {
+    "id": 1180,
+    "word": "BICAR",
+    "normalized": "BICAR"
+  },
+  {
+    "id": 1181,
+    "word": "BICHA",
+    "normalized": "BICHA"
+  },
+  {
+    "id": 1182,
+    "word": "BICOS",
+    "normalized": "BICOS"
+  },
+  {
+    "id": 1183,
+    "word": "BICOU",
+    "normalized": "BICOU"
+  },
+  {
+    "id": 1184,
+    "word": "BIDÃª",
+    "normalized": "BIDAª"
+  },
+  {
+    "id": 1185,
+    "word": "BIELA",
+    "normalized": "BIELA"
+  },
+  {
+    "id": 1186,
+    "word": "BIGAS",
+    "normalized": "BIGAS"
+  },
+  {
+    "id": 1187,
+    "word": "BINGO",
+    "normalized": "BINGO"
+  },
+  {
+    "id": 1188,
+    "word": "BIQUE",
+    "normalized": "BIQUE"
+  },
+  {
+    "id": 1189,
+    "word": "BIRRA",
+    "normalized": "BIRRA"
+  },
+  {
+    "id": 1190,
+    "word": "BISPA",
+    "normalized": "BISPA"
+  },
+  {
+    "id": 1191,
+    "word": "BISPO",
+    "normalized": "BISPO"
+  },
+  {
+    "id": 1192,
+    "word": "BLEFA",
+    "normalized": "BLEFA"
+  },
+  {
+    "id": 1193,
+    "word": "BLEFE",
+    "normalized": "BLEFE"
+  },
+  {
+    "id": 1194,
+    "word": "BLEFO",
+    "normalized": "BLEFO"
+  },
+  {
+    "id": 1195,
+    "word": "BLUSA",
+    "normalized": "BLUSA"
+  },
+  {
+    "id": 1196,
+    "word": "BOATE",
+    "normalized": "BOATE"
+  },
+  {
+    "id": 1197,
+    "word": "BOATO",
+    "normalized": "BOATO"
+  },
+  {
+    "id": 1198,
+    "word": "BOBAS",
+    "normalized": "BOBAS"
+  },
+  {
+    "id": 1199,
+    "word": "BOBEM",
+    "normalized": "BOBEM"
+  },
+  {
+    "id": 1200,
+    "word": "BOBES",
+    "normalized": "BOBES"
+  },
+  {
+    "id": 1201,
+    "word": "BOBOS",
+    "normalized": "BOBOS"
+  },
+  {
+    "id": 1202,
+    "word": "BOCAL",
+    "normalized": "BOCAL"
+  },
+  {
+    "id": 1203,
+    "word": "BOCAS",
+    "normalized": "BOCAS"
+  },
+  {
+    "id": 1204,
+    "word": "BOCHA",
+    "normalized": "BOCHA"
+  },
+  {
+    "id": 1205,
+    "word": "BODAS",
+    "normalized": "BODAS"
+  },
+  {
+    "id": 1206,
+    "word": "BODES",
+    "normalized": "BODES"
+  },
+  {
+    "id": 1207,
+    "word": "BOIAI",
+    "normalized": "BOIAI"
+  },
+  {
+    "id": 1208,
+    "word": "BOIAR",
+    "normalized": "BOIAR"
+  },
+  {
+    "id": 1209,
+    "word": "BOIEI",
+    "normalized": "BOIEI"
+  },
+  {
+    "id": 1210,
+    "word": "BOINA",
+    "normalized": "BOINA"
+  },
+  {
+    "id": 1211,
+    "word": "BOIOU",
+    "normalized": "BOIOU"
+  },
+  {
+    "id": 1212,
+    "word": "BOLAI",
+    "normalized": "BOLAI"
+  },
+  {
+    "id": 1213,
+    "word": "BOLAM",
+    "normalized": "BOLAM"
+  },
+  {
+    "id": 1214,
+    "word": "BOLAR",
+    "normalized": "BOLAR"
+  },
+  {
+    "id": 1215,
+    "word": "BOLAS",
+    "normalized": "BOLAS"
+  },
+  {
+    "id": 1216,
+    "word": "BOLDO",
+    "normalized": "BOLDO"
+  },
+  {
+    "id": 1217,
+    "word": "BOLEI",
+    "normalized": "BOLEI"
+  },
+  {
+    "id": 1218,
+    "word": "BOLEM",
+    "normalized": "BOLEM"
+  },
+  {
+    "id": 1219,
+    "word": "BOLES",
+    "normalized": "BOLES"
+  },
+  {
+    "id": 1220,
+    "word": "BOLHA",
+    "normalized": "BOLHA"
+  },
+  {
+    "id": 1221,
+    "word": "BOLOR",
+    "normalized": "BOLOR"
+  },
+  {
+    "id": 1222,
+    "word": "BOLOS",
+    "normalized": "BOLOS"
+  },
+  {
+    "id": 1223,
+    "word": "BOLOU",
+    "normalized": "BOLOU"
+  },
+  {
+    "id": 1224,
+    "word": "BOLSO",
+    "normalized": "BOLSO"
+  },
+  {
+    "id": 1225,
+    "word": "BOMBA",
+    "normalized": "BOMBA"
+  },
+  {
+    "id": 1226,
+    "word": "BONDE",
+    "normalized": "BONDE"
+  },
+  {
+    "id": 1227,
+    "word": "BORDE",
+    "normalized": "BORDE"
+  },
+  {
+    "id": 1228,
+    "word": "BORDO",
+    "normalized": "BORDO"
+  },
+  {
+    "id": 1229,
+    "word": "BORRA",
+    "normalized": "BORRA"
+  },
+  {
+    "id": 1230,
+    "word": "BORRE",
+    "normalized": "BORRE"
+  },
+  {
+    "id": 1231,
+    "word": "BORRO",
+    "normalized": "BORRO"
+  },
+  {
+    "id": 1232,
+    "word": "BOSSA",
+    "normalized": "BOSSA"
+  },
+  {
+    "id": 1233,
+    "word": "BOSTA",
+    "normalized": "BOSTA"
+  },
+  {
+    "id": 1234,
+    "word": "BOTAI",
+    "normalized": "BOTAI"
+  },
+  {
+    "id": 1235,
+    "word": "BOTAM",
+    "normalized": "BOTAM"
+  },
+  {
+    "id": 1236,
+    "word": "BOTAR",
+    "normalized": "BOTAR"
+  },
+  {
+    "id": 1237,
+    "word": "BOTAS",
+    "normalized": "BOTAS"
+  },
+  {
+    "id": 1238,
+    "word": "BOTEI",
+    "normalized": "BOTEI"
+  },
+  {
+    "id": 1239,
+    "word": "BOTEM",
+    "normalized": "BOTEM"
+  },
+  {
+    "id": 1240,
+    "word": "BOTES",
+    "normalized": "BOTES"
+  },
+  {
+    "id": 1241,
+    "word": "BOTOU",
+    "normalized": "BOTOU"
+  },
+  {
+    "id": 1242,
+    "word": "BRABA",
+    "normalized": "BRABA"
+  },
+  {
+    "id": 1243,
+    "word": "BRABO",
+    "normalized": "BRABO"
+  },
+  {
+    "id": 1244,
+    "word": "BRADA",
+    "normalized": "BRADA"
+  },
+  {
+    "id": 1245,
+    "word": "BRADE",
+    "normalized": "BRADE"
+  },
+  {
+    "id": 1246,
+    "word": "BRADO",
+    "normalized": "BRADO"
+  },
+  {
+    "id": 1247,
+    "word": "BRAMA",
+    "normalized": "BRAMA"
+  },
+  {
+    "id": 1248,
+    "word": "BRAME",
+    "normalized": "BRAME"
+  },
+  {
+    "id": 1249,
+    "word": "BRAMI",
+    "normalized": "BRAMI"
+  },
+  {
+    "id": 1250,
+    "word": "BRAMO",
+    "normalized": "BRAMO"
+  },
+  {
+    "id": 1251,
+    "word": "BRASA",
+    "normalized": "BRASA"
+  },
+  {
+    "id": 1252,
+    "word": "BRAVA",
+    "normalized": "BRAVA"
+  },
+  {
+    "id": 1253,
+    "word": "BRECA",
+    "normalized": "BRECA"
+  },
+  {
+    "id": 1254,
+    "word": "BRECO",
+    "normalized": "BRECO"
+  },
+  {
+    "id": 1255,
+    "word": "BREVE",
+    "normalized": "BREVE"
+  },
+  {
+    "id": 1256,
+    "word": "BRIGA",
+    "normalized": "BRIGA"
+  },
+  {
+    "id": 1257,
+    "word": "BRIGO",
+    "normalized": "BRIGO"
+  },
+  {
+    "id": 1258,
+    "word": "BRINS",
+    "normalized": "BRINS"
+  },
+  {
+    "id": 1259,
+    "word": "BRIOS",
+    "normalized": "BRIOS"
+  },
+  {
+    "id": 1260,
+    "word": "BRITA",
+    "normalized": "BRITA"
+  },
+  {
+    "id": 1261,
+    "word": "BROAS",
+    "normalized": "BROAS"
+  },
+  {
+    "id": 1262,
+    "word": "BROCA",
+    "normalized": "BROCA"
+  },
+  {
+    "id": 1263,
+    "word": "BROCO",
+    "normalized": "BROCO"
+  },
+  {
+    "id": 1264,
+    "word": "BROMO",
+    "normalized": "BROMO"
+  },
+  {
+    "id": 1265,
+    "word": "BROTA",
+    "normalized": "BROTA"
+  },
+  {
+    "id": 1266,
+    "word": "BROTE",
+    "normalized": "BROTE"
+  },
+  {
+    "id": 1267,
+    "word": "BROTO",
+    "normalized": "BROTO"
+  },
+  {
+    "id": 1268,
+    "word": "BRUMA",
+    "normalized": "BRUMA"
+  },
+  {
+    "id": 1269,
+    "word": "BRUTA",
+    "normalized": "BRUTA"
+  },
+  {
+    "id": 1270,
+    "word": "BRUTO",
+    "normalized": "BRUTO"
+  },
+  {
+    "id": 1271,
+    "word": "BRUXO",
+    "normalized": "BRUXO"
+  },
+  {
+    "id": 1272,
+    "word": "BUCAL",
+    "normalized": "BUCAL"
+  },
+  {
+    "id": 1273,
+    "word": "BUCHA",
+    "normalized": "BUCHA"
+  },
+  {
+    "id": 1274,
+    "word": "BUCHO",
+    "normalized": "BUCHO"
+  },
+  {
+    "id": 1275,
+    "word": "BUFAI",
+    "normalized": "BUFAI"
+  },
+  {
+    "id": 1276,
+    "word": "BUFAM",
+    "normalized": "BUFAM"
+  },
+  {
+    "id": 1277,
+    "word": "BUFAR",
+    "normalized": "BUFAR"
+  },
+  {
+    "id": 1278,
+    "word": "BUFAS",
+    "normalized": "BUFAS"
+  },
+  {
+    "id": 1279,
+    "word": "BUFEI",
+    "normalized": "BUFEI"
+  },
+  {
+    "id": 1280,
+    "word": "BUFEM",
+    "normalized": "BUFEM"
+  },
+  {
+    "id": 1281,
+    "word": "BUFES",
+    "normalized": "BUFES"
+  },
+  {
+    "id": 1282,
+    "word": "BUFOU",
+    "normalized": "BUFOU"
+  },
+  {
+    "id": 1283,
+    "word": "BULAM",
+    "normalized": "BULAM"
+  },
+  {
+    "id": 1284,
+    "word": "BULAS",
+    "normalized": "BULAS"
+  },
+  {
+    "id": 1285,
+    "word": "BULBO",
+    "normalized": "BULBO"
+  },
+  {
+    "id": 1286,
+    "word": "BULES",
+    "normalized": "BULES"
+  },
+  {
+    "id": 1287,
+    "word": "BULHA",
+    "normalized": "BULHA"
+  },
+  {
+    "id": 1288,
+    "word": "BULIA",
+    "normalized": "BULIA"
+  },
+  {
+    "id": 1289,
+    "word": "BULIR",
+    "normalized": "BULIR"
+  },
+  {
+    "id": 1290,
+    "word": "BULIS",
+    "normalized": "BULIS"
+  },
+  {
+    "id": 1291,
+    "word": "BULIU",
+    "normalized": "BULIU"
+  },
+  {
+    "id": 1292,
+    "word": "BUMBO",
+    "normalized": "BUMBO"
+  },
+  {
+    "id": 1293,
+    "word": "BURGO",
+    "normalized": "BURGO"
+  },
+  {
+    "id": 1294,
+    "word": "BURLA",
+    "normalized": "BURLA"
+  },
+  {
+    "id": 1295,
+    "word": "BURLE",
+    "normalized": "BURLE"
+  },
+  {
+    "id": 1296,
+    "word": "BURLO",
+    "normalized": "BURLO"
+  },
+  {
+    "id": 1297,
+    "word": "BURRA",
+    "normalized": "BURRA"
+  },
+  {
+    "id": 1298,
+    "word": "BUSCA",
+    "normalized": "BUSCA"
+  },
+  {
+    "id": 1299,
+    "word": "BUSCO",
+    "normalized": "BUSCO"
+  },
+  {
+    "id": 1300,
+    "word": "BUSTO",
+    "normalized": "BUSTO"
+  },
+  {
+    "id": 1301,
+    "word": "BUXOS",
+    "normalized": "BUXOS"
+  },
+  {
+    "id": 1302,
+    "word": "CABAL",
+    "normalized": "CABAL"
+  },
+  {
+    "id": 1303,
+    "word": "CABEI",
+    "normalized": "CABEI"
+  },
+  {
+    "id": 1304,
+    "word": "CABEM",
+    "normalized": "CABEM"
+  },
+  {
+    "id": 1305,
+    "word": "CABER",
+    "normalized": "CABER"
+  },
+  {
+    "id": 1306,
+    "word": "CABES",
+    "normalized": "CABES"
+  },
+  {
+    "id": 1307,
+    "word": "CABIA",
+    "normalized": "CABIA"
+  },
+  {
+    "id": 1308,
+    "word": "CABRA",
+    "normalized": "CABRA"
+  },
+  {
+    "id": 1309,
+    "word": "CABÃª",
+    "normalized": "CABAª"
+  },
+  {
+    "id": 1310,
+    "word": "CACAS",
+    "normalized": "CACAS"
+  },
+  {
+    "id": 1311,
+    "word": "CACEI",
+    "normalized": "CACEI"
+  },
+  {
+    "id": 1312,
+    "word": "CACEM",
+    "normalized": "CACEM"
+  },
+  {
+    "id": 1313,
+    "word": "CACES",
+    "normalized": "CACES"
+  },
+  {
+    "id": 1314,
+    "word": "CACHO",
+    "normalized": "CACHO"
+  },
+  {
+    "id": 1315,
+    "word": "CACOS",
+    "normalized": "CACOS"
+  },
+  {
+    "id": 1316,
+    "word": "CACTO",
+    "normalized": "CACTO"
+  },
+  {
+    "id": 1317,
+    "word": "CAGAI",
+    "normalized": "CAGAI"
+  },
+  {
+    "id": 1318,
+    "word": "CAGAM",
+    "normalized": "CAGAM"
+  },
+  {
+    "id": 1319,
+    "word": "CAGAR",
+    "normalized": "CAGAR"
+  },
+  {
+    "id": 1320,
+    "word": "CAGAS",
+    "normalized": "CAGAS"
+  },
+  {
+    "id": 1321,
+    "word": "CAGOU",
+    "normalized": "CAGOU"
+  },
+  {
+    "id": 1322,
+    "word": "CAGUE",
+    "normalized": "CAGUE"
+  },
+  {
+    "id": 1323,
+    "word": "CAIAI",
+    "normalized": "CAIAI"
+  },
+  {
+    "id": 1324,
+    "word": "CAIAM",
+    "normalized": "CAIAM"
+  },
+  {
+    "id": 1325,
+    "word": "CAIAR",
+    "normalized": "CAIAR"
+  },
+  {
+    "id": 1326,
+    "word": "CAIAS",
+    "normalized": "CAIAS"
+  },
+  {
+    "id": 1327,
+    "word": "CAIBA",
+    "normalized": "CAIBA"
+  },
+  {
+    "id": 1328,
+    "word": "CAIBO",
+    "normalized": "CAIBO"
+  },
+  {
+    "id": 1329,
+    "word": "CAIEI",
+    "normalized": "CAIEI"
+  },
+  {
+    "id": 1330,
+    "word": "CAIEM",
+    "normalized": "CAIEM"
+  },
+  {
+    "id": 1331,
+    "word": "CAIES",
+    "normalized": "CAIES"
+  },
+  {
+    "id": 1332,
+    "word": "CAIOU",
+    "normalized": "CAIOU"
+  },
+  {
+    "id": 1333,
+    "word": "CAIXA",
+    "normalized": "CAIXA"
+  },
+  {
+    "id": 1334,
+    "word": "CALAI",
+    "normalized": "CALAI"
+  },
+  {
+    "id": 1335,
+    "word": "CALAM",
+    "normalized": "CALAM"
+  },
+  {
+    "id": 1336,
+    "word": "CALAR",
+    "normalized": "CALAR"
+  },
+  {
+    "id": 1337,
+    "word": "CALAS",
+    "normalized": "CALAS"
+  },
+  {
+    "id": 1338,
+    "word": "CALCA",
+    "normalized": "CALCA"
+  },
+  {
+    "id": 1339,
+    "word": "CALCE",
+    "normalized": "CALCE"
+  },
+  {
+    "id": 1340,
+    "word": "CALCO",
+    "normalized": "CALCO"
+  },
+  {
+    "id": 1341,
+    "word": "CALDA",
+    "normalized": "CALDA"
+  },
+  {
+    "id": 1342,
+    "word": "CALDO",
+    "normalized": "CALDO"
+  },
+  {
+    "id": 1343,
+    "word": "CALEI",
+    "normalized": "CALEI"
+  },
+  {
+    "id": 1344,
+    "word": "CALEM",
+    "normalized": "CALEM"
+  },
+  {
+    "id": 1345,
+    "word": "CALES",
+    "normalized": "CALES"
+  },
+  {
+    "id": 1346,
+    "word": "CALHA",
+    "normalized": "CALHA"
+  },
+  {
+    "id": 1347,
+    "word": "CALHE",
+    "normalized": "CALHE"
+  },
+  {
+    "id": 1348,
+    "word": "CALHO",
+    "normalized": "CALHO"
+  },
+  {
+    "id": 1349,
+    "word": "CALMA",
+    "normalized": "CALMA"
+  },
+  {
+    "id": 1350,
+    "word": "CALMO",
+    "normalized": "CALMO"
+  },
+  {
+    "id": 1351,
+    "word": "CALOS",
+    "normalized": "CALOS"
+  },
+  {
+    "id": 1352,
+    "word": "CALOU",
+    "normalized": "CALOU"
+  },
+  {
+    "id": 1353,
+    "word": "CALVA",
+    "normalized": "CALVA"
+  },
+  {
+    "id": 1354,
+    "word": "CAMAS",
+    "normalized": "CAMAS"
+  },
+  {
+    "id": 1355,
+    "word": "CANGA",
+    "normalized": "CANGA"
+  },
+  {
+    "id": 1356,
+    "word": "CANJA",
+    "normalized": "CANJA"
+  },
+  {
+    "id": 1357,
+    "word": "CANOS",
+    "normalized": "CANOS"
+  },
+  {
+    "id": 1358,
+    "word": "CANSA",
+    "normalized": "CANSA"
+  },
+  {
+    "id": 1359,
+    "word": "CANSE",
+    "normalized": "CANSE"
+  },
+  {
+    "id": 1360,
+    "word": "CANSO",
+    "normalized": "CANSO"
+  },
+  {
+    "id": 1361,
+    "word": "CANTA",
+    "normalized": "CANTA"
+  },
+  {
+    "id": 1362,
+    "word": "CANTE",
+    "normalized": "CANTE"
+  },
+  {
+    "id": 1363,
+    "word": "CAPAI",
+    "normalized": "CAPAI"
+  },
+  {
+    "id": 1364,
+    "word": "CAPAM",
+    "normalized": "CAPAM"
+  },
+  {
+    "id": 1365,
+    "word": "CAPAR",
+    "normalized": "CAPAR"
+  },
+  {
+    "id": 1366,
+    "word": "CAPAS",
+    "normalized": "CAPAS"
+  },
+  {
+    "id": 1367,
+    "word": "CAPEI",
+    "normalized": "CAPEI"
+  },
+  {
+    "id": 1368,
+    "word": "CAPEM",
+    "normalized": "CAPEM"
+  },
+  {
+    "id": 1369,
+    "word": "CAPES",
+    "normalized": "CAPES"
+  },
+  {
+    "id": 1370,
+    "word": "CAPOU",
+    "normalized": "CAPOU"
+  },
+  {
+    "id": 1371,
+    "word": "CAPTA",
+    "normalized": "CAPTA"
+  },
+  {
+    "id": 1372,
+    "word": "CAPTE",
+    "normalized": "CAPTE"
+  },
+  {
+    "id": 1373,
+    "word": "CAPTO",
+    "normalized": "CAPTO"
+  },
+  {
+    "id": 1374,
+    "word": "CAPUZ",
+    "normalized": "CAPUZ"
+  },
+  {
+    "id": 1375,
+    "word": "CARAS",
+    "normalized": "CARAS"
+  },
+  {
+    "id": 1376,
+    "word": "CARDO",
+    "normalized": "CARDO"
+  },
+  {
+    "id": 1377,
+    "word": "CARGA",
+    "normalized": "CARGA"
+  },
+  {
+    "id": 1378,
+    "word": "CARGO",
+    "normalized": "CARGO"
+  },
+  {
+    "id": 1379,
+    "word": "CAROS",
+    "normalized": "CAROS"
+  },
+  {
+    "id": 1380,
+    "word": "CARPA",
+    "normalized": "CARPA"
+  },
+  {
+    "id": 1381,
+    "word": "CARPE",
+    "normalized": "CARPE"
+  },
+  {
+    "id": 1382,
+    "word": "CARPI",
+    "normalized": "CARPI"
+  },
+  {
+    "id": 1383,
+    "word": "CASAI",
+    "normalized": "CASAI"
+  },
+  {
+    "id": 1384,
+    "word": "CASAM",
+    "normalized": "CASAM"
+  },
+  {
+    "id": 1385,
+    "word": "CASAR",
+    "normalized": "CASAR"
+  },
+  {
+    "id": 1386,
+    "word": "CASAS",
+    "normalized": "CASAS"
+  },
+  {
+    "id": 1387,
+    "word": "CASCO",
+    "normalized": "CASCO"
+  },
+  {
+    "id": 1388,
+    "word": "CASEI",
+    "normalized": "CASEI"
+  },
+  {
+    "id": 1389,
+    "word": "CASEM",
+    "normalized": "CASEM"
+  },
+  {
+    "id": 1390,
+    "word": "CASES",
+    "normalized": "CASES"
+  },
+  {
+    "id": 1391,
+    "word": "CASOS",
+    "normalized": "CASOS"
+  },
+  {
+    "id": 1392,
+    "word": "CASOU",
+    "normalized": "CASOU"
+  },
+  {
+    "id": 1393,
+    "word": "CASPA",
+    "normalized": "CASPA"
+  },
+  {
+    "id": 1394,
+    "word": "CASSA",
+    "normalized": "CASSA"
+  },
+  {
+    "id": 1395,
+    "word": "CASSE",
+    "normalized": "CASSE"
+  },
+  {
+    "id": 1396,
+    "word": "CASSO",
+    "normalized": "CASSO"
+  },
+  {
+    "id": 1397,
+    "word": "CASTA",
+    "normalized": "CASTA"
+  },
+  {
+    "id": 1398,
+    "word": "CASTO",
+    "normalized": "CASTO"
+  },
+  {
+    "id": 1399,
+    "word": "CATAI",
+    "normalized": "CATAI"
+  },
+  {
+    "id": 1400,
+    "word": "CATAM",
+    "normalized": "CATAM"
+  },
+  {
+    "id": 1401,
+    "word": "CATEI",
+    "normalized": "CATEI"
+  },
+  {
+    "id": 1402,
+    "word": "CATEM",
+    "normalized": "CATEM"
+  },
+  {
+    "id": 1403,
+    "word": "CATES",
+    "normalized": "CATES"
+  },
+  {
+    "id": 1404,
+    "word": "CATOU",
+    "normalized": "CATOU"
+  },
+  {
+    "id": 1405,
+    "word": "CATRE",
+    "normalized": "CATRE"
+  },
+  {
+    "id": 1406,
+    "word": "CAUDA",
+    "normalized": "CAUDA"
+  },
+  {
+    "id": 1407,
+    "word": "CAULE",
+    "normalized": "CAULE"
+  },
+  {
+    "id": 1408,
+    "word": "CAUSE",
+    "normalized": "CAUSE"
+  },
+  {
+    "id": 1409,
+    "word": "CAUSO",
+    "normalized": "CAUSO"
+  },
+  {
+    "id": 1410,
+    "word": "CAUTA",
+    "normalized": "CAUTA"
+  },
+  {
+    "id": 1411,
+    "word": "CAUTO",
+    "normalized": "CAUTO"
+  },
+  {
+    "id": 1412,
+    "word": "CAVAI",
+    "normalized": "CAVAI"
+  },
+  {
+    "id": 1413,
+    "word": "CAVAM",
+    "normalized": "CAVAM"
+  },
+  {
+    "id": 1414,
+    "word": "CAVAR",
+    "normalized": "CAVAR"
+  },
+  {
+    "id": 1415,
+    "word": "CAVAS",
+    "normalized": "CAVAS"
+  },
+  {
+    "id": 1416,
+    "word": "CAVEI",
+    "normalized": "CAVEI"
+  },
+  {
+    "id": 1417,
+    "word": "CAVEM",
+    "normalized": "CAVEM"
+  },
+  {
+    "id": 1418,
+    "word": "CAVES",
+    "normalized": "CAVES"
+  },
+  {
+    "id": 1419,
+    "word": "CAVOU",
+    "normalized": "CAVOU"
+  },
+  {
+    "id": 1420,
+    "word": "CEADA",
+    "normalized": "CEADA"
+  },
+  {
+    "id": 1421,
+    "word": "CEADO",
+    "normalized": "CEADO"
+  },
+  {
+    "id": 1422,
+    "word": "CEAIS",
+    "normalized": "CEAIS"
+  },
+  {
+    "id": 1423,
+    "word": "CEAMO",
+    "normalized": "CEAMO"
+  },
+  {
+    "id": 1424,
+    "word": "CEARA",
+    "normalized": "CEARA"
+  },
+  {
+    "id": 1425,
+    "word": "CEAVA",
+    "normalized": "CEAVA"
+  },
+  {
+    "id": 1426,
+    "word": "CEDAM",
+    "normalized": "CEDAM"
+  },
+  {
+    "id": 1427,
+    "word": "CEDAS",
+    "normalized": "CEDAS"
+  },
+  {
+    "id": 1428,
+    "word": "CEDEI",
+    "normalized": "CEDEI"
+  },
+  {
+    "id": 1429,
+    "word": "CEDEM",
+    "normalized": "CEDEM"
+  },
+  {
+    "id": 1430,
+    "word": "CEDER",
+    "normalized": "CEDER"
+  },
+  {
+    "id": 1431,
+    "word": "CEDES",
+    "normalized": "CEDES"
+  },
+  {
+    "id": 1432,
+    "word": "CEDEU",
+    "normalized": "CEDEU"
+  },
+  {
+    "id": 1433,
+    "word": "CEDIA",
+    "normalized": "CEDIA"
+  },
+  {
+    "id": 1434,
+    "word": "CEDÃª",
+    "normalized": "CEDAª"
+  },
+  {
+    "id": 1435,
+    "word": "CEEIS",
+    "normalized": "CEEIS"
+  },
+  {
+    "id": 1436,
+    "word": "CEEMO",
+    "normalized": "CEEMO"
+  },
+  {
+    "id": 1437,
+    "word": "CEGAI",
+    "normalized": "CEGAI"
+  },
+  {
+    "id": 1438,
+    "word": "CEGAM",
+    "normalized": "CEGAM"
+  },
+  {
+    "id": 1439,
+    "word": "CEGAR",
+    "normalized": "CEGAR"
+  },
+  {
+    "id": 1440,
+    "word": "CEGAS",
+    "normalized": "CEGAS"
+  },
+  {
+    "id": 1441,
+    "word": "CEGOS",
+    "normalized": "CEGOS"
+  },
+  {
+    "id": 1442,
+    "word": "CEGOU",
+    "normalized": "CEGOU"
+  },
+  {
+    "id": 1443,
+    "word": "CEGUE",
+    "normalized": "CEGUE"
+  },
+  {
+    "id": 1444,
+    "word": "CEIAM",
+    "normalized": "CEIAM"
+  },
+  {
+    "id": 1445,
+    "word": "CEIAS",
+    "normalized": "CEIAS"
+  },
+  {
+    "id": 1446,
+    "word": "CEIEM",
+    "normalized": "CEIEM"
+  },
+  {
+    "id": 1447,
+    "word": "CEIES",
+    "normalized": "CEIES"
+  },
+  {
+    "id": 1448,
+    "word": "CEIFA",
+    "normalized": "CEIFA"
+  },
+  {
+    "id": 1449,
+    "word": "CEIFE",
+    "normalized": "CEIFE"
+  },
+  {
+    "id": 1450,
+    "word": "CEIFO",
+    "normalized": "CEIFO"
+  },
+  {
+    "id": 1451,
+    "word": "CEIRA",
+    "normalized": "CEIRA"
+  },
+  {
+    "id": 1452,
+    "word": "CELAS",
+    "normalized": "CELAS"
+  },
+  {
+    "id": 1453,
+    "word": "CELTA",
+    "normalized": "CELTA"
+  },
+  {
+    "id": 1454,
+    "word": "CENAS",
+    "normalized": "CENAS"
+  },
+  {
+    "id": 1455,
+    "word": "CENSO",
+    "normalized": "CENSO"
+  },
+  {
+    "id": 1456,
+    "word": "CENTO",
+    "normalized": "CENTO"
+  },
+  {
+    "id": 1457,
+    "word": "CERAS",
+    "normalized": "CERAS"
+  },
+  {
+    "id": 1458,
+    "word": "CERCA",
+    "normalized": "CERCA"
+  },
+  {
+    "id": 1459,
+    "word": "CERCO",
+    "normalized": "CERCO"
+  },
+  {
+    "id": 1460,
+    "word": "CERDA",
+    "normalized": "CERDA"
+  },
+  {
+    "id": 1461,
+    "word": "CERNE",
+    "normalized": "CERNE"
+  },
+  {
+    "id": 1462,
+    "word": "CERNI",
+    "normalized": "CERNI"
+  },
+  {
+    "id": 1463,
+    "word": "CERRA",
+    "normalized": "CERRA"
+  },
+  {
+    "id": 1464,
+    "word": "CERRE",
+    "normalized": "CERRE"
+  },
+  {
+    "id": 1465,
+    "word": "CERTA",
+    "normalized": "CERTA"
+  },
+  {
+    "id": 1466,
+    "word": "CERTO",
+    "normalized": "CERTO"
+  },
+  {
+    "id": 1467,
+    "word": "CERVO",
+    "normalized": "CERVO"
+  },
+  {
+    "id": 1468,
+    "word": "CERZE",
+    "normalized": "CERZE"
+  },
+  {
+    "id": 1469,
+    "word": "CERZI",
+    "normalized": "CERZI"
+  },
+  {
+    "id": 1470,
+    "word": "CESSA",
+    "normalized": "CESSA"
+  },
+  {
+    "id": 1471,
+    "word": "CESSE",
+    "normalized": "CESSE"
+  },
+  {
+    "id": 1472,
+    "word": "CESSO",
+    "normalized": "CESSO"
+  },
+  {
+    "id": 1473,
+    "word": "CESTA",
+    "normalized": "CESTA"
+  },
+  {
+    "id": 1474,
+    "word": "CESTO",
+    "normalized": "CESTO"
+  },
+  {
+    "id": 1475,
+    "word": "CETIM",
+    "normalized": "CETIM"
+  },
+  {
+    "id": 1476,
+    "word": "CETRO",
+    "normalized": "CETRO"
+  },
+  {
+    "id": 1477,
+    "word": "CHAGA",
+    "normalized": "CHAGA"
+  },
+  {
+    "id": 1478,
+    "word": "CHAGO",
+    "normalized": "CHAGO"
+  },
+  {
+    "id": 1479,
+    "word": "CHALE",
+    "normalized": "CHALE"
+  },
+  {
+    "id": 1480,
+    "word": "CHAMA",
+    "normalized": "CHAMA"
+  },
+  {
+    "id": 1481,
+    "word": "CHAME",
+    "normalized": "CHAME"
+  },
+  {
+    "id": 1482,
+    "word": "CHAMO",
+    "normalized": "CHAMO"
+  },
+  {
+    "id": 1483,
+    "word": "CHAPA",
+    "normalized": "CHAPA"
+  },
+  {
+    "id": 1484,
+    "word": "CHATA",
+    "normalized": "CHATA"
+  },
+  {
+    "id": 1485,
+    "word": "CHATO",
+    "normalized": "CHATO"
+  },
+  {
+    "id": 1486,
+    "word": "CHECO",
+    "normalized": "CHECO"
+  },
+  {
+    "id": 1487,
+    "word": "CHEFA",
+    "normalized": "CHEFA"
+  },
+  {
+    "id": 1488,
+    "word": "CHEGA",
+    "normalized": "CHEGA"
+  },
+  {
+    "id": 1489,
+    "word": "CHEGO",
+    "normalized": "CHEGO"
+  },
+  {
+    "id": 1490,
+    "word": "CHEIA",
+    "normalized": "CHEIA"
+  },
+  {
+    "id": 1491,
+    "word": "CHEIO",
+    "normalized": "CHEIO"
+  },
+  {
+    "id": 1492,
+    "word": "CHIAI",
+    "normalized": "CHIAI"
+  },
+  {
+    "id": 1493,
+    "word": "CHIAM",
+    "normalized": "CHIAM"
+  },
+  {
+    "id": 1494,
+    "word": "CHIAR",
+    "normalized": "CHIAR"
+  },
+  {
+    "id": 1495,
+    "word": "CHIAS",
+    "normalized": "CHIAS"
+  },
+  {
+    "id": 1496,
+    "word": "CHIEI",
+    "normalized": "CHIEI"
+  },
+  {
+    "id": 1497,
+    "word": "CHIEM",
+    "normalized": "CHIEM"
+  },
+  {
+    "id": 1498,
+    "word": "CHIES",
+    "normalized": "CHIES"
+  },
+  {
+    "id": 1499,
+    "word": "CHIOU",
+    "normalized": "CHIOU"
+  },
+  {
+    "id": 1500,
+    "word": "CHOCA",
+    "normalized": "CHOCA"
+  },
+  {
+    "id": 1501,
+    "word": "CHOCO",
+    "normalized": "CHOCO"
+  },
+  {
+    "id": 1502,
+    "word": "CHORA",
+    "normalized": "CHORA"
+  },
+  {
+    "id": 1503,
+    "word": "CHORE",
+    "normalized": "CHORE"
+  },
+  {
+    "id": 1504,
+    "word": "CHORO",
+    "normalized": "CHORO"
+  },
+  {
+    "id": 1505,
+    "word": "CHOVA",
+    "normalized": "CHOVA"
+  },
+  {
+    "id": 1506,
+    "word": "CHOVE",
+    "normalized": "CHOVE"
+  },
+  {
+    "id": 1507,
+    "word": "CHOVI",
+    "normalized": "CHOVI"
+  },
+  {
+    "id": 1508,
+    "word": "CHOVO",
+    "normalized": "CHOVO"
+  },
+  {
+    "id": 1509,
+    "word": "CHUPA",
+    "normalized": "CHUPA"
+  },
+  {
+    "id": 1510,
+    "word": "CHUPE",
+    "normalized": "CHUPE"
+  },
+  {
+    "id": 1511,
+    "word": "CHUPO",
+    "normalized": "CHUPO"
+  },
+  {
+    "id": 1512,
+    "word": "CHUTA",
+    "normalized": "CHUTA"
+  },
+  {
+    "id": 1513,
+    "word": "CHUTE",
+    "normalized": "CHUTE"
+  },
+  {
+    "id": 1514,
+    "word": "CHUTO",
+    "normalized": "CHUTO"
+  },
+  {
+    "id": 1515,
+    "word": "CICLO",
+    "normalized": "CICLO"
+  },
+  {
+    "id": 1516,
+    "word": "CIDRA",
+    "normalized": "CIDRA"
+  },
+  {
+    "id": 1517,
+    "word": "CIFRA",
+    "normalized": "CIFRA"
+  },
+  {
+    "id": 1518,
+    "word": "CIFRE",
+    "normalized": "CIFRE"
+  },
+  {
+    "id": 1519,
+    "word": "CIFRO",
+    "normalized": "CIFRO"
+  },
+  {
+    "id": 1520,
+    "word": "CINCO",
+    "normalized": "CINCO"
+  },
+  {
+    "id": 1521,
+    "word": "CINDA",
+    "normalized": "CINDA"
+  },
+  {
+    "id": 1522,
+    "word": "CINDE",
+    "normalized": "CINDE"
+  },
+  {
+    "id": 1523,
+    "word": "CINDI",
+    "normalized": "CINDI"
+  },
+  {
+    "id": 1524,
+    "word": "CINDO",
+    "normalized": "CINDO"
+  },
+  {
+    "id": 1525,
+    "word": "CINGE",
+    "normalized": "CINGE"
+  },
+  {
+    "id": 1526,
+    "word": "CINGI",
+    "normalized": "CINGI"
+  },
+  {
+    "id": 1527,
+    "word": "CINJA",
+    "normalized": "CINJA"
+  },
+  {
+    "id": 1528,
+    "word": "CINJO",
+    "normalized": "CINJO"
+  },
+  {
+    "id": 1529,
+    "word": "CINTA",
+    "normalized": "CINTA"
+  },
+  {
+    "id": 1530,
+    "word": "CINZA",
+    "normalized": "CINZA"
+  },
+  {
+    "id": 1531,
+    "word": "CIOSA",
+    "normalized": "CIOSA"
+  },
+  {
+    "id": 1532,
+    "word": "CIOSO",
+    "normalized": "CIOSO"
+  },
+  {
+    "id": 1533,
+    "word": "CIRCO",
+    "normalized": "CIRCO"
+  },
+  {
+    "id": 1534,
+    "word": "CIRZA",
+    "normalized": "CIRZA"
+  },
+  {
+    "id": 1535,
+    "word": "CIRZO",
+    "normalized": "CIRZO"
+  },
+  {
+    "id": 1536,
+    "word": "CISCA",
+    "normalized": "CISCA"
+  },
+  {
+    "id": 1537,
+    "word": "CISCO",
+    "normalized": "CISCO"
+  },
+  {
+    "id": 1538,
+    "word": "CISMA",
+    "normalized": "CISMA"
+  },
+  {
+    "id": 1539,
+    "word": "CISME",
+    "normalized": "CISME"
+  },
+  {
+    "id": 1540,
+    "word": "CISMO",
+    "normalized": "CISMO"
+  },
+  {
+    "id": 1541,
+    "word": "CITAI",
+    "normalized": "CITAI"
+  },
+  {
+    "id": 1542,
+    "word": "CITAM",
+    "normalized": "CITAM"
+  },
+  {
+    "id": 1543,
+    "word": "CITAR",
+    "normalized": "CITAR"
+  },
+  {
+    "id": 1544,
+    "word": "CITAS",
+    "normalized": "CITAS"
+  },
+  {
+    "id": 1545,
+    "word": "CITEI",
+    "normalized": "CITEI"
+  },
+  {
+    "id": 1546,
+    "word": "CITEM",
+    "normalized": "CITEM"
+  },
+  {
+    "id": 1547,
+    "word": "CITES",
+    "normalized": "CITES"
+  },
+  {
+    "id": 1548,
+    "word": "CITOU",
+    "normalized": "CITOU"
+  },
+  {
+    "id": 1549,
+    "word": "CIVIL",
+    "normalized": "CIVIL"
+  },
+  {
+    "id": 1550,
+    "word": "CIVIS",
+    "normalized": "CIVIS"
+  },
+  {
+    "id": 1551,
+    "word": "CLAMA",
+    "normalized": "CLAMA"
+  },
+  {
+    "id": 1552,
+    "word": "CLAME",
+    "normalized": "CLAME"
+  },
+  {
+    "id": 1553,
+    "word": "CLAMO",
+    "normalized": "CLAMO"
+  },
+  {
+    "id": 1554,
+    "word": "CLAVA",
+    "normalized": "CLAVA"
+  },
+  {
+    "id": 1555,
+    "word": "CLERO",
+    "normalized": "CLERO"
+  },
+  {
+    "id": 1556,
+    "word": "CLIMA",
+    "normalized": "CLIMA"
+  },
+  {
+    "id": 1557,
+    "word": "CLIPE",
+    "normalized": "CLIPE"
+  },
+  {
+    "id": 1558,
+    "word": "CLONE",
+    "normalized": "CLONE"
+  },
+  {
+    "id": 1559,
+    "word": "CLORO",
+    "normalized": "CLORO"
+  },
+  {
+    "id": 1560,
+    "word": "COADA",
+    "normalized": "COADA"
+  },
+  {
+    "id": 1561,
+    "word": "COADO",
+    "normalized": "COADO"
+  },
+  {
+    "id": 1562,
+    "word": "COAGE",
+    "normalized": "COAGE"
+  },
+  {
+    "id": 1563,
+    "word": "COAGI",
+    "normalized": "COAGI"
+  },
+  {
+    "id": 1564,
+    "word": "COAIS",
+    "normalized": "COAIS"
+  },
+  {
+    "id": 1565,
+    "word": "COAJA",
+    "normalized": "COAJA"
+  },
+  {
+    "id": 1566,
+    "word": "COAJO",
+    "normalized": "COAJO"
+  },
+  {
+    "id": 1567,
+    "word": "COAMO",
+    "normalized": "COAMO"
+  },
+  {
+    "id": 1568,
+    "word": "COARA",
+    "normalized": "COARA"
+  },
+  {
+    "id": 1569,
+    "word": "COAVA",
+    "normalized": "COAVA"
+  },
+  {
+    "id": 1570,
+    "word": "COAXA",
+    "normalized": "COAXA"
+  },
+  {
+    "id": 1571,
+    "word": "COAXE",
+    "normalized": "COAXE"
+  },
+  {
+    "id": 1572,
+    "word": "COAXO",
+    "normalized": "COAXO"
+  },
+  {
+    "id": 1573,
+    "word": "COBRE",
+    "normalized": "COBRE"
+  },
+  {
+    "id": 1574,
+    "word": "COBRI",
+    "normalized": "COBRI"
+  },
+  {
+    "id": 1575,
+    "word": "COBRO",
+    "normalized": "COBRO"
+  },
+  {
+    "id": 1576,
+    "word": "COCEI",
+    "normalized": "COCEI"
+  },
+  {
+    "id": 1577,
+    "word": "COCEM",
+    "normalized": "COCEM"
+  },
+  {
+    "id": 1578,
+    "word": "COCES",
+    "normalized": "COCES"
+  },
+  {
+    "id": 1579,
+    "word": "COCHO",
+    "normalized": "COCHO"
+  },
+  {
+    "id": 1580,
+    "word": "COEIS",
+    "normalized": "COEIS"
+  },
+  {
+    "id": 1581,
+    "word": "COEMO",
+    "normalized": "COEMO"
+  },
+  {
+    "id": 1582,
+    "word": "COESA",
+    "normalized": "COESA"
+  },
+  {
+    "id": 1583,
+    "word": "COESO",
+    "normalized": "COESO"
+  },
+  {
+    "id": 1584,
+    "word": "COEVA",
+    "normalized": "COEVA"
+  },
+  {
+    "id": 1585,
+    "word": "COEVO",
+    "normalized": "COEVO"
+  },
+  {
+    "id": 1586,
+    "word": "COIBI",
+    "normalized": "COIBI"
+  },
+  {
+    "id": 1587,
+    "word": "COICE",
+    "normalized": "COICE"
+  },
+  {
+    "id": 1588,
+    "word": "COIFA",
+    "normalized": "COIFA"
+  },
+  {
+    "id": 1589,
+    "word": "COITO",
+    "normalized": "COITO"
+  },
+  {
+    "id": 1590,
+    "word": "COLAI",
+    "normalized": "COLAI"
+  },
+  {
+    "id": 1591,
+    "word": "COLAM",
+    "normalized": "COLAM"
+  },
+  {
+    "id": 1592,
+    "word": "COLAR",
+    "normalized": "COLAR"
+  },
+  {
+    "id": 1593,
+    "word": "COLAS",
+    "normalized": "COLAS"
+  },
+  {
+    "id": 1594,
+    "word": "COLEI",
+    "normalized": "COLEI"
+  },
+  {
+    "id": 1595,
+    "word": "COLEM",
+    "normalized": "COLEM"
+  },
+  {
+    "id": 1596,
+    "word": "COLES",
+    "normalized": "COLES"
+  },
+  {
+    "id": 1597,
+    "word": "COLHA",
+    "normalized": "COLHA"
+  },
+  {
+    "id": 1598,
+    "word": "COLHE",
+    "normalized": "COLHE"
+  },
+  {
+    "id": 1599,
+    "word": "COLHI",
+    "normalized": "COLHI"
+  },
+  {
+    "id": 1600,
+    "word": "COLHO",
+    "normalized": "COLHO"
+  },
+  {
+    "id": 1601,
+    "word": "COLOU",
+    "normalized": "COLOU"
+  },
+  {
+    "id": 1602,
+    "word": "COMAM",
+    "normalized": "COMAM"
+  },
+  {
+    "id": 1603,
+    "word": "COMAS",
+    "normalized": "COMAS"
+  },
+  {
+    "id": 1604,
+    "word": "COMEI",
+    "normalized": "COMEI"
+  },
+  {
+    "id": 1605,
+    "word": "COMEM",
+    "normalized": "COMEM"
+  },
+  {
+    "id": 1606,
+    "word": "COMER",
+    "normalized": "COMER"
+  },
+  {
+    "id": 1607,
+    "word": "COMES",
+    "normalized": "COMES"
+  },
+  {
+    "id": 1608,
+    "word": "COMEU",
+    "normalized": "COMEU"
+  },
+  {
+    "id": 1609,
+    "word": "COMIA",
+    "normalized": "COMIA"
+  },
+  {
+    "id": 1610,
+    "word": "COMUM",
+    "normalized": "COMUM"
+  },
+  {
+    "id": 1611,
+    "word": "COMÃª",
+    "normalized": "COMAª"
+  },
+  {
+    "id": 1612,
+    "word": "CONES",
+    "normalized": "CONES"
+  },
+  {
+    "id": 1613,
+    "word": "CONTA",
+    "normalized": "CONTA"
+  },
+  {
+    "id": 1614,
+    "word": "CONTE",
+    "normalized": "CONTE"
+  },
+  {
+    "id": 1615,
+    "word": "COPAS",
+    "normalized": "COPAS"
+  },
+  {
+    "id": 1616,
+    "word": "COPIA",
+    "normalized": "COPIA"
+  },
+  {
+    "id": 1617,
+    "word": "COPIE",
+    "normalized": "COPIE"
+  },
+  {
+    "id": 1618,
+    "word": "COPIO",
+    "normalized": "COPIO"
+  },
+  {
+    "id": 1619,
+    "word": "COPOS",
+    "normalized": "COPOS"
+  },
+  {
+    "id": 1620,
+    "word": "CORAI",
+    "normalized": "CORAI"
+  },
+  {
+    "id": 1621,
+    "word": "CORAL",
+    "normalized": "CORAL"
+  },
+  {
+    "id": 1622,
+    "word": "CORAM",
+    "normalized": "CORAM"
+  },
+  {
+    "id": 1623,
+    "word": "CORAR",
+    "normalized": "CORAR"
+  },
+  {
+    "id": 1624,
+    "word": "CORAS",
+    "normalized": "CORAS"
+  },
+  {
+    "id": 1625,
+    "word": "COREI",
+    "normalized": "COREI"
+  },
+  {
+    "id": 1626,
+    "word": "COREM",
+    "normalized": "COREM"
+  },
+  {
+    "id": 1627,
+    "word": "CORES",
+    "normalized": "CORES"
+  },
+  {
+    "id": 1628,
+    "word": "CORJA",
+    "normalized": "CORJA"
+  },
+  {
+    "id": 1629,
+    "word": "CORNO",
+    "normalized": "CORNO"
+  },
+  {
+    "id": 1630,
+    "word": "COROE",
+    "normalized": "COROE"
+  },
+  {
+    "id": 1631,
+    "word": "COROS",
+    "normalized": "COROS"
+  },
+  {
+    "id": 1632,
+    "word": "COROU",
+    "normalized": "COROU"
+  },
+  {
+    "id": 1633,
+    "word": "CORRA",
+    "normalized": "CORRA"
+  },
+  {
+    "id": 1634,
+    "word": "CORRE",
+    "normalized": "CORRE"
+  },
+  {
+    "id": 1635,
+    "word": "CORRI",
+    "normalized": "CORRI"
+  },
+  {
+    "id": 1636,
+    "word": "CORRO",
+    "normalized": "CORRO"
+  },
+  {
+    "id": 1637,
+    "word": "CORTA",
+    "normalized": "CORTA"
+  },
+  {
+    "id": 1638,
+    "word": "CORTO",
+    "normalized": "CORTO"
+  },
+  {
+    "id": 1639,
+    "word": "COSAM",
+    "normalized": "COSAM"
+  },
+  {
+    "id": 1640,
+    "word": "COSAS",
+    "normalized": "COSAS"
+  },
+  {
+    "id": 1641,
+    "word": "COSEI",
+    "normalized": "COSEI"
+  },
+  {
+    "id": 1642,
+    "word": "COSEM",
+    "normalized": "COSEM"
+  },
+  {
+    "id": 1643,
+    "word": "COSER",
+    "normalized": "COSER"
+  },
+  {
+    "id": 1644,
+    "word": "COSES",
+    "normalized": "COSES"
+  },
+  {
+    "id": 1645,
+    "word": "COSEU",
+    "normalized": "COSEU"
+  },
+  {
+    "id": 1646,
+    "word": "COSIA",
+    "normalized": "COSIA"
+  },
+  {
+    "id": 1647,
+    "word": "COSMO",
+    "normalized": "COSMO"
+  },
+  {
+    "id": 1648,
+    "word": "COSÃª",
+    "normalized": "COSAª"
+  },
+  {
+    "id": 1649,
+    "word": "COTAI",
+    "normalized": "COTAI"
+  },
+  {
+    "id": 1650,
+    "word": "COTAM",
+    "normalized": "COTAM"
+  },
+  {
+    "id": 1651,
+    "word": "COTAR",
+    "normalized": "COTAR"
+  },
+  {
+    "id": 1652,
+    "word": "COTAS",
+    "normalized": "COTAS"
+  },
+  {
+    "id": 1653,
+    "word": "COTEI",
+    "normalized": "COTEI"
+  },
+  {
+    "id": 1654,
+    "word": "COTEM",
+    "normalized": "COTEM"
+  },
+  {
+    "id": 1655,
+    "word": "COTES",
+    "normalized": "COTES"
+  },
+  {
+    "id": 1656,
+    "word": "COTOU",
+    "normalized": "COTOU"
+  },
+  {
+    "id": 1657,
+    "word": "COUBE",
+    "normalized": "COUBE"
+  },
+  {
+    "id": 1658,
+    "word": "COURO",
+    "normalized": "COURO"
+  },
+  {
+    "id": 1659,
+    "word": "COUVE",
+    "normalized": "COUVE"
+  },
+  {
+    "id": 1660,
+    "word": "COVAS",
+    "normalized": "COVAS"
+  },
+  {
+    "id": 1661,
+    "word": "COXAS",
+    "normalized": "COXAS"
+  },
+  {
+    "id": 1662,
+    "word": "COXOS",
+    "normalized": "COXOS"
+  },
+  {
+    "id": 1663,
+    "word": "COZAM",
+    "normalized": "COZAM"
+  },
+  {
+    "id": 1664,
+    "word": "COZAS",
+    "normalized": "COZAS"
+  },
+  {
+    "id": 1665,
+    "word": "COZEI",
+    "normalized": "COZEI"
+  },
+  {
+    "id": 1666,
+    "word": "COZEM",
+    "normalized": "COZEM"
+  },
+  {
+    "id": 1667,
+    "word": "COZER",
+    "normalized": "COZER"
+  },
+  {
+    "id": 1668,
+    "word": "COZES",
+    "normalized": "COZES"
+  },
+  {
+    "id": 1669,
+    "word": "COZEU",
+    "normalized": "COZEU"
+  },
+  {
+    "id": 1670,
+    "word": "COZIA",
+    "normalized": "COZIA"
+  },
+  {
+    "id": 1671,
+    "word": "COZÃª",
+    "normalized": "COZAª"
+  },
+  {
+    "id": 1672,
+    "word": "CRAVA",
+    "normalized": "CRAVA"
+  },
+  {
+    "id": 1673,
+    "word": "CRAVE",
+    "normalized": "CRAVE"
+  },
+  {
+    "id": 1674,
+    "word": "CREDE",
+    "normalized": "CREDE"
+  },
+  {
+    "id": 1675,
+    "word": "CREDO",
+    "normalized": "CREDO"
+  },
+  {
+    "id": 1676,
+    "word": "CREIA",
+    "normalized": "CREIA"
+  },
+  {
+    "id": 1677,
+    "word": "CREIO",
+    "normalized": "CREIO"
+  },
+  {
+    "id": 1678,
+    "word": "CREMA",
+    "normalized": "CREMA"
+  },
+  {
+    "id": 1679,
+    "word": "CREMO",
+    "normalized": "CREMO"
+  },
+  {
+    "id": 1680,
+    "word": "CRERA",
+    "normalized": "CRERA"
+  },
+  {
+    "id": 1681,
+    "word": "CRIAI",
+    "normalized": "CRIAI"
+  },
+  {
+    "id": 1682,
+    "word": "CRIAM",
+    "normalized": "CRIAM"
+  },
+  {
+    "id": 1683,
+    "word": "CRIAR",
+    "normalized": "CRIAR"
+  },
+  {
+    "id": 1684,
+    "word": "CRIAS",
+    "normalized": "CRIAS"
+  },
+  {
+    "id": 1685,
+    "word": "CRIDA",
+    "normalized": "CRIDA"
+  },
+  {
+    "id": 1686,
+    "word": "CRIDO",
+    "normalized": "CRIDO"
+  },
+  {
+    "id": 1687,
+    "word": "CRIEI",
+    "normalized": "CRIEI"
+  },
+  {
+    "id": 1688,
+    "word": "CRIEM",
+    "normalized": "CRIEM"
+  },
+  {
+    "id": 1689,
+    "word": "CRIES",
+    "normalized": "CRIES"
+  },
+  {
+    "id": 1690,
+    "word": "CRIME",
+    "normalized": "CRIME"
+  },
+  {
+    "id": 1691,
+    "word": "CRINA",
+    "normalized": "CRINA"
+  },
+  {
+    "id": 1692,
+    "word": "CRIOU",
+    "normalized": "CRIOU"
+  },
+  {
+    "id": 1693,
+    "word": "CRIVA",
+    "normalized": "CRIVA"
+  },
+  {
+    "id": 1694,
+    "word": "CRIVE",
+    "normalized": "CRIVE"
+  },
+  {
+    "id": 1695,
+    "word": "CRIVO",
+    "normalized": "CRIVO"
+  },
+  {
+    "id": 1696,
+    "word": "CROMA",
+    "normalized": "CROMA"
+  },
+  {
+    "id": 1697,
+    "word": "CROME",
+    "normalized": "CROME"
+  },
+  {
+    "id": 1698,
+    "word": "CROMO",
+    "normalized": "CROMO"
+  },
+  {
+    "id": 1699,
+    "word": "CRUAS",
+    "normalized": "CRUAS"
+  },
+  {
+    "id": 1700,
+    "word": "CRUEL",
+    "normalized": "CRUEL"
+  },
+  {
+    "id": 1701,
+    "word": "CRUZA",
+    "normalized": "CRUZA"
+  },
+  {
+    "id": 1702,
+    "word": "CRUZE",
+    "normalized": "CRUZE"
+  },
+  {
+    "id": 1703,
+    "word": "CRUZO",
+    "normalized": "CRUZO"
+  },
+  {
+    "id": 1704,
+    "word": "CRÃªS",
+    "normalized": "CRAªS"
+  },
+  {
+    "id": 1705,
+    "word": "CUBAS",
+    "normalized": "CUBAS"
+  },
+  {
+    "id": 1706,
+    "word": "CUBOS",
+    "normalized": "CUBOS"
+  },
+  {
+    "id": 1707,
+    "word": "CUBRA",
+    "normalized": "CUBRA"
+  },
+  {
+    "id": 1708,
+    "word": "CUBRO",
+    "normalized": "CUBRO"
+  },
+  {
+    "id": 1709,
+    "word": "CUCAS",
+    "normalized": "CUCAS"
+  },
+  {
+    "id": 1710,
+    "word": "CUCOS",
+    "normalized": "CUCOS"
+  },
+  {
+    "id": 1711,
+    "word": "CUECA",
+    "normalized": "CUECA"
+  },
+  {
+    "id": 1712,
+    "word": "CUIAS",
+    "normalized": "CUIAS"
+  },
+  {
+    "id": 1713,
+    "word": "CUIDA",
+    "normalized": "CUIDA"
+  },
+  {
+    "id": 1714,
+    "word": "CUIDE",
+    "normalized": "CUIDE"
+  },
+  {
+    "id": 1715,
+    "word": "CUIDO",
+    "normalized": "CUIDO"
+  },
+  {
+    "id": 1716,
+    "word": "CUJAS",
+    "normalized": "CUJAS"
+  },
+  {
+    "id": 1717,
+    "word": "CUJOS",
+    "normalized": "CUJOS"
+  },
+  {
+    "id": 1718,
+    "word": "CULPE",
+    "normalized": "CULPE"
+  },
+  {
+    "id": 1719,
+    "word": "CULPO",
+    "normalized": "CULPO"
+  },
+  {
+    "id": 1720,
+    "word": "CULTA",
+    "normalized": "CULTA"
+  },
+  {
+    "id": 1721,
+    "word": "CULTO",
+    "normalized": "CULTO"
+  },
+  {
+    "id": 1722,
+    "word": "CUMES",
+    "normalized": "CUMES"
+  },
+  {
+    "id": 1723,
+    "word": "CUNHE",
+    "normalized": "CUNHE"
+  },
+  {
+    "id": 1724,
+    "word": "CUNHO",
+    "normalized": "CUNHO"
+  },
+  {
+    "id": 1725,
+    "word": "CUOBE",
+    "normalized": "CUOBE"
+  },
+  {
+    "id": 1726,
+    "word": "CUPIM",
+    "normalized": "CUPIM"
+  },
+  {
+    "id": 1727,
+    "word": "CUPOM",
+    "normalized": "CUPOM"
+  },
+  {
+    "id": 1728,
+    "word": "CURAI",
+    "normalized": "CURAI"
+  },
+  {
+    "id": 1729,
+    "word": "CURAM",
+    "normalized": "CURAM"
+  },
+  {
+    "id": 1730,
+    "word": "CURAR",
+    "normalized": "CURAR"
+  },
+  {
+    "id": 1731,
+    "word": "CURAS",
+    "normalized": "CURAS"
+  },
+  {
+    "id": 1732,
+    "word": "CUREI",
+    "normalized": "CUREI"
+  },
+  {
+    "id": 1733,
+    "word": "CUREM",
+    "normalized": "CUREM"
+  },
+  {
+    "id": 1734,
+    "word": "CURES",
+    "normalized": "CURES"
+  },
+  {
+    "id": 1735,
+    "word": "CUROU",
+    "normalized": "CUROU"
+  },
+  {
+    "id": 1736,
+    "word": "CURSA",
+    "normalized": "CURSA"
+  },
+  {
+    "id": 1737,
+    "word": "CURSE",
+    "normalized": "CURSE"
+  },
+  {
+    "id": 1738,
+    "word": "CURTA",
+    "normalized": "CURTA"
+  },
+  {
+    "id": 1739,
+    "word": "CURTE",
+    "normalized": "CURTE"
+  },
+  {
+    "id": 1740,
+    "word": "CURTI",
+    "normalized": "CURTI"
+  },
+  {
+    "id": 1741,
+    "word": "CURVA",
+    "normalized": "CURVA"
+  },
+  {
+    "id": 1742,
+    "word": "CURVE",
+    "normalized": "CURVE"
+  },
+  {
+    "id": 1743,
+    "word": "CURVO",
+    "normalized": "CURVO"
+  },
+  {
+    "id": 1744,
+    "word": "CUSPA",
+    "normalized": "CUSPA"
+  },
+  {
+    "id": 1745,
+    "word": "CUSPI",
+    "normalized": "CUSPI"
+  },
+  {
+    "id": 1746,
+    "word": "CUSPO",
+    "normalized": "CUSPO"
+  },
+  {
+    "id": 1747,
+    "word": "CUSTA",
+    "normalized": "CUSTA"
+  },
+  {
+    "id": 1748,
+    "word": "CUSTE",
+    "normalized": "CUSTE"
+  },
+  {
+    "id": 1749,
+    "word": "CUSTO",
+    "normalized": "CUSTO"
+  },
+  {
+    "id": 1750,
+    "word": "DADAS",
+    "normalized": "DADAS"
+  },
+  {
+    "id": 1751,
+    "word": "DADOS",
+    "normalized": "DADOS"
+  },
+  {
+    "id": 1752,
+    "word": "DAMAS",
+    "normalized": "DAMAS"
+  },
+  {
+    "id": 1753,
+    "word": "DAMOS",
+    "normalized": "DAMOS"
+  },
+  {
+    "id": 1754,
+    "word": "DANAI",
+    "normalized": "DANAI"
+  },
+  {
+    "id": 1755,
+    "word": "DANAM",
+    "normalized": "DANAM"
+  },
+  {
+    "id": 1756,
+    "word": "DANAR",
+    "normalized": "DANAR"
+  },
+  {
+    "id": 1757,
+    "word": "DANAS",
+    "normalized": "DANAS"
+  },
+  {
+    "id": 1758,
+    "word": "DANCE",
+    "normalized": "DANCE"
+  },
+  {
+    "id": 1759,
+    "word": "DANDO",
+    "normalized": "DANDO"
+  },
+  {
+    "id": 1760,
+    "word": "DANEI",
+    "normalized": "DANEI"
+  },
+  {
+    "id": 1761,
+    "word": "DANEM",
+    "normalized": "DANEM"
+  },
+  {
+    "id": 1762,
+    "word": "DANES",
+    "normalized": "DANES"
+  },
+  {
+    "id": 1763,
+    "word": "DANOS",
+    "normalized": "DANOS"
+  },
+  {
+    "id": 1764,
+    "word": "DANOU",
+    "normalized": "DANOU"
+  },
+  {
+    "id": 1765,
+    "word": "DAQUI",
+    "normalized": "DAQUI"
+  },
+  {
+    "id": 1766,
+    "word": "DARDO",
+    "normalized": "DARDO"
+  },
+  {
+    "id": 1767,
+    "word": "DAREI",
+    "normalized": "DAREI"
+  },
+  {
+    "id": 1768,
+    "word": "DAREM",
+    "normalized": "DAREM"
+  },
+  {
+    "id": 1769,
+    "word": "DARES",
+    "normalized": "DARES"
+  },
+  {
+    "id": 1770,
+    "word": "DARIA",
+    "normalized": "DARIA"
+  },
+  {
+    "id": 1771,
+    "word": "DATAI",
+    "normalized": "DATAI"
+  },
+  {
+    "id": 1772,
+    "word": "DATAM",
+    "normalized": "DATAM"
+  },
+  {
+    "id": 1773,
+    "word": "DATAR",
+    "normalized": "DATAR"
+  },
+  {
+    "id": 1774,
+    "word": "DATEI",
+    "normalized": "DATEI"
+  },
+  {
+    "id": 1775,
+    "word": "DATEM",
+    "normalized": "DATEM"
+  },
+  {
+    "id": 1776,
+    "word": "DATES",
+    "normalized": "DATES"
+  },
+  {
+    "id": 1777,
+    "word": "DATOU",
+    "normalized": "DATOU"
+  },
+  {
+    "id": 1778,
+    "word": "DAVAM",
+    "normalized": "DAVAM"
+  },
+  {
+    "id": 1779,
+    "word": "DAVAS",
+    "normalized": "DAVAS"
+  },
+  {
+    "id": 1780,
+    "word": "DECAI",
+    "normalized": "DECAI"
+  },
+  {
+    "id": 1781,
+    "word": "DEDAL",
+    "normalized": "DEDAL"
+  },
+  {
+    "id": 1782,
+    "word": "DEDOS",
+    "normalized": "DEDOS"
+  },
+  {
+    "id": 1783,
+    "word": "DEDUZ",
+    "normalized": "DEDUZ"
+  },
+  {
+    "id": 1784,
+    "word": "DEITA",
+    "normalized": "DEITA"
+  },
+  {
+    "id": 1785,
+    "word": "DEITE",
+    "normalized": "DEITE"
+  },
+  {
+    "id": 1786,
+    "word": "DEITO",
+    "normalized": "DEITO"
+  },
+  {
+    "id": 1787,
+    "word": "DEIXA",
+    "normalized": "DEIXA"
+  },
+  {
+    "id": 1788,
+    "word": "DEIXE",
+    "normalized": "DEIXE"
+  },
+  {
+    "id": 1789,
+    "word": "DEIXO",
+    "normalized": "DEIXO"
+  },
+  {
+    "id": 1790,
+    "word": "DELAS",
+    "normalized": "DELAS"
+  },
+  {
+    "id": 1791,
+    "word": "DELES",
+    "normalized": "DELES"
+  },
+  {
+    "id": 1792,
+    "word": "DEMOS",
+    "normalized": "DEMOS"
+  },
+  {
+    "id": 1793,
+    "word": "DENSA",
+    "normalized": "DENSA"
+  },
+  {
+    "id": 1794,
+    "word": "DENSO",
+    "normalized": "DENSO"
+  },
+  {
+    "id": 1795,
+    "word": "DEPOR",
+    "normalized": "DEPOR"
+  },
+  {
+    "id": 1796,
+    "word": "DEPUS",
+    "normalized": "DEPUS"
+  },
+  {
+    "id": 1797,
+    "word": "DERAM",
+    "normalized": "DERAM"
+  },
+  {
+    "id": 1798,
+    "word": "DERAS",
+    "normalized": "DERAS"
+  },
+  {
+    "id": 1799,
+    "word": "DEREM",
+    "normalized": "DEREM"
+  },
+  {
+    "id": 1800,
+    "word": "DERES",
+    "normalized": "DERES"
+  },
+  {
+    "id": 1801,
+    "word": "DERMO",
+    "normalized": "DERMO"
+  },
+  {
+    "id": 1802,
+    "word": "DESCE",
+    "normalized": "DESCE"
+  },
+  {
+    "id": 1803,
+    "word": "DESCI",
+    "normalized": "DESCI"
+  },
+  {
+    "id": 1804,
+    "word": "DESDE",
+    "normalized": "DESDE"
+  },
+  {
+    "id": 1805,
+    "word": "DESPE",
+    "normalized": "DESPE"
+  },
+  {
+    "id": 1806,
+    "word": "DESPI",
+    "normalized": "DESPI"
+  },
+  {
+    "id": 1807,
+    "word": "DESSA",
+    "normalized": "DESSA"
+  },
+  {
+    "id": 1808,
+    "word": "DESSE",
+    "normalized": "DESSE"
+  },
+  {
+    "id": 1809,
+    "word": "DESTA",
+    "normalized": "DESTA"
+  },
+  {
+    "id": 1810,
+    "word": "DESTE",
+    "normalized": "DESTE"
+  },
+  {
+    "id": 1811,
+    "word": "DETER",
+    "normalized": "DETER"
+  },
+  {
+    "id": 1812,
+    "word": "DETÃª",
+    "normalized": "DETAª"
+  },
+  {
+    "id": 1813,
+    "word": "DEUSA",
+    "normalized": "DEUSA"
+  },
+  {
+    "id": 1814,
+    "word": "DEVAM",
+    "normalized": "DEVAM"
+  },
+  {
+    "id": 1815,
+    "word": "DEVAS",
+    "normalized": "DEVAS"
+  },
+  {
+    "id": 1816,
+    "word": "DEVEI",
+    "normalized": "DEVEI"
+  },
+  {
+    "id": 1817,
+    "word": "DEVEM",
+    "normalized": "DEVEM"
+  },
+  {
+    "id": 1818,
+    "word": "DEVER",
+    "normalized": "DEVER"
+  },
+  {
+    "id": 1819,
+    "word": "DEVES",
+    "normalized": "DEVES"
+  },
+  {
+    "id": 1820,
+    "word": "DEVEU",
+    "normalized": "DEVEU"
+  },
+  {
+    "id": 1821,
+    "word": "DEVIA",
+    "normalized": "DEVIA"
+  },
+  {
+    "id": 1822,
+    "word": "DEVÃª",
+    "normalized": "DEVAª"
+  },
+  {
+    "id": 1823,
+    "word": "DIABO",
+    "normalized": "DIABO"
+  },
+  {
+    "id": 1824,
+    "word": "DICAS",
+    "normalized": "DICAS"
+  },
+  {
+    "id": 1825,
+    "word": "DIETA",
+    "normalized": "DIETA"
+  },
+  {
+    "id": 1826,
+    "word": "DIGAM",
+    "normalized": "DIGAM"
+  },
+  {
+    "id": 1827,
+    "word": "DIGAS",
+    "normalized": "DIGAS"
+  },
+  {
+    "id": 1828,
+    "word": "DIGNA",
+    "normalized": "DIGNA"
+  },
+  {
+    "id": 1829,
+    "word": "DIGNE",
+    "normalized": "DIGNE"
+  },
+  {
+    "id": 1830,
+    "word": "DIGNO",
+    "normalized": "DIGNO"
+  },
+  {
+    "id": 1831,
+    "word": "DILUA",
+    "normalized": "DILUA"
+  },
+  {
+    "id": 1832,
+    "word": "DILUI",
+    "normalized": "DILUI"
+  },
+  {
+    "id": 1833,
+    "word": "DILUO",
+    "normalized": "DILUO"
+  },
+  {
+    "id": 1834,
+    "word": "DIODO",
+    "normalized": "DIODO"
+  },
+  {
+    "id": 1835,
+    "word": "DIQUE",
+    "normalized": "DIQUE"
+  },
+  {
+    "id": 1836,
+    "word": "DIREI",
+    "normalized": "DIREI"
+  },
+  {
+    "id": 1837,
+    "word": "DIRIA",
+    "normalized": "DIRIA"
+  },
+  {
+    "id": 1838,
+    "word": "DISCA",
+    "normalized": "DISCA"
+  },
+  {
+    "id": 1839,
+    "word": "DISSE",
+    "normalized": "DISSE"
+  },
+  {
+    "id": 1840,
+    "word": "DISSO",
+    "normalized": "DISSO"
+  },
+  {
+    "id": 1841,
+    "word": "DISTA",
+    "normalized": "DISTA"
+  },
+  {
+    "id": 1842,
+    "word": "DISTE",
+    "normalized": "DISTE"
+  },
+  {
+    "id": 1843,
+    "word": "DISTO",
+    "normalized": "DISTO"
+  },
+  {
+    "id": 1844,
+    "word": "DITAI",
+    "normalized": "DITAI"
+  },
+  {
+    "id": 1845,
+    "word": "DITAM",
+    "normalized": "DITAM"
+  },
+  {
+    "id": 1846,
+    "word": "DITAR",
+    "normalized": "DITAR"
+  },
+  {
+    "id": 1847,
+    "word": "DITAS",
+    "normalized": "DITAS"
+  },
+  {
+    "id": 1848,
+    "word": "DITEI",
+    "normalized": "DITEI"
+  },
+  {
+    "id": 1849,
+    "word": "DITEM",
+    "normalized": "DITEM"
+  },
+  {
+    "id": 1850,
+    "word": "DITES",
+    "normalized": "DITES"
+  },
+  {
+    "id": 1851,
+    "word": "DITOS",
+    "normalized": "DITOS"
+  },
+  {
+    "id": 1852,
+    "word": "DITOU",
+    "normalized": "DITOU"
+  },
+  {
+    "id": 1853,
+    "word": "DIVAS",
+    "normalized": "DIVAS"
+  },
+  {
+    "id": 1854,
+    "word": "DIZEI",
+    "normalized": "DIZEI"
+  },
+  {
+    "id": 1855,
+    "word": "DIZEM",
+    "normalized": "DIZEM"
+  },
+  {
+    "id": 1856,
+    "word": "DIZER",
+    "normalized": "DIZER"
+  },
+  {
+    "id": 1857,
+    "word": "DIZES",
+    "normalized": "DIZES"
+  },
+  {
+    "id": 1858,
+    "word": "DIZIA",
+    "normalized": "DIZIA"
+  },
+  {
+    "id": 1859,
+    "word": "DIZÃª",
+    "normalized": "DIZAª"
+  },
+  {
+    "id": 1860,
+    "word": "DOADA",
+    "normalized": "DOADA"
+  },
+  {
+    "id": 1861,
+    "word": "DOADO",
+    "normalized": "DOADO"
+  },
+  {
+    "id": 1862,
+    "word": "DOAIS",
+    "normalized": "DOAIS"
+  },
+  {
+    "id": 1863,
+    "word": "DOAMO",
+    "normalized": "DOAMO"
+  },
+  {
+    "id": 1864,
+    "word": "DOARA",
+    "normalized": "DOARA"
+  },
+  {
+    "id": 1865,
+    "word": "DOAVA",
+    "normalized": "DOAVA"
+  },
+  {
+    "id": 1866,
+    "word": "DOBRA",
+    "normalized": "DOBRA"
+  },
+  {
+    "id": 1867,
+    "word": "DOBRE",
+    "normalized": "DOBRE"
+  },
+  {
+    "id": 1868,
+    "word": "DOCAS",
+    "normalized": "DOCAS"
+  },
+  {
+    "id": 1869,
+    "word": "DOEIS",
+    "normalized": "DOEIS"
+  },
+  {
+    "id": 1870,
+    "word": "DOEMO",
+    "normalized": "DOEMO"
+  },
+  {
+    "id": 1871,
+    "word": "DOERA",
+    "normalized": "DOERA"
+  },
+  {
+    "id": 1872,
+    "word": "DOGMA",
+    "normalized": "DOGMA"
+  },
+  {
+    "id": 1873,
+    "word": "DOIDA",
+    "normalized": "DOIDA"
+  },
+  {
+    "id": 1874,
+    "word": "DOIDO",
+    "normalized": "DOIDO"
+  },
+  {
+    "id": 1875,
+    "word": "DOMAI",
+    "normalized": "DOMAI"
+  },
+  {
+    "id": 1876,
+    "word": "DOMAM",
+    "normalized": "DOMAM"
+  },
+  {
+    "id": 1877,
+    "word": "DOMAR",
+    "normalized": "DOMAR"
+  },
+  {
+    "id": 1878,
+    "word": "DOMAS",
+    "normalized": "DOMAS"
+  },
+  {
+    "id": 1879,
+    "word": "DOMEI",
+    "normalized": "DOMEI"
+  },
+  {
+    "id": 1880,
+    "word": "DOMEM",
+    "normalized": "DOMEM"
+  },
+  {
+    "id": 1881,
+    "word": "DOMES",
+    "normalized": "DOMES"
+  },
+  {
+    "id": 1882,
+    "word": "DOMOU",
+    "normalized": "DOMOU"
+  },
+  {
+    "id": 1883,
+    "word": "DONAS",
+    "normalized": "DONAS"
+  },
+  {
+    "id": 1884,
+    "word": "DONDE",
+    "normalized": "DONDE"
+  },
+  {
+    "id": 1885,
+    "word": "DONOS",
+    "normalized": "DONOS"
+  },
+  {
+    "id": 1886,
+    "word": "DOPAI",
+    "normalized": "DOPAI"
+  },
+  {
+    "id": 1887,
+    "word": "DOPAM",
+    "normalized": "DOPAM"
+  },
+  {
+    "id": 1888,
+    "word": "DOPAR",
+    "normalized": "DOPAR"
+  },
+  {
+    "id": 1889,
+    "word": "DOPAS",
+    "normalized": "DOPAS"
+  },
+  {
+    "id": 1890,
+    "word": "DOPEI",
+    "normalized": "DOPEI"
+  },
+  {
+    "id": 1891,
+    "word": "DOPEM",
+    "normalized": "DOPEM"
+  },
+  {
+    "id": 1892,
+    "word": "DOPES",
+    "normalized": "DOPES"
+  },
+  {
+    "id": 1893,
+    "word": "DOPOU",
+    "normalized": "DOPOU"
+  },
+  {
+    "id": 1894,
+    "word": "DORME",
+    "normalized": "DORME"
+  },
+  {
+    "id": 1895,
+    "word": "DORMI",
+    "normalized": "DORMI"
+  },
+  {
+    "id": 1896,
+    "word": "DORSO",
+    "normalized": "DORSO"
+  },
+  {
+    "id": 1897,
+    "word": "DOSAI",
+    "normalized": "DOSAI"
+  },
+  {
+    "id": 1898,
+    "word": "DOSAM",
+    "normalized": "DOSAM"
+  },
+  {
+    "id": 1899,
+    "word": "DOSAR",
+    "normalized": "DOSAR"
+  },
+  {
+    "id": 1900,
+    "word": "DOSAS",
+    "normalized": "DOSAS"
+  },
+  {
+    "id": 1901,
+    "word": "DOSEI",
+    "normalized": "DOSEI"
+  },
+  {
+    "id": 1902,
+    "word": "DOSEM",
+    "normalized": "DOSEM"
+  },
+  {
+    "id": 1903,
+    "word": "DOSES",
+    "normalized": "DOSES"
+  },
+  {
+    "id": 1904,
+    "word": "DOSOU",
+    "normalized": "DOSOU"
+  },
+  {
+    "id": 1905,
+    "word": "DOTAI",
+    "normalized": "DOTAI"
+  },
+  {
+    "id": 1906,
+    "word": "DOTAM",
+    "normalized": "DOTAM"
+  },
+  {
+    "id": 1907,
+    "word": "DOTAR",
+    "normalized": "DOTAR"
+  },
+  {
+    "id": 1908,
+    "word": "DOTAS",
+    "normalized": "DOTAS"
+  },
+  {
+    "id": 1909,
+    "word": "DOTEI",
+    "normalized": "DOTEI"
+  },
+  {
+    "id": 1910,
+    "word": "DOTEM",
+    "normalized": "DOTEM"
+  },
+  {
+    "id": 1911,
+    "word": "DOTES",
+    "normalized": "DOTES"
+  },
+  {
+    "id": 1912,
+    "word": "DOTOU",
+    "normalized": "DOTOU"
+  },
+  {
+    "id": 1913,
+    "word": "DOURA",
+    "normalized": "DOURA"
+  },
+  {
+    "id": 1914,
+    "word": "DOURE",
+    "normalized": "DOURE"
+  },
+  {
+    "id": 1915,
+    "word": "DOURO",
+    "normalized": "DOURO"
+  },
+  {
+    "id": 1916,
+    "word": "DOUTA",
+    "normalized": "DOUTA"
+  },
+  {
+    "id": 1917,
+    "word": "DOUTO",
+    "normalized": "DOUTO"
+  },
+  {
+    "id": 1918,
+    "word": "DRAGA",
+    "normalized": "DRAGA"
+  },
+  {
+    "id": 1919,
+    "word": "DRAGO",
+    "normalized": "DRAGO"
+  },
+  {
+    "id": 1920,
+    "word": "DRENA",
+    "normalized": "DRENA"
+  },
+  {
+    "id": 1921,
+    "word": "DRENE",
+    "normalized": "DRENE"
+  },
+  {
+    "id": 1922,
+    "word": "DRENO",
+    "normalized": "DRENO"
+  },
+  {
+    "id": 1923,
+    "word": "DROGA",
+    "normalized": "DROGA"
+  },
+  {
+    "id": 1924,
+    "word": "DROGO",
+    "normalized": "DROGO"
+  },
+  {
+    "id": 1925,
+    "word": "DUAIS",
+    "normalized": "DUAIS"
+  },
+  {
+    "id": 1926,
+    "word": "DUBLA",
+    "normalized": "DUBLA"
+  },
+  {
+    "id": 1927,
+    "word": "DUBLE",
+    "normalized": "DUBLE"
+  },
+  {
+    "id": 1928,
+    "word": "DUBLO",
+    "normalized": "DUBLO"
+  },
+  {
+    "id": 1929,
+    "word": "DUCTO",
+    "normalized": "DUCTO"
+  },
+  {
+    "id": 1930,
+    "word": "DUELA",
+    "normalized": "DUELA"
+  },
+  {
+    "id": 1931,
+    "word": "DUELE",
+    "normalized": "DUELE"
+  },
+  {
+    "id": 1932,
+    "word": "DUELO",
+    "normalized": "DUELO"
+  },
+  {
+    "id": 1933,
+    "word": "DUETO",
+    "normalized": "DUETO"
+  },
+  {
+    "id": 1934,
+    "word": "DUMAS",
+    "normalized": "DUMAS"
+  },
+  {
+    "id": 1935,
+    "word": "DUNAS",
+    "normalized": "DUNAS"
+  },
+  {
+    "id": 1936,
+    "word": "DUNGA",
+    "normalized": "DUNGA"
+  },
+  {
+    "id": 1937,
+    "word": "DUPLO",
+    "normalized": "DUPLO"
+  },
+  {
+    "id": 1938,
+    "word": "DURAI",
+    "normalized": "DURAI"
+  },
+  {
+    "id": 1939,
+    "word": "DURAM",
+    "normalized": "DURAM"
+  },
+  {
+    "id": 1940,
+    "word": "DURAR",
+    "normalized": "DURAR"
+  },
+  {
+    "id": 1941,
+    "word": "DURAS",
+    "normalized": "DURAS"
+  },
+  {
+    "id": 1942,
+    "word": "DUREI",
+    "normalized": "DUREI"
+  },
+  {
+    "id": 1943,
+    "word": "DUREM",
+    "normalized": "DUREM"
+  },
+  {
+    "id": 1944,
+    "word": "DURES",
+    "normalized": "DURES"
+  },
+  {
+    "id": 1945,
+    "word": "DURMA",
+    "normalized": "DURMA"
+  },
+  {
+    "id": 1946,
+    "word": "DURMO",
+    "normalized": "DURMO"
+  },
+  {
+    "id": 1947,
+    "word": "DUROS",
+    "normalized": "DUROS"
+  },
+  {
+    "id": 1948,
+    "word": "DUROU",
+    "normalized": "DUROU"
+  },
+  {
+    "id": 1949,
+    "word": "DUTOS",
+    "normalized": "DUTOS"
+  },
+  {
+    "id": 1950,
+    "word": "DÃªEM",
+    "normalized": "DAªEM"
+  },
+  {
+    "id": 1951,
+    "word": "ECOAI",
+    "normalized": "ECOAI"
+  },
+  {
+    "id": 1952,
+    "word": "ECOAM",
+    "normalized": "ECOAM"
+  },
+  {
+    "id": 1953,
+    "word": "ECOAR",
+    "normalized": "ECOAR"
+  },
+  {
+    "id": 1954,
+    "word": "ECOAS",
+    "normalized": "ECOAS"
+  },
+  {
+    "id": 1955,
+    "word": "ECOEI",
+    "normalized": "ECOEI"
+  },
+  {
+    "id": 1956,
+    "word": "ECOEM",
+    "normalized": "ECOEM"
+  },
+  {
+    "id": 1957,
+    "word": "ECOES",
+    "normalized": "ECOES"
+  },
+  {
+    "id": 1958,
+    "word": "ECOOU",
+    "normalized": "ECOOU"
+  },
+  {
+    "id": 1959,
+    "word": "EDEMA",
+    "normalized": "EDEMA"
+  },
+  {
+    "id": 1960,
+    "word": "EDITA",
+    "normalized": "EDITA"
+  },
+  {
+    "id": 1961,
+    "word": "EDITO",
+    "normalized": "EDITO"
+  },
+  {
+    "id": 1962,
+    "word": "EDUCA",
+    "normalized": "EDUCA"
+  },
+  {
+    "id": 1963,
+    "word": "EDUCO",
+    "normalized": "EDUCO"
+  },
+  {
+    "id": 1964,
+    "word": "EIRAS",
+    "normalized": "EIRAS"
+  },
+  {
+    "id": 1965,
+    "word": "EIXOS",
+    "normalized": "EIXOS"
+  },
+  {
+    "id": 1966,
+    "word": "EJETA",
+    "normalized": "EJETA"
+  },
+  {
+    "id": 1967,
+    "word": "EJETE",
+    "normalized": "EJETE"
+  },
+  {
+    "id": 1968,
+    "word": "EJETO",
+    "normalized": "EJETO"
+  },
+  {
+    "id": 1969,
+    "word": "ELEGE",
+    "normalized": "ELEGE"
+  },
+  {
+    "id": 1970,
+    "word": "ELEGI",
+    "normalized": "ELEGI"
+  },
+  {
+    "id": 1971,
+    "word": "ELEJA",
+    "normalized": "ELEJA"
+  },
+  {
+    "id": 1972,
+    "word": "ELEJO",
+    "normalized": "ELEJO"
+  },
+  {
+    "id": 1973,
+    "word": "ELEVA",
+    "normalized": "ELEVA"
+  },
+  {
+    "id": 1974,
+    "word": "ELEVE",
+    "normalized": "ELEVE"
+  },
+  {
+    "id": 1975,
+    "word": "ELEVO",
+    "normalized": "ELEVO"
+  },
+  {
+    "id": 1976,
+    "word": "ELITE",
+    "normalized": "ELITE"
+  },
+  {
+    "id": 1977,
+    "word": "ELMOS",
+    "normalized": "ELMOS"
+  },
+  {
+    "id": 1978,
+    "word": "EMANA",
+    "normalized": "EMANA"
+  },
+  {
+    "id": 1979,
+    "word": "EMANE",
+    "normalized": "EMANE"
+  },
+  {
+    "id": 1980,
+    "word": "EMANO",
+    "normalized": "EMANO"
+  },
+  {
+    "id": 1981,
+    "word": "EMITA",
+    "normalized": "EMITA"
+  },
+  {
+    "id": 1982,
+    "word": "EMITE",
+    "normalized": "EMITE"
+  },
+  {
+    "id": 1983,
+    "word": "EMITI",
+    "normalized": "EMITI"
+  },
+  {
+    "id": 1984,
+    "word": "EMITO",
+    "normalized": "EMITO"
+  },
+  {
+    "id": 1985,
+    "word": "EMULA",
+    "normalized": "EMULA"
+  },
+  {
+    "id": 1986,
+    "word": "EMULE",
+    "normalized": "EMULE"
+  },
+  {
+    "id": 1987,
+    "word": "EMULO",
+    "normalized": "EMULO"
+  },
+  {
+    "id": 1988,
+    "word": "ENCHA",
+    "normalized": "ENCHA"
+  },
+  {
+    "id": 1989,
+    "word": "ENCHE",
+    "normalized": "ENCHE"
+  },
+  {
+    "id": 1990,
+    "word": "ENCHI",
+    "normalized": "ENCHI"
+  },
+  {
+    "id": 1991,
+    "word": "ENCHO",
+    "normalized": "ENCHO"
+  },
+  {
+    "id": 1992,
+    "word": "ENFIA",
+    "normalized": "ENFIA"
+  },
+  {
+    "id": 1993,
+    "word": "ENFIE",
+    "normalized": "ENFIE"
+  },
+  {
+    "id": 1994,
+    "word": "ENFIO",
+    "normalized": "ENFIO"
+  },
+  {
+    "id": 1995,
+    "word": "ENJOA",
+    "normalized": "ENJOA"
+  },
+  {
+    "id": 1996,
+    "word": "ENJOE",
+    "normalized": "ENJOE"
+  },
+  {
+    "id": 1997,
+    "word": "ENOJA",
+    "normalized": "ENOJA"
+  },
+  {
+    "id": 1998,
+    "word": "ENOJE",
+    "normalized": "ENOJE"
+  },
+  {
+    "id": 1999,
+    "word": "ENOJO",
+    "normalized": "ENOJO"
+  },
+  {
+    "id": 2000,
+    "word": "ENTES",
+    "normalized": "ENTES"
+  },
+  {
+    "id": 2001,
+    "word": "ENTOA",
+    "normalized": "ENTOA"
+  },
+  {
+    "id": 2002,
+    "word": "ENTOE",
+    "normalized": "ENTOE"
+  },
+  {
+    "id": 2003,
+    "word": "ENTRA",
+    "normalized": "ENTRA"
+  },
+  {
+    "id": 2004,
+    "word": "ENTRO",
+    "normalized": "ENTRO"
+  },
+  {
+    "id": 2005,
+    "word": "ENVIA",
+    "normalized": "ENVIA"
+  },
+  {
+    "id": 2006,
+    "word": "ENVIE",
+    "normalized": "ENVIE"
+  },
+  {
+    "id": 2007,
+    "word": "ERETA",
+    "normalized": "ERETA"
+  },
+  {
+    "id": 2008,
+    "word": "ERETO",
+    "normalized": "ERETO"
+  },
+  {
+    "id": 2009,
+    "word": "ERGAM",
+    "normalized": "ERGAM"
+  },
+  {
+    "id": 2010,
+    "word": "ERGAS",
+    "normalized": "ERGAS"
+  },
+  {
+    "id": 2011,
+    "word": "ERGUE",
+    "normalized": "ERGUE"
+  },
+  {
+    "id": 2012,
+    "word": "ERGUI",
+    "normalized": "ERGUI"
+  },
+  {
+    "id": 2013,
+    "word": "ERICE",
+    "normalized": "ERICE"
+  },
+  {
+    "id": 2014,
+    "word": "ERIGE",
+    "normalized": "ERIGE"
+  },
+  {
+    "id": 2015,
+    "word": "ERIGI",
+    "normalized": "ERIGI"
+  },
+  {
+    "id": 2016,
+    "word": "ERIJA",
+    "normalized": "ERIJA"
+  },
+  {
+    "id": 2017,
+    "word": "ERIJO",
+    "normalized": "ERIJO"
+  },
+  {
+    "id": 2018,
+    "word": "ERMOS",
+    "normalized": "ERMOS"
+  },
+  {
+    "id": 2019,
+    "word": "ERODA",
+    "normalized": "ERODA"
+  },
+  {
+    "id": 2020,
+    "word": "ERODE",
+    "normalized": "ERODE"
+  },
+  {
+    "id": 2021,
+    "word": "ERODI",
+    "normalized": "ERODI"
+  },
+  {
+    "id": 2022,
+    "word": "ERODO",
+    "normalized": "ERODO"
+  },
+  {
+    "id": 2023,
+    "word": "ERRAI",
+    "normalized": "ERRAI"
+  },
+  {
+    "id": 2024,
+    "word": "ERRAM",
+    "normalized": "ERRAM"
+  },
+  {
+    "id": 2025,
+    "word": "ERRAR",
+    "normalized": "ERRAR"
+  },
+  {
+    "id": 2026,
+    "word": "ERRAS",
+    "normalized": "ERRAS"
+  },
+  {
+    "id": 2027,
+    "word": "ERREI",
+    "normalized": "ERREI"
+  },
+  {
+    "id": 2028,
+    "word": "ERREM",
+    "normalized": "ERREM"
+  },
+  {
+    "id": 2029,
+    "word": "ERRES",
+    "normalized": "ERRES"
+  },
+  {
+    "id": 2030,
+    "word": "ERROS",
+    "normalized": "ERROS"
+  },
+  {
+    "id": 2031,
+    "word": "ERROU",
+    "normalized": "ERROU"
+  },
+  {
+    "id": 2032,
+    "word": "ERVAS",
+    "normalized": "ERVAS"
+  },
+  {
+    "id": 2033,
+    "word": "ESCOA",
+    "normalized": "ESCOA"
+  },
+  {
+    "id": 2034,
+    "word": "ESCOE",
+    "normalized": "ESCOE"
+  },
+  {
+    "id": 2035,
+    "word": "ESCOL",
+    "normalized": "ESCOL"
+  },
+  {
+    "id": 2036,
+    "word": "ESPIA",
+    "normalized": "ESPIA"
+  },
+  {
+    "id": 2037,
+    "word": "ESPIE",
+    "normalized": "ESPIE"
+  },
+  {
+    "id": 2038,
+    "word": "ESPIO",
+    "normalized": "ESPIO"
+  },
+  {
+    "id": 2039,
+    "word": "ESQUI",
+    "normalized": "ESQUI"
+  },
+  {
+    "id": 2040,
+    "word": "ESSAS",
+    "normalized": "ESSAS"
+  },
+  {
+    "id": 2041,
+    "word": "ESSES",
+    "normalized": "ESSES"
+  },
+  {
+    "id": 2042,
+    "word": "ESTAI",
+    "normalized": "ESTAI"
+  },
+  {
+    "id": 2043,
+    "word": "ESTAR",
+    "normalized": "ESTAR"
+  },
+  {
+    "id": 2044,
+    "word": "ESTAS",
+    "normalized": "ESTAS"
+  },
+  {
+    "id": 2045,
+    "word": "ESTES",
+    "normalized": "ESTES"
+  },
+  {
+    "id": 2046,
+    "word": "ESTIO",
+    "normalized": "ESTIO"
+  },
+  {
+    "id": 2047,
+    "word": "ESTOU",
+    "normalized": "ESTOU"
+  },
+  {
+    "id": 2048,
+    "word": "ESVAI",
+    "normalized": "ESVAI"
+  },
+  {
+    "id": 2049,
+    "word": "ETANO",
+    "normalized": "ETANO"
+  },
+  {
+    "id": 2050,
+    "word": "ETAPA",
+    "normalized": "ETAPA"
+  },
+  {
+    "id": 2051,
+    "word": "ETENO",
+    "normalized": "ETENO"
+  },
+  {
+    "id": 2052,
+    "word": "ETILO",
+    "normalized": "ETILO"
+  },
+  {
+    "id": 2053,
+    "word": "ETNIA",
+    "normalized": "ETNIA"
+  },
+  {
+    "id": 2054,
+    "word": "EVADA",
+    "normalized": "EVADA"
+  },
+  {
+    "id": 2055,
+    "word": "EVADE",
+    "normalized": "EVADE"
+  },
+  {
+    "id": 2056,
+    "word": "EVADI",
+    "normalized": "EVADI"
+  },
+  {
+    "id": 2057,
+    "word": "EVADO",
+    "normalized": "EVADO"
+  },
+  {
+    "id": 2058,
+    "word": "EVITA",
+    "normalized": "EVITA"
+  },
+  {
+    "id": 2059,
+    "word": "EVITE",
+    "normalized": "EVITE"
+  },
+  {
+    "id": 2060,
+    "word": "EVITO",
+    "normalized": "EVITO"
+  },
+  {
+    "id": 2061,
+    "word": "EVOCA",
+    "normalized": "EVOCA"
+  },
+  {
+    "id": 2062,
+    "word": "EVOCO",
+    "normalized": "EVOCO"
+  },
+  {
+    "id": 2063,
+    "word": "EXALA",
+    "normalized": "EXALA"
+  },
+  {
+    "id": 2064,
+    "word": "EXALE",
+    "normalized": "EXALE"
+  },
+  {
+    "id": 2065,
+    "word": "EXALO",
+    "normalized": "EXALO"
+  },
+  {
+    "id": 2066,
+    "word": "EXARA",
+    "normalized": "EXARA"
+  },
+  {
+    "id": 2067,
+    "word": "EXARE",
+    "normalized": "EXARE"
+  },
+  {
+    "id": 2068,
+    "word": "EXARO",
+    "normalized": "EXARO"
+  },
+  {
+    "id": 2069,
+    "word": "EXATA",
+    "normalized": "EXATA"
+  },
+  {
+    "id": 2070,
+    "word": "EXATO",
+    "normalized": "EXATO"
+  },
+  {
+    "id": 2071,
+    "word": "EXIBA",
+    "normalized": "EXIBA"
+  },
+  {
+    "id": 2072,
+    "word": "EXIBE",
+    "normalized": "EXIBE"
+  },
+  {
+    "id": 2073,
+    "word": "EXIBI",
+    "normalized": "EXIBI"
+  },
+  {
+    "id": 2074,
+    "word": "EXIBO",
+    "normalized": "EXIBO"
+  },
+  {
+    "id": 2075,
+    "word": "EXIGE",
+    "normalized": "EXIGE"
+  },
+  {
+    "id": 2076,
+    "word": "EXIGI",
+    "normalized": "EXIGI"
+  },
+  {
+    "id": 2077,
+    "word": "EXIJA",
+    "normalized": "EXIJA"
+  },
+  {
+    "id": 2078,
+    "word": "EXIJO",
+    "normalized": "EXIJO"
+  },
+  {
+    "id": 2079,
+    "word": "EXILA",
+    "normalized": "EXILA"
+  },
+  {
+    "id": 2080,
+    "word": "EXILE",
+    "normalized": "EXILE"
+  },
+  {
+    "id": 2081,
+    "word": "EXILO",
+    "normalized": "EXILO"
+  },
+  {
+    "id": 2082,
+    "word": "EXIMA",
+    "normalized": "EXIMA"
+  },
+  {
+    "id": 2083,
+    "word": "EXIME",
+    "normalized": "EXIME"
+  },
+  {
+    "id": 2084,
+    "word": "EXIMI",
+    "normalized": "EXIMI"
+  },
+  {
+    "id": 2085,
+    "word": "EXIMO",
+    "normalized": "EXIMO"
+  },
+  {
+    "id": 2086,
+    "word": "EXPIA",
+    "normalized": "EXPIA"
+  },
+  {
+    "id": 2087,
+    "word": "EXPIE",
+    "normalized": "EXPIE"
+  },
+  {
+    "id": 2088,
+    "word": "EXPIO",
+    "normalized": "EXPIO"
+  },
+  {
+    "id": 2089,
+    "word": "EXPOR",
+    "normalized": "EXPOR"
+  },
+  {
+    "id": 2090,
+    "word": "EXPUS",
+    "normalized": "EXPUS"
+  },
+  {
+    "id": 2091,
+    "word": "EXTRA",
+    "normalized": "EXTRA"
+  },
+  {
+    "id": 2092,
+    "word": "EXUMA",
+    "normalized": "EXUMA"
+  },
+  {
+    "id": 2093,
+    "word": "EXUME",
+    "normalized": "EXUME"
+  },
+  {
+    "id": 2094,
+    "word": "EXUMO",
+    "normalized": "EXUMO"
+  },
+  {
+    "id": 2095,
+    "word": "FACAS",
+    "normalized": "FACAS"
+  },
+  {
+    "id": 2096,
+    "word": "FACES",
+    "normalized": "FACES"
+  },
+  {
+    "id": 2097,
+    "word": "FACHO",
+    "normalized": "FACHO"
+  },
+  {
+    "id": 2098,
+    "word": "FADAS",
+    "normalized": "FADAS"
+  },
+  {
+    "id": 2099,
+    "word": "FADOS",
+    "normalized": "FADOS"
+  },
+  {
+    "id": 2100,
+    "word": "FALAI",
+    "normalized": "FALAI"
+  },
+  {
+    "id": 2101,
+    "word": "FALAM",
+    "normalized": "FALAM"
+  },
+  {
+    "id": 2102,
+    "word": "FALAR",
+    "normalized": "FALAR"
+  },
+  {
+    "id": 2103,
+    "word": "FALAS",
+    "normalized": "FALAS"
+  },
+  {
+    "id": 2104,
+    "word": "FALDA",
+    "normalized": "FALDA"
+  },
+  {
+    "id": 2105,
+    "word": "FALEI",
+    "normalized": "FALEI"
+  },
+  {
+    "id": 2106,
+    "word": "FALEM",
+    "normalized": "FALEM"
+  },
+  {
+    "id": 2107,
+    "word": "FALES",
+    "normalized": "FALES"
+  },
+  {
+    "id": 2108,
+    "word": "FALHA",
+    "normalized": "FALHA"
+  },
+  {
+    "id": 2109,
+    "word": "FALHE",
+    "normalized": "FALHE"
+  },
+  {
+    "id": 2110,
+    "word": "FALHO",
+    "normalized": "FALHO"
+  },
+  {
+    "id": 2111,
+    "word": "FALIA",
+    "normalized": "FALIA"
+  },
+  {
+    "id": 2112,
+    "word": "FALIR",
+    "normalized": "FALIR"
+  },
+  {
+    "id": 2113,
+    "word": "FALIS",
+    "normalized": "FALIS"
+  },
+  {
+    "id": 2114,
+    "word": "FALIU",
+    "normalized": "FALIU"
+  },
+  {
+    "id": 2115,
+    "word": "FALOU",
+    "normalized": "FALOU"
+  },
+  {
+    "id": 2116,
+    "word": "FALSA",
+    "normalized": "FALSA"
+  },
+  {
+    "id": 2117,
+    "word": "FALSO",
+    "normalized": "FALSO"
+  },
+  {
+    "id": 2118,
+    "word": "FALTA",
+    "normalized": "FALTA"
+  },
+  {
+    "id": 2119,
+    "word": "FALTE",
+    "normalized": "FALTE"
+  },
+  {
+    "id": 2120,
+    "word": "FALTO",
+    "normalized": "FALTO"
+  },
+  {
+    "id": 2121,
+    "word": "FAMAS",
+    "normalized": "FAMAS"
+  },
+  {
+    "id": 2122,
+    "word": "FARDA",
+    "normalized": "FARDA"
+  },
+  {
+    "id": 2123,
+    "word": "FARDO",
+    "normalized": "FARDO"
+  },
+  {
+    "id": 2124,
+    "word": "FAREI",
+    "normalized": "FAREI"
+  },
+  {
+    "id": 2125,
+    "word": "FAROS",
+    "normalized": "FAROS"
+  },
+  {
+    "id": 2126,
+    "word": "FARPA",
+    "normalized": "FARPA"
+  },
+  {
+    "id": 2127,
+    "word": "FARRA",
+    "normalized": "FARRA"
+  },
+  {
+    "id": 2128,
+    "word": "FARSA",
+    "normalized": "FARSA"
+  },
+  {
+    "id": 2129,
+    "word": "FARTA",
+    "normalized": "FARTA"
+  },
+  {
+    "id": 2130,
+    "word": "FARTE",
+    "normalized": "FARTE"
+  },
+  {
+    "id": 2131,
+    "word": "FARTO",
+    "normalized": "FARTO"
+  },
+  {
+    "id": 2132,
+    "word": "FASES",
+    "normalized": "FASES"
+  },
+  {
+    "id": 2133,
+    "word": "FATAL",
+    "normalized": "FATAL"
+  },
+  {
+    "id": 2134,
+    "word": "FATIA",
+    "normalized": "FATIA"
+  },
+  {
+    "id": 2135,
+    "word": "FATIE",
+    "normalized": "FATIE"
+  },
+  {
+    "id": 2136,
+    "word": "FATIO",
+    "normalized": "FATIO"
+  },
+  {
+    "id": 2137,
+    "word": "FATOR",
+    "normalized": "FATOR"
+  },
+  {
+    "id": 2138,
+    "word": "FATOS",
+    "normalized": "FATOS"
+  },
+  {
+    "id": 2139,
+    "word": "FAUNA",
+    "normalized": "FAUNA"
+  },
+  {
+    "id": 2140,
+    "word": "FAUNO",
+    "normalized": "FAUNO"
+  },
+  {
+    "id": 2141,
+    "word": "FAVAS",
+    "normalized": "FAVAS"
+  },
+  {
+    "id": 2142,
+    "word": "FAVOR",
+    "normalized": "FAVOR"
+  },
+  {
+    "id": 2143,
+    "word": "FAVOS",
+    "normalized": "FAVOS"
+  },
+  {
+    "id": 2144,
+    "word": "FAZEI",
+    "normalized": "FAZEI"
+  },
+  {
+    "id": 2145,
+    "word": "FAZEM",
+    "normalized": "FAZEM"
+  },
+  {
+    "id": 2146,
+    "word": "FAZER",
+    "normalized": "FAZER"
+  },
+  {
+    "id": 2147,
+    "word": "FAZES",
+    "normalized": "FAZES"
+  },
+  {
+    "id": 2148,
+    "word": "FAZIA",
+    "normalized": "FAZIA"
+  },
+  {
+    "id": 2149,
+    "word": "FAZÃª",
+    "normalized": "FAZAª"
+  },
+  {
+    "id": 2150,
+    "word": "FEBRE",
+    "normalized": "FEBRE"
+  },
+  {
+    "id": 2151,
+    "word": "FECAL",
+    "normalized": "FECAL"
+  },
+  {
+    "id": 2152,
+    "word": "FECHA",
+    "normalized": "FECHA"
+  },
+  {
+    "id": 2153,
+    "word": "FECHE",
+    "normalized": "FECHE"
+  },
+  {
+    "id": 2154,
+    "word": "FECHO",
+    "normalized": "FECHO"
+  },
+  {
+    "id": 2155,
+    "word": "FEDAM",
+    "normalized": "FEDAM"
+  },
+  {
+    "id": 2156,
+    "word": "FEDAS",
+    "normalized": "FEDAS"
+  },
+  {
+    "id": 2157,
+    "word": "FEDEI",
+    "normalized": "FEDEI"
+  },
+  {
+    "id": 2158,
+    "word": "FEDEM",
+    "normalized": "FEDEM"
+  },
+  {
+    "id": 2159,
+    "word": "FEDER",
+    "normalized": "FEDER"
+  },
+  {
+    "id": 2160,
+    "word": "FEDES",
+    "normalized": "FEDES"
+  },
+  {
+    "id": 2161,
+    "word": "FEDEU",
+    "normalized": "FEDEU"
+  },
+  {
+    "id": 2162,
+    "word": "FEDIA",
+    "normalized": "FEDIA"
+  },
+  {
+    "id": 2163,
+    "word": "FEDOR",
+    "normalized": "FEDOR"
+  },
+  {
+    "id": 2164,
+    "word": "FEDÃª",
+    "normalized": "FEDAª"
+  },
+  {
+    "id": 2165,
+    "word": "FEIAS",
+    "normalized": "FEIAS"
+  },
+  {
+    "id": 2166,
+    "word": "FEIOS",
+    "normalized": "FEIOS"
+  },
+  {
+    "id": 2167,
+    "word": "FEITA",
+    "normalized": "FEITA"
+  },
+  {
+    "id": 2168,
+    "word": "FEITO",
+    "normalized": "FEITO"
+  },
+  {
+    "id": 2169,
+    "word": "FEIXE",
+    "normalized": "FEIXE"
+  },
+  {
+    "id": 2170,
+    "word": "FENDA",
+    "normalized": "FENDA"
+  },
+  {
+    "id": 2171,
+    "word": "FENDE",
+    "normalized": "FENDE"
+  },
+  {
+    "id": 2172,
+    "word": "FENDI",
+    "normalized": "FENDI"
+  },
+  {
+    "id": 2173,
+    "word": "FENDO",
+    "normalized": "FENDO"
+  },
+  {
+    "id": 2174,
+    "word": "FERAS",
+    "normalized": "FERAS"
+  },
+  {
+    "id": 2175,
+    "word": "FERAZ",
+    "normalized": "FERAZ"
+  },
+  {
+    "id": 2176,
+    "word": "FEREM",
+    "normalized": "FEREM"
+  },
+  {
+    "id": 2177,
+    "word": "FERES",
+    "normalized": "FERES"
+  },
+  {
+    "id": 2178,
+    "word": "FERIA",
+    "normalized": "FERIA"
+  },
+  {
+    "id": 2179,
+    "word": "FERIR",
+    "normalized": "FERIR"
+  },
+  {
+    "id": 2180,
+    "word": "FERIS",
+    "normalized": "FERIS"
+  },
+  {
+    "id": 2181,
+    "word": "FERIU",
+    "normalized": "FERIU"
+  },
+  {
+    "id": 2182,
+    "word": "FEROZ",
+    "normalized": "FEROZ"
+  },
+  {
+    "id": 2183,
+    "word": "FERRA",
+    "normalized": "FERRA"
+  },
+  {
+    "id": 2184,
+    "word": "FERRE",
+    "normalized": "FERRE"
+  },
+  {
+    "id": 2185,
+    "word": "FERRO",
+    "normalized": "FERRO"
+  },
+  {
+    "id": 2186,
+    "word": "FERVA",
+    "normalized": "FERVA"
+  },
+  {
+    "id": 2187,
+    "word": "FERVE",
+    "normalized": "FERVE"
+  },
+  {
+    "id": 2188,
+    "word": "FERVI",
+    "normalized": "FERVI"
+  },
+  {
+    "id": 2189,
+    "word": "FERVO",
+    "normalized": "FERVO"
+  },
+  {
+    "id": 2190,
+    "word": "FETAL",
+    "normalized": "FETAL"
+  },
+  {
+    "id": 2191,
+    "word": "FETOS",
+    "normalized": "FETOS"
+  },
+  {
+    "id": 2192,
+    "word": "FEUDO",
+    "normalized": "FEUDO"
+  },
+  {
+    "id": 2193,
+    "word": "FIADA",
+    "normalized": "FIADA"
+  },
+  {
+    "id": 2194,
+    "word": "FIADO",
+    "normalized": "FIADO"
+  },
+  {
+    "id": 2195,
+    "word": "FIAIS",
+    "normalized": "FIAIS"
+  },
+  {
+    "id": 2196,
+    "word": "FIAMO",
+    "normalized": "FIAMO"
+  },
+  {
+    "id": 2197,
+    "word": "FIAPO",
+    "normalized": "FIAPO"
+  },
+  {
+    "id": 2198,
+    "word": "FIARA",
+    "normalized": "FIARA"
+  },
+  {
+    "id": 2199,
+    "word": "FIAVA",
+    "normalized": "FIAVA"
+  },
+  {
+    "id": 2200,
+    "word": "FIBRA",
+    "normalized": "FIBRA"
+  },
+  {
+    "id": 2201,
+    "word": "FICAI",
+    "normalized": "FICAI"
+  },
+  {
+    "id": 2202,
+    "word": "FICAM",
+    "normalized": "FICAM"
+  },
+  {
+    "id": 2203,
+    "word": "FICAR",
+    "normalized": "FICAR"
+  },
+  {
+    "id": 2204,
+    "word": "FICAS",
+    "normalized": "FICAS"
+  },
+  {
+    "id": 2205,
+    "word": "FICHA",
+    "normalized": "FICHA"
+  },
+  {
+    "id": 2206,
+    "word": "FICHE",
+    "normalized": "FICHE"
+  },
+  {
+    "id": 2207,
+    "word": "FICHO",
+    "normalized": "FICHO"
+  },
+  {
+    "id": 2208,
+    "word": "FICOU",
+    "normalized": "FICOU"
+  },
+  {
+    "id": 2209,
+    "word": "FIEIS",
+    "normalized": "FIEIS"
+  },
+  {
+    "id": 2210,
+    "word": "FIEMO",
+    "normalized": "FIEMO"
+  },
+  {
+    "id": 2211,
+    "word": "FIGAS",
+    "normalized": "FIGAS"
+  },
+  {
+    "id": 2212,
+    "word": "FIGOS",
+    "normalized": "FIGOS"
+  },
+  {
+    "id": 2213,
+    "word": "FILAI",
+    "normalized": "FILAI"
+  },
+  {
+    "id": 2214,
+    "word": "FILAM",
+    "normalized": "FILAM"
+  },
+  {
+    "id": 2215,
+    "word": "FILAR",
+    "normalized": "FILAR"
+  },
+  {
+    "id": 2216,
+    "word": "FILAS",
+    "normalized": "FILAS"
+  },
+  {
+    "id": 2217,
+    "word": "FILEI",
+    "normalized": "FILEI"
+  },
+  {
+    "id": 2218,
+    "word": "FILEM",
+    "normalized": "FILEM"
+  },
+  {
+    "id": 2219,
+    "word": "FILES",
+    "normalized": "FILES"
+  },
+  {
+    "id": 2220,
+    "word": "FILHA",
+    "normalized": "FILHA"
+  },
+  {
+    "id": 2221,
+    "word": "FILIA",
+    "normalized": "FILIA"
+  },
+  {
+    "id": 2222,
+    "word": "FILIE",
+    "normalized": "FILIE"
+  },
+  {
+    "id": 2223,
+    "word": "FILIO",
+    "normalized": "FILIO"
+  },
+  {
+    "id": 2224,
+    "word": "FILMA",
+    "normalized": "FILMA"
+  },
+  {
+    "id": 2225,
+    "word": "FILMO",
+    "normalized": "FILMO"
+  },
+  {
+    "id": 2226,
+    "word": "FILOU",
+    "normalized": "FILOU"
+  },
+  {
+    "id": 2227,
+    "word": "FINAS",
+    "normalized": "FINAS"
+  },
+  {
+    "id": 2228,
+    "word": "FINCA",
+    "normalized": "FINCA"
+  },
+  {
+    "id": 2229,
+    "word": "FINCO",
+    "normalized": "FINCO"
+  },
+  {
+    "id": 2230,
+    "word": "FINDA",
+    "normalized": "FINDA"
+  },
+  {
+    "id": 2231,
+    "word": "FINDE",
+    "normalized": "FINDE"
+  },
+  {
+    "id": 2232,
+    "word": "FINDO",
+    "normalized": "FINDO"
+  },
+  {
+    "id": 2233,
+    "word": "FINGE",
+    "normalized": "FINGE"
+  },
+  {
+    "id": 2234,
+    "word": "FINGI",
+    "normalized": "FINGI"
+  },
+  {
+    "id": 2235,
+    "word": "FINJA",
+    "normalized": "FINJA"
+  },
+  {
+    "id": 2236,
+    "word": "FINJO",
+    "normalized": "FINJO"
+  },
+  {
+    "id": 2237,
+    "word": "FINOS",
+    "normalized": "FINOS"
+  },
+  {
+    "id": 2238,
+    "word": "FINTA",
+    "normalized": "FINTA"
+  },
+  {
+    "id": 2239,
+    "word": "FINTE",
+    "normalized": "FINTE"
+  },
+  {
+    "id": 2240,
+    "word": "FINTO",
+    "normalized": "FINTO"
+  },
+  {
+    "id": 2241,
+    "word": "FIQUE",
+    "normalized": "FIQUE"
+  },
+  {
+    "id": 2242,
+    "word": "FIRAM",
+    "normalized": "FIRAM"
+  },
+  {
+    "id": 2243,
+    "word": "FIRAS",
+    "normalized": "FIRAS"
+  },
+  {
+    "id": 2244,
+    "word": "FIRMA",
+    "normalized": "FIRMA"
+  },
+  {
+    "id": 2245,
+    "word": "FIRMO",
+    "normalized": "FIRMO"
+  },
+  {
+    "id": 2246,
+    "word": "FISCO",
+    "normalized": "FISCO"
+  },
+  {
+    "id": 2247,
+    "word": "FISGA",
+    "normalized": "FISGA"
+  },
+  {
+    "id": 2248,
+    "word": "FISGO",
+    "normalized": "FISGO"
+  },
+  {
+    "id": 2249,
+    "word": "FITAI",
+    "normalized": "FITAI"
+  },
+  {
+    "id": 2250,
+    "word": "FITAM",
+    "normalized": "FITAM"
+  },
+  {
+    "id": 2251,
+    "word": "FITAR",
+    "normalized": "FITAR"
+  },
+  {
+    "id": 2252,
+    "word": "FITAS",
+    "normalized": "FITAS"
+  },
+  {
+    "id": 2253,
+    "word": "FITEI",
+    "normalized": "FITEI"
+  },
+  {
+    "id": 2254,
+    "word": "FITEM",
+    "normalized": "FITEM"
+  },
+  {
+    "id": 2255,
+    "word": "FITES",
+    "normalized": "FITES"
+  },
+  {
+    "id": 2256,
+    "word": "FITOU",
+    "normalized": "FITOU"
+  },
+  {
+    "id": 2257,
+    "word": "FIXAI",
+    "normalized": "FIXAI"
+  },
+  {
+    "id": 2258,
+    "word": "FIXAM",
+    "normalized": "FIXAM"
+  },
+  {
+    "id": 2259,
+    "word": "FIXAR",
+    "normalized": "FIXAR"
+  },
+  {
+    "id": 2260,
+    "word": "FIXAS",
+    "normalized": "FIXAS"
+  },
+  {
+    "id": 2261,
+    "word": "FIXEI",
+    "normalized": "FIXEI"
+  },
+  {
+    "id": 2262,
+    "word": "FIXEM",
+    "normalized": "FIXEM"
+  },
+  {
+    "id": 2263,
+    "word": "FIXES",
+    "normalized": "FIXES"
+  },
+  {
+    "id": 2264,
+    "word": "FIXOS",
+    "normalized": "FIXOS"
+  },
+  {
+    "id": 2265,
+    "word": "FIXOU",
+    "normalized": "FIXOU"
+  },
+  {
+    "id": 2266,
+    "word": "FIZER",
+    "normalized": "FIZER"
+  },
+  {
+    "id": 2267,
+    "word": "FLAVO",
+    "normalized": "FLAVO"
+  },
+  {
+    "id": 2268,
+    "word": "FLOCO",
+    "normalized": "FLOCO"
+  },
+  {
+    "id": 2269,
+    "word": "FLORI",
+    "normalized": "FLORI"
+  },
+  {
+    "id": 2270,
+    "word": "FLUAM",
+    "normalized": "FLUAM"
+  },
+  {
+    "id": 2271,
+    "word": "FLUAS",
+    "normalized": "FLUAS"
+  },
+  {
+    "id": 2272,
+    "word": "FLUEM",
+    "normalized": "FLUEM"
+  },
+  {
+    "id": 2273,
+    "word": "FLUIR",
+    "normalized": "FLUIR"
+  },
+  {
+    "id": 2274,
+    "word": "FLUIS",
+    "normalized": "FLUIS"
+  },
+  {
+    "id": 2275,
+    "word": "FLUIU",
+    "normalized": "FLUIU"
+  },
+  {
+    "id": 2276,
+    "word": "FLUXO",
+    "normalized": "FLUXO"
+  },
+  {
+    "id": 2277,
+    "word": "FOBIA",
+    "normalized": "FOBIA"
+  },
+  {
+    "id": 2278,
+    "word": "FOCAI",
+    "normalized": "FOCAI"
+  },
+  {
+    "id": 2279,
+    "word": "FOCAM",
+    "normalized": "FOCAM"
+  },
+  {
+    "id": 2280,
+    "word": "FOCAR",
+    "normalized": "FOCAR"
+  },
+  {
+    "id": 2281,
+    "word": "FOCAS",
+    "normalized": "FOCAS"
+  },
+  {
+    "id": 2282,
+    "word": "FOCOS",
+    "normalized": "FOCOS"
+  },
+  {
+    "id": 2283,
+    "word": "FOCOU",
+    "normalized": "FOCOU"
+  },
+  {
+    "id": 2284,
+    "word": "FOFAS",
+    "normalized": "FOFAS"
+  },
+  {
+    "id": 2285,
+    "word": "FOFOS",
+    "normalized": "FOFOS"
+  },
+  {
+    "id": 2286,
+    "word": "FOGEM",
+    "normalized": "FOGEM"
+  },
+  {
+    "id": 2287,
+    "word": "FOGES",
+    "normalized": "FOGES"
+  },
+  {
+    "id": 2288,
+    "word": "FOGOS",
+    "normalized": "FOGOS"
+  },
+  {
+    "id": 2289,
+    "word": "FOICE",
+    "normalized": "FOICE"
+  },
+  {
+    "id": 2290,
+    "word": "FOLES",
+    "normalized": "FOLES"
+  },
+  {
+    "id": 2291,
+    "word": "FOLGA",
+    "normalized": "FOLGA"
+  },
+  {
+    "id": 2292,
+    "word": "FOLGO",
+    "normalized": "FOLGO"
+  },
+  {
+    "id": 2293,
+    "word": "FOLIA",
+    "normalized": "FOLIA"
+  },
+  {
+    "id": 2294,
+    "word": "FOMES",
+    "normalized": "FOMES"
+  },
+  {
+    "id": 2295,
+    "word": "FOMOS",
+    "normalized": "FOMOS"
+  },
+  {
+    "id": 2296,
+    "word": "FONES",
+    "normalized": "FONES"
+  },
+  {
+    "id": 2297,
+    "word": "FOQUE",
+    "normalized": "FOQUE"
+  },
+  {
+    "id": 2298,
+    "word": "FORAM",
+    "normalized": "FORAM"
+  },
+  {
+    "id": 2299,
+    "word": "FORAS",
+    "normalized": "FORAS"
+  },
+  {
+    "id": 2300,
+    "word": "FORCA",
+    "normalized": "FORCA"
+  },
+  {
+    "id": 2301,
+    "word": "FORCE",
+    "normalized": "FORCE"
+  },
+  {
+    "id": 2302,
+    "word": "FOREM",
+    "normalized": "FOREM"
+  },
+  {
+    "id": 2303,
+    "word": "FORES",
+    "normalized": "FORES"
+  },
+  {
+    "id": 2304,
+    "word": "FORJA",
+    "normalized": "FORJA"
+  },
+  {
+    "id": 2305,
+    "word": "FORJE",
+    "normalized": "FORJE"
+  },
+  {
+    "id": 2306,
+    "word": "FORJO",
+    "normalized": "FORJO"
+  },
+  {
+    "id": 2307,
+    "word": "FORMA",
+    "normalized": "FORMA"
+  },
+  {
+    "id": 2308,
+    "word": "FORME",
+    "normalized": "FORME"
+  },
+  {
+    "id": 2309,
+    "word": "FORMO",
+    "normalized": "FORMO"
+  },
+  {
+    "id": 2310,
+    "word": "FOROS",
+    "normalized": "FOROS"
+  },
+  {
+    "id": 2311,
+    "word": "FORRA",
+    "normalized": "FORRA"
+  },
+  {
+    "id": 2312,
+    "word": "FORRE",
+    "normalized": "FORRE"
+  },
+  {
+    "id": 2313,
+    "word": "FORRO",
+    "normalized": "FORRO"
+  },
+  {
+    "id": 2314,
+    "word": "FOSCA",
+    "normalized": "FOSCA"
+  },
+  {
+    "id": 2315,
+    "word": "FOSCO",
+    "normalized": "FOSCO"
+  },
+  {
+    "id": 2316,
+    "word": "FOSSA",
+    "normalized": "FOSSA"
+  },
+  {
+    "id": 2317,
+    "word": "FOSSE",
+    "normalized": "FOSSE"
+  },
+  {
+    "id": 2318,
+    "word": "FOSTE",
+    "normalized": "FOSTE"
+  },
+  {
+    "id": 2319,
+    "word": "FOTOS",
+    "normalized": "FOTOS"
+  },
+  {
+    "id": 2320,
+    "word": "FRACA",
+    "normalized": "FRACA"
+  },
+  {
+    "id": 2321,
+    "word": "FRADE",
+    "normalized": "FRADE"
+  },
+  {
+    "id": 2322,
+    "word": "FRAGA",
+    "normalized": "FRAGA"
+  },
+  {
+    "id": 2323,
+    "word": "FRASE",
+    "normalized": "FRASE"
+  },
+  {
+    "id": 2324,
+    "word": "FREAI",
+    "normalized": "FREAI"
+  },
+  {
+    "id": 2325,
+    "word": "FREAR",
+    "normalized": "FREAR"
+  },
+  {
+    "id": 2326,
+    "word": "FREEI",
+    "normalized": "FREEI"
+  },
+  {
+    "id": 2327,
+    "word": "FREIA",
+    "normalized": "FREIA"
+  },
+  {
+    "id": 2328,
+    "word": "FREIE",
+    "normalized": "FREIE"
+  },
+  {
+    "id": 2329,
+    "word": "FREIO",
+    "normalized": "FREIO"
+  },
+  {
+    "id": 2330,
+    "word": "FREME",
+    "normalized": "FREME"
+  },
+  {
+    "id": 2331,
+    "word": "FREMI",
+    "normalized": "FREMI"
+  },
+  {
+    "id": 2332,
+    "word": "FREOU",
+    "normalized": "FREOU"
+  },
+  {
+    "id": 2333,
+    "word": "FRESA",
+    "normalized": "FRESA"
+  },
+  {
+    "id": 2334,
+    "word": "FRESE",
+    "normalized": "FRESE"
+  },
+  {
+    "id": 2335,
+    "word": "FRESO",
+    "normalized": "FRESO"
+  },
+  {
+    "id": 2336,
+    "word": "FRETA",
+    "normalized": "FRETA"
+  },
+  {
+    "id": 2337,
+    "word": "FRETE",
+    "normalized": "FRETE"
+  },
+  {
+    "id": 2338,
+    "word": "FRETO",
+    "normalized": "FRETO"
+  },
+  {
+    "id": 2339,
+    "word": "FREVO",
+    "normalized": "FREVO"
+  },
+  {
+    "id": 2340,
+    "word": "FRIGE",
+    "normalized": "FRIGE"
+  },
+  {
+    "id": 2341,
+    "word": "FRIGI",
+    "normalized": "FRIGI"
+  },
+  {
+    "id": 2342,
+    "word": "FRIJA",
+    "normalized": "FRIJA"
+  },
+  {
+    "id": 2343,
+    "word": "FRIJO",
+    "normalized": "FRIJO"
+  },
+  {
+    "id": 2344,
+    "word": "FRIOS",
+    "normalized": "FRIOS"
+  },
+  {
+    "id": 2345,
+    "word": "FRISA",
+    "normalized": "FRISA"
+  },
+  {
+    "id": 2346,
+    "word": "FRISE",
+    "normalized": "FRISE"
+  },
+  {
+    "id": 2347,
+    "word": "FRISO",
+    "normalized": "FRISO"
+  },
+  {
+    "id": 2348,
+    "word": "FRITA",
+    "normalized": "FRITA"
+  },
+  {
+    "id": 2349,
+    "word": "FRITE",
+    "normalized": "FRITE"
+  },
+  {
+    "id": 2350,
+    "word": "FRITO",
+    "normalized": "FRITO"
+  },
+  {
+    "id": 2351,
+    "word": "FROTA",
+    "normalized": "FROTA"
+  },
+  {
+    "id": 2352,
+    "word": "FRUEM",
+    "normalized": "FRUEM"
+  },
+  {
+    "id": 2353,
+    "word": "FRUIR",
+    "normalized": "FRUIR"
+  },
+  {
+    "id": 2354,
+    "word": "FRUIS",
+    "normalized": "FRUIS"
+  },
+  {
+    "id": 2355,
+    "word": "FRUIU",
+    "normalized": "FRUIU"
+  },
+  {
+    "id": 2356,
+    "word": "FRUTO",
+    "normalized": "FRUTO"
+  },
+  {
+    "id": 2357,
+    "word": "FUCEI",
+    "normalized": "FUCEI"
+  },
+  {
+    "id": 2358,
+    "word": "FUCEM",
+    "normalized": "FUCEM"
+  },
+  {
+    "id": 2359,
+    "word": "FUCES",
+    "normalized": "FUCES"
+  },
+  {
+    "id": 2360,
+    "word": "FUGAS",
+    "normalized": "FUGAS"
+  },
+  {
+    "id": 2361,
+    "word": "FUGAZ",
+    "normalized": "FUGAZ"
+  },
+  {
+    "id": 2362,
+    "word": "FUGIA",
+    "normalized": "FUGIA"
+  },
+  {
+    "id": 2363,
+    "word": "FUGIS",
+    "normalized": "FUGIS"
+  },
+  {
+    "id": 2364,
+    "word": "FUGIU",
+    "normalized": "FUGIU"
+  },
+  {
+    "id": 2365,
+    "word": "FUJAM",
+    "normalized": "FUJAM"
+  },
+  {
+    "id": 2366,
+    "word": "FUJAS",
+    "normalized": "FUJAS"
+  },
+  {
+    "id": 2367,
+    "word": "FULGE",
+    "normalized": "FULGE"
+  },
+  {
+    "id": 2368,
+    "word": "FULGI",
+    "normalized": "FULGI"
+  },
+  {
+    "id": 2369,
+    "word": "FUMAI",
+    "normalized": "FUMAI"
+  },
+  {
+    "id": 2370,
+    "word": "FUMAM",
+    "normalized": "FUMAM"
+  },
+  {
+    "id": 2371,
+    "word": "FUMAR",
+    "normalized": "FUMAR"
+  },
+  {
+    "id": 2372,
+    "word": "FUMAS",
+    "normalized": "FUMAS"
+  },
+  {
+    "id": 2373,
+    "word": "FUMEI",
+    "normalized": "FUMEI"
+  },
+  {
+    "id": 2374,
+    "word": "FUMEM",
+    "normalized": "FUMEM"
+  },
+  {
+    "id": 2375,
+    "word": "FUMES",
+    "normalized": "FUMES"
+  },
+  {
+    "id": 2376,
+    "word": "FUMOU",
+    "normalized": "FUMOU"
+  },
+  {
+    "id": 2377,
+    "word": "FUNDE",
+    "normalized": "FUNDE"
+  },
+  {
+    "id": 2378,
+    "word": "FUNDI",
+    "normalized": "FUNDI"
+  },
+  {
+    "id": 2379,
+    "word": "FUNGA",
+    "normalized": "FUNGA"
+  },
+  {
+    "id": 2380,
+    "word": "FUNGO",
+    "normalized": "FUNGO"
+  },
+  {
+    "id": 2381,
+    "word": "FUNIL",
+    "normalized": "FUNIL"
+  },
+  {
+    "id": 2382,
+    "word": "FUNIS",
+    "normalized": "FUNIS"
+  },
+  {
+    "id": 2383,
+    "word": "FURAI",
+    "normalized": "FURAI"
+  },
+  {
+    "id": 2384,
+    "word": "FURAM",
+    "normalized": "FURAM"
+  },
+  {
+    "id": 2385,
+    "word": "FURAR",
+    "normalized": "FURAR"
+  },
+  {
+    "id": 2386,
+    "word": "FURAS",
+    "normalized": "FURAS"
+  },
+  {
+    "id": 2387,
+    "word": "FUREI",
+    "normalized": "FUREI"
+  },
+  {
+    "id": 2388,
+    "word": "FUREM",
+    "normalized": "FUREM"
+  },
+  {
+    "id": 2389,
+    "word": "FURES",
+    "normalized": "FURES"
+  },
+  {
+    "id": 2390,
+    "word": "FURNA",
+    "normalized": "FURNA"
+  },
+  {
+    "id": 2391,
+    "word": "FUROS",
+    "normalized": "FUROS"
+  },
+  {
+    "id": 2392,
+    "word": "FUROU",
+    "normalized": "FUROU"
+  },
+  {
+    "id": 2393,
+    "word": "FURTA",
+    "normalized": "FURTA"
+  },
+  {
+    "id": 2394,
+    "word": "FURTE",
+    "normalized": "FURTE"
+  },
+  {
+    "id": 2395,
+    "word": "FURTO",
+    "normalized": "FURTO"
+  },
+  {
+    "id": 2396,
+    "word": "FUSOS",
+    "normalized": "FUSOS"
+  },
+  {
+    "id": 2397,
+    "word": "FUZIL",
+    "normalized": "FUZIL"
+  },
+  {
+    "id": 2398,
+    "word": "FUZIS",
+    "normalized": "FUZIS"
+  },
+  {
+    "id": 2399,
+    "word": "GABAI",
+    "normalized": "GABAI"
+  },
+  {
+    "id": 2400,
+    "word": "GABAM",
+    "normalized": "GABAM"
+  },
+  {
+    "id": 2401,
+    "word": "GABAR",
+    "normalized": "GABAR"
+  },
+  {
+    "id": 2402,
+    "word": "GABAS",
+    "normalized": "GABAS"
+  },
+  {
+    "id": 2403,
+    "word": "GABEI",
+    "normalized": "GABEI"
+  },
+  {
+    "id": 2404,
+    "word": "GABEM",
+    "normalized": "GABEM"
+  },
+  {
+    "id": 2405,
+    "word": "GABES",
+    "normalized": "GABES"
+  },
+  {
+    "id": 2406,
+    "word": "GABOU",
+    "normalized": "GABOU"
+  },
+  {
+    "id": 2407,
+    "word": "GADOS",
+    "normalized": "GADOS"
+  },
+  {
+    "id": 2408,
+    "word": "GAGAS",
+    "normalized": "GAGAS"
+  },
+  {
+    "id": 2409,
+    "word": "GAGOS",
+    "normalized": "GAGOS"
+  },
+  {
+    "id": 2410,
+    "word": "GAITA",
+    "normalized": "GAITA"
+  },
+  {
+    "id": 2411,
+    "word": "GAJAS",
+    "normalized": "GAJAS"
+  },
+  {
+    "id": 2412,
+    "word": "GAJOS",
+    "normalized": "GAJOS"
+  },
+  {
+    "id": 2413,
+    "word": "GALGA",
+    "normalized": "GALGA"
+  },
+  {
+    "id": 2414,
+    "word": "GALGO",
+    "normalized": "GALGO"
+  },
+  {
+    "id": 2415,
+    "word": "GALOS",
+    "normalized": "GALOS"
+  },
+  {
+    "id": 2416,
+    "word": "GAMOS",
+    "normalized": "GAMOS"
+  },
+  {
+    "id": 2417,
+    "word": "GANEM",
+    "normalized": "GANEM"
+  },
+  {
+    "id": 2418,
+    "word": "GANES",
+    "normalized": "GANES"
+  },
+  {
+    "id": 2419,
+    "word": "GANHA",
+    "normalized": "GANHA"
+  },
+  {
+    "id": 2420,
+    "word": "GANHE",
+    "normalized": "GANHE"
+  },
+  {
+    "id": 2421,
+    "word": "GANHO",
+    "normalized": "GANHO"
+  },
+  {
+    "id": 2422,
+    "word": "GANIA",
+    "normalized": "GANIA"
+  },
+  {
+    "id": 2423,
+    "word": "GANIR",
+    "normalized": "GANIR"
+  },
+  {
+    "id": 2424,
+    "word": "GANIS",
+    "normalized": "GANIS"
+  },
+  {
+    "id": 2425,
+    "word": "GANIU",
+    "normalized": "GANIU"
+  },
+  {
+    "id": 2426,
+    "word": "GANSO",
+    "normalized": "GANSO"
+  },
+  {
+    "id": 2427,
+    "word": "GARBO",
+    "normalized": "GARBO"
+  },
+  {
+    "id": 2428,
+    "word": "GARFA",
+    "normalized": "GARFA"
+  },
+  {
+    "id": 2429,
+    "word": "GARFE",
+    "normalized": "GARFE"
+  },
+  {
+    "id": 2430,
+    "word": "GARFO",
+    "normalized": "GARFO"
+  },
+  {
+    "id": 2431,
+    "word": "GARIS",
+    "normalized": "GARIS"
+  },
+  {
+    "id": 2432,
+    "word": "GAROA",
+    "normalized": "GAROA"
+  },
+  {
+    "id": 2433,
+    "word": "GAROE",
+    "normalized": "GAROE"
+  },
+  {
+    "id": 2434,
+    "word": "GARRA",
+    "normalized": "GARRA"
+  },
+  {
+    "id": 2435,
+    "word": "GASES",
+    "normalized": "GASES"
+  },
+  {
+    "id": 2436,
+    "word": "GASTA",
+    "normalized": "GASTA"
+  },
+  {
+    "id": 2437,
+    "word": "GASTE",
+    "normalized": "GASTE"
+  },
+  {
+    "id": 2438,
+    "word": "GASTO",
+    "normalized": "GASTO"
+  },
+  {
+    "id": 2439,
+    "word": "GATAS",
+    "normalized": "GATAS"
+  },
+  {
+    "id": 2440,
+    "word": "GAZUA",
+    "normalized": "GAZUA"
+  },
+  {
+    "id": 2441,
+    "word": "GEADA",
+    "normalized": "GEADA"
+  },
+  {
+    "id": 2442,
+    "word": "GEADO",
+    "normalized": "GEADO"
+  },
+  {
+    "id": 2443,
+    "word": "GEAIS",
+    "normalized": "GEAIS"
+  },
+  {
+    "id": 2444,
+    "word": "GEAMO",
+    "normalized": "GEAMO"
+  },
+  {
+    "id": 2445,
+    "word": "GEARA",
+    "normalized": "GEARA"
+  },
+  {
+    "id": 2446,
+    "word": "GEAVA",
+    "normalized": "GEAVA"
+  },
+  {
+    "id": 2447,
+    "word": "GEEIS",
+    "normalized": "GEEIS"
+  },
+  {
+    "id": 2448,
+    "word": "GEEMO",
+    "normalized": "GEEMO"
+  },
+  {
+    "id": 2449,
+    "word": "GEIAM",
+    "normalized": "GEIAM"
+  },
+  {
+    "id": 2450,
+    "word": "GEIAS",
+    "normalized": "GEIAS"
+  },
+  {
+    "id": 2451,
+    "word": "GEIEM",
+    "normalized": "GEIEM"
+  },
+  {
+    "id": 2452,
+    "word": "GEIES",
+    "normalized": "GEIES"
+  },
+  {
+    "id": 2453,
+    "word": "GELAI",
+    "normalized": "GELAI"
+  },
+  {
+    "id": 2454,
+    "word": "GELAM",
+    "normalized": "GELAM"
+  },
+  {
+    "id": 2455,
+    "word": "GELAR",
+    "normalized": "GELAR"
+  },
+  {
+    "id": 2456,
+    "word": "GELAS",
+    "normalized": "GELAS"
+  },
+  {
+    "id": 2457,
+    "word": "GELEI",
+    "normalized": "GELEI"
+  },
+  {
+    "id": 2458,
+    "word": "GELEM",
+    "normalized": "GELEM"
+  },
+  {
+    "id": 2459,
+    "word": "GELES",
+    "normalized": "GELES"
+  },
+  {
+    "id": 2460,
+    "word": "GELOS",
+    "normalized": "GELOS"
+  },
+  {
+    "id": 2461,
+    "word": "GELOU",
+    "normalized": "GELOU"
+  },
+  {
+    "id": 2462,
+    "word": "GEMAM",
+    "normalized": "GEMAM"
+  },
+  {
+    "id": 2463,
+    "word": "GEMAS",
+    "normalized": "GEMAS"
+  },
+  {
+    "id": 2464,
+    "word": "GEMEI",
+    "normalized": "GEMEI"
+  },
+  {
+    "id": 2465,
+    "word": "GEMEM",
+    "normalized": "GEMEM"
+  },
+  {
+    "id": 2466,
+    "word": "GEMER",
+    "normalized": "GEMER"
+  },
+  {
+    "id": 2467,
+    "word": "GEMES",
+    "normalized": "GEMES"
+  },
+  {
+    "id": 2468,
+    "word": "GEMEU",
+    "normalized": "GEMEU"
+  },
+  {
+    "id": 2469,
+    "word": "GEMIA",
+    "normalized": "GEMIA"
+  },
+  {
+    "id": 2470,
+    "word": "GEMÃª",
+    "normalized": "GEMAª"
+  },
+  {
+    "id": 2471,
+    "word": "GENES",
+    "normalized": "GENES"
+  },
+  {
+    "id": 2472,
+    "word": "GENRO",
+    "normalized": "GENRO"
+  },
+  {
+    "id": 2473,
+    "word": "GENTE",
+    "normalized": "GENTE"
+  },
+  {
+    "id": 2474,
+    "word": "GERAI",
+    "normalized": "GERAI"
+  },
+  {
+    "id": 2475,
+    "word": "GERAM",
+    "normalized": "GERAM"
+  },
+  {
+    "id": 2476,
+    "word": "GERAR",
+    "normalized": "GERAR"
+  },
+  {
+    "id": 2477,
+    "word": "GERAS",
+    "normalized": "GERAS"
+  },
+  {
+    "id": 2478,
+    "word": "GEREI",
+    "normalized": "GEREI"
+  },
+  {
+    "id": 2479,
+    "word": "GEREM",
+    "normalized": "GEREM"
+  },
+  {
+    "id": 2480,
+    "word": "GERES",
+    "normalized": "GERES"
+  },
+  {
+    "id": 2481,
+    "word": "GERIA",
+    "normalized": "GERIA"
+  },
+  {
+    "id": 2482,
+    "word": "GERIR",
+    "normalized": "GERIR"
+  },
+  {
+    "id": 2483,
+    "word": "GERIS",
+    "normalized": "GERIS"
+  },
+  {
+    "id": 2484,
+    "word": "GERIU",
+    "normalized": "GERIU"
+  },
+  {
+    "id": 2485,
+    "word": "GERME",
+    "normalized": "GERME"
+  },
+  {
+    "id": 2486,
+    "word": "GEROU",
+    "normalized": "GEROU"
+  },
+  {
+    "id": 2487,
+    "word": "GESSO",
+    "normalized": "GESSO"
+  },
+  {
+    "id": 2488,
+    "word": "GESTA",
+    "normalized": "GESTA"
+  },
+  {
+    "id": 2489,
+    "word": "GESTO",
+    "normalized": "GESTO"
+  },
+  {
+    "id": 2490,
+    "word": "GINGA",
+    "normalized": "GINGA"
+  },
+  {
+    "id": 2491,
+    "word": "GINGO",
+    "normalized": "GINGO"
+  },
+  {
+    "id": 2492,
+    "word": "GIRAI",
+    "normalized": "GIRAI"
+  },
+  {
+    "id": 2493,
+    "word": "GIRAM",
+    "normalized": "GIRAM"
+  },
+  {
+    "id": 2494,
+    "word": "GIRAR",
+    "normalized": "GIRAR"
+  },
+  {
+    "id": 2495,
+    "word": "GIRAS",
+    "normalized": "GIRAS"
+  },
+  {
+    "id": 2496,
+    "word": "GIREI",
+    "normalized": "GIREI"
+  },
+  {
+    "id": 2497,
+    "word": "GIREM",
+    "normalized": "GIREM"
+  },
+  {
+    "id": 2498,
+    "word": "GIRES",
+    "normalized": "GIRES"
+  },
+  {
+    "id": 2499,
+    "word": "GIROS",
+    "normalized": "GIROS"
+  },
+  {
+    "id": 2500,
+    "word": "GIROU",
+    "normalized": "GIROU"
+  },
+  {
+    "id": 2501,
+    "word": "GLEBA",
+    "normalized": "GLEBA"
+  },
+  {
+    "id": 2502,
+    "word": "GLOBO",
+    "normalized": "GLOBO"
+  },
+  {
+    "id": 2503,
+    "word": "GLOSA",
+    "normalized": "GLOSA"
+  },
+  {
+    "id": 2504,
+    "word": "GLOSE",
+    "normalized": "GLOSE"
+  },
+  {
+    "id": 2505,
+    "word": "GLOSO",
+    "normalized": "GLOSO"
+  },
+  {
+    "id": 2506,
+    "word": "GNOMO",
+    "normalized": "GNOMO"
+  },
+  {
+    "id": 2507,
+    "word": "GOELA",
+    "normalized": "GOELA"
+  },
+  {
+    "id": 2508,
+    "word": "GOLAS",
+    "normalized": "GOLAS"
+  },
+  {
+    "id": 2509,
+    "word": "GOLES",
+    "normalized": "GOLES"
+  },
+  {
+    "id": 2510,
+    "word": "GOLFO",
+    "normalized": "GOLFO"
+  },
+  {
+    "id": 2511,
+    "word": "GOMAS",
+    "normalized": "GOMAS"
+  },
+  {
+    "id": 2512,
+    "word": "GOMOS",
+    "normalized": "GOMOS"
+  },
+  {
+    "id": 2513,
+    "word": "GONGO",
+    "normalized": "GONGO"
+  },
+  {
+    "id": 2514,
+    "word": "GONZO",
+    "normalized": "GONZO"
+  },
+  {
+    "id": 2515,
+    "word": "GORAI",
+    "normalized": "GORAI"
+  },
+  {
+    "id": 2516,
+    "word": "GORAM",
+    "normalized": "GORAM"
+  },
+  {
+    "id": 2517,
+    "word": "GORAR",
+    "normalized": "GORAR"
+  },
+  {
+    "id": 2518,
+    "word": "GORAS",
+    "normalized": "GORAS"
+  },
+  {
+    "id": 2519,
+    "word": "GOREI",
+    "normalized": "GOREI"
+  },
+  {
+    "id": 2520,
+    "word": "GOREM",
+    "normalized": "GOREM"
+  },
+  {
+    "id": 2521,
+    "word": "GORES",
+    "normalized": "GORES"
+  },
+  {
+    "id": 2522,
+    "word": "GOROU",
+    "normalized": "GOROU"
+  },
+  {
+    "id": 2523,
+    "word": "GORRO",
+    "normalized": "GORRO"
+  },
+  {
+    "id": 2524,
+    "word": "GOSMA",
+    "normalized": "GOSMA"
+  },
+  {
+    "id": 2525,
+    "word": "GOSTA",
+    "normalized": "GOSTA"
+  },
+  {
+    "id": 2526,
+    "word": "GOSTE",
+    "normalized": "GOSTE"
+  },
+  {
+    "id": 2527,
+    "word": "GOSTO",
+    "normalized": "GOSTO"
+  },
+  {
+    "id": 2528,
+    "word": "GOTAS",
+    "normalized": "GOTAS"
+  },
+  {
+    "id": 2529,
+    "word": "GOZAI",
+    "normalized": "GOZAI"
+  },
+  {
+    "id": 2530,
+    "word": "GOZAM",
+    "normalized": "GOZAM"
+  },
+  {
+    "id": 2531,
+    "word": "GOZAR",
+    "normalized": "GOZAR"
+  },
+  {
+    "id": 2532,
+    "word": "GOZAS",
+    "normalized": "GOZAS"
+  },
+  {
+    "id": 2533,
+    "word": "GOZEI",
+    "normalized": "GOZEI"
+  },
+  {
+    "id": 2534,
+    "word": "GOZEM",
+    "normalized": "GOZEM"
+  },
+  {
+    "id": 2535,
+    "word": "GOZES",
+    "normalized": "GOZES"
+  },
+  {
+    "id": 2536,
+    "word": "GOZOS",
+    "normalized": "GOZOS"
+  },
+  {
+    "id": 2537,
+    "word": "GOZOU",
+    "normalized": "GOZOU"
+  },
+  {
+    "id": 2538,
+    "word": "GRAFA",
+    "normalized": "GRAFA"
+  },
+  {
+    "id": 2539,
+    "word": "GRAFE",
+    "normalized": "GRAFE"
+  },
+  {
+    "id": 2540,
+    "word": "GRAFO",
+    "normalized": "GRAFO"
+  },
+  {
+    "id": 2541,
+    "word": "GRANA",
+    "normalized": "GRANA"
+  },
+  {
+    "id": 2542,
+    "word": "GRATA",
+    "normalized": "GRATA"
+  },
+  {
+    "id": 2543,
+    "word": "GRATO",
+    "normalized": "GRATO"
+  },
+  {
+    "id": 2544,
+    "word": "GRAUS",
+    "normalized": "GRAUS"
+  },
+  {
+    "id": 2545,
+    "word": "GRAVA",
+    "normalized": "GRAVA"
+  },
+  {
+    "id": 2546,
+    "word": "GRAVO",
+    "normalized": "GRAVO"
+  },
+  {
+    "id": 2547,
+    "word": "GRAXA",
+    "normalized": "GRAXA"
+  },
+  {
+    "id": 2548,
+    "word": "GRAXO",
+    "normalized": "GRAXO"
+  },
+  {
+    "id": 2549,
+    "word": "GREGA",
+    "normalized": "GREGA"
+  },
+  {
+    "id": 2550,
+    "word": "GREGO",
+    "normalized": "GREGO"
+  },
+  {
+    "id": 2551,
+    "word": "GREVE",
+    "normalized": "GREVE"
+  },
+  {
+    "id": 2552,
+    "word": "GRIFA",
+    "normalized": "GRIFA"
+  },
+  {
+    "id": 2553,
+    "word": "GRIFE",
+    "normalized": "GRIFE"
+  },
+  {
+    "id": 2554,
+    "word": "GRIFO",
+    "normalized": "GRIFO"
+  },
+  {
+    "id": 2555,
+    "word": "GRILA",
+    "normalized": "GRILA"
+  },
+  {
+    "id": 2556,
+    "word": "GRILE",
+    "normalized": "GRILE"
+  },
+  {
+    "id": 2557,
+    "word": "GRILO",
+    "normalized": "GRILO"
+  },
+  {
+    "id": 2558,
+    "word": "GRIPE",
+    "normalized": "GRIPE"
+  },
+  {
+    "id": 2559,
+    "word": "GRITA",
+    "normalized": "GRITA"
+  },
+  {
+    "id": 2560,
+    "word": "GRITE",
+    "normalized": "GRITE"
+  },
+  {
+    "id": 2561,
+    "word": "GRUDA",
+    "normalized": "GRUDA"
+  },
+  {
+    "id": 2562,
+    "word": "GRUDE",
+    "normalized": "GRUDE"
+  },
+  {
+    "id": 2563,
+    "word": "GRUDO",
+    "normalized": "GRUDO"
+  },
+  {
+    "id": 2564,
+    "word": "GRUMO",
+    "normalized": "GRUMO"
+  },
+  {
+    "id": 2565,
+    "word": "GRUTA",
+    "normalized": "GRUTA"
+  },
+  {
+    "id": 2566,
+    "word": "GUETO",
+    "normalized": "GUETO"
+  },
+  {
+    "id": 2567,
+    "word": "GUIAI",
+    "normalized": "GUIAI"
+  },
+  {
+    "id": 2568,
+    "word": "GUIAM",
+    "normalized": "GUIAM"
+  },
+  {
+    "id": 2569,
+    "word": "GUIAR",
+    "normalized": "GUIAR"
+  },
+  {
+    "id": 2570,
+    "word": "GUIAS",
+    "normalized": "GUIAS"
+  },
+  {
+    "id": 2571,
+    "word": "GUIEI",
+    "normalized": "GUIEI"
+  },
+  {
+    "id": 2572,
+    "word": "GUIEM",
+    "normalized": "GUIEM"
+  },
+  {
+    "id": 2573,
+    "word": "GUIES",
+    "normalized": "GUIES"
+  },
+  {
+    "id": 2574,
+    "word": "GUIOU",
+    "normalized": "GUIOU"
+  },
+  {
+    "id": 2575,
+    "word": "GUISA",
+    "normalized": "GUISA"
+  },
+  {
+    "id": 2576,
+    "word": "GUIZO",
+    "normalized": "GUIZO"
+  },
+  {
+    "id": 2577,
+    "word": "GUMES",
+    "normalized": "GUMES"
+  },
+  {
+    "id": 2578,
+    "word": "GURIA",
+    "normalized": "GURIA"
+  },
+  {
+    "id": 2579,
+    "word": "GURIS",
+    "normalized": "GURIS"
+  },
+  {
+    "id": 2580,
+    "word": "HAJAM",
+    "normalized": "HAJAM"
+  },
+  {
+    "id": 2581,
+    "word": "HAJAS",
+    "normalized": "HAJAS"
+  },
+  {
+    "id": 2582,
+    "word": "HALOS",
+    "normalized": "HALOS"
+  },
+  {
+    "id": 2583,
+    "word": "HARAS",
+    "normalized": "HARAS"
+  },
+  {
+    "id": 2584,
+    "word": "HARPA",
+    "normalized": "HARPA"
+  },
+  {
+    "id": 2585,
+    "word": "HASTE",
+    "normalized": "HASTE"
+  },
+  {
+    "id": 2586,
+    "word": "HAURE",
+    "normalized": "HAURE"
+  },
+  {
+    "id": 2587,
+    "word": "HAURI",
+    "normalized": "HAURI"
+  },
+  {
+    "id": 2588,
+    "word": "HAVEI",
+    "normalized": "HAVEI"
+  },
+  {
+    "id": 2589,
+    "word": "HAVER",
+    "normalized": "HAVER"
+  },
+  {
+    "id": 2590,
+    "word": "HAVIA",
+    "normalized": "HAVIA"
+  },
+  {
+    "id": 2591,
+    "word": "HAVÃª",
+    "normalized": "HAVAª"
+  },
+  {
+    "id": 2592,
+    "word": "HERAS",
+    "normalized": "HERAS"
+  },
+  {
+    "id": 2593,
+    "word": "HERDA",
+    "normalized": "HERDA"
+  },
+  {
+    "id": 2594,
+    "word": "HERDE",
+    "normalized": "HERDE"
+  },
+  {
+    "id": 2595,
+    "word": "HERDO",
+    "normalized": "HERDO"
+  },
+  {
+    "id": 2596,
+    "word": "HIATO",
+    "normalized": "HIATO"
+  },
+  {
+    "id": 2597,
+    "word": "HIENA",
+    "normalized": "HIENA"
+  },
+  {
+    "id": 2598,
+    "word": "HILAR",
+    "normalized": "HILAR"
+  },
+  {
+    "id": 2599,
+    "word": "HINDU",
+    "normalized": "HINDU"
+  },
+  {
+    "id": 2600,
+    "word": "HINOS",
+    "normalized": "HINOS"
+  },
+  {
+    "id": 2601,
+    "word": "HOMEM",
+    "normalized": "HOMEM"
+  },
+  {
+    "id": 2602,
+    "word": "HONRA",
+    "normalized": "HONRA"
+  },
+  {
+    "id": 2603,
+    "word": "HONRE",
+    "normalized": "HONRE"
+  },
+  {
+    "id": 2604,
+    "word": "HONRO",
+    "normalized": "HONRO"
+  },
+  {
+    "id": 2605,
+    "word": "HORDA",
+    "normalized": "HORDA"
+  },
+  {
+    "id": 2606,
+    "word": "HORTA",
+    "normalized": "HORTA"
+  },
+  {
+    "id": 2607,
+    "word": "HORTO",
+    "normalized": "HORTO"
+  },
+  {
+    "id": 2608,
+    "word": "HOUVE",
+    "normalized": "HOUVE"
+  },
+  {
+    "id": 2609,
+    "word": "HUNOS",
+    "normalized": "HUNOS"
+  },
+  {
+    "id": 2610,
+    "word": "HURRA",
+    "normalized": "HURRA"
+  },
+  {
+    "id": 2611,
+    "word": "IATES",
+    "normalized": "IATES"
+  },
+  {
+    "id": 2612,
+    "word": "IBERO",
+    "normalized": "IBERO"
+  },
+  {
+    "id": 2613,
+    "word": "ICEIS",
+    "normalized": "ICEIS"
+  },
+  {
+    "id": 2614,
+    "word": "ICEMO",
+    "normalized": "ICEMO"
+  },
+  {
+    "id": 2615,
+    "word": "IDADE",
+    "normalized": "IDADE"
+  },
+  {
+    "id": 2616,
+    "word": "IDEAL",
+    "normalized": "IDEAL"
+  },
+  {
+    "id": 2617,
+    "word": "IDOSA",
+    "normalized": "IDOSA"
+  },
+  {
+    "id": 2618,
+    "word": "IDOSO",
+    "normalized": "IDOSO"
+  },
+  {
+    "id": 2619,
+    "word": "IENES",
+    "normalized": "IENES"
+  },
+  {
+    "id": 2620,
+    "word": "ILESA",
+    "normalized": "ILESA"
+  },
+  {
+    "id": 2621,
+    "word": "ILESO",
+    "normalized": "ILESO"
+  },
+  {
+    "id": 2622,
+    "word": "ILHAI",
+    "normalized": "ILHAI"
+  },
+  {
+    "id": 2623,
+    "word": "ILHAM",
+    "normalized": "ILHAM"
+  },
+  {
+    "id": 2624,
+    "word": "ILHAR",
+    "normalized": "ILHAR"
+  },
+  {
+    "id": 2625,
+    "word": "ILHEI",
+    "normalized": "ILHEI"
+  },
+  {
+    "id": 2626,
+    "word": "ILHEM",
+    "normalized": "ILHEM"
+  },
+  {
+    "id": 2627,
+    "word": "ILHES",
+    "normalized": "ILHES"
+  },
+  {
+    "id": 2628,
+    "word": "ILHOU",
+    "normalized": "ILHOU"
+  },
+  {
+    "id": 2629,
+    "word": "ILUDA",
+    "normalized": "ILUDA"
+  },
+  {
+    "id": 2630,
+    "word": "ILUDE",
+    "normalized": "ILUDE"
+  },
+  {
+    "id": 2631,
+    "word": "ILUDI",
+    "normalized": "ILUDI"
+  },
+  {
+    "id": 2632,
+    "word": "ILUDO",
+    "normalized": "ILUDO"
+  },
+  {
+    "id": 2633,
+    "word": "IMITA",
+    "normalized": "IMITA"
+  },
+  {
+    "id": 2634,
+    "word": "IMITE",
+    "normalized": "IMITE"
+  },
+  {
+    "id": 2635,
+    "word": "IMITO",
+    "normalized": "IMITO"
+  },
+  {
+    "id": 2636,
+    "word": "IMOLA",
+    "normalized": "IMOLA"
+  },
+  {
+    "id": 2637,
+    "word": "IMOLE",
+    "normalized": "IMOLE"
+  },
+  {
+    "id": 2638,
+    "word": "IMOLO",
+    "normalized": "IMOLO"
+  },
+  {
+    "id": 2639,
+    "word": "IMPOR",
+    "normalized": "IMPOR"
+  },
+  {
+    "id": 2640,
+    "word": "IMPUS",
+    "normalized": "IMPUS"
+  },
+  {
+    "id": 2641,
+    "word": "IMUNE",
+    "normalized": "IMUNE"
+  },
+  {
+    "id": 2642,
+    "word": "INALA",
+    "normalized": "INALA"
+  },
+  {
+    "id": 2643,
+    "word": "INALE",
+    "normalized": "INALE"
+  },
+  {
+    "id": 2644,
+    "word": "INALO",
+    "normalized": "INALO"
+  },
+  {
+    "id": 2645,
+    "word": "INATA",
+    "normalized": "INATA"
+  },
+  {
+    "id": 2646,
+    "word": "INATO",
+    "normalized": "INATO"
+  },
+  {
+    "id": 2647,
+    "word": "INCAS",
+    "normalized": "INCAS"
+  },
+  {
+    "id": 2648,
+    "word": "INCHA",
+    "normalized": "INCHA"
+  },
+  {
+    "id": 2649,
+    "word": "INCHE",
+    "normalized": "INCHE"
+  },
+  {
+    "id": 2650,
+    "word": "INCHO",
+    "normalized": "INCHO"
+  },
+  {
+    "id": 2651,
+    "word": "INCOA",
+    "normalized": "INCOA"
+  },
+  {
+    "id": 2652,
+    "word": "INCOE",
+    "normalized": "INCOE"
+  },
+  {
+    "id": 2653,
+    "word": "INDUZ",
+    "normalized": "INDUZ"
+  },
+  {
+    "id": 2654,
+    "word": "INFLA",
+    "normalized": "INFLA"
+  },
+  {
+    "id": 2655,
+    "word": "INFLE",
+    "normalized": "INFLE"
+  },
+  {
+    "id": 2656,
+    "word": "INFLO",
+    "normalized": "INFLO"
+  },
+  {
+    "id": 2657,
+    "word": "INFRA",
+    "normalized": "INFRA"
+  },
+  {
+    "id": 2658,
+    "word": "INIBA",
+    "normalized": "INIBA"
+  },
+  {
+    "id": 2659,
+    "word": "INIBE",
+    "normalized": "INIBE"
+  },
+  {
+    "id": 2660,
+    "word": "INIBI",
+    "normalized": "INIBI"
+  },
+  {
+    "id": 2661,
+    "word": "INIBO",
+    "normalized": "INIBO"
+  },
+  {
+    "id": 2662,
+    "word": "INOVA",
+    "normalized": "INOVA"
+  },
+  {
+    "id": 2663,
+    "word": "INOVE",
+    "normalized": "INOVE"
+  },
+  {
+    "id": 2664,
+    "word": "INOVO",
+    "normalized": "INOVO"
+  },
+  {
+    "id": 2665,
+    "word": "INSTA",
+    "normalized": "INSTA"
+  },
+  {
+    "id": 2666,
+    "word": "INSTE",
+    "normalized": "INSTE"
+  },
+  {
+    "id": 2667,
+    "word": "INSTO",
+    "normalized": "INSTO"
+  },
+  {
+    "id": 2668,
+    "word": "INTUA",
+    "normalized": "INTUA"
+  },
+  {
+    "id": 2669,
+    "word": "INTUI",
+    "normalized": "INTUI"
+  },
+  {
+    "id": 2670,
+    "word": "INTUO",
+    "normalized": "INTUO"
+  },
+  {
+    "id": 2671,
+    "word": "IRADA",
+    "normalized": "IRADA"
+  },
+  {
+    "id": 2672,
+    "word": "IRADO",
+    "normalized": "IRADO"
+  },
+  {
+    "id": 2673,
+    "word": "IRDES",
+    "normalized": "IRDES"
+  },
+  {
+    "id": 2674,
+    "word": "IREIS",
+    "normalized": "IREIS"
+  },
+  {
+    "id": 2675,
+    "word": "IREMO",
+    "normalized": "IREMO"
+  },
+  {
+    "id": 2676,
+    "word": "IRIAM",
+    "normalized": "IRIAM"
+  },
+  {
+    "id": 2677,
+    "word": "IRIAS",
+    "normalized": "IRIAS"
+  },
+  {
+    "id": 2678,
+    "word": "IRMOS",
+    "normalized": "IRMOS"
+  },
+  {
+    "id": 2679,
+    "word": "ISCAS",
+    "normalized": "ISCAS"
+  },
+  {
+    "id": 2680,
+    "word": "ISOLA",
+    "normalized": "ISOLA"
+  },
+  {
+    "id": 2681,
+    "word": "ISOLE",
+    "normalized": "ISOLE"
+  },
+  {
+    "id": 2682,
+    "word": "ISOLO",
+    "normalized": "ISOLO"
+  },
+  {
+    "id": 2683,
+    "word": "ISTMO",
+    "normalized": "ISTMO"
+  },
+  {
+    "id": 2684,
+    "word": "ITENS",
+    "normalized": "ITENS"
+  },
+  {
+    "id": 2685,
+    "word": "ITERA",
+    "normalized": "ITERA"
+  },
+  {
+    "id": 2686,
+    "word": "ITERE",
+    "normalized": "ITERE"
+  },
+  {
+    "id": 2687,
+    "word": "ITERO",
+    "normalized": "ITERO"
+  },
+  {
+    "id": 2688,
+    "word": "JACAS",
+    "normalized": "JACAS"
+  },
+  {
+    "id": 2689,
+    "word": "JANTE",
+    "normalized": "JANTE"
+  },
+  {
+    "id": 2690,
+    "word": "JANTO",
+    "normalized": "JANTO"
+  },
+  {
+    "id": 2691,
+    "word": "JARDA",
+    "normalized": "JARDA"
+  },
+  {
+    "id": 2692,
+    "word": "JARRA",
+    "normalized": "JARRA"
+  },
+  {
+    "id": 2693,
+    "word": "JARRO",
+    "normalized": "JARRO"
+  },
+  {
+    "id": 2694,
+    "word": "JATOS",
+    "normalized": "JATOS"
+  },
+  {
+    "id": 2695,
+    "word": "JAULA",
+    "normalized": "JAULA"
+  },
+  {
+    "id": 2696,
+    "word": "JAZAM",
+    "normalized": "JAZAM"
+  },
+  {
+    "id": 2697,
+    "word": "JAZAS",
+    "normalized": "JAZAS"
+  },
+  {
+    "id": 2698,
+    "word": "JAZEI",
+    "normalized": "JAZEI"
+  },
+  {
+    "id": 2699,
+    "word": "JAZEM",
+    "normalized": "JAZEM"
+  },
+  {
+    "id": 2700,
+    "word": "JAZER",
+    "normalized": "JAZER"
+  },
+  {
+    "id": 2701,
+    "word": "JAZES",
+    "normalized": "JAZES"
+  },
+  {
+    "id": 2702,
+    "word": "JAZEU",
+    "normalized": "JAZEU"
+  },
+  {
+    "id": 2703,
+    "word": "JAZIA",
+    "normalized": "JAZIA"
+  },
+  {
+    "id": 2704,
+    "word": "JAZÃª",
+    "normalized": "JAZAª"
+  },
+  {
+    "id": 2705,
+    "word": "JECAS",
+    "normalized": "JECAS"
+  },
+  {
+    "id": 2706,
+    "word": "JEGUE",
+    "normalized": "JEGUE"
+  },
+  {
+    "id": 2707,
+    "word": "JEJUA",
+    "normalized": "JEJUA"
+  },
+  {
+    "id": 2708,
+    "word": "JEJUE",
+    "normalized": "JEJUE"
+  },
+  {
+    "id": 2709,
+    "word": "JEJUM",
+    "normalized": "JEJUM"
+  },
+  {
+    "id": 2710,
+    "word": "JEJUO",
+    "normalized": "JEJUO"
+  },
+  {
+    "id": 2711,
+    "word": "JINGA",
+    "normalized": "JINGA"
+  },
+  {
+    "id": 2712,
+    "word": "JOANA",
+    "normalized": "JOANA"
+  },
+  {
+    "id": 2713,
+    "word": "JOGAI",
+    "normalized": "JOGAI"
+  },
+  {
+    "id": 2714,
+    "word": "JOGAM",
+    "normalized": "JOGAM"
+  },
+  {
+    "id": 2715,
+    "word": "JOGAR",
+    "normalized": "JOGAR"
+  },
+  {
+    "id": 2716,
+    "word": "JOGAS",
+    "normalized": "JOGAS"
+  },
+  {
+    "id": 2717,
+    "word": "JOGOS",
+    "normalized": "JOGOS"
+  },
+  {
+    "id": 2718,
+    "word": "JOGOU",
+    "normalized": "JOGOU"
+  },
+  {
+    "id": 2719,
+    "word": "JOGUE",
+    "normalized": "JOGUE"
+  },
+  {
+    "id": 2720,
+    "word": "JORRA",
+    "normalized": "JORRA"
+  },
+  {
+    "id": 2721,
+    "word": "JORRE",
+    "normalized": "JORRE"
+  },
+  {
+    "id": 2722,
+    "word": "JORRO",
+    "normalized": "JORRO"
+  },
+  {
+    "id": 2723,
+    "word": "JUBAS",
+    "normalized": "JUBAS"
+  },
+  {
+    "id": 2724,
+    "word": "JUDAS",
+    "normalized": "JUDAS"
+  },
+  {
+    "id": 2725,
+    "word": "JUDEU",
+    "normalized": "JUDEU"
+  },
+  {
+    "id": 2726,
+    "word": "JUDIA",
+    "normalized": "JUDIA"
+  },
+  {
+    "id": 2727,
+    "word": "JUDIE",
+    "normalized": "JUDIE"
+  },
+  {
+    "id": 2728,
+    "word": "JUDIO",
+    "normalized": "JUDIO"
+  },
+  {
+    "id": 2729,
+    "word": "JULGA",
+    "normalized": "JULGA"
+  },
+  {
+    "id": 2730,
+    "word": "JULGO",
+    "normalized": "JULGO"
+  },
+  {
+    "id": 2731,
+    "word": "JULHO",
+    "normalized": "JULHO"
+  },
+  {
+    "id": 2732,
+    "word": "JUNHO",
+    "normalized": "JUNHO"
+  },
+  {
+    "id": 2733,
+    "word": "JUNTA",
+    "normalized": "JUNTA"
+  },
+  {
+    "id": 2734,
+    "word": "JUNTE",
+    "normalized": "JUNTE"
+  },
+  {
+    "id": 2735,
+    "word": "JURAI",
+    "normalized": "JURAI"
+  },
+  {
+    "id": 2736,
+    "word": "JURAM",
+    "normalized": "JURAM"
+  },
+  {
+    "id": 2737,
+    "word": "JURAR",
+    "normalized": "JURAR"
+  },
+  {
+    "id": 2738,
+    "word": "JURAS",
+    "normalized": "JURAS"
+  },
+  {
+    "id": 2739,
+    "word": "JUREI",
+    "normalized": "JUREI"
+  },
+  {
+    "id": 2740,
+    "word": "JUREM",
+    "normalized": "JUREM"
+  },
+  {
+    "id": 2741,
+    "word": "JURES",
+    "normalized": "JURES"
+  },
+  {
+    "id": 2742,
+    "word": "JUROS",
+    "normalized": "JUROS"
+  },
+  {
+    "id": 2743,
+    "word": "JUROU",
+    "normalized": "JUROU"
+  },
+  {
+    "id": 2744,
+    "word": "JUSTA",
+    "normalized": "JUSTA"
+  },
+  {
+    "id": 2745,
+    "word": "JUSTO",
+    "normalized": "JUSTO"
+  },
+  {
+    "id": 2746,
+    "word": "LABOR",
+    "normalized": "LABOR"
+  },
+  {
+    "id": 2747,
+    "word": "LACEI",
+    "normalized": "LACEI"
+  },
+  {
+    "id": 2748,
+    "word": "LACEM",
+    "normalized": "LACEM"
+  },
+  {
+    "id": 2749,
+    "word": "LACES",
+    "normalized": "LACES"
+  },
+  {
+    "id": 2750,
+    "word": "LACRA",
+    "normalized": "LACRA"
+  },
+  {
+    "id": 2751,
+    "word": "LACRE",
+    "normalized": "LACRE"
+  },
+  {
+    "id": 2752,
+    "word": "LACRO",
+    "normalized": "LACRO"
+  },
+  {
+    "id": 2753,
+    "word": "LADOS",
+    "normalized": "LADOS"
+  },
+  {
+    "id": 2754,
+    "word": "LADRA",
+    "normalized": "LADRA"
+  },
+  {
+    "id": 2755,
+    "word": "LADRE",
+    "normalized": "LADRE"
+  },
+  {
+    "id": 2756,
+    "word": "LADRO",
+    "normalized": "LADRO"
+  },
+  {
+    "id": 2757,
+    "word": "LAGAR",
+    "normalized": "LAGAR"
+  },
+  {
+    "id": 2758,
+    "word": "LAGOS",
+    "normalized": "LAGOS"
+  },
+  {
+    "id": 2759,
+    "word": "LAICA",
+    "normalized": "LAICA"
+  },
+  {
+    "id": 2760,
+    "word": "LAICO",
+    "normalized": "LAICO"
+  },
+  {
+    "id": 2761,
+    "word": "LAMBA",
+    "normalized": "LAMBA"
+  },
+  {
+    "id": 2762,
+    "word": "LAMBE",
+    "normalized": "LAMBE"
+  },
+  {
+    "id": 2763,
+    "word": "LAMBI",
+    "normalized": "LAMBI"
+  },
+  {
+    "id": 2764,
+    "word": "LAMBO",
+    "normalized": "LAMBO"
+  },
+  {
+    "id": 2765,
+    "word": "LANCE",
+    "normalized": "LANCE"
+  },
+  {
+    "id": 2766,
+    "word": "LAPSO",
+    "normalized": "LAPSO"
+  },
+  {
+    "id": 2767,
+    "word": "LARES",
+    "normalized": "LARES"
+  },
+  {
+    "id": 2768,
+    "word": "LARGA",
+    "normalized": "LARGA"
+  },
+  {
+    "id": 2769,
+    "word": "LARVA",
+    "normalized": "LARVA"
+  },
+  {
+    "id": 2770,
+    "word": "LASCO",
+    "normalized": "LASCO"
+  },
+  {
+    "id": 2771,
+    "word": "LATAS",
+    "normalized": "LATAS"
+  },
+  {
+    "id": 2772,
+    "word": "LATEM",
+    "normalized": "LATEM"
+  },
+  {
+    "id": 2773,
+    "word": "LATES",
+    "normalized": "LATES"
+  },
+  {
+    "id": 2774,
+    "word": "LATIA",
+    "normalized": "LATIA"
+  },
+  {
+    "id": 2775,
+    "word": "LATIM",
+    "normalized": "LATIM"
+  },
+  {
+    "id": 2776,
+    "word": "LATIR",
+    "normalized": "LATIR"
+  },
+  {
+    "id": 2777,
+    "word": "LATIS",
+    "normalized": "LATIS"
+  },
+  {
+    "id": 2778,
+    "word": "LATIU",
+    "normalized": "LATIU"
+  },
+  {
+    "id": 2779,
+    "word": "LAUDA",
+    "normalized": "LAUDA"
+  },
+  {
+    "id": 2780,
+    "word": "LAVAI",
+    "normalized": "LAVAI"
+  },
+  {
+    "id": 2781,
+    "word": "LAVAM",
+    "normalized": "LAVAM"
+  },
+  {
+    "id": 2782,
+    "word": "LAVAR",
+    "normalized": "LAVAR"
+  },
+  {
+    "id": 2783,
+    "word": "LAVAS",
+    "normalized": "LAVAS"
+  },
+  {
+    "id": 2784,
+    "word": "LAVEI",
+    "normalized": "LAVEI"
+  },
+  {
+    "id": 2785,
+    "word": "LAVEM",
+    "normalized": "LAVEM"
+  },
+  {
+    "id": 2786,
+    "word": "LAVES",
+    "normalized": "LAVES"
+  },
+  {
+    "id": 2787,
+    "word": "LAVOU",
+    "normalized": "LAVOU"
+  },
+  {
+    "id": 2788,
+    "word": "LAVRA",
+    "normalized": "LAVRA"
+  },
+  {
+    "id": 2789,
+    "word": "LAVRE",
+    "normalized": "LAVRE"
+  },
+  {
+    "id": 2790,
+    "word": "LAVRO",
+    "normalized": "LAVRO"
+  },
+  {
+    "id": 2791,
+    "word": "LEAIS",
+    "normalized": "LEAIS"
+  },
+  {
+    "id": 2792,
+    "word": "LEBRE",
+    "normalized": "LEBRE"
+  },
+  {
+    "id": 2793,
+    "word": "LEDES",
+    "normalized": "LEDES"
+  },
+  {
+    "id": 2794,
+    "word": "LEGAI",
+    "normalized": "LEGAI"
+  },
+  {
+    "id": 2795,
+    "word": "LEGAL",
+    "normalized": "LEGAL"
+  },
+  {
+    "id": 2796,
+    "word": "LEGAM",
+    "normalized": "LEGAM"
+  },
+  {
+    "id": 2797,
+    "word": "LEGAR",
+    "normalized": "LEGAR"
+  },
+  {
+    "id": 2798,
+    "word": "LEGAS",
+    "normalized": "LEGAS"
+  },
+  {
+    "id": 2799,
+    "word": "LEGOU",
+    "normalized": "LEGOU"
+  },
+  {
+    "id": 2800,
+    "word": "LEGUE",
+    "normalized": "LEGUE"
+  },
+  {
+    "id": 2801,
+    "word": "LEIAM",
+    "normalized": "LEIAM"
+  },
+  {
+    "id": 2802,
+    "word": "LEIAS",
+    "normalized": "LEIAS"
+  },
+  {
+    "id": 2803,
+    "word": "LEIGA",
+    "normalized": "LEIGA"
+  },
+  {
+    "id": 2804,
+    "word": "LEIGO",
+    "normalized": "LEIGO"
+  },
+  {
+    "id": 2805,
+    "word": "LEITO",
+    "normalized": "LEITO"
+  },
+  {
+    "id": 2806,
+    "word": "LEMAS",
+    "normalized": "LEMAS"
+  },
+  {
+    "id": 2807,
+    "word": "LEMES",
+    "normalized": "LEMES"
+  },
+  {
+    "id": 2808,
+    "word": "LENDA",
+    "normalized": "LENDA"
+  },
+  {
+    "id": 2809,
+    "word": "LENDO",
+    "normalized": "LENDO"
+  },
+  {
+    "id": 2810,
+    "word": "LENGA",
+    "normalized": "LENGA"
+  },
+  {
+    "id": 2811,
+    "word": "LENHA",
+    "normalized": "LENHA"
+  },
+  {
+    "id": 2812,
+    "word": "LENHO",
+    "normalized": "LENHO"
+  },
+  {
+    "id": 2813,
+    "word": "LENTA",
+    "normalized": "LENTA"
+  },
+  {
+    "id": 2814,
+    "word": "LENTE",
+    "normalized": "LENTE"
+  },
+  {
+    "id": 2815,
+    "word": "LEOAS",
+    "normalized": "LEOAS"
+  },
+  {
+    "id": 2816,
+    "word": "LEPRA",
+    "normalized": "LEPRA"
+  },
+  {
+    "id": 2817,
+    "word": "LEQUE",
+    "normalized": "LEQUE"
+  },
+  {
+    "id": 2818,
+    "word": "LERAM",
+    "normalized": "LERAM"
+  },
+  {
+    "id": 2819,
+    "word": "LERAS",
+    "normalized": "LERAS"
+  },
+  {
+    "id": 2820,
+    "word": "LERDA",
+    "normalized": "LERDA"
+  },
+  {
+    "id": 2821,
+    "word": "LERDO",
+    "normalized": "LERDO"
+  },
+  {
+    "id": 2822,
+    "word": "LEREI",
+    "normalized": "LEREI"
+  },
+  {
+    "id": 2823,
+    "word": "LEREM",
+    "normalized": "LEREM"
+  },
+  {
+    "id": 2824,
+    "word": "LERES",
+    "normalized": "LERES"
+  },
+  {
+    "id": 2825,
+    "word": "LERIA",
+    "normalized": "LERIA"
+  },
+  {
+    "id": 2826,
+    "word": "LERMO",
+    "normalized": "LERMO"
+  },
+  {
+    "id": 2827,
+    "word": "LESAI",
+    "normalized": "LESAI"
+  },
+  {
+    "id": 2828,
+    "word": "LESAM",
+    "normalized": "LESAM"
+  },
+  {
+    "id": 2829,
+    "word": "LESAR",
+    "normalized": "LESAR"
+  },
+  {
+    "id": 2830,
+    "word": "LESAS",
+    "normalized": "LESAS"
+  },
+  {
+    "id": 2831,
+    "word": "LESEI",
+    "normalized": "LESEI"
+  },
+  {
+    "id": 2832,
+    "word": "LESEM",
+    "normalized": "LESEM"
+  },
+  {
+    "id": 2833,
+    "word": "LESES",
+    "normalized": "LESES"
+  },
+  {
+    "id": 2834,
+    "word": "LESMA",
+    "normalized": "LESMA"
+  },
+  {
+    "id": 2835,
+    "word": "LESOU",
+    "normalized": "LESOU"
+  },
+  {
+    "id": 2836,
+    "word": "LESSE",
+    "normalized": "LESSE"
+  },
+  {
+    "id": 2837,
+    "word": "LETAL",
+    "normalized": "LETAL"
+  },
+  {
+    "id": 2838,
+    "word": "LETRA",
+    "normalized": "LETRA"
+  },
+  {
+    "id": 2839,
+    "word": "LEVAI",
+    "normalized": "LEVAI"
+  },
+  {
+    "id": 2840,
+    "word": "LEVAM",
+    "normalized": "LEVAM"
+  },
+  {
+    "id": 2841,
+    "word": "LEVAR",
+    "normalized": "LEVAR"
+  },
+  {
+    "id": 2842,
+    "word": "LEVAS",
+    "normalized": "LEVAS"
+  },
+  {
+    "id": 2843,
+    "word": "LEVEI",
+    "normalized": "LEVEI"
+  },
+  {
+    "id": 2844,
+    "word": "LEVEM",
+    "normalized": "LEVEM"
+  },
+  {
+    "id": 2845,
+    "word": "LEVES",
+    "normalized": "LEVES"
+  },
+  {
+    "id": 2846,
+    "word": "LEVOU",
+    "normalized": "LEVOU"
+  },
+  {
+    "id": 2847,
+    "word": "LHAMA",
+    "normalized": "LHAMA"
+  },
+  {
+    "id": 2848,
+    "word": "LIAME",
+    "normalized": "LIAME"
+  },
+  {
+    "id": 2849,
+    "word": "LIBRA",
+    "normalized": "LIBRA"
+  },
+  {
+    "id": 2850,
+    "word": "LICEU",
+    "normalized": "LICEU"
+  },
+  {
+    "id": 2851,
+    "word": "LICOR",
+    "normalized": "LICOR"
+  },
+  {
+    "id": 2852,
+    "word": "LIDAI",
+    "normalized": "LIDAI"
+  },
+  {
+    "id": 2853,
+    "word": "LIDAM",
+    "normalized": "LIDAM"
+  },
+  {
+    "id": 2854,
+    "word": "LIDAR",
+    "normalized": "LIDAR"
+  },
+  {
+    "id": 2855,
+    "word": "LIDAS",
+    "normalized": "LIDAS"
+  },
+  {
+    "id": 2856,
+    "word": "LIDEI",
+    "normalized": "LIDEI"
+  },
+  {
+    "id": 2857,
+    "word": "LIDEM",
+    "normalized": "LIDEM"
+  },
+  {
+    "id": 2858,
+    "word": "LIDES",
+    "normalized": "LIDES"
+  },
+  {
+    "id": 2859,
+    "word": "LIDOS",
+    "normalized": "LIDOS"
+  },
+  {
+    "id": 2860,
+    "word": "LIDOU",
+    "normalized": "LIDOU"
+  },
+  {
+    "id": 2861,
+    "word": "LIGAI",
+    "normalized": "LIGAI"
+  },
+  {
+    "id": 2862,
+    "word": "LIGAM",
+    "normalized": "LIGAM"
+  },
+  {
+    "id": 2863,
+    "word": "LIGAR",
+    "normalized": "LIGAR"
+  },
+  {
+    "id": 2864,
+    "word": "LIGAS",
+    "normalized": "LIGAS"
+  },
+  {
+    "id": 2865,
+    "word": "LIGOU",
+    "normalized": "LIGOU"
+  },
+  {
+    "id": 2866,
+    "word": "LIGUE",
+    "normalized": "LIGUE"
+  },
+  {
+    "id": 2867,
+    "word": "LIMAI",
+    "normalized": "LIMAI"
+  },
+  {
+    "id": 2868,
+    "word": "LIMAM",
+    "normalized": "LIMAM"
+  },
+  {
+    "id": 2869,
+    "word": "LIMAR",
+    "normalized": "LIMAR"
+  },
+  {
+    "id": 2870,
+    "word": "LIMAS",
+    "normalized": "LIMAS"
+  },
+  {
+    "id": 2871,
+    "word": "LIMBO",
+    "normalized": "LIMBO"
+  },
+  {
+    "id": 2872,
+    "word": "LIMEI",
+    "normalized": "LIMEI"
+  },
+  {
+    "id": 2873,
+    "word": "LIMEM",
+    "normalized": "LIMEM"
+  },
+  {
+    "id": 2874,
+    "word": "LIMES",
+    "normalized": "LIMES"
+  },
+  {
+    "id": 2875,
+    "word": "LIMOU",
+    "normalized": "LIMOU"
+  },
+  {
+    "id": 2876,
+    "word": "LIMPE",
+    "normalized": "LIMPE"
+  },
+  {
+    "id": 2877,
+    "word": "LINCE",
+    "normalized": "LINCE"
+  },
+  {
+    "id": 2878,
+    "word": "LINFA",
+    "normalized": "LINFA"
+  },
+  {
+    "id": 2879,
+    "word": "LINHO",
+    "normalized": "LINHO"
+  },
+  {
+    "id": 2880,
+    "word": "LIRAS",
+    "normalized": "LIRAS"
+  },
+  {
+    "id": 2881,
+    "word": "LISAS",
+    "normalized": "LISAS"
+  },
+  {
+    "id": 2882,
+    "word": "LISES",
+    "normalized": "LISES"
+  },
+  {
+    "id": 2883,
+    "word": "LISOS",
+    "normalized": "LISOS"
+  },
+  {
+    "id": 2884,
+    "word": "LISTA",
+    "normalized": "LISTA"
+  },
+  {
+    "id": 2885,
+    "word": "LISTE",
+    "normalized": "LISTE"
+  },
+  {
+    "id": 2886,
+    "word": "LISTO",
+    "normalized": "LISTO"
+  },
+  {
+    "id": 2887,
+    "word": "LITRO",
+    "normalized": "LITRO"
+  },
+  {
+    "id": 2888,
+    "word": "LIVRA",
+    "normalized": "LIVRA"
+  },
+  {
+    "id": 2889,
+    "word": "LIVRE",
+    "normalized": "LIVRE"
+  },
+  {
+    "id": 2890,
+    "word": "LIXAI",
+    "normalized": "LIXAI"
+  },
+  {
+    "id": 2891,
+    "word": "LIXAM",
+    "normalized": "LIXAM"
+  },
+  {
+    "id": 2892,
+    "word": "LIXAR",
+    "normalized": "LIXAR"
+  },
+  {
+    "id": 2893,
+    "word": "LIXAS",
+    "normalized": "LIXAS"
+  },
+  {
+    "id": 2894,
+    "word": "LIXEI",
+    "normalized": "LIXEI"
+  },
+  {
+    "id": 2895,
+    "word": "LIXEM",
+    "normalized": "LIXEM"
+  },
+  {
+    "id": 2896,
+    "word": "LIXES",
+    "normalized": "LIXES"
+  },
+  {
+    "id": 2897,
+    "word": "LIXOU",
+    "normalized": "LIXOU"
+  },
+  {
+    "id": 2898,
+    "word": "LOBAR",
+    "normalized": "LOBAR"
+  },
+  {
+    "id": 2899,
+    "word": "LOBAS",
+    "normalized": "LOBAS"
+  },
+  {
+    "id": 2900,
+    "word": "LOBOS",
+    "normalized": "LOBOS"
+  },
+  {
+    "id": 2901,
+    "word": "LOCAI",
+    "normalized": "LOCAI"
+  },
+  {
+    "id": 2902,
+    "word": "LOCAL",
+    "normalized": "LOCAL"
+  },
+  {
+    "id": 2903,
+    "word": "LOCAM",
+    "normalized": "LOCAM"
+  },
+  {
+    "id": 2904,
+    "word": "LOCAR",
+    "normalized": "LOCAR"
+  },
+  {
+    "id": 2905,
+    "word": "LOCAS",
+    "normalized": "LOCAS"
+  },
+  {
+    "id": 2906,
+    "word": "LOCOU",
+    "normalized": "LOCOU"
+  },
+  {
+    "id": 2907,
+    "word": "LOGRA",
+    "normalized": "LOGRA"
+  },
+  {
+    "id": 2908,
+    "word": "LOGRE",
+    "normalized": "LOGRE"
+  },
+  {
+    "id": 2909,
+    "word": "LOGRO",
+    "normalized": "LOGRO"
+  },
+  {
+    "id": 2910,
+    "word": "LOIRA",
+    "normalized": "LOIRA"
+  },
+  {
+    "id": 2911,
+    "word": "LOIRO",
+    "normalized": "LOIRO"
+  },
+  {
+    "id": 2912,
+    "word": "LOJAS",
+    "normalized": "LOJAS"
+  },
+  {
+    "id": 2913,
+    "word": "LOMBO",
+    "normalized": "LOMBO"
+  },
+  {
+    "id": 2914,
+    "word": "LONAS",
+    "normalized": "LONAS"
+  },
+  {
+    "id": 2915,
+    "word": "LONGE",
+    "normalized": "LONGE"
+  },
+  {
+    "id": 2916,
+    "word": "LONGO",
+    "normalized": "LONGO"
+  },
+  {
+    "id": 2917,
+    "word": "LOQUE",
+    "normalized": "LOQUE"
+  },
+  {
+    "id": 2918,
+    "word": "LORDE",
+    "normalized": "LORDE"
+  },
+  {
+    "id": 2919,
+    "word": "LOTAI",
+    "normalized": "LOTAI"
+  },
+  {
+    "id": 2920,
+    "word": "LOTAM",
+    "normalized": "LOTAM"
+  },
+  {
+    "id": 2921,
+    "word": "LOTAR",
+    "normalized": "LOTAR"
+  },
+  {
+    "id": 2922,
+    "word": "LOTAS",
+    "normalized": "LOTAS"
+  },
+  {
+    "id": 2923,
+    "word": "LOTEI",
+    "normalized": "LOTEI"
+  },
+  {
+    "id": 2924,
+    "word": "LOTEM",
+    "normalized": "LOTEM"
+  },
+  {
+    "id": 2925,
+    "word": "LOTES",
+    "normalized": "LOTES"
+  },
+  {
+    "id": 2926,
+    "word": "LOTOU",
+    "normalized": "LOTOU"
+  },
+  {
+    "id": 2927,
+    "word": "LOUCA",
+    "normalized": "LOUCA"
+  },
+  {
+    "id": 2928,
+    "word": "LOURA",
+    "normalized": "LOURA"
+  },
+  {
+    "id": 2929,
+    "word": "LOURO",
+    "normalized": "LOURO"
+  },
+  {
+    "id": 2930,
+    "word": "LOUSA",
+    "normalized": "LOUSA"
+  },
+  {
+    "id": 2931,
+    "word": "LOUVA",
+    "normalized": "LOUVA"
+  },
+  {
+    "id": 2932,
+    "word": "LOUVE",
+    "normalized": "LOUVE"
+  },
+  {
+    "id": 2933,
+    "word": "LOUVO",
+    "normalized": "LOUVO"
+  },
+  {
+    "id": 2934,
+    "word": "LUCRA",
+    "normalized": "LUCRA"
+  },
+  {
+    "id": 2935,
+    "word": "LUCRE",
+    "normalized": "LUCRE"
+  },
+  {
+    "id": 2936,
+    "word": "LUCRO",
+    "normalized": "LUCRO"
+  },
+  {
+    "id": 2937,
+    "word": "LULAS",
+    "normalized": "LULAS"
+  },
+  {
+    "id": 2938,
+    "word": "LUNAR",
+    "normalized": "LUNAR"
+  },
+  {
+    "id": 2939,
+    "word": "LUPAS",
+    "normalized": "LUPAS"
+  },
+  {
+    "id": 2940,
+    "word": "LUSAS",
+    "normalized": "LUSAS"
+  },
+  {
+    "id": 2941,
+    "word": "LUSOS",
+    "normalized": "LUSOS"
+  },
+  {
+    "id": 2942,
+    "word": "LUTAI",
+    "normalized": "LUTAI"
+  },
+  {
+    "id": 2943,
+    "word": "LUTAM",
+    "normalized": "LUTAM"
+  },
+  {
+    "id": 2944,
+    "word": "LUTAR",
+    "normalized": "LUTAR"
+  },
+  {
+    "id": 2945,
+    "word": "LUTAS",
+    "normalized": "LUTAS"
+  },
+  {
+    "id": 2946,
+    "word": "LUTEI",
+    "normalized": "LUTEI"
+  },
+  {
+    "id": 2947,
+    "word": "LUTEM",
+    "normalized": "LUTEM"
+  },
+  {
+    "id": 2948,
+    "word": "LUTES",
+    "normalized": "LUTES"
+  },
+  {
+    "id": 2949,
+    "word": "LUTOS",
+    "normalized": "LUTOS"
+  },
+  {
+    "id": 2950,
+    "word": "LUTOU",
+    "normalized": "LUTOU"
+  },
+  {
+    "id": 2951,
+    "word": "LUVAS",
+    "normalized": "LUVAS"
+  },
+  {
+    "id": 2952,
+    "word": "LUXOS",
+    "normalized": "LUXOS"
+  },
+  {
+    "id": 2953,
+    "word": "LUZAM",
+    "normalized": "LUZAM"
+  },
+  {
+    "id": 2954,
+    "word": "LUZAS",
+    "normalized": "LUZAS"
+  },
+  {
+    "id": 2955,
+    "word": "LUZEM",
+    "normalized": "LUZEM"
+  },
+  {
+    "id": 2956,
+    "word": "LUZIR",
+    "normalized": "LUZIR"
+  },
+  {
+    "id": 2957,
+    "word": "LUZIS",
+    "normalized": "LUZIS"
+  },
+  {
+    "id": 2958,
+    "word": "LUZIU",
+    "normalized": "LUZIU"
+  },
+  {
+    "id": 2959,
+    "word": "LÃªEM",
+    "normalized": "LAªEM"
+  },
+  {
+    "id": 2960,
+    "word": "MACAS",
+    "normalized": "MACAS"
+  },
+  {
+    "id": 2961,
+    "word": "MACHO",
+    "normalized": "MACHO"
+  },
+  {
+    "id": 2962,
+    "word": "MACIA",
+    "normalized": "MACIA"
+  },
+  {
+    "id": 2963,
+    "word": "MACRO",
+    "normalized": "MACRO"
+  },
+  {
+    "id": 2964,
+    "word": "MAGMA",
+    "normalized": "MAGMA"
+  },
+  {
+    "id": 2965,
+    "word": "MAGNA",
+    "normalized": "MAGNA"
+  },
+  {
+    "id": 2966,
+    "word": "MAGNO",
+    "normalized": "MAGNO"
+  },
+  {
+    "id": 2967,
+    "word": "MAGOE",
+    "normalized": "MAGOE"
+  },
+  {
+    "id": 2968,
+    "word": "MAGOS",
+    "normalized": "MAGOS"
+  },
+  {
+    "id": 2969,
+    "word": "MAGRA",
+    "normalized": "MAGRA"
+  },
+  {
+    "id": 2970,
+    "word": "MAIAS",
+    "normalized": "MAIAS"
+  },
+  {
+    "id": 2971,
+    "word": "MALAS",
+    "normalized": "MALAS"
+  },
+  {
+    "id": 2972,
+    "word": "MALES",
+    "normalized": "MALES"
+  },
+  {
+    "id": 2973,
+    "word": "MALHE",
+    "normalized": "MALHE"
+  },
+  {
+    "id": 2974,
+    "word": "MALHO",
+    "normalized": "MALHO"
+  },
+  {
+    "id": 2975,
+    "word": "MAMAI",
+    "normalized": "MAMAI"
+  },
+  {
+    "id": 2976,
+    "word": "MAMAM",
+    "normalized": "MAMAM"
+  },
+  {
+    "id": 2977,
+    "word": "MAMAR",
+    "normalized": "MAMAR"
+  },
+  {
+    "id": 2978,
+    "word": "MAMAS",
+    "normalized": "MAMAS"
+  },
+  {
+    "id": 2979,
+    "word": "MAMEI",
+    "normalized": "MAMEI"
+  },
+  {
+    "id": 2980,
+    "word": "MAMEM",
+    "normalized": "MAMEM"
+  },
+  {
+    "id": 2981,
+    "word": "MAMES",
+    "normalized": "MAMES"
+  },
+  {
+    "id": 2982,
+    "word": "MAMOU",
+    "normalized": "MAMOU"
+  },
+  {
+    "id": 2983,
+    "word": "MANAS",
+    "normalized": "MANAS"
+  },
+  {
+    "id": 2984,
+    "word": "MANCA",
+    "normalized": "MANCA"
+  },
+  {
+    "id": 2985,
+    "word": "MANCO",
+    "normalized": "MANCO"
+  },
+  {
+    "id": 2986,
+    "word": "MANDA",
+    "normalized": "MANDA"
+  },
+  {
+    "id": 2987,
+    "word": "MANDE",
+    "normalized": "MANDE"
+  },
+  {
+    "id": 2988,
+    "word": "MANDO",
+    "normalized": "MANDO"
+  },
+  {
+    "id": 2989,
+    "word": "MANHA",
+    "normalized": "MANHA"
+  },
+  {
+    "id": 2990,
+    "word": "MANIA",
+    "normalized": "MANIA"
+  },
+  {
+    "id": 2991,
+    "word": "MANJA",
+    "normalized": "MANJA"
+  },
+  {
+    "id": 2992,
+    "word": "MANJE",
+    "normalized": "MANJE"
+  },
+  {
+    "id": 2993,
+    "word": "MANJO",
+    "normalized": "MANJO"
+  },
+  {
+    "id": 2994,
+    "word": "MANOS",
+    "normalized": "MANOS"
+  },
+  {
+    "id": 2995,
+    "word": "MANTA",
+    "normalized": "MANTA"
+  },
+  {
+    "id": 2996,
+    "word": "MAPAS",
+    "normalized": "MAPAS"
+  },
+  {
+    "id": 2997,
+    "word": "MARES",
+    "normalized": "MARES"
+  },
+  {
+    "id": 2998,
+    "word": "MARRA",
+    "normalized": "MARRA"
+  },
+  {
+    "id": 2999,
+    "word": "MASCA",
+    "normalized": "MASCA"
+  },
+  {
+    "id": 3000,
+    "word": "MASCO",
+    "normalized": "MASCO"
+  },
+  {
+    "id": 3001,
+    "word": "MATAI",
+    "normalized": "MATAI"
+  },
+  {
+    "id": 3002,
+    "word": "MATAM",
+    "normalized": "MATAM"
+  },
+  {
+    "id": 3003,
+    "word": "MATAR",
+    "normalized": "MATAR"
+  },
+  {
+    "id": 3004,
+    "word": "MATEI",
+    "normalized": "MATEI"
+  },
+  {
+    "id": 3005,
+    "word": "MATEM",
+    "normalized": "MATEM"
+  },
+  {
+    "id": 3006,
+    "word": "MATES",
+    "normalized": "MATES"
+  },
+  {
+    "id": 3007,
+    "word": "MATIZ",
+    "normalized": "MATIZ"
+  },
+  {
+    "id": 3008,
+    "word": "MATOU",
+    "normalized": "MATOU"
+  },
+  {
+    "id": 3009,
+    "word": "MEADA",
+    "normalized": "MEADA"
+  },
+  {
+    "id": 3010,
+    "word": "MEADO",
+    "normalized": "MEADO"
+  },
+  {
+    "id": 3011,
+    "word": "MECHA",
+    "normalized": "MECHA"
+  },
+  {
+    "id": 3012,
+    "word": "MEDEM",
+    "normalized": "MEDEM"
+  },
+  {
+    "id": 3013,
+    "word": "MEDES",
+    "normalized": "MEDES"
+  },
+  {
+    "id": 3014,
+    "word": "MEDIA",
+    "normalized": "MEDIA"
+  },
+  {
+    "id": 3015,
+    "word": "MEDIR",
+    "normalized": "MEDIR"
+  },
+  {
+    "id": 3016,
+    "word": "MEDIS",
+    "normalized": "MEDIS"
+  },
+  {
+    "id": 3017,
+    "word": "MEDIU",
+    "normalized": "MEDIU"
+  },
+  {
+    "id": 3018,
+    "word": "MEDOS",
+    "normalized": "MEDOS"
+  },
+  {
+    "id": 3019,
+    "word": "MEDRA",
+    "normalized": "MEDRA"
+  },
+  {
+    "id": 3020,
+    "word": "MEDRE",
+    "normalized": "MEDRE"
+  },
+  {
+    "id": 3021,
+    "word": "MEDRO",
+    "normalized": "MEDRO"
+  },
+  {
+    "id": 3022,
+    "word": "MEIAS",
+    "normalized": "MEIAS"
+  },
+  {
+    "id": 3023,
+    "word": "MEIGA",
+    "normalized": "MEIGA"
+  },
+  {
+    "id": 3024,
+    "word": "MEIGO",
+    "normalized": "MEIGO"
+  },
+  {
+    "id": 3025,
+    "word": "MEIOS",
+    "normalized": "MEIOS"
+  },
+  {
+    "id": 3026,
+    "word": "MELAI",
+    "normalized": "MELAI"
+  },
+  {
+    "id": 3027,
+    "word": "MELAM",
+    "normalized": "MELAM"
+  },
+  {
+    "id": 3028,
+    "word": "MELAR",
+    "normalized": "MELAR"
+  },
+  {
+    "id": 3029,
+    "word": "MELAS",
+    "normalized": "MELAS"
+  },
+  {
+    "id": 3030,
+    "word": "MELEI",
+    "normalized": "MELEI"
+  },
+  {
+    "id": 3031,
+    "word": "MELEM",
+    "normalized": "MELEM"
+  },
+  {
+    "id": 3032,
+    "word": "MELES",
+    "normalized": "MELES"
+  },
+  {
+    "id": 3033,
+    "word": "MELOU",
+    "normalized": "MELOU"
+  },
+  {
+    "id": 3034,
+    "word": "MELRO",
+    "normalized": "MELRO"
+  },
+  {
+    "id": 3035,
+    "word": "MENIR",
+    "normalized": "MENIR"
+  },
+  {
+    "id": 3036,
+    "word": "MENOR",
+    "normalized": "MENOR"
+  },
+  {
+    "id": 3037,
+    "word": "MENOS",
+    "normalized": "MENOS"
+  },
+  {
+    "id": 3038,
+    "word": "MENTA",
+    "normalized": "MENTA"
+  },
+  {
+    "id": 3039,
+    "word": "MENTI",
+    "normalized": "MENTI"
+  },
+  {
+    "id": 3040,
+    "word": "MENTO",
+    "normalized": "MENTO"
+  },
+  {
+    "id": 3041,
+    "word": "MENUS",
+    "normalized": "MENUS"
+  },
+  {
+    "id": 3042,
+    "word": "MERAS",
+    "normalized": "MERAS"
+  },
+  {
+    "id": 3043,
+    "word": "MERDA",
+    "normalized": "MERDA"
+  },
+  {
+    "id": 3044,
+    "word": "MEROS",
+    "normalized": "MEROS"
+  },
+  {
+    "id": 3045,
+    "word": "MESAS",
+    "normalized": "MESAS"
+  },
+  {
+    "id": 3046,
+    "word": "MESES",
+    "normalized": "MESES"
+  },
+  {
+    "id": 3047,
+    "word": "MESMA",
+    "normalized": "MESMA"
+  },
+  {
+    "id": 3048,
+    "word": "MESMO",
+    "normalized": "MESMO"
+  },
+  {
+    "id": 3049,
+    "word": "METAM",
+    "normalized": "METAM"
+  },
+  {
+    "id": 3050,
+    "word": "METAS",
+    "normalized": "METAS"
+  },
+  {
+    "id": 3051,
+    "word": "METEI",
+    "normalized": "METEI"
+  },
+  {
+    "id": 3052,
+    "word": "METEM",
+    "normalized": "METEM"
+  },
+  {
+    "id": 3053,
+    "word": "METER",
+    "normalized": "METER"
+  },
+  {
+    "id": 3054,
+    "word": "METES",
+    "normalized": "METES"
+  },
+  {
+    "id": 3055,
+    "word": "METEU",
+    "normalized": "METEU"
+  },
+  {
+    "id": 3056,
+    "word": "METIA",
+    "normalized": "METIA"
+  },
+  {
+    "id": 3057,
+    "word": "METÃª",
+    "normalized": "METAª"
+  },
+  {
+    "id": 3058,
+    "word": "MEXAM",
+    "normalized": "MEXAM"
+  },
+  {
+    "id": 3059,
+    "word": "MEXAS",
+    "normalized": "MEXAS"
+  },
+  {
+    "id": 3060,
+    "word": "MEXEI",
+    "normalized": "MEXEI"
+  },
+  {
+    "id": 3061,
+    "word": "MEXEM",
+    "normalized": "MEXEM"
+  },
+  {
+    "id": 3062,
+    "word": "MEXER",
+    "normalized": "MEXER"
+  },
+  {
+    "id": 3063,
+    "word": "MEXES",
+    "normalized": "MEXES"
+  },
+  {
+    "id": 3064,
+    "word": "MEXEU",
+    "normalized": "MEXEU"
+  },
+  {
+    "id": 3065,
+    "word": "MEXIA",
+    "normalized": "MEXIA"
+  },
+  {
+    "id": 3066,
+    "word": "MEXÃª",
+    "normalized": "MEXAª"
+  },
+  {
+    "id": 3067,
+    "word": "MIADA",
+    "normalized": "MIADA"
+  },
+  {
+    "id": 3068,
+    "word": "MIADO",
+    "normalized": "MIADO"
+  },
+  {
+    "id": 3069,
+    "word": "MIAIS",
+    "normalized": "MIAIS"
+  },
+  {
+    "id": 3070,
+    "word": "MIAMO",
+    "normalized": "MIAMO"
+  },
+  {
+    "id": 3071,
+    "word": "MIARA",
+    "normalized": "MIARA"
+  },
+  {
+    "id": 3072,
+    "word": "MIAVA",
+    "normalized": "MIAVA"
+  },
+  {
+    "id": 3073,
+    "word": "MICOS",
+    "normalized": "MICOS"
+  },
+  {
+    "id": 3074,
+    "word": "MICRO",
+    "normalized": "MICRO"
+  },
+  {
+    "id": 3075,
+    "word": "MIEIS",
+    "normalized": "MIEIS"
+  },
+  {
+    "id": 3076,
+    "word": "MIEMO",
+    "normalized": "MIEMO"
+  },
+  {
+    "id": 3077,
+    "word": "MIGRA",
+    "normalized": "MIGRA"
+  },
+  {
+    "id": 3078,
+    "word": "MIGRE",
+    "normalized": "MIGRE"
+  },
+  {
+    "id": 3079,
+    "word": "MIGRO",
+    "normalized": "MIGRO"
+  },
+  {
+    "id": 3080,
+    "word": "MIJAI",
+    "normalized": "MIJAI"
+  },
+  {
+    "id": 3081,
+    "word": "MIJAM",
+    "normalized": "MIJAM"
+  },
+  {
+    "id": 3082,
+    "word": "MIJAR",
+    "normalized": "MIJAR"
+  },
+  {
+    "id": 3083,
+    "word": "MIJAS",
+    "normalized": "MIJAS"
+  },
+  {
+    "id": 3084,
+    "word": "MIJEI",
+    "normalized": "MIJEI"
+  },
+  {
+    "id": 3085,
+    "word": "MIJEM",
+    "normalized": "MIJEM"
+  },
+  {
+    "id": 3086,
+    "word": "MIJES",
+    "normalized": "MIJES"
+  },
+  {
+    "id": 3087,
+    "word": "MIJOU",
+    "normalized": "MIJOU"
+  },
+  {
+    "id": 3088,
+    "word": "MILHA",
+    "normalized": "MILHA"
+  },
+  {
+    "id": 3089,
+    "word": "MIMAI",
+    "normalized": "MIMAI"
+  },
+  {
+    "id": 3090,
+    "word": "MIMAM",
+    "normalized": "MIMAM"
+  },
+  {
+    "id": 3091,
+    "word": "MIMAR",
+    "normalized": "MIMAR"
+  },
+  {
+    "id": 3092,
+    "word": "MIMAS",
+    "normalized": "MIMAS"
+  },
+  {
+    "id": 3093,
+    "word": "MIMEI",
+    "normalized": "MIMEI"
+  },
+  {
+    "id": 3094,
+    "word": "MIMEM",
+    "normalized": "MIMEM"
+  },
+  {
+    "id": 3095,
+    "word": "MIMES",
+    "normalized": "MIMES"
+  },
+  {
+    "id": 3096,
+    "word": "MIMOS",
+    "normalized": "MIMOS"
+  },
+  {
+    "id": 3097,
+    "word": "MIMOU",
+    "normalized": "MIMOU"
+  },
+  {
+    "id": 3098,
+    "word": "MINAI",
+    "normalized": "MINAI"
+  },
+  {
+    "id": 3099,
+    "word": "MINAM",
+    "normalized": "MINAM"
+  },
+  {
+    "id": 3100,
+    "word": "MINAR",
+    "normalized": "MINAR"
+  },
+  {
+    "id": 3101,
+    "word": "MINEI",
+    "normalized": "MINEI"
+  },
+  {
+    "id": 3102,
+    "word": "MINEM",
+    "normalized": "MINEM"
+  },
+  {
+    "id": 3103,
+    "word": "MINES",
+    "normalized": "MINES"
+  },
+  {
+    "id": 3104,
+    "word": "MINHA",
+    "normalized": "MINHA"
+  },
+  {
+    "id": 3105,
+    "word": "MINIS",
+    "normalized": "MINIS"
+  },
+  {
+    "id": 3106,
+    "word": "MINOU",
+    "normalized": "MINOU"
+  },
+  {
+    "id": 3107,
+    "word": "MINTA",
+    "normalized": "MINTA"
+  },
+  {
+    "id": 3108,
+    "word": "MINTO",
+    "normalized": "MINTO"
+  },
+  {
+    "id": 3109,
+    "word": "MIOLO",
+    "normalized": "MIOLO"
+  },
+  {
+    "id": 3110,
+    "word": "MIRAI",
+    "normalized": "MIRAI"
+  },
+  {
+    "id": 3111,
+    "word": "MIRAM",
+    "normalized": "MIRAM"
+  },
+  {
+    "id": 3112,
+    "word": "MIRAR",
+    "normalized": "MIRAR"
+  },
+  {
+    "id": 3113,
+    "word": "MIRAS",
+    "normalized": "MIRAS"
+  },
+  {
+    "id": 3114,
+    "word": "MIREI",
+    "normalized": "MIREI"
+  },
+  {
+    "id": 3115,
+    "word": "MIREM",
+    "normalized": "MIREM"
+  },
+  {
+    "id": 3116,
+    "word": "MIRES",
+    "normalized": "MIRES"
+  },
+  {
+    "id": 3117,
+    "word": "MIROU",
+    "normalized": "MIROU"
+  },
+  {
+    "id": 3118,
+    "word": "MIRRA",
+    "normalized": "MIRRA"
+  },
+  {
+    "id": 3119,
+    "word": "MISSA",
+    "normalized": "MISSA"
+  },
+  {
+    "id": 3120,
+    "word": "MISTA",
+    "normalized": "MISTA"
+  },
+  {
+    "id": 3121,
+    "word": "MISTO",
+    "normalized": "MISTO"
+  },
+  {
+    "id": 3122,
+    "word": "MITOS",
+    "normalized": "MITOS"
+  },
+  {
+    "id": 3123,
+    "word": "MITRA",
+    "normalized": "MITRA"
+  },
+  {
+    "id": 3124,
+    "word": "MIXOS",
+    "normalized": "MIXOS"
+  },
+  {
+    "id": 3125,
+    "word": "MOAIS",
+    "normalized": "MOAIS"
+  },
+  {
+    "id": 3126,
+    "word": "MOAMO",
+    "normalized": "MOAMO"
+  },
+  {
+    "id": 3127,
+    "word": "MODAL",
+    "normalized": "MODAL"
+  },
+  {
+    "id": 3128,
+    "word": "MODAS",
+    "normalized": "MODAS"
+  },
+  {
+    "id": 3129,
+    "word": "MODEM",
+    "normalized": "MODEM"
+  },
+  {
+    "id": 3130,
+    "word": "MODOS",
+    "normalized": "MODOS"
+  },
+  {
+    "id": 3131,
+    "word": "MOEIS",
+    "normalized": "MOEIS"
+  },
+  {
+    "id": 3132,
+    "word": "MOELA",
+    "normalized": "MOELA"
+  },
+  {
+    "id": 3133,
+    "word": "MOEMO",
+    "normalized": "MOEMO"
+  },
+  {
+    "id": 3134,
+    "word": "MOERA",
+    "normalized": "MOERA"
+  },
+  {
+    "id": 3135,
+    "word": "MOFAI",
+    "normalized": "MOFAI"
+  },
+  {
+    "id": 3136,
+    "word": "MOFAM",
+    "normalized": "MOFAM"
+  },
+  {
+    "id": 3137,
+    "word": "MOFAR",
+    "normalized": "MOFAR"
+  },
+  {
+    "id": 3138,
+    "word": "MOFAS",
+    "normalized": "MOFAS"
+  },
+  {
+    "id": 3139,
+    "word": "MOFEI",
+    "normalized": "MOFEI"
+  },
+  {
+    "id": 3140,
+    "word": "MOFEM",
+    "normalized": "MOFEM"
+  },
+  {
+    "id": 3141,
+    "word": "MOFES",
+    "normalized": "MOFES"
+  },
+  {
+    "id": 3142,
+    "word": "MOFOU",
+    "normalized": "MOFOU"
+  },
+  {
+    "id": 3143,
+    "word": "MOGNO",
+    "normalized": "MOGNO"
+  },
+  {
+    "id": 3144,
+    "word": "MOIAS",
+    "normalized": "MOIAS"
+  },
+  {
+    "id": 3145,
+    "word": "MOLAR",
+    "normalized": "MOLAR"
+  },
+  {
+    "id": 3146,
+    "word": "MOLAS",
+    "normalized": "MOLAS"
+  },
+  {
+    "id": 3147,
+    "word": "MOLDA",
+    "normalized": "MOLDA"
+  },
+  {
+    "id": 3148,
+    "word": "MOLDE",
+    "normalized": "MOLDE"
+  },
+  {
+    "id": 3149,
+    "word": "MOLDO",
+    "normalized": "MOLDO"
+  },
+  {
+    "id": 3150,
+    "word": "MOLES",
+    "normalized": "MOLES"
+  },
+  {
+    "id": 3151,
+    "word": "MOLHA",
+    "normalized": "MOLHA"
+  },
+  {
+    "id": 3152,
+    "word": "MOLHE",
+    "normalized": "MOLHE"
+  },
+  {
+    "id": 3153,
+    "word": "MOMOS",
+    "normalized": "MOMOS"
+  },
+  {
+    "id": 3154,
+    "word": "MONGE",
+    "normalized": "MONGE"
+  },
+  {
+    "id": 3155,
+    "word": "MONJA",
+    "normalized": "MONJA"
+  },
+  {
+    "id": 3156,
+    "word": "MONTA",
+    "normalized": "MONTA"
+  },
+  {
+    "id": 3157,
+    "word": "MONTO",
+    "normalized": "MONTO"
+  },
+  {
+    "id": 3158,
+    "word": "MORAI",
+    "normalized": "MORAI"
+  },
+  {
+    "id": 3159,
+    "word": "MORAM",
+    "normalized": "MORAM"
+  },
+  {
+    "id": 3160,
+    "word": "MORAR",
+    "normalized": "MORAR"
+  },
+  {
+    "id": 3161,
+    "word": "MORAS",
+    "normalized": "MORAS"
+  },
+  {
+    "id": 3162,
+    "word": "MORDA",
+    "normalized": "MORDA"
+  },
+  {
+    "id": 3163,
+    "word": "MORDE",
+    "normalized": "MORDE"
+  },
+  {
+    "id": 3164,
+    "word": "MORDI",
+    "normalized": "MORDI"
+  },
+  {
+    "id": 3165,
+    "word": "MORDO",
+    "normalized": "MORDO"
+  },
+  {
+    "id": 3166,
+    "word": "MOREI",
+    "normalized": "MOREI"
+  },
+  {
+    "id": 3167,
+    "word": "MOREM",
+    "normalized": "MOREM"
+  },
+  {
+    "id": 3168,
+    "word": "MORES",
+    "normalized": "MORES"
+  },
+  {
+    "id": 3169,
+    "word": "MORNA",
+    "normalized": "MORNA"
+  },
+  {
+    "id": 3170,
+    "word": "MORNO",
+    "normalized": "MORNO"
+  },
+  {
+    "id": 3171,
+    "word": "MOROU",
+    "normalized": "MOROU"
+  },
+  {
+    "id": 3172,
+    "word": "MORRA",
+    "normalized": "MORRA"
+  },
+  {
+    "id": 3173,
+    "word": "MORRE",
+    "normalized": "MORRE"
+  },
+  {
+    "id": 3174,
+    "word": "MORRI",
+    "normalized": "MORRI"
+  },
+  {
+    "id": 3175,
+    "word": "MORSA",
+    "normalized": "MORSA"
+  },
+  {
+    "id": 3176,
+    "word": "MORTA",
+    "normalized": "MORTA"
+  },
+  {
+    "id": 3177,
+    "word": "MORTE",
+    "normalized": "MORTE"
+  },
+  {
+    "id": 3178,
+    "word": "MOSCA",
+    "normalized": "MOSCA"
+  },
+  {
+    "id": 3179,
+    "word": "MOTEL",
+    "normalized": "MOTEL"
+  },
+  {
+    "id": 3180,
+    "word": "MOTOS",
+    "normalized": "MOTOS"
+  },
+  {
+    "id": 3181,
+    "word": "MOURO",
+    "normalized": "MOURO"
+  },
+  {
+    "id": 3182,
+    "word": "MOVAM",
+    "normalized": "MOVAM"
+  },
+  {
+    "id": 3183,
+    "word": "MOVAS",
+    "normalized": "MOVAS"
+  },
+  {
+    "id": 3184,
+    "word": "MOVEI",
+    "normalized": "MOVEI"
+  },
+  {
+    "id": 3185,
+    "word": "MOVEM",
+    "normalized": "MOVEM"
+  },
+  {
+    "id": 3186,
+    "word": "MOVER",
+    "normalized": "MOVER"
+  },
+  {
+    "id": 3187,
+    "word": "MOVES",
+    "normalized": "MOVES"
+  },
+  {
+    "id": 3188,
+    "word": "MOVEU",
+    "normalized": "MOVEU"
+  },
+  {
+    "id": 3189,
+    "word": "MOVIA",
+    "normalized": "MOVIA"
+  },
+  {
+    "id": 3190,
+    "word": "MOVÃª",
+    "normalized": "MOVAª"
+  },
+  {
+    "id": 3191,
+    "word": "MUCOS",
+    "normalized": "MUCOS"
+  },
+  {
+    "id": 3192,
+    "word": "MUDAI",
+    "normalized": "MUDAI"
+  },
+  {
+    "id": 3193,
+    "word": "MUDAM",
+    "normalized": "MUDAM"
+  },
+  {
+    "id": 3194,
+    "word": "MUDAR",
+    "normalized": "MUDAR"
+  },
+  {
+    "id": 3195,
+    "word": "MUDAS",
+    "normalized": "MUDAS"
+  },
+  {
+    "id": 3196,
+    "word": "MUDEI",
+    "normalized": "MUDEI"
+  },
+  {
+    "id": 3197,
+    "word": "MUDEM",
+    "normalized": "MUDEM"
+  },
+  {
+    "id": 3198,
+    "word": "MUDES",
+    "normalized": "MUDES"
+  },
+  {
+    "id": 3199,
+    "word": "MUDEZ",
+    "normalized": "MUDEZ"
+  },
+  {
+    "id": 3200,
+    "word": "MUDOS",
+    "normalized": "MUDOS"
+  },
+  {
+    "id": 3201,
+    "word": "MUDOU",
+    "normalized": "MUDOU"
+  },
+  {
+    "id": 3202,
+    "word": "MUGEM",
+    "normalized": "MUGEM"
+  },
+  {
+    "id": 3203,
+    "word": "MUGES",
+    "normalized": "MUGES"
+  },
+  {
+    "id": 3204,
+    "word": "MUGIA",
+    "normalized": "MUGIA"
+  },
+  {
+    "id": 3205,
+    "word": "MUGIR",
+    "normalized": "MUGIR"
+  },
+  {
+    "id": 3206,
+    "word": "MUGIS",
+    "normalized": "MUGIS"
+  },
+  {
+    "id": 3207,
+    "word": "MUGIU",
+    "normalized": "MUGIU"
+  },
+  {
+    "id": 3208,
+    "word": "MUITA",
+    "normalized": "MUITA"
+  },
+  {
+    "id": 3209,
+    "word": "MUITO",
+    "normalized": "MUITO"
+  },
+  {
+    "id": 3210,
+    "word": "MUJAM",
+    "normalized": "MUJAM"
+  },
+  {
+    "id": 3211,
+    "word": "MUJAS",
+    "normalized": "MUJAS"
+  },
+  {
+    "id": 3212,
+    "word": "MULAS",
+    "normalized": "MULAS"
+  },
+  {
+    "id": 3213,
+    "word": "MULTA",
+    "normalized": "MULTA"
+  },
+  {
+    "id": 3214,
+    "word": "MULTE",
+    "normalized": "MULTE"
+  },
+  {
+    "id": 3215,
+    "word": "MULTI",
+    "normalized": "MULTI"
+  },
+  {
+    "id": 3216,
+    "word": "MULTO",
+    "normalized": "MULTO"
+  },
+  {
+    "id": 3217,
+    "word": "MUNEM",
+    "normalized": "MUNEM"
+  },
+  {
+    "id": 3218,
+    "word": "MUNES",
+    "normalized": "MUNES"
+  },
+  {
+    "id": 3219,
+    "word": "MUNIA",
+    "normalized": "MUNIA"
+  },
+  {
+    "id": 3220,
+    "word": "MUNIR",
+    "normalized": "MUNIR"
+  },
+  {
+    "id": 3221,
+    "word": "MUNIS",
+    "normalized": "MUNIS"
+  },
+  {
+    "id": 3222,
+    "word": "MUNIU",
+    "normalized": "MUNIU"
+  },
+  {
+    "id": 3223,
+    "word": "MURAI",
+    "normalized": "MURAI"
+  },
+  {
+    "id": 3224,
+    "word": "MURAL",
+    "normalized": "MURAL"
+  },
+  {
+    "id": 3225,
+    "word": "MURAM",
+    "normalized": "MURAM"
+  },
+  {
+    "id": 3226,
+    "word": "MURAR",
+    "normalized": "MURAR"
+  },
+  {
+    "id": 3227,
+    "word": "MURAS",
+    "normalized": "MURAS"
+  },
+  {
+    "id": 3228,
+    "word": "MUREI",
+    "normalized": "MUREI"
+  },
+  {
+    "id": 3229,
+    "word": "MUREM",
+    "normalized": "MUREM"
+  },
+  {
+    "id": 3230,
+    "word": "MURES",
+    "normalized": "MURES"
+  },
+  {
+    "id": 3231,
+    "word": "MUROS",
+    "normalized": "MUROS"
+  },
+  {
+    "id": 3232,
+    "word": "MUROU",
+    "normalized": "MUROU"
+  },
+  {
+    "id": 3233,
+    "word": "MURRO",
+    "normalized": "MURRO"
+  },
+  {
+    "id": 3234,
+    "word": "MUSAS",
+    "normalized": "MUSAS"
+  },
+  {
+    "id": 3235,
+    "word": "MUSCA",
+    "normalized": "MUSCA"
+  },
+  {
+    "id": 3236,
+    "word": "MUSCO",
+    "normalized": "MUSCO"
+  },
+  {
+    "id": 3237,
+    "word": "MUSGO",
+    "normalized": "MUSGO"
+  },
+  {
+    "id": 3238,
+    "word": "MÃΜES",
+    "normalized": "MAΜES"
+  },
+  {
+    "id": 3239,
+    "word": "NABLA",
+    "normalized": "NABLA"
+  },
+  {
+    "id": 3240,
+    "word": "NABOS",
+    "normalized": "NABOS"
+  },
+  {
+    "id": 3241,
+    "word": "NACOS",
+    "normalized": "NACOS"
+  },
+  {
+    "id": 3242,
+    "word": "NADAI",
+    "normalized": "NADAI"
+  },
+  {
+    "id": 3243,
+    "word": "NADAM",
+    "normalized": "NADAM"
+  },
+  {
+    "id": 3244,
+    "word": "NADAR",
+    "normalized": "NADAR"
+  },
+  {
+    "id": 3245,
+    "word": "NADAS",
+    "normalized": "NADAS"
+  },
+  {
+    "id": 3246,
+    "word": "NADEI",
+    "normalized": "NADEI"
+  },
+  {
+    "id": 3247,
+    "word": "NADEM",
+    "normalized": "NADEM"
+  },
+  {
+    "id": 3248,
+    "word": "NADES",
+    "normalized": "NADES"
+  },
+  {
+    "id": 3249,
+    "word": "NADOU",
+    "normalized": "NADOU"
+  },
+  {
+    "id": 3250,
+    "word": "NAFTA",
+    "normalized": "NAFTA"
+  },
+  {
+    "id": 3251,
+    "word": "NAIPE",
+    "normalized": "NAIPE"
+  },
+  {
+    "id": 3252,
+    "word": "NANAI",
+    "normalized": "NANAI"
+  },
+  {
+    "id": 3253,
+    "word": "NANAM",
+    "normalized": "NANAM"
+  },
+  {
+    "id": 3254,
+    "word": "NANAR",
+    "normalized": "NANAR"
+  },
+  {
+    "id": 3255,
+    "word": "NANAS",
+    "normalized": "NANAS"
+  },
+  {
+    "id": 3256,
+    "word": "NANEI",
+    "normalized": "NANEI"
+  },
+  {
+    "id": 3257,
+    "word": "NANEM",
+    "normalized": "NANEM"
+  },
+  {
+    "id": 3258,
+    "word": "NANES",
+    "normalized": "NANES"
+  },
+  {
+    "id": 3259,
+    "word": "NANOU",
+    "normalized": "NANOU"
+  },
+  {
+    "id": 3260,
+    "word": "NARDO",
+    "normalized": "NARDO"
+  },
+  {
+    "id": 3261,
+    "word": "NARIZ",
+    "normalized": "NARIZ"
+  },
+  {
+    "id": 3262,
+    "word": "NARRA",
+    "normalized": "NARRA"
+  },
+  {
+    "id": 3263,
+    "word": "NARRE",
+    "normalized": "NARRE"
+  },
+  {
+    "id": 3264,
+    "word": "NARRO",
+    "normalized": "NARRO"
+  },
+  {
+    "id": 3265,
+    "word": "NASAL",
+    "normalized": "NASAL"
+  },
+  {
+    "id": 3266,
+    "word": "NASCE",
+    "normalized": "NASCE"
+  },
+  {
+    "id": 3267,
+    "word": "NASCI",
+    "normalized": "NASCI"
+  },
+  {
+    "id": 3268,
+    "word": "NATAS",
+    "normalized": "NATAS"
+  },
+  {
+    "id": 3269,
+    "word": "NATOS",
+    "normalized": "NATOS"
+  },
+  {
+    "id": 3270,
+    "word": "NAUTA",
+    "normalized": "NAUTA"
+  },
+  {
+    "id": 3271,
+    "word": "NAVAL",
+    "normalized": "NAVAL"
+  },
+  {
+    "id": 3272,
+    "word": "NAVES",
+    "normalized": "NAVES"
+  },
+  {
+    "id": 3273,
+    "word": "NEGAI",
+    "normalized": "NEGAI"
+  },
+  {
+    "id": 3274,
+    "word": "NEGAM",
+    "normalized": "NEGAM"
+  },
+  {
+    "id": 3275,
+    "word": "NEGAR",
+    "normalized": "NEGAR"
+  },
+  {
+    "id": 3276,
+    "word": "NEGAS",
+    "normalized": "NEGAS"
+  },
+  {
+    "id": 3277,
+    "word": "NEGOU",
+    "normalized": "NEGOU"
+  },
+  {
+    "id": 3278,
+    "word": "NEGUE",
+    "normalized": "NEGUE"
+  },
+  {
+    "id": 3279,
+    "word": "NELAS",
+    "normalized": "NELAS"
+  },
+  {
+    "id": 3280,
+    "word": "NELES",
+    "normalized": "NELES"
+  },
+  {
+    "id": 3281,
+    "word": "NENÃª",
+    "normalized": "NENAª"
+  },
+  {
+    "id": 3282,
+    "word": "NERVO",
+    "normalized": "NERVO"
+  },
+  {
+    "id": 3283,
+    "word": "NESGA",
+    "normalized": "NESGA"
+  },
+  {
+    "id": 3284,
+    "word": "NESSA",
+    "normalized": "NESSA"
+  },
+  {
+    "id": 3285,
+    "word": "NESSE",
+    "normalized": "NESSE"
+  },
+  {
+    "id": 3286,
+    "word": "NESTA",
+    "normalized": "NESTA"
+  },
+  {
+    "id": 3287,
+    "word": "NESTE",
+    "normalized": "NESTE"
+  },
+  {
+    "id": 3288,
+    "word": "NETAS",
+    "normalized": "NETAS"
+  },
+  {
+    "id": 3289,
+    "word": "NETOS",
+    "normalized": "NETOS"
+  },
+  {
+    "id": 3290,
+    "word": "NEVAI",
+    "normalized": "NEVAI"
+  },
+  {
+    "id": 3291,
+    "word": "NEVAM",
+    "normalized": "NEVAM"
+  },
+  {
+    "id": 3292,
+    "word": "NEVAR",
+    "normalized": "NEVAR"
+  },
+  {
+    "id": 3293,
+    "word": "NEVAS",
+    "normalized": "NEVAS"
+  },
+  {
+    "id": 3294,
+    "word": "NEVEI",
+    "normalized": "NEVEI"
+  },
+  {
+    "id": 3295,
+    "word": "NEVEM",
+    "normalized": "NEVEM"
+  },
+  {
+    "id": 3296,
+    "word": "NEVOU",
+    "normalized": "NEVOU"
+  },
+  {
+    "id": 3297,
+    "word": "NEXOS",
+    "normalized": "NEXOS"
+  },
+  {
+    "id": 3298,
+    "word": "NICHO",
+    "normalized": "NICHO"
+  },
+  {
+    "id": 3299,
+    "word": "NINAI",
+    "normalized": "NINAI"
+  },
+  {
+    "id": 3300,
+    "word": "NINAM",
+    "normalized": "NINAM"
+  },
+  {
+    "id": 3301,
+    "word": "NINAR",
+    "normalized": "NINAR"
+  },
+  {
+    "id": 3302,
+    "word": "NINAS",
+    "normalized": "NINAS"
+  },
+  {
+    "id": 3303,
+    "word": "NINEI",
+    "normalized": "NINEI"
+  },
+  {
+    "id": 3304,
+    "word": "NINEM",
+    "normalized": "NINEM"
+  },
+  {
+    "id": 3305,
+    "word": "NINES",
+    "normalized": "NINES"
+  },
+  {
+    "id": 3306,
+    "word": "NINFA",
+    "normalized": "NINFA"
+  },
+  {
+    "id": 3307,
+    "word": "NINOU",
+    "normalized": "NINOU"
+  },
+  {
+    "id": 3308,
+    "word": "NISSO",
+    "normalized": "NISSO"
+  },
+  {
+    "id": 3309,
+    "word": "NISTO",
+    "normalized": "NISTO"
+  },
+  {
+    "id": 3310,
+    "word": "NITRO",
+    "normalized": "NITRO"
+  },
+  {
+    "id": 3311,
+    "word": "NODAL",
+    "normalized": "NODAL"
+  },
+  {
+    "id": 3312,
+    "word": "NOITE",
+    "normalized": "NOITE"
+  },
+  {
+    "id": 3313,
+    "word": "NOIVA",
+    "normalized": "NOIVA"
+  },
+  {
+    "id": 3314,
+    "word": "NOIVE",
+    "normalized": "NOIVE"
+  },
+  {
+    "id": 3315,
+    "word": "NOIVO",
+    "normalized": "NOIVO"
+  },
+  {
+    "id": 3316,
+    "word": "NOMES",
+    "normalized": "NOMES"
+  },
+  {
+    "id": 3317,
+    "word": "NONAS",
+    "normalized": "NONAS"
+  },
+  {
+    "id": 3318,
+    "word": "NONOS",
+    "normalized": "NONOS"
+  },
+  {
+    "id": 3319,
+    "word": "NORAS",
+    "normalized": "NORAS"
+  },
+  {
+    "id": 3320,
+    "word": "NORMA",
+    "normalized": "NORMA"
+  },
+  {
+    "id": 3321,
+    "word": "NOSSO",
+    "normalized": "NOSSO"
+  },
+  {
+    "id": 3322,
+    "word": "NOTAI",
+    "normalized": "NOTAI"
+  },
+  {
+    "id": 3323,
+    "word": "NOTAM",
+    "normalized": "NOTAM"
+  },
+  {
+    "id": 3324,
+    "word": "NOTAR",
+    "normalized": "NOTAR"
+  },
+  {
+    "id": 3325,
+    "word": "NOTAS",
+    "normalized": "NOTAS"
+  },
+  {
+    "id": 3326,
+    "word": "NOTEI",
+    "normalized": "NOTEI"
+  },
+  {
+    "id": 3327,
+    "word": "NOTEM",
+    "normalized": "NOTEM"
+  },
+  {
+    "id": 3328,
+    "word": "NOTES",
+    "normalized": "NOTES"
+  },
+  {
+    "id": 3329,
+    "word": "NOTOU",
+    "normalized": "NOTOU"
+  },
+  {
+    "id": 3330,
+    "word": "NOZES",
+    "normalized": "NOZES"
+  },
+  {
+    "id": 3331,
+    "word": "NUCAS",
+    "normalized": "NUCAS"
+  },
+  {
+    "id": 3332,
+    "word": "NUDEZ",
+    "normalized": "NUDEZ"
+  },
+  {
+    "id": 3333,
+    "word": "NULAS",
+    "normalized": "NULAS"
+  },
+  {
+    "id": 3334,
+    "word": "NULOS",
+    "normalized": "NULOS"
+  },
+  {
+    "id": 3335,
+    "word": "NUMAS",
+    "normalized": "NUMAS"
+  },
+  {
+    "id": 3336,
+    "word": "NUNCA",
+    "normalized": "NUNCA"
+  },
+  {
+    "id": 3337,
+    "word": "NUTRA",
+    "normalized": "NUTRA"
+  },
+  {
+    "id": 3338,
+    "word": "NUTRE",
+    "normalized": "NUTRE"
+  },
+  {
+    "id": 3339,
+    "word": "NUTRI",
+    "normalized": "NUTRI"
+  },
+  {
+    "id": 3340,
+    "word": "NUTRO",
+    "normalized": "NUTRO"
+  },
+  {
+    "id": 3341,
+    "word": "OBESA",
+    "normalized": "OBESA"
+  },
+  {
+    "id": 3342,
+    "word": "OBESO",
+    "normalized": "OBESO"
+  },
+  {
+    "id": 3343,
+    "word": "OBRAS",
+    "normalized": "OBRAS"
+  },
+  {
+    "id": 3344,
+    "word": "OBSTA",
+    "normalized": "OBSTA"
+  },
+  {
+    "id": 3345,
+    "word": "OBSTE",
+    "normalized": "OBSTE"
+  },
+  {
+    "id": 3346,
+    "word": "OBSTO",
+    "normalized": "OBSTO"
+  },
+  {
+    "id": 3347,
+    "word": "OBTER",
+    "normalized": "OBTER"
+  },
+  {
+    "id": 3348,
+    "word": "OBTÃª",
+    "normalized": "OBTAª"
+  },
+  {
+    "id": 3349,
+    "word": "OBVIA",
+    "normalized": "OBVIA"
+  },
+  {
+    "id": 3350,
+    "word": "OBVIE",
+    "normalized": "OBVIE"
+  },
+  {
+    "id": 3351,
+    "word": "OCASO",
+    "normalized": "OCASO"
+  },
+  {
+    "id": 3352,
+    "word": "OCUPA",
+    "normalized": "OCUPA"
+  },
+  {
+    "id": 3353,
+    "word": "OCUPE",
+    "normalized": "OCUPE"
+  },
+  {
+    "id": 3354,
+    "word": "OCUPO",
+    "normalized": "OCUPO"
+  },
+  {
+    "id": 3355,
+    "word": "ODEIA",
+    "normalized": "ODEIA"
+  },
+  {
+    "id": 3356,
+    "word": "ODEIE",
+    "normalized": "ODEIE"
+  },
+  {
+    "id": 3357,
+    "word": "ODEIO",
+    "normalized": "ODEIO"
+  },
+  {
+    "id": 3358,
+    "word": "ODIAI",
+    "normalized": "ODIAI"
+  },
+  {
+    "id": 3359,
+    "word": "ODIAR",
+    "normalized": "ODIAR"
+  },
+  {
+    "id": 3360,
+    "word": "ODIEI",
+    "normalized": "ODIEI"
+  },
+  {
+    "id": 3361,
+    "word": "ODIOU",
+    "normalized": "ODIOU"
+  },
+  {
+    "id": 3362,
+    "word": "OGIVA",
+    "normalized": "OGIVA"
+  },
+  {
+    "id": 3363,
+    "word": "OLHAI",
+    "normalized": "OLHAI"
+  },
+  {
+    "id": 3364,
+    "word": "OLHAM",
+    "normalized": "OLHAM"
+  },
+  {
+    "id": 3365,
+    "word": "OLHAR",
+    "normalized": "OLHAR"
+  },
+  {
+    "id": 3366,
+    "word": "OLHAS",
+    "normalized": "OLHAS"
+  },
+  {
+    "id": 3367,
+    "word": "OLHEI",
+    "normalized": "OLHEI"
+  },
+  {
+    "id": 3368,
+    "word": "OLHEM",
+    "normalized": "OLHEM"
+  },
+  {
+    "id": 3369,
+    "word": "OLHES",
+    "normalized": "OLHES"
+  },
+  {
+    "id": 3370,
+    "word": "OLHOU",
+    "normalized": "OLHOU"
+  },
+  {
+    "id": 3371,
+    "word": "OLIVA",
+    "normalized": "OLIVA"
+  },
+  {
+    "id": 3372,
+    "word": "OMBRO",
+    "normalized": "OMBRO"
+  },
+  {
+    "id": 3373,
+    "word": "OMEGA",
+    "normalized": "OMEGA"
+  },
+  {
+    "id": 3374,
+    "word": "OMITA",
+    "normalized": "OMITA"
+  },
+  {
+    "id": 3375,
+    "word": "OMITE",
+    "normalized": "OMITE"
+  },
+  {
+    "id": 3376,
+    "word": "OMITI",
+    "normalized": "OMITI"
+  },
+  {
+    "id": 3377,
+    "word": "OMITO",
+    "normalized": "OMITO"
+  },
+  {
+    "id": 3378,
+    "word": "ONERA",
+    "normalized": "ONERA"
+  },
+  {
+    "id": 3379,
+    "word": "ONERE",
+    "normalized": "ONERE"
+  },
+  {
+    "id": 3380,
+    "word": "ONERO",
+    "normalized": "ONERO"
+  },
+  {
+    "id": 3381,
+    "word": "OPACA",
+    "normalized": "OPACA"
+  },
+  {
+    "id": 3382,
+    "word": "OPACO",
+    "normalized": "OPACO"
+  },
+  {
+    "id": 3383,
+    "word": "OPALA",
+    "normalized": "OPALA"
+  },
+  {
+    "id": 3384,
+    "word": "OPERA",
+    "normalized": "OPERA"
+  },
+  {
+    "id": 3385,
+    "word": "OPERE",
+    "normalized": "OPERE"
+  },
+  {
+    "id": 3386,
+    "word": "OPERO",
+    "normalized": "OPERO"
+  },
+  {
+    "id": 3387,
+    "word": "OPINA",
+    "normalized": "OPINA"
+  },
+  {
+    "id": 3388,
+    "word": "OPINE",
+    "normalized": "OPINE"
+  },
+  {
+    "id": 3389,
+    "word": "OPINO",
+    "normalized": "OPINO"
+  },
+  {
+    "id": 3390,
+    "word": "OPOMO",
+    "normalized": "OPOMO"
+  },
+  {
+    "id": 3391,
+    "word": "OPTAI",
+    "normalized": "OPTAI"
+  },
+  {
+    "id": 3392,
+    "word": "OPTAM",
+    "normalized": "OPTAM"
+  },
+  {
+    "id": 3393,
+    "word": "OPTAR",
+    "normalized": "OPTAR"
+  },
+  {
+    "id": 3394,
+    "word": "OPTAS",
+    "normalized": "OPTAS"
+  },
+  {
+    "id": 3395,
+    "word": "OPTEI",
+    "normalized": "OPTEI"
+  },
+  {
+    "id": 3396,
+    "word": "OPTEM",
+    "normalized": "OPTEM"
+  },
+  {
+    "id": 3397,
+    "word": "OPTES",
+    "normalized": "OPTES"
+  },
+  {
+    "id": 3398,
+    "word": "OPTOU",
+    "normalized": "OPTOU"
+  },
+  {
+    "id": 3399,
+    "word": "OPÃΜE",
+    "normalized": "OPAΜE"
+  },
+  {
+    "id": 3400,
+    "word": "ORADA",
+    "normalized": "ORADA"
+  },
+  {
+    "id": 3401,
+    "word": "ORADO",
+    "normalized": "ORADO"
+  },
+  {
+    "id": 3402,
+    "word": "ORAIS",
+    "normalized": "ORAIS"
+  },
+  {
+    "id": 3403,
+    "word": "ORAMO",
+    "normalized": "ORAMO"
+  },
+  {
+    "id": 3404,
+    "word": "ORARA",
+    "normalized": "ORARA"
+  },
+  {
+    "id": 3405,
+    "word": "ORAVA",
+    "normalized": "ORAVA"
+  },
+  {
+    "id": 3406,
+    "word": "ORCAS",
+    "normalized": "ORCAS"
+  },
+  {
+    "id": 3407,
+    "word": "ORCEI",
+    "normalized": "ORCEI"
+  },
+  {
+    "id": 3408,
+    "word": "ORCEM",
+    "normalized": "ORCEM"
+  },
+  {
+    "id": 3409,
+    "word": "ORCES",
+    "normalized": "ORCES"
+  },
+  {
+    "id": 3410,
+    "word": "OREIS",
+    "normalized": "OREIS"
+  },
+  {
+    "id": 3411,
+    "word": "OREMO",
+    "normalized": "OREMO"
+  },
+  {
+    "id": 3412,
+    "word": "ORGIA",
+    "normalized": "ORGIA"
+  },
+  {
+    "id": 3413,
+    "word": "ORLAI",
+    "normalized": "ORLAI"
+  },
+  {
+    "id": 3414,
+    "word": "ORLAM",
+    "normalized": "ORLAM"
+  },
+  {
+    "id": 3415,
+    "word": "ORLAR",
+    "normalized": "ORLAR"
+  },
+  {
+    "id": 3416,
+    "word": "ORLAS",
+    "normalized": "ORLAS"
+  },
+  {
+    "id": 3417,
+    "word": "ORLEI",
+    "normalized": "ORLEI"
+  },
+  {
+    "id": 3418,
+    "word": "ORLEM",
+    "normalized": "ORLEM"
+  },
+  {
+    "id": 3419,
+    "word": "ORLES",
+    "normalized": "ORLES"
+  },
+  {
+    "id": 3420,
+    "word": "ORLOU",
+    "normalized": "ORLOU"
+  },
+  {
+    "id": 3421,
+    "word": "ORNAI",
+    "normalized": "ORNAI"
+  },
+  {
+    "id": 3422,
+    "word": "ORNAM",
+    "normalized": "ORNAM"
+  },
+  {
+    "id": 3423,
+    "word": "ORNAR",
+    "normalized": "ORNAR"
+  },
+  {
+    "id": 3424,
+    "word": "ORNAS",
+    "normalized": "ORNAS"
+  },
+  {
+    "id": 3425,
+    "word": "ORNEI",
+    "normalized": "ORNEI"
+  },
+  {
+    "id": 3426,
+    "word": "ORNEM",
+    "normalized": "ORNEM"
+  },
+  {
+    "id": 3427,
+    "word": "ORNES",
+    "normalized": "ORNES"
+  },
+  {
+    "id": 3428,
+    "word": "ORNOU",
+    "normalized": "ORNOU"
+  },
+  {
+    "id": 3429,
+    "word": "OSTRA",
+    "normalized": "OSTRA"
+  },
+  {
+    "id": 3430,
+    "word": "OUSAI",
+    "normalized": "OUSAI"
+  },
+  {
+    "id": 3431,
+    "word": "OUSAM",
+    "normalized": "OUSAM"
+  },
+  {
+    "id": 3432,
+    "word": "OUSAR",
+    "normalized": "OUSAR"
+  },
+  {
+    "id": 3433,
+    "word": "OUSAS",
+    "normalized": "OUSAS"
+  },
+  {
+    "id": 3434,
+    "word": "OUSEI",
+    "normalized": "OUSEI"
+  },
+  {
+    "id": 3435,
+    "word": "OUSEM",
+    "normalized": "OUSEM"
+  },
+  {
+    "id": 3436,
+    "word": "OUSES",
+    "normalized": "OUSES"
+  },
+  {
+    "id": 3437,
+    "word": "OUSOU",
+    "normalized": "OUSOU"
+  },
+  {
+    "id": 3438,
+    "word": "OUTRA",
+    "normalized": "OUTRA"
+  },
+  {
+    "id": 3439,
+    "word": "OUVEM",
+    "normalized": "OUVEM"
+  },
+  {
+    "id": 3440,
+    "word": "OUVES",
+    "normalized": "OUVES"
+  },
+  {
+    "id": 3441,
+    "word": "OUVIA",
+    "normalized": "OUVIA"
+  },
+  {
+    "id": 3442,
+    "word": "OUVIS",
+    "normalized": "OUVIS"
+  },
+  {
+    "id": 3443,
+    "word": "OUVIU",
+    "normalized": "OUVIU"
+  },
+  {
+    "id": 3444,
+    "word": "OVAIS",
+    "normalized": "OVAIS"
+  },
+  {
+    "id": 3445,
+    "word": "OVINO",
+    "normalized": "OVINO"
+  },
+  {
+    "id": 3446,
+    "word": "OXIDA",
+    "normalized": "OXIDA"
+  },
+  {
+    "id": 3447,
+    "word": "OXIDE",
+    "normalized": "OXIDE"
+  },
+  {
+    "id": 3448,
+    "word": "OXIDO",
+    "normalized": "OXIDO"
+  },
+  {
+    "id": 3449,
+    "word": "PACAS",
+    "normalized": "PACAS"
+  },
+  {
+    "id": 3450,
+    "word": "PACTO",
+    "normalized": "PACTO"
+  },
+  {
+    "id": 3451,
+    "word": "PAGAI",
+    "normalized": "PAGAI"
+  },
+  {
+    "id": 3452,
+    "word": "PAGAM",
+    "normalized": "PAGAM"
+  },
+  {
+    "id": 3453,
+    "word": "PAGAS",
+    "normalized": "PAGAS"
+  },
+  {
+    "id": 3454,
+    "word": "PAGOS",
+    "normalized": "PAGOS"
+  },
+  {
+    "id": 3455,
+    "word": "PAGOU",
+    "normalized": "PAGOU"
+  },
+  {
+    "id": 3456,
+    "word": "PAGUE",
+    "normalized": "PAGUE"
+  },
+  {
+    "id": 3457,
+    "word": "PAIRA",
+    "normalized": "PAIRA"
+  },
+  {
+    "id": 3458,
+    "word": "PAIRE",
+    "normalized": "PAIRE"
+  },
+  {
+    "id": 3459,
+    "word": "PAIRO",
+    "normalized": "PAIRO"
+  },
+  {
+    "id": 3460,
+    "word": "PALMO",
+    "normalized": "PALMO"
+  },
+  {
+    "id": 3461,
+    "word": "PAMPA",
+    "normalized": "PAMPA"
+  },
+  {
+    "id": 3462,
+    "word": "PANCA",
+    "normalized": "PANCA"
+  },
+  {
+    "id": 3463,
+    "word": "PANDA",
+    "normalized": "PANDA"
+  },
+  {
+    "id": 3464,
+    "word": "PANOS",
+    "normalized": "PANOS"
+  },
+  {
+    "id": 3465,
+    "word": "PAPAI",
+    "normalized": "PAPAI"
+  },
+  {
+    "id": 3466,
+    "word": "PAPAM",
+    "normalized": "PAPAM"
+  },
+  {
+    "id": 3467,
+    "word": "PAPAR",
+    "normalized": "PAPAR"
+  },
+  {
+    "id": 3468,
+    "word": "PAPAS",
+    "normalized": "PAPAS"
+  },
+  {
+    "id": 3469,
+    "word": "PAPEI",
+    "normalized": "PAPEI"
+  },
+  {
+    "id": 3470,
+    "word": "PAPEM",
+    "normalized": "PAPEM"
+  },
+  {
+    "id": 3471,
+    "word": "PAPES",
+    "normalized": "PAPES"
+  },
+  {
+    "id": 3472,
+    "word": "PAPOS",
+    "normalized": "PAPOS"
+  },
+  {
+    "id": 3473,
+    "word": "PAPOU",
+    "normalized": "PAPOU"
+  },
+  {
+    "id": 3474,
+    "word": "PARAI",
+    "normalized": "PARAI"
+  },
+  {
+    "id": 3475,
+    "word": "PARAM",
+    "normalized": "PARAM"
+  },
+  {
+    "id": 3476,
+    "word": "PARAR",
+    "normalized": "PARAR"
+  },
+  {
+    "id": 3477,
+    "word": "PARAS",
+    "normalized": "PARAS"
+  },
+  {
+    "id": 3478,
+    "word": "PARCA",
+    "normalized": "PARCA"
+  },
+  {
+    "id": 3479,
+    "word": "PARCO",
+    "normalized": "PARCO"
+  },
+  {
+    "id": 3480,
+    "word": "PARDA",
+    "normalized": "PARDA"
+  },
+  {
+    "id": 3481,
+    "word": "PAREI",
+    "normalized": "PAREI"
+  },
+  {
+    "id": 3482,
+    "word": "PAREM",
+    "normalized": "PAREM"
+  },
+  {
+    "id": 3483,
+    "word": "PARES",
+    "normalized": "PARES"
+  },
+  {
+    "id": 3484,
+    "word": "PARIA",
+    "normalized": "PARIA"
+  },
+  {
+    "id": 3485,
+    "word": "PARIR",
+    "normalized": "PARIR"
+  },
+  {
+    "id": 3486,
+    "word": "PARIU",
+    "normalized": "PARIU"
+  },
+  {
+    "id": 3487,
+    "word": "PAROU",
+    "normalized": "PAROU"
+  },
+  {
+    "id": 3488,
+    "word": "PARTA",
+    "normalized": "PARTA"
+  },
+  {
+    "id": 3489,
+    "word": "PARTI",
+    "normalized": "PARTI"
+  },
+  {
+    "id": 3490,
+    "word": "PARTO",
+    "normalized": "PARTO"
+  },
+  {
+    "id": 3491,
+    "word": "PARVO",
+    "normalized": "PARVO"
+  },
+  {
+    "id": 3492,
+    "word": "PASMA",
+    "normalized": "PASMA"
+  },
+  {
+    "id": 3493,
+    "word": "PASME",
+    "normalized": "PASME"
+  },
+  {
+    "id": 3494,
+    "word": "PASMO",
+    "normalized": "PASMO"
+  },
+  {
+    "id": 3495,
+    "word": "PASSE",
+    "normalized": "PASSE"
+  },
+  {
+    "id": 3496,
+    "word": "PASTE",
+    "normalized": "PASTE"
+  },
+  {
+    "id": 3497,
+    "word": "PATAS",
+    "normalized": "PATAS"
+  },
+  {
+    "id": 3498,
+    "word": "PATIM",
+    "normalized": "PATIM"
+  },
+  {
+    "id": 3499,
+    "word": "PAUTA",
+    "normalized": "PAUTA"
+  },
+  {
+    "id": 3500,
+    "word": "PAUTE",
+    "normalized": "PAUTE"
+  },
+  {
+    "id": 3501,
+    "word": "PAUTO",
+    "normalized": "PAUTO"
+  },
+  {
+    "id": 3502,
+    "word": "PAVIO",
+    "normalized": "PAVIO"
+  },
+  {
+    "id": 3503,
+    "word": "PAVOR",
+    "normalized": "PAVOR"
+  },
+  {
+    "id": 3504,
+    "word": "PECAI",
+    "normalized": "PECAI"
+  },
+  {
+    "id": 3505,
+    "word": "PECAM",
+    "normalized": "PECAM"
+  },
+  {
+    "id": 3506,
+    "word": "PECAR",
+    "normalized": "PECAR"
+  },
+  {
+    "id": 3507,
+    "word": "PECAS",
+    "normalized": "PECAS"
+  },
+  {
+    "id": 3508,
+    "word": "PECOU",
+    "normalized": "PECOU"
+  },
+  {
+    "id": 3509,
+    "word": "PEDAL",
+    "normalized": "PEDAL"
+  },
+  {
+    "id": 3510,
+    "word": "PEDEM",
+    "normalized": "PEDEM"
+  },
+  {
+    "id": 3511,
+    "word": "PEDES",
+    "normalized": "PEDES"
+  },
+  {
+    "id": 3512,
+    "word": "PEDIA",
+    "normalized": "PEDIA"
+  },
+  {
+    "id": 3513,
+    "word": "PEDIR",
+    "normalized": "PEDIR"
+  },
+  {
+    "id": 3514,
+    "word": "PEDIS",
+    "normalized": "PEDIS"
+  },
+  {
+    "id": 3515,
+    "word": "PEDIU",
+    "normalized": "PEDIU"
+  },
+  {
+    "id": 3516,
+    "word": "PEGAI",
+    "normalized": "PEGAI"
+  },
+  {
+    "id": 3517,
+    "word": "PEGAM",
+    "normalized": "PEGAM"
+  },
+  {
+    "id": 3518,
+    "word": "PEGAR",
+    "normalized": "PEGAR"
+  },
+  {
+    "id": 3519,
+    "word": "PEGAS",
+    "normalized": "PEGAS"
+  },
+  {
+    "id": 3520,
+    "word": "PEGOU",
+    "normalized": "PEGOU"
+  },
+  {
+    "id": 3521,
+    "word": "PEGUE",
+    "normalized": "PEGUE"
+  },
+  {
+    "id": 3522,
+    "word": "PEIDA",
+    "normalized": "PEIDA"
+  },
+  {
+    "id": 3523,
+    "word": "PEIDE",
+    "normalized": "PEIDE"
+  },
+  {
+    "id": 3524,
+    "word": "PEIDO",
+    "normalized": "PEIDO"
+  },
+  {
+    "id": 3525,
+    "word": "PEITA",
+    "normalized": "PEITA"
+  },
+  {
+    "id": 3526,
+    "word": "PEITE",
+    "normalized": "PEITE"
+  },
+  {
+    "id": 3527,
+    "word": "PEITO",
+    "normalized": "PEITO"
+  },
+  {
+    "id": 3528,
+    "word": "PELAI",
+    "normalized": "PELAI"
+  },
+  {
+    "id": 3529,
+    "word": "PELAM",
+    "normalized": "PELAM"
+  },
+  {
+    "id": 3530,
+    "word": "PELAR",
+    "normalized": "PELAR"
+  },
+  {
+    "id": 3531,
+    "word": "PELAS",
+    "normalized": "PELAS"
+  },
+  {
+    "id": 3532,
+    "word": "PELEI",
+    "normalized": "PELEI"
+  },
+  {
+    "id": 3533,
+    "word": "PELEM",
+    "normalized": "PELEM"
+  },
+  {
+    "id": 3534,
+    "word": "PELES",
+    "normalized": "PELES"
+  },
+  {
+    "id": 3535,
+    "word": "PELOS",
+    "normalized": "PELOS"
+  },
+  {
+    "id": 3536,
+    "word": "PELOU",
+    "normalized": "PELOU"
+  },
+  {
+    "id": 3537,
+    "word": "PENAI",
+    "normalized": "PENAI"
+  },
+  {
+    "id": 3538,
+    "word": "PENAL",
+    "normalized": "PENAL"
+  },
+  {
+    "id": 3539,
+    "word": "PENAM",
+    "normalized": "PENAM"
+  },
+  {
+    "id": 3540,
+    "word": "PENAR",
+    "normalized": "PENAR"
+  },
+  {
+    "id": 3541,
+    "word": "PENAS",
+    "normalized": "PENAS"
+  },
+  {
+    "id": 3542,
+    "word": "PENCA",
+    "normalized": "PENCA"
+  },
+  {
+    "id": 3543,
+    "word": "PENDA",
+    "normalized": "PENDA"
+  },
+  {
+    "id": 3544,
+    "word": "PENDE",
+    "normalized": "PENDE"
+  },
+  {
+    "id": 3545,
+    "word": "PENDI",
+    "normalized": "PENDI"
+  },
+  {
+    "id": 3546,
+    "word": "PENDO",
+    "normalized": "PENDO"
+  },
+  {
+    "id": 3547,
+    "word": "PENEI",
+    "normalized": "PENEI"
+  },
+  {
+    "id": 3548,
+    "word": "PENEM",
+    "normalized": "PENEM"
+  },
+  {
+    "id": 3549,
+    "word": "PENES",
+    "normalized": "PENES"
+  },
+  {
+    "id": 3550,
+    "word": "PENOU",
+    "normalized": "PENOU"
+  },
+  {
+    "id": 3551,
+    "word": "PENSE",
+    "normalized": "PENSE"
+  },
+  {
+    "id": 3552,
+    "word": "PENSO",
+    "normalized": "PENSO"
+  },
+  {
+    "id": 3553,
+    "word": "PEQUE",
+    "normalized": "PEQUE"
+  },
+  {
+    "id": 3554,
+    "word": "PERAS",
+    "normalized": "PERAS"
+  },
+  {
+    "id": 3555,
+    "word": "PERCA",
+    "normalized": "PERCA"
+  },
+  {
+    "id": 3556,
+    "word": "PERCO",
+    "normalized": "PERCO"
+  },
+  {
+    "id": 3557,
+    "word": "PERDE",
+    "normalized": "PERDE"
+  },
+  {
+    "id": 3558,
+    "word": "PERDI",
+    "normalized": "PERDI"
+  },
+  {
+    "id": 3559,
+    "word": "PERSA",
+    "normalized": "PERSA"
+  },
+  {
+    "id": 3560,
+    "word": "PERTO",
+    "normalized": "PERTO"
+  },
+  {
+    "id": 3561,
+    "word": "PERUA",
+    "normalized": "PERUA"
+  },
+  {
+    "id": 3562,
+    "word": "PERUS",
+    "normalized": "PERUS"
+  },
+  {
+    "id": 3563,
+    "word": "PESAI",
+    "normalized": "PESAI"
+  },
+  {
+    "id": 3564,
+    "word": "PESAM",
+    "normalized": "PESAM"
+  },
+  {
+    "id": 3565,
+    "word": "PESAR",
+    "normalized": "PESAR"
+  },
+  {
+    "id": 3566,
+    "word": "PESAS",
+    "normalized": "PESAS"
+  },
+  {
+    "id": 3567,
+    "word": "PESCA",
+    "normalized": "PESCA"
+  },
+  {
+    "id": 3568,
+    "word": "PESCO",
+    "normalized": "PESCO"
+  },
+  {
+    "id": 3569,
+    "word": "PESEI",
+    "normalized": "PESEI"
+  },
+  {
+    "id": 3570,
+    "word": "PESEM",
+    "normalized": "PESEM"
+  },
+  {
+    "id": 3571,
+    "word": "PESES",
+    "normalized": "PESES"
+  },
+  {
+    "id": 3572,
+    "word": "PESOS",
+    "normalized": "PESOS"
+  },
+  {
+    "id": 3573,
+    "word": "PESOU",
+    "normalized": "PESOU"
+  },
+  {
+    "id": 3574,
+    "word": "PESTE",
+    "normalized": "PESTE"
+  },
+  {
+    "id": 3575,
+    "word": "PETIZ",
+    "normalized": "PETIZ"
+  },
+  {
+    "id": 3576,
+    "word": "PIADA",
+    "normalized": "PIADA"
+  },
+  {
+    "id": 3577,
+    "word": "PIADO",
+    "normalized": "PIADO"
+  },
+  {
+    "id": 3578,
+    "word": "PIAIS",
+    "normalized": "PIAIS"
+  },
+  {
+    "id": 3579,
+    "word": "PIAMO",
+    "normalized": "PIAMO"
+  },
+  {
+    "id": 3580,
+    "word": "PIARA",
+    "normalized": "PIARA"
+  },
+  {
+    "id": 3581,
+    "word": "PIAVA",
+    "normalized": "PIAVA"
+  },
+  {
+    "id": 3582,
+    "word": "PICAI",
+    "normalized": "PICAI"
+  },
+  {
+    "id": 3583,
+    "word": "PICAM",
+    "normalized": "PICAM"
+  },
+  {
+    "id": 3584,
+    "word": "PICAR",
+    "normalized": "PICAR"
+  },
+  {
+    "id": 3585,
+    "word": "PICAS",
+    "normalized": "PICAS"
+  },
+  {
+    "id": 3586,
+    "word": "PICHA",
+    "normalized": "PICHA"
+  },
+  {
+    "id": 3587,
+    "word": "PICHE",
+    "normalized": "PICHE"
+  },
+  {
+    "id": 3588,
+    "word": "PICHO",
+    "normalized": "PICHO"
+  },
+  {
+    "id": 3589,
+    "word": "PICOU",
+    "normalized": "PICOU"
+  },
+  {
+    "id": 3590,
+    "word": "PIEIS",
+    "normalized": "PIEIS"
+  },
+  {
+    "id": 3591,
+    "word": "PIEMO",
+    "normalized": "PIEMO"
+  },
+  {
+    "id": 3592,
+    "word": "PIFAI",
+    "normalized": "PIFAI"
+  },
+  {
+    "id": 3593,
+    "word": "PIFAM",
+    "normalized": "PIFAM"
+  },
+  {
+    "id": 3594,
+    "word": "PIFAR",
+    "normalized": "PIFAR"
+  },
+  {
+    "id": 3595,
+    "word": "PIFAS",
+    "normalized": "PIFAS"
+  },
+  {
+    "id": 3596,
+    "word": "PIFEI",
+    "normalized": "PIFEI"
+  },
+  {
+    "id": 3597,
+    "word": "PIFEM",
+    "normalized": "PIFEM"
+  },
+  {
+    "id": 3598,
+    "word": "PIFES",
+    "normalized": "PIFES"
+  },
+  {
+    "id": 3599,
+    "word": "PIFOU",
+    "normalized": "PIFOU"
+  },
+  {
+    "id": 3600,
+    "word": "PILHA",
+    "normalized": "PILHA"
+  },
+  {
+    "id": 3601,
+    "word": "PILHE",
+    "normalized": "PILHE"
+  },
+  {
+    "id": 3602,
+    "word": "PILHO",
+    "normalized": "PILHO"
+  },
+  {
+    "id": 3603,
+    "word": "PINCE",
+    "normalized": "PINCE"
+  },
+  {
+    "id": 3604,
+    "word": "PINGA",
+    "normalized": "PINGA"
+  },
+  {
+    "id": 3605,
+    "word": "PINHA",
+    "normalized": "PINHA"
+  },
+  {
+    "id": 3606,
+    "word": "PINHO",
+    "normalized": "PINHO"
+  },
+  {
+    "id": 3607,
+    "word": "PINOS",
+    "normalized": "PINOS"
+  },
+  {
+    "id": 3608,
+    "word": "PINTA",
+    "normalized": "PINTA"
+  },
+  {
+    "id": 3609,
+    "word": "PINTE",
+    "normalized": "PINTE"
+  },
+  {
+    "id": 3610,
+    "word": "PIORA",
+    "normalized": "PIORA"
+  },
+  {
+    "id": 3611,
+    "word": "PIORE",
+    "normalized": "PIORE"
+  },
+  {
+    "id": 3612,
+    "word": "PIORO",
+    "normalized": "PIORO"
+  },
+  {
+    "id": 3613,
+    "word": "PIPAS",
+    "normalized": "PIPAS"
+  },
+  {
+    "id": 3614,
+    "word": "PIQUE",
+    "normalized": "PIQUE"
+  },
+  {
+    "id": 3615,
+    "word": "PIRAS",
+    "normalized": "PIRAS"
+  },
+  {
+    "id": 3616,
+    "word": "PISAI",
+    "normalized": "PISAI"
+  },
+  {
+    "id": 3617,
+    "word": "PISAM",
+    "normalized": "PISAM"
+  },
+  {
+    "id": 3618,
+    "word": "PISAR",
+    "normalized": "PISAR"
+  },
+  {
+    "id": 3619,
+    "word": "PISAS",
+    "normalized": "PISAS"
+  },
+  {
+    "id": 3620,
+    "word": "PISCA",
+    "normalized": "PISCA"
+  },
+  {
+    "id": 3621,
+    "word": "PISCO",
+    "normalized": "PISCO"
+  },
+  {
+    "id": 3622,
+    "word": "PISEI",
+    "normalized": "PISEI"
+  },
+  {
+    "id": 3623,
+    "word": "PISEM",
+    "normalized": "PISEM"
+  },
+  {
+    "id": 3624,
+    "word": "PISES",
+    "normalized": "PISES"
+  },
+  {
+    "id": 3625,
+    "word": "PISOU",
+    "normalized": "PISOU"
+  },
+  {
+    "id": 3626,
+    "word": "PIXEL",
+    "normalized": "PIXEL"
+  },
+  {
+    "id": 3627,
+    "word": "PIZZA",
+    "normalized": "PIZZA"
+  },
+  {
+    "id": 3628,
+    "word": "PLACA",
+    "normalized": "PLACA"
+  },
+  {
+    "id": 3629,
+    "word": "PLANA",
+    "normalized": "PLANA"
+  },
+  {
+    "id": 3630,
+    "word": "PLANE",
+    "normalized": "PLANE"
+  },
+  {
+    "id": 3631,
+    "word": "PLEBE",
+    "normalized": "PLEBE"
+  },
+  {
+    "id": 3632,
+    "word": "PLENA",
+    "normalized": "PLENA"
+  },
+  {
+    "id": 3633,
+    "word": "PLENO",
+    "normalized": "PLENO"
+  },
+  {
+    "id": 3634,
+    "word": "PLEXO",
+    "normalized": "PLEXO"
+  },
+  {
+    "id": 3635,
+    "word": "PLOTA",
+    "normalized": "PLOTA"
+  },
+  {
+    "id": 3636,
+    "word": "PLOTE",
+    "normalized": "PLOTE"
+  },
+  {
+    "id": 3637,
+    "word": "PLOTO",
+    "normalized": "PLOTO"
+  },
+  {
+    "id": 3638,
+    "word": "PLUGA",
+    "normalized": "PLUGA"
+  },
+  {
+    "id": 3639,
+    "word": "PLUGO",
+    "normalized": "PLUGO"
+  },
+  {
+    "id": 3640,
+    "word": "PNEUS",
+    "normalized": "PNEUS"
+  },
+  {
+    "id": 3641,
+    "word": "POBRE",
+    "normalized": "POBRE"
+  },
+  {
+    "id": 3642,
+    "word": "PODAI",
+    "normalized": "PODAI"
+  },
+  {
+    "id": 3643,
+    "word": "PODAM",
+    "normalized": "PODAM"
+  },
+  {
+    "id": 3644,
+    "word": "PODAR",
+    "normalized": "PODAR"
+  },
+  {
+    "id": 3645,
+    "word": "PODAS",
+    "normalized": "PODAS"
+  },
+  {
+    "id": 3646,
+    "word": "PODEI",
+    "normalized": "PODEI"
+  },
+  {
+    "id": 3647,
+    "word": "PODEM",
+    "normalized": "PODEM"
+  },
+  {
+    "id": 3648,
+    "word": "PODER",
+    "normalized": "PODER"
+  },
+  {
+    "id": 3649,
+    "word": "PODES",
+    "normalized": "PODES"
+  },
+  {
+    "id": 3650,
+    "word": "PODIA",
+    "normalized": "PODIA"
+  },
+  {
+    "id": 3651,
+    "word": "PODOU",
+    "normalized": "PODOU"
+  },
+  {
+    "id": 3652,
+    "word": "PODRE",
+    "normalized": "PODRE"
+  },
+  {
+    "id": 3653,
+    "word": "PODÃª",
+    "normalized": "PODAª"
+  },
+  {
+    "id": 3654,
+    "word": "POEMA",
+    "normalized": "POEMA"
+  },
+  {
+    "id": 3655,
+    "word": "POLAR",
+    "normalized": "POLAR"
+  },
+  {
+    "id": 3656,
+    "word": "POLCA",
+    "normalized": "POLCA"
+  },
+  {
+    "id": 3657,
+    "word": "POLIA",
+    "normalized": "POLIA"
+  },
+  {
+    "id": 3658,
+    "word": "POLIR",
+    "normalized": "POLIR"
+  },
+  {
+    "id": 3659,
+    "word": "POLIS",
+    "normalized": "POLIS"
+  },
+  {
+    "id": 3660,
+    "word": "POLIU",
+    "normalized": "POLIU"
+  },
+  {
+    "id": 3661,
+    "word": "POLPA",
+    "normalized": "POLPA"
+  },
+  {
+    "id": 3662,
+    "word": "POLVO",
+    "normalized": "POLVO"
+  },
+  {
+    "id": 3663,
+    "word": "POMAR",
+    "normalized": "POMAR"
+  },
+  {
+    "id": 3664,
+    "word": "POMBO",
+    "normalized": "POMBO"
+  },
+  {
+    "id": 3665,
+    "word": "POMOS",
+    "normalized": "POMOS"
+  },
+  {
+    "id": 3666,
+    "word": "POMPA",
+    "normalized": "POMPA"
+  },
+  {
+    "id": 3667,
+    "word": "PONDE",
+    "normalized": "PONDE"
+  },
+  {
+    "id": 3668,
+    "word": "PONDO",
+    "normalized": "PONDO"
+  },
+  {
+    "id": 3669,
+    "word": "PONHA",
+    "normalized": "PONHA"
+  },
+  {
+    "id": 3670,
+    "word": "PONHO",
+    "normalized": "PONHO"
+  },
+  {
+    "id": 3671,
+    "word": "POPOS",
+    "normalized": "POPOS"
+  },
+  {
+    "id": 3672,
+    "word": "PORCA",
+    "normalized": "PORCA"
+  },
+  {
+    "id": 3673,
+    "word": "POREI",
+    "normalized": "POREI"
+  },
+  {
+    "id": 3674,
+    "word": "POREM",
+    "normalized": "POREM"
+  },
+  {
+    "id": 3675,
+    "word": "PORES",
+    "normalized": "PORES"
+  },
+  {
+    "id": 3676,
+    "word": "PORIA",
+    "normalized": "PORIA"
+  },
+  {
+    "id": 3677,
+    "word": "POROS",
+    "normalized": "POROS"
+  },
+  {
+    "id": 3678,
+    "word": "PORRE",
+    "normalized": "PORRE"
+  },
+  {
+    "id": 3679,
+    "word": "PORTE",
+    "normalized": "PORTE"
+  },
+  {
+    "id": 3680,
+    "word": "POSAI",
+    "normalized": "POSAI"
+  },
+  {
+    "id": 3681,
+    "word": "POSAM",
+    "normalized": "POSAM"
+  },
+  {
+    "id": 3682,
+    "word": "POSAR",
+    "normalized": "POSAR"
+  },
+  {
+    "id": 3683,
+    "word": "POSAS",
+    "normalized": "POSAS"
+  },
+  {
+    "id": 3684,
+    "word": "POSEI",
+    "normalized": "POSEI"
+  },
+  {
+    "id": 3685,
+    "word": "POSEM",
+    "normalized": "POSEM"
+  },
+  {
+    "id": 3686,
+    "word": "POSES",
+    "normalized": "POSES"
+  },
+  {
+    "id": 3687,
+    "word": "POSOU",
+    "normalized": "POSOU"
+  },
+  {
+    "id": 3688,
+    "word": "POSSA",
+    "normalized": "POSSA"
+  },
+  {
+    "id": 3689,
+    "word": "POSSO",
+    "normalized": "POSSO"
+  },
+  {
+    "id": 3690,
+    "word": "POSTA",
+    "normalized": "POSTA"
+  },
+  {
+    "id": 3691,
+    "word": "POSTE",
+    "normalized": "POSTE"
+  },
+  {
+    "id": 3692,
+    "word": "POTES",
+    "normalized": "POTES"
+  },
+  {
+    "id": 3693,
+    "word": "POTRO",
+    "normalized": "POTRO"
+  },
+  {
+    "id": 3694,
+    "word": "POUCA",
+    "normalized": "POUCA"
+  },
+  {
+    "id": 3695,
+    "word": "POUCO",
+    "normalized": "POUCO"
+  },
+  {
+    "id": 3696,
+    "word": "POUPA",
+    "normalized": "POUPA"
+  },
+  {
+    "id": 3697,
+    "word": "POUPE",
+    "normalized": "POUPE"
+  },
+  {
+    "id": 3698,
+    "word": "POUPO",
+    "normalized": "POUPO"
+  },
+  {
+    "id": 3699,
+    "word": "POUSA",
+    "normalized": "POUSA"
+  },
+  {
+    "id": 3700,
+    "word": "POUSE",
+    "normalized": "POUSE"
+  },
+  {
+    "id": 3701,
+    "word": "POVOA",
+    "normalized": "POVOA"
+  },
+  {
+    "id": 3702,
+    "word": "POVOE",
+    "normalized": "POVOE"
+  },
+  {
+    "id": 3703,
+    "word": "POVOS",
+    "normalized": "POVOS"
+  },
+  {
+    "id": 3704,
+    "word": "PRAXE",
+    "normalized": "PRAXE"
+  },
+  {
+    "id": 3705,
+    "word": "PRAZO",
+    "normalized": "PRAZO"
+  },
+  {
+    "id": 3706,
+    "word": "PRECE",
+    "normalized": "PRECE"
+  },
+  {
+    "id": 3707,
+    "word": "PREGA",
+    "normalized": "PREGA"
+  },
+  {
+    "id": 3708,
+    "word": "PREGO",
+    "normalized": "PREGO"
+  },
+  {
+    "id": 3709,
+    "word": "PRELO",
+    "normalized": "PRELO"
+  },
+  {
+    "id": 3710,
+    "word": "PREMA",
+    "normalized": "PREMA"
+  },
+  {
+    "id": 3711,
+    "word": "PREME",
+    "normalized": "PREME"
+  },
+  {
+    "id": 3712,
+    "word": "PREMI",
+    "normalized": "PREMI"
+  },
+  {
+    "id": 3713,
+    "word": "PREMO",
+    "normalized": "PREMO"
+  },
+  {
+    "id": 3714,
+    "word": "PRESA",
+    "normalized": "PRESA"
+  },
+  {
+    "id": 3715,
+    "word": "PRESO",
+    "normalized": "PRESO"
+  },
+  {
+    "id": 3716,
+    "word": "PREVI",
+    "normalized": "PREVI"
+  },
+  {
+    "id": 3717,
+    "word": "PREZA",
+    "normalized": "PREZA"
+  },
+  {
+    "id": 3718,
+    "word": "PREZE",
+    "normalized": "PREZE"
+  },
+  {
+    "id": 3719,
+    "word": "PREZO",
+    "normalized": "PREZO"
+  },
+  {
+    "id": 3720,
+    "word": "PRIMA",
+    "normalized": "PRIMA"
+  },
+  {
+    "id": 3721,
+    "word": "PRIME",
+    "normalized": "PRIME"
+  },
+  {
+    "id": 3722,
+    "word": "PRIMO",
+    "normalized": "PRIMO"
+  },
+  {
+    "id": 3723,
+    "word": "PRIVA",
+    "normalized": "PRIVA"
+  },
+  {
+    "id": 3724,
+    "word": "PRIVE",
+    "normalized": "PRIVE"
+  },
+  {
+    "id": 3725,
+    "word": "PRIVO",
+    "normalized": "PRIVO"
+  },
+  {
+    "id": 3726,
+    "word": "PROAS",
+    "normalized": "PROAS"
+  },
+  {
+    "id": 3727,
+    "word": "PROLE",
+    "normalized": "PROLE"
+  },
+  {
+    "id": 3728,
+    "word": "PROSA",
+    "normalized": "PROSA"
+  },
+  {
+    "id": 3729,
+    "word": "PROVE",
+    "normalized": "PROVE"
+  },
+  {
+    "id": 3730,
+    "word": "PROVI",
+    "normalized": "PROVI"
+  },
+  {
+    "id": 3731,
+    "word": "PROVO",
+    "normalized": "PROVO"
+  },
+  {
+    "id": 3732,
+    "word": "PRUMO",
+    "normalized": "PRUMO"
+  },
+  {
+    "id": 3733,
+    "word": "PUDER",
+    "normalized": "PUDER"
+  },
+  {
+    "id": 3734,
+    "word": "PUDOR",
+    "normalized": "PUDOR"
+  },
+  {
+    "id": 3735,
+    "word": "PULAI",
+    "normalized": "PULAI"
+  },
+  {
+    "id": 3736,
+    "word": "PULAM",
+    "normalized": "PULAM"
+  },
+  {
+    "id": 3737,
+    "word": "PULAR",
+    "normalized": "PULAR"
+  },
+  {
+    "id": 3738,
+    "word": "PULAS",
+    "normalized": "PULAS"
+  },
+  {
+    "id": 3739,
+    "word": "PULEI",
+    "normalized": "PULEI"
+  },
+  {
+    "id": 3740,
+    "word": "PULEM",
+    "normalized": "PULEM"
+  },
+  {
+    "id": 3741,
+    "word": "PULES",
+    "normalized": "PULES"
+  },
+  {
+    "id": 3742,
+    "word": "PULOS",
+    "normalized": "PULOS"
+  },
+  {
+    "id": 3743,
+    "word": "PULOU",
+    "normalized": "PULOU"
+  },
+  {
+    "id": 3744,
+    "word": "PULSA",
+    "normalized": "PULSA"
+  },
+  {
+    "id": 3745,
+    "word": "PULSE",
+    "normalized": "PULSE"
+  },
+  {
+    "id": 3746,
+    "word": "PULSO",
+    "normalized": "PULSO"
+  },
+  {
+    "id": 3747,
+    "word": "PUMAS",
+    "normalized": "PUMAS"
+  },
+  {
+    "id": 3748,
+    "word": "PUNAM",
+    "normalized": "PUNAM"
+  },
+  {
+    "id": 3749,
+    "word": "PUNAS",
+    "normalized": "PUNAS"
+  },
+  {
+    "id": 3750,
+    "word": "PUNEM",
+    "normalized": "PUNEM"
+  },
+  {
+    "id": 3751,
+    "word": "PUNES",
+    "normalized": "PUNES"
+  },
+  {
+    "id": 3752,
+    "word": "PUNHA",
+    "normalized": "PUNHA"
+  },
+  {
+    "id": 3753,
+    "word": "PUNHO",
+    "normalized": "PUNHO"
+  },
+  {
+    "id": 3754,
+    "word": "PUNIA",
+    "normalized": "PUNIA"
+  },
+  {
+    "id": 3755,
+    "word": "PUNIR",
+    "normalized": "PUNIR"
+  },
+  {
+    "id": 3756,
+    "word": "PUNIS",
+    "normalized": "PUNIS"
+  },
+  {
+    "id": 3757,
+    "word": "PUNIU",
+    "normalized": "PUNIU"
+  },
+  {
+    "id": 3758,
+    "word": "PURAS",
+    "normalized": "PURAS"
+  },
+  {
+    "id": 3759,
+    "word": "PURGA",
+    "normalized": "PURGA"
+  },
+  {
+    "id": 3760,
+    "word": "PURGO",
+    "normalized": "PURGO"
+  },
+  {
+    "id": 3761,
+    "word": "PUROS",
+    "normalized": "PUROS"
+  },
+  {
+    "id": 3762,
+    "word": "PURÃª",
+    "normalized": "PURAª"
+  },
+  {
+    "id": 3763,
+    "word": "PUSER",
+    "normalized": "PUSER"
+  },
+  {
+    "id": 3764,
+    "word": "PUTAS",
+    "normalized": "PUTAS"
+  },
+  {
+    "id": 3765,
+    "word": "PUTOS",
+    "normalized": "PUTOS"
+  },
+  {
+    "id": 3766,
+    "word": "PUXAI",
+    "normalized": "PUXAI"
+  },
+  {
+    "id": 3767,
+    "word": "PUXAM",
+    "normalized": "PUXAM"
+  },
+  {
+    "id": 3768,
+    "word": "PUXAR",
+    "normalized": "PUXAR"
+  },
+  {
+    "id": 3769,
+    "word": "PUXAS",
+    "normalized": "PUXAS"
+  },
+  {
+    "id": 3770,
+    "word": "PUXEI",
+    "normalized": "PUXEI"
+  },
+  {
+    "id": 3771,
+    "word": "PUXEM",
+    "normalized": "PUXEM"
+  },
+  {
+    "id": 3772,
+    "word": "PUXES",
+    "normalized": "PUXES"
+  },
+  {
+    "id": 3773,
+    "word": "PUXOU",
+    "normalized": "PUXOU"
+  },
+  {
+    "id": 3774,
+    "word": "PÃªLO",
+    "normalized": "PAªLO"
+  },
+  {
+    "id": 3775,
+    "word": "PÃΜEM",
+    "normalized": "PAΜEM"
+  },
+  {
+    "id": 3776,
+    "word": "PÃΜES",
+    "normalized": "PAΜES"
+  },
+  {
+    "id": 3777,
+    "word": "QUAIS",
+    "normalized": "QUAIS"
+  },
+  {
+    "id": 3778,
+    "word": "QUEDE",
+    "normalized": "QUEDE"
+  },
+  {
+    "id": 3779,
+    "word": "QUEDO",
+    "normalized": "QUEDO"
+  },
+  {
+    "id": 3780,
+    "word": "QUEPE",
+    "normalized": "QUEPE"
+  },
+  {
+    "id": 3781,
+    "word": "QUERO",
+    "normalized": "QUERO"
+  },
+  {
+    "id": 3782,
+    "word": "QUINA",
+    "normalized": "QUINA"
+  },
+  {
+    "id": 3783,
+    "word": "QUITA",
+    "normalized": "QUITA"
+  },
+  {
+    "id": 3784,
+    "word": "QUITE",
+    "normalized": "QUITE"
+  },
+  {
+    "id": 3785,
+    "word": "QUOTA",
+    "normalized": "QUOTA"
+  },
+  {
+    "id": 3786,
+    "word": "RABOS",
+    "normalized": "RABOS"
+  },
+  {
+    "id": 3787,
+    "word": "RACHA",
+    "normalized": "RACHA"
+  },
+  {
+    "id": 3788,
+    "word": "RACHE",
+    "normalized": "RACHE"
+  },
+  {
+    "id": 3789,
+    "word": "RACHO",
+    "normalized": "RACHO"
+  },
+  {
+    "id": 3790,
+    "word": "RADAR",
+    "normalized": "RADAR"
+  },
+  {
+    "id": 3791,
+    "word": "RADIA",
+    "normalized": "RADIA"
+  },
+  {
+    "id": 3792,
+    "word": "RADIE",
+    "normalized": "RADIE"
+  },
+  {
+    "id": 3793,
+    "word": "RADON",
+    "normalized": "RADON"
+  },
+  {
+    "id": 3794,
+    "word": "RAIAI",
+    "normalized": "RAIAI"
+  },
+  {
+    "id": 3795,
+    "word": "RAIAM",
+    "normalized": "RAIAM"
+  },
+  {
+    "id": 3796,
+    "word": "RAIAR",
+    "normalized": "RAIAR"
+  },
+  {
+    "id": 3797,
+    "word": "RAIAS",
+    "normalized": "RAIAS"
+  },
+  {
+    "id": 3798,
+    "word": "RAIEI",
+    "normalized": "RAIEI"
+  },
+  {
+    "id": 3799,
+    "word": "RAIEM",
+    "normalized": "RAIEM"
+  },
+  {
+    "id": 3800,
+    "word": "RAIES",
+    "normalized": "RAIES"
+  },
+  {
+    "id": 3801,
+    "word": "RAIOS",
+    "normalized": "RAIOS"
+  },
+  {
+    "id": 3802,
+    "word": "RAIOU",
+    "normalized": "RAIOU"
+  },
+  {
+    "id": 3803,
+    "word": "RAIVA",
+    "normalized": "RAIVA"
+  },
+  {
+    "id": 3804,
+    "word": "RAJAI",
+    "normalized": "RAJAI"
+  },
+  {
+    "id": 3805,
+    "word": "RAJAM",
+    "normalized": "RAJAM"
+  },
+  {
+    "id": 3806,
+    "word": "RAJAR",
+    "normalized": "RAJAR"
+  },
+  {
+    "id": 3807,
+    "word": "RAJAS",
+    "normalized": "RAJAS"
+  },
+  {
+    "id": 3808,
+    "word": "RAJEI",
+    "normalized": "RAJEI"
+  },
+  {
+    "id": 3809,
+    "word": "RAJEM",
+    "normalized": "RAJEM"
+  },
+  {
+    "id": 3810,
+    "word": "RAJES",
+    "normalized": "RAJES"
+  },
+  {
+    "id": 3811,
+    "word": "RAJOU",
+    "normalized": "RAJOU"
+  },
+  {
+    "id": 3812,
+    "word": "RALAI",
+    "normalized": "RALAI"
+  },
+  {
+    "id": 3813,
+    "word": "RALAM",
+    "normalized": "RALAM"
+  },
+  {
+    "id": 3814,
+    "word": "RALAR",
+    "normalized": "RALAR"
+  },
+  {
+    "id": 3815,
+    "word": "RALAS",
+    "normalized": "RALAS"
+  },
+  {
+    "id": 3816,
+    "word": "RALEI",
+    "normalized": "RALEI"
+  },
+  {
+    "id": 3817,
+    "word": "RALEM",
+    "normalized": "RALEM"
+  },
+  {
+    "id": 3818,
+    "word": "RALES",
+    "normalized": "RALES"
+  },
+  {
+    "id": 3819,
+    "word": "RALHA",
+    "normalized": "RALHA"
+  },
+  {
+    "id": 3820,
+    "word": "RALHE",
+    "normalized": "RALHE"
+  },
+  {
+    "id": 3821,
+    "word": "RALHO",
+    "normalized": "RALHO"
+  },
+  {
+    "id": 3822,
+    "word": "RALOS",
+    "normalized": "RALOS"
+  },
+  {
+    "id": 3823,
+    "word": "RALOU",
+    "normalized": "RALOU"
+  },
+  {
+    "id": 3824,
+    "word": "RAMPA",
+    "normalized": "RAMPA"
+  },
+  {
+    "id": 3825,
+    "word": "RANGE",
+    "normalized": "RANGE"
+  },
+  {
+    "id": 3826,
+    "word": "RANGI",
+    "normalized": "RANGI"
+  },
+  {
+    "id": 3827,
+    "word": "RANJA",
+    "normalized": "RANJA"
+  },
+  {
+    "id": 3828,
+    "word": "RANJO",
+    "normalized": "RANJO"
+  },
+  {
+    "id": 3829,
+    "word": "RAPAI",
+    "normalized": "RAPAI"
+  },
+  {
+    "id": 3830,
+    "word": "RAPAM",
+    "normalized": "RAPAM"
+  },
+  {
+    "id": 3831,
+    "word": "RAPAR",
+    "normalized": "RAPAR"
+  },
+  {
+    "id": 3832,
+    "word": "RAPAS",
+    "normalized": "RAPAS"
+  },
+  {
+    "id": 3833,
+    "word": "RAPAZ",
+    "normalized": "RAPAZ"
+  },
+  {
+    "id": 3834,
+    "word": "RAPEI",
+    "normalized": "RAPEI"
+  },
+  {
+    "id": 3835,
+    "word": "RAPEM",
+    "normalized": "RAPEM"
+  },
+  {
+    "id": 3836,
+    "word": "RAPES",
+    "normalized": "RAPES"
+  },
+  {
+    "id": 3837,
+    "word": "RAPOU",
+    "normalized": "RAPOU"
+  },
+  {
+    "id": 3838,
+    "word": "RAPTA",
+    "normalized": "RAPTA"
+  },
+  {
+    "id": 3839,
+    "word": "RAPTE",
+    "normalized": "RAPTE"
+  },
+  {
+    "id": 3840,
+    "word": "RAPTO",
+    "normalized": "RAPTO"
+  },
+  {
+    "id": 3841,
+    "word": "RARAS",
+    "normalized": "RARAS"
+  },
+  {
+    "id": 3842,
+    "word": "RAROS",
+    "normalized": "RAROS"
+  },
+  {
+    "id": 3843,
+    "word": "RASAS",
+    "normalized": "RASAS"
+  },
+  {
+    "id": 3844,
+    "word": "RASGA",
+    "normalized": "RASGA"
+  },
+  {
+    "id": 3845,
+    "word": "RASGO",
+    "normalized": "RASGO"
+  },
+  {
+    "id": 3846,
+    "word": "RASOS",
+    "normalized": "RASOS"
+  },
+  {
+    "id": 3847,
+    "word": "RASPA",
+    "normalized": "RASPA"
+  },
+  {
+    "id": 3848,
+    "word": "RASPE",
+    "normalized": "RASPE"
+  },
+  {
+    "id": 3849,
+    "word": "RASPO",
+    "normalized": "RASPO"
+  },
+  {
+    "id": 3850,
+    "word": "RASTO",
+    "normalized": "RASTO"
+  },
+  {
+    "id": 3851,
+    "word": "RATAS",
+    "normalized": "RATAS"
+  },
+  {
+    "id": 3852,
+    "word": "REAGE",
+    "normalized": "REAGE"
+  },
+  {
+    "id": 3853,
+    "word": "REAGI",
+    "normalized": "REAGI"
+  },
+  {
+    "id": 3854,
+    "word": "REAIS",
+    "normalized": "REAIS"
+  },
+  {
+    "id": 3855,
+    "word": "REAJA",
+    "normalized": "REAJA"
+  },
+  {
+    "id": 3856,
+    "word": "REAJO",
+    "normalized": "REAJO"
+  },
+  {
+    "id": 3857,
+    "word": "REATA",
+    "normalized": "REATA"
+  },
+  {
+    "id": 3858,
+    "word": "REATE",
+    "normalized": "REATE"
+  },
+  {
+    "id": 3859,
+    "word": "REATO",
+    "normalized": "REATO"
+  },
+  {
+    "id": 3860,
+    "word": "REBOA",
+    "normalized": "REBOA"
+  },
+  {
+    "id": 3861,
+    "word": "REBOE",
+    "normalized": "REBOE"
+  },
+  {
+    "id": 3862,
+    "word": "RECAI",
+    "normalized": "RECAI"
+  },
+  {
+    "id": 3863,
+    "word": "RECUA",
+    "normalized": "RECUA"
+  },
+  {
+    "id": 3864,
+    "word": "RECUE",
+    "normalized": "RECUE"
+  },
+  {
+    "id": 3865,
+    "word": "RECUO",
+    "normalized": "RECUO"
+  },
+  {
+    "id": 3866,
+    "word": "REDES",
+    "normalized": "REDES"
+  },
+  {
+    "id": 3867,
+    "word": "REDIL",
+    "normalized": "REDIL"
+  },
+  {
+    "id": 3868,
+    "word": "REDOR",
+    "normalized": "REDOR"
+  },
+  {
+    "id": 3869,
+    "word": "REDUZ",
+    "normalized": "REDUZ"
+  },
+  {
+    "id": 3870,
+    "word": "REFAZ",
+    "normalized": "REFAZ"
+  },
+  {
+    "id": 3871,
+    "word": "REFEZ",
+    "normalized": "REFEZ"
+  },
+  {
+    "id": 3872,
+    "word": "REFIZ",
+    "normalized": "REFIZ"
+  },
+  {
+    "id": 3873,
+    "word": "REGAI",
+    "normalized": "REGAI"
+  },
+  {
+    "id": 3874,
+    "word": "REGAM",
+    "normalized": "REGAM"
+  },
+  {
+    "id": 3875,
+    "word": "REGAR",
+    "normalized": "REGAR"
+  },
+  {
+    "id": 3876,
+    "word": "REGAS",
+    "normalized": "REGAS"
+  },
+  {
+    "id": 3877,
+    "word": "REGEI",
+    "normalized": "REGEI"
+  },
+  {
+    "id": 3878,
+    "word": "REGEM",
+    "normalized": "REGEM"
+  },
+  {
+    "id": 3879,
+    "word": "REGER",
+    "normalized": "REGER"
+  },
+  {
+    "id": 3880,
+    "word": "REGES",
+    "normalized": "REGES"
+  },
+  {
+    "id": 3881,
+    "word": "REGEU",
+    "normalized": "REGEU"
+  },
+  {
+    "id": 3882,
+    "word": "REGIA",
+    "normalized": "REGIA"
+  },
+  {
+    "id": 3883,
+    "word": "REGOU",
+    "normalized": "REGOU"
+  },
+  {
+    "id": 3884,
+    "word": "REGRA",
+    "normalized": "REGRA"
+  },
+  {
+    "id": 3885,
+    "word": "REGRE",
+    "normalized": "REGRE"
+  },
+  {
+    "id": 3886,
+    "word": "REGRO",
+    "normalized": "REGRO"
+  },
+  {
+    "id": 3887,
+    "word": "REGUE",
+    "normalized": "REGUE"
+  },
+  {
+    "id": 3888,
+    "word": "REGÃª",
+    "normalized": "REGAª"
+  },
+  {
+    "id": 3889,
+    "word": "REINA",
+    "normalized": "REINA"
+  },
+  {
+    "id": 3890,
+    "word": "REINE",
+    "normalized": "REINE"
+  },
+  {
+    "id": 3891,
+    "word": "REJAM",
+    "normalized": "REJAM"
+  },
+  {
+    "id": 3892,
+    "word": "REJAS",
+    "normalized": "REJAS"
+  },
+  {
+    "id": 3893,
+    "word": "RELER",
+    "normalized": "RELER"
+  },
+  {
+    "id": 3894,
+    "word": "RELES",
+    "normalized": "RELES"
+  },
+  {
+    "id": 3895,
+    "word": "RELEU",
+    "normalized": "RELEU"
+  },
+  {
+    "id": 3896,
+    "word": "RELIA",
+    "normalized": "RELIA"
+  },
+  {
+    "id": 3897,
+    "word": "RELVA",
+    "normalized": "RELVA"
+  },
+  {
+    "id": 3898,
+    "word": "RELÃª",
+    "normalized": "RELAª"
+  },
+  {
+    "id": 3899,
+    "word": "REMAI",
+    "normalized": "REMAI"
+  },
+  {
+    "id": 3900,
+    "word": "REMAM",
+    "normalized": "REMAM"
+  },
+  {
+    "id": 3901,
+    "word": "REMAR",
+    "normalized": "REMAR"
+  },
+  {
+    "id": 3902,
+    "word": "REMAS",
+    "normalized": "REMAS"
+  },
+  {
+    "id": 3903,
+    "word": "REMEI",
+    "normalized": "REMEI"
+  },
+  {
+    "id": 3904,
+    "word": "REMEM",
+    "normalized": "REMEM"
+  },
+  {
+    "id": 3905,
+    "word": "REMES",
+    "normalized": "REMES"
+  },
+  {
+    "id": 3906,
+    "word": "REMIA",
+    "normalized": "REMIA"
+  },
+  {
+    "id": 3907,
+    "word": "REMIR",
+    "normalized": "REMIR"
+  },
+  {
+    "id": 3908,
+    "word": "REMIS",
+    "normalized": "REMIS"
+  },
+  {
+    "id": 3909,
+    "word": "REMIU",
+    "normalized": "REMIU"
+  },
+  {
+    "id": 3910,
+    "word": "REMOA",
+    "normalized": "REMOA"
+  },
+  {
+    "id": 3911,
+    "word": "REMOS",
+    "normalized": "REMOS"
+  },
+  {
+    "id": 3912,
+    "word": "REMOU",
+    "normalized": "REMOU"
+  },
+  {
+    "id": 3913,
+    "word": "RENAL",
+    "normalized": "RENAL"
+  },
+  {
+    "id": 3914,
+    "word": "RENAS",
+    "normalized": "RENAS"
+  },
+  {
+    "id": 3915,
+    "word": "RENDA",
+    "normalized": "RENDA"
+  },
+  {
+    "id": 3916,
+    "word": "RENDE",
+    "normalized": "RENDE"
+  },
+  {
+    "id": 3917,
+    "word": "RENDI",
+    "normalized": "RENDI"
+  },
+  {
+    "id": 3918,
+    "word": "RENDO",
+    "normalized": "RENDO"
+  },
+  {
+    "id": 3919,
+    "word": "RENTE",
+    "normalized": "RENTE"
+  },
+  {
+    "id": 3920,
+    "word": "REPOR",
+    "normalized": "REPOR"
+  },
+  {
+    "id": 3921,
+    "word": "REPUS",
+    "normalized": "REPUS"
+  },
+  {
+    "id": 3922,
+    "word": "RESES",
+    "normalized": "RESES"
+  },
+  {
+    "id": 3923,
+    "word": "RESMA",
+    "normalized": "RESMA"
+  },
+  {
+    "id": 3924,
+    "word": "RESTA",
+    "normalized": "RESTA"
+  },
+  {
+    "id": 3925,
+    "word": "RESTE",
+    "normalized": "RESTE"
+  },
+  {
+    "id": 3926,
+    "word": "RESTO",
+    "normalized": "RESTO"
+  },
+  {
+    "id": 3927,
+    "word": "RETAS",
+    "normalized": "RETAS"
+  },
+  {
+    "id": 3928,
+    "word": "RETER",
+    "normalized": "RETER"
+  },
+  {
+    "id": 3929,
+    "word": "RETOS",
+    "normalized": "RETOS"
+  },
+  {
+    "id": 3930,
+    "word": "RETÃª",
+    "normalized": "RETAª"
+  },
+  {
+    "id": 3931,
+    "word": "REUNI",
+    "normalized": "REUNI"
+  },
+  {
+    "id": 3932,
+    "word": "REVER",
+    "normalized": "REVER"
+  },
+  {
+    "id": 3933,
+    "word": "REVIA",
+    "normalized": "REVIA"
+  },
+  {
+    "id": 3934,
+    "word": "REVIR",
+    "normalized": "REVIR"
+  },
+  {
+    "id": 3935,
+    "word": "REVIU",
+    "normalized": "REVIU"
+  },
+  {
+    "id": 3936,
+    "word": "REVÃª",
+    "normalized": "REVAª"
+  },
+  {
+    "id": 3937,
+    "word": "REZAI",
+    "normalized": "REZAI"
+  },
+  {
+    "id": 3938,
+    "word": "REZAM",
+    "normalized": "REZAM"
+  },
+  {
+    "id": 3939,
+    "word": "REZAR",
+    "normalized": "REZAR"
+  },
+  {
+    "id": 3940,
+    "word": "REZAS",
+    "normalized": "REZAS"
+  },
+  {
+    "id": 3941,
+    "word": "REZEI",
+    "normalized": "REZEI"
+  },
+  {
+    "id": 3942,
+    "word": "REZEM",
+    "normalized": "REZEM"
+  },
+  {
+    "id": 3943,
+    "word": "REZES",
+    "normalized": "REZES"
+  },
+  {
+    "id": 3944,
+    "word": "REZOU",
+    "normalized": "REZOU"
+  },
+  {
+    "id": 3945,
+    "word": "RIAIS",
+    "normalized": "RIAIS"
+  },
+  {
+    "id": 3946,
+    "word": "RIAMO",
+    "normalized": "RIAMO"
+  },
+  {
+    "id": 3947,
+    "word": "RICAS",
+    "normalized": "RICAS"
+  },
+  {
+    "id": 3948,
+    "word": "RICOS",
+    "normalized": "RICOS"
+  },
+  {
+    "id": 3949,
+    "word": "RIDAS",
+    "normalized": "RIDAS"
+  },
+  {
+    "id": 3950,
+    "word": "RIDES",
+    "normalized": "RIDES"
+  },
+  {
+    "id": 3951,
+    "word": "RIDOS",
+    "normalized": "RIDOS"
+  },
+  {
+    "id": 3952,
+    "word": "RIFAI",
+    "normalized": "RIFAI"
+  },
+  {
+    "id": 3953,
+    "word": "RIFAM",
+    "normalized": "RIFAM"
+  },
+  {
+    "id": 3954,
+    "word": "RIFAR",
+    "normalized": "RIFAR"
+  },
+  {
+    "id": 3955,
+    "word": "RIFAS",
+    "normalized": "RIFAS"
+  },
+  {
+    "id": 3956,
+    "word": "RIFEI",
+    "normalized": "RIFEI"
+  },
+  {
+    "id": 3957,
+    "word": "RIFEM",
+    "normalized": "RIFEM"
+  },
+  {
+    "id": 3958,
+    "word": "RIFES",
+    "normalized": "RIFES"
+  },
+  {
+    "id": 3959,
+    "word": "RIFLE",
+    "normalized": "RIFLE"
+  },
+  {
+    "id": 3960,
+    "word": "RIFOU",
+    "normalized": "RIFOU"
+  },
+  {
+    "id": 3961,
+    "word": "RIGOR",
+    "normalized": "RIGOR"
+  },
+  {
+    "id": 3962,
+    "word": "RIJAS",
+    "normalized": "RIJAS"
+  },
+  {
+    "id": 3963,
+    "word": "RIJOS",
+    "normalized": "RIJOS"
+  },
+  {
+    "id": 3964,
+    "word": "RIMAI",
+    "normalized": "RIMAI"
+  },
+  {
+    "id": 3965,
+    "word": "RIMAM",
+    "normalized": "RIMAM"
+  },
+  {
+    "id": 3966,
+    "word": "RIMAR",
+    "normalized": "RIMAR"
+  },
+  {
+    "id": 3967,
+    "word": "RIMAS",
+    "normalized": "RIMAS"
+  },
+  {
+    "id": 3968,
+    "word": "RIMEI",
+    "normalized": "RIMEI"
+  },
+  {
+    "id": 3969,
+    "word": "RIMEM",
+    "normalized": "RIMEM"
+  },
+  {
+    "id": 3970,
+    "word": "RIMES",
+    "normalized": "RIMES"
+  },
+  {
+    "id": 3971,
+    "word": "RIMOS",
+    "normalized": "RIMOS"
+  },
+  {
+    "id": 3972,
+    "word": "RIMOU",
+    "normalized": "RIMOU"
+  },
+  {
+    "id": 3973,
+    "word": "RINDO",
+    "normalized": "RINDO"
+  },
+  {
+    "id": 3974,
+    "word": "RIPAS",
+    "normalized": "RIPAS"
+  },
+  {
+    "id": 3975,
+    "word": "RIRAM",
+    "normalized": "RIRAM"
+  },
+  {
+    "id": 3976,
+    "word": "RIRAS",
+    "normalized": "RIRAS"
+  },
+  {
+    "id": 3977,
+    "word": "RIREI",
+    "normalized": "RIREI"
+  },
+  {
+    "id": 3978,
+    "word": "RIREM",
+    "normalized": "RIREM"
+  },
+  {
+    "id": 3979,
+    "word": "RIRES",
+    "normalized": "RIRES"
+  },
+  {
+    "id": 3980,
+    "word": "RIRIA",
+    "normalized": "RIRIA"
+  },
+  {
+    "id": 3981,
+    "word": "RIRMO",
+    "normalized": "RIRMO"
+  },
+  {
+    "id": 3982,
+    "word": "RISCA",
+    "normalized": "RISCA"
+  },
+  {
+    "id": 3983,
+    "word": "RISCO",
+    "normalized": "RISCO"
+  },
+  {
+    "id": 3984,
+    "word": "RISOS",
+    "normalized": "RISOS"
+  },
+  {
+    "id": 3985,
+    "word": "RISSE",
+    "normalized": "RISSE"
+  },
+  {
+    "id": 3986,
+    "word": "RISTE",
+    "normalized": "RISTE"
+  },
+  {
+    "id": 3987,
+    "word": "RITMO",
+    "normalized": "RITMO"
+  },
+  {
+    "id": 3988,
+    "word": "RITOS",
+    "normalized": "RITOS"
+  },
+  {
+    "id": 3989,
+    "word": "RIVAL",
+    "normalized": "RIVAL"
+  },
+  {
+    "id": 3990,
+    "word": "RIXAS",
+    "normalized": "RIXAS"
+  },
+  {
+    "id": 3991,
+    "word": "ROAIS",
+    "normalized": "ROAIS"
+  },
+  {
+    "id": 3992,
+    "word": "ROAMO",
+    "normalized": "ROAMO"
+  },
+  {
+    "id": 3993,
+    "word": "ROCAS",
+    "normalized": "ROCAS"
+  },
+  {
+    "id": 3994,
+    "word": "ROCEI",
+    "normalized": "ROCEI"
+  },
+  {
+    "id": 3995,
+    "word": "ROCEM",
+    "normalized": "ROCEM"
+  },
+  {
+    "id": 3996,
+    "word": "ROCES",
+    "normalized": "ROCES"
+  },
+  {
+    "id": 3997,
+    "word": "RODAI",
+    "normalized": "RODAI"
+  },
+  {
+    "id": 3998,
+    "word": "RODAM",
+    "normalized": "RODAM"
+  },
+  {
+    "id": 3999,
+    "word": "RODAR",
+    "normalized": "RODAR"
+  },
+  {
+    "id": 4000,
+    "word": "RODAS",
+    "normalized": "RODAS"
+  },
+  {
+    "id": 4001,
+    "word": "RODEI",
+    "normalized": "RODEI"
+  },
+  {
+    "id": 4002,
+    "word": "RODEM",
+    "normalized": "RODEM"
+  },
+  {
+    "id": 4003,
+    "word": "RODES",
+    "normalized": "RODES"
+  },
+  {
+    "id": 4004,
+    "word": "RODOS",
+    "normalized": "RODOS"
+  },
+  {
+    "id": 4005,
+    "word": "RODOU",
+    "normalized": "RODOU"
+  },
+  {
+    "id": 4006,
+    "word": "ROEIS",
+    "normalized": "ROEIS"
+  },
+  {
+    "id": 4007,
+    "word": "ROEMO",
+    "normalized": "ROEMO"
+  },
+  {
+    "id": 4008,
+    "word": "ROERA",
+    "normalized": "ROERA"
+  },
+  {
+    "id": 4009,
+    "word": "ROGAI",
+    "normalized": "ROGAI"
+  },
+  {
+    "id": 4010,
+    "word": "ROGAM",
+    "normalized": "ROGAM"
+  },
+  {
+    "id": 4011,
+    "word": "ROGAR",
+    "normalized": "ROGAR"
+  },
+  {
+    "id": 4012,
+    "word": "ROGAS",
+    "normalized": "ROGAS"
+  },
+  {
+    "id": 4013,
+    "word": "ROGOS",
+    "normalized": "ROGOS"
+  },
+  {
+    "id": 4014,
+    "word": "ROGOU",
+    "normalized": "ROGOU"
+  },
+  {
+    "id": 4015,
+    "word": "ROGUE",
+    "normalized": "ROGUE"
+  },
+  {
+    "id": 4016,
+    "word": "ROIAS",
+    "normalized": "ROIAS"
+  },
+  {
+    "id": 4017,
+    "word": "ROLAI",
+    "normalized": "ROLAI"
+  },
+  {
+    "id": 4018,
+    "word": "ROLAM",
+    "normalized": "ROLAM"
+  },
+  {
+    "id": 4019,
+    "word": "ROLAR",
+    "normalized": "ROLAR"
+  },
+  {
+    "id": 4020,
+    "word": "ROLAS",
+    "normalized": "ROLAS"
+  },
+  {
+    "id": 4021,
+    "word": "ROLEI",
+    "normalized": "ROLEI"
+  },
+  {
+    "id": 4022,
+    "word": "ROLEM",
+    "normalized": "ROLEM"
+  },
+  {
+    "id": 4023,
+    "word": "ROLES",
+    "normalized": "ROLES"
+  },
+  {
+    "id": 4024,
+    "word": "ROLHA",
+    "normalized": "ROLHA"
+  },
+  {
+    "id": 4025,
+    "word": "ROLOS",
+    "normalized": "ROLOS"
+  },
+  {
+    "id": 4026,
+    "word": "ROLOU",
+    "normalized": "ROLOU"
+  },
+  {
+    "id": 4027,
+    "word": "ROMBO",
+    "normalized": "ROMBO"
+  },
+  {
+    "id": 4028,
+    "word": "ROMPA",
+    "normalized": "ROMPA"
+  },
+  {
+    "id": 4029,
+    "word": "ROMPE",
+    "normalized": "ROMPE"
+  },
+  {
+    "id": 4030,
+    "word": "ROMPI",
+    "normalized": "ROMPI"
+  },
+  {
+    "id": 4031,
+    "word": "ROMPO",
+    "normalized": "ROMPO"
+  },
+  {
+    "id": 4032,
+    "word": "RONCA",
+    "normalized": "RONCA"
+  },
+  {
+    "id": 4033,
+    "word": "RONCO",
+    "normalized": "RONCO"
+  },
+  {
+    "id": 4034,
+    "word": "RONDE",
+    "normalized": "RONDE"
+  },
+  {
+    "id": 4035,
+    "word": "RONDO",
+    "normalized": "RONDO"
+  },
+  {
+    "id": 4036,
+    "word": "ROSAS",
+    "normalized": "ROSAS"
+  },
+  {
+    "id": 4037,
+    "word": "ROSCA",
+    "normalized": "ROSCA"
+  },
+  {
+    "id": 4038,
+    "word": "ROSNA",
+    "normalized": "ROSNA"
+  },
+  {
+    "id": 4039,
+    "word": "ROSNE",
+    "normalized": "ROSNE"
+  },
+  {
+    "id": 4040,
+    "word": "ROSNO",
+    "normalized": "ROSNO"
+  },
+  {
+    "id": 4041,
+    "word": "ROSTO",
+    "normalized": "ROSTO"
+  },
+  {
+    "id": 4042,
+    "word": "ROTAS",
+    "normalized": "ROTAS"
+  },
+  {
+    "id": 4043,
+    "word": "ROTOS",
+    "normalized": "ROTOS"
+  },
+  {
+    "id": 4044,
+    "word": "ROUBA",
+    "normalized": "ROUBA"
+  },
+  {
+    "id": 4045,
+    "word": "ROUBE",
+    "normalized": "ROUBE"
+  },
+  {
+    "id": 4046,
+    "word": "ROUBO",
+    "normalized": "ROUBO"
+  },
+  {
+    "id": 4047,
+    "word": "ROUCA",
+    "normalized": "ROUCA"
+  },
+  {
+    "id": 4048,
+    "word": "ROUCO",
+    "normalized": "ROUCO"
+  },
+  {
+    "id": 4049,
+    "word": "ROUPA",
+    "normalized": "ROUPA"
+  },
+  {
+    "id": 4050,
+    "word": "ROXAS",
+    "normalized": "ROXAS"
+  },
+  {
+    "id": 4051,
+    "word": "ROXOS",
+    "normalized": "ROXOS"
+  },
+  {
+    "id": 4052,
+    "word": "RUBIS",
+    "normalized": "RUBIS"
+  },
+  {
+    "id": 4053,
+    "word": "RUBLO",
+    "normalized": "RUBLO"
+  },
+  {
+    "id": 4054,
+    "word": "RUBRA",
+    "normalized": "RUBRA"
+  },
+  {
+    "id": 4055,
+    "word": "RUBRO",
+    "normalized": "RUBRO"
+  },
+  {
+    "id": 4056,
+    "word": "RUDES",
+    "normalized": "RUDES"
+  },
+  {
+    "id": 4057,
+    "word": "RUELA",
+    "normalized": "RUELA"
+  },
+  {
+    "id": 4058,
+    "word": "RUFAI",
+    "normalized": "RUFAI"
+  },
+  {
+    "id": 4059,
+    "word": "RUFAM",
+    "normalized": "RUFAM"
+  },
+  {
+    "id": 4060,
+    "word": "RUFAR",
+    "normalized": "RUFAR"
+  },
+  {
+    "id": 4061,
+    "word": "RUFAS",
+    "normalized": "RUFAS"
+  },
+  {
+    "id": 4062,
+    "word": "RUFEI",
+    "normalized": "RUFEI"
+  },
+  {
+    "id": 4063,
+    "word": "RUFEM",
+    "normalized": "RUFEM"
+  },
+  {
+    "id": 4064,
+    "word": "RUFES",
+    "normalized": "RUFES"
+  },
+  {
+    "id": 4065,
+    "word": "RUFOU",
+    "normalized": "RUFOU"
+  },
+  {
+    "id": 4066,
+    "word": "RUGAI",
+    "normalized": "RUGAI"
+  },
+  {
+    "id": 4067,
+    "word": "RUGAM",
+    "normalized": "RUGAM"
+  },
+  {
+    "id": 4068,
+    "word": "RUGAR",
+    "normalized": "RUGAR"
+  },
+  {
+    "id": 4069,
+    "word": "RUGAS",
+    "normalized": "RUGAS"
+  },
+  {
+    "id": 4070,
+    "word": "RUGEM",
+    "normalized": "RUGEM"
+  },
+  {
+    "id": 4071,
+    "word": "RUGES",
+    "normalized": "RUGES"
+  },
+  {
+    "id": 4072,
+    "word": "RUGIA",
+    "normalized": "RUGIA"
+  },
+  {
+    "id": 4073,
+    "word": "RUGIR",
+    "normalized": "RUGIR"
+  },
+  {
+    "id": 4074,
+    "word": "RUGIS",
+    "normalized": "RUGIS"
+  },
+  {
+    "id": 4075,
+    "word": "RUGIU",
+    "normalized": "RUGIU"
+  },
+  {
+    "id": 4076,
+    "word": "RUGOU",
+    "normalized": "RUGOU"
+  },
+  {
+    "id": 4077,
+    "word": "RUGUE",
+    "normalized": "RUGUE"
+  },
+  {
+    "id": 4078,
+    "word": "RUIMO",
+    "normalized": "RUIMO"
+  },
+  {
+    "id": 4079,
+    "word": "RUINS",
+    "normalized": "RUINS"
+  },
+  {
+    "id": 4080,
+    "word": "RUIVA",
+    "normalized": "RUIVA"
+  },
+  {
+    "id": 4081,
+    "word": "RUIVO",
+    "normalized": "RUIVO"
+  },
+  {
+    "id": 4082,
+    "word": "RUJAM",
+    "normalized": "RUJAM"
+  },
+  {
+    "id": 4083,
+    "word": "RUJAS",
+    "normalized": "RUJAS"
+  },
+  {
+    "id": 4084,
+    "word": "RUMAI",
+    "normalized": "RUMAI"
+  },
+  {
+    "id": 4085,
+    "word": "RUMAM",
+    "normalized": "RUMAM"
+  },
+  {
+    "id": 4086,
+    "word": "RUMAR",
+    "normalized": "RUMAR"
+  },
+  {
+    "id": 4087,
+    "word": "RUMAS",
+    "normalized": "RUMAS"
+  },
+  {
+    "id": 4088,
+    "word": "RUMEI",
+    "normalized": "RUMEI"
+  },
+  {
+    "id": 4089,
+    "word": "RUMEM",
+    "normalized": "RUMEM"
+  },
+  {
+    "id": 4090,
+    "word": "RUMES",
+    "normalized": "RUMES"
+  },
+  {
+    "id": 4091,
+    "word": "RUMOR",
+    "normalized": "RUMOR"
+  },
+  {
+    "id": 4092,
+    "word": "RUMOS",
+    "normalized": "RUMOS"
+  },
+  {
+    "id": 4093,
+    "word": "RUMOU",
+    "normalized": "RUMOU"
+  },
+  {
+    "id": 4094,
+    "word": "RURAL",
+    "normalized": "RURAL"
+  },
+  {
+    "id": 4095,
+    "word": "RUSGA",
+    "normalized": "RUSGA"
+  },
+  {
+    "id": 4096,
+    "word": "RUSSA",
+    "normalized": "RUSSA"
+  },
+  {
+    "id": 4097,
+    "word": "RUSSO",
+    "normalized": "RUSSO"
+  },
+  {
+    "id": 4098,
+    "word": "SABEI",
+    "normalized": "SABEI"
+  },
+  {
+    "id": 4099,
+    "word": "SABEM",
+    "normalized": "SABEM"
+  },
+  {
+    "id": 4100,
+    "word": "SABER",
+    "normalized": "SABER"
+  },
+  {
+    "id": 4101,
+    "word": "SABES",
+    "normalized": "SABES"
+  },
+  {
+    "id": 4102,
+    "word": "SABIA",
+    "normalized": "SABIA"
+  },
+  {
+    "id": 4103,
+    "word": "SABOR",
+    "normalized": "SABOR"
+  },
+  {
+    "id": 4104,
+    "word": "SABRE",
+    "normalized": "SABRE"
+  },
+  {
+    "id": 4105,
+    "word": "SABÃª",
+    "normalized": "SABAª"
+  },
+  {
+    "id": 4106,
+    "word": "SACAI",
+    "normalized": "SACAI"
+  },
+  {
+    "id": 4107,
+    "word": "SACAM",
+    "normalized": "SACAM"
+  },
+  {
+    "id": 4108,
+    "word": "SACAR",
+    "normalized": "SACAR"
+  },
+  {
+    "id": 4109,
+    "word": "SACAS",
+    "normalized": "SACAS"
+  },
+  {
+    "id": 4110,
+    "word": "SACIA",
+    "normalized": "SACIA"
+  },
+  {
+    "id": 4111,
+    "word": "SACIE",
+    "normalized": "SACIE"
+  },
+  {
+    "id": 4112,
+    "word": "SACIO",
+    "normalized": "SACIO"
+  },
+  {
+    "id": 4113,
+    "word": "SACIS",
+    "normalized": "SACIS"
+  },
+  {
+    "id": 4114,
+    "word": "SACOS",
+    "normalized": "SACOS"
+  },
+  {
+    "id": 4115,
+    "word": "SACOU",
+    "normalized": "SACOU"
+  },
+  {
+    "id": 4116,
+    "word": "SACRA",
+    "normalized": "SACRA"
+  },
+  {
+    "id": 4117,
+    "word": "SACRO",
+    "normalized": "SACRO"
+  },
+  {
+    "id": 4118,
+    "word": "SADIA",
+    "normalized": "SADIA"
+  },
+  {
+    "id": 4119,
+    "word": "SADIO",
+    "normalized": "SADIO"
+  },
+  {
+    "id": 4120,
+    "word": "SAFAI",
+    "normalized": "SAFAI"
+  },
+  {
+    "id": 4121,
+    "word": "SAFAM",
+    "normalized": "SAFAM"
+  },
+  {
+    "id": 4122,
+    "word": "SAFAR",
+    "normalized": "SAFAR"
+  },
+  {
+    "id": 4123,
+    "word": "SAFAS",
+    "normalized": "SAFAS"
+  },
+  {
+    "id": 4124,
+    "word": "SAFEI",
+    "normalized": "SAFEI"
+  },
+  {
+    "id": 4125,
+    "word": "SAFEM",
+    "normalized": "SAFEM"
+  },
+  {
+    "id": 4126,
+    "word": "SAFES",
+    "normalized": "SAFES"
+  },
+  {
+    "id": 4127,
+    "word": "SAFOU",
+    "normalized": "SAFOU"
+  },
+  {
+    "id": 4128,
+    "word": "SAFRA",
+    "normalized": "SAFRA"
+  },
+  {
+    "id": 4129,
+    "word": "SAGAS",
+    "normalized": "SAGAS"
+  },
+  {
+    "id": 4130,
+    "word": "SAGRA",
+    "normalized": "SAGRA"
+  },
+  {
+    "id": 4131,
+    "word": "SAGRE",
+    "normalized": "SAGRE"
+  },
+  {
+    "id": 4132,
+    "word": "SAGRO",
+    "normalized": "SAGRO"
+  },
+  {
+    "id": 4133,
+    "word": "SAIAM",
+    "normalized": "SAIAM"
+  },
+  {
+    "id": 4134,
+    "word": "SAIAS",
+    "normalized": "SAIAS"
+  },
+  {
+    "id": 4135,
+    "word": "SAIBA",
+    "normalized": "SAIBA"
+  },
+  {
+    "id": 4136,
+    "word": "SALAS",
+    "normalized": "SALAS"
+  },
+  {
+    "id": 4137,
+    "word": "SALDA",
+    "normalized": "SALDA"
+  },
+  {
+    "id": 4138,
+    "word": "SALDE",
+    "normalized": "SALDE"
+  },
+  {
+    "id": 4139,
+    "word": "SALDO",
+    "normalized": "SALDO"
+  },
+  {
+    "id": 4140,
+    "word": "SALGA",
+    "normalized": "SALGA"
+  },
+  {
+    "id": 4141,
+    "word": "SALGO",
+    "normalized": "SALGO"
+  },
+  {
+    "id": 4142,
+    "word": "SALMO",
+    "normalized": "SALMO"
+  },
+  {
+    "id": 4143,
+    "word": "SALSA",
+    "normalized": "SALSA"
+  },
+  {
+    "id": 4144,
+    "word": "SALTA",
+    "normalized": "SALTA"
+  },
+  {
+    "id": 4145,
+    "word": "SALTE",
+    "normalized": "SALTE"
+  },
+  {
+    "id": 4146,
+    "word": "SALVA",
+    "normalized": "SALVA"
+  },
+  {
+    "id": 4147,
+    "word": "SALVE",
+    "normalized": "SALVE"
+  },
+  {
+    "id": 4148,
+    "word": "SALVO",
+    "normalized": "SALVO"
+  },
+  {
+    "id": 4149,
+    "word": "SAMBA",
+    "normalized": "SAMBA"
+  },
+  {
+    "id": 4150,
+    "word": "SAMBE",
+    "normalized": "SAMBE"
+  },
+  {
+    "id": 4151,
+    "word": "SAMBO",
+    "normalized": "SAMBO"
+  },
+  {
+    "id": 4152,
+    "word": "SANAI",
+    "normalized": "SANAI"
+  },
+  {
+    "id": 4153,
+    "word": "SANAM",
+    "normalized": "SANAM"
+  },
+  {
+    "id": 4154,
+    "word": "SANAR",
+    "normalized": "SANAR"
+  },
+  {
+    "id": 4155,
+    "word": "SANAS",
+    "normalized": "SANAS"
+  },
+  {
+    "id": 4156,
+    "word": "SANEI",
+    "normalized": "SANEI"
+  },
+  {
+    "id": 4157,
+    "word": "SANEM",
+    "normalized": "SANEM"
+  },
+  {
+    "id": 4158,
+    "word": "SANES",
+    "normalized": "SANES"
+  },
+  {
+    "id": 4159,
+    "word": "SANHA",
+    "normalized": "SANHA"
+  },
+  {
+    "id": 4160,
+    "word": "SANOU",
+    "normalized": "SANOU"
+  },
+  {
+    "id": 4161,
+    "word": "SAPOS",
+    "normalized": "SAPOS"
+  },
+  {
+    "id": 4162,
+    "word": "SAQUE",
+    "normalized": "SAQUE"
+  },
+  {
+    "id": 4163,
+    "word": "SARAI",
+    "normalized": "SARAI"
+  },
+  {
+    "id": 4164,
+    "word": "SARAM",
+    "normalized": "SARAM"
+  },
+  {
+    "id": 4165,
+    "word": "SARAR",
+    "normalized": "SARAR"
+  },
+  {
+    "id": 4166,
+    "word": "SARAS",
+    "normalized": "SARAS"
+  },
+  {
+    "id": 4167,
+    "word": "SARDA",
+    "normalized": "SARDA"
+  },
+  {
+    "id": 4168,
+    "word": "SAREI",
+    "normalized": "SAREI"
+  },
+  {
+    "id": 4169,
+    "word": "SAREM",
+    "normalized": "SAREM"
+  },
+  {
+    "id": 4170,
+    "word": "SARES",
+    "normalized": "SARES"
+  },
+  {
+    "id": 4171,
+    "word": "SARNA",
+    "normalized": "SARNA"
+  },
+  {
+    "id": 4172,
+    "word": "SAROU",
+    "normalized": "SAROU"
+  },
+  {
+    "id": 4173,
+    "word": "SARRO",
+    "normalized": "SARRO"
+  },
+  {
+    "id": 4174,
+    "word": "SAUNA",
+    "normalized": "SAUNA"
+  },
+  {
+    "id": 4175,
+    "word": "SEBES",
+    "normalized": "SEBES"
+  },
+  {
+    "id": 4176,
+    "word": "SEBOS",
+    "normalized": "SEBOS"
+  },
+  {
+    "id": 4177,
+    "word": "SECAI",
+    "normalized": "SECAI"
+  },
+  {
+    "id": 4178,
+    "word": "SECAM",
+    "normalized": "SECAM"
+  },
+  {
+    "id": 4179,
+    "word": "SECAR",
+    "normalized": "SECAR"
+  },
+  {
+    "id": 4180,
+    "word": "SECAS",
+    "normalized": "SECAS"
+  },
+  {
+    "id": 4181,
+    "word": "SECOS",
+    "normalized": "SECOS"
+  },
+  {
+    "id": 4182,
+    "word": "SECOU",
+    "normalized": "SECOU"
+  },
+  {
+    "id": 4183,
+    "word": "SEDAS",
+    "normalized": "SEDAS"
+  },
+  {
+    "id": 4184,
+    "word": "SEDES",
+    "normalized": "SEDES"
+  },
+  {
+    "id": 4185,
+    "word": "SEDIA",
+    "normalized": "SEDIA"
+  },
+  {
+    "id": 4186,
+    "word": "SEDIE",
+    "normalized": "SEDIE"
+  },
+  {
+    "id": 4187,
+    "word": "SEDIO",
+    "normalized": "SEDIO"
+  },
+  {
+    "id": 4188,
+    "word": "SEDUZ",
+    "normalized": "SEDUZ"
+  },
+  {
+    "id": 4189,
+    "word": "SEGUE",
+    "normalized": "SEGUE"
+  },
+  {
+    "id": 4190,
+    "word": "SEGUI",
+    "normalized": "SEGUI"
+  },
+  {
+    "id": 4191,
+    "word": "SEIOS",
+    "normalized": "SEIOS"
+  },
+  {
+    "id": 4192,
+    "word": "SEIRA",
+    "normalized": "SEIRA"
+  },
+  {
+    "id": 4193,
+    "word": "SEITA",
+    "normalized": "SEITA"
+  },
+  {
+    "id": 4194,
+    "word": "SEIVA",
+    "normalized": "SEIVA"
+  },
+  {
+    "id": 4195,
+    "word": "SEIXO",
+    "normalized": "SEIXO"
+  },
+  {
+    "id": 4196,
+    "word": "SEJAM",
+    "normalized": "SEJAM"
+  },
+  {
+    "id": 4197,
+    "word": "SEJAS",
+    "normalized": "SEJAS"
+  },
+  {
+    "id": 4198,
+    "word": "SELAI",
+    "normalized": "SELAI"
+  },
+  {
+    "id": 4199,
+    "word": "SELAM",
+    "normalized": "SELAM"
+  },
+  {
+    "id": 4200,
+    "word": "SELAR",
+    "normalized": "SELAR"
+  },
+  {
+    "id": 4201,
+    "word": "SELAS",
+    "normalized": "SELAS"
+  },
+  {
+    "id": 4202,
+    "word": "SELEI",
+    "normalized": "SELEI"
+  },
+  {
+    "id": 4203,
+    "word": "SELEM",
+    "normalized": "SELEM"
+  },
+  {
+    "id": 4204,
+    "word": "SELES",
+    "normalized": "SELES"
+  },
+  {
+    "id": 4205,
+    "word": "SELIM",
+    "normalized": "SELIM"
+  },
+  {
+    "id": 4206,
+    "word": "SELOS",
+    "normalized": "SELOS"
+  },
+  {
+    "id": 4207,
+    "word": "SELOU",
+    "normalized": "SELOU"
+  },
+  {
+    "id": 4208,
+    "word": "SELVA",
+    "normalized": "SELVA"
+  },
+  {
+    "id": 4209,
+    "word": "SENDA",
+    "normalized": "SENDA"
+  },
+  {
+    "id": 4210,
+    "word": "SENDO",
+    "normalized": "SENDO"
+  },
+  {
+    "id": 4211,
+    "word": "SENHA",
+    "normalized": "SENHA"
+  },
+  {
+    "id": 4212,
+    "word": "SENOS",
+    "normalized": "SENOS"
+  },
+  {
+    "id": 4213,
+    "word": "SENSO",
+    "normalized": "SENSO"
+  },
+  {
+    "id": 4214,
+    "word": "SENTA",
+    "normalized": "SENTA"
+  },
+  {
+    "id": 4215,
+    "word": "SENTE",
+    "normalized": "SENTE"
+  },
+  {
+    "id": 4216,
+    "word": "SENTI",
+    "normalized": "SENTI"
+  },
+  {
+    "id": 4217,
+    "word": "SEPSE",
+    "normalized": "SEPSE"
+  },
+  {
+    "id": 4218,
+    "word": "SEPTO",
+    "normalized": "SEPTO"
+  },
+  {
+    "id": 4219,
+    "word": "SEQUE",
+    "normalized": "SEQUE"
+  },
+  {
+    "id": 4220,
+    "word": "SEREI",
+    "normalized": "SEREI"
+  },
+  {
+    "id": 4221,
+    "word": "SEREM",
+    "normalized": "SEREM"
+  },
+  {
+    "id": 4222,
+    "word": "SERES",
+    "normalized": "SERES"
+  },
+  {
+    "id": 4223,
+    "word": "SERIA",
+    "normalized": "SERIA"
+  },
+  {
+    "id": 4224,
+    "word": "SERIE",
+    "normalized": "SERIE"
+  },
+  {
+    "id": 4225,
+    "word": "SERIO",
+    "normalized": "SERIO"
+  },
+  {
+    "id": 4226,
+    "word": "SERRE",
+    "normalized": "SERRE"
+  },
+  {
+    "id": 4227,
+    "word": "SERVA",
+    "normalized": "SERVA"
+  },
+  {
+    "id": 4228,
+    "word": "SERVE",
+    "normalized": "SERVE"
+  },
+  {
+    "id": 4229,
+    "word": "SERVI",
+    "normalized": "SERVI"
+  },
+  {
+    "id": 4230,
+    "word": "SERVO",
+    "normalized": "SERVO"
+  },
+  {
+    "id": 4231,
+    "word": "SESTA",
+    "normalized": "SESTA"
+  },
+  {
+    "id": 4232,
+    "word": "SETAS",
+    "normalized": "SETAS"
+  },
+  {
+    "id": 4233,
+    "word": "SETOR",
+    "normalized": "SETOR"
+  },
+  {
+    "id": 4234,
+    "word": "SEXOS",
+    "normalized": "SEXOS"
+  },
+  {
+    "id": 4235,
+    "word": "SEXTA",
+    "normalized": "SEXTA"
+  },
+  {
+    "id": 4236,
+    "word": "SEXTO",
+    "normalized": "SEXTO"
+  },
+  {
+    "id": 4237,
+    "word": "SIDAS",
+    "normalized": "SIDAS"
+  },
+  {
+    "id": 4238,
+    "word": "SIDOS",
+    "normalized": "SIDOS"
+  },
+  {
+    "id": 4239,
+    "word": "SIGAM",
+    "normalized": "SIGAM"
+  },
+  {
+    "id": 4240,
+    "word": "SIGAS",
+    "normalized": "SIGAS"
+  },
+  {
+    "id": 4241,
+    "word": "SIGLA",
+    "normalized": "SIGLA"
+  },
+  {
+    "id": 4242,
+    "word": "SIGMA",
+    "normalized": "SIGMA"
+  },
+  {
+    "id": 4243,
+    "word": "SIGNO",
+    "normalized": "SIGNO"
+  },
+  {
+    "id": 4244,
+    "word": "SILOS",
+    "normalized": "SILOS"
+  },
+  {
+    "id": 4245,
+    "word": "SILVE",
+    "normalized": "SILVE"
+  },
+  {
+    "id": 4246,
+    "word": "SILVO",
+    "normalized": "SILVO"
+  },
+  {
+    "id": 4247,
+    "word": "SINAL",
+    "normalized": "SINAL"
+  },
+  {
+    "id": 4248,
+    "word": "SINAS",
+    "normalized": "SINAS"
+  },
+  {
+    "id": 4249,
+    "word": "SINOS",
+    "normalized": "SINOS"
+  },
+  {
+    "id": 4250,
+    "word": "SINTA",
+    "normalized": "SINTA"
+  },
+  {
+    "id": 4251,
+    "word": "SINTO",
+    "normalized": "SINTO"
+  },
+  {
+    "id": 4252,
+    "word": "SIRIS",
+    "normalized": "SIRIS"
+  },
+  {
+    "id": 4253,
+    "word": "SIRVA",
+    "normalized": "SIRVA"
+  },
+  {
+    "id": 4254,
+    "word": "SIRVO",
+    "normalized": "SIRVO"
+  },
+  {
+    "id": 4255,
+    "word": "SISAL",
+    "normalized": "SISAL"
+  },
+  {
+    "id": 4256,
+    "word": "SISMO",
+    "normalized": "SISMO"
+  },
+  {
+    "id": 4257,
+    "word": "SITAS",
+    "normalized": "SITAS"
+  },
+  {
+    "id": 4258,
+    "word": "SITIA",
+    "normalized": "SITIA"
+  },
+  {
+    "id": 4259,
+    "word": "SITIE",
+    "normalized": "SITIE"
+  },
+  {
+    "id": 4260,
+    "word": "SITIO",
+    "normalized": "SITIO"
+  },
+  {
+    "id": 4261,
+    "word": "SITOS",
+    "normalized": "SITOS"
+  },
+  {
+    "id": 4262,
+    "word": "SITUA",
+    "normalized": "SITUA"
+  },
+  {
+    "id": 4263,
+    "word": "SITUE",
+    "normalized": "SITUE"
+  },
+  {
+    "id": 4264,
+    "word": "SITUO",
+    "normalized": "SITUO"
+  },
+  {
+    "id": 4265,
+    "word": "SOADA",
+    "normalized": "SOADA"
+  },
+  {
+    "id": 4266,
+    "word": "SOADO",
+    "normalized": "SOADO"
+  },
+  {
+    "id": 4267,
+    "word": "SOAIS",
+    "normalized": "SOAIS"
+  },
+  {
+    "id": 4268,
+    "word": "SOAMO",
+    "normalized": "SOAMO"
+  },
+  {
+    "id": 4269,
+    "word": "SOARA",
+    "normalized": "SOARA"
+  },
+  {
+    "id": 4270,
+    "word": "SOAVA",
+    "normalized": "SOAVA"
+  },
+  {
+    "id": 4271,
+    "word": "SOBEM",
+    "normalized": "SOBEM"
+  },
+  {
+    "id": 4272,
+    "word": "SOBES",
+    "normalized": "SOBES"
+  },
+  {
+    "id": 4273,
+    "word": "SOBRA",
+    "normalized": "SOBRA"
+  },
+  {
+    "id": 4274,
+    "word": "SOBRE",
+    "normalized": "SOBRE"
+  },
+  {
+    "id": 4275,
+    "word": "SOBRO",
+    "normalized": "SOBRO"
+  },
+  {
+    "id": 4276,
+    "word": "SOCAI",
+    "normalized": "SOCAI"
+  },
+  {
+    "id": 4277,
+    "word": "SOCAM",
+    "normalized": "SOCAM"
+  },
+  {
+    "id": 4278,
+    "word": "SOCAR",
+    "normalized": "SOCAR"
+  },
+  {
+    "id": 4279,
+    "word": "SOCAS",
+    "normalized": "SOCAS"
+  },
+  {
+    "id": 4280,
+    "word": "SOCOS",
+    "normalized": "SOCOS"
+  },
+  {
+    "id": 4281,
+    "word": "SOCOU",
+    "normalized": "SOCOU"
+  },
+  {
+    "id": 4282,
+    "word": "SOEIS",
+    "normalized": "SOEIS"
+  },
+  {
+    "id": 4283,
+    "word": "SOEMO",
+    "normalized": "SOEMO"
+  },
+  {
+    "id": 4284,
+    "word": "SOFRA",
+    "normalized": "SOFRA"
+  },
+  {
+    "id": 4285,
+    "word": "SOFRE",
+    "normalized": "SOFRE"
+  },
+  {
+    "id": 4286,
+    "word": "SOFRI",
+    "normalized": "SOFRI"
+  },
+  {
+    "id": 4287,
+    "word": "SOFRO",
+    "normalized": "SOFRO"
+  },
+  {
+    "id": 4288,
+    "word": "SOGRA",
+    "normalized": "SOGRA"
+  },
+  {
+    "id": 4289,
+    "word": "SOGRO",
+    "normalized": "SOGRO"
+  },
+  {
+    "id": 4290,
+    "word": "SOLAI",
+    "normalized": "SOLAI"
+  },
+  {
+    "id": 4291,
+    "word": "SOLAM",
+    "normalized": "SOLAM"
+  },
+  {
+    "id": 4292,
+    "word": "SOLAR",
+    "normalized": "SOLAR"
+  },
+  {
+    "id": 4293,
+    "word": "SOLAS",
+    "normalized": "SOLAS"
+  },
+  {
+    "id": 4294,
+    "word": "SOLDA",
+    "normalized": "SOLDA"
+  },
+  {
+    "id": 4295,
+    "word": "SOLDE",
+    "normalized": "SOLDE"
+  },
+  {
+    "id": 4296,
+    "word": "SOLDO",
+    "normalized": "SOLDO"
+  },
+  {
+    "id": 4297,
+    "word": "SOLEI",
+    "normalized": "SOLEI"
+  },
+  {
+    "id": 4298,
+    "word": "SOLEM",
+    "normalized": "SOLEM"
+  },
+  {
+    "id": 4299,
+    "word": "SOLES",
+    "normalized": "SOLES"
+  },
+  {
+    "id": 4300,
+    "word": "SOLOS",
+    "normalized": "SOLOS"
+  },
+  {
+    "id": 4301,
+    "word": "SOLOU",
+    "normalized": "SOLOU"
+  },
+  {
+    "id": 4302,
+    "word": "SOLTA",
+    "normalized": "SOLTA"
+  },
+  {
+    "id": 4303,
+    "word": "SOLTE",
+    "normalized": "SOLTE"
+  },
+  {
+    "id": 4304,
+    "word": "SOLTO",
+    "normalized": "SOLTO"
+  },
+  {
+    "id": 4305,
+    "word": "SOMAI",
+    "normalized": "SOMAI"
+  },
+  {
+    "id": 4306,
+    "word": "SOMAM",
+    "normalized": "SOMAM"
+  },
+  {
+    "id": 4307,
+    "word": "SOMAR",
+    "normalized": "SOMAR"
+  },
+  {
+    "id": 4308,
+    "word": "SOMAS",
+    "normalized": "SOMAS"
+  },
+  {
+    "id": 4309,
+    "word": "SOMEI",
+    "normalized": "SOMEI"
+  },
+  {
+    "id": 4310,
+    "word": "SOMEM",
+    "normalized": "SOMEM"
+  },
+  {
+    "id": 4311,
+    "word": "SOMES",
+    "normalized": "SOMES"
+  },
+  {
+    "id": 4312,
+    "word": "SOMOS",
+    "normalized": "SOMOS"
+  },
+  {
+    "id": 4313,
+    "word": "SOMOU",
+    "normalized": "SOMOU"
+  },
+  {
+    "id": 4314,
+    "word": "SONDA",
+    "normalized": "SONDA"
+  },
+  {
+    "id": 4315,
+    "word": "SONDE",
+    "normalized": "SONDE"
+  },
+  {
+    "id": 4316,
+    "word": "SONDO",
+    "normalized": "SONDO"
+  },
+  {
+    "id": 4317,
+    "word": "SONHA",
+    "normalized": "SONHA"
+  },
+  {
+    "id": 4318,
+    "word": "SONHE",
+    "normalized": "SONHE"
+  },
+  {
+    "id": 4319,
+    "word": "SONHO",
+    "normalized": "SONHO"
+  },
+  {
+    "id": 4320,
+    "word": "SONOS",
+    "normalized": "SONOS"
+  },
+  {
+    "id": 4321,
+    "word": "SONSA",
+    "normalized": "SONSA"
+  },
+  {
+    "id": 4322,
+    "word": "SONSO",
+    "normalized": "SONSO"
+  },
+  {
+    "id": 4323,
+    "word": "SOPAS",
+    "normalized": "SOPAS"
+  },
+  {
+    "id": 4324,
+    "word": "SOPRA",
+    "normalized": "SOPRA"
+  },
+  {
+    "id": 4325,
+    "word": "SOPRE",
+    "normalized": "SOPRE"
+  },
+  {
+    "id": 4326,
+    "word": "SOPRO",
+    "normalized": "SOPRO"
+  },
+  {
+    "id": 4327,
+    "word": "SOQUE",
+    "normalized": "SOQUE"
+  },
+  {
+    "id": 4328,
+    "word": "SOROS",
+    "normalized": "SOROS"
+  },
+  {
+    "id": 4329,
+    "word": "SORRI",
+    "normalized": "SORRI"
+  },
+  {
+    "id": 4330,
+    "word": "SORTA",
+    "normalized": "SORTA"
+  },
+  {
+    "id": 4331,
+    "word": "SORTI",
+    "normalized": "SORTI"
+  },
+  {
+    "id": 4332,
+    "word": "SORVA",
+    "normalized": "SORVA"
+  },
+  {
+    "id": 4333,
+    "word": "SORVE",
+    "normalized": "SORVE"
+  },
+  {
+    "id": 4334,
+    "word": "SORVI",
+    "normalized": "SORVI"
+  },
+  {
+    "id": 4335,
+    "word": "SORVO",
+    "normalized": "SORVO"
+  },
+  {
+    "id": 4336,
+    "word": "SOUBE",
+    "normalized": "SOUBE"
+  },
+  {
+    "id": 4337,
+    "word": "SOVAI",
+    "normalized": "SOVAI"
+  },
+  {
+    "id": 4338,
+    "word": "SOVAM",
+    "normalized": "SOVAM"
+  },
+  {
+    "id": 4339,
+    "word": "SOVAR",
+    "normalized": "SOVAR"
+  },
+  {
+    "id": 4340,
+    "word": "SOVAS",
+    "normalized": "SOVAS"
+  },
+  {
+    "id": 4341,
+    "word": "SOVEI",
+    "normalized": "SOVEI"
+  },
+  {
+    "id": 4342,
+    "word": "SOVEM",
+    "normalized": "SOVEM"
+  },
+  {
+    "id": 4343,
+    "word": "SOVES",
+    "normalized": "SOVES"
+  },
+  {
+    "id": 4344,
+    "word": "SOVOU",
+    "normalized": "SOVOU"
+  },
+  {
+    "id": 4345,
+    "word": "SUADA",
+    "normalized": "SUADA"
+  },
+  {
+    "id": 4346,
+    "word": "SUADO",
+    "normalized": "SUADO"
+  },
+  {
+    "id": 4347,
+    "word": "SUAIS",
+    "normalized": "SUAIS"
+  },
+  {
+    "id": 4348,
+    "word": "SUAMO",
+    "normalized": "SUAMO"
+  },
+  {
+    "id": 4349,
+    "word": "SUARA",
+    "normalized": "SUARA"
+  },
+  {
+    "id": 4350,
+    "word": "SUAVA",
+    "normalized": "SUAVA"
+  },
+  {
+    "id": 4351,
+    "word": "SUAVE",
+    "normalized": "SUAVE"
+  },
+  {
+    "id": 4352,
+    "word": "SUBAM",
+    "normalized": "SUBAM"
+  },
+  {
+    "id": 4353,
+    "word": "SUBAS",
+    "normalized": "SUBAS"
+  },
+  {
+    "id": 4354,
+    "word": "SUBIA",
+    "normalized": "SUBIA"
+  },
+  {
+    "id": 4355,
+    "word": "SUBIR",
+    "normalized": "SUBIR"
+  },
+  {
+    "id": 4356,
+    "word": "SUBIS",
+    "normalized": "SUBIS"
+  },
+  {
+    "id": 4357,
+    "word": "SUBIU",
+    "normalized": "SUBIU"
+  },
+  {
+    "id": 4358,
+    "word": "SUCOS",
+    "normalized": "SUCOS"
+  },
+  {
+    "id": 4359,
+    "word": "SUECA",
+    "normalized": "SUECA"
+  },
+  {
+    "id": 4360,
+    "word": "SUECO",
+    "normalized": "SUECO"
+  },
+  {
+    "id": 4361,
+    "word": "SUEIS",
+    "normalized": "SUEIS"
+  },
+  {
+    "id": 4362,
+    "word": "SUEMO",
+    "normalized": "SUEMO"
+  },
+  {
+    "id": 4363,
+    "word": "SUGAI",
+    "normalized": "SUGAI"
+  },
+  {
+    "id": 4364,
+    "word": "SUGAM",
+    "normalized": "SUGAM"
+  },
+  {
+    "id": 4365,
+    "word": "SUGAR",
+    "normalized": "SUGAR"
+  },
+  {
+    "id": 4366,
+    "word": "SUGAS",
+    "normalized": "SUGAS"
+  },
+  {
+    "id": 4367,
+    "word": "SUGOU",
+    "normalized": "SUGOU"
+  },
+  {
+    "id": 4368,
+    "word": "SUGUE",
+    "normalized": "SUGUE"
+  },
+  {
+    "id": 4369,
+    "word": "SUJAI",
+    "normalized": "SUJAI"
+  },
+  {
+    "id": 4370,
+    "word": "SUJAM",
+    "normalized": "SUJAM"
+  },
+  {
+    "id": 4371,
+    "word": "SUJAR",
+    "normalized": "SUJAR"
+  },
+  {
+    "id": 4372,
+    "word": "SUJAS",
+    "normalized": "SUJAS"
+  },
+  {
+    "id": 4373,
+    "word": "SUJEI",
+    "normalized": "SUJEI"
+  },
+  {
+    "id": 4374,
+    "word": "SUJEM",
+    "normalized": "SUJEM"
+  },
+  {
+    "id": 4375,
+    "word": "SUJES",
+    "normalized": "SUJES"
+  },
+  {
+    "id": 4376,
+    "word": "SUJOS",
+    "normalized": "SUJOS"
+  },
+  {
+    "id": 4377,
+    "word": "SUJOU",
+    "normalized": "SUJOU"
+  },
+  {
+    "id": 4378,
+    "word": "SULCA",
+    "normalized": "SULCA"
+  },
+  {
+    "id": 4379,
+    "word": "SULCO",
+    "normalized": "SULCO"
+  },
+  {
+    "id": 4380,
+    "word": "SULFA",
+    "normalized": "SULFA"
+  },
+  {
+    "id": 4381,
+    "word": "SUMAM",
+    "normalized": "SUMAM"
+  },
+  {
+    "id": 4382,
+    "word": "SUMAS",
+    "normalized": "SUMAS"
+  },
+  {
+    "id": 4383,
+    "word": "SUMIA",
+    "normalized": "SUMIA"
+  },
+  {
+    "id": 4384,
+    "word": "SUMIR",
+    "normalized": "SUMIR"
+  },
+  {
+    "id": 4385,
+    "word": "SUMIS",
+    "normalized": "SUMIS"
+  },
+  {
+    "id": 4386,
+    "word": "SUMIU",
+    "normalized": "SUMIU"
+  },
+  {
+    "id": 4387,
+    "word": "SUNGA",
+    "normalized": "SUNGA"
+  },
+  {
+    "id": 4388,
+    "word": "SUPER",
+    "normalized": "SUPER"
+  },
+  {
+    "id": 4389,
+    "word": "SUPOR",
+    "normalized": "SUPOR"
+  },
+  {
+    "id": 4390,
+    "word": "SUPRA",
+    "normalized": "SUPRA"
+  },
+  {
+    "id": 4391,
+    "word": "SUPRE",
+    "normalized": "SUPRE"
+  },
+  {
+    "id": 4392,
+    "word": "SUPRI",
+    "normalized": "SUPRI"
+  },
+  {
+    "id": 4393,
+    "word": "SUPRO",
+    "normalized": "SUPRO"
+  },
+  {
+    "id": 4394,
+    "word": "SUPUS",
+    "normalized": "SUPUS"
+  },
+  {
+    "id": 4395,
+    "word": "SURDA",
+    "normalized": "SURDA"
+  },
+  {
+    "id": 4396,
+    "word": "SURDO",
+    "normalized": "SURDO"
+  },
+  {
+    "id": 4397,
+    "word": "SURFA",
+    "normalized": "SURFA"
+  },
+  {
+    "id": 4398,
+    "word": "SURFO",
+    "normalized": "SURFO"
+  },
+  {
+    "id": 4399,
+    "word": "SURGE",
+    "normalized": "SURGE"
+  },
+  {
+    "id": 4400,
+    "word": "SURGI",
+    "normalized": "SURGI"
+  },
+  {
+    "id": 4401,
+    "word": "SURJA",
+    "normalized": "SURJA"
+  },
+  {
+    "id": 4402,
+    "word": "SURJO",
+    "normalized": "SURJO"
+  },
+  {
+    "id": 4403,
+    "word": "SURRA",
+    "normalized": "SURRA"
+  },
+  {
+    "id": 4404,
+    "word": "SURRE",
+    "normalized": "SURRE"
+  },
+  {
+    "id": 4405,
+    "word": "SURRO",
+    "normalized": "SURRO"
+  },
+  {
+    "id": 4406,
+    "word": "SURTA",
+    "normalized": "SURTA"
+  },
+  {
+    "id": 4407,
+    "word": "SURTE",
+    "normalized": "SURTE"
+  },
+  {
+    "id": 4408,
+    "word": "SURTO",
+    "normalized": "SURTO"
+  },
+  {
+    "id": 4409,
+    "word": "SUSTA",
+    "normalized": "SUSTA"
+  },
+  {
+    "id": 4410,
+    "word": "SUSTE",
+    "normalized": "SUSTE"
+  },
+  {
+    "id": 4411,
+    "word": "SUSTI",
+    "normalized": "SUSTI"
+  },
+  {
+    "id": 4412,
+    "word": "SUSTO",
+    "normalized": "SUSTO"
+  },
+  {
+    "id": 4413,
+    "word": "SUTIL",
+    "normalized": "SUTIL"
+  },
+  {
+    "id": 4414,
+    "word": "SUTIS",
+    "normalized": "SUTIS"
+  },
+  {
+    "id": 4415,
+    "word": "TABAS",
+    "normalized": "TABAS"
+  },
+  {
+    "id": 4416,
+    "word": "TACAI",
+    "normalized": "TACAI"
+  },
+  {
+    "id": 4417,
+    "word": "TACAM",
+    "normalized": "TACAM"
+  },
+  {
+    "id": 4418,
+    "word": "TACAR",
+    "normalized": "TACAR"
+  },
+  {
+    "id": 4419,
+    "word": "TACAS",
+    "normalized": "TACAS"
+  },
+  {
+    "id": 4420,
+    "word": "TACHA",
+    "normalized": "TACHA"
+  },
+  {
+    "id": 4421,
+    "word": "TACHE",
+    "normalized": "TACHE"
+  },
+  {
+    "id": 4422,
+    "word": "TACHO",
+    "normalized": "TACHO"
+  },
+  {
+    "id": 4423,
+    "word": "TACOS",
+    "normalized": "TACOS"
+  },
+  {
+    "id": 4424,
+    "word": "TACOU",
+    "normalized": "TACOU"
+  },
+  {
+    "id": 4425,
+    "word": "TAIPA",
+    "normalized": "TAIPA"
+  },
+  {
+    "id": 4426,
+    "word": "TALAS",
+    "normalized": "TALAS"
+  },
+  {
+    "id": 4427,
+    "word": "TALCO",
+    "normalized": "TALCO"
+  },
+  {
+    "id": 4428,
+    "word": "TALHA",
+    "normalized": "TALHA"
+  },
+  {
+    "id": 4429,
+    "word": "TALHE",
+    "normalized": "TALHE"
+  },
+  {
+    "id": 4430,
+    "word": "TALHO",
+    "normalized": "TALHO"
+  },
+  {
+    "id": 4431,
+    "word": "TALOS",
+    "normalized": "TALOS"
+  },
+  {
+    "id": 4432,
+    "word": "TAMPA",
+    "normalized": "TAMPA"
+  },
+  {
+    "id": 4433,
+    "word": "TAMPE",
+    "normalized": "TAMPE"
+  },
+  {
+    "id": 4434,
+    "word": "TAMPO",
+    "normalized": "TAMPO"
+  },
+  {
+    "id": 4435,
+    "word": "TANGA",
+    "normalized": "TANGA"
+  },
+  {
+    "id": 4436,
+    "word": "TANGE",
+    "normalized": "TANGE"
+  },
+  {
+    "id": 4437,
+    "word": "TANGI",
+    "normalized": "TANGI"
+  },
+  {
+    "id": 4438,
+    "word": "TANGO",
+    "normalized": "TANGO"
+  },
+  {
+    "id": 4439,
+    "word": "TANJA",
+    "normalized": "TANJA"
+  },
+  {
+    "id": 4440,
+    "word": "TANJO",
+    "normalized": "TANJO"
+  },
+  {
+    "id": 4441,
+    "word": "TANTA",
+    "normalized": "TANTA"
+  },
+  {
+    "id": 4442,
+    "word": "TANTO",
+    "normalized": "TANTO"
+  },
+  {
+    "id": 4443,
+    "word": "TAPAI",
+    "normalized": "TAPAI"
+  },
+  {
+    "id": 4444,
+    "word": "TAPAM",
+    "normalized": "TAPAM"
+  },
+  {
+    "id": 4445,
+    "word": "TAPAR",
+    "normalized": "TAPAR"
+  },
+  {
+    "id": 4446,
+    "word": "TAPAS",
+    "normalized": "TAPAS"
+  },
+  {
+    "id": 4447,
+    "word": "TAPEI",
+    "normalized": "TAPEI"
+  },
+  {
+    "id": 4448,
+    "word": "TAPEM",
+    "normalized": "TAPEM"
+  },
+  {
+    "id": 4449,
+    "word": "TAPOU",
+    "normalized": "TAPOU"
+  },
+  {
+    "id": 4450,
+    "word": "TAQUE",
+    "normalized": "TAQUE"
+  },
+  {
+    "id": 4451,
+    "word": "TARAS",
+    "normalized": "TARAS"
+  },
+  {
+    "id": 4452,
+    "word": "TARDA",
+    "normalized": "TARDA"
+  },
+  {
+    "id": 4453,
+    "word": "TARDE",
+    "normalized": "TARDE"
+  },
+  {
+    "id": 4454,
+    "word": "TARDO",
+    "normalized": "TARDO"
+  },
+  {
+    "id": 4455,
+    "word": "TARJA",
+    "normalized": "TARJA"
+  },
+  {
+    "id": 4456,
+    "word": "TATUA",
+    "normalized": "TATUA"
+  },
+  {
+    "id": 4457,
+    "word": "TATUE",
+    "normalized": "TATUE"
+  },
+  {
+    "id": 4458,
+    "word": "TATUO",
+    "normalized": "TATUO"
+  },
+  {
+    "id": 4459,
+    "word": "TATUS",
+    "normalized": "TATUS"
+  },
+  {
+    "id": 4460,
+    "word": "TAXAI",
+    "normalized": "TAXAI"
+  },
+  {
+    "id": 4461,
+    "word": "TAXAM",
+    "normalized": "TAXAM"
+  },
+  {
+    "id": 4462,
+    "word": "TAXAR",
+    "normalized": "TAXAR"
+  },
+  {
+    "id": 4463,
+    "word": "TAXAS",
+    "normalized": "TAXAS"
+  },
+  {
+    "id": 4464,
+    "word": "TAXEI",
+    "normalized": "TAXEI"
+  },
+  {
+    "id": 4465,
+    "word": "TAXEM",
+    "normalized": "TAXEM"
+  },
+  {
+    "id": 4466,
+    "word": "TAXES",
+    "normalized": "TAXES"
+  },
+  {
+    "id": 4467,
+    "word": "TAXOU",
+    "normalized": "TAXOU"
+  },
+  {
+    "id": 4468,
+    "word": "TECEI",
+    "normalized": "TECEI"
+  },
+  {
+    "id": 4469,
+    "word": "TECEM",
+    "normalized": "TECEM"
+  },
+  {
+    "id": 4470,
+    "word": "TECER",
+    "normalized": "TECER"
+  },
+  {
+    "id": 4471,
+    "word": "TECES",
+    "normalized": "TECES"
+  },
+  {
+    "id": 4472,
+    "word": "TECEU",
+    "normalized": "TECEU"
+  },
+  {
+    "id": 4473,
+    "word": "TECIA",
+    "normalized": "TECIA"
+  },
+  {
+    "id": 4474,
+    "word": "TECLA",
+    "normalized": "TECLA"
+  },
+  {
+    "id": 4475,
+    "word": "TECLE",
+    "normalized": "TECLE"
+  },
+  {
+    "id": 4476,
+    "word": "TECLO",
+    "normalized": "TECLO"
+  },
+  {
+    "id": 4477,
+    "word": "TECÃª",
+    "normalized": "TECAª"
+  },
+  {
+    "id": 4478,
+    "word": "TEIAS",
+    "normalized": "TEIAS"
+  },
+  {
+    "id": 4479,
+    "word": "TEIMA",
+    "normalized": "TEIMA"
+  },
+  {
+    "id": 4480,
+    "word": "TEIME",
+    "normalized": "TEIME"
+  },
+  {
+    "id": 4481,
+    "word": "TEIMO",
+    "normalized": "TEIMO"
+  },
+  {
+    "id": 4482,
+    "word": "TELAS",
+    "normalized": "TELAS"
+  },
+  {
+    "id": 4483,
+    "word": "TELES",
+    "normalized": "TELES"
+  },
+  {
+    "id": 4484,
+    "word": "TEMAM",
+    "normalized": "TEMAM"
+  },
+  {
+    "id": 4485,
+    "word": "TEMAS",
+    "normalized": "TEMAS"
+  },
+  {
+    "id": 4486,
+    "word": "TEMEI",
+    "normalized": "TEMEI"
+  },
+  {
+    "id": 4487,
+    "word": "TEMEM",
+    "normalized": "TEMEM"
+  },
+  {
+    "id": 4488,
+    "word": "TEMER",
+    "normalized": "TEMER"
+  },
+  {
+    "id": 4489,
+    "word": "TEMES",
+    "normalized": "TEMES"
+  },
+  {
+    "id": 4490,
+    "word": "TEMEU",
+    "normalized": "TEMEU"
+  },
+  {
+    "id": 4491,
+    "word": "TEMIA",
+    "normalized": "TEMIA"
+  },
+  {
+    "id": 4492,
+    "word": "TEMOR",
+    "normalized": "TEMOR"
+  },
+  {
+    "id": 4493,
+    "word": "TEMOS",
+    "normalized": "TEMOS"
+  },
+  {
+    "id": 4494,
+    "word": "TEMÃª",
+    "normalized": "TEMAª"
+  },
+  {
+    "id": 4495,
+    "word": "TENAZ",
+    "normalized": "TENAZ"
+  },
+  {
+    "id": 4496,
+    "word": "TENDA",
+    "normalized": "TENDA"
+  },
+  {
+    "id": 4497,
+    "word": "TENDE",
+    "normalized": "TENDE"
+  },
+  {
+    "id": 4498,
+    "word": "TENDI",
+    "normalized": "TENDI"
+  },
+  {
+    "id": 4499,
+    "word": "TENDO",
+    "normalized": "TENDO"
+  },
+  {
+    "id": 4500,
+    "word": "TENHA",
+    "normalized": "TENHA"
+  },
+  {
+    "id": 4501,
+    "word": "TENHO",
+    "normalized": "TENHO"
+  },
+  {
+    "id": 4502,
+    "word": "TENOR",
+    "normalized": "TENOR"
+  },
+  {
+    "id": 4503,
+    "word": "TENRA",
+    "normalized": "TENRA"
+  },
+  {
+    "id": 4504,
+    "word": "TENRO",
+    "normalized": "TENRO"
+  },
+  {
+    "id": 4505,
+    "word": "TENSA",
+    "normalized": "TENSA"
+  },
+  {
+    "id": 4506,
+    "word": "TENSO",
+    "normalized": "TENSO"
+  },
+  {
+    "id": 4507,
+    "word": "TENTA",
+    "normalized": "TENTA"
+  },
+  {
+    "id": 4508,
+    "word": "TENTE",
+    "normalized": "TENTE"
+  },
+  {
+    "id": 4509,
+    "word": "TENTO",
+    "normalized": "TENTO"
+  },
+  {
+    "id": 4510,
+    "word": "TEREI",
+    "normalized": "TEREI"
+  },
+  {
+    "id": 4511,
+    "word": "TEREM",
+    "normalized": "TEREM"
+  },
+  {
+    "id": 4512,
+    "word": "TERES",
+    "normalized": "TERES"
+  },
+  {
+    "id": 4513,
+    "word": "TERIA",
+    "normalized": "TERIA"
+  },
+  {
+    "id": 4514,
+    "word": "TERNA",
+    "normalized": "TERNA"
+  },
+  {
+    "id": 4515,
+    "word": "TERNO",
+    "normalized": "TERNO"
+  },
+  {
+    "id": 4516,
+    "word": "TESAS",
+    "normalized": "TESAS"
+  },
+  {
+    "id": 4517,
+    "word": "TESES",
+    "normalized": "TESES"
+  },
+  {
+    "id": 4518,
+    "word": "TESOS",
+    "normalized": "TESOS"
+  },
+  {
+    "id": 4519,
+    "word": "TESTA",
+    "normalized": "TESTA"
+  },
+  {
+    "id": 4520,
+    "word": "TESTE",
+    "normalized": "TESTE"
+  },
+  {
+    "id": 4521,
+    "word": "TESTO",
+    "normalized": "TESTO"
+  },
+  {
+    "id": 4522,
+    "word": "TETAS",
+    "normalized": "TETAS"
+  },
+  {
+    "id": 4523,
+    "word": "TETOS",
+    "normalized": "TETOS"
+  },
+  {
+    "id": 4524,
+    "word": "TEXTO",
+    "normalized": "TEXTO"
+  },
+  {
+    "id": 4525,
+    "word": "TIARA",
+    "normalized": "TIARA"
+  },
+  {
+    "id": 4526,
+    "word": "TIDAS",
+    "normalized": "TIDAS"
+  },
+  {
+    "id": 4527,
+    "word": "TIDOS",
+    "normalized": "TIDOS"
+  },
+  {
+    "id": 4528,
+    "word": "TIMES",
+    "normalized": "TIMES"
+  },
+  {
+    "id": 4529,
+    "word": "TINAM",
+    "normalized": "TINAM"
+  },
+  {
+    "id": 4530,
+    "word": "TINAS",
+    "normalized": "TINAS"
+  },
+  {
+    "id": 4531,
+    "word": "TINEM",
+    "normalized": "TINEM"
+  },
+  {
+    "id": 4532,
+    "word": "TINES",
+    "normalized": "TINES"
+  },
+  {
+    "id": 4533,
+    "word": "TINGE",
+    "normalized": "TINGE"
+  },
+  {
+    "id": 4534,
+    "word": "TINGI",
+    "normalized": "TINGI"
+  },
+  {
+    "id": 4535,
+    "word": "TINHA",
+    "normalized": "TINHA"
+  },
+  {
+    "id": 4536,
+    "word": "TINIA",
+    "normalized": "TINIA"
+  },
+  {
+    "id": 4537,
+    "word": "TINIR",
+    "normalized": "TINIR"
+  },
+  {
+    "id": 4538,
+    "word": "TINIS",
+    "normalized": "TINIS"
+  },
+  {
+    "id": 4539,
+    "word": "TINIU",
+    "normalized": "TINIU"
+  },
+  {
+    "id": 4540,
+    "word": "TINJA",
+    "normalized": "TINJA"
+  },
+  {
+    "id": 4541,
+    "word": "TINJO",
+    "normalized": "TINJO"
+  },
+  {
+    "id": 4542,
+    "word": "TINTA",
+    "normalized": "TINTA"
+  },
+  {
+    "id": 4543,
+    "word": "TIPOS",
+    "normalized": "TIPOS"
+  },
+  {
+    "id": 4544,
+    "word": "TIRAI",
+    "normalized": "TIRAI"
+  },
+  {
+    "id": 4545,
+    "word": "TIRAM",
+    "normalized": "TIRAM"
+  },
+  {
+    "id": 4546,
+    "word": "TIRAR",
+    "normalized": "TIRAR"
+  },
+  {
+    "id": 4547,
+    "word": "TIRAS",
+    "normalized": "TIRAS"
+  },
+  {
+    "id": 4548,
+    "word": "TIREI",
+    "normalized": "TIREI"
+  },
+  {
+    "id": 4549,
+    "word": "TIREM",
+    "normalized": "TIREM"
+  },
+  {
+    "id": 4550,
+    "word": "TIRES",
+    "normalized": "TIRES"
+  },
+  {
+    "id": 4551,
+    "word": "TIROU",
+    "normalized": "TIROU"
+  },
+  {
+    "id": 4552,
+    "word": "TITIA",
+    "normalized": "TITIA"
+  },
+  {
+    "id": 4553,
+    "word": "TITIO",
+    "normalized": "TITIO"
+  },
+  {
+    "id": 4554,
+    "word": "TIVER",
+    "normalized": "TIVER"
+  },
+  {
+    "id": 4555,
+    "word": "TOADA",
+    "normalized": "TOADA"
+  },
+  {
+    "id": 4556,
+    "word": "TOCAI",
+    "normalized": "TOCAI"
+  },
+  {
+    "id": 4557,
+    "word": "TOCAM",
+    "normalized": "TOCAM"
+  },
+  {
+    "id": 4558,
+    "word": "TOCAR",
+    "normalized": "TOCAR"
+  },
+  {
+    "id": 4559,
+    "word": "TOCAS",
+    "normalized": "TOCAS"
+  },
+  {
+    "id": 4560,
+    "word": "TOCHA",
+    "normalized": "TOCHA"
+  },
+  {
+    "id": 4561,
+    "word": "TOCOU",
+    "normalized": "TOCOU"
+  },
+  {
+    "id": 4562,
+    "word": "TODAS",
+    "normalized": "TODAS"
+  },
+  {
+    "id": 4563,
+    "word": "TODOS",
+    "normalized": "TODOS"
+  },
+  {
+    "id": 4564,
+    "word": "TOGAS",
+    "normalized": "TOGAS"
+  },
+  {
+    "id": 4565,
+    "word": "TOLAS",
+    "normalized": "TOLAS"
+  },
+  {
+    "id": 4566,
+    "word": "TOLHA",
+    "normalized": "TOLHA"
+  },
+  {
+    "id": 4567,
+    "word": "TOLHE",
+    "normalized": "TOLHE"
+  },
+  {
+    "id": 4568,
+    "word": "TOLHI",
+    "normalized": "TOLHI"
+  },
+  {
+    "id": 4569,
+    "word": "TOLHO",
+    "normalized": "TOLHO"
+  },
+  {
+    "id": 4570,
+    "word": "TOLOS",
+    "normalized": "TOLOS"
+  },
+  {
+    "id": 4571,
+    "word": "TOMAI",
+    "normalized": "TOMAI"
+  },
+  {
+    "id": 4572,
+    "word": "TOMAM",
+    "normalized": "TOMAM"
+  },
+  {
+    "id": 4573,
+    "word": "TOMAS",
+    "normalized": "TOMAS"
+  },
+  {
+    "id": 4574,
+    "word": "TOMBA",
+    "normalized": "TOMBA"
+  },
+  {
+    "id": 4575,
+    "word": "TOMBE",
+    "normalized": "TOMBE"
+  },
+  {
+    "id": 4576,
+    "word": "TOMBO",
+    "normalized": "TOMBO"
+  },
+  {
+    "id": 4577,
+    "word": "TOMEI",
+    "normalized": "TOMEI"
+  },
+  {
+    "id": 4578,
+    "word": "TOMEM",
+    "normalized": "TOMEM"
+  },
+  {
+    "id": 4579,
+    "word": "TOMES",
+    "normalized": "TOMES"
+  },
+  {
+    "id": 4580,
+    "word": "TOMOU",
+    "normalized": "TOMOU"
+  },
+  {
+    "id": 4581,
+    "word": "TONEL",
+    "normalized": "TONEL"
+  },
+  {
+    "id": 4582,
+    "word": "TONTA",
+    "normalized": "TONTA"
+  },
+  {
+    "id": 4583,
+    "word": "TONTO",
+    "normalized": "TONTO"
+  },
+  {
+    "id": 4584,
+    "word": "TOPAI",
+    "normalized": "TOPAI"
+  },
+  {
+    "id": 4585,
+    "word": "TOPAM",
+    "normalized": "TOPAM"
+  },
+  {
+    "id": 4586,
+    "word": "TOPAR",
+    "normalized": "TOPAR"
+  },
+  {
+    "id": 4587,
+    "word": "TOPAS",
+    "normalized": "TOPAS"
+  },
+  {
+    "id": 4588,
+    "word": "TOPEI",
+    "normalized": "TOPEI"
+  },
+  {
+    "id": 4589,
+    "word": "TOPEM",
+    "normalized": "TOPEM"
+  },
+  {
+    "id": 4590,
+    "word": "TOPES",
+    "normalized": "TOPES"
+  },
+  {
+    "id": 4591,
+    "word": "TOPOS",
+    "normalized": "TOPOS"
+  },
+  {
+    "id": 4592,
+    "word": "TOPOU",
+    "normalized": "TOPOU"
+  },
+  {
+    "id": 4593,
+    "word": "TORAS",
+    "normalized": "TORAS"
+  },
+  {
+    "id": 4594,
+    "word": "TORCE",
+    "normalized": "TORCE"
+  },
+  {
+    "id": 4595,
+    "word": "TORCI",
+    "normalized": "TORCI"
+  },
+  {
+    "id": 4596,
+    "word": "TORNA",
+    "normalized": "TORNA"
+  },
+  {
+    "id": 4597,
+    "word": "TORNE",
+    "normalized": "TORNE"
+  },
+  {
+    "id": 4598,
+    "word": "TORNO",
+    "normalized": "TORNO"
+  },
+  {
+    "id": 4599,
+    "word": "TOROS",
+    "normalized": "TOROS"
+  },
+  {
+    "id": 4600,
+    "word": "TORPE",
+    "normalized": "TORPE"
+  },
+  {
+    "id": 4601,
+    "word": "TORRA",
+    "normalized": "TORRA"
+  },
+  {
+    "id": 4602,
+    "word": "TORRO",
+    "normalized": "TORRO"
+  },
+  {
+    "id": 4603,
+    "word": "TORTA",
+    "normalized": "TORTA"
+  },
+  {
+    "id": 4604,
+    "word": "TORTO",
+    "normalized": "TORTO"
+  },
+  {
+    "id": 4605,
+    "word": "TOSAI",
+    "normalized": "TOSAI"
+  },
+  {
+    "id": 4606,
+    "word": "TOSAM",
+    "normalized": "TOSAM"
+  },
+  {
+    "id": 4607,
+    "word": "TOSAR",
+    "normalized": "TOSAR"
+  },
+  {
+    "id": 4608,
+    "word": "TOSAS",
+    "normalized": "TOSAS"
+  },
+  {
+    "id": 4609,
+    "word": "TOSCA",
+    "normalized": "TOSCA"
+  },
+  {
+    "id": 4610,
+    "word": "TOSCO",
+    "normalized": "TOSCO"
+  },
+  {
+    "id": 4611,
+    "word": "TOSEI",
+    "normalized": "TOSEI"
+  },
+  {
+    "id": 4612,
+    "word": "TOSEM",
+    "normalized": "TOSEM"
+  },
+  {
+    "id": 4613,
+    "word": "TOSES",
+    "normalized": "TOSES"
+  },
+  {
+    "id": 4614,
+    "word": "TOSOU",
+    "normalized": "TOSOU"
+  },
+  {
+    "id": 4615,
+    "word": "TOSSE",
+    "normalized": "TOSSE"
+  },
+  {
+    "id": 4616,
+    "word": "TOSSI",
+    "normalized": "TOSSI"
+  },
+  {
+    "id": 4617,
+    "word": "TOSTA",
+    "normalized": "TOSTA"
+  },
+  {
+    "id": 4618,
+    "word": "TOSTE",
+    "normalized": "TOSTE"
+  },
+  {
+    "id": 4619,
+    "word": "TOSTO",
+    "normalized": "TOSTO"
+  },
+  {
+    "id": 4620,
+    "word": "TOTAL",
+    "normalized": "TOTAL"
+  },
+  {
+    "id": 4621,
+    "word": "TOTEM",
+    "normalized": "TOTEM"
+  },
+  {
+    "id": 4622,
+    "word": "TOUCA",
+    "normalized": "TOUCA"
+  },
+  {
+    "id": 4623,
+    "word": "TOURO",
+    "normalized": "TOURO"
+  },
+  {
+    "id": 4624,
+    "word": "TRACE",
+    "normalized": "TRACE"
+  },
+  {
+    "id": 4625,
+    "word": "TRAEM",
+    "normalized": "TRAEM"
+  },
+  {
+    "id": 4626,
+    "word": "TRAGA",
+    "normalized": "TRAGA"
+  },
+  {
+    "id": 4627,
+    "word": "TRAGO",
+    "normalized": "TRAGO"
+  },
+  {
+    "id": 4628,
+    "word": "TRAIA",
+    "normalized": "TRAIA"
+  },
+  {
+    "id": 4629,
+    "word": "TRAIO",
+    "normalized": "TRAIO"
+  },
+  {
+    "id": 4630,
+    "word": "TRAIR",
+    "normalized": "TRAIR"
+  },
+  {
+    "id": 4631,
+    "word": "TRAIS",
+    "normalized": "TRAIS"
+  },
+  {
+    "id": 4632,
+    "word": "TRAIU",
+    "normalized": "TRAIU"
+  },
+  {
+    "id": 4633,
+    "word": "TRAJA",
+    "normalized": "TRAJA"
+  },
+  {
+    "id": 4634,
+    "word": "TRAJE",
+    "normalized": "TRAJE"
+  },
+  {
+    "id": 4635,
+    "word": "TRAJO",
+    "normalized": "TRAJO"
+  },
+  {
+    "id": 4636,
+    "word": "TRAMA",
+    "normalized": "TRAMA"
+  },
+  {
+    "id": 4637,
+    "word": "TRAPO",
+    "normalized": "TRAPO"
+  },
+  {
+    "id": 4638,
+    "word": "TRATA",
+    "normalized": "TRATA"
+  },
+  {
+    "id": 4639,
+    "word": "TRATE",
+    "normalized": "TRATE"
+  },
+  {
+    "id": 4640,
+    "word": "TRATO",
+    "normalized": "TRATO"
+  },
+  {
+    "id": 4641,
+    "word": "TRAVA",
+    "normalized": "TRAVA"
+  },
+  {
+    "id": 4642,
+    "word": "TRAVE",
+    "normalized": "TRAVE"
+  },
+  {
+    "id": 4643,
+    "word": "TRAVO",
+    "normalized": "TRAVO"
+  },
+  {
+    "id": 4644,
+    "word": "TRAZE",
+    "normalized": "TRAZE"
+  },
+  {
+    "id": 4645,
+    "word": "TRECO",
+    "normalized": "TRECO"
+  },
+  {
+    "id": 4646,
+    "word": "TREMA",
+    "normalized": "TREMA"
+  },
+  {
+    "id": 4647,
+    "word": "TREME",
+    "normalized": "TREME"
+  },
+  {
+    "id": 4648,
+    "word": "TREMI",
+    "normalized": "TREMI"
+  },
+  {
+    "id": 4649,
+    "word": "TREMO",
+    "normalized": "TREMO"
+  },
+  {
+    "id": 4650,
+    "word": "TRENA",
+    "normalized": "TRENA"
+  },
+  {
+    "id": 4651,
+    "word": "TRENS",
+    "normalized": "TRENS"
+  },
+  {
+    "id": 4652,
+    "word": "TREPA",
+    "normalized": "TREPA"
+  },
+  {
+    "id": 4653,
+    "word": "TREPE",
+    "normalized": "TREPE"
+  },
+  {
+    "id": 4654,
+    "word": "TREPO",
+    "normalized": "TREPO"
+  },
+  {
+    "id": 4655,
+    "word": "TRETA",
+    "normalized": "TRETA"
+  },
+  {
+    "id": 4656,
+    "word": "TREVO",
+    "normalized": "TREVO"
+  },
+  {
+    "id": 4657,
+    "word": "TRIBO",
+    "normalized": "TRIBO"
+  },
+  {
+    "id": 4658,
+    "word": "TRIGO",
+    "normalized": "TRIGO"
+  },
+  {
+    "id": 4659,
+    "word": "TRINA",
+    "normalized": "TRINA"
+  },
+  {
+    "id": 4660,
+    "word": "TRINO",
+    "normalized": "TRINO"
+  },
+  {
+    "id": 4661,
+    "word": "TRIOS",
+    "normalized": "TRIOS"
+  },
+  {
+    "id": 4662,
+    "word": "TRIPA",
+    "normalized": "TRIPA"
+  },
+  {
+    "id": 4663,
+    "word": "TROCA",
+    "normalized": "TROCA"
+  },
+  {
+    "id": 4664,
+    "word": "TROCE",
+    "normalized": "TROCE"
+  },
+  {
+    "id": 4665,
+    "word": "TROCO",
+    "normalized": "TROCO"
+  },
+  {
+    "id": 4666,
+    "word": "TRONO",
+    "normalized": "TRONO"
+  },
+  {
+    "id": 4667,
+    "word": "TROPA",
+    "normalized": "TROPA"
+  },
+  {
+    "id": 4668,
+    "word": "TROTA",
+    "normalized": "TROTA"
+  },
+  {
+    "id": 4669,
+    "word": "TROTE",
+    "normalized": "TROTE"
+  },
+  {
+    "id": 4670,
+    "word": "TROTO",
+    "normalized": "TROTO"
+  },
+  {
+    "id": 4671,
+    "word": "TROVA",
+    "normalized": "TROVA"
+  },
+  {
+    "id": 4672,
+    "word": "TRUCO",
+    "normalized": "TRUCO"
+  },
+  {
+    "id": 4673,
+    "word": "TRUFA",
+    "normalized": "TRUFA"
+  },
+  {
+    "id": 4674,
+    "word": "TRUTA",
+    "normalized": "TRUTA"
+  },
+  {
+    "id": 4675,
+    "word": "TUBOS",
+    "normalized": "TUBOS"
+  },
+  {
+    "id": 4676,
+    "word": "TUFOS",
+    "normalized": "TUFOS"
+  },
+  {
+    "id": 4677,
+    "word": "TUMOR",
+    "normalized": "TUMOR"
+  },
+  {
+    "id": 4678,
+    "word": "TUPIS",
+    "normalized": "TUPIS"
+  },
+  {
+    "id": 4679,
+    "word": "TURBA",
+    "normalized": "TURBA"
+  },
+  {
+    "id": 4680,
+    "word": "TURBE",
+    "normalized": "TURBE"
+  },
+  {
+    "id": 4681,
+    "word": "TURBO",
+    "normalized": "TURBO"
+  },
+  {
+    "id": 4682,
+    "word": "TURCA",
+    "normalized": "TURCA"
+  },
+  {
+    "id": 4683,
+    "word": "TURCO",
+    "normalized": "TURCO"
+  },
+  {
+    "id": 4684,
+    "word": "TURMO",
+    "normalized": "TURMO"
+  },
+  {
+    "id": 4685,
+    "word": "TURNO",
+    "normalized": "TURNO"
+  },
+  {
+    "id": 4686,
+    "word": "TURVA",
+    "normalized": "TURVA"
+  },
+  {
+    "id": 4687,
+    "word": "TURVE",
+    "normalized": "TURVE"
+  },
+  {
+    "id": 4688,
+    "word": "TUTOR",
+    "normalized": "TUTOR"
+  },
+  {
+    "id": 4689,
+    "word": "UFANA",
+    "normalized": "UFANA"
+  },
+  {
+    "id": 4690,
+    "word": "UFANE",
+    "normalized": "UFANE"
+  },
+  {
+    "id": 4691,
+    "word": "UFANO",
+    "normalized": "UFANO"
+  },
+  {
+    "id": 4692,
+    "word": "UIVAI",
+    "normalized": "UIVAI"
+  },
+  {
+    "id": 4693,
+    "word": "UIVAM",
+    "normalized": "UIVAM"
+  },
+  {
+    "id": 4694,
+    "word": "UIVAR",
+    "normalized": "UIVAR"
+  },
+  {
+    "id": 4695,
+    "word": "UIVAS",
+    "normalized": "UIVAS"
+  },
+  {
+    "id": 4696,
+    "word": "UIVEI",
+    "normalized": "UIVEI"
+  },
+  {
+    "id": 4697,
+    "word": "UIVEM",
+    "normalized": "UIVEM"
+  },
+  {
+    "id": 4698,
+    "word": "UIVES",
+    "normalized": "UIVES"
+  },
+  {
+    "id": 4699,
+    "word": "UIVOS",
+    "normalized": "UIVOS"
+  },
+  {
+    "id": 4700,
+    "word": "UIVOU",
+    "normalized": "UIVOU"
+  },
+  {
+    "id": 4701,
+    "word": "ULTRA",
+    "normalized": "ULTRA"
+  },
+  {
+    "id": 4702,
+    "word": "ULULA",
+    "normalized": "ULULA"
+  },
+  {
+    "id": 4703,
+    "word": "ULULE",
+    "normalized": "ULULE"
+  },
+  {
+    "id": 4704,
+    "word": "ULULO",
+    "normalized": "ULULO"
+  },
+  {
+    "id": 4705,
+    "word": "UNAIS",
+    "normalized": "UNAIS"
+  },
+  {
+    "id": 4706,
+    "word": "UNAMO",
+    "normalized": "UNAMO"
+  },
+  {
+    "id": 4707,
+    "word": "UNGEM",
+    "normalized": "UNGEM"
+  },
+  {
+    "id": 4708,
+    "word": "UNGES",
+    "normalized": "UNGES"
+  },
+  {
+    "id": 4709,
+    "word": "UNGIA",
+    "normalized": "UNGIA"
+  },
+  {
+    "id": 4710,
+    "word": "UNGIR",
+    "normalized": "UNGIR"
+  },
+  {
+    "id": 4711,
+    "word": "UNGIS",
+    "normalized": "UNGIS"
+  },
+  {
+    "id": 4712,
+    "word": "UNGIU",
+    "normalized": "UNGIU"
+  },
+  {
+    "id": 4713,
+    "word": "UNHAS",
+    "normalized": "UNHAS"
+  },
+  {
+    "id": 4714,
+    "word": "UNIAM",
+    "normalized": "UNIAM"
+  },
+  {
+    "id": 4715,
+    "word": "UNIAS",
+    "normalized": "UNIAS"
+  },
+  {
+    "id": 4716,
+    "word": "UNIDA",
+    "normalized": "UNIDA"
+  },
+  {
+    "id": 4717,
+    "word": "UNIMO",
+    "normalized": "UNIMO"
+  },
+  {
+    "id": 4718,
+    "word": "UNIRA",
+    "normalized": "UNIRA"
+  },
+  {
+    "id": 4719,
+    "word": "UNTAI",
+    "normalized": "UNTAI"
+  },
+  {
+    "id": 4720,
+    "word": "UNTAM",
+    "normalized": "UNTAM"
+  },
+  {
+    "id": 4721,
+    "word": "UNTAR",
+    "normalized": "UNTAR"
+  },
+  {
+    "id": 4722,
+    "word": "UNTAS",
+    "normalized": "UNTAS"
+  },
+  {
+    "id": 4723,
+    "word": "UNTEI",
+    "normalized": "UNTEI"
+  },
+  {
+    "id": 4724,
+    "word": "UNTEM",
+    "normalized": "UNTEM"
+  },
+  {
+    "id": 4725,
+    "word": "UNTES",
+    "normalized": "UNTES"
+  },
+  {
+    "id": 4726,
+    "word": "UNTOU",
+    "normalized": "UNTOU"
+  },
+  {
+    "id": 4727,
+    "word": "URANO",
+    "normalized": "URANO"
+  },
+  {
+    "id": 4728,
+    "word": "URDAM",
+    "normalized": "URDAM"
+  },
+  {
+    "id": 4729,
+    "word": "URDAS",
+    "normalized": "URDAS"
+  },
+  {
+    "id": 4730,
+    "word": "URDEM",
+    "normalized": "URDEM"
+  },
+  {
+    "id": 4731,
+    "word": "URDES",
+    "normalized": "URDES"
+  },
+  {
+    "id": 4732,
+    "word": "URDIA",
+    "normalized": "URDIA"
+  },
+  {
+    "id": 4733,
+    "word": "URDIR",
+    "normalized": "URDIR"
+  },
+  {
+    "id": 4734,
+    "word": "URDIS",
+    "normalized": "URDIS"
+  },
+  {
+    "id": 4735,
+    "word": "URDIU",
+    "normalized": "URDIU"
+  },
+  {
+    "id": 4736,
+    "word": "URGEM",
+    "normalized": "URGEM"
+  },
+  {
+    "id": 4737,
+    "word": "URGES",
+    "normalized": "URGES"
+  },
+  {
+    "id": 4738,
+    "word": "URGIA",
+    "normalized": "URGIA"
+  },
+  {
+    "id": 4739,
+    "word": "URGIR",
+    "normalized": "URGIR"
+  },
+  {
+    "id": 4740,
+    "word": "URGIS",
+    "normalized": "URGIS"
+  },
+  {
+    "id": 4741,
+    "word": "URGIU",
+    "normalized": "URGIU"
+  },
+  {
+    "id": 4742,
+    "word": "URINA",
+    "normalized": "URINA"
+  },
+  {
+    "id": 4743,
+    "word": "URINE",
+    "normalized": "URINE"
+  },
+  {
+    "id": 4744,
+    "word": "URINO",
+    "normalized": "URINO"
+  },
+  {
+    "id": 4745,
+    "word": "URJAM",
+    "normalized": "URJAM"
+  },
+  {
+    "id": 4746,
+    "word": "URJAS",
+    "normalized": "URJAS"
+  },
+  {
+    "id": 4747,
+    "word": "URNAS",
+    "normalized": "URNAS"
+  },
+  {
+    "id": 4748,
+    "word": "URRAI",
+    "normalized": "URRAI"
+  },
+  {
+    "id": 4749,
+    "word": "URRAM",
+    "normalized": "URRAM"
+  },
+  {
+    "id": 4750,
+    "word": "URRAR",
+    "normalized": "URRAR"
+  },
+  {
+    "id": 4751,
+    "word": "URRAS",
+    "normalized": "URRAS"
+  },
+  {
+    "id": 4752,
+    "word": "URREI",
+    "normalized": "URREI"
+  },
+  {
+    "id": 4753,
+    "word": "URREM",
+    "normalized": "URREM"
+  },
+  {
+    "id": 4754,
+    "word": "URRES",
+    "normalized": "URRES"
+  },
+  {
+    "id": 4755,
+    "word": "URROS",
+    "normalized": "URROS"
+  },
+  {
+    "id": 4756,
+    "word": "URROU",
+    "normalized": "URROU"
+  },
+  {
+    "id": 4757,
+    "word": "URSAS",
+    "normalized": "URSAS"
+  },
+  {
+    "id": 4758,
+    "word": "URSOS",
+    "normalized": "URSOS"
+  },
+  {
+    "id": 4759,
+    "word": "URUBU",
+    "normalized": "URUBU"
+  },
+  {
+    "id": 4760,
+    "word": "USADA",
+    "normalized": "USADA"
+  },
+  {
+    "id": 4761,
+    "word": "USADO",
+    "normalized": "USADO"
+  },
+  {
+    "id": 4762,
+    "word": "USAIS",
+    "normalized": "USAIS"
+  },
+  {
+    "id": 4763,
+    "word": "USAMO",
+    "normalized": "USAMO"
+  },
+  {
+    "id": 4764,
+    "word": "USARA",
+    "normalized": "USARA"
+  },
+  {
+    "id": 4765,
+    "word": "USAVA",
+    "normalized": "USAVA"
+  },
+  {
+    "id": 4766,
+    "word": "USEIS",
+    "normalized": "USEIS"
+  },
+  {
+    "id": 4767,
+    "word": "USEMO",
+    "normalized": "USEMO"
+  },
+  {
+    "id": 4768,
+    "word": "USINA",
+    "normalized": "USINA"
+  },
+  {
+    "id": 4769,
+    "word": "USUAL",
+    "normalized": "USUAL"
+  },
+  {
+    "id": 4770,
+    "word": "USURA",
+    "normalized": "USURA"
+  },
+  {
+    "id": 4771,
+    "word": "VACAS",
+    "normalized": "VACAS"
+  },
+  {
+    "id": 4772,
+    "word": "VADES",
+    "normalized": "VADES"
+  },
+  {
+    "id": 4773,
+    "word": "VADIA",
+    "normalized": "VADIA"
+  },
+  {
+    "id": 4774,
+    "word": "VADIE",
+    "normalized": "VADIE"
+  },
+  {
+    "id": 4775,
+    "word": "VADIO",
+    "normalized": "VADIO"
+  },
+  {
+    "id": 4776,
+    "word": "VAGAI",
+    "normalized": "VAGAI"
+  },
+  {
+    "id": 4777,
+    "word": "VAGAM",
+    "normalized": "VAGAM"
+  },
+  {
+    "id": 4778,
+    "word": "VAGAR",
+    "normalized": "VAGAR"
+  },
+  {
+    "id": 4779,
+    "word": "VAGAS",
+    "normalized": "VAGAS"
+  },
+  {
+    "id": 4780,
+    "word": "VAGEM",
+    "normalized": "VAGEM"
+  },
+  {
+    "id": 4781,
+    "word": "VAGIA",
+    "normalized": "VAGIA"
+  },
+  {
+    "id": 4782,
+    "word": "VAGIR",
+    "normalized": "VAGIR"
+  },
+  {
+    "id": 4783,
+    "word": "VAGIS",
+    "normalized": "VAGIS"
+  },
+  {
+    "id": 4784,
+    "word": "VAGIU",
+    "normalized": "VAGIU"
+  },
+  {
+    "id": 4785,
+    "word": "VAGOS",
+    "normalized": "VAGOS"
+  },
+  {
+    "id": 4786,
+    "word": "VAGOU",
+    "normalized": "VAGOU"
+  },
+  {
+    "id": 4787,
+    "word": "VAGUE",
+    "normalized": "VAGUE"
+  },
+  {
+    "id": 4788,
+    "word": "VAIAI",
+    "normalized": "VAIAI"
+  },
+  {
+    "id": 4789,
+    "word": "VAIAM",
+    "normalized": "VAIAM"
+  },
+  {
+    "id": 4790,
+    "word": "VAIAR",
+    "normalized": "VAIAR"
+  },
+  {
+    "id": 4791,
+    "word": "VAIAS",
+    "normalized": "VAIAS"
+  },
+  {
+    "id": 4792,
+    "word": "VAIEI",
+    "normalized": "VAIEI"
+  },
+  {
+    "id": 4793,
+    "word": "VAIEM",
+    "normalized": "VAIEM"
+  },
+  {
+    "id": 4794,
+    "word": "VAIES",
+    "normalized": "VAIES"
+  },
+  {
+    "id": 4795,
+    "word": "VAIOU",
+    "normalized": "VAIOU"
+  },
+  {
+    "id": 4796,
+    "word": "VALAS",
+    "normalized": "VALAS"
+  },
+  {
+    "id": 4797,
+    "word": "VALEI",
+    "normalized": "VALEI"
+  },
+  {
+    "id": 4798,
+    "word": "VALEM",
+    "normalized": "VALEM"
+  },
+  {
+    "id": 4799,
+    "word": "VALER",
+    "normalized": "VALER"
+  },
+  {
+    "id": 4800,
+    "word": "VALEU",
+    "normalized": "VALEU"
+  },
+  {
+    "id": 4801,
+    "word": "VALHA",
+    "normalized": "VALHA"
+  },
+  {
+    "id": 4802,
+    "word": "VALHO",
+    "normalized": "VALHO"
+  },
+  {
+    "id": 4803,
+    "word": "VALIA",
+    "normalized": "VALIA"
+  },
+  {
+    "id": 4804,
+    "word": "VALOR",
+    "normalized": "VALOR"
+  },
+  {
+    "id": 4805,
+    "word": "VALSA",
+    "normalized": "VALSA"
+  },
+  {
+    "id": 4806,
+    "word": "VALÃª",
+    "normalized": "VALAª"
+  },
+  {
+    "id": 4807,
+    "word": "VAMOS",
+    "normalized": "VAMOS"
+  },
+  {
+    "id": 4808,
+    "word": "VAPOR",
+    "normalized": "VAPOR"
+  },
+  {
+    "id": 4809,
+    "word": "VARAI",
+    "normalized": "VARAI"
+  },
+  {
+    "id": 4810,
+    "word": "VARAM",
+    "normalized": "VARAM"
+  },
+  {
+    "id": 4811,
+    "word": "VARAR",
+    "normalized": "VARAR"
+  },
+  {
+    "id": 4812,
+    "word": "VARAS",
+    "normalized": "VARAS"
+  },
+  {
+    "id": 4813,
+    "word": "VAREI",
+    "normalized": "VAREI"
+  },
+  {
+    "id": 4814,
+    "word": "VAREM",
+    "normalized": "VAREM"
+  },
+  {
+    "id": 4815,
+    "word": "VARES",
+    "normalized": "VARES"
+  },
+  {
+    "id": 4816,
+    "word": "VARIA",
+    "normalized": "VARIA"
+  },
+  {
+    "id": 4817,
+    "word": "VARIE",
+    "normalized": "VARIE"
+  },
+  {
+    "id": 4818,
+    "word": "VARIO",
+    "normalized": "VARIO"
+  },
+  {
+    "id": 4819,
+    "word": "VARIZ",
+    "normalized": "VARIZ"
+  },
+  {
+    "id": 4820,
+    "word": "VAROU",
+    "normalized": "VAROU"
+  },
+  {
+    "id": 4821,
+    "word": "VARRA",
+    "normalized": "VARRA"
+  },
+  {
+    "id": 4822,
+    "word": "VARRI",
+    "normalized": "VARRI"
+  },
+  {
+    "id": 4823,
+    "word": "VARRO",
+    "normalized": "VARRO"
+  },
+  {
+    "id": 4824,
+    "word": "VASOS",
+    "normalized": "VASOS"
+  },
+  {
+    "id": 4825,
+    "word": "VASTA",
+    "normalized": "VASTA"
+  },
+  {
+    "id": 4826,
+    "word": "VASTO",
+    "normalized": "VASTO"
+  },
+  {
+    "id": 4827,
+    "word": "VAZAI",
+    "normalized": "VAZAI"
+  },
+  {
+    "id": 4828,
+    "word": "VAZAM",
+    "normalized": "VAZAM"
+  },
+  {
+    "id": 4829,
+    "word": "VAZAR",
+    "normalized": "VAZAR"
+  },
+  {
+    "id": 4830,
+    "word": "VAZAS",
+    "normalized": "VAZAS"
+  },
+  {
+    "id": 4831,
+    "word": "VAZEI",
+    "normalized": "VAZEI"
+  },
+  {
+    "id": 4832,
+    "word": "VAZEM",
+    "normalized": "VAZEM"
+  },
+  {
+    "id": 4833,
+    "word": "VAZES",
+    "normalized": "VAZES"
+  },
+  {
+    "id": 4834,
+    "word": "VAZIA",
+    "normalized": "VAZIA"
+  },
+  {
+    "id": 4835,
+    "word": "VAZIO",
+    "normalized": "VAZIO"
+  },
+  {
+    "id": 4836,
+    "word": "VAZOU",
+    "normalized": "VAZOU"
+  },
+  {
+    "id": 4837,
+    "word": "VEADO",
+    "normalized": "VEADO"
+  },
+  {
+    "id": 4838,
+    "word": "VEDAI",
+    "normalized": "VEDAI"
+  },
+  {
+    "id": 4839,
+    "word": "VEDAM",
+    "normalized": "VEDAM"
+  },
+  {
+    "id": 4840,
+    "word": "VEDAR",
+    "normalized": "VEDAR"
+  },
+  {
+    "id": 4841,
+    "word": "VEDAS",
+    "normalized": "VEDAS"
+  },
+  {
+    "id": 4842,
+    "word": "VEDEI",
+    "normalized": "VEDEI"
+  },
+  {
+    "id": 4843,
+    "word": "VEDEM",
+    "normalized": "VEDEM"
+  },
+  {
+    "id": 4844,
+    "word": "VEDES",
+    "normalized": "VEDES"
+  },
+  {
+    "id": 4845,
+    "word": "VEDOU",
+    "normalized": "VEDOU"
+  },
+  {
+    "id": 4846,
+    "word": "VEIAS",
+    "normalized": "VEIAS"
+  },
+  {
+    "id": 4847,
+    "word": "VEIRA",
+    "normalized": "VEIRA"
+  },
+  {
+    "id": 4848,
+    "word": "VEJAM",
+    "normalized": "VEJAM"
+  },
+  {
+    "id": 4849,
+    "word": "VEJAS",
+    "normalized": "VEJAS"
+  },
+  {
+    "id": 4850,
+    "word": "VELAI",
+    "normalized": "VELAI"
+  },
+  {
+    "id": 4851,
+    "word": "VELAM",
+    "normalized": "VELAM"
+  },
+  {
+    "id": 4852,
+    "word": "VELAR",
+    "normalized": "VELAR"
+  },
+  {
+    "id": 4853,
+    "word": "VELAS",
+    "normalized": "VELAS"
+  },
+  {
+    "id": 4854,
+    "word": "VELEI",
+    "normalized": "VELEI"
+  },
+  {
+    "id": 4855,
+    "word": "VELEM",
+    "normalized": "VELEM"
+  },
+  {
+    "id": 4856,
+    "word": "VELES",
+    "normalized": "VELES"
+  },
+  {
+    "id": 4857,
+    "word": "VELOU",
+    "normalized": "VELOU"
+  },
+  {
+    "id": 4858,
+    "word": "VELOZ",
+    "normalized": "VELOZ"
+  },
+  {
+    "id": 4859,
+    "word": "VEMOS",
+    "normalized": "VEMOS"
+  },
+  {
+    "id": 4860,
+    "word": "VENAL",
+    "normalized": "VENAL"
+  },
+  {
+    "id": 4861,
+    "word": "VENCE",
+    "normalized": "VENCE"
+  },
+  {
+    "id": 4862,
+    "word": "VENCI",
+    "normalized": "VENCI"
+  },
+  {
+    "id": 4863,
+    "word": "VENDE",
+    "normalized": "VENDE"
+  },
+  {
+    "id": 4864,
+    "word": "VENDI",
+    "normalized": "VENDI"
+  },
+  {
+    "id": 4865,
+    "word": "VENDO",
+    "normalized": "VENDO"
+  },
+  {
+    "id": 4866,
+    "word": "VENHO",
+    "normalized": "VENHO"
+  },
+  {
+    "id": 4867,
+    "word": "VENTA",
+    "normalized": "VENTA"
+  },
+  {
+    "id": 4868,
+    "word": "VENTE",
+    "normalized": "VENTE"
+  },
+  {
+    "id": 4869,
+    "word": "VERBA",
+    "normalized": "VERBA"
+  },
+  {
+    "id": 4870,
+    "word": "VEREI",
+    "normalized": "VEREI"
+  },
+  {
+    "id": 4871,
+    "word": "VEREM",
+    "normalized": "VEREM"
+  },
+  {
+    "id": 4872,
+    "word": "VERES",
+    "normalized": "VERES"
+  },
+  {
+    "id": 4873,
+    "word": "VERGA",
+    "normalized": "VERGA"
+  },
+  {
+    "id": 4874,
+    "word": "VERIA",
+    "normalized": "VERIA"
+  },
+  {
+    "id": 4875,
+    "word": "VERME",
+    "normalized": "VERME"
+  },
+  {
+    "id": 4876,
+    "word": "VERSA",
+    "normalized": "VERSA"
+  },
+  {
+    "id": 4877,
+    "word": "VERSE",
+    "normalized": "VERSE"
+  },
+  {
+    "id": 4878,
+    "word": "VERSO",
+    "normalized": "VERSO"
+  },
+  {
+    "id": 4879,
+    "word": "VERTA",
+    "normalized": "VERTA"
+  },
+  {
+    "id": 4880,
+    "word": "VERTE",
+    "normalized": "VERTE"
+  },
+  {
+    "id": 4881,
+    "word": "VERTI",
+    "normalized": "VERTI"
+  },
+  {
+    "id": 4882,
+    "word": "VERTO",
+    "normalized": "VERTO"
+  },
+  {
+    "id": 4883,
+    "word": "VESGA",
+    "normalized": "VESGA"
+  },
+  {
+    "id": 4884,
+    "word": "VESGO",
+    "normalized": "VESGO"
+  },
+  {
+    "id": 4885,
+    "word": "VESPA",
+    "normalized": "VESPA"
+  },
+  {
+    "id": 4886,
+    "word": "VESTE",
+    "normalized": "VESTE"
+  },
+  {
+    "id": 4887,
+    "word": "VESTI",
+    "normalized": "VESTI"
+  },
+  {
+    "id": 4888,
+    "word": "VETAI",
+    "normalized": "VETAI"
+  },
+  {
+    "id": 4889,
+    "word": "VETAM",
+    "normalized": "VETAM"
+  },
+  {
+    "id": 4890,
+    "word": "VETAR",
+    "normalized": "VETAR"
+  },
+  {
+    "id": 4891,
+    "word": "VETAS",
+    "normalized": "VETAS"
+  },
+  {
+    "id": 4892,
+    "word": "VETEI",
+    "normalized": "VETEI"
+  },
+  {
+    "id": 4893,
+    "word": "VETEM",
+    "normalized": "VETEM"
+  },
+  {
+    "id": 4894,
+    "word": "VETES",
+    "normalized": "VETES"
+  },
+  {
+    "id": 4895,
+    "word": "VETOR",
+    "normalized": "VETOR"
+  },
+  {
+    "id": 4896,
+    "word": "VETOU",
+    "normalized": "VETOU"
+  },
+  {
+    "id": 4897,
+    "word": "VEXAI",
+    "normalized": "VEXAI"
+  },
+  {
+    "id": 4898,
+    "word": "VEXAM",
+    "normalized": "VEXAM"
+  },
+  {
+    "id": 4899,
+    "word": "VEXAR",
+    "normalized": "VEXAR"
+  },
+  {
+    "id": 4900,
+    "word": "VEXAS",
+    "normalized": "VEXAS"
+  },
+  {
+    "id": 4901,
+    "word": "VEXEI",
+    "normalized": "VEXEI"
+  },
+  {
+    "id": 4902,
+    "word": "VEXEM",
+    "normalized": "VEXEM"
+  },
+  {
+    "id": 4903,
+    "word": "VEXES",
+    "normalized": "VEXES"
+  },
+  {
+    "id": 4904,
+    "word": "VEXOU",
+    "normalized": "VEXOU"
+  },
+  {
+    "id": 4905,
+    "word": "VEZES",
+    "normalized": "VEZES"
+  },
+  {
+    "id": 4906,
+    "word": "VIAJA",
+    "normalized": "VIAJA"
+  },
+  {
+    "id": 4907,
+    "word": "VIAJE",
+    "normalized": "VIAJE"
+  },
+  {
+    "id": 4908,
+    "word": "VIAJO",
+    "normalized": "VIAJO"
+  },
+  {
+    "id": 4909,
+    "word": "VIBRA",
+    "normalized": "VIBRA"
+  },
+  {
+    "id": 4910,
+    "word": "VIBRE",
+    "normalized": "VIBRE"
+  },
+  {
+    "id": 4911,
+    "word": "VIBRO",
+    "normalized": "VIBRO"
+  },
+  {
+    "id": 4912,
+    "word": "VICIA",
+    "normalized": "VICIA"
+  },
+  {
+    "id": 4913,
+    "word": "VICIE",
+    "normalized": "VICIE"
+  },
+  {
+    "id": 4914,
+    "word": "VICIO",
+    "normalized": "VICIO"
+  },
+  {
+    "id": 4915,
+    "word": "VIDAS",
+    "normalized": "VIDAS"
+  },
+  {
+    "id": 4916,
+    "word": "VIDRA",
+    "normalized": "VIDRA"
+  },
+  {
+    "id": 4917,
+    "word": "VIDRE",
+    "normalized": "VIDRE"
+  },
+  {
+    "id": 4918,
+    "word": "VIDRO",
+    "normalized": "VIDRO"
+  },
+  {
+    "id": 4919,
+    "word": "VIELA",
+    "normalized": "VIELA"
+  },
+  {
+    "id": 4920,
+    "word": "VIEMO",
+    "normalized": "VIEMO"
+  },
+  {
+    "id": 4921,
+    "word": "VIERA",
+    "normalized": "VIERA"
+  },
+  {
+    "id": 4922,
+    "word": "VIGAS",
+    "normalized": "VIGAS"
+  },
+  {
+    "id": 4923,
+    "word": "VIGIE",
+    "normalized": "VIGIE"
+  },
+  {
+    "id": 4924,
+    "word": "VIGIO",
+    "normalized": "VIGIO"
+  },
+  {
+    "id": 4925,
+    "word": "VIGOR",
+    "normalized": "VIGOR"
+  },
+  {
+    "id": 4926,
+    "word": "VILAS",
+    "normalized": "VILAS"
+  },
+  {
+    "id": 4927,
+    "word": "VIMOS",
+    "normalized": "VIMOS"
+  },
+  {
+    "id": 4928,
+    "word": "VINCA",
+    "normalized": "VINCA"
+  },
+  {
+    "id": 4929,
+    "word": "VINCO",
+    "normalized": "VINCO"
+  },
+  {
+    "id": 4930,
+    "word": "VINDA",
+    "normalized": "VINDA"
+  },
+  {
+    "id": 4931,
+    "word": "VINDE",
+    "normalized": "VINDE"
+  },
+  {
+    "id": 4932,
+    "word": "VINDO",
+    "normalized": "VINDO"
+  },
+  {
+    "id": 4933,
+    "word": "VINGA",
+    "normalized": "VINGA"
+  },
+  {
+    "id": 4934,
+    "word": "VINGO",
+    "normalized": "VINGO"
+  },
+  {
+    "id": 4935,
+    "word": "VINHA",
+    "normalized": "VINHA"
+  },
+  {
+    "id": 4936,
+    "word": "VINHO",
+    "normalized": "VINHO"
+  },
+  {
+    "id": 4937,
+    "word": "VIOLE",
+    "normalized": "VIOLE"
+  },
+  {
+    "id": 4938,
+    "word": "VIOLO",
+    "normalized": "VIOLO"
+  },
+  {
+    "id": 4939,
+    "word": "VIRAI",
+    "normalized": "VIRAI"
+  },
+  {
+    "id": 4940,
+    "word": "VIRAL",
+    "normalized": "VIRAL"
+  },
+  {
+    "id": 4941,
+    "word": "VIRAM",
+    "normalized": "VIRAM"
+  },
+  {
+    "id": 4942,
+    "word": "VIRAR",
+    "normalized": "VIRAR"
+  },
+  {
+    "id": 4943,
+    "word": "VIRAS",
+    "normalized": "VIRAS"
+  },
+  {
+    "id": 4944,
+    "word": "VIREI",
+    "normalized": "VIREI"
+  },
+  {
+    "id": 4945,
+    "word": "VIREM",
+    "normalized": "VIREM"
+  },
+  {
+    "id": 4946,
+    "word": "VIRES",
+    "normalized": "VIRES"
+  },
+  {
+    "id": 4947,
+    "word": "VIRIA",
+    "normalized": "VIRIA"
+  },
+  {
+    "id": 4948,
+    "word": "VIRIL",
+    "normalized": "VIRIL"
+  },
+  {
+    "id": 4949,
+    "word": "VIRIS",
+    "normalized": "VIRIS"
+  },
+  {
+    "id": 4950,
+    "word": "VIRMO",
+    "normalized": "VIRMO"
+  },
+  {
+    "id": 4951,
+    "word": "VIROU",
+    "normalized": "VIROU"
+  },
+  {
+    "id": 4952,
+    "word": "VISAI",
+    "normalized": "VISAI"
+  },
+  {
+    "id": 4953,
+    "word": "VISAM",
+    "normalized": "VISAM"
+  },
+  {
+    "id": 4954,
+    "word": "VISAR",
+    "normalized": "VISAR"
+  },
+  {
+    "id": 4955,
+    "word": "VISAS",
+    "normalized": "VISAS"
+  },
+  {
+    "id": 4956,
+    "word": "VISEI",
+    "normalized": "VISEI"
+  },
+  {
+    "id": 4957,
+    "word": "VISEM",
+    "normalized": "VISEM"
+  },
+  {
+    "id": 4958,
+    "word": "VISES",
+    "normalized": "VISES"
+  },
+  {
+    "id": 4959,
+    "word": "VISOU",
+    "normalized": "VISOU"
+  },
+  {
+    "id": 4960,
+    "word": "VISSE",
+    "normalized": "VISSE"
+  },
+  {
+    "id": 4961,
+    "word": "VISTE",
+    "normalized": "VISTE"
+  },
+  {
+    "id": 4962,
+    "word": "VISTO",
+    "normalized": "VISTO"
+  },
+  {
+    "id": 4963,
+    "word": "VITAL",
+    "normalized": "VITAL"
+  },
+  {
+    "id": 4964,
+    "word": "VIVAM",
+    "normalized": "VIVAM"
+  },
+  {
+    "id": 4965,
+    "word": "VIVAS",
+    "normalized": "VIVAS"
+  },
+  {
+    "id": 4966,
+    "word": "VIVAZ",
+    "normalized": "VIVAZ"
+  },
+  {
+    "id": 4967,
+    "word": "VIVEI",
+    "normalized": "VIVEI"
+  },
+  {
+    "id": 4968,
+    "word": "VIVEM",
+    "normalized": "VIVEM"
+  },
+  {
+    "id": 4969,
+    "word": "VIVER",
+    "normalized": "VIVER"
+  },
+  {
+    "id": 4970,
+    "word": "VIVES",
+    "normalized": "VIVES"
+  },
+  {
+    "id": 4971,
+    "word": "VIVEU",
+    "normalized": "VIVEU"
+  },
+  {
+    "id": 4972,
+    "word": "VIVIA",
+    "normalized": "VIVIA"
+  },
+  {
+    "id": 4973,
+    "word": "VIVOS",
+    "normalized": "VIVOS"
+  },
+  {
+    "id": 4974,
+    "word": "VIVÃª",
+    "normalized": "VIVAª"
+  },
+  {
+    "id": 4975,
+    "word": "VOADA",
+    "normalized": "VOADA"
+  },
+  {
+    "id": 4976,
+    "word": "VOADO",
+    "normalized": "VOADO"
+  },
+  {
+    "id": 4977,
+    "word": "VOAIS",
+    "normalized": "VOAIS"
+  },
+  {
+    "id": 4978,
+    "word": "VOAMO",
+    "normalized": "VOAMO"
+  },
+  {
+    "id": 4979,
+    "word": "VOARA",
+    "normalized": "VOARA"
+  },
+  {
+    "id": 4980,
+    "word": "VOAVA",
+    "normalized": "VOAVA"
+  },
+  {
+    "id": 4981,
+    "word": "VOCAL",
+    "normalized": "VOCAL"
+  },
+  {
+    "id": 4982,
+    "word": "VOCÃª",
+    "normalized": "VOCAª"
+  },
+  {
+    "id": 4983,
+    "word": "VODCA",
+    "normalized": "VODCA"
+  },
+  {
+    "id": 4984,
+    "word": "VOEIS",
+    "normalized": "VOEIS"
+  },
+  {
+    "id": 4985,
+    "word": "VOEMO",
+    "normalized": "VOEMO"
+  },
+  {
+    "id": 4986,
+    "word": "VOGAL",
+    "normalized": "VOGAL"
+  },
+  {
+    "id": 4987,
+    "word": "VOLTE",
+    "normalized": "VOLTE"
+  },
+  {
+    "id": 4988,
+    "word": "VOLTO",
+    "normalized": "VOLTO"
+  },
+  {
+    "id": 4989,
+    "word": "VOLVA",
+    "normalized": "VOLVA"
+  },
+  {
+    "id": 4990,
+    "word": "VOLVE",
+    "normalized": "VOLVE"
+  },
+  {
+    "id": 4991,
+    "word": "VOLVI",
+    "normalized": "VOLVI"
+  },
+  {
+    "id": 4992,
+    "word": "VOLVO",
+    "normalized": "VOLVO"
+  },
+  {
+    "id": 4993,
+    "word": "VORAZ",
+    "normalized": "VORAZ"
+  },
+  {
+    "id": 4994,
+    "word": "VOSSA",
+    "normalized": "VOSSA"
+  },
+  {
+    "id": 4995,
+    "word": "VOSSO",
+    "normalized": "VOSSO"
+  },
+  {
+    "id": 4996,
+    "word": "VOTAI",
+    "normalized": "VOTAI"
+  },
+  {
+    "id": 4997,
+    "word": "VOTAM",
+    "normalized": "VOTAM"
+  },
+  {
+    "id": 4998,
+    "word": "VOTAR",
+    "normalized": "VOTAR"
+  },
+  {
+    "id": 4999,
+    "word": "VOTAS",
+    "normalized": "VOTAS"
+  },
+  {
+    "id": 5000,
+    "word": "VOTEI",
+    "normalized": "VOTEI"
+  },
+  {
+    "id": 5001,
+    "word": "VOTEM",
+    "normalized": "VOTEM"
+  },
+  {
+    "id": 5002,
+    "word": "VOTES",
+    "normalized": "VOTES"
+  },
+  {
+    "id": 5003,
+    "word": "VOTOS",
+    "normalized": "VOTOS"
+  },
+  {
+    "id": 5004,
+    "word": "VOTOU",
+    "normalized": "VOTOU"
+  },
+  {
+    "id": 5005,
+    "word": "VOZES",
+    "normalized": "VOZES"
+  },
+  {
+    "id": 5006,
+    "word": "VULGO",
+    "normalized": "VULGO"
+  },
+  {
+    "id": 5007,
+    "word": "VULTO",
+    "normalized": "VULTO"
+  },
+  {
+    "id": 5008,
+    "word": "VULVA",
+    "normalized": "VULVA"
+  },
+  {
+    "id": 5009,
+    "word": "VÃªEM",
+    "normalized": "VAªEM"
+  },
+  {
+    "id": 5010,
+    "word": "XALES",
+    "normalized": "XALES"
+  },
+  {
+    "id": 5011,
+    "word": "XELIM",
+    "normalized": "XELIM"
+  },
+  {
+    "id": 5012,
+    "word": "XEQUE",
+    "normalized": "XEQUE"
+  },
+  {
+    "id": 5013,
+    "word": "XIITA",
+    "normalized": "XIITA"
+  },
+  {
+    "id": 5014,
+    "word": "XINGA",
+    "normalized": "XINGA"
+  },
+  {
+    "id": 5015,
+    "word": "XINGO",
+    "normalized": "XINGO"
+  },
+  {
+    "id": 5016,
+    "word": "XISTO",
+    "normalized": "XISTO"
+  },
+  {
+    "id": 5017,
+    "word": "XUCRA",
+    "normalized": "XUCRA"
+  },
+  {
+    "id": 5018,
+    "word": "XUCRO",
+    "normalized": "XUCRO"
+  },
+  {
+    "id": 5019,
+    "word": "YOGOS",
+    "normalized": "YOGOS"
+  },
+  {
+    "id": 5020,
+    "word": "ZAGAS",
+    "normalized": "ZAGAS"
+  },
+  {
+    "id": 5021,
+    "word": "ZANGA",
+    "normalized": "ZANGA"
+  },
+  {
+    "id": 5022,
+    "word": "ZANGO",
+    "normalized": "ZANGO"
+  },
+  {
+    "id": 5023,
+    "word": "ZANZA",
+    "normalized": "ZANZA"
+  },
+  {
+    "id": 5024,
+    "word": "ZANZE",
+    "normalized": "ZANZE"
+  },
+  {
+    "id": 5025,
+    "word": "ZANZO",
+    "normalized": "ZANZO"
+  },
+  {
+    "id": 5026,
+    "word": "ZARPA",
+    "normalized": "ZARPA"
+  },
+  {
+    "id": 5027,
+    "word": "ZARPE",
+    "normalized": "ZARPE"
+  },
+  {
+    "id": 5028,
+    "word": "ZARPO",
+    "normalized": "ZARPO"
+  },
+  {
+    "id": 5029,
+    "word": "ZEBRA",
+    "normalized": "ZEBRA"
+  },
+  {
+    "id": 5030,
+    "word": "ZELAI",
+    "normalized": "ZELAI"
+  },
+  {
+    "id": 5031,
+    "word": "ZELAM",
+    "normalized": "ZELAM"
+  },
+  {
+    "id": 5032,
+    "word": "ZELAR",
+    "normalized": "ZELAR"
+  },
+  {
+    "id": 5033,
+    "word": "ZELAS",
+    "normalized": "ZELAS"
+  },
+  {
+    "id": 5034,
+    "word": "ZELEI",
+    "normalized": "ZELEI"
+  },
+  {
+    "id": 5035,
+    "word": "ZELEM",
+    "normalized": "ZELEM"
+  },
+  {
+    "id": 5036,
+    "word": "ZELES",
+    "normalized": "ZELES"
+  },
+  {
+    "id": 5037,
+    "word": "ZELOU",
+    "normalized": "ZELOU"
+  },
+  {
+    "id": 5038,
+    "word": "ZERAI",
+    "normalized": "ZERAI"
+  },
+  {
+    "id": 5039,
+    "word": "ZERAM",
+    "normalized": "ZERAM"
+  },
+  {
+    "id": 5040,
+    "word": "ZERAR",
+    "normalized": "ZERAR"
+  },
+  {
+    "id": 5041,
+    "word": "ZERAS",
+    "normalized": "ZERAS"
+  },
+  {
+    "id": 5042,
+    "word": "ZEREI",
+    "normalized": "ZEREI"
+  },
+  {
+    "id": 5043,
+    "word": "ZEREM",
+    "normalized": "ZEREM"
+  },
+  {
+    "id": 5044,
+    "word": "ZERES",
+    "normalized": "ZERES"
+  },
+  {
+    "id": 5045,
+    "word": "ZEROS",
+    "normalized": "ZEROS"
+  },
+  {
+    "id": 5046,
+    "word": "ZEROU",
+    "normalized": "ZEROU"
+  },
+  {
+    "id": 5047,
+    "word": "ZINCO",
+    "normalized": "ZINCO"
+  },
+  {
+    "id": 5048,
+    "word": "ZOMBA",
+    "normalized": "ZOMBA"
+  },
+  {
+    "id": 5049,
+    "word": "ZOMBE",
+    "normalized": "ZOMBE"
+  },
+  {
+    "id": 5050,
+    "word": "ZOMBO",
+    "normalized": "ZOMBO"
+  },
+  {
+    "id": 5051,
+    "word": "ZONAS",
+    "normalized": "ZONAS"
+  },
+  {
+    "id": 5052,
+    "word": "ZONZA",
+    "normalized": "ZONZA"
+  },
+  {
+    "id": 5053,
+    "word": "ZONZO",
+    "normalized": "ZONZO"
+  },
+  {
+    "id": 5054,
+    "word": "ZUMBA",
+    "normalized": "ZUMBA"
+  },
+  {
+    "id": 5055,
+    "word": "ZUMBE",
+    "normalized": "ZUMBE"
+  },
+  {
+    "id": 5056,
+    "word": "ZUMBO",
+    "normalized": "ZUMBO"
+  },
+  {
+    "id": 5057,
+    "word": "ZUNAM",
+    "normalized": "ZUNAM"
+  },
+  {
+    "id": 5058,
+    "word": "ZUNAS",
+    "normalized": "ZUNAS"
+  },
+  {
+    "id": 5059,
+    "word": "ZUNEM",
+    "normalized": "ZUNEM"
+  },
+  {
+    "id": 5060,
+    "word": "ZUNES",
+    "normalized": "ZUNES"
+  },
+  {
+    "id": 5061,
+    "word": "ZUNIA",
+    "normalized": "ZUNIA"
+  },
+  {
+    "id": 5062,
+    "word": "ZUNIR",
+    "normalized": "ZUNIR"
+  },
+  {
+    "id": 5063,
+    "word": "ZUNIS",
+    "normalized": "ZUNIS"
+  },
+  {
+    "id": 5064,
+    "word": "ZUNIU",
+    "normalized": "ZUNIU"
+  },
+  {
+    "id": 5065,
+    "word": "ZURRA",
+    "normalized": "ZURRA"
+  },
+  {
+    "id": 5066,
+    "word": "ZURRE",
+    "normalized": "ZURRE"
+  },
+  {
+    "id": 5067,
+    "word": "ZURRO",
+    "normalized": "ZURRO"
+  },
+  {
+    "id": 5068,
+    "word": "ÃºTIL",
+    "normalized": "AºTIL"
+  },
+  {
+    "id": 5069,
+    "word": "ABDUZ",
+    "normalized": "ABDUZ"
+  },
+  {
+    "id": 5070,
+    "word": "ABOBO",
+    "normalized": "ABOBO"
+  },
+  {
+    "id": 5071,
+    "word": "ABOBE",
+    "normalized": "ABOBE"
+  },
+  {
+    "id": 5072,
+    "word": "ABOBA",
+    "normalized": "ABOBA"
+  },
+  {
+    "id": 5073,
+    "word": "ABOIM",
+    "normalized": "ABOIM"
+  },
+  {
+    "id": 5074,
+    "word": "ABONE",
+    "normalized": "ABONE"
+  },
+  {
+    "id": 5075,
+    "word": "ABONA",
+    "normalized": "ABONA"
+  },
+  {
+    "id": 5076,
+    "word": "ABULA",
+    "normalized": "ABULA"
+  },
+  {
+    "id": 5077,
+    "word": "ABULO",
+    "normalized": "ABULO"
+  },
+  {
+    "id": 5078,
+    "word": "ACAMA",
+    "normalized": "ACAMA"
+  },
+  {
+    "id": 5079,
+    "word": "ACAMO",
+    "normalized": "ACAMO"
+  },
+  {
+    "id": 5080,
+    "word": "ACAME",
+    "normalized": "ACAME"
+  },
+  {
+    "id": 5081,
+    "word": "ACEDO",
+    "normalized": "ACEDO"
+  },
+  {
+    "id": 5082,
+    "word": "ACEDI",
+    "normalized": "ACEDI"
+  },
+  {
+    "id": 5083,
+    "word": "ACEDE",
+    "normalized": "ACEDE"
+  },
+  {
+    "id": 5084,
+    "word": "ACEDA",
+    "normalized": "ACEDA"
+  },
+  {
+    "id": 5085,
+    "word": "ACIDO",
+    "normalized": "ACIDO"
+  },
+  {
+    "id": 5086,
+    "word": "ACIDE",
+    "normalized": "ACIDE"
+  },
+  {
+    "id": 5087,
+    "word": "ACIDA",
+    "normalized": "ACIDA"
+  },
+  {
+    "id": 5088,
+    "word": "ACNES",
+    "normalized": "ACNES"
+  },
+  {
+    "id": 5089,
+    "word": "ACODE",
+    "normalized": "ACODE"
+  },
+  {
+    "id": 5090,
+    "word": "ACRES",
+    "normalized": "ACRES"
+  },
+  {
+    "id": 5091,
+    "word": "ACUME",
+    "normalized": "ACUME"
+  },
+  {
+    "id": 5092,
+    "word": "ACURO",
+    "normalized": "ACURO"
+  },
+  {
+    "id": 5093,
+    "word": "ACURE",
+    "normalized": "ACURE"
+  },
+  {
+    "id": 5094,
+    "word": "ACURA",
+    "normalized": "ACURA"
+  },
+  {
+    "id": 5095,
+    "word": "ADAMS",
+    "normalized": "ADAMS"
+  },
+  {
+    "id": 5096,
+    "word": "ADEGO",
+    "normalized": "ADEGO"
+  },
+  {
+    "id": 5097,
+    "word": "ADEJO",
+    "normalized": "ADEJO"
+  },
+  {
+    "id": 5098,
+    "word": "ADEJE",
+    "normalized": "ADEJE"
+  },
+  {
+    "id": 5099,
+    "word": "ADEJA",
+    "normalized": "ADEJA"
+  },
+  {
+    "id": 5100,
+    "word": "ADAIS",
+    "normalized": "ADAIS"
+  },
+  {
+    "id": 5101,
+    "word": "ADOBE",
+    "normalized": "ADOBE"
+  },
+  {
+    "id": 5102,
+    "word": "ADROS",
+    "normalized": "ADROS"
+  },
+  {
+    "id": 5103,
+    "word": "ADUFE",
+    "normalized": "ADUFE"
+  },
+  {
+    "id": 5104,
+    "word": "ADUZO",
+    "normalized": "ADUZO"
+  },
+  {
+    "id": 5105,
+    "word": "ADUZI",
+    "normalized": "ADUZI"
+  },
+  {
+    "id": 5106,
+    "word": "ADUZA",
+    "normalized": "ADUZA"
+  },
+  {
+    "id": 5107,
+    "word": "AFAMO",
+    "normalized": "AFAMO"
+  },
+  {
+    "id": 5108,
+    "word": "AFAME",
+    "normalized": "AFAME"
+  },
+  {
+    "id": 5109,
+    "word": "AFAMA",
+    "normalized": "AFAMA"
+  },
+  {
+    "id": 5110,
+    "word": "AFIFO",
+    "normalized": "AFIFO"
+  },
+  {
+    "id": 5111,
+    "word": "AFIFE",
+    "normalized": "AFIFE"
+  },
+  {
+    "id": 5112,
+    "word": "AFIFA",
+    "normalized": "AFIFA"
+  },
+  {
+    "id": 5113,
+    "word": "AFILO",
+    "normalized": "AFILO"
+  },
+  {
+    "id": 5114,
+    "word": "AFILE",
+    "normalized": "AFILE"
+  },
+  {
+    "id": 5115,
+    "word": "AFILA",
+    "normalized": "AFILA"
+  },
+  {
+    "id": 5116,
+    "word": "AFOLO",
+    "normalized": "AFOLO"
+  },
+  {
+    "id": 5117,
+    "word": "AFOLE",
+    "normalized": "AFOLE"
+  },
+  {
+    "id": 5118,
+    "word": "AFOLA",
+    "normalized": "AFOLA"
+  },
+  {
+    "id": 5119,
+    "word": "AFONO",
+    "normalized": "AFONO"
+  },
+  {
+    "id": 5120,
+    "word": "AFUMO",
+    "normalized": "AFUMO"
+  },
+  {
+    "id": 5121,
+    "word": "AFUME",
+    "normalized": "AFUME"
+  },
+  {
+    "id": 5122,
+    "word": "AFUMA",
+    "normalized": "AFUMA"
+  },
+  {
+    "id": 5123,
+    "word": "AGROR",
+    "normalized": "AGROR"
+  },
+  {
+    "id": 5124,
+    "word": "AGUAM",
+    "normalized": "AGUAM"
+  },
+  {
+    "id": 5125,
+    "word": "AGUEI",
+    "normalized": "AGUEI"
+  },
+  {
+    "id": 5126,
+    "word": "AGUAS",
+    "normalized": "AGUAS"
+  },
+  {
+    "id": 5127,
+    "word": "AGUEM",
+    "normalized": "AGUEM"
+  },
+  {
+    "id": 5128,
+    "word": "AGUES",
+    "normalized": "AGUES"
+  },
+  {
+    "id": 5129,
+    "word": "AIPOS",
+    "normalized": "AIPOS"
+  },
+  {
+    "id": 5130,
+    "word": "ALAPO",
+    "normalized": "ALAPO"
+  },
+  {
+    "id": 5131,
+    "word": "ALAPE",
+    "normalized": "ALAPE"
+  },
+  {
+    "id": 5132,
+    "word": "ALAPA",
+    "normalized": "ALAPA"
+  },
+  {
+    "id": 5133,
+    "word": "ALEIS",
+    "normalized": "ALEIS"
+  },
+  {
+    "id": 5134,
+    "word": "ALAIS",
+    "normalized": "ALAIS"
+  },
+  {
+    "id": 5135,
+    "word": "ALAVA",
+    "normalized": "ALAVA"
+  },
+  {
+    "id": 5136,
+    "word": "ALARA",
+    "normalized": "ALARA"
+  },
+  {
+    "id": 5137,
+    "word": "ALBAS",
+    "normalized": "ALBAS"
+  },
+  {
+    "id": 5138,
+    "word": "ALICE",
+    "normalized": "ALICE"
+  },
+  {
+    "id": 5139,
+    "word": "ALLEN",
+    "normalized": "ALLEN"
+  },
+  {
+    "id": 5140,
+    "word": "ALTER",
+    "normalized": "ALTER"
+  },
+  {
+    "id": 5141,
+    "word": "ALUAR",
+    "normalized": "ALUAR"
+  },
+  {
+    "id": 5142,
+    "word": "ALUOU",
+    "normalized": "ALUOU"
+  },
+  {
+    "id": 5143,
+    "word": "ALUES",
+    "normalized": "ALUES"
+  },
+  {
+    "id": 5144,
+    "word": "ALUAS",
+    "normalized": "ALUAS"
+  },
+  {
+    "id": 5145,
+    "word": "ALUEM",
+    "normalized": "ALUEM"
+  },
+  {
+    "id": 5146,
+    "word": "ALUAM",
+    "normalized": "ALUAM"
+  },
+  {
+    "id": 5147,
+    "word": "ALUEI",
+    "normalized": "ALUEI"
+  },
+  {
+    "id": 5148,
+    "word": "ALUAI",
+    "normalized": "ALUAI"
+  },
+  {
+    "id": 5149,
+    "word": "ALUIR",
+    "normalized": "ALUIR"
+  },
+  {
+    "id": 5150,
+    "word": "ALUIU",
+    "normalized": "ALUIU"
+  },
+  {
+    "id": 5151,
+    "word": "ALUIS",
+    "normalized": "ALUIS"
+  },
+  {
+    "id": 5152,
+    "word": "ALUNE",
+    "normalized": "ALUNE"
+  },
+  {
+    "id": 5153,
+    "word": "ALVIM",
+    "normalized": "ALVIM"
+  },
+  {
+    "id": 5154,
+    "word": "AMARE",
+    "normalized": "AMARE"
+  },
+  {
+    "id": 5155,
+    "word": "AMATO",
+    "normalized": "AMATO"
+  },
+  {
+    "id": 5156,
+    "word": "AMEAR",
+    "normalized": "AMEAR"
+  },
+  {
+    "id": 5157,
+    "word": "AMEOU",
+    "normalized": "AMEOU"
+  },
+  {
+    "id": 5158,
+    "word": "AMEIO",
+    "normalized": "AMEIO"
+  },
+  {
+    "id": 5159,
+    "word": "AMEEI",
+    "normalized": "AMEEI"
+  },
+  {
+    "id": 5160,
+    "word": "AMEAI",
+    "normalized": "AMEAI"
+  },
+  {
+    "id": 5161,
+    "word": "AMEIE",
+    "normalized": "AMEIE"
+  },
+  {
+    "id": 5162,
+    "word": "AMIBA",
+    "normalized": "AMIBA"
+  },
+  {
+    "id": 5163,
+    "word": "AMOJO",
+    "normalized": "AMOJO"
+  },
+  {
+    "id": 5164,
+    "word": "AMOJE",
+    "normalized": "AMOJE"
+  },
+  {
+    "id": 5165,
+    "word": "AMOJA",
+    "normalized": "AMOJA"
+  },
+  {
+    "id": 5166,
+    "word": "AMOVO",
+    "normalized": "AMOVO"
+  },
+  {
+    "id": 5167,
+    "word": "AMOVI",
+    "normalized": "AMOVI"
+  },
+  {
+    "id": 5168,
+    "word": "AMOVE",
+    "normalized": "AMOVE"
+  },
+  {
+    "id": 5169,
+    "word": "AMOVA",
+    "normalized": "AMOVA"
+  },
+  {
+    "id": 5170,
+    "word": "AMUAR",
+    "normalized": "AMUAR"
+  },
+  {
+    "id": 5171,
+    "word": "AMUOU",
+    "normalized": "AMUOU"
+  },
+  {
+    "id": 5172,
+    "word": "AMUES",
+    "normalized": "AMUES"
+  },
+  {
+    "id": 5173,
+    "word": "AMUAS",
+    "normalized": "AMUAS"
+  },
+  {
+    "id": 5174,
+    "word": "AMUEM",
+    "normalized": "AMUEM"
+  },
+  {
+    "id": 5175,
+    "word": "AMUAM",
+    "normalized": "AMUAM"
+  },
+  {
+    "id": 5176,
+    "word": "AMUEI",
+    "normalized": "AMUEI"
+  },
+  {
+    "id": 5177,
+    "word": "AMUAI",
+    "normalized": "AMUAI"
+  },
+  {
+    "id": 5178,
+    "word": "AMUOS",
+    "normalized": "AMUOS"
+  },
+  {
+    "id": 5179,
+    "word": "AMURA",
+    "normalized": "AMURA"
+  },
+  {
+    "id": 5180,
+    "word": "AMURO",
+    "normalized": "AMURO"
+  },
+  {
+    "id": 5181,
+    "word": "AMURE",
+    "normalized": "AMURE"
+  },
+  {
+    "id": 5182,
+    "word": "ANAFO",
+    "normalized": "ANAFO"
+  },
+  {
+    "id": 5183,
+    "word": "ANAFE",
+    "normalized": "ANAFE"
+  },
+  {
+    "id": 5184,
+    "word": "ANAFA",
+    "normalized": "ANAFA"
+  },
+  {
+    "id": 5185,
+    "word": "ANATO",
+    "normalized": "ANATO"
+  },
+  {
+    "id": 5186,
+    "word": "ANATE",
+    "normalized": "ANATE"
+  },
+  {
+    "id": 5187,
+    "word": "ANATA",
+    "normalized": "ANATA"
+  },
+  {
+    "id": 5188,
+    "word": "ANHOS",
+    "normalized": "ANHOS"
+  },
+  {
+    "id": 5189,
+    "word": "ANILO",
+    "normalized": "ANILO"
+  },
+  {
+    "id": 5190,
+    "word": "ANILE",
+    "normalized": "ANILE"
+  },
+  {
+    "id": 5191,
+    "word": "ANILA",
+    "normalized": "ANILA"
+  },
+  {
+    "id": 5192,
+    "word": "ANISO",
+    "normalized": "ANISO"
+  },
+  {
+    "id": 5193,
+    "word": "ANISE",
+    "normalized": "ANISE"
+  },
+  {
+    "id": 5194,
+    "word": "ANISA",
+    "normalized": "ANISA"
+  },
+  {
+    "id": 5195,
+    "word": "ANOJO",
+    "normalized": "ANOJO"
+  },
+  {
+    "id": 5196,
+    "word": "ANOJE",
+    "normalized": "ANOJE"
+  },
+  {
+    "id": 5197,
+    "word": "ANOJA",
+    "normalized": "ANOJA"
+  },
+  {
+    "id": 5198,
+    "word": "ANOSO",
+    "normalized": "ANOSO"
+  },
+  {
+    "id": 5199,
+    "word": "ANOSA",
+    "normalized": "ANOSA"
+  },
+  {
+    "id": 5200,
+    "word": "ANSAS",
+    "normalized": "ANSAS"
+  },
+  {
+    "id": 5201,
+    "word": "APIPO",
+    "normalized": "APIPO"
+  },
+  {
+    "id": 5202,
+    "word": "APIPE",
+    "normalized": "APIPE"
+  },
+  {
+    "id": 5203,
+    "word": "APIPA",
+    "normalized": "APIPA"
+  },
+  {
+    "id": 5204,
+    "word": "APOIE",
+    "normalized": "APOIE"
+  },
+  {
+    "id": 5205,
+    "word": "APOIA",
+    "normalized": "APOIA"
+  },
+  {
+    "id": 5206,
+    "word": "APÃΜE",
+    "normalized": "APAΜE"
+  },
+  {
+    "id": 5207,
+    "word": "APPLE",
+    "normalized": "APPLE"
+  },
+  {
+    "id": 5208,
+    "word": "APRAZ",
+    "normalized": "APRAZ"
+  },
+  {
+    "id": 5209,
+    "word": "APROO",
+    "normalized": "APROO"
+  },
+  {
+    "id": 5210,
+    "word": "APROE",
+    "normalized": "APROE"
+  },
+  {
+    "id": 5211,
+    "word": "APROA",
+    "normalized": "APROA"
+  },
+  {
+    "id": 5212,
+    "word": "APUPO",
+    "normalized": "APUPO"
+  },
+  {
+    "id": 5213,
+    "word": "APUPE",
+    "normalized": "APUPE"
+  },
+  {
+    "id": 5214,
+    "word": "APUPA",
+    "normalized": "APUPA"
+  },
+  {
+    "id": 5215,
+    "word": "ARADE",
+    "normalized": "ARADE"
+  },
+  {
+    "id": 5216,
+    "word": "ARAMA",
+    "normalized": "ARAMA"
+  },
+  {
+    "id": 5217,
+    "word": "ARCAZ",
+    "normalized": "ARCAZ"
+  },
+  {
+    "id": 5218,
+    "word": "AREAR",
+    "normalized": "AREAR"
+  },
+  {
+    "id": 5219,
+    "word": "AREOU",
+    "normalized": "AREOU"
+  },
+  {
+    "id": 5220,
+    "word": "AREES",
+    "normalized": "AREES"
+  },
+  {
+    "id": 5221,
+    "word": "AREAS",
+    "normalized": "AREAS"
+  },
+  {
+    "id": 5222,
+    "word": "AREEM",
+    "normalized": "AREEM"
+  },
+  {
+    "id": 5223,
+    "word": "AREAM",
+    "normalized": "AREAM"
+  },
+  {
+    "id": 5224,
+    "word": "AREEI",
+    "normalized": "AREEI"
+  },
+  {
+    "id": 5225,
+    "word": "AREAI",
+    "normalized": "AREAI"
+  },
+  {
+    "id": 5226,
+    "word": "ARGUI",
+    "normalized": "ARGUI"
+  },
+  {
+    "id": 5227,
+    "word": "ARLES",
+    "normalized": "ARLES"
+  },
+  {
+    "id": 5228,
+    "word": "AROMO",
+    "normalized": "AROMO"
+  },
+  {
+    "id": 5229,
+    "word": "AROME",
+    "normalized": "AROME"
+  },
+  {
+    "id": 5230,
+    "word": "ARPAR",
+    "normalized": "ARPAR"
+  },
+  {
+    "id": 5231,
+    "word": "ARPOU",
+    "normalized": "ARPOU"
+  },
+  {
+    "id": 5232,
+    "word": "ARPES",
+    "normalized": "ARPES"
+  },
+  {
+    "id": 5233,
+    "word": "ARPAS",
+    "normalized": "ARPAS"
+  },
+  {
+    "id": 5234,
+    "word": "ARPEM",
+    "normalized": "ARPEM"
+  },
+  {
+    "id": 5235,
+    "word": "ARPAM",
+    "normalized": "ARPAM"
+  },
+  {
+    "id": 5236,
+    "word": "ARPEI",
+    "normalized": "ARPEI"
+  },
+  {
+    "id": 5237,
+    "word": "ARPAI",
+    "normalized": "ARPAI"
+  },
+  {
+    "id": 5238,
+    "word": "ARPOO",
+    "normalized": "ARPOO"
+  },
+  {
+    "id": 5239,
+    "word": "ARRUO",
+    "normalized": "ARRUO"
+  },
+  {
+    "id": 5240,
+    "word": "ARRUE",
+    "normalized": "ARRUE"
+  },
+  {
+    "id": 5241,
+    "word": "ARRUA",
+    "normalized": "ARRUA"
+  },
+  {
+    "id": 5242,
+    "word": "ASADA",
+    "normalized": "ASADA"
+  },
+  {
+    "id": 5243,
+    "word": "ASEIS",
+    "normalized": "ASEIS"
+  },
+  {
+    "id": 5244,
+    "word": "ASAIS",
+    "normalized": "ASAIS"
+  },
+  {
+    "id": 5245,
+    "word": "ASADO",
+    "normalized": "ASADO"
+  },
+  {
+    "id": 5246,
+    "word": "ASAVA",
+    "normalized": "ASAVA"
+  },
+  {
+    "id": 5247,
+    "word": "ASARA",
+    "normalized": "ASARA"
+  },
+  {
+    "id": 5248,
+    "word": "ASCII",
+    "normalized": "ASCII"
+  },
+  {
+    "id": 5249,
+    "word": "ASCOS",
+    "normalized": "ASCOS"
+  },
+  {
+    "id": 5250,
+    "word": "ASNAS",
+    "normalized": "ASNAS"
+  },
+  {
+    "id": 5251,
+    "word": "ASNAL",
+    "normalized": "ASNAL"
+  },
+  {
+    "id": 5252,
+    "word": "ASSOO",
+    "normalized": "ASSOO"
+  },
+  {
+    "id": 5253,
+    "word": "ATIAS",
+    "normalized": "ATIAS"
+  },
+  {
+    "id": 5254,
+    "word": "ATIAM",
+    "normalized": "ATIAM"
+  },
+  {
+    "id": 5255,
+    "word": "ATERA",
+    "normalized": "ATERA"
+  },
+  {
+    "id": 5256,
+    "word": "ATONO",
+    "normalized": "ATONO"
+  },
+  {
+    "id": 5257,
+    "word": "ATONE",
+    "normalized": "ATONE"
+  },
+  {
+    "id": 5258,
+    "word": "ATONA",
+    "normalized": "ATONA"
+  },
+  {
+    "id": 5259,
+    "word": "ATROO",
+    "normalized": "ATROO"
+  },
+  {
+    "id": 5260,
+    "word": "ATROE",
+    "normalized": "ATROE"
+  },
+  {
+    "id": 5261,
+    "word": "ATROA",
+    "normalized": "ATROA"
+  },
+  {
+    "id": 5262,
+    "word": "ATROZ",
+    "normalized": "ATROZ"
+  },
+  {
+    "id": 5263,
+    "word": "AUGIR",
+    "normalized": "AUGIR"
+  },
+  {
+    "id": 5264,
+    "word": "AUGIU",
+    "normalized": "AUGIU"
+  },
+  {
+    "id": 5265,
+    "word": "AUGIA",
+    "normalized": "AUGIA"
+  },
+  {
+    "id": 5266,
+    "word": "AÃºNA",
+    "normalized": "AAºNA"
+  },
+  {
+    "id": 5267,
+    "word": "AUNAI",
+    "normalized": "AUNAI"
+  },
+  {
+    "id": 5268,
+    "word": "AÃºNE",
+    "normalized": "AAºNE"
+  },
+  {
+    "id": 5269,
+    "word": "AÃºNO",
+    "normalized": "AAºNO"
+  },
+  {
+    "id": 5270,
+    "word": "AVÃªM",
+    "normalized": "AVAªM"
+  },
+  {
+    "id": 5271,
+    "word": "AVIDA",
+    "normalized": "AVIDA"
+  },
+  {
+    "id": 5272,
+    "word": "AVIDO",
+    "normalized": "AVIDO"
+  },
+  {
+    "id": 5273,
+    "word": "AZOTE",
+    "normalized": "AZOTE"
+  },
+  {
+    "id": 5274,
+    "word": "AZOTA",
+    "normalized": "AZOTA"
+  },
+  {
+    "id": 5275,
+    "word": "BACIO",
+    "normalized": "BACIO"
+  },
+  {
+    "id": 5276,
+    "word": "BACON",
+    "normalized": "BACON"
+  },
+  {
+    "id": 5277,
+    "word": "BAETA",
+    "normalized": "BAETA"
+  },
+  {
+    "id": 5278,
+    "word": "BAFAR",
+    "normalized": "BAFAR"
+  },
+  {
+    "id": 5279,
+    "word": "BAFOU",
+    "normalized": "BAFOU"
+  },
+  {
+    "id": 5280,
+    "word": "BAFES",
+    "normalized": "BAFES"
+  },
+  {
+    "id": 5281,
+    "word": "BAFAS",
+    "normalized": "BAFAS"
+  },
+  {
+    "id": 5282,
+    "word": "BAFEM",
+    "normalized": "BAFEM"
+  },
+  {
+    "id": 5283,
+    "word": "BAFAM",
+    "normalized": "BAFAM"
+  },
+  {
+    "id": 5284,
+    "word": "BAFEI",
+    "normalized": "BAFEI"
+  },
+  {
+    "id": 5285,
+    "word": "BAFAI",
+    "normalized": "BAFAI"
+  },
+  {
+    "id": 5286,
+    "word": "BAFIO",
+    "normalized": "BAFIO"
+  },
+  {
+    "id": 5287,
+    "word": "BAGAR",
+    "normalized": "BAGAR"
+  },
+  {
+    "id": 5288,
+    "word": "BAGOU",
+    "normalized": "BAGOU"
+  },
+  {
+    "id": 5289,
+    "word": "BAGAM",
+    "normalized": "BAGAM"
+  },
+  {
+    "id": 5290,
+    "word": "BAGAI",
+    "normalized": "BAGAI"
+  },
+  {
+    "id": 5291,
+    "word": "BAGUE",
+    "normalized": "BAGUE"
+  },
+  {
+    "id": 5292,
+    "word": "BAKER",
+    "normalized": "BAKER"
+  },
+  {
+    "id": 5293,
+    "word": "BALDA",
+    "normalized": "BALDA"
+  },
+  {
+    "id": 5294,
+    "word": "BALDO",
+    "normalized": "BALDO"
+  },
+  {
+    "id": 5295,
+    "word": "BANAS",
+    "normalized": "BANAS"
+  },
+  {
+    "id": 5296,
+    "word": "BANAM",
+    "normalized": "BANAM"
+  },
+  {
+    "id": 5297,
+    "word": "BANTO",
+    "normalized": "BANTO"
+  },
+  {
+    "id": 5298,
+    "word": "BANZO",
+    "normalized": "BANZO"
+  },
+  {
+    "id": 5299,
+    "word": "BANZE",
+    "normalized": "BANZE"
+  },
+  {
+    "id": 5300,
+    "word": "BANZA",
+    "normalized": "BANZA"
+  },
+  {
+    "id": 5301,
+    "word": "BARBO",
+    "normalized": "BARBO"
+  },
+  {
+    "id": 5302,
+    "word": "BARBE",
+    "normalized": "BARBE"
+  },
+  {
+    "id": 5303,
+    "word": "BASCO",
+    "normalized": "BASCO"
+  },
+  {
+    "id": 5304,
+    "word": "BASCA",
+    "normalized": "BASCA"
+  },
+  {
+    "id": 5305,
+    "word": "BASIC",
+    "normalized": "BASIC"
+  },
+  {
+    "id": 5306,
+    "word": "BELFO",
+    "normalized": "BELFO"
+  },
+  {
+    "id": 5307,
+    "word": "BENIM",
+    "normalized": "BENIM"
+  },
+  {
+    "id": 5308,
+    "word": "BERMA",
+    "normalized": "BERMA"
+  },
+  {
+    "id": 5309,
+    "word": "BERTO",
+    "normalized": "BERTO"
+  },
+  {
+    "id": 5310,
+    "word": "BESCL",
+    "normalized": "BESCL"
+  },
+  {
+    "id": 5311,
+    "word": "BESSA",
+    "normalized": "BESSA"
+  },
+  {
+    "id": 5312,
+    "word": "BICAL",
+    "normalized": "BICAL"
+  },
+  {
+    "id": 5313,
+    "word": "BICHE",
+    "normalized": "BICHE"
+  },
+  {
+    "id": 5314,
+    "word": "BIFES",
+    "normalized": "BIFES"
+  },
+  {
+    "id": 5315,
+    "word": "BIGLE",
+    "normalized": "BIGLE"
+  },
+  {
+    "id": 5316,
+    "word": "BILHA",
+    "normalized": "BILHA"
+  },
+  {
+    "id": 5317,
+    "word": "BILRO",
+    "normalized": "BILRO"
+  },
+  {
+    "id": 5318,
+    "word": "BIMBA",
+    "normalized": "BIMBA"
+  },
+  {
+    "id": 5319,
+    "word": "BIRRO",
+    "normalized": "BIRRO"
+  },
+  {
+    "id": 5320,
+    "word": "BIRRE",
+    "normalized": "BIRRE"
+  },
+  {
+    "id": 5321,
+    "word": "BISAR",
+    "normalized": "BISAR"
+  },
+  {
+    "id": 5322,
+    "word": "BISOU",
+    "normalized": "BISOU"
+  },
+  {
+    "id": 5323,
+    "word": "BISES",
+    "normalized": "BISES"
+  },
+  {
+    "id": 5324,
+    "word": "BISAS",
+    "normalized": "BISAS"
+  },
+  {
+    "id": 5325,
+    "word": "BISEM",
+    "normalized": "BISEM"
+  },
+  {
+    "id": 5326,
+    "word": "BISAM",
+    "normalized": "BISAM"
+  },
+  {
+    "id": 5327,
+    "word": "BISEI",
+    "normalized": "BISEI"
+  },
+  {
+    "id": 5328,
+    "word": "BISAI",
+    "normalized": "BISAI"
+  },
+  {
+    "id": 5329,
+    "word": "BISCA",
+    "normalized": "BISCA"
+  },
+  {
+    "id": 5330,
+    "word": "BISCO",
+    "normalized": "BISCO"
+  },
+  {
+    "id": 5331,
+    "word": "BIZET",
+    "normalized": "BIZET"
+  },
+  {
+    "id": 5332,
+    "word": "BOATA",
+    "normalized": "BOATA"
+  },
+  {
+    "id": 5333,
+    "word": "BOCHE",
+    "normalized": "BOCHE"
+  },
+  {
+    "id": 5334,
+    "word": "BOFES",
+    "normalized": "BOFES"
+  },
+  {
+    "id": 5335,
+    "word": "BOGAS",
+    "normalized": "BOGAS"
+  },
+  {
+    "id": 5336,
+    "word": "BOIAM",
+    "normalized": "BOIAM"
+  },
+  {
+    "id": 5337,
+    "word": "BOIAS",
+    "normalized": "BOIAS"
+  },
+  {
+    "id": 5338,
+    "word": "BOIEM",
+    "normalized": "BOIEM"
+  },
+  {
+    "id": 5339,
+    "word": "BOIES",
+    "normalized": "BOIES"
+  },
+  {
+    "id": 5340,
+    "word": "BOJAR",
+    "normalized": "BOJAR"
+  },
+  {
+    "id": 5341,
+    "word": "BOJOU",
+    "normalized": "BOJOU"
+  },
+  {
+    "id": 5342,
+    "word": "BOJES",
+    "normalized": "BOJES"
+  },
+  {
+    "id": 5343,
+    "word": "BOJAS",
+    "normalized": "BOJAS"
+  },
+  {
+    "id": 5344,
+    "word": "BOJEM",
+    "normalized": "BOJEM"
+  },
+  {
+    "id": 5345,
+    "word": "BOJAM",
+    "normalized": "BOJAM"
+  },
+  {
+    "id": 5346,
+    "word": "BOJEI",
+    "normalized": "BOJEI"
+  },
+  {
+    "id": 5347,
+    "word": "BOJAI",
+    "normalized": "BOJAI"
+  },
+  {
+    "id": 5348,
+    "word": "BOLBO",
+    "normalized": "BOLBO"
+  },
+  {
+    "id": 5349,
+    "word": "BOLHO",
+    "normalized": "BOLHO"
+  },
+  {
+    "id": 5350,
+    "word": "BOLHE",
+    "normalized": "BOLHE"
+  },
+  {
+    "id": 5351,
+    "word": "BOLSE",
+    "normalized": "BOLSE"
+  },
+  {
+    "id": 5352,
+    "word": "BOMBO",
+    "normalized": "BOMBO"
+  },
+  {
+    "id": 5353,
+    "word": "BOOLE",
+    "normalized": "BOOLE"
+  },
+  {
+    "id": 5354,
+    "word": "BORIS",
+    "normalized": "BORIS"
+  },
+  {
+    "id": 5355,
+    "word": "BORLA",
+    "normalized": "BORLA"
+  },
+  {
+    "id": 5356,
+    "word": "BOROA",
+    "normalized": "BOROA"
+  },
+  {
+    "id": 5357,
+    "word": "BOSTO",
+    "normalized": "BOSTO"
+  },
+  {
+    "id": 5358,
+    "word": "BOSTE",
+    "normalized": "BOSTE"
+  },
+  {
+    "id": 5359,
+    "word": "BOTIM",
+    "normalized": "BOTIM"
+  },
+  {
+    "id": 5360,
+    "word": "BOUCE",
+    "normalized": "BOUCE"
+  },
+  {
+    "id": 5361,
+    "word": "BOURO",
+    "normalized": "BOURO"
+  },
+  {
+    "id": 5362,
+    "word": "BOYLE",
+    "normalized": "BOYLE"
+  },
+  {
+    "id": 5363,
+    "word": "BRAUN",
+    "normalized": "BRAUN"
+  },
+  {
+    "id": 5364,
+    "word": "BREAR",
+    "normalized": "BREAR"
+  },
+  {
+    "id": 5365,
+    "word": "BREOU",
+    "normalized": "BREOU"
+  },
+  {
+    "id": 5366,
+    "word": "BREIO",
+    "normalized": "BREIO"
+  },
+  {
+    "id": 5367,
+    "word": "BREEI",
+    "normalized": "BREEI"
+  },
+  {
+    "id": 5368,
+    "word": "BREAI",
+    "normalized": "BREAI"
+  },
+  {
+    "id": 5369,
+    "word": "BREIE",
+    "normalized": "BREIE"
+  },
+  {
+    "id": 5370,
+    "word": "BREIA",
+    "normalized": "BREIA"
+  },
+  {
+    "id": 5371,
+    "word": "BRIOL",
+    "normalized": "BRIOL"
+  },
+  {
+    "id": 5372,
+    "word": "BRITE",
+    "normalized": "BRITE"
+  },
+  {
+    "id": 5373,
+    "word": "BROME",
+    "normalized": "BROME"
+  },
+  {
+    "id": 5374,
+    "word": "BROMA",
+    "normalized": "BROMA"
+  },
+  {
+    "id": 5375,
+    "word": "BROWN",
+    "normalized": "BROWN"
+  },
+  {
+    "id": 5376,
+    "word": "BRUCE",
+    "normalized": "BRUCE"
+  },
+  {
+    "id": 5377,
+    "word": "BRUNE",
+    "normalized": "BRUNE"
+  },
+  {
+    "id": 5378,
+    "word": "BRUNA",
+    "normalized": "BRUNA"
+  },
+  {
+    "id": 5379,
+    "word": "BRUXE",
+    "normalized": "BRUXE"
+  },
+  {
+    "id": 5380,
+    "word": "BUFOS",
+    "normalized": "BUFOS"
+  },
+  {
+    "id": 5381,
+    "word": "BUGIO",
+    "normalized": "BUGIO"
+  },
+  {
+    "id": 5382,
+    "word": "BUGIE",
+    "normalized": "BUGIE"
+  },
+  {
+    "id": 5383,
+    "word": "BUGIA",
+    "normalized": "BUGIA"
+  },
+  {
+    "id": 5384,
+    "word": "BULAR",
+    "normalized": "BULAR"
+  },
+  {
+    "id": 5385,
+    "word": "BULOU",
+    "normalized": "BULOU"
+  },
+  {
+    "id": 5386,
+    "word": "BULEM",
+    "normalized": "BULEM"
+  },
+  {
+    "id": 5387,
+    "word": "BULEI",
+    "normalized": "BULEI"
+  },
+  {
+    "id": 5388,
+    "word": "BULAI",
+    "normalized": "BULAI"
+  },
+  {
+    "id": 5389,
+    "word": "BULHO",
+    "normalized": "BULHO"
+  },
+  {
+    "id": 5390,
+    "word": "BULHE",
+    "normalized": "BULHE"
+  },
+  {
+    "id": 5391,
+    "word": "BUMBA",
+    "normalized": "BUMBA"
+  },
+  {
+    "id": 5392,
+    "word": "BUREL",
+    "normalized": "BUREL"
+  },
+  {
+    "id": 5393,
+    "word": "BURIL",
+    "normalized": "BURIL"
+  },
+  {
+    "id": 5394,
+    "word": "BYRON",
+    "normalized": "BYRON"
+  },
+  {
+    "id": 5395,
+    "word": "BYTES",
+    "normalized": "BYTES"
+  },
+  {
+    "id": 5396,
+    "word": "CABAZ",
+    "normalized": "CABAZ"
+  },
+  {
+    "id": 5397,
+    "word": "CACAU",
+    "normalized": "CACAU"
+  },
+  {
+    "id": 5398,
+    "word": "CAJUS",
+    "normalized": "CAJUS"
+  },
+  {
+    "id": 5399,
+    "word": "CALDE",
+    "normalized": "CALDE"
+  },
+  {
+    "id": 5400,
+    "word": "CALFE",
+    "normalized": "CALFE"
+  },
+  {
+    "id": 5401,
+    "word": "CALME",
+    "normalized": "CALME"
+  },
+  {
+    "id": 5402,
+    "word": "CALVE",
+    "normalized": "CALVE"
+  },
+  {
+    "id": 5403,
+    "word": "CAMPA",
+    "normalized": "CAMPA"
+  },
+  {
+    "id": 5404,
+    "word": "CANIL",
+    "normalized": "CANIL"
+  },
+  {
+    "id": 5405,
+    "word": "CANIS",
+    "normalized": "CANIS"
+  },
+  {
+    "id": 5406,
+    "word": "CAQUI",
+    "normalized": "CAQUI"
+  },
+  {
+    "id": 5407,
+    "word": "CARDE",
+    "normalized": "CARDE"
+  },
+  {
+    "id": 5408,
+    "word": "CARDA",
+    "normalized": "CARDA"
+  },
+  {
+    "id": 5409,
+    "word": "CARIO",
+    "normalized": "CARIO"
+  },
+  {
+    "id": 5410,
+    "word": "CARIE",
+    "normalized": "CARIE"
+  },
+  {
+    "id": 5411,
+    "word": "CARIA",
+    "normalized": "CARIA"
+  },
+  {
+    "id": 5412,
+    "word": "CARIL",
+    "normalized": "CARIL"
+  },
+  {
+    "id": 5413,
+    "word": "CARIZ",
+    "normalized": "CARIZ"
+  },
+  {
+    "id": 5414,
+    "word": "CAROL",
+    "normalized": "CAROL"
+  },
+  {
+    "id": 5415,
+    "word": "CARPO",
+    "normalized": "CARPO"
+  },
+  {
+    "id": 5416,
+    "word": "CARTE",
+    "normalized": "CARTE"
+  },
+  {
+    "id": 5417,
+    "word": "CATOS",
+    "normalized": "CATOS"
+  },
+  {
+    "id": 5418,
+    "word": "CAVOS",
+    "normalized": "CAVOS"
+  },
+  {
+    "id": 5419,
+    "word": "CEATA",
+    "normalized": "CEATA"
+  },
+  {
+    "id": 5420,
+    "word": "CECAL",
+    "normalized": "CECAL"
+  },
+  {
+    "id": 5421,
+    "word": "CEITA",
+    "normalized": "CEITA"
+  },
+  {
+    "id": 5422,
+    "word": "CELHA",
+    "normalized": "CELHA"
+  },
+  {
+    "id": 5423,
+    "word": "CEPAS",
+    "normalized": "CEPAS"
+  },
+  {
+    "id": 5424,
+    "word": "CEPOS",
+    "normalized": "CEPOS"
+  },
+  {
+    "id": 5425,
+    "word": "CERNO",
+    "normalized": "CERNO"
+  },
+  {
+    "id": 5426,
+    "word": "CERNA",
+    "normalized": "CERNA"
+  },
+  {
+    "id": 5427,
+    "word": "CETRA",
+    "normalized": "CETRA"
+  },
+  {
+    "id": 5428,
+    "word": "CEUTA",
+    "normalized": "CEUTA"
+  },
+  {
+    "id": 5429,
+    "word": "CHANG",
+    "normalized": "CHANG"
+  },
+  {
+    "id": 5430,
+    "word": "CHAPO",
+    "normalized": "CHAPO"
+  },
+  {
+    "id": 5431,
+    "word": "CHAPE",
+    "normalized": "CHAPE"
+  },
+  {
+    "id": 5432,
+    "word": "CHAVO",
+    "normalized": "CHAVO"
+  },
+  {
+    "id": 5433,
+    "word": "CHETA",
+    "normalized": "CHETA"
+  },
+  {
+    "id": 5434,
+    "word": "CHIBO",
+    "normalized": "CHIBO"
+  },
+  {
+    "id": 5435,
+    "word": "CHILA",
+    "normalized": "CHILA"
+  },
+  {
+    "id": 5436,
+    "word": "CHINO",
+    "normalized": "CHINO"
+  },
+  {
+    "id": 5437,
+    "word": "CHIPS",
+    "normalized": "CHIPS"
+  },
+  {
+    "id": 5438,
+    "word": "CHITA",
+    "normalized": "CHITA"
+  },
+  {
+    "id": 5439,
+    "word": "CHULO",
+    "normalized": "CHULO"
+  },
+  {
+    "id": 5440,
+    "word": "CHULA",
+    "normalized": "CHULA"
+  },
+  {
+    "id": 5441,
+    "word": "CIANO",
+    "normalized": "CIANO"
+  },
+  {
+    "id": 5442,
+    "word": "CIMAS",
+    "normalized": "CIMAS"
+  },
+  {
+    "id": 5443,
+    "word": "CIMOS",
+    "normalized": "CIMOS"
+  },
+  {
+    "id": 5444,
+    "word": "CINTE",
+    "normalized": "CINTE"
+  },
+  {
+    "id": 5445,
+    "word": "CINZO",
+    "normalized": "CINZO"
+  },
+  {
+    "id": 5446,
+    "word": "CINZE",
+    "normalized": "CINZE"
+  },
+  {
+    "id": 5447,
+    "word": "CIRCE",
+    "normalized": "CIRCE"
+  },
+  {
+    "id": 5448,
+    "word": "CIRZE",
+    "normalized": "CIRZE"
+  },
+  {
+    "id": 5449,
+    "word": "CISAR",
+    "normalized": "CISAR"
+  },
+  {
+    "id": 5450,
+    "word": "CISOU",
+    "normalized": "CISOU"
+  },
+  {
+    "id": 5451,
+    "word": "CISES",
+    "normalized": "CISES"
+  },
+  {
+    "id": 5452,
+    "word": "CISAS",
+    "normalized": "CISAS"
+  },
+  {
+    "id": 5453,
+    "word": "CISEM",
+    "normalized": "CISEM"
+  },
+  {
+    "id": 5454,
+    "word": "CISAM",
+    "normalized": "CISAM"
+  },
+  {
+    "id": 5455,
+    "word": "CISEI",
+    "normalized": "CISEI"
+  },
+  {
+    "id": 5456,
+    "word": "CISAI",
+    "normalized": "CISAI"
+  },
+  {
+    "id": 5457,
+    "word": "CITRO",
+    "normalized": "CITRO"
+  },
+  {
+    "id": 5458,
+    "word": "CIUMO",
+    "normalized": "CIUMO"
+  },
+  {
+    "id": 5459,
+    "word": "CIUME",
+    "normalized": "CIUME"
+  },
+  {
+    "id": 5460,
+    "word": "CIUMA",
+    "normalized": "CIUMA"
+  },
+  {
+    "id": 5461,
+    "word": "CLARK",
+    "normalized": "CLARK"
+  },
+  {
+    "id": 5462,
+    "word": "CLAVE",
+    "normalized": "CLAVE"
+  },
+  {
+    "id": 5463,
+    "word": "CLICO",
+    "normalized": "CLICO"
+  },
+  {
+    "id": 5464,
+    "word": "CLICA",
+    "normalized": "CLICA"
+  },
+  {
+    "id": 5465,
+    "word": "CLIVO",
+    "normalized": "CLIVO"
+  },
+  {
+    "id": 5466,
+    "word": "CLIVE",
+    "normalized": "CLIVE"
+  },
+  {
+    "id": 5467,
+    "word": "CLIVA",
+    "normalized": "CLIVA"
+  },
+  {
+    "id": 5468,
+    "word": "CLONO",
+    "normalized": "CLONO"
+  },
+  {
+    "id": 5469,
+    "word": "CLONA",
+    "normalized": "CLONA"
+  },
+  {
+    "id": 5470,
+    "word": "COBOL",
+    "normalized": "COBOL"
+  },
+  {
+    "id": 5471,
+    "word": "COCAR",
+    "normalized": "COCAR"
+  },
+  {
+    "id": 5472,
+    "word": "COCOU",
+    "normalized": "COCOU"
+  },
+  {
+    "id": 5473,
+    "word": "COCAS",
+    "normalized": "COCAS"
+  },
+  {
+    "id": 5474,
+    "word": "COCAM",
+    "normalized": "COCAM"
+  },
+  {
+    "id": 5475,
+    "word": "COCAI",
+    "normalized": "COCAI"
+  },
+  {
+    "id": 5476,
+    "word": "COQUE",
+    "normalized": "COQUE"
+  },
+  {
+    "id": 5477,
+    "word": "COCHE",
+    "normalized": "COCHE"
+  },
+  {
+    "id": 5478,
+    "word": "COCHA",
+    "normalized": "COCHA"
+  },
+  {
+    "id": 5479,
+    "word": "COIRO",
+    "normalized": "COIRO"
+  },
+  {
+    "id": 5480,
+    "word": "COERI",
+    "normalized": "COERI"
+  },
+  {
+    "id": 5481,
+    "word": "COERE",
+    "normalized": "COERE"
+  },
+  {
+    "id": 5482,
+    "word": "COIRA",
+    "normalized": "COIRA"
+  },
+  {
+    "id": 5483,
+    "word": "COFIO",
+    "normalized": "COFIO"
+  },
+  {
+    "id": 5484,
+    "word": "COFIE",
+    "normalized": "COFIE"
+  },
+  {
+    "id": 5485,
+    "word": "COFIA",
+    "normalized": "COFIA"
+  },
+  {
+    "id": 5486,
+    "word": "COHEN",
+    "normalized": "COHEN"
+  },
+  {
+    "id": 5487,
+    "word": "COIMA",
+    "normalized": "COIMA"
+  },
+  {
+    "id": 5488,
+    "word": "COISO",
+    "normalized": "COISO"
+  },
+  {
+    "id": 5489,
+    "word": "COITE",
+    "normalized": "COITE"
+  },
+  {
+    "id": 5490,
+    "word": "COITA",
+    "normalized": "COITA"
+  },
+  {
+    "id": 5491,
+    "word": "COLMO",
+    "normalized": "COLMO"
+  },
+  {
+    "id": 5492,
+    "word": "COLME",
+    "normalized": "COLME"
+  },
+  {
+    "id": 5493,
+    "word": "COLMA",
+    "normalized": "COLMA"
+  },
+  {
+    "id": 5494,
+    "word": "COLOS",
+    "normalized": "COLOS"
+  },
+  {
+    "id": 5495,
+    "word": "COMBA",
+    "normalized": "COMBA"
+  },
+  {
+    "id": 5496,
+    "word": "CONGA",
+    "normalized": "CONGA"
+  },
+  {
+    "id": 5497,
+    "word": "COPRA",
+    "normalized": "COPRA"
+  },
+  {
+    "id": 5498,
+    "word": "COPTA",
+    "normalized": "COPTA"
+  },
+  {
+    "id": 5499,
+    "word": "COROO",
+    "normalized": "COROO"
+  },
+  {
+    "id": 5500,
+    "word": "CORSO",
+    "normalized": "CORSO"
+  },
+  {
+    "id": 5501,
+    "word": "CORSA",
+    "normalized": "CORSA"
+  },
+  {
+    "id": 5502,
+    "word": "COSME",
+    "normalized": "COSME"
+  },
+  {
+    "id": 5503,
+    "word": "COSPE",
+    "normalized": "COSPE"
+  },
+  {
+    "id": 5504,
+    "word": "COTOS",
+    "normalized": "COTOS"
+  },
+  {
+    "id": 5505,
+    "word": "COURA",
+    "normalized": "COURA"
+  },
+  {
+    "id": 5506,
+    "word": "COUSA",
+    "normalized": "COUSA"
+  },
+  {
+    "id": 5507,
+    "word": "COUTE",
+    "normalized": "COUTE"
+  },
+  {
+    "id": 5508,
+    "word": "COUTA",
+    "normalized": "COUTA"
+  },
+  {
+    "id": 5509,
+    "word": "COVAL",
+    "normalized": "COVAL"
+  },
+  {
+    "id": 5510,
+    "word": "COVIL",
+    "normalized": "COVIL"
+  },
+  {
+    "id": 5511,
+    "word": "COVIS",
+    "normalized": "COVIS"
+  },
+  {
+    "id": 5512,
+    "word": "COXAL",
+    "normalized": "COXAL"
+  },
+  {
+    "id": 5513,
+    "word": "COXIA",
+    "normalized": "COXIA"
+  },
+  {
+    "id": 5514,
+    "word": "CRASE",
+    "normalized": "CRASE"
+  },
+  {
+    "id": 5515,
+    "word": "CREEM",
+    "normalized": "CREEM"
+  },
+  {
+    "id": 5516,
+    "word": "CREPE",
+    "normalized": "CREPE"
+  },
+  {
+    "id": 5517,
+    "word": "CRETA",
+    "normalized": "CRETA"
+  },
+  {
+    "id": 5518,
+    "word": "CRUDE",
+    "normalized": "CRUDE"
+  },
+  {
+    "id": 5519,
+    "word": "CUBAR",
+    "normalized": "CUBAR"
+  },
+  {
+    "id": 5520,
+    "word": "CUBOU",
+    "normalized": "CUBOU"
+  },
+  {
+    "id": 5521,
+    "word": "CUBES",
+    "normalized": "CUBES"
+  },
+  {
+    "id": 5522,
+    "word": "CUBEM",
+    "normalized": "CUBEM"
+  },
+  {
+    "id": 5523,
+    "word": "CUBAM",
+    "normalized": "CUBAM"
+  },
+  {
+    "id": 5524,
+    "word": "CUBEI",
+    "normalized": "CUBEI"
+  },
+  {
+    "id": 5525,
+    "word": "CUBAI",
+    "normalized": "CUBAI"
+  },
+  {
+    "id": 5526,
+    "word": "CURDO",
+    "normalized": "CURDO"
+  },
+  {
+    "id": 5527,
+    "word": "CURDA",
+    "normalized": "CURDA"
+  },
+  {
+    "id": 5528,
+    "word": "CURIE",
+    "normalized": "CURIE"
+  },
+  {
+    "id": 5529,
+    "word": "CURRO",
+    "normalized": "CURRO"
+  },
+  {
+    "id": 5530,
+    "word": "CUSPE",
+    "normalized": "CUSPE"
+  },
+  {
+    "id": 5531,
+    "word": "DADOR",
+    "normalized": "DADOR"
+  },
+  {
+    "id": 5532,
+    "word": "DAIRE",
+    "normalized": "DAIRE"
+  },
+  {
+    "id": 5533,
+    "word": "DALGO",
+    "normalized": "DALGO"
+  },
+  {
+    "id": 5534,
+    "word": "DATAL",
+    "normalized": "DATAL"
+  },
+  {
+    "id": 5535,
+    "word": "DAVIS",
+    "normalized": "DAVIS"
+  },
+  {
+    "id": 5536,
+    "word": "DECIL",
+    "normalized": "DECIL"
+  },
+  {
+    "id": 5537,
+    "word": "DELEM",
+    "normalized": "DELEM"
+  },
+  {
+    "id": 5538,
+    "word": "DELIS",
+    "normalized": "DELIS"
+  },
+  {
+    "id": 5539,
+    "word": "DENTO",
+    "normalized": "DENTO"
+  },
+  {
+    "id": 5540,
+    "word": "DENTA",
+    "normalized": "DENTA"
+  },
+  {
+    "id": 5541,
+    "word": "DERME",
+    "normalized": "DERME"
+  },
+  {
+    "id": 5542,
+    "word": "DEVIM",
+    "normalized": "DEVIM"
+  },
+  {
+    "id": 5543,
+    "word": "DEVIR",
+    "normalized": "DEVIR"
+  },
+  {
+    "id": 5544,
+    "word": "DIABA",
+    "normalized": "DIABA"
+  },
+  {
+    "id": 5545,
+    "word": "DIEGO",
+    "normalized": "DIEGO"
+  },
+  {
+    "id": 5546,
+    "word": "DILAM",
+    "normalized": "DILAM"
+  },
+  {
+    "id": 5547,
+    "word": "DILAS",
+    "normalized": "DILAS"
+  },
+  {
+    "id": 5548,
+    "word": "DINAR",
+    "normalized": "DINAR"
+  },
+  {
+    "id": 5549,
+    "word": "DINIS",
+    "normalized": "DINIS"
+  },
+  {
+    "id": 5550,
+    "word": "DIRAC",
+    "normalized": "DIRAC"
+  },
+  {
+    "id": 5551,
+    "word": "DISPA",
+    "normalized": "DISPA"
+  },
+  {
+    "id": 5552,
+    "word": "DISPO",
+    "normalized": "DISPO"
+  },
+  {
+    "id": 5553,
+    "word": "DOBAR",
+    "normalized": "DOBAR"
+  },
+  {
+    "id": 5554,
+    "word": "DOBOU",
+    "normalized": "DOBOU"
+  },
+  {
+    "id": 5555,
+    "word": "DOBES",
+    "normalized": "DOBES"
+  },
+  {
+    "id": 5556,
+    "word": "DOBAS",
+    "normalized": "DOBAS"
+  },
+  {
+    "id": 5557,
+    "word": "DOBEM",
+    "normalized": "DOBEM"
+  },
+  {
+    "id": 5558,
+    "word": "DOBAM",
+    "normalized": "DOBAM"
+  },
+  {
+    "id": 5559,
+    "word": "DOBEI",
+    "normalized": "DOBEI"
+  },
+  {
+    "id": 5560,
+    "word": "DOBAI",
+    "normalized": "DOBAI"
+  },
+  {
+    "id": 5561,
+    "word": "DOCES",
+    "normalized": "DOCES"
+  },
+  {
+    "id": 5562,
+    "word": "DOIRO",
+    "normalized": "DOIRO"
+  },
+  {
+    "id": 5563,
+    "word": "DOIRE",
+    "normalized": "DOIRE"
+  },
+  {
+    "id": 5564,
+    "word": "DOIRA",
+    "normalized": "DOIRA"
+  },
+  {
+    "id": 5565,
+    "word": "DORIS",
+    "normalized": "DORIS"
+  },
+  {
+    "id": 5566,
+    "word": "DRAKE",
+    "normalized": "DRAKE"
+  },
+  {
+    "id": 5567,
+    "word": "DRIVE",
+    "normalized": "DRIVE"
+  },
+  {
+    "id": 5568,
+    "word": "DRUSO",
+    "normalized": "DRUSO"
+  },
+  {
+    "id": 5569,
+    "word": "DRUSA",
+    "normalized": "DRUSA"
+  },
+  {
+    "id": 5570,
+    "word": "DUCAL",
+    "normalized": "DUCAL"
+  },
+  {
+    "id": 5571,
+    "word": "DUCHE",
+    "normalized": "DUCHE"
+  },
+  {
+    "id": 5572,
+    "word": "DULCE",
+    "normalized": "DULCE"
+  },
+  {
+    "id": 5573,
+    "word": "DYLAN",
+    "normalized": "DYLAN"
+  },
+  {
+    "id": 5574,
+    "word": "EANES",
+    "normalized": "EANES"
+  },
+  {
+    "id": 5575,
+    "word": "EFLUO",
+    "normalized": "EFLUO"
+  },
+  {
+    "id": 5576,
+    "word": "EFLUI",
+    "normalized": "EFLUI"
+  },
+  {
+    "id": 5577,
+    "word": "EFLUA",
+    "normalized": "EFLUA"
+  },
+  {
+    "id": 5578,
+    "word": "EFUSO",
+    "normalized": "EFUSO"
+  },
+  {
+    "id": 5579,
+    "word": "ELIDO",
+    "normalized": "ELIDO"
+  },
+  {
+    "id": 5580,
+    "word": "ELIDI",
+    "normalized": "ELIDI"
+  },
+  {
+    "id": 5581,
+    "word": "ELIDE",
+    "normalized": "ELIDE"
+  },
+  {
+    "id": 5582,
+    "word": "ELIDA",
+    "normalized": "ELIDA"
+  },
+  {
+    "id": 5583,
+    "word": "ELUDO",
+    "normalized": "ELUDO"
+  },
+  {
+    "id": 5584,
+    "word": "ELUDI",
+    "normalized": "ELUDI"
+  },
+  {
+    "id": 5585,
+    "word": "ELUDE",
+    "normalized": "ELUDE"
+  },
+  {
+    "id": 5586,
+    "word": "ELUDA",
+    "normalized": "ELUDA"
+  },
+  {
+    "id": 5587,
+    "word": "ELVAS",
+    "normalized": "ELVAS"
+  },
+  {
+    "id": 5588,
+    "word": "EMAIL",
+    "normalized": "EMAIL"
+  },
+  {
+    "id": 5589,
+    "word": "EMILE",
+    "normalized": "EMILE"
+  },
+  {
+    "id": 5590,
+    "word": "EMPOO",
+    "normalized": "EMPOO"
+  },
+  {
+    "id": 5591,
+    "word": "EMPOE",
+    "normalized": "EMPOE"
+  },
+  {
+    "id": 5592,
+    "word": "EMPOA",
+    "normalized": "EMPOA"
+  },
+  {
+    "id": 5593,
+    "word": "ENFIM",
+    "normalized": "ENFIM"
+  },
+  {
+    "id": 5594,
+    "word": "ENJOO",
+    "normalized": "ENJOO"
+  },
+  {
+    "id": 5595,
+    "word": "ENTOO",
+    "normalized": "ENTOO"
+  },
+  {
+    "id": 5596,
+    "word": "ERICH",
+    "normalized": "ERICH"
+  },
+  {
+    "id": 5597,
+    "word": "ERNST",
+    "normalized": "ERNST"
+  },
+  {
+    "id": 5598,
+    "word": "ESCOO",
+    "normalized": "ESCOO"
+  },
+  {
+    "id": 5599,
+    "word": "ESMOS",
+    "normalized": "ESMOS"
+  },
+  {
+    "id": 5600,
+    "word": "EULER",
+    "normalized": "EULER"
+  },
+  {
+    "id": 5601,
+    "word": "EUROS",
+    "normalized": "EUROS"
+  },
+  {
+    "id": 5602,
+    "word": "EVANS",
+    "normalized": "EVANS"
+  },
+  {
+    "id": 5603,
+    "word": "EXULO",
+    "normalized": "EXULO"
+  },
+  {
+    "id": 5604,
+    "word": "EXULE",
+    "normalized": "EXULE"
+  },
+  {
+    "id": 5605,
+    "word": "EXULA",
+    "normalized": "EXULA"
+  },
+  {
+    "id": 5606,
+    "word": "FACTO",
+    "normalized": "FACTO"
+  },
+  {
+    "id": 5607,
+    "word": "FADAR",
+    "normalized": "FADAR"
+  },
+  {
+    "id": 5608,
+    "word": "FADOU",
+    "normalized": "FADOU"
+  },
+  {
+    "id": 5609,
+    "word": "FADES",
+    "normalized": "FADES"
+  },
+  {
+    "id": 5610,
+    "word": "FADEM",
+    "normalized": "FADEM"
+  },
+  {
+    "id": 5611,
+    "word": "FADAM",
+    "normalized": "FADAM"
+  },
+  {
+    "id": 5612,
+    "word": "FADEI",
+    "normalized": "FADEI"
+  },
+  {
+    "id": 5613,
+    "word": "FADAI",
+    "normalized": "FADAI"
+  },
+  {
+    "id": 5614,
+    "word": "FAIAS",
+    "normalized": "FAIAS"
+  },
+  {
+    "id": 5615,
+    "word": "FAIAL",
+    "normalized": "FAIAL"
+  },
+  {
+    "id": 5616,
+    "word": "FAIXO",
+    "normalized": "FAIXO"
+  },
+  {
+    "id": 5617,
+    "word": "FAIXE",
+    "normalized": "FAIXE"
+  },
+  {
+    "id": 5618,
+    "word": "FALOS",
+    "normalized": "FALOS"
+  },
+  {
+    "id": 5619,
+    "word": "FALUA",
+    "normalized": "FALUA"
+  },
+  {
+    "id": 5620,
+    "word": "FANAR",
+    "normalized": "FANAR"
+  },
+  {
+    "id": 5621,
+    "word": "FANOU",
+    "normalized": "FANOU"
+  },
+  {
+    "id": 5622,
+    "word": "FANES",
+    "normalized": "FANES"
+  },
+  {
+    "id": 5623,
+    "word": "FANAS",
+    "normalized": "FANAS"
+  },
+  {
+    "id": 5624,
+    "word": "FANEM",
+    "normalized": "FANEM"
+  },
+  {
+    "id": 5625,
+    "word": "FANAM",
+    "normalized": "FANAM"
+  },
+  {
+    "id": 5626,
+    "word": "FANEI",
+    "normalized": "FANEI"
+  },
+  {
+    "id": 5627,
+    "word": "FANAI",
+    "normalized": "FANAI"
+  },
+  {
+    "id": 5628,
+    "word": "FANFO",
+    "normalized": "FANFO"
+  },
+  {
+    "id": 5629,
+    "word": "FANFE",
+    "normalized": "FANFE"
+  },
+  {
+    "id": 5630,
+    "word": "FANFA",
+    "normalized": "FANFA"
+  },
+  {
+    "id": 5631,
+    "word": "FANNY",
+    "normalized": "FANNY"
+  },
+  {
+    "id": 5632,
+    "word": "FARAD",
+    "normalized": "FARAD"
+  },
+  {
+    "id": 5633,
+    "word": "FARDE",
+    "normalized": "FARDE"
+  },
+  {
+    "id": 5634,
+    "word": "FARPO",
+    "normalized": "FARPO"
+  },
+  {
+    "id": 5635,
+    "word": "FARPE",
+    "normalized": "FARPE"
+  },
+  {
+    "id": 5636,
+    "word": "FASEO",
+    "normalized": "FASEO"
+  },
+  {
+    "id": 5637,
+    "word": "FASEE",
+    "normalized": "FASEE"
+  },
+  {
+    "id": 5638,
+    "word": "FASEA",
+    "normalized": "FASEA"
+  },
+  {
+    "id": 5639,
+    "word": "FASTO",
+    "normalized": "FASTO"
+  },
+  {
+    "id": 5640,
+    "word": "FAVAL",
+    "normalized": "FAVAL"
+  },
+  {
+    "id": 5641,
+    "word": "FAXES",
+    "normalized": "FAXES"
+  },
+  {
+    "id": 5642,
+    "word": "FEBRA",
+    "normalized": "FEBRA"
+  },
+  {
+    "id": 5643,
+    "word": "FEIRO",
+    "normalized": "FEIRO"
+  },
+  {
+    "id": 5644,
+    "word": "FEIRE",
+    "normalized": "FEIRE"
+  },
+  {
+    "id": 5645,
+    "word": "FENOS",
+    "normalized": "FENOS"
+  },
+  {
+    "id": 5646,
+    "word": "FENOL",
+    "normalized": "FENOL"
+  },
+  {
+    "id": 5647,
+    "word": "FERIO",
+    "normalized": "FERIO"
+  },
+  {
+    "id": 5648,
+    "word": "FERIE",
+    "normalized": "FERIE"
+  },
+  {
+    "id": 5649,
+    "word": "FERMI",
+    "normalized": "FERMI"
+  },
+  {
+    "id": 5650,
+    "word": "FEVRA",
+    "normalized": "FEVRA"
+  },
+  {
+    "id": 5651,
+    "word": "FILOS",
+    "normalized": "FILOS"
+  },
+  {
+    "id": 5652,
+    "word": "FINAR",
+    "normalized": "FINAR"
+  },
+  {
+    "id": 5653,
+    "word": "FINOU",
+    "normalized": "FINOU"
+  },
+  {
+    "id": 5654,
+    "word": "FINES",
+    "normalized": "FINES"
+  },
+  {
+    "id": 5655,
+    "word": "FINEM",
+    "normalized": "FINEM"
+  },
+  {
+    "id": 5656,
+    "word": "FINAM",
+    "normalized": "FINAM"
+  },
+  {
+    "id": 5657,
+    "word": "FINEI",
+    "normalized": "FINEI"
+  },
+  {
+    "id": 5658,
+    "word": "FINAI",
+    "normalized": "FINAI"
+  },
+  {
+    "id": 5659,
+    "word": "FLASH",
+    "normalized": "FLASH"
+  },
+  {
+    "id": 5660,
+    "word": "FLAVA",
+    "normalized": "FLAVA"
+  },
+  {
+    "id": 5661,
+    "word": "FLETE",
+    "normalized": "FLETE"
+  },
+  {
+    "id": 5662,
+    "word": "FLETI",
+    "normalized": "FLETI"
+  },
+  {
+    "id": 5663,
+    "word": "FLITA",
+    "normalized": "FLITA"
+  },
+  {
+    "id": 5664,
+    "word": "FLITO",
+    "normalized": "FLITO"
+  },
+  {
+    "id": 5665,
+    "word": "FLORO",
+    "normalized": "FLORO"
+  },
+  {
+    "id": 5666,
+    "word": "FLORE",
+    "normalized": "FLORE"
+  },
+  {
+    "id": 5667,
+    "word": "FOLAR",
+    "normalized": "FOLAR"
+  },
+  {
+    "id": 5668,
+    "word": "FOLHO",
+    "normalized": "FOLHO"
+  },
+  {
+    "id": 5669,
+    "word": "FOLHE",
+    "normalized": "FOLHE"
+  },
+  {
+    "id": 5670,
+    "word": "FOLIO",
+    "normalized": "FOLIO"
+  },
+  {
+    "id": 5671,
+    "word": "FOLIE",
+    "normalized": "FOLIE"
+  },
+  {
+    "id": 5672,
+    "word": "FONIA",
+    "normalized": "FONIA"
+  },
+  {
+    "id": 5673,
+    "word": "FORAL",
+    "normalized": "FORAL"
+  },
+  {
+    "id": 5674,
+    "word": "FORCO",
+    "normalized": "FORCO"
+  },
+  {
+    "id": 5675,
+    "word": "FOUCE",
+    "normalized": "FOUCE"
+  },
+  {
+    "id": 5676,
+    "word": "FRANK",
+    "normalized": "FRANK"
+  },
+  {
+    "id": 5677,
+    "word": "FRANZ",
+    "normalized": "FRANZ"
+  },
+  {
+    "id": 5678,
+    "word": "FREIS",
+    "normalized": "FREIS"
+  },
+  {
+    "id": 5679,
+    "word": "FRENO",
+    "normalized": "FRENO"
+  },
+  {
+    "id": 5680,
+    "word": "FRENE",
+    "normalized": "FRENE"
+  },
+  {
+    "id": 5681,
+    "word": "FRENA",
+    "normalized": "FRENA"
+  },
+  {
+    "id": 5682,
+    "word": "FREUD",
+    "normalized": "FREUD"
+  },
+  {
+    "id": 5683,
+    "word": "FRIMA",
+    "normalized": "FRIMA"
+  },
+  {
+    "id": 5684,
+    "word": "FRIMO",
+    "normalized": "FRIMO"
+  },
+  {
+    "id": 5685,
+    "word": "FRITZ",
+    "normalized": "FRITZ"
+  },
+  {
+    "id": 5686,
+    "word": "FRUAS",
+    "normalized": "FRUAS"
+  },
+  {
+    "id": 5687,
+    "word": "FRUAM",
+    "normalized": "FRUAM"
+  },
+  {
+    "id": 5688,
+    "word": "FULAS",
+    "normalized": "FULAS"
+  },
+  {
+    "id": 5689,
+    "word": "FULOS",
+    "normalized": "FULOS"
+  },
+  {
+    "id": 5690,
+    "word": "FUMOS",
+    "normalized": "FUMOS"
+  },
+  {
+    "id": 5691,
+    "word": "FUSAS",
+    "normalized": "FUSAS"
+  },
+  {
+    "id": 5692,
+    "word": "FUSCA",
+    "normalized": "FUSCA"
+  },
+  {
+    "id": 5693,
+    "word": "FUZZY",
+    "normalized": "FUZZY"
+  },
+  {
+    "id": 5694,
+    "word": "GALAR",
+    "normalized": "GALAR"
+  },
+  {
+    "id": 5695,
+    "word": "GALOU",
+    "normalized": "GALOU"
+  },
+  {
+    "id": 5696,
+    "word": "GALAS",
+    "normalized": "GALAS"
+  },
+  {
+    "id": 5697,
+    "word": "GALEM",
+    "normalized": "GALEM"
+  },
+  {
+    "id": 5698,
+    "word": "GALAM",
+    "normalized": "GALAM"
+  },
+  {
+    "id": 5699,
+    "word": "GALEI",
+    "normalized": "GALEI"
+  },
+  {
+    "id": 5700,
+    "word": "GALAI",
+    "normalized": "GALAI"
+  },
+  {
+    "id": 5701,
+    "word": "GALHA",
+    "normalized": "GALHA"
+  },
+  {
+    "id": 5702,
+    "word": "GAMAR",
+    "normalized": "GAMAR"
+  },
+  {
+    "id": 5703,
+    "word": "GAMOU",
+    "normalized": "GAMOU"
+  },
+  {
+    "id": 5704,
+    "word": "GAMES",
+    "normalized": "GAMES"
+  },
+  {
+    "id": 5705,
+    "word": "GAMAS",
+    "normalized": "GAMAS"
+  },
+  {
+    "id": 5706,
+    "word": "GAMEM",
+    "normalized": "GAMEM"
+  },
+  {
+    "id": 5707,
+    "word": "GAMAM",
+    "normalized": "GAMAM"
+  },
+  {
+    "id": 5708,
+    "word": "GAMEI",
+    "normalized": "GAMEI"
+  },
+  {
+    "id": 5709,
+    "word": "GAMAI",
+    "normalized": "GAMAI"
+  },
+  {
+    "id": 5710,
+    "word": "GAMBA",
+    "normalized": "GAMBA"
+  },
+  {
+    "id": 5711,
+    "word": "GANGA",
+    "normalized": "GANGA"
+  },
+  {
+    "id": 5712,
+    "word": "GANAS",
+    "normalized": "GANAS"
+  },
+  {
+    "id": 5713,
+    "word": "GANAM",
+    "normalized": "GANAM"
+  },
+  {
+    "id": 5714,
+    "word": "GARES",
+    "normalized": "GARES"
+  },
+  {
+    "id": 5715,
+    "word": "GARRO",
+    "normalized": "GARRO"
+  },
+  {
+    "id": 5716,
+    "word": "GARRI",
+    "normalized": "GARRI"
+  },
+  {
+    "id": 5717,
+    "word": "GARRE",
+    "normalized": "GARRE"
+  },
+  {
+    "id": 5718,
+    "word": "GATES",
+    "normalized": "GATES"
+  },
+  {
+    "id": 5719,
+    "word": "GAUSS",
+    "normalized": "GAUSS"
+  },
+  {
+    "id": 5720,
+    "word": "GAZES",
+    "normalized": "GAZES"
+  },
+  {
+    "id": 5721,
+    "word": "GECOS",
+    "normalized": "GECOS"
+  },
+  {
+    "id": 5722,
+    "word": "GEMAR",
+    "normalized": "GEMAR"
+  },
+  {
+    "id": 5723,
+    "word": "GEMOU",
+    "normalized": "GEMOU"
+  },
+  {
+    "id": 5724,
+    "word": "GEMAI",
+    "normalized": "GEMAI"
+  },
+  {
+    "id": 5725,
+    "word": "GESSE",
+    "normalized": "GESSE"
+  },
+  {
+    "id": 5726,
+    "word": "GESSA",
+    "normalized": "GESSA"
+  },
+  {
+    "id": 5727,
+    "word": "GIGAS",
+    "normalized": "GIGAS"
+  },
+  {
+    "id": 5728,
+    "word": "GILDA",
+    "normalized": "GILDA"
+  },
+  {
+    "id": 5729,
+    "word": "GINJA",
+    "normalized": "GINJA"
+  },
+  {
+    "id": 5730,
+    "word": "GIZAR",
+    "normalized": "GIZAR"
+  },
+  {
+    "id": 5731,
+    "word": "GIZOU",
+    "normalized": "GIZOU"
+  },
+  {
+    "id": 5732,
+    "word": "GIZES",
+    "normalized": "GIZES"
+  },
+  {
+    "id": 5733,
+    "word": "GIZAS",
+    "normalized": "GIZAS"
+  },
+  {
+    "id": 5734,
+    "word": "GIZEM",
+    "normalized": "GIZEM"
+  },
+  {
+    "id": 5735,
+    "word": "GIZAM",
+    "normalized": "GIZAM"
+  },
+  {
+    "id": 5736,
+    "word": "GIZEI",
+    "normalized": "GIZEI"
+  },
+  {
+    "id": 5737,
+    "word": "GIZAI",
+    "normalized": "GIZAI"
+  },
+  {
+    "id": 5738,
+    "word": "GLIFO",
+    "normalized": "GLIFO"
+  },
+  {
+    "id": 5739,
+    "word": "GLOTE",
+    "normalized": "GLOTE"
+  },
+  {
+    "id": 5740,
+    "word": "GNOMA",
+    "normalized": "GNOMA"
+  },
+  {
+    "id": 5741,
+    "word": "GNOSE",
+    "normalized": "GNOSE"
+  },
+  {
+    "id": 5742,
+    "word": "GODAS",
+    "normalized": "GODAS"
+  },
+  {
+    "id": 5743,
+    "word": "GODOS",
+    "normalized": "GODOS"
+  },
+  {
+    "id": 5744,
+    "word": "GOELO",
+    "normalized": "GOELO"
+  },
+  {
+    "id": 5745,
+    "word": "GOELE",
+    "normalized": "GOELE"
+  },
+  {
+    "id": 5746,
+    "word": "GOÃªS",
+    "normalized": "GOAªS"
+  },
+  {
+    "id": 5747,
+    "word": "GOESA",
+    "normalized": "GOESA"
+  },
+  {
+    "id": 5748,
+    "word": "GOLFE",
+    "normalized": "GOLFE"
+  },
+  {
+    "id": 5749,
+    "word": "GOLFA",
+    "normalized": "GOLFA"
+  },
+  {
+    "id": 5750,
+    "word": "GOLOS",
+    "normalized": "GOLOS"
+  },
+  {
+    "id": 5751,
+    "word": "GOMEZ",
+    "normalized": "GOMEZ"
+  },
+  {
+    "id": 5752,
+    "word": "GORKI",
+    "normalized": "GORKI"
+  },
+  {
+    "id": 5753,
+    "word": "GORRA",
+    "normalized": "GORRA"
+  },
+  {
+    "id": 5754,
+    "word": "GRAAL",
+    "normalized": "GRAAL"
+  },
+  {
+    "id": 5755,
+    "word": "GRADO",
+    "normalized": "GRADO"
+  },
+  {
+    "id": 5756,
+    "word": "GRADA",
+    "normalized": "GRADA"
+  },
+  {
+    "id": 5757,
+    "word": "GRAMO",
+    "normalized": "GRAMO"
+  },
+  {
+    "id": 5758,
+    "word": "GRAME",
+    "normalized": "GRAME"
+  },
+  {
+    "id": 5759,
+    "word": "GRANO",
+    "normalized": "GRANO"
+  },
+  {
+    "id": 5760,
+    "word": "GRANE",
+    "normalized": "GRANE"
+  },
+  {
+    "id": 5761,
+    "word": "GRELO",
+    "normalized": "GRELO"
+  },
+  {
+    "id": 5762,
+    "word": "GRELE",
+    "normalized": "GRELE"
+  },
+  {
+    "id": 5763,
+    "word": "GRELA",
+    "normalized": "GRELA"
+  },
+  {
+    "id": 5764,
+    "word": "GRETA",
+    "normalized": "GRETA"
+  },
+  {
+    "id": 5765,
+    "word": "GRETO",
+    "normalized": "GRETO"
+  },
+  {
+    "id": 5766,
+    "word": "GRETE",
+    "normalized": "GRETE"
+  },
+  {
+    "id": 5767,
+    "word": "GRIEG",
+    "normalized": "GRIEG"
+  },
+  {
+    "id": 5768,
+    "word": "GRIPO",
+    "normalized": "GRIPO"
+  },
+  {
+    "id": 5769,
+    "word": "GRIPA",
+    "normalized": "GRIPA"
+  },
+  {
+    "id": 5770,
+    "word": "GRISO",
+    "normalized": "GRISO"
+  },
+  {
+    "id": 5771,
+    "word": "GRISE",
+    "normalized": "GRISE"
+  },
+  {
+    "id": 5772,
+    "word": "GRISA",
+    "normalized": "GRISA"
+  },
+  {
+    "id": 5773,
+    "word": "GROSA",
+    "normalized": "GROSA"
+  },
+  {
+    "id": 5774,
+    "word": "GROUS",
+    "normalized": "GROUS"
+  },
+  {
+    "id": 5775,
+    "word": "GRUAS",
+    "normalized": "GRUAS"
+  },
+  {
+    "id": 5776,
+    "word": "GUAPO",
+    "normalized": "GUAPO"
+  },
+  {
+    "id": 5777,
+    "word": "GUARO",
+    "normalized": "GUARO"
+  },
+  {
+    "id": 5778,
+    "word": "GUARI",
+    "normalized": "GUARI"
+  },
+  {
+    "id": 5779,
+    "word": "GUARE",
+    "normalized": "GUARE"
+  },
+  {
+    "id": 5780,
+    "word": "GUARA",
+    "normalized": "GUARA"
+  },
+  {
+    "id": 5781,
+    "word": "GUIDA",
+    "normalized": "GUIDA"
+  },
+  {
+    "id": 5782,
+    "word": "GUINO",
+    "normalized": "GUINO"
+  },
+  {
+    "id": 5783,
+    "word": "GUINE",
+    "normalized": "GUINE"
+  },
+  {
+    "id": 5784,
+    "word": "GUINA",
+    "normalized": "GUINA"
+  },
+  {
+    "id": 5785,
+    "word": "GUISO",
+    "normalized": "GUISO"
+  },
+  {
+    "id": 5786,
+    "word": "GUISE",
+    "normalized": "GUISE"
+  },
+  {
+    "id": 5787,
+    "word": "GUITA",
+    "normalized": "GUITA"
+  },
+  {
+    "id": 5788,
+    "word": "GULAS",
+    "normalized": "GULAS"
+  },
+  {
+    "id": 5789,
+    "word": "GURUS",
+    "normalized": "GURUS"
+  },
+  {
+    "id": 5790,
+    "word": "HALLE",
+    "normalized": "HALLE"
+  },
+  {
+    "id": 5791,
+    "word": "HANSA",
+    "normalized": "HANSA"
+  },
+  {
+    "id": 5792,
+    "word": "HARPO",
+    "normalized": "HARPO"
+  },
+  {
+    "id": 5793,
+    "word": "HARPE",
+    "normalized": "HARPE"
+  },
+  {
+    "id": 5794,
+    "word": "HASTA",
+    "normalized": "HASTA"
+  },
+  {
+    "id": 5795,
+    "word": "HEGEL",
+    "normalized": "HEGEL"
+  },
+  {
+    "id": 5796,
+    "word": "HELEN",
+    "normalized": "HELEN"
+  },
+  {
+    "id": 5797,
+    "word": "HELGA",
+    "normalized": "HELGA"
+  },
+  {
+    "id": 5798,
+    "word": "HEMOS",
+    "normalized": "HEMOS"
+  },
+  {
+    "id": 5799,
+    "word": "HENRI",
+    "normalized": "HENRI"
+  },
+  {
+    "id": 5800,
+    "word": "HERTZ",
+    "normalized": "HERTZ"
+  },
+  {
+    "id": 5801,
+    "word": "HIDRA",
+    "normalized": "HIDRA"
+  },
+  {
+    "id": 5802,
+    "word": "HINDI",
+    "normalized": "HINDI"
+  },
+  {
+    "id": 5803,
+    "word": "HIRTO",
+    "normalized": "HIRTO"
+  },
+  {
+    "id": 5804,
+    "word": "HIRTA",
+    "normalized": "HIRTA"
+  },
+  {
+    "id": 5805,
+    "word": "HOARE",
+    "normalized": "HOARE"
+  },
+  {
+    "id": 5806,
+    "word": "HONOR",
+    "normalized": "HONOR"
+  },
+  {
+    "id": 5807,
+    "word": "HOSTE",
+    "normalized": "HOSTE"
+  },
+  {
+    "id": 5808,
+    "word": "HUNAS",
+    "normalized": "HUNAS"
+  },
+  {
+    "id": 5809,
+    "word": "IAMBO",
+    "normalized": "IAMBO"
+  },
+  {
+    "id": 5810,
+    "word": "IÃΜES",
+    "normalized": "IAΜES"
+  },
+  {
+    "id": 5811,
+    "word": "IBERA",
+    "normalized": "IBERA"
+  },
+  {
+    "id": 5812,
+    "word": "IGLUS",
+    "normalized": "IGLUS"
+  },
+  {
+    "id": 5813,
+    "word": "ILHAL",
+    "normalized": "ILHAL"
+  },
+  {
+    "id": 5814,
+    "word": "ILIBO",
+    "normalized": "ILIBO"
+  },
+  {
+    "id": 5815,
+    "word": "ILIBE",
+    "normalized": "ILIBE"
+  },
+  {
+    "id": 5816,
+    "word": "ILIBA",
+    "normalized": "ILIBA"
+  },
+  {
+    "id": 5817,
+    "word": "IMAGO",
+    "normalized": "IMAGO"
+  },
+  {
+    "id": 5818,
+    "word": "IMAME",
+    "normalized": "IMAME"
+  },
+  {
+    "id": 5819,
+    "word": "IMANE",
+    "normalized": "IMANE"
+  },
+  {
+    "id": 5820,
+    "word": "IMBUO",
+    "normalized": "IMBUO"
+  },
+  {
+    "id": 5821,
+    "word": "IMBUI",
+    "normalized": "IMBUI"
+  },
+  {
+    "id": 5822,
+    "word": "IMBUA",
+    "normalized": "IMBUA"
+  },
+  {
+    "id": 5823,
+    "word": "IMUTO",
+    "normalized": "IMUTO"
+  },
+  {
+    "id": 5824,
+    "word": "IMUTE",
+    "normalized": "IMUTE"
+  },
+  {
+    "id": 5825,
+    "word": "IMUTA",
+    "normalized": "IMUTA"
+  },
+  {
+    "id": 5826,
+    "word": "INCRO",
+    "normalized": "INCRO"
+  },
+  {
+    "id": 5827,
+    "word": "INCRI",
+    "normalized": "INCRI"
+  },
+  {
+    "id": 5828,
+    "word": "INCRE",
+    "normalized": "INCRE"
+  },
+  {
+    "id": 5829,
+    "word": "INCRA",
+    "normalized": "INCRA"
+  },
+  {
+    "id": 5830,
+    "word": "INESC",
+    "normalized": "INESC"
+  },
+  {
+    "id": 5831,
+    "word": "INGRE",
+    "normalized": "INGRE"
+  },
+  {
+    "id": 5832,
+    "word": "INPUT",
+    "normalized": "INPUT"
+  },
+  {
+    "id": 5833,
+    "word": "INTEL",
+    "normalized": "INTEL"
+  },
+  {
+    "id": 5834,
+    "word": "INTRA",
+    "normalized": "INTRA"
+  },
+  {
+    "id": 5835,
+    "word": "IODAR",
+    "normalized": "IODAR"
+  },
+  {
+    "id": 5836,
+    "word": "IODOU",
+    "normalized": "IODOU"
+  },
+  {
+    "id": 5837,
+    "word": "IODES",
+    "normalized": "IODES"
+  },
+  {
+    "id": 5838,
+    "word": "IODAS",
+    "normalized": "IODAS"
+  },
+  {
+    "id": 5839,
+    "word": "IODEM",
+    "normalized": "IODEM"
+  },
+  {
+    "id": 5840,
+    "word": "IODAM",
+    "normalized": "IODAM"
+  },
+  {
+    "id": 5841,
+    "word": "IODEI",
+    "normalized": "IODEI"
+  },
+  {
+    "id": 5842,
+    "word": "IODAI",
+    "normalized": "IODAI"
+  },
+  {
+    "id": 5843,
+    "word": "IPPAR",
+    "normalized": "IPPAR"
+  },
+  {
+    "id": 5844,
+    "word": "IRAIS",
+    "normalized": "IRAIS"
+  },
+  {
+    "id": 5845,
+    "word": "IRAVA",
+    "normalized": "IRAVA"
+  },
+  {
+    "id": 5846,
+    "word": "IRARA",
+    "normalized": "IRARA"
+  },
+  {
+    "id": 5847,
+    "word": "IRENE",
+    "normalized": "IRENE"
+  },
+  {
+    "id": 5848,
+    "word": "IRISO",
+    "normalized": "IRISO"
+  },
+  {
+    "id": 5849,
+    "word": "IRISE",
+    "normalized": "IRISE"
+  },
+  {
+    "id": 5850,
+    "word": "IRISA",
+    "normalized": "IRISA"
+  },
+  {
+    "id": 5851,
+    "word": "IROSO",
+    "normalized": "IROSO"
+  },
+  {
+    "id": 5852,
+    "word": "ISAAC",
+    "normalized": "ISAAC"
+  },
+  {
+    "id": 5853,
+    "word": "ISCAR",
+    "normalized": "ISCAR"
+  },
+  {
+    "id": 5854,
+    "word": "ISCOU",
+    "normalized": "ISCOU"
+  },
+  {
+    "id": 5855,
+    "word": "ISCAM",
+    "normalized": "ISCAM"
+  },
+  {
+    "id": 5856,
+    "word": "ISCAI",
+    "normalized": "ISCAI"
+  },
+  {
+    "id": 5857,
+    "word": "ISQUE",
+    "normalized": "ISQUE"
+  },
+  {
+    "id": 5858,
+    "word": "ISCOS",
+    "normalized": "ISCOS"
+  },
+  {
+    "id": 5859,
+    "word": "IVONE",
+    "normalized": "IVONE"
+  },
+  {
+    "id": 5860,
+    "word": "JACOB",
+    "normalized": "JACOB"
+  },
+  {
+    "id": 5861,
+    "word": "JADES",
+    "normalized": "JADES"
+  },
+  {
+    "id": 5862,
+    "word": "JAMES",
+    "normalized": "JAMES"
+  },
+  {
+    "id": 5863,
+    "word": "JANET",
+    "normalized": "JANET"
+  },
+  {
+    "id": 5864,
+    "word": "JANUS",
+    "normalized": "JANUS"
+  },
+  {
+    "id": 5865,
+    "word": "JEANS",
+    "normalized": "JEANS"
+  },
+  {
+    "id": 5866,
+    "word": "JECOS",
+    "normalized": "JECOS"
+  },
+  {
+    "id": 5867,
+    "word": "JENNY",
+    "normalized": "JENNY"
+  },
+  {
+    "id": 5868,
+    "word": "JIPES",
+    "normalized": "JIPES"
+  },
+  {
+    "id": 5869,
+    "word": "JOIAS",
+    "normalized": "JOIAS"
+  },
+  {
+    "id": 5870,
+    "word": "JONAS",
+    "normalized": "JONAS"
+  },
+  {
+    "id": 5871,
+    "word": "JOSEF",
+    "normalized": "JOSEF"
+  },
+  {
+    "id": 5872,
+    "word": "JOULE",
+    "normalized": "JOULE"
+  },
+  {
+    "id": 5873,
+    "word": "JOYCE",
+    "normalized": "JOYCE"
+  },
+  {
+    "id": 5874,
+    "word": "JUGOS",
+    "normalized": "JUGOS"
+  },
+  {
+    "id": 5875,
+    "word": "JULES",
+    "normalized": "JULES"
+  },
+  {
+    "id": 5876,
+    "word": "JULIE",
+    "normalized": "JULIE"
+  },
+  {
+    "id": 5877,
+    "word": "JUNCA",
+    "normalized": "JUNCA"
+  },
+  {
+    "id": 5878,
+    "word": "JÃºRI",
+    "normalized": "JAºRI"
+  },
+  {
+    "id": 5879,
+    "word": "KAFKA",
+    "normalized": "KAFKA"
+  },
+  {
+    "id": 5880,
+    "word": "KAZAN",
+    "normalized": "KAZAN"
+  },
+  {
+    "id": 5881,
+    "word": "KIWIS",
+    "normalized": "KIWIS"
+  },
+  {
+    "id": 5882,
+    "word": "KLEIN",
+    "normalized": "KLEIN"
+  },
+  {
+    "id": 5883,
+    "word": "KOALA",
+    "normalized": "KOALA"
+  },
+  {
+    "id": 5884,
+    "word": "LACAS",
+    "normalized": "LACAS"
+  },
+  {
+    "id": 5885,
+    "word": "LACAR",
+    "normalized": "LACAR"
+  },
+  {
+    "id": 5886,
+    "word": "LACOU",
+    "normalized": "LACOU"
+  },
+  {
+    "id": 5887,
+    "word": "LACAM",
+    "normalized": "LACAM"
+  },
+  {
+    "id": 5888,
+    "word": "LACAI",
+    "normalized": "LACAI"
+  },
+  {
+    "id": 5889,
+    "word": "LAQUE",
+    "normalized": "LAQUE"
+  },
+  {
+    "id": 5890,
+    "word": "LACTO",
+    "normalized": "LACTO"
+  },
+  {
+    "id": 5891,
+    "word": "LACTE",
+    "normalized": "LACTE"
+  },
+  {
+    "id": 5892,
+    "word": "LACTA",
+    "normalized": "LACTA"
+  },
+  {
+    "id": 5893,
+    "word": "LAIAS",
+    "normalized": "LAIAS"
+  },
+  {
+    "id": 5894,
+    "word": "LAIVO",
+    "normalized": "LAIVO"
+  },
+  {
+    "id": 5895,
+    "word": "LAMAS",
+    "normalized": "LAMAS"
+  },
+  {
+    "id": 5896,
+    "word": "LANAR",
+    "normalized": "LANAR"
+  },
+  {
+    "id": 5897,
+    "word": "LANHA",
+    "normalized": "LANHA"
+  },
+  {
+    "id": 5898,
+    "word": "LANHO",
+    "normalized": "LANHO"
+  },
+  {
+    "id": 5899,
+    "word": "LANHE",
+    "normalized": "LANHE"
+  },
+  {
+    "id": 5900,
+    "word": "LAPAS",
+    "normalized": "LAPAS"
+  },
+  {
+    "id": 5901,
+    "word": "LASER",
+    "normalized": "LASER"
+  },
+  {
+    "id": 5902,
+    "word": "LASSO",
+    "normalized": "LASSO"
+  },
+  {
+    "id": 5903,
+    "word": "LASSE",
+    "normalized": "LASSE"
+  },
+  {
+    "id": 5904,
+    "word": "LASSA",
+    "normalized": "LASSA"
+  },
+  {
+    "id": 5905,
+    "word": "LATEX",
+    "normalized": "LATEX"
+  },
+  {
+    "id": 5906,
+    "word": "LATAM",
+    "normalized": "LATAM"
+  },
+  {
+    "id": 5907,
+    "word": "LAUTO",
+    "normalized": "LAUTO"
+  },
+  {
+    "id": 5908,
+    "word": "LAUTA",
+    "normalized": "LAUTA"
+  },
+  {
+    "id": 5909,
+    "word": "LAVOR",
+    "normalized": "LAVOR"
+  },
+  {
+    "id": 5910,
+    "word": "LAZER",
+    "normalized": "LAZER"
+  },
+  {
+    "id": 5911,
+    "word": "LEIDA",
+    "normalized": "LEIDA"
+  },
+  {
+    "id": 5912,
+    "word": "LEIRA",
+    "normalized": "LEIRA"
+  },
+  {
+    "id": 5913,
+    "word": "LEIVA",
+    "normalized": "LEIVA"
+  },
+  {
+    "id": 5914,
+    "word": "LENHE",
+    "normalized": "LENHE"
+  },
+  {
+    "id": 5915,
+    "word": "LEDOR",
+    "normalized": "LEDOR"
+  },
+  {
+    "id": 5916,
+    "word": "LESMO",
+    "normalized": "LESMO"
+  },
+  {
+    "id": 5917,
+    "word": "LESME",
+    "normalized": "LESME"
+  },
+  {
+    "id": 5918,
+    "word": "LESTO",
+    "normalized": "LESTO"
+  },
+  {
+    "id": 5919,
+    "word": "LESTA",
+    "normalized": "LESTA"
+  },
+  {
+    "id": 5920,
+    "word": "LEWIS",
+    "normalized": "LEWIS"
+  },
+  {
+    "id": 5921,
+    "word": "LINKS",
+    "normalized": "LINKS"
+  },
+  {
+    "id": 5922,
+    "word": "LINUX",
+    "normalized": "LINUX"
+  },
+  {
+    "id": 5923,
+    "word": "LIXOS",
+    "normalized": "LIXOS"
+  },
+  {
+    "id": 5924,
+    "word": "LOBAL",
+    "normalized": "LOBAL"
+  },
+  {
+    "id": 5925,
+    "word": "LODOS",
+    "normalized": "LODOS"
+  },
+  {
+    "id": 5926,
+    "word": "LOGOS",
+    "normalized": "LOGOS"
+  },
+  {
+    "id": 5927,
+    "word": "LOIRE",
+    "normalized": "LOIRE"
+  },
+  {
+    "id": 5928,
+    "word": "LOISA",
+    "normalized": "LOISA"
+  },
+  {
+    "id": 5929,
+    "word": "LOMBA",
+    "normalized": "LOMBA"
+  },
+  {
+    "id": 5930,
+    "word": "LOPEZ",
+    "normalized": "LOPEZ"
+  },
+  {
+    "id": 5931,
+    "word": "LORPA",
+    "normalized": "LORPA"
+  },
+  {
+    "id": 5932,
+    "word": "LOTOS",
+    "normalized": "LOTOS"
+  },
+  {
+    "id": 5933,
+    "word": "LOURE",
+    "normalized": "LOURE"
+  },
+  {
+    "id": 5934,
+    "word": "LUFAR",
+    "normalized": "LUFAR"
+  },
+  {
+    "id": 5935,
+    "word": "LUFOU",
+    "normalized": "LUFOU"
+  },
+  {
+    "id": 5936,
+    "word": "LUFES",
+    "normalized": "LUFES"
+  },
+  {
+    "id": 5937,
+    "word": "LUFAS",
+    "normalized": "LUFAS"
+  },
+  {
+    "id": 5938,
+    "word": "LUFEM",
+    "normalized": "LUFEM"
+  },
+  {
+    "id": 5939,
+    "word": "LUFAM",
+    "normalized": "LUFAM"
+  },
+  {
+    "id": 5940,
+    "word": "LUFEI",
+    "normalized": "LUFEI"
+  },
+  {
+    "id": 5941,
+    "word": "LUFAI",
+    "normalized": "LUFAI"
+  },
+  {
+    "id": 5942,
+    "word": "LUIGI",
+    "normalized": "LUIGI"
+  },
+  {
+    "id": 5943,
+    "word": "LUMES",
+    "normalized": "LUMES"
+  },
+  {
+    "id": 5944,
+    "word": "LUMEN",
+    "normalized": "LUMEN"
+  },
+  {
+    "id": 5945,
+    "word": "LURAS",
+    "normalized": "LURAS"
+  },
+  {
+    "id": 5946,
+    "word": "LUSCO",
+    "normalized": "LUSCO"
+  },
+  {
+    "id": 5947,
+    "word": "LUXAR",
+    "normalized": "LUXAR"
+  },
+  {
+    "id": 5948,
+    "word": "LUXOU",
+    "normalized": "LUXOU"
+  },
+  {
+    "id": 5949,
+    "word": "LUXES",
+    "normalized": "LUXES"
+  },
+  {
+    "id": 5950,
+    "word": "LUXAS",
+    "normalized": "LUXAS"
+  },
+  {
+    "id": 5951,
+    "word": "LUXEM",
+    "normalized": "LUXEM"
+  },
+  {
+    "id": 5952,
+    "word": "LUXAM",
+    "normalized": "LUXAM"
+  },
+  {
+    "id": 5953,
+    "word": "LUXEI",
+    "normalized": "LUXEI"
+  },
+  {
+    "id": 5954,
+    "word": "LUXAI",
+    "normalized": "LUXAI"
+  },
+  {
+    "id": 5955,
+    "word": "MACES",
+    "normalized": "MACES"
+  },
+  {
+    "id": 5956,
+    "word": "MACEM",
+    "normalized": "MACEM"
+  },
+  {
+    "id": 5957,
+    "word": "MACEI",
+    "normalized": "MACEI"
+  },
+  {
+    "id": 5958,
+    "word": "MACHA",
+    "normalized": "MACHA"
+  },
+  {
+    "id": 5959,
+    "word": "MAGAS",
+    "normalized": "MAGAS"
+  },
+  {
+    "id": 5960,
+    "word": "MAGOO",
+    "normalized": "MAGOO"
+  },
+  {
+    "id": 5961,
+    "word": "MALAR",
+    "normalized": "MALAR"
+  },
+  {
+    "id": 5962,
+    "word": "MALGA",
+    "normalized": "MALGA"
+  },
+  {
+    "id": 5963,
+    "word": "MALTE",
+    "normalized": "MALTE"
+  },
+  {
+    "id": 5964,
+    "word": "MALVA",
+    "normalized": "MALVA"
+  },
+  {
+    "id": 5965,
+    "word": "MAMAL",
+    "normalized": "MAMAL"
+  },
+  {
+    "id": 5966,
+    "word": "MAMBO",
+    "normalized": "MAMBO"
+  },
+  {
+    "id": 5967,
+    "word": "MANAR",
+    "normalized": "MANAR"
+  },
+  {
+    "id": 5968,
+    "word": "MANOU",
+    "normalized": "MANOU"
+  },
+  {
+    "id": 5969,
+    "word": "MANES",
+    "normalized": "MANES"
+  },
+  {
+    "id": 5970,
+    "word": "MANEM",
+    "normalized": "MANEM"
+  },
+  {
+    "id": 5971,
+    "word": "MANAM",
+    "normalized": "MANAM"
+  },
+  {
+    "id": 5972,
+    "word": "MANEI",
+    "normalized": "MANEI"
+  },
+  {
+    "id": 5973,
+    "word": "MANAI",
+    "normalized": "MANAI"
+  },
+  {
+    "id": 5974,
+    "word": "MANEL",
+    "normalized": "MANEL"
+  },
+  {
+    "id": 5975,
+    "word": "MANGO",
+    "normalized": "MANGO"
+  },
+  {
+    "id": 5976,
+    "word": "MARGA",
+    "normalized": "MARGA"
+  },
+  {
+    "id": 5977,
+    "word": "MARIE",
+    "normalized": "MARIE"
+  },
+  {
+    "id": 5978,
+    "word": "MARIM",
+    "normalized": "MARIM"
+  },
+  {
+    "id": 5979,
+    "word": "MARIZ",
+    "normalized": "MARIZ"
+  },
+  {
+    "id": 5980,
+    "word": "MARRO",
+    "normalized": "MARRO"
+  },
+  {
+    "id": 5981,
+    "word": "MARRE",
+    "normalized": "MARRE"
+  },
+  {
+    "id": 5982,
+    "word": "MARTE",
+    "normalized": "MARTE"
+  },
+  {
+    "id": 5983,
+    "word": "MASER",
+    "normalized": "MASER"
+  },
+  {
+    "id": 5984,
+    "word": "MAURO",
+    "normalized": "MAURO"
+  },
+  {
+    "id": 5985,
+    "word": "MEATO",
+    "normalized": "MEATO"
+  },
+  {
+    "id": 5986,
+    "word": "MEDAS",
+    "normalized": "MEDAS"
+  },
+  {
+    "id": 5987,
+    "word": "MÃªDA",
+    "normalized": "MAªDA"
+  },
+  {
+    "id": 5988,
+    "word": "MEIJE",
+    "normalized": "MEIJE"
+  },
+  {
+    "id": 5989,
+    "word": "MELGA",
+    "normalized": "MELGA"
+  },
+  {
+    "id": 5990,
+    "word": "MELOA",
+    "normalized": "MELOA"
+  },
+  {
+    "id": 5991,
+    "word": "MELRA",
+    "normalized": "MELRA"
+  },
+  {
+    "id": 5992,
+    "word": "MENDO",
+    "normalized": "MENDO"
+  },
+  {
+    "id": 5993,
+    "word": "MESSE",
+    "normalized": "MESSE"
+  },
+  {
+    "id": 5994,
+    "word": "MIAMI",
+    "normalized": "MIAMI"
+  },
+  {
+    "id": 5995,
+    "word": "MICRA",
+    "normalized": "MICRA"
+  },
+  {
+    "id": 5996,
+    "word": "MIDAS",
+    "normalized": "MIDAS"
+  },
+  {
+    "id": 5997,
+    "word": "MIGAR",
+    "normalized": "MIGAR"
+  },
+  {
+    "id": 5998,
+    "word": "MIGOU",
+    "normalized": "MIGOU"
+  },
+  {
+    "id": 5999,
+    "word": "MIGAS",
+    "normalized": "MIGAS"
+  },
+  {
+    "id": 6000,
+    "word": "MIGAM",
+    "normalized": "MIGAM"
+  },
+  {
+    "id": 6001,
+    "word": "MIGAI",
+    "normalized": "MIGAI"
+  },
+  {
+    "id": 6002,
+    "word": "MIGUE",
+    "normalized": "MIGUE"
+  },
+  {
+    "id": 6003,
+    "word": "MIJOS",
+    "normalized": "MIJOS"
+  },
+  {
+    "id": 6004,
+    "word": "MILLE",
+    "normalized": "MILLE"
+  },
+  {
+    "id": 6005,
+    "word": "MINGA",
+    "normalized": "MINGA"
+  },
+  {
+    "id": 6006,
+    "word": "MINGO",
+    "normalized": "MINGO"
+  },
+  {
+    "id": 6007,
+    "word": "MINHO",
+    "normalized": "MINHO"
+  },
+  {
+    "id": 6008,
+    "word": "MIRRO",
+    "normalized": "MIRRO"
+  },
+  {
+    "id": 6009,
+    "word": "MIRRE",
+    "normalized": "MIRRE"
+  },
+  {
+    "id": 6010,
+    "word": "MISSO",
+    "normalized": "MISSO"
+  },
+  {
+    "id": 6011,
+    "word": "MISSE",
+    "normalized": "MISSE"
+  },
+  {
+    "id": 6012,
+    "word": "MITRO",
+    "normalized": "MITRO"
+  },
+  {
+    "id": 6013,
+    "word": "MITRE",
+    "normalized": "MITRE"
+  },
+  {
+    "id": 6014,
+    "word": "MOCAS",
+    "normalized": "MOCAS"
+  },
+  {
+    "id": 6015,
+    "word": "MOCHO",
+    "normalized": "MOCHO"
+  },
+  {
+    "id": 6016,
+    "word": "MOINA",
+    "normalized": "MOINA"
+  },
+  {
+    "id": 6017,
+    "word": "MOINO",
+    "normalized": "MOINO"
+  },
+  {
+    "id": 6018,
+    "word": "MOINE",
+    "normalized": "MOINE"
+  },
+  {
+    "id": 6019,
+    "word": "MOIRA",
+    "normalized": "MOIRA"
+  },
+  {
+    "id": 6020,
+    "word": "MOIRO",
+    "normalized": "MOIRO"
+  },
+  {
+    "id": 6021,
+    "word": "MONCO",
+    "normalized": "MONCO"
+  },
+  {
+    "id": 6022,
+    "word": "MONDO",
+    "normalized": "MONDO"
+  },
+  {
+    "id": 6023,
+    "word": "MONDE",
+    "normalized": "MONDE"
+  },
+  {
+    "id": 6024,
+    "word": "MONDA",
+    "normalized": "MONDA"
+  },
+  {
+    "id": 6025,
+    "word": "MONIZ",
+    "normalized": "MONIZ"
+  },
+  {
+    "id": 6026,
+    "word": "MONAS",
+    "normalized": "MONAS"
+  },
+  {
+    "id": 6027,
+    "word": "MONZA",
+    "normalized": "MONZA"
+  },
+  {
+    "id": 6028,
+    "word": "MOORE",
+    "normalized": "MOORE"
+  },
+  {
+    "id": 6029,
+    "word": "MORIN",
+    "normalized": "MORIN"
+  },
+  {
+    "id": 6030,
+    "word": "MOSSA",
+    "normalized": "MOSSA"
+  },
+  {
+    "id": 6031,
+    "word": "MOSSO",
+    "normalized": "MOSSO"
+  },
+  {
+    "id": 6032,
+    "word": "MOSSE",
+    "normalized": "MOSSE"
+  },
+  {
+    "id": 6033,
+    "word": "MOSTO",
+    "normalized": "MOSTO"
+  },
+  {
+    "id": 6034,
+    "word": "MOTAS",
+    "normalized": "MOTAS"
+  },
+  {
+    "id": 6035,
+    "word": "MOTES",
+    "normalized": "MOTES"
+  },
+  {
+    "id": 6036,
+    "word": "MOTIM",
+    "normalized": "MOTIM"
+  },
+  {
+    "id": 6037,
+    "word": "MOUCO",
+    "normalized": "MOUCO"
+  },
+  {
+    "id": 6038,
+    "word": "MOUCA",
+    "normalized": "MOUCA"
+  },
+  {
+    "id": 6039,
+    "word": "MUNJO",
+    "normalized": "MUNJO"
+  },
+  {
+    "id": 6040,
+    "word": "MUNGI",
+    "normalized": "MUNGI"
+  },
+  {
+    "id": 6041,
+    "word": "MUNGE",
+    "normalized": "MUNGE"
+  },
+  {
+    "id": 6042,
+    "word": "MUNJA",
+    "normalized": "MUNJA"
+  },
+  {
+    "id": 6043,
+    "word": "MUNAS",
+    "normalized": "MUNAS"
+  },
+  {
+    "id": 6044,
+    "word": "MUNAM",
+    "normalized": "MUNAM"
+  },
+  {
+    "id": 6045,
+    "word": "MUSAL",
+    "normalized": "MUSAL"
+  },
+  {
+    "id": 6046,
+    "word": "MUTUO",
+    "normalized": "MUTUO"
+  },
+  {
+    "id": 6047,
+    "word": "MUTUE",
+    "normalized": "MUTUE"
+  },
+  {
+    "id": 6048,
+    "word": "MUTUA",
+    "normalized": "MUTUA"
+  },
+  {
+    "id": 6049,
+    "word": "NABAL",
+    "normalized": "NABAL"
+  },
+  {
+    "id": 6050,
+    "word": "NAIFA",
+    "normalized": "NAIFA"
+  },
+  {
+    "id": 6051,
+    "word": "NANCI",
+    "normalized": "NANCI"
+  },
+  {
+    "id": 6052,
+    "word": "NANCY",
+    "normalized": "NANCY"
+  },
+  {
+    "id": 6053,
+    "word": "NARVA",
+    "normalized": "NARVA"
+  },
+  {
+    "id": 6054,
+    "word": "NAZIS",
+    "normalized": "NAZIS"
+  },
+  {
+    "id": 6055,
+    "word": "NECAS",
+    "normalized": "NECAS"
+  },
+  {
+    "id": 6056,
+    "word": "NEURA",
+    "normalized": "NEURA"
+  },
+  {
+    "id": 6057,
+    "word": "NEURO",
+    "normalized": "NEURO"
+  },
+  {
+    "id": 6058,
+    "word": "NICAR",
+    "normalized": "NICAR"
+  },
+  {
+    "id": 6059,
+    "word": "NICOU",
+    "normalized": "NICOU"
+  },
+  {
+    "id": 6060,
+    "word": "NICAS",
+    "normalized": "NICAS"
+  },
+  {
+    "id": 6061,
+    "word": "NICAM",
+    "normalized": "NICAM"
+  },
+  {
+    "id": 6062,
+    "word": "NICAI",
+    "normalized": "NICAI"
+  },
+  {
+    "id": 6063,
+    "word": "NIQUE",
+    "normalized": "NIQUE"
+  },
+  {
+    "id": 6064,
+    "word": "NIMBO",
+    "normalized": "NIMBO"
+  },
+  {
+    "id": 6065,
+    "word": "NINHE",
+    "normalized": "NINHE"
+  },
+  {
+    "id": 6066,
+    "word": "NINHA",
+    "normalized": "NINHA"
+  },
+  {
+    "id": 6067,
+    "word": "NITRE",
+    "normalized": "NITRE"
+  },
+  {
+    "id": 6068,
+    "word": "NITRA",
+    "normalized": "NITRA"
+  },
+  {
+    "id": 6069,
+    "word": "NOBEL",
+    "normalized": "NOBEL"
+  },
+  {
+    "id": 6070,
+    "word": "NODOS",
+    "normalized": "NODOS"
+  },
+  {
+    "id": 6071,
+    "word": "NOEMA",
+    "normalized": "NOEMA"
+  },
+  {
+    "id": 6072,
+    "word": "NOESE",
+    "normalized": "NOESE"
+  },
+  {
+    "id": 6073,
+    "word": "NOTRE",
+    "normalized": "NOTRE"
+  },
+  {
+    "id": 6074,
+    "word": "NOVEL",
+    "normalized": "NOVEL"
+  },
+  {
+    "id": 6075,
+    "word": "NUBLO",
+    "normalized": "NUBLO"
+  },
+  {
+    "id": 6076,
+    "word": "NUBLE",
+    "normalized": "NUBLE"
+  },
+  {
+    "id": 6077,
+    "word": "NUBLA",
+    "normalized": "NUBLA"
+  },
+  {
+    "id": 6078,
+    "word": "NUCAL",
+    "normalized": "NUCAL"
+  },
+  {
+    "id": 6079,
+    "word": "NYLON",
+    "normalized": "NYLON"
+  },
+  {
+    "id": 6080,
+    "word": "OBRAR",
+    "normalized": "OBRAR"
+  },
+  {
+    "id": 6081,
+    "word": "OBROU",
+    "normalized": "OBROU"
+  },
+  {
+    "id": 6082,
+    "word": "OBRES",
+    "normalized": "OBRES"
+  },
+  {
+    "id": 6083,
+    "word": "OBREM",
+    "normalized": "OBREM"
+  },
+  {
+    "id": 6084,
+    "word": "OBRAM",
+    "normalized": "OBRAM"
+  },
+  {
+    "id": 6085,
+    "word": "OBREI",
+    "normalized": "OBREI"
+  },
+  {
+    "id": 6086,
+    "word": "OBRAI",
+    "normalized": "OBRAI"
+  },
+  {
+    "id": 6087,
+    "word": "ODETE",
+    "normalized": "ODETE"
+  },
+  {
+    "id": 6088,
+    "word": "ODORO",
+    "normalized": "ODORO"
+  },
+  {
+    "id": 6089,
+    "word": "ODORE",
+    "normalized": "ODORE"
+  },
+  {
+    "id": 6090,
+    "word": "ODORA",
+    "normalized": "ODORA"
+  },
+  {
+    "id": 6091,
+    "word": "ODRES",
+    "normalized": "ODRES"
+  },
+  {
+    "id": 6092,
+    "word": "OFEGO",
+    "normalized": "OFEGO"
+  },
+  {
+    "id": 6093,
+    "word": "OFEGA",
+    "normalized": "OFEGA"
+  },
+  {
+    "id": 6094,
+    "word": "OGRES",
+    "normalized": "OGRES"
+  },
+  {
+    "id": 6095,
+    "word": "OIRAR",
+    "normalized": "OIRAR"
+  },
+  {
+    "id": 6096,
+    "word": "OIROS",
+    "normalized": "OIROS"
+  },
+  {
+    "id": 6097,
+    "word": "OLEAR",
+    "normalized": "OLEAR"
+  },
+  {
+    "id": 6098,
+    "word": "OLEOU",
+    "normalized": "OLEOU"
+  },
+  {
+    "id": 6099,
+    "word": "OLEIO",
+    "normalized": "OLEIO"
+  },
+  {
+    "id": 6100,
+    "word": "OLEEI",
+    "normalized": "OLEEI"
+  },
+  {
+    "id": 6101,
+    "word": "OLEAI",
+    "normalized": "OLEAI"
+  },
+  {
+    "id": 6102,
+    "word": "OLEIE",
+    "normalized": "OLEIE"
+  },
+  {
+    "id": 6103,
+    "word": "OLEIA",
+    "normalized": "OLEIA"
+  },
+  {
+    "id": 6104,
+    "word": "OLHAL",
+    "normalized": "OLHAL"
+  },
+  {
+    "id": 6105,
+    "word": "OLMOS",
+    "normalized": "OLMOS"
+  },
+  {
+    "id": 6106,
+    "word": "ONDAS",
+    "normalized": "ONDAS"
+  },
+  {
+    "id": 6107,
+    "word": "OPIAR",
+    "normalized": "OPIAR"
+  },
+  {
+    "id": 6108,
+    "word": "OPIOU",
+    "normalized": "OPIOU"
+  },
+  {
+    "id": 6109,
+    "word": "OPIES",
+    "normalized": "OPIES"
+  },
+  {
+    "id": 6110,
+    "word": "OPIAS",
+    "normalized": "OPIAS"
+  },
+  {
+    "id": 6111,
+    "word": "OPIEM",
+    "normalized": "OPIEM"
+  },
+  {
+    "id": 6112,
+    "word": "OPIAM",
+    "normalized": "OPIAM"
+  },
+  {
+    "id": 6113,
+    "word": "OPIEI",
+    "normalized": "OPIEI"
+  },
+  {
+    "id": 6114,
+    "word": "OPIAI",
+    "normalized": "OPIAI"
+  },
+  {
+    "id": 6115,
+    "word": "ORFEU",
+    "normalized": "ORFEU"
+  },
+  {
+    "id": 6116,
+    "word": "ORMUZ",
+    "normalized": "ORMUZ"
+  },
+  {
+    "id": 6117,
+    "word": "OSACA",
+    "normalized": "OSACA"
+  },
+  {
+    "id": 6118,
+    "word": "OSAKA",
+    "normalized": "OSAKA"
+  },
+  {
+    "id": 6119,
+    "word": "OSGAS",
+    "normalized": "OSGAS"
+  },
+  {
+    "id": 6120,
+    "word": "OTELO",
+    "normalized": "OTELO"
+  },
+  {
+    "id": 6121,
+    "word": "OUGAR",
+    "normalized": "OUGAR"
+  },
+  {
+    "id": 6122,
+    "word": "OUGOU",
+    "normalized": "OUGOU"
+  },
+  {
+    "id": 6123,
+    "word": "OUGAS",
+    "normalized": "OUGAS"
+  },
+  {
+    "id": 6124,
+    "word": "OUGAM",
+    "normalized": "OUGAM"
+  },
+  {
+    "id": 6125,
+    "word": "OUGAI",
+    "normalized": "OUGAI"
+  },
+  {
+    "id": 6126,
+    "word": "OUGUE",
+    "normalized": "OUGUE"
+  },
+  {
+    "id": 6127,
+    "word": "OURAR",
+    "normalized": "OURAR"
+  },
+  {
+    "id": 6128,
+    "word": "OUROU",
+    "normalized": "OUROU"
+  },
+  {
+    "id": 6129,
+    "word": "OURES",
+    "normalized": "OURES"
+  },
+  {
+    "id": 6130,
+    "word": "OURAS",
+    "normalized": "OURAS"
+  },
+  {
+    "id": 6131,
+    "word": "OUREM",
+    "normalized": "OUREM"
+  },
+  {
+    "id": 6132,
+    "word": "OURAM",
+    "normalized": "OURAM"
+  },
+  {
+    "id": 6133,
+    "word": "OUREI",
+    "normalized": "OUREI"
+  },
+  {
+    "id": 6134,
+    "word": "OURAI",
+    "normalized": "OURAI"
+  },
+  {
+    "id": 6135,
+    "word": "OVALO",
+    "normalized": "OVALO"
+  },
+  {
+    "id": 6136,
+    "word": "OVALE",
+    "normalized": "OVALE"
+  },
+  {
+    "id": 6137,
+    "word": "OVALA",
+    "normalized": "OVALA"
+  },
+  {
+    "id": 6138,
+    "word": "OVEIS",
+    "normalized": "OVEIS"
+  },
+  {
+    "id": 6139,
+    "word": "OVADO",
+    "normalized": "OVADO"
+  },
+  {
+    "id": 6140,
+    "word": "OVAVA",
+    "normalized": "OVAVA"
+  },
+  {
+    "id": 6141,
+    "word": "OVADA",
+    "normalized": "OVADA"
+  },
+  {
+    "id": 6142,
+    "word": "OVARA",
+    "normalized": "OVARA"
+  },
+  {
+    "id": 6143,
+    "word": "OZONO",
+    "normalized": "OZONO"
+  },
+  {
+    "id": 6144,
+    "word": "OZONE",
+    "normalized": "OZONE"
+  },
+  {
+    "id": 6145,
+    "word": "OZONA",
+    "normalized": "OZONA"
+  },
+  {
+    "id": 6146,
+    "word": "PAIGC",
+    "normalized": "PAIGC"
+  },
+  {
+    "id": 6147,
+    "word": "PAIOS",
+    "normalized": "PAIOS"
+  },
+  {
+    "id": 6148,
+    "word": "PAIOL",
+    "normalized": "PAIOL"
+  },
+  {
+    "id": 6149,
+    "word": "PAJEM",
+    "normalized": "PAJEM"
+  },
+  {
+    "id": 6150,
+    "word": "PALAS",
+    "normalized": "PALAS"
+  },
+  {
+    "id": 6151,
+    "word": "PALIO",
+    "normalized": "PALIO"
+  },
+  {
+    "id": 6152,
+    "word": "PALIE",
+    "normalized": "PALIE"
+  },
+  {
+    "id": 6153,
+    "word": "PALIA",
+    "normalized": "PALIA"
+  },
+  {
+    "id": 6154,
+    "word": "PALME",
+    "normalized": "PALME"
+  },
+  {
+    "id": 6155,
+    "word": "PALOP",
+    "normalized": "PALOP"
+  },
+  {
+    "id": 6156,
+    "word": "PALPO",
+    "normalized": "PALPO"
+  },
+  {
+    "id": 6157,
+    "word": "PALPE",
+    "normalized": "PALPE"
+  },
+  {
+    "id": 6158,
+    "word": "PALPA",
+    "normalized": "PALPA"
+  },
+  {
+    "id": 6159,
+    "word": "PALRO",
+    "normalized": "PALRO"
+  },
+  {
+    "id": 6160,
+    "word": "PALRE",
+    "normalized": "PALRE"
+  },
+  {
+    "id": 6161,
+    "word": "PALRA",
+    "normalized": "PALRA"
+  },
+  {
+    "id": 6162,
+    "word": "PANAL",
+    "normalized": "PANAL"
+  },
+  {
+    "id": 6163,
+    "word": "PANAR",
+    "normalized": "PANAR"
+  },
+  {
+    "id": 6164,
+    "word": "PANOU",
+    "normalized": "PANOU"
+  },
+  {
+    "id": 6165,
+    "word": "PANES",
+    "normalized": "PANES"
+  },
+  {
+    "id": 6166,
+    "word": "PANAS",
+    "normalized": "PANAS"
+  },
+  {
+    "id": 6167,
+    "word": "PANEM",
+    "normalized": "PANEM"
+  },
+  {
+    "id": 6168,
+    "word": "PANAM",
+    "normalized": "PANAM"
+  },
+  {
+    "id": 6169,
+    "word": "PANEI",
+    "normalized": "PANEI"
+  },
+  {
+    "id": 6170,
+    "word": "PANAI",
+    "normalized": "PANAI"
+  },
+  {
+    "id": 6171,
+    "word": "PAPAL",
+    "normalized": "PAPAL"
+  },
+  {
+    "id": 6172,
+    "word": "PARLA",
+    "normalized": "PARLA"
+  },
+  {
+    "id": 6173,
+    "word": "PARLO",
+    "normalized": "PARLO"
+  },
+  {
+    "id": 6174,
+    "word": "PARLE",
+    "normalized": "PARLE"
+  },
+  {
+    "id": 6175,
+    "word": "PARMA",
+    "normalized": "PARMA"
+  },
+  {
+    "id": 6176,
+    "word": "PARRA",
+    "normalized": "PARRA"
+  },
+  {
+    "id": 6177,
+    "word": "PARVA",
+    "normalized": "PARVA"
+  },
+  {
+    "id": 6178,
+    "word": "PAUIS",
+    "normalized": "PAUIS"
+  },
+  {
+    "id": 6179,
+    "word": "PAULI",
+    "normalized": "PAULI"
+  },
+  {
+    "id": 6180,
+    "word": "PAUSO",
+    "normalized": "PAUSO"
+  },
+  {
+    "id": 6181,
+    "word": "PAUSE",
+    "normalized": "PAUSE"
+  },
+  {
+    "id": 6182,
+    "word": "PAVOA",
+    "normalized": "PAVOA"
+  },
+  {
+    "id": 6183,
+    "word": "PAZES",
+    "normalized": "PAZES"
+  },
+  {
+    "id": 6184,
+    "word": "PEANO",
+    "normalized": "PEANO"
+  },
+  {
+    "id": 6185,
+    "word": "PECHA",
+    "normalized": "PECHA"
+  },
+  {
+    "id": 6186,
+    "word": "PEDIP",
+    "normalized": "PEDIP"
+  },
+  {
+    "id": 6187,
+    "word": "PEJAR",
+    "normalized": "PEJAR"
+  },
+  {
+    "id": 6188,
+    "word": "PEJOU",
+    "normalized": "PEJOU"
+  },
+  {
+    "id": 6189,
+    "word": "PEJES",
+    "normalized": "PEJES"
+  },
+  {
+    "id": 6190,
+    "word": "PEJAS",
+    "normalized": "PEJAS"
+  },
+  {
+    "id": 6191,
+    "word": "PEJEM",
+    "normalized": "PEJEM"
+  },
+  {
+    "id": 6192,
+    "word": "PEJAM",
+    "normalized": "PEJAM"
+  },
+  {
+    "id": 6193,
+    "word": "PEJEI",
+    "normalized": "PEJEI"
+  },
+  {
+    "id": 6194,
+    "word": "PEJAI",
+    "normalized": "PEJAI"
+  },
+  {
+    "id": 6195,
+    "word": "PELVE",
+    "normalized": "PELVE"
+  },
+  {
+    "id": 6196,
+    "word": "PENCE",
+    "normalized": "PENCE"
+  },
+  {
+    "id": 6197,
+    "word": "PERAL",
+    "normalized": "PERAL"
+  },
+  {
+    "id": 6198,
+    "word": "PERES",
+    "normalized": "PERES"
+  },
+  {
+    "id": 6199,
+    "word": "PEREZ",
+    "normalized": "PEREZ"
+  },
+  {
+    "id": 6200,
+    "word": "PÃªRO",
+    "normalized": "PAªRO"
+  },
+  {
+    "id": 6201,
+    "word": "PERRO",
+    "normalized": "PERRO"
+  },
+  {
+    "id": 6202,
+    "word": "PERRA",
+    "normalized": "PERRA"
+  },
+  {
+    "id": 6203,
+    "word": "PEZES",
+    "normalized": "PEZES"
+  },
+  {
+    "id": 6204,
+    "word": "PIELA",
+    "normalized": "PIELA"
+  },
+  {
+    "id": 6205,
+    "word": "PILAS",
+    "normalized": "PILAS"
+  },
+  {
+    "id": 6206,
+    "word": "PILOU",
+    "normalized": "PILOU"
+  },
+  {
+    "id": 6207,
+    "word": "PILES",
+    "normalized": "PILES"
+  },
+  {
+    "id": 6208,
+    "word": "PILEM",
+    "normalized": "PILEM"
+  },
+  {
+    "id": 6209,
+    "word": "PILAM",
+    "normalized": "PILAM"
+  },
+  {
+    "id": 6210,
+    "word": "PILEI",
+    "normalized": "PILEI"
+  },
+  {
+    "id": 6211,
+    "word": "PILAI",
+    "normalized": "PILAI"
+  },
+  {
+    "id": 6212,
+    "word": "PIMBA",
+    "normalized": "PIMBA"
+  },
+  {
+    "id": 6213,
+    "word": "PIMPO",
+    "normalized": "PIMPO"
+  },
+  {
+    "id": 6214,
+    "word": "PIMPE",
+    "normalized": "PIMPE"
+  },
+  {
+    "id": 6215,
+    "word": "PIMPA",
+    "normalized": "PIMPA"
+  },
+  {
+    "id": 6216,
+    "word": "PIRAR",
+    "normalized": "PIRAR"
+  },
+  {
+    "id": 6217,
+    "word": "PIROU",
+    "normalized": "PIROU"
+  },
+  {
+    "id": 6218,
+    "word": "PIREM",
+    "normalized": "PIREM"
+  },
+  {
+    "id": 6219,
+    "word": "PIRAM",
+    "normalized": "PIRAM"
+  },
+  {
+    "id": 6220,
+    "word": "PIREI",
+    "normalized": "PIREI"
+  },
+  {
+    "id": 6221,
+    "word": "PIRAI",
+    "normalized": "PIRAI"
+  },
+  {
+    "id": 6222,
+    "word": "PIREU",
+    "normalized": "PIREU"
+  },
+  {
+    "id": 6223,
+    "word": "PIRRO",
+    "normalized": "PIRRO"
+  },
+  {
+    "id": 6224,
+    "word": "PISGO",
+    "normalized": "PISGO"
+  },
+  {
+    "id": 6225,
+    "word": "PISGA",
+    "normalized": "PISGA"
+  },
+  {
+    "id": 6226,
+    "word": "PISOS",
+    "normalized": "PISOS"
+  },
+  {
+    "id": 6227,
+    "word": "PIZAS",
+    "normalized": "PIZAS"
+  },
+  {
+    "id": 6228,
+    "word": "PLICA",
+    "normalized": "PLICA"
+  },
+  {
+    "id": 6229,
+    "word": "PLICO",
+    "normalized": "PLICO"
+  },
+  {
+    "id": 6230,
+    "word": "PODAL",
+    "normalized": "PODAL"
+  },
+  {
+    "id": 6231,
+    "word": "POISA",
+    "normalized": "POISA"
+  },
+  {
+    "id": 6232,
+    "word": "POISO",
+    "normalized": "POISO"
+  },
+  {
+    "id": 6233,
+    "word": "POISE",
+    "normalized": "POISE"
+  },
+  {
+    "id": 6234,
+    "word": "POJAR",
+    "normalized": "POJAR"
+  },
+  {
+    "id": 6235,
+    "word": "POJOU",
+    "normalized": "POJOU"
+  },
+  {
+    "id": 6236,
+    "word": "POJES",
+    "normalized": "POJES"
+  },
+  {
+    "id": 6237,
+    "word": "POJAS",
+    "normalized": "POJAS"
+  },
+  {
+    "id": 6238,
+    "word": "POJEM",
+    "normalized": "POJEM"
+  },
+  {
+    "id": 6239,
+    "word": "POJAM",
+    "normalized": "POJAM"
+  },
+  {
+    "id": 6240,
+    "word": "POJEI",
+    "normalized": "POJEI"
+  },
+  {
+    "id": 6241,
+    "word": "POJAI",
+    "normalized": "POJAI"
+  },
+  {
+    "id": 6242,
+    "word": "POLCO",
+    "normalized": "POLCO"
+  },
+  {
+    "id": 6243,
+    "word": "POLOS",
+    "normalized": "POLOS"
+  },
+  {
+    "id": 6244,
+    "word": "POLUO",
+    "normalized": "POLUO"
+  },
+  {
+    "id": 6245,
+    "word": "POLUI",
+    "normalized": "POLUI"
+  },
+  {
+    "id": 6246,
+    "word": "POLUA",
+    "normalized": "POLUA"
+  },
+  {
+    "id": 6247,
+    "word": "POMES",
+    "normalized": "POMES"
+  },
+  {
+    "id": 6248,
+    "word": "PORRA",
+    "normalized": "PORRA"
+  },
+  {
+    "id": 6249,
+    "word": "PORRO",
+    "normalized": "PORRO"
+  },
+  {
+    "id": 6250,
+    "word": "POTRA",
+    "normalized": "POTRA"
+  },
+  {
+    "id": 6251,
+    "word": "POVOO",
+    "normalized": "POVOO"
+  },
+  {
+    "id": 6252,
+    "word": "PREDO",
+    "normalized": "PREDO"
+  },
+  {
+    "id": 6253,
+    "word": "PREDE",
+    "normalized": "PREDE"
+  },
+  {
+    "id": 6254,
+    "word": "PREDA",
+    "normalized": "PREDA"
+  },
+  {
+    "id": 6255,
+    "word": "PRESE",
+    "normalized": "PRESE"
+  },
+  {
+    "id": 6256,
+    "word": "PRIOR",
+    "normalized": "PRIOR"
+  },
+  {
+    "id": 6257,
+    "word": "PROBO",
+    "normalized": "PROBO"
+  },
+  {
+    "id": 6258,
+    "word": "PROFS",
+    "normalized": "PROFS"
+  },
+  {
+    "id": 6259,
+    "word": "PROSO",
+    "normalized": "PROSO"
+  },
+  {
+    "id": 6260,
+    "word": "PROSE",
+    "normalized": "PROSE"
+  },
+  {
+    "id": 6261,
+    "word": "PRURO",
+    "normalized": "PRURO"
+  },
+  {
+    "id": 6262,
+    "word": "PRURI",
+    "normalized": "PRURI"
+  },
+  {
+    "id": 6263,
+    "word": "PRURE",
+    "normalized": "PRURE"
+  },
+  {
+    "id": 6264,
+    "word": "PRURA",
+    "normalized": "PRURA"
+  },
+  {
+    "id": 6265,
+    "word": "PSICO",
+    "normalized": "PSICO"
+  },
+  {
+    "id": 6266,
+    "word": "PSKOV",
+    "normalized": "PSKOV"
+  },
+  {
+    "id": 6267,
+    "word": "PUGNA",
+    "normalized": "PUGNA"
+  },
+  {
+    "id": 6268,
+    "word": "PUGNO",
+    "normalized": "PUGNO"
+  },
+  {
+    "id": 6269,
+    "word": "PUGNE",
+    "normalized": "PUGNE"
+  },
+  {
+    "id": 6270,
+    "word": "PUJAR",
+    "normalized": "PUJAR"
+  },
+  {
+    "id": 6271,
+    "word": "PUJOU",
+    "normalized": "PUJOU"
+  },
+  {
+    "id": 6272,
+    "word": "PUJES",
+    "normalized": "PUJES"
+  },
+  {
+    "id": 6273,
+    "word": "PUJAS",
+    "normalized": "PUJAS"
+  },
+  {
+    "id": 6274,
+    "word": "PUJEM",
+    "normalized": "PUJEM"
+  },
+  {
+    "id": 6275,
+    "word": "PUJAM",
+    "normalized": "PUJAM"
+  },
+  {
+    "id": 6276,
+    "word": "PUJEI",
+    "normalized": "PUJEI"
+  },
+  {
+    "id": 6277,
+    "word": "PUJAI",
+    "normalized": "PUJAI"
+  },
+  {
+    "id": 6278,
+    "word": "PULHA",
+    "normalized": "PULHA"
+  },
+  {
+    "id": 6279,
+    "word": "PUMBA",
+    "normalized": "PUMBA"
+  },
+  {
+    "id": 6280,
+    "word": "PUNJO",
+    "normalized": "PUNJO"
+  },
+  {
+    "id": 6281,
+    "word": "PUNGI",
+    "normalized": "PUNGI"
+  },
+  {
+    "id": 6282,
+    "word": "PUNGE",
+    "normalized": "PUNGE"
+  },
+  {
+    "id": 6283,
+    "word": "PUNJA",
+    "normalized": "PUNJA"
+  },
+  {
+    "id": 6284,
+    "word": "PUNKS",
+    "normalized": "PUNKS"
+  },
+  {
+    "id": 6285,
+    "word": "PUXOS",
+    "normalized": "PUXOS"
+  },
+  {
+    "id": 6286,
+    "word": "QUICO",
+    "normalized": "QUICO"
+  },
+  {
+    "id": 6287,
+    "word": "QUIMO",
+    "normalized": "QUIMO"
+  },
+  {
+    "id": 6288,
+    "word": "QUINO",
+    "normalized": "QUINO"
+  },
+  {
+    "id": 6289,
+    "word": "QUINE",
+    "normalized": "QUINE"
+  },
+  {
+    "id": 6290,
+    "word": "QUIVI",
+    "normalized": "QUIVI"
+  },
+  {
+    "id": 6291,
+    "word": "RAFAR",
+    "normalized": "RAFAR"
+  },
+  {
+    "id": 6292,
+    "word": "RAFOU",
+    "normalized": "RAFOU"
+  },
+  {
+    "id": 6293,
+    "word": "RAFES",
+    "normalized": "RAFES"
+  },
+  {
+    "id": 6294,
+    "word": "RAFAS",
+    "normalized": "RAFAS"
+  },
+  {
+    "id": 6295,
+    "word": "RAFEM",
+    "normalized": "RAFEM"
+  },
+  {
+    "id": 6296,
+    "word": "RAFAM",
+    "normalized": "RAFAM"
+  },
+  {
+    "id": 6297,
+    "word": "RAFEI",
+    "normalized": "RAFEI"
+  },
+  {
+    "id": 6298,
+    "word": "RAFAI",
+    "normalized": "RAFAI"
+  },
+  {
+    "id": 6299,
+    "word": "RALIS",
+    "normalized": "RALIS"
+  },
+  {
+    "id": 6300,
+    "word": "RAMAS",
+    "normalized": "RAMAS"
+  },
+  {
+    "id": 6301,
+    "word": "RAMON",
+    "normalized": "RAMON"
+  },
+  {
+    "id": 6302,
+    "word": "RANCE",
+    "normalized": "RANCE"
+  },
+  {
+    "id": 6303,
+    "word": "RANHO",
+    "normalized": "RANHO"
+  },
+  {
+    "id": 6304,
+    "word": "RASAR",
+    "normalized": "RASAR"
+  },
+  {
+    "id": 6305,
+    "word": "RASOU",
+    "normalized": "RASOU"
+  },
+  {
+    "id": 6306,
+    "word": "RASES",
+    "normalized": "RASES"
+  },
+  {
+    "id": 6307,
+    "word": "RASEM",
+    "normalized": "RASEM"
+  },
+  {
+    "id": 6308,
+    "word": "RASAM",
+    "normalized": "RASAM"
+  },
+  {
+    "id": 6309,
+    "word": "RASEI",
+    "normalized": "RASEI"
+  },
+  {
+    "id": 6310,
+    "word": "RASAI",
+    "normalized": "RASAI"
+  },
+  {
+    "id": 6311,
+    "word": "RASCA",
+    "normalized": "RASCA"
+  },
+  {
+    "id": 6312,
+    "word": "RASCO",
+    "normalized": "RASCO"
+  },
+  {
+    "id": 6313,
+    "word": "RATAR",
+    "normalized": "RATAR"
+  },
+  {
+    "id": 6314,
+    "word": "RATOU",
+    "normalized": "RATOU"
+  },
+  {
+    "id": 6315,
+    "word": "RATES",
+    "normalized": "RATES"
+  },
+  {
+    "id": 6316,
+    "word": "RATEM",
+    "normalized": "RATEM"
+  },
+  {
+    "id": 6317,
+    "word": "RATAM",
+    "normalized": "RATAM"
+  },
+  {
+    "id": 6318,
+    "word": "RATEI",
+    "normalized": "RATEI"
+  },
+  {
+    "id": 6319,
+    "word": "RATAI",
+    "normalized": "RATAI"
+  },
+  {
+    "id": 6320,
+    "word": "RAVEL",
+    "normalized": "RAVEL"
+  },
+  {
+    "id": 6321,
+    "word": "RAZIA",
+    "normalized": "RAZIA"
+  },
+  {
+    "id": 6322,
+    "word": "RAZIO",
+    "normalized": "RAZIO"
+  },
+  {
+    "id": 6323,
+    "word": "RAZIE",
+    "normalized": "RAZIE"
+  },
+  {
+    "id": 6324,
+    "word": "RAZOO",
+    "normalized": "RAZOO"
+  },
+  {
+    "id": 6325,
+    "word": "RAZOE",
+    "normalized": "RAZOE"
+  },
+  {
+    "id": 6326,
+    "word": "RAZOA",
+    "normalized": "RAZOA"
+  },
+  {
+    "id": 6327,
+    "word": "REAVO",
+    "normalized": "REAVO"
+  },
+  {
+    "id": 6328,
+    "word": "REAVI",
+    "normalized": "REAVI"
+  },
+  {
+    "id": 6329,
+    "word": "REAVE",
+    "normalized": "REAVE"
+  },
+  {
+    "id": 6330,
+    "word": "REAVA",
+    "normalized": "REAVA"
+  },
+  {
+    "id": 6331,
+    "word": "REFIO",
+    "normalized": "REFIO"
+  },
+  {
+    "id": 6332,
+    "word": "REFIE",
+    "normalized": "REFIE"
+  },
+  {
+    "id": 6333,
+    "word": "REFIA",
+    "normalized": "REFIA"
+  },
+  {
+    "id": 6334,
+    "word": "REGOS",
+    "normalized": "REGOS"
+  },
+  {
+    "id": 6335,
+    "word": "REIAM",
+    "normalized": "REIAM"
+  },
+  {
+    "id": 6336,
+    "word": "REIAS",
+    "normalized": "REIAS"
+  },
+  {
+    "id": 6337,
+    "word": "RELAS",
+    "normalized": "RELAS"
+  },
+  {
+    "id": 6338,
+    "word": "RELAM",
+    "normalized": "RELAM"
+  },
+  {
+    "id": 6339,
+    "word": "RELEM",
+    "normalized": "RELEM"
+  },
+  {
+    "id": 6340,
+    "word": "RELEI",
+    "normalized": "RELEI"
+  },
+  {
+    "id": 6341,
+    "word": "RELUZ",
+    "normalized": "RELUZ"
+  },
+  {
+    "id": 6342,
+    "word": "RELVO",
+    "normalized": "RELVO"
+  },
+  {
+    "id": 6343,
+    "word": "RELVE",
+    "normalized": "RELVE"
+  },
+  {
+    "id": 6344,
+    "word": "REMOO",
+    "normalized": "REMOO"
+  },
+  {
+    "id": 6345,
+    "word": "RENHO",
+    "normalized": "RENHO"
+  },
+  {
+    "id": 6346,
+    "word": "RENHI",
+    "normalized": "RENHI"
+  },
+  {
+    "id": 6347,
+    "word": "RENHE",
+    "normalized": "RENHE"
+  },
+  {
+    "id": 6348,
+    "word": "RENHA",
+    "normalized": "RENHA"
+  },
+  {
+    "id": 6349,
+    "word": "REPAS",
+    "normalized": "REPAS"
+  },
+  {
+    "id": 6350,
+    "word": "REPTO",
+    "normalized": "REPTO"
+  },
+  {
+    "id": 6351,
+    "word": "REPTE",
+    "normalized": "REPTE"
+  },
+  {
+    "id": 6352,
+    "word": "REPTA",
+    "normalized": "REPTA"
+  },
+  {
+    "id": 6353,
+    "word": "RETAL",
+    "normalized": "RETAL"
+  },
+  {
+    "id": 6354,
+    "word": "RETRO",
+    "normalized": "RETRO"
+  },
+  {
+    "id": 6355,
+    "word": "REUMA",
+    "normalized": "REUMA"
+  },
+  {
+    "id": 6356,
+    "word": "REUSO",
+    "normalized": "REUSO"
+  },
+  {
+    "id": 6357,
+    "word": "REUSE",
+    "normalized": "REUSE"
+  },
+  {
+    "id": 6358,
+    "word": "REUSA",
+    "normalized": "REUSA"
+  },
+  {
+    "id": 6359,
+    "word": "REVIM",
+    "normalized": "REVIM"
+  },
+  {
+    "id": 6360,
+    "word": "RILHO",
+    "normalized": "RILHO"
+  },
+  {
+    "id": 6361,
+    "word": "RILHE",
+    "normalized": "RILHE"
+  },
+  {
+    "id": 6362,
+    "word": "RILHA",
+    "normalized": "RILHA"
+  },
+  {
+    "id": 6363,
+    "word": "RIOJA",
+    "normalized": "RIOJA"
+  },
+  {
+    "id": 6364,
+    "word": "RIPAR",
+    "normalized": "RIPAR"
+  },
+  {
+    "id": 6365,
+    "word": "RIPOU",
+    "normalized": "RIPOU"
+  },
+  {
+    "id": 6366,
+    "word": "RIPES",
+    "normalized": "RIPES"
+  },
+  {
+    "id": 6367,
+    "word": "RIPEM",
+    "normalized": "RIPEM"
+  },
+  {
+    "id": 6368,
+    "word": "RIPAM",
+    "normalized": "RIPAM"
+  },
+  {
+    "id": 6369,
+    "word": "RIPEI",
+    "normalized": "RIPEI"
+  },
+  {
+    "id": 6370,
+    "word": "RIPAI",
+    "normalized": "RIPAI"
+  },
+  {
+    "id": 6371,
+    "word": "RITME",
+    "normalized": "RITME"
+  },
+  {
+    "id": 6372,
+    "word": "RITMA",
+    "normalized": "RITMA"
+  },
+  {
+    "id": 6373,
+    "word": "RIXAR",
+    "normalized": "RIXAR"
+  },
+  {
+    "id": 6374,
+    "word": "RIXOU",
+    "normalized": "RIXOU"
+  },
+  {
+    "id": 6375,
+    "word": "RIXES",
+    "normalized": "RIXES"
+  },
+  {
+    "id": 6376,
+    "word": "RIXEM",
+    "normalized": "RIXEM"
+  },
+  {
+    "id": 6377,
+    "word": "RIXAM",
+    "normalized": "RIXAM"
+  },
+  {
+    "id": 6378,
+    "word": "RIXEI",
+    "normalized": "RIXEI"
+  },
+  {
+    "id": 6379,
+    "word": "RIXAI",
+    "normalized": "RIXAI"
+  },
+  {
+    "id": 6380,
+    "word": "ROBES",
+    "normalized": "ROBES"
+  },
+  {
+    "id": 6381,
+    "word": "ROBIN",
+    "normalized": "ROBIN"
+  },
+  {
+    "id": 6382,
+    "word": "ROLHO",
+    "normalized": "ROLHO"
+  },
+  {
+    "id": 6383,
+    "word": "ROLHE",
+    "normalized": "ROLHE"
+  },
+  {
+    "id": 6384,
+    "word": "ROMEU",
+    "normalized": "ROMEU"
+  },
+  {
+    "id": 6385,
+    "word": "ROSAL",
+    "normalized": "ROSAL"
+  },
+  {
+    "id": 6386,
+    "word": "ROSCO",
+    "normalized": "ROSCO"
+  },
+  {
+    "id": 6387,
+    "word": "ROTAR",
+    "normalized": "ROTAR"
+  },
+  {
+    "id": 6388,
+    "word": "ROTOU",
+    "normalized": "ROTOU"
+  },
+  {
+    "id": 6389,
+    "word": "ROTES",
+    "normalized": "ROTES"
+  },
+  {
+    "id": 6390,
+    "word": "ROTEM",
+    "normalized": "ROTEM"
+  },
+  {
+    "id": 6391,
+    "word": "ROTAM",
+    "normalized": "ROTAM"
+  },
+  {
+    "id": 6392,
+    "word": "ROTEI",
+    "normalized": "ROTEI"
+  },
+  {
+    "id": 6393,
+    "word": "ROTAI",
+    "normalized": "ROTAI"
+  },
+  {
+    "id": 6394,
+    "word": "ROTOR",
+    "normalized": "ROTOR"
+  },
+  {
+    "id": 6395,
+    "word": "ROYAL",
+    "normalized": "ROYAL"
+  },
+  {
+    "id": 6396,
+    "word": "RUBOR",
+    "normalized": "RUBOR"
+  },
+  {
+    "id": 6397,
+    "word": "RUDEZ",
+    "normalized": "RUDEZ"
+  },
+  {
+    "id": 6398,
+    "word": "RUFIA",
+    "normalized": "RUFIA"
+  },
+  {
+    "id": 6399,
+    "word": "RUFIO",
+    "normalized": "RUFIO"
+  },
+  {
+    "id": 6400,
+    "word": "RUFIE",
+    "normalized": "RUFIE"
+  },
+  {
+    "id": 6401,
+    "word": "RUAIS",
+    "normalized": "RUAIS"
+  },
+  {
+    "id": 6402,
+    "word": "RUPIA",
+    "normalized": "RUPIA"
+  },
+  {
+    "id": 6403,
+    "word": "RUSGO",
+    "normalized": "RUSGO"
+  },
+  {
+    "id": 6404,
+    "word": "SACHO",
+    "normalized": "SACHO"
+  },
+  {
+    "id": 6405,
+    "word": "SACHE",
+    "normalized": "SACHE"
+  },
+  {
+    "id": 6406,
+    "word": "SACHA",
+    "normalized": "SACHA"
+  },
+  {
+    "id": 6407,
+    "word": "SAFOS",
+    "normalized": "SAFOS"
+  },
+  {
+    "id": 6408,
+    "word": "SALLY",
+    "normalized": "SALLY"
+  },
+  {
+    "id": 6409,
+    "word": "SANCA",
+    "normalized": "SANCA"
+  },
+  {
+    "id": 6410,
+    "word": "SANDE",
+    "normalized": "SANDE"
+  },
+  {
+    "id": 6411,
+    "word": "SAPAL",
+    "normalized": "SAPAL"
+  },
+  {
+    "id": 6412,
+    "word": "SARAH",
+    "normalized": "SARAH"
+  },
+  {
+    "id": 6413,
+    "word": "SARAU",
+    "normalized": "SARAU"
+  },
+  {
+    "id": 6414,
+    "word": "SARJA",
+    "normalized": "SARJA"
+  },
+  {
+    "id": 6415,
+    "word": "SARJO",
+    "normalized": "SARJO"
+  },
+  {
+    "id": 6416,
+    "word": "SARJE",
+    "normalized": "SARJE"
+  },
+  {
+    "id": 6417,
+    "word": "SARNO",
+    "normalized": "SARNO"
+  },
+  {
+    "id": 6418,
+    "word": "SARNI",
+    "normalized": "SARNI"
+  },
+  {
+    "id": 6419,
+    "word": "SARNE",
+    "normalized": "SARNE"
+  },
+  {
+    "id": 6420,
+    "word": "SARRE",
+    "normalized": "SARRE"
+  },
+  {
+    "id": 6421,
+    "word": "SATAN",
+    "normalized": "SATAN"
+  },
+  {
+    "id": 6422,
+    "word": "SATIS",
+    "normalized": "SATIS"
+  },
+  {
+    "id": 6423,
+    "word": "SCALA",
+    "normalized": "SCALA"
+  },
+  {
+    "id": 6424,
+    "word": "SCOTT",
+    "normalized": "SCOTT"
+  },
+  {
+    "id": 6425,
+    "word": "SEDAR",
+    "normalized": "SEDAR"
+  },
+  {
+    "id": 6426,
+    "word": "SEDOU",
+    "normalized": "SEDOU"
+  },
+  {
+    "id": 6427,
+    "word": "SEDEM",
+    "normalized": "SEDEM"
+  },
+  {
+    "id": 6428,
+    "word": "SEDAM",
+    "normalized": "SEDAM"
+  },
+  {
+    "id": 6429,
+    "word": "SEDEI",
+    "normalized": "SEDEI"
+  },
+  {
+    "id": 6430,
+    "word": "SEDAI",
+    "normalized": "SEDAI"
+  },
+  {
+    "id": 6431,
+    "word": "SEGAR",
+    "normalized": "SEGAR"
+  },
+  {
+    "id": 6432,
+    "word": "SEGOU",
+    "normalized": "SEGOU"
+  },
+  {
+    "id": 6433,
+    "word": "SEGAS",
+    "normalized": "SEGAS"
+  },
+  {
+    "id": 6434,
+    "word": "SEGAM",
+    "normalized": "SEGAM"
+  },
+  {
+    "id": 6435,
+    "word": "SEGAI",
+    "normalized": "SEGAI"
+  },
+  {
+    "id": 6436,
+    "word": "SENAS",
+    "normalized": "SENAS"
+  },
+  {
+    "id": 6437,
+    "word": "SENIL",
+    "normalized": "SENIL"
+  },
+  {
+    "id": 6438,
+    "word": "SENIS",
+    "normalized": "SENIS"
+  },
+  {
+    "id": 6439,
+    "word": "SERPE",
+    "normalized": "SERPE"
+  },
+  {
+    "id": 6440,
+    "word": "SERZE",
+    "normalized": "SERZE"
+  },
+  {
+    "id": 6441,
+    "word": "SERZI",
+    "normalized": "SERZI"
+  },
+  {
+    "id": 6442,
+    "word": "SEVER",
+    "normalized": "SEVER"
+  },
+  {
+    "id": 6443,
+    "word": "SHELL",
+    "normalized": "SHELL"
+  },
+  {
+    "id": 6444,
+    "word": "SHOWS",
+    "normalized": "SHOWS"
+  },
+  {
+    "id": 6445,
+    "word": "SIDRA",
+    "normalized": "SIDRA"
+  },
+  {
+    "id": 6446,
+    "word": "SIGUI",
+    "normalized": "SIGUI"
+  },
+  {
+    "id": 6447,
+    "word": "SIMON",
+    "normalized": "SIMON"
+  },
+  {
+    "id": 6448,
+    "word": "SINAI",
+    "normalized": "SINAI"
+  },
+  {
+    "id": 6449,
+    "word": "SINES",
+    "normalized": "SINES"
+  },
+  {
+    "id": 6450,
+    "word": "SIQUE",
+    "normalized": "SIQUE"
+  },
+  {
+    "id": 6451,
+    "word": "SIRGA",
+    "normalized": "SIRGA"
+  },
+  {
+    "id": 6452,
+    "word": "SIRZA",
+    "normalized": "SIRZA"
+  },
+  {
+    "id": 6453,
+    "word": "SIRZO",
+    "normalized": "SIRZO"
+  },
+  {
+    "id": 6454,
+    "word": "SISAR",
+    "normalized": "SISAR"
+  },
+  {
+    "id": 6455,
+    "word": "SISOU",
+    "normalized": "SISOU"
+  },
+  {
+    "id": 6456,
+    "word": "SISES",
+    "normalized": "SISES"
+  },
+  {
+    "id": 6457,
+    "word": "SISAS",
+    "normalized": "SISAS"
+  },
+  {
+    "id": 6458,
+    "word": "SISEM",
+    "normalized": "SISEM"
+  },
+  {
+    "id": 6459,
+    "word": "SISAM",
+    "normalized": "SISAM"
+  },
+  {
+    "id": 6460,
+    "word": "SISEI",
+    "normalized": "SISEI"
+  },
+  {
+    "id": 6461,
+    "word": "SISAI",
+    "normalized": "SISAI"
+  },
+  {
+    "id": 6462,
+    "word": "SITES",
+    "normalized": "SITES"
+  },
+  {
+    "id": 6463,
+    "word": "SKATE",
+    "normalized": "SKATE"
+  },
+  {
+    "id": 6464,
+    "word": "SLIDE",
+    "normalized": "SLIDE"
+  },
+  {
+    "id": 6465,
+    "word": "SMITH",
+    "normalized": "SMITH"
+  },
+  {
+    "id": 6466,
+    "word": "SOFIA",
+    "normalized": "SOFIA"
+  },
+  {
+    "id": 6467,
+    "word": "SOLHA",
+    "normalized": "SOLHA"
+  },
+  {
+    "id": 6468,
+    "word": "SOLVO",
+    "normalized": "SOLVO"
+  },
+  {
+    "id": 6469,
+    "word": "SOLVI",
+    "normalized": "SOLVI"
+  },
+  {
+    "id": 6470,
+    "word": "SOLVE",
+    "normalized": "SOLVE"
+  },
+  {
+    "id": 6471,
+    "word": "SOLVA",
+    "normalized": "SOLVA"
+  },
+  {
+    "id": 6472,
+    "word": "SONAR",
+    "normalized": "SONAR"
+  },
+  {
+    "id": 6473,
+    "word": "SORNA",
+    "normalized": "SORNA"
+  },
+  {
+    "id": 6474,
+    "word": "SORNO",
+    "normalized": "SORNO"
+  },
+  {
+    "id": 6475,
+    "word": "SORNE",
+    "normalized": "SORNE"
+  },
+  {
+    "id": 6476,
+    "word": "SPRAY",
+    "normalized": "SPRAY"
+  },
+  {
+    "id": 6477,
+    "word": "STAFF",
+    "normalized": "STAFF"
+  },
+  {
+    "id": 6478,
+    "word": "STAND",
+    "normalized": "STAND"
+  },
+  {
+    "id": 6479,
+    "word": "STERN",
+    "normalized": "STERN"
+  },
+  {
+    "id": 6480,
+    "word": "STOCK",
+    "normalized": "STOCK"
+  },
+  {
+    "id": 6481,
+    "word": "STOPS",
+    "normalized": "STOPS"
+  },
+  {
+    "id": 6482,
+    "word": "SUEVO",
+    "normalized": "SUEVO"
+  },
+  {
+    "id": 6483,
+    "word": "SUEVA",
+    "normalized": "SUEVA"
+  },
+  {
+    "id": 6484,
+    "word": "SUITE",
+    "normalized": "SUITE"
+  },
+  {
+    "id": 6485,
+    "word": "SUMOS",
+    "normalized": "SUMOS"
+  },
+  {
+    "id": 6486,
+    "word": "SURDI",
+    "normalized": "SURDI"
+  },
+  {
+    "id": 6487,
+    "word": "SURDE",
+    "normalized": "SURDE"
+  },
+  {
+    "id": 6488,
+    "word": "SURFE",
+    "normalized": "SURFE"
+  },
+  {
+    "id": 6489,
+    "word": "SURTI",
+    "normalized": "SURTI"
+  },
+  {
+    "id": 6490,
+    "word": "SUSAN",
+    "normalized": "SUSAN"
+  },
+  {
+    "id": 6491,
+    "word": "SUSHI",
+    "normalized": "SUSHI"
+  },
+  {
+    "id": 6492,
+    "word": "SUTRA",
+    "normalized": "SUTRA"
+  },
+  {
+    "id": 6493,
+    "word": "SZABO",
+    "normalized": "SZABO"
+  },
+  {
+    "id": 6494,
+    "word": "TABUS",
+    "normalized": "TABUS"
+  },
+  {
+    "id": 6495,
+    "word": "TADEU",
+    "normalized": "TADEU"
+  },
+  {
+    "id": 6496,
+    "word": "TAIRA",
+    "normalized": "TAIRA"
+  },
+  {
+    "id": 6497,
+    "word": "TALAR",
+    "normalized": "TALAR"
+  },
+  {
+    "id": 6498,
+    "word": "TALOU",
+    "normalized": "TALOU"
+  },
+  {
+    "id": 6499,
+    "word": "TALES",
+    "normalized": "TALES"
+  },
+  {
+    "id": 6500,
+    "word": "TALEM",
+    "normalized": "TALEM"
+  },
+  {
+    "id": 6501,
+    "word": "TALAM",
+    "normalized": "TALAM"
+  },
+  {
+    "id": 6502,
+    "word": "TALEI",
+    "normalized": "TALEI"
+  },
+  {
+    "id": 6503,
+    "word": "TALAI",
+    "normalized": "TALAI"
+  },
+  {
+    "id": 6504,
+    "word": "TALIN",
+    "normalized": "TALIN"
+  },
+  {
+    "id": 6505,
+    "word": "TANAS",
+    "normalized": "TANAS"
+  },
+  {
+    "id": 6506,
+    "word": "TANSO",
+    "normalized": "TANSO"
+  },
+  {
+    "id": 6507,
+    "word": "TARAR",
+    "normalized": "TARAR"
+  },
+  {
+    "id": 6508,
+    "word": "TAROU",
+    "normalized": "TAROU"
+  },
+  {
+    "id": 6509,
+    "word": "TARES",
+    "normalized": "TARES"
+  },
+  {
+    "id": 6510,
+    "word": "TAREM",
+    "normalized": "TAREM"
+  },
+  {
+    "id": 6511,
+    "word": "TARAM",
+    "normalized": "TARAM"
+  },
+  {
+    "id": 6512,
+    "word": "TAREI",
+    "normalized": "TAREI"
+  },
+  {
+    "id": 6513,
+    "word": "TARAI",
+    "normalized": "TARAI"
+  },
+  {
+    "id": 6514,
+    "word": "TARJO",
+    "normalized": "TARJO"
+  },
+  {
+    "id": 6515,
+    "word": "TARJE",
+    "normalized": "TARJE"
+  },
+  {
+    "id": 6516,
+    "word": "TARSO",
+    "normalized": "TARSO"
+  },
+  {
+    "id": 6517,
+    "word": "TARTE",
+    "normalized": "TARTE"
+  },
+  {
+    "id": 6518,
+    "word": "TASCA",
+    "normalized": "TASCA"
+  },
+  {
+    "id": 6519,
+    "word": "TASCO",
+    "normalized": "TASCO"
+  },
+  {
+    "id": 6520,
+    "word": "TAURO",
+    "normalized": "TAURO"
+  },
+  {
+    "id": 6521,
+    "word": "TEIXO",
+    "normalized": "TEIXO"
+  },
+  {
+    "id": 6522,
+    "word": "TELEX",
+    "normalized": "TELEX"
+  },
+  {
+    "id": 6523,
+    "word": "TELHO",
+    "normalized": "TELHO"
+  },
+  {
+    "id": 6524,
+    "word": "TELHE",
+    "normalized": "TELHE"
+  },
+  {
+    "id": 6525,
+    "word": "TELMO",
+    "normalized": "TELMO"
+  },
+  {
+    "id": 6526,
+    "word": "TERCE",
+    "normalized": "TERCE"
+  },
+  {
+    "id": 6527,
+    "word": "TESEU",
+    "normalized": "TESEU"
+  },
+  {
+    "id": 6528,
+    "word": "THORP",
+    "normalized": "THORP"
+  },
+  {
+    "id": 6529,
+    "word": "TIBRE",
+    "normalized": "TIBRE"
+  },
+  {
+    "id": 6530,
+    "word": "TIFOS",
+    "normalized": "TIFOS"
+  },
+  {
+    "id": 6531,
+    "word": "TINGA",
+    "normalized": "TINGA"
+  },
+  {
+    "id": 6532,
+    "word": "TIPAS",
+    "normalized": "TIPAS"
+  },
+  {
+    "id": 6533,
+    "word": "TIQUE",
+    "normalized": "TIQUE"
+  },
+  {
+    "id": 6534,
+    "word": "TIROL",
+    "normalized": "TIROL"
+  },
+  {
+    "id": 6535,
+    "word": "TIRSO",
+    "normalized": "TIRSO"
+  },
+  {
+    "id": 6536,
+    "word": "TISNO",
+    "normalized": "TISNO"
+  },
+  {
+    "id": 6537,
+    "word": "TISNE",
+    "normalized": "TISNE"
+  },
+  {
+    "id": 6538,
+    "word": "TISNA",
+    "normalized": "TISNA"
+  },
+  {
+    "id": 6539,
+    "word": "TOEIS",
+    "normalized": "TOEIS"
+  },
+  {
+    "id": 6540,
+    "word": "TOAIS",
+    "normalized": "TOAIS"
+  },
+  {
+    "id": 6541,
+    "word": "TOADO",
+    "normalized": "TOADO"
+  },
+  {
+    "id": 6542,
+    "word": "TOAVA",
+    "normalized": "TOAVA"
+  },
+  {
+    "id": 6543,
+    "word": "TOARA",
+    "normalized": "TOARA"
+  },
+  {
+    "id": 6544,
+    "word": "TOGAR",
+    "normalized": "TOGAR"
+  },
+  {
+    "id": 6545,
+    "word": "TOGOU",
+    "normalized": "TOGOU"
+  },
+  {
+    "id": 6546,
+    "word": "TOGAM",
+    "normalized": "TOGAM"
+  },
+  {
+    "id": 6547,
+    "word": "TOGAI",
+    "normalized": "TOGAI"
+  },
+  {
+    "id": 6548,
+    "word": "TOGUE",
+    "normalized": "TOGUE"
+  },
+  {
+    "id": 6549,
+    "word": "TOIRO",
+    "normalized": "TOIRO"
+  },
+  {
+    "id": 6550,
+    "word": "TOJOS",
+    "normalized": "TOJOS"
+  },
+  {
+    "id": 6551,
+    "word": "TOLDA",
+    "normalized": "TOLDA"
+  },
+  {
+    "id": 6552,
+    "word": "TOLDE",
+    "normalized": "TOLDE"
+  },
+  {
+    "id": 6553,
+    "word": "TOMOS",
+    "normalized": "TOMOS"
+  },
+  {
+    "id": 6554,
+    "word": "TONAL",
+    "normalized": "TONAL"
+  },
+  {
+    "id": 6555,
+    "word": "TONAR",
+    "normalized": "TONAR"
+  },
+  {
+    "id": 6556,
+    "word": "TONOU",
+    "normalized": "TONOU"
+  },
+  {
+    "id": 6557,
+    "word": "TONES",
+    "normalized": "TONES"
+  },
+  {
+    "id": 6558,
+    "word": "TONAS",
+    "normalized": "TONAS"
+  },
+  {
+    "id": 6559,
+    "word": "TONEM",
+    "normalized": "TONEM"
+  },
+  {
+    "id": 6560,
+    "word": "TONAM",
+    "normalized": "TONAM"
+  },
+  {
+    "id": 6561,
+    "word": "TONEI",
+    "normalized": "TONEI"
+  },
+  {
+    "id": 6562,
+    "word": "TONAI",
+    "normalized": "TONAI"
+  },
+  {
+    "id": 6563,
+    "word": "TORAR",
+    "normalized": "TORAR"
+  },
+  {
+    "id": 6564,
+    "word": "TOROU",
+    "normalized": "TOROU"
+  },
+  {
+    "id": 6565,
+    "word": "TORES",
+    "normalized": "TORES"
+  },
+  {
+    "id": 6566,
+    "word": "TOREM",
+    "normalized": "TOREM"
+  },
+  {
+    "id": 6567,
+    "word": "TORAM",
+    "normalized": "TORAM"
+  },
+  {
+    "id": 6568,
+    "word": "TOREI",
+    "normalized": "TOREI"
+  },
+  {
+    "id": 6569,
+    "word": "TORAI",
+    "normalized": "TORAI"
+  },
+  {
+    "id": 6570,
+    "word": "TORDO",
+    "normalized": "TORDO"
+  },
+  {
+    "id": 6571,
+    "word": "TORDA",
+    "normalized": "TORDA"
+  },
+  {
+    "id": 6572,
+    "word": "TORGA",
+    "normalized": "TORGA"
+  },
+  {
+    "id": 6573,
+    "word": "TORSO",
+    "normalized": "TORSO"
+  },
+  {
+    "id": 6574,
+    "word": "TORVO",
+    "normalized": "TORVO"
+  },
+  {
+    "id": 6575,
+    "word": "TORVE",
+    "normalized": "TORVE"
+  },
+  {
+    "id": 6576,
+    "word": "TORVA",
+    "normalized": "TORVA"
+  },
+  {
+    "id": 6577,
+    "word": "TOUCO",
+    "normalized": "TOUCO"
+  },
+  {
+    "id": 6578,
+    "word": "TOURA",
+    "normalized": "TOURA"
+  },
+  {
+    "id": 6579,
+    "word": "TRAMO",
+    "normalized": "TRAMO"
+  },
+  {
+    "id": 6580,
+    "word": "TRAME",
+    "normalized": "TRAME"
+  },
+  {
+    "id": 6581,
+    "word": "TRELA",
+    "normalized": "TRELA"
+  },
+  {
+    "id": 6582,
+    "word": "TRIAR",
+    "normalized": "TRIAR"
+  },
+  {
+    "id": 6583,
+    "word": "TRIOU",
+    "normalized": "TRIOU"
+  },
+  {
+    "id": 6584,
+    "word": "TRIES",
+    "normalized": "TRIES"
+  },
+  {
+    "id": 6585,
+    "word": "TRIAS",
+    "normalized": "TRIAS"
+  },
+  {
+    "id": 6586,
+    "word": "TRIEM",
+    "normalized": "TRIEM"
+  },
+  {
+    "id": 6587,
+    "word": "TRIAM",
+    "normalized": "TRIAM"
+  },
+  {
+    "id": 6588,
+    "word": "TRIEI",
+    "normalized": "TRIEI"
+  },
+  {
+    "id": 6589,
+    "word": "TRIAI",
+    "normalized": "TRIAI"
+  },
+  {
+    "id": 6590,
+    "word": "TRINE",
+    "normalized": "TRINE"
+  },
+  {
+    "id": 6591,
+    "word": "TROAR",
+    "normalized": "TROAR"
+  },
+  {
+    "id": 6592,
+    "word": "TROOU",
+    "normalized": "TROOU"
+  },
+  {
+    "id": 6593,
+    "word": "TROES",
+    "normalized": "TROES"
+  },
+  {
+    "id": 6594,
+    "word": "TROAS",
+    "normalized": "TROAS"
+  },
+  {
+    "id": 6595,
+    "word": "TROEM",
+    "normalized": "TROEM"
+  },
+  {
+    "id": 6596,
+    "word": "TROAM",
+    "normalized": "TROAM"
+  },
+  {
+    "id": 6597,
+    "word": "TROEI",
+    "normalized": "TROEI"
+  },
+  {
+    "id": 6598,
+    "word": "TROAI",
+    "normalized": "TROAI"
+  },
+  {
+    "id": 6599,
+    "word": "TROFA",
+    "normalized": "TROFA"
+  },
+  {
+    "id": 6600,
+    "word": "TROIA",
+    "normalized": "TROIA"
+  },
+  {
+    "id": 6601,
+    "word": "TROVO",
+    "normalized": "TROVO"
+  },
+  {
+    "id": 6602,
+    "word": "TROVE",
+    "normalized": "TROVE"
+  },
+  {
+    "id": 6603,
+    "word": "TRUFO",
+    "normalized": "TRUFO"
+  },
+  {
+    "id": 6604,
+    "word": "TRUFE",
+    "normalized": "TRUFE"
+  },
+  {
+    "id": 6605,
+    "word": "TRUPE",
+    "normalized": "TRUPE"
+  },
+  {
+    "id": 6606,
+    "word": "TUBAS",
+    "normalized": "TUBAS"
+  },
+  {
+    "id": 6607,
+    "word": "TUDOR",
+    "normalized": "TUDOR"
+  },
+  {
+    "id": 6608,
+    "word": "TUFAR",
+    "normalized": "TUFAR"
+  },
+  {
+    "id": 6609,
+    "word": "TUFOU",
+    "normalized": "TUFOU"
+  },
+  {
+    "id": 6610,
+    "word": "TUFES",
+    "normalized": "TUFES"
+  },
+  {
+    "id": 6611,
+    "word": "TUFAS",
+    "normalized": "TUFAS"
+  },
+  {
+    "id": 6612,
+    "word": "TUFEM",
+    "normalized": "TUFEM"
+  },
+  {
+    "id": 6613,
+    "word": "TUFAM",
+    "normalized": "TUFAM"
+  },
+  {
+    "id": 6614,
+    "word": "TUFEI",
+    "normalized": "TUFEI"
+  },
+  {
+    "id": 6615,
+    "word": "TUFAI",
+    "normalized": "TUFAI"
+  },
+  {
+    "id": 6616,
+    "word": "TUGIR",
+    "normalized": "TUGIR"
+  },
+  {
+    "id": 6617,
+    "word": "TUGIU",
+    "normalized": "TUGIU"
+  },
+  {
+    "id": 6618,
+    "word": "TUGIA",
+    "normalized": "TUGIA"
+  },
+  {
+    "id": 6619,
+    "word": "TUNES",
+    "normalized": "TUNES"
+  },
+  {
+    "id": 6620,
+    "word": "TUPLO",
+    "normalized": "TUPLO"
+  },
+  {
+    "id": 6621,
+    "word": "TURFA",
+    "normalized": "TURFA"
+  },
+  {
+    "id": 6622,
+    "word": "TURIM",
+    "normalized": "TURIM"
+  },
+  {
+    "id": 6623,
+    "word": "TURRA",
+    "normalized": "TURRA"
+  },
+  {
+    "id": 6624,
+    "word": "TUSSA",
+    "normalized": "TUSSA"
+  },
+  {
+    "id": 6625,
+    "word": "TUSSO",
+    "normalized": "TUSSO"
+  },
+  {
+    "id": 6626,
+    "word": "UNJAS",
+    "normalized": "UNJAS"
+  },
+  {
+    "id": 6627,
+    "word": "UNJAM",
+    "normalized": "UNJAM"
+  },
+  {
+    "id": 6628,
+    "word": "UNHAR",
+    "normalized": "UNHAR"
+  },
+  {
+    "id": 6629,
+    "word": "UNHOU",
+    "normalized": "UNHOU"
+  },
+  {
+    "id": 6630,
+    "word": "UNHES",
+    "normalized": "UNHES"
+  },
+  {
+    "id": 6631,
+    "word": "UNHEM",
+    "normalized": "UNHEM"
+  },
+  {
+    "id": 6632,
+    "word": "UNHAM",
+    "normalized": "UNHAM"
+  },
+  {
+    "id": 6633,
+    "word": "UNHEI",
+    "normalized": "UNHEI"
+  },
+  {
+    "id": 6634,
+    "word": "UNHAI",
+    "normalized": "UNHAI"
+  },
+  {
+    "id": 6635,
+    "word": "UNITA",
+    "normalized": "UNITA"
+  },
+  {
+    "id": 6636,
+    "word": "URAIS",
+    "normalized": "URAIS"
+  },
+  {
+    "id": 6637,
+    "word": "URBES",
+    "normalized": "URBES"
+  },
+  {
+    "id": 6638,
+    "word": "UREIA",
+    "normalized": "UREIA"
+  },
+  {
+    "id": 6639,
+    "word": "URZAL",
+    "normalized": "URZAL"
+  },
+  {
+    "id": 6640,
+    "word": "URZES",
+    "normalized": "URZES"
+  },
+  {
+    "id": 6641,
+    "word": "VALAR",
+    "normalized": "VALAR"
+  },
+  {
+    "id": 6642,
+    "word": "VALOU",
+    "normalized": "VALOU"
+  },
+  {
+    "id": 6643,
+    "word": "VALAM",
+    "normalized": "VALAM"
+  },
+  {
+    "id": 6644,
+    "word": "VALAI",
+    "normalized": "VALAI"
+  },
+  {
+    "id": 6645,
+    "word": "VALSO",
+    "normalized": "VALSO"
+  },
+  {
+    "id": 6646,
+    "word": "VALSE",
+    "normalized": "VALSE"
+  },
+  {
+    "id": 6647,
+    "word": "VALVA",
+    "normalized": "VALVA"
+  },
+  {
+    "id": 6648,
+    "word": "VANDA",
+    "normalized": "VANDA"
+  },
+  {
+    "id": 6649,
+    "word": "VARAL",
+    "normalized": "VARAL"
+  },
+  {
+    "id": 6650,
+    "word": "VASAS",
+    "normalized": "VASAS"
+  },
+  {
+    "id": 6651,
+    "word": "VASCO",
+    "normalized": "VASCO"
+  },
+  {
+    "id": 6652,
+    "word": "VAZIE",
+    "normalized": "VAZIE"
+  },
+  {
+    "id": 6653,
+    "word": "VEADA",
+    "normalized": "VEADA"
+  },
+  {
+    "id": 6654,
+    "word": "VEIGA",
+    "normalized": "VEIGA"
+  },
+  {
+    "id": 6655,
+    "word": "VEIOS",
+    "normalized": "VEIOS"
+  },
+  {
+    "id": 6656,
+    "word": "VERDI",
+    "normalized": "VERDI"
+  },
+  {
+    "id": 6657,
+    "word": "VERGO",
+    "normalized": "VERGO"
+  },
+  {
+    "id": 6658,
+    "word": "VESTA",
+    "normalized": "VESTA"
+  },
+  {
+    "id": 6659,
+    "word": "VETOS",
+    "normalized": "VETOS"
+  },
+  {
+    "id": 6660,
+    "word": "VICHY",
+    "normalized": "VICHY"
+  },
+  {
+    "id": 6661,
+    "word": "VIDES",
+    "normalized": "VIDES"
+  },
+  {
+    "id": 6662,
+    "word": "VILAR",
+    "normalized": "VILAR"
+  },
+  {
+    "id": 6663,
+    "word": "VINCI",
+    "normalized": "VINCI"
+  },
+  {
+    "id": 6664,
+    "word": "VINGT",
+    "normalized": "VINGT"
+  },
+  {
+    "id": 6665,
+    "word": "VINIL",
+    "normalized": "VINIL"
+  },
+  {
+    "id": 6666,
+    "word": "VINIS",
+    "normalized": "VINIS"
+  },
+  {
+    "id": 6667,
+    "word": "VIRGO",
+    "normalized": "VIRGO"
+  },
+  {
+    "id": 6668,
+    "word": "VISCO",
+    "normalized": "VISCO"
+  },
+  {
+    "id": 6669,
+    "word": "VISOS",
+    "normalized": "VISOS"
+  },
+  {
+    "id": 6670,
+    "word": "VISOR",
+    "normalized": "VISOR"
+  },
+  {
+    "id": 6671,
+    "word": "VITAE",
+    "normalized": "VITAE"
+  },
+  {
+    "id": 6672,
+    "word": "VIZIR",
+    "normalized": "VIZIR"
+  },
+  {
+    "id": 6673,
+    "word": "VODKA",
+    "normalized": "VODKA"
+  },
+  {
+    "id": 6674,
+    "word": "VOEJO",
+    "normalized": "VOEJO"
+  },
+  {
+    "id": 6675,
+    "word": "VOEJE",
+    "normalized": "VOEJE"
+  },
+  {
+    "id": 6676,
+    "word": "VOEJA",
+    "normalized": "VOEJA"
+  },
+  {
+    "id": 6677,
+    "word": "VOGAR",
+    "normalized": "VOGAR"
+  },
+  {
+    "id": 6678,
+    "word": "VOGOU",
+    "normalized": "VOGOU"
+  },
+  {
+    "id": 6679,
+    "word": "VOGAS",
+    "normalized": "VOGAS"
+  },
+  {
+    "id": 6680,
+    "word": "VOGAM",
+    "normalized": "VOGAM"
+  },
+  {
+    "id": 6681,
+    "word": "VOGAI",
+    "normalized": "VOGAI"
+  },
+  {
+    "id": 6682,
+    "word": "VOGUE",
+    "normalized": "VOGUE"
+  },
+  {
+    "id": 6683,
+    "word": "VOLGA",
+    "normalized": "VOLGA"
+  },
+  {
+    "id": 6684,
+    "word": "VOLTS",
+    "normalized": "VOLTS"
+  },
+  {
+    "id": 6685,
+    "word": "REVOO",
+    "normalized": "REVOO"
+  },
+  {
+    "id": 6686,
+    "word": "VOUGA",
+    "normalized": "VOUGA"
+  },
+  {
+    "id": 6687,
+    "word": "WATTS",
+    "normalized": "WATTS"
+  },
+  {
+    "id": 6688,
+    "word": "WEBER",
+    "normalized": "WEBER"
+  },
+  {
+    "id": 6689,
+    "word": "WHITE",
+    "normalized": "WHITE"
+  },
+  {
+    "id": 6690,
+    "word": "WILDE",
+    "normalized": "WILDE"
+  },
+  {
+    "id": 6691,
+    "word": "XAILE",
+    "normalized": "XAILE"
+  },
+  {
+    "id": 6692,
+    "word": "XEREZ",
+    "normalized": "XEREZ"
+  },
+  {
+    "id": 6693,
+    "word": "XHTML",
+    "normalized": "XHTML"
+  },
+  {
+    "id": 6694,
+    "word": "XVIII",
+    "normalized": "XVIII"
+  },
+  {
+    "id": 6695,
+    "word": "ZEBRO",
+    "normalized": "ZEBRO"
+  },
+  {
+    "id": 6696,
+    "word": "ZEBRE",
+    "normalized": "ZEBRE"
+  },
+  {
+    "id": 6697,
+    "word": "ZELOS",
+    "normalized": "ZELOS"
+  },
+  {
+    "id": 6698,
+    "word": "ZINCA",
+    "normalized": "ZINCA"
+  },
+  {
+    "id": 6699,
+    "word": "ZOEIS",
+    "normalized": "ZOEIS"
+  },
+  {
+    "id": 6700,
+    "word": "ZOAIS",
+    "normalized": "ZOAIS"
+  },
+  {
+    "id": 6701,
+    "word": "ZOADO",
+    "normalized": "ZOADO"
+  },
+  {
+    "id": 6702,
+    "word": "ZOAVA",
+    "normalized": "ZOAVA"
+  },
+  {
+    "id": 6703,
+    "word": "ZOADA",
+    "normalized": "ZOADA"
+  },
+  {
+    "id": 6704,
+    "word": "ZOARA",
+    "normalized": "ZOARA"
+  },
+  {
+    "id": 6705,
+    "word": "ZONAL",
+    "normalized": "ZONAL"
+  },
+  {
+    "id": 6706,
+    "word": "ZOOMS",
+    "normalized": "ZOOMS"
+  },
+  {
+    "id": 6707,
+    "word": "ZORRO",
+    "normalized": "ZORRO"
+  },
+  {
+    "id": 6708,
+    "word": "ZORRA",
+    "normalized": "ZORRA"
+  },
+  {
+    "id": 6709,
+    "word": "ZULOS",
+    "normalized": "ZULOS"
+  },
+  {
+    "id": 6710,
+    "word": "ZURZO",
+    "normalized": "ZURZO"
+  },
+  {
+    "id": 6711,
+    "word": "ZURZI",
+    "normalized": "ZURZI"
+  },
+  {
+    "id": 6712,
+    "word": "ZURZE",
+    "normalized": "ZURZE"
+  },
+  {
+    "id": 6713,
+    "word": "ZURZA",
+    "normalized": "ZURZA"
+  }
+];
+export default wordsData;
