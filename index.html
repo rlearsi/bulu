@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TERMO MULTIPLAYER P2P</title>
-  <link rel="stylesheet" href="style.css?v=1.6.2">
+  <link rel="stylesheet" href="style.css?v=1.6.3">
   <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <!-- Confetti para comemoração da vitória -->
@@ -149,7 +149,7 @@
           <h3>Entrar em Sala</h3>
           <p>Você possui um código de sala? Digite abaixo para entrar.</p>
           <div class="join-input-group">
-            <input type="text" id="input-room-code" maxlength="6" placeholder="Ex: 123456" inputmode="numeric">
+            <input type="text" id="input-room-code" maxlength="6" placeholder="Ex: 123456" inputmode="numeric" enterkeyhint="go">
             <button id="btn-join-room" class="btn btn-secondary">Entrar</button>
           </div>
           <div id="join-status" class="status-text hidden">Conectando ao oponente...</div>
@@ -360,7 +360,7 @@
             <button type="button" id="btn-remove-avatar" class="profile-remove-link hidden" title="Remover foto atual">Remover foto</button>
           </div>
           <div class="profile-input-group">
-            <input type="text" id="input-profile-name" maxlength="12" placeholder="Digite seu apelido">
+            <input type="text" id="input-profile-name" maxlength="12" placeholder="Digite seu apelido" enterkeyhint="done">
             <button type="button" id="btn-modal-random-name" class="btn-icon-random" title="Gerar apelido aleatório">
               <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="12" height="12" x="2" y="10" rx="2" ry="2"></rect>
@@ -401,7 +401,7 @@
     </div>
   </div>
 
-  <script type="module" src="script.js?v=1.6.2"></script>
+  <script type="module" src="script.js?v=1.6.3"></script>
 </body>
 </html>
 

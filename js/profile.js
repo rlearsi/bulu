@@ -64,6 +64,14 @@ export class ProfileManager {
     if (this.btnRemoveAvatar) this.btnRemoveAvatar.addEventListener('click', () => this.handleAvatarRemove());
     if (this.btnModalRandomName) this.btnModalRandomName.addEventListener('click', () => this.handleModalRandomNickname());
     if (this.btnSaveProfile) this.btnSaveProfile.addEventListener('click', () => this.handleSaveProfile());
+    if (this.inputProfileName) {
+      this.inputProfileName.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.handleSaveProfile();
+        }
+      });
+    }
   }
 
   isModalOpen() {

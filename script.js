@@ -3,14 +3,14 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData } from './words.js?v=1.6.2';
-import { AudioManager } from './js/audio.js?v=1.6.2';
-import { GameRules } from './js/game-rules.js?v=1.6.2';
-import { TurnTimer } from './js/timer.js?v=1.6.2';
-import { ProfileManager } from './js/profile.js?v=1.6.2';
-import { P2PNetwork } from './js/network.js?v=1.6.2';
-import { ChatManager } from './js/chat.js?v=1.6.2';
-import { BoardUI } from './js/board-ui.js?v=1.6.2';
+import { wordsData } from './words.js?v=1.6.3';
+import { AudioManager } from './js/audio.js?v=1.6.3';
+import { GameRules } from './js/game-rules.js?v=1.6.3';
+import { TurnTimer } from './js/timer.js?v=1.6.3';
+import { ProfileManager } from './js/profile.js?v=1.6.3';
+import { P2PNetwork } from './js/network.js?v=1.6.3';
+import { ChatManager } from './js/chat.js?v=1.6.3';
+import { BoardUI } from './js/board-ui.js?v=1.6.3';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -211,6 +211,16 @@ class TermoMultiplayerGame {
     // Ações do Lobby
     this.ui.btnCreateRoom.addEventListener('click', () => this.handleCreateRoom());
     this.ui.btnJoinRoom.addEventListener('click', () => this.handleJoinRoom());
+    if (this.ui.inputRoomCode) {
+      this.ui.inputRoomCode.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (!this.ui.btnJoinRoom.disabled) {
+            this.handleJoinRoom();
+          }
+        }
+      });
+    }
     this.ui.btnPractice.addEventListener('click', () => this.startSoloGame());
     this.ui.btnCopyCode.addEventListener('click', () => this.copyRoomCode());
 

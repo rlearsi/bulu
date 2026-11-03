@@ -3,7 +3,7 @@
  * Responsável pela manipulação de elementos visuais do tabuleiro 6x5, teclado virtual, animações e modais.
  */
 
-import { ProfileManager } from './profile.js?v=1.6.2';
+import { ProfileManager } from './profile.js?v=1.6.3';
 
 export class BoardUI {
   constructor({ maxRows = 6, wordLength = 5, audio, onTileClick, onVirtualKeyPress }) {
