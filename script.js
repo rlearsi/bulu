@@ -114,10 +114,13 @@ class TermoMultiplayerGame {
     return this.role === 'solo' ? 'normal' : this.gameMode;
   }
 
-  /** Linhas da grade conforme o modo: Cruzado segue o Dueto (7), Trio (8) e Quarteto (9). */
+  /**
+   * Linhas da grade: 6 + 1 por jogador extra (2 = 7, 3 = 8, 4 = 9) nos modos Normal e Cruzado.
+   * Solo e Individual (cada um com sua grade, sem turnos) mantêm 6 linhas.
+   */
   getRowsForMode() {
-    if (this.mode === 'cross') return { 2: 7, 3: 8, 4: 9 }[Math.max(2, Math.min(4, this.players.length))];
-    return 6;
+    if (this.role === 'solo' || this.mode === 'individual') return 6;
+    return 6 + Math.max(1, Math.min(4, this.players.length)) - 1;
   }
 
   /** Nome(s) dos oponentes (usado pelo chat e por mensagens de toast). */
@@ -1794,10 +1797,10 @@ class TermoMultiplayerGame {
       this.ui.showGameOverModal({
         title: 'FIM DE JOGO',
         color: '#fff',
-        subtitle: 'Ninguém acertou em 6 tentativas.',
+        subtitle: `Ninguém acertou em ${this.maxRows} tentativas.`,
         secretWord: this.secretWord,
         winnerName: 'Empate',
-        attemptsText: `6/${this.maxRows}`
+        attemptsText: `${this.maxRows}/${this.maxRows}`
       });
     }, 1200);
   }

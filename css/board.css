@@ -17,10 +17,12 @@
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 6px;
-  width: 100%;
+  /* Largura derivada da altura para manter os tiles proporcionais com 6 a 9 linhas */
+  width: auto;
   max-width: 340px;
   height: 380px;
   max-height: 52vh;
+  aspect-ratio: calc(5.4 / var(--rows, 6));
   margin: 0 auto;
 }
 

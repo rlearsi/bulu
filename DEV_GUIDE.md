@@ -123,9 +123,9 @@ Se o Host desconectar durante a partida (`handleHostLost(hostId)` em `script.js`
 
 ### 2.6. Alterar Número de Tentativas ou Tamanho da Palavra
 
-1. **`script.js`** (no construtor):
+1. **`script.js`** (no construtor e em `getRowsForMode()`):
    ```js
-   this.maxRows = 6;    // Número máximo de tentativas (linhas)
+   this.maxRows = 6;    // Linhas iniciais; na partida é recalculado por getRowsForMode() (6 + jogadores extras)
    this.wordLength = 5; // Quantidade de letras por palavra (colunas)
    ```
 2. **`css/board.css`**:
@@ -161,7 +161,7 @@ O host escolhe o modo no botão ao lado do seletor de jogadores no lobby (`#btn-
 
 | Modo | Mecânica |
 | :--- | :--- |
-| `normal` | Uma grade compartilhada (6 linhas), jogada em turnos. |
+| `normal` | Uma grade compartilhada, jogada em turnos. Linhas: solo = 6, 2 jogadores = 7, 3 = 8, 4 = 9 (`getRowsForMode()`). |
 | `cross` (Cruzado) | Cada jogador tem sua grade e palavra secreta (`this.secrets[playerId]`). Só joga quem está na vez e **cada palpite preenche todas as grades**, avaliado contra a palavra de cada dono. Vence quem acertar a **própria** palavra; se o palpite acertar a palavra de **outro** jogador, a partida termina **sem vencedor** (`triggerNoWinner`, botão "Continuar Jogando"). Linhas: 2 jogadores = 7, 3 = 8, 4 = 9 (`getRowsForMode()`). Grades de quem não está na vez ficam esmaecidas (`.mm-slot.inactive`, `MultiBoardLayout.setActive`). |
 | `individual` | Cada jogador tem sua grade e palavra, **sem turnos** (6 linhas) e sem cronômetro. Vence quem acertar primeiro; o host decide o vencedor pela ordem de chegada dos palpites e envia `MM_RESULT` (`decideIndividualWinner`). Se todos esgotarem as tentativas, termina sem vencedor. Opção do host `revealLetters`: `false` = grades dos oponentes só com cores, `true` = com letras. |
 
