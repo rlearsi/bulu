@@ -54,6 +54,10 @@ export class BoardUI {
     this.btnCopyCode = document.getElementById('btn-copy-code');
     this.hostStatus = document.getElementById('host-status');
     this.btnStartMatch = document.getElementById('btn-start-match');
+    this.btnGameMode = document.getElementById('btn-game-mode');
+    this.gameModePopover = document.getElementById('game-mode-popover');
+    this.revealLettersRow = document.getElementById('reveal-letters-row');
+    this.gameModeHint = document.getElementById('game-mode-hint');
     this.btnMaxPlayers = document.getElementById('btn-max-players');
     this.maxPlayersVal = document.getElementById('max-players-val');
     this.maxPlayersPopover = document.getElementById('max-players-popover');
@@ -88,6 +92,7 @@ export class BoardUI {
     this.goSecretWord = document.getElementById('go-secret-word');
     this.goWinnerName = document.getElementById('go-winner-name');
     this.goAttemptsCount = document.getElementById('go-attempts-count');
+    this.goSecretLabel = document.querySelector('.reveal-secret-box span');
     this.btnPlayAgain = document.getElementById('btn-play-again');
     this.btnBackLobby = document.getElementById('btn-back-lobby');
     this.btnRestart = document.getElementById('btn-restart');
@@ -103,6 +108,8 @@ export class BoardUI {
 
   createBoard() {
     this.boardElement.innerHTML = '';
+    this.boardElement.style.setProperty('--rows', this.maxRows);
+    this.boardElement.style.gridTemplateRows = `repeat(${this.maxRows}, 1fr)`;
     for (let r = 0; r < this.maxRows; r++) {
       const rowDiv = document.createElement('div');
       rowDiv.className = 'board-row';
@@ -267,7 +274,7 @@ export class BoardUI {
    * - 4 jogadores: badges compactos em grade 2x2
    * Em 3+ jogadores o tempo de turno é exibido como barra de progresso no badge.
    */
-  renderScoreboard({ players, myId, currentTurnId, isMyTurn, silent = false }) {
+  renderScoreboard({ players, myId, currentTurnId, isMyTurn, silent = false, turnless = false }) {
     this.statusBar.classList.remove('hidden');
     const hostId = players.length ? players[0].id : '';
     const isMulti = players.length > 2;
@@ -276,7 +283,7 @@ export class BoardUI {
     if (this.multiScoreboard) this.multiScoreboard.classList.toggle('hidden', !isMulti);
 
     if (isMulti) {
-      this.renderMultiScoreboard({ players, myId, hostId, currentTurnId });
+      this.renderMultiScoreboard({ players, myId, hostId, currentTurnId: turnless ? '' : currentTurnId });
     } else {
       const me = players.find(p => p.id === myId) || { name: 'Você', avatar: '', score: 0 };
       const opp = players.find(p => p.id !== myId) || { name: 'Oponente', avatar: '', score: 0, id: '' };
@@ -299,7 +306,10 @@ export class BoardUI {
       if (p2NameEl) p2NameEl.textContent = p2Label;
       ProfileManager.renderAvatarElement(this.p2AvatarImg, this.p2AvatarPh, opp.avatar);
 
-      if (isMyTurn) {
+      if (turnless) {
+        this.p1Badge.classList.remove('my-turn', 'opponent-turn');
+        this.p2Badge.classList.remove('my-turn', 'opponent-turn');
+      } else if (isMyTurn) {
         this.p1Badge.classList.remove('opponent-turn');
         this.p1Badge.classList.add('my-turn');
         this.p2Badge.classList.remove('my-turn', 'opponent-turn');
@@ -311,7 +321,9 @@ export class BoardUI {
     }
 
     if (this.turnIndicator) this.turnIndicator.textContent = '';
-    if (isMyTurn) {
+    if (turnless) {
+      this.keyboardElement.classList.toggle('locked', !isMyTurn);
+    } else if (isMyTurn) {
       this.keyboardElement.classList.remove('locked');
       if (!silent) this.showToast('Sua vez de jogar');
     } else {
@@ -388,6 +400,36 @@ export class BoardUI {
     }
   }
 
+  updateGameModeUI(mode, revealLetters) {
+    const info = {
+      normal: 'Modo Normal: uma grade compartilhada, jogada em turnos.',
+      cross: 'Modo Cruzado: cada um tem sua grade e palavra; cada palpite preenche as grades de todos.',
+      individual: revealLetters
+        ? 'Modo Individual: todos jogam ao mesmo tempo; grades dos oponentes com letras.'
+        : 'Modo Individual: todos jogam ao mesmo tempo; grades dos oponentes só com cores.'
+    };
+    if (this.gameModePopover) {
+      this.gameModePopover.querySelectorAll('.game-mode-option').forEach((opt) => {
+        opt.classList.toggle('selected', opt.dataset.mode === mode);
+      });
+      this.gameModePopover.querySelectorAll('.reveal-option').forEach((opt) => {
+        opt.classList.toggle('selected', (opt.dataset.reveal === 'true') === revealLetters);
+      });
+    }
+    if (this.revealLettersRow) this.revealLettersRow.classList.toggle('hidden', mode !== 'individual');
+    ['normal', 'cross', 'individual'].forEach((m) => {
+      const icon = document.getElementById(`icon-mode-${m}`);
+      if (icon) icon.classList.toggle('hidden', m !== mode);
+    });
+    if (this.gameModeHint) this.gameModeHint.textContent = info[mode];
+  }
+
+  showGameModePopover(show) {
+    if (!this.gameModePopover) return;
+    this.gameModePopover.classList.toggle('hidden', !show);
+    if (this.btnGameMode) this.btnGameMode.setAttribute('aria-expanded', show ? 'true' : 'false');
+  }
+
   showMaxPlayersPopover(show) {
     if (!this.maxPlayersPopover) return;
     this.maxPlayersPopover.classList.toggle('hidden', !show);
@@ -411,11 +453,18 @@ export class BoardUI {
     }
   }
 
-  showGameOverModal({ title, color, subtitle, secretWord, winnerName, attemptsText }) {
+  showGameOverModal({ title, color, subtitle, secretWord, winnerName, attemptsText, secretLabel = 'Palavra Secreta:', playAgainText = 'Jogar Novamente' }) {
     this.goTitle.textContent = title;
     this.goTitle.style.color = color;
     this.goSubtitle.textContent = subtitle;
     this.goSecretWord.textContent = secretWord;
+    // Várias palavras (modos Cruzado/Individual): uma por linha, em fonte menor
+    const isMulti = secretWord.includes('\n');
+    this.goSecretWord.style.whiteSpace = isMulti ? 'pre-line' : '';
+    this.goSecretWord.style.fontSize = isMulti ? '1.05rem' : '';
+    this.goSecretWord.style.lineHeight = isMulti ? '1.5' : '';
+    if (this.goSecretLabel) this.goSecretLabel.textContent = secretLabel;
+    if (this.btnPlayAgain) this.btnPlayAgain.textContent = playAgainText;
     this.goWinnerName.textContent = winnerName;
     this.goAttemptsCount.textContent = attemptsText;
     this.gameoverModal.classList.remove('hidden');

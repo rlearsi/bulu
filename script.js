@@ -11,6 +11,7 @@ import { ProfileManager } from './js/profile.js?v=1.9.0';
 import { P2PNetwork } from './js/network.js?v=1.9.0';
 import { ChatManager } from './js/chat.js?v=1.9.0';
 import { BoardUI } from './js/board-ui.js?v=1.9.0';
+import { MultiBoardLayout } from './js/multi-board.js?v=1.9.0';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -35,6 +36,14 @@ class TermoMultiplayerGame {
     this.matchStarted = false;
     this.hostMigrationTimer = null;
 
+    // Modos de jogo: 'normal' (grade compartilhada), 'cross' (Cruzado) e 'individual' (corrida simultânea)
+    this.gameMode = 'normal';
+    this.revealLetters = false; // Individual: true = grades dos oponentes mostram letras; false = só cores
+    this.secrets = {}; // id do jogador -> palavra secreta da sua grade (modos cross/individual)
+    this.progress = {}; // Individual: id -> { rows, done }
+    this.myDone = false; // Individual: já venceu ou esgotou as tentativas
+    this.winnerDecided = false; // Individual (host): vencedor já definido
+
     // Matriz de letras no tabuleiro [linha][coluna]
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
 
@@ -49,6 +58,8 @@ class TermoMultiplayerGame {
       onTileClick: (r, c) => this.handleTileClick(r, c),
       onVirtualKeyPress: (k) => this.handleVirtualKeyPress(k)
     });
+
+    this.mm = new MultiBoardLayout({ ui: this.ui, wordLength: this.wordLength });
 
     this.timer = new TurnTimer(this.ui.turnTimerElement, 60);
 
@@ -96,6 +107,17 @@ class TermoMultiplayerGame {
   // ==========================================
   get hostId() {
     return this.players.length ? this.players[0].id : '';
+  }
+
+  /** Modo efetivo da partida: o treino solo é sempre Normal. */
+  get mode() {
+    return this.role === 'solo' ? 'normal' : this.gameMode;
+  }
+
+  /** Linhas da grade conforme o modo: Cruzado segue o Dueto (7), Trio (8) e Quarteto (9). */
+  getRowsForMode() {
+    if (this.mode === 'cross') return { 2: 7, 3: 8, 4: 9 }[Math.max(2, Math.min(4, this.players.length))];
+    return 6;
   }
 
   /** Nome(s) dos oponentes (usado pelo chat e por mensagens de toast). */
@@ -307,6 +329,17 @@ class TermoMultiplayerGame {
       return;
     }
 
+    if (this.mode !== 'normal') {
+      if (this.role === 'host') {
+        this.startNewRound(this.roundStarterId || this.hostId);
+        this.ui.showToast('Partida reiniciada!');
+      } else if (this.network.isConnected()) {
+        this.network.send({ type: 'RESTART_REQUEST', from: this.myId });
+        this.ui.showToast('Pedido de reinício enviado ao host...');
+      }
+      return;
+    }
+
     if (this.network.isConnected()) {
       const nextSecret = this.rules.getRandomSecretWord();
       const startingId = this.roundStarterId || this.hostId;
@@ -336,6 +369,7 @@ class TermoMultiplayerGame {
     if (this.ui.btnMaxPlayers) {
       this.ui.btnMaxPlayers.addEventListener('click', (e) => {
         e.stopPropagation();
+        this.ui.showGameModePopover(false);
         const isOpen = !this.ui.maxPlayersPopover.classList.contains('hidden');
         this.ui.showMaxPlayersPopover(!isOpen);
       });
@@ -349,6 +383,34 @@ class TermoMultiplayerGame {
         this.ui.showMaxPlayersPopover(false);
       });
       document.addEventListener('click', () => this.ui.showMaxPlayersPopover(false));
+    }
+    this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
+    if (this.ui.btnGameMode) {
+      this.ui.btnGameMode.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.ui.showMaxPlayersPopover(false);
+        const isOpen = !this.ui.gameModePopover.classList.contains('hidden');
+        this.ui.showGameModePopover(!isOpen);
+      });
+    }
+    if (this.ui.gameModePopover) {
+      this.ui.gameModePopover.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const modeOpt = e.target.closest('.game-mode-option');
+        if (modeOpt) {
+          this.setGameMode(modeOpt.dataset.mode);
+          // No Individual mantém aberto para escolher cores/letras
+          if (modeOpt.dataset.mode !== 'individual') this.ui.showGameModePopover(false);
+          return;
+        }
+        const revealOpt = e.target.closest('.reveal-option');
+        if (revealOpt) {
+          this.revealLetters = revealOpt.dataset.reveal === 'true';
+          this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
+          this.ui.showGameModePopover(false);
+        }
+      });
+      document.addEventListener('click', () => this.ui.showGameModePopover(false));
     }
     if (this.ui.btnStartMatch) {
       this.ui.btnStartMatch.addEventListener('click', () => {
@@ -416,6 +478,8 @@ class TermoMultiplayerGame {
 
   isMyTurn() {
     if (this.role === 'solo') return true;
+    // Individual: sem turnos, todos jogam ao mesmo tempo até vencer ou esgotar as tentativas
+    if (this.mode === 'individual') return Boolean(this.myId) && !this.myDone;
     return Boolean(this.myId) && this.currentTurnId === this.myId;
   }
 
@@ -446,6 +510,17 @@ class TermoMultiplayerGame {
     if (this.isHostWaitingInLobby() && isInLobby && !this.network.isConnected()) {
       this.handleCreateRoom();
     }
+  }
+
+  setGameMode(mode) {
+    if (!['normal', 'cross', 'individual'].includes(mode)) return;
+    this.gameMode = mode;
+    this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
+  }
+
+  /** Mensagem exibida ao tentar jogar quando não é possível digitar. */
+  notMyTurnMessage() {
+    return this.mode === 'individual' ? 'Você já terminou. Aguarde os demais jogadores!' : 'Aguarde a vez do seu oponente!';
   }
 
   setMaxPlayers(value) {
@@ -715,7 +790,10 @@ class TermoMultiplayerGame {
         if (this.role === 'guest') {
           this.applyPlayersList(data.players);
           if (data.maxPlayers) this.maxPlayers = data.maxPlayers;
-          this.secretWord = data.secretWord;
+          this.gameMode = data.gameMode || 'normal';
+          this.revealLetters = Boolean(data.revealLetters);
+          this.secrets = data.secrets || {};
+          this.secretWord = this.gameMode === 'normal' ? data.secretWord : (this.secrets[this.myId] || data.secretWord);
           this.currentTurnId = data.startingId;
           this.roundStarterId = data.startingId;
           this.lastWinnerId = null;
@@ -724,11 +802,30 @@ class TermoMultiplayerGame {
         break;
 
       case 'LIVE_KEYSTROKE':
+        if (this.mode === 'individual') break;
         this.handleOpponentKeystroke(data.action, data.letter, data.row, data.col);
+        this.syncMirror();
         break;
 
       case 'SUBMIT_GUESS':
-        this.handleOpponentGuess(from, data.guess, data.evaluation, data.nextTurnId, data.isWin, data.row);
+        if (this.mode === 'cross') {
+          this.handleCrossGuess(from, data.guess, data.nextTurnId, data.row);
+        } else if (this.mode === 'individual') {
+          this.handleIndividualGuess(from, data.guess, data.row);
+        } else {
+          this.handleOpponentGuess(from, data.guess, data.evaluation, data.nextTurnId, data.isWin, data.row);
+        }
+        break;
+
+      case 'MM_RESULT':
+        if (this.mode === 'individual') this.applyIndividualResult(data.winnerId);
+        break;
+
+      case 'RESTART_REQUEST':
+        if (this.role === 'host') {
+          this.ui.showToast(`${this.getPlayerName(from)} reiniciou a partida!`);
+          this.startNewRound(this.roundStarterId || this.hostId);
+        }
         break;
 
       case 'TIME_EXPIRED':
@@ -784,6 +881,8 @@ class TermoMultiplayerGame {
   startNewRound(starterId) {
     if (this.role !== 'host') return;
     this.secretWord = this.rules.getRandomSecretWord();
+    this.secrets = this.gameMode === 'normal' ? {} : this.generateSecrets();
+    if (this.gameMode !== 'normal') this.secretWord = this.secrets[this.myId];
     this.currentTurnId = this.getPlayer(starterId) ? starterId : this.hostId;
     this.roundStarterId = this.currentTurnId;
     this.lastWinnerId = null;
@@ -794,10 +893,30 @@ class TermoMultiplayerGame {
       players: this.players,
       maxPlayers: this.maxPlayers,
       secretWord: this.secretWord,
-      startingId: this.currentTurnId
+      startingId: this.currentTurnId,
+      gameMode: this.gameMode,
+      revealLetters: this.revealLetters,
+      secrets: this.secrets
     });
 
     this.startMultiplayerMatch();
+  }
+
+  /** Host: sorteia uma palavra secreta distinta para a grade de cada jogador. */
+  generateSecrets() {
+    const used = new Set();
+    const map = {};
+    this.players.forEach((p) => {
+      let word;
+      let tries = 0;
+      do {
+        word = this.rules.getRandomSecretWord();
+        tries++;
+      } while (used.has(word) && tries < 50);
+      used.add(word);
+      map[p.id] = word;
+    });
+    return map;
   }
 
   /** Quem ganhou começa a próxima rodada; sem vencedor, segue a fila a partir de quem iniciou. */
@@ -823,6 +942,11 @@ class TermoMultiplayerGame {
     if (this.lastWinnerId === id) this.lastWinnerId = null;
     this.players = this.players.filter(p => p.id !== id);
     this.ui.showToast(`${player.name} saiu da sala.`);
+    if (this.matchStarted && this.mode !== 'normal') {
+      this.mm.removeBoard(id);
+      delete this.secrets[id];
+      delete this.progress[id];
+    }
 
     if (!this.matchStarted) {
       if (this.role === 'host') {
@@ -835,6 +959,12 @@ class TermoMultiplayerGame {
     if (this.players.length < 2) {
       this.ui.showToast('Todos os oponentes saíram da sala.');
       setTimeout(() => this.resetToLobby(), 2500);
+      return;
+    }
+
+    if (this.mode === 'individual') {
+      this.refreshScoreboard();
+      this.checkIndividualEnd();
       return;
     }
 
@@ -916,6 +1046,7 @@ class TermoMultiplayerGame {
     this.matchStarted = false;
     this.secretWord = this.rules.getRandomSecretWord();
 
+    this.applyModeConfig();
     this.resetBoardState();
     this.ui.lobbyScreen.classList.add('hidden');
     this.ui.boardContainer.classList.remove('hidden');
@@ -927,8 +1058,25 @@ class TermoMultiplayerGame {
     this.ui.showToast('Jogo Solo iniciado! Boa sorte!');
   }
 
+  /** Ajusta número de linhas e layout multigrade conforme o modo da partida. */
+  applyModeConfig() {
+    this.maxRows = this.getRowsForMode();
+    this.ui.maxRows = this.maxRows;
+    this.myDone = false;
+    this.winnerDecided = false;
+    this.progress = {};
+
+    if (this.mode === 'normal') {
+      this.mm.unmount();
+      return;
+    }
+    this.players.forEach((p) => { this.progress[p.id] = { rows: 0, done: false }; });
+    this.mm.mount({ players: this.players, myId: this.myId, maxRows: this.maxRows });
+  }
+
   startMultiplayerMatch() {
     this.matchStarted = true;
+    this.applyModeConfig();
     this.resetBoardState();
     this.ui.lobbyScreen.classList.add('hidden');
     this.ui.boardContainer.classList.remove('hidden');
@@ -961,12 +1109,27 @@ class TermoMultiplayerGame {
       myId: this.myId,
       currentTurnId: this.currentTurnId,
       isMyTurn: this.isMyTurn(),
-      silent: true
+      silent: true,
+      turnless: this.mode === 'individual'
     });
-    if (this.players.length > 2 && !this.isGameOver) {
+    this.refreshMultiBoards();
+    if (this.players.length > 2 && !this.isGameOver && this.mode !== 'individual') {
       this.ui.updateTurnBar(this.currentTurnId, this.timer.timeLeft, this.timer.turnDuration);
     }
     this.refreshHighlight();
+  }
+
+  /** Atualiza nomes e esmaecimento das grades (Cruzado: quem não joga fica transparente). */
+  refreshMultiBoards() {
+    if (this.mode === 'normal' || !this.mm.isMounted) return;
+    this.mm.updateLabels(this.players, this.myId);
+    this.mm.setActive(this.mode === 'cross' && !this.isGameOver ? this.currentTurnId : null);
+  }
+
+  /** Cruzado: espelha a linha digitada nas grades dos oponentes. */
+  syncMirror(row = this.currentRow) {
+    if (this.mode !== 'cross' || !this.mm.isMounted || row < 0 || row >= this.maxRows) return;
+    this.mm.mirrorRow(row, this.boardMatrix[row]);
   }
 
   updateStatusBar() {
@@ -979,14 +1142,21 @@ class TermoMultiplayerGame {
     }
 
     const useBar = this.players.length > 2;
+    const turnless = this.mode === 'individual';
     this.ui.renderScoreboard({
       players: this.players,
       myId: this.myId,
       currentTurnId: this.currentTurnId,
-      isMyTurn: this.isMyTurn()
+      isMyTurn: this.isMyTurn(),
+      turnless
     });
+    this.refreshMultiBoards();
 
     this.refreshHighlight();
+    if (turnless) {
+      this.timer.hide();
+      return;
+    }
     this.timer.start({
       isGameOver: this.isGameOver,
       role: this.role,
@@ -1043,6 +1213,7 @@ class TermoMultiplayerGame {
       }
     }
     this.currentTile = 0;
+    this.syncMirror(row);
   }
 
   // ==========================================
@@ -1104,7 +1275,7 @@ class TermoMultiplayerGame {
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
 
     if (!this.isMyTurn()) {
-      this.ui.showToast('Aguarde a vez do seu oponente!');
+      this.ui.showToast(this.notMyTurnMessage());
       return;
     }
 
@@ -1130,7 +1301,7 @@ class TermoMultiplayerGame {
   handleVirtualKeyPress(key) {
     if (this.isGameOver || this.isRevealing) return;
     if (!this.isMyTurn()) {
-      this.ui.showToast('Aguarde a vez do seu oponente!');
+      this.ui.showToast(this.notMyTurnMessage());
       return;
     }
 
@@ -1165,7 +1336,8 @@ class TermoMultiplayerGame {
     }
     this.refreshHighlight();
 
-    if (this.role !== 'solo') {
+    this.syncMirror();
+    if (this.role !== 'solo' && this.mode !== 'individual') {
       this.network.send({
         type: 'LIVE_KEYSTROKE',
         action: 'ADD',
@@ -1221,7 +1393,8 @@ class TermoMultiplayerGame {
     }
     this.refreshHighlight();
 
-    if (this.role !== 'solo') {
+    this.syncMirror();
+    if (this.role !== 'solo' && this.mode !== 'individual') {
       this.network.send({
         type: 'LIVE_KEYSTROKE',
         action: 'DELETE',
@@ -1283,6 +1456,15 @@ class TermoMultiplayerGame {
     const evaluation = this.rules.evaluateGuess(guess, this.secretWord);
     const isWin = evaluation.every(s => s === 'correct');
     const nextTurnId = this.role === 'solo' ? '' : this.nextPlayerId(this.myId);
+
+    if (this.mode === 'cross') {
+      this.submitCrossGuess(guess, evaluation, nextTurnId);
+      return;
+    }
+    if (this.mode === 'individual') {
+      this.submitIndividualGuess(guess, evaluation, isWin);
+      return;
+    }
 
     this.timer.stop();
 
@@ -1364,7 +1546,214 @@ class TermoMultiplayerGame {
     });
   }
 
-  triggerWin(winnerId, isMe) {
+  // ==========================================
+  // MODO CRUZADO (cada jogador com sua grade; cada palpite preenche todas)
+  // ==========================================
+  /** Resultado de um palpite no modo Cruzado: vitória (própria palavra), fim sem vencedor (palavra alheia) ou nada. */
+  getCrossOutcome(guesserId, guess) {
+    if (this.secrets[guesserId] === guess) return { type: 'win', winnerId: guesserId };
+    const ownerId = Object.keys(this.secrets).find(id => id !== guesserId && this.secrets[id] === guess);
+    if (ownerId) return { type: 'nowinner', guesserId, ownerId };
+    return null;
+  }
+
+  /** Anima o palpite nas grades dos oponentes (avaliado contra a palavra de cada dono). */
+  revealOnOtherBoards(guess, row, exceptId, showLetters = true) {
+    this.players.forEach((p) => {
+      if (p.id === this.myId || p.id === exceptId || !this.secrets[p.id]) return;
+      this.mm.revealRow(p.id, row, guess, this.rules.evaluateGuess(guess, this.secrets[p.id]), showLetters);
+    });
+  }
+
+  submitCrossGuess(guess, evaluation, nextTurnId) {
+    this.timer.stop();
+    this.isRevealing = true;
+    this.ui.keyboardElement.classList.add('locked');
+    this.refreshHighlight();
+
+    const submittedRow = this.currentRow;
+    this.revealOnOtherBoards(guess, submittedRow, null);
+
+    this.ui.animateRowReveal(submittedRow, guess, evaluation, () => {
+      this.isRevealing = false;
+      const outcome = this.getCrossOutcome(this.myId, guess);
+      this.network.send({
+        type: 'SUBMIT_GUESS',
+        from: this.myId,
+        guess,
+        nextTurnId,
+        row: submittedRow,
+        isWin: Boolean(outcome && outcome.type === 'win')
+      });
+      this.advanceCrossRound(this.myId, outcome, submittedRow, nextTurnId);
+    });
+  }
+
+  handleCrossGuess(fromId, guess, nextTurnId, row) {
+    this.timer.stop();
+    this.isRevealing = true;
+    this.refreshHighlight();
+    const guessRow = (typeof row === 'number' && row >= 0 && row < this.maxRows) ? row : this.currentRow;
+    this.currentRow = guessRow;
+    const rowEl = this.ui.getRowElement(guessRow);
+    if (rowEl) rowEl.classList.add('opponent-row');
+
+    for (let c = 0; c < this.wordLength; c++) {
+      this.boardMatrix[guessRow][c] = guess[c];
+      const tile = this.ui.getTileElement(guessRow, c);
+      tile.textContent = guess[c];
+      tile.classList.add('filled');
+    }
+
+    // Grades dos demais jogadores (inclusive a de quem palpitou) e a minha, cada uma com sua palavra
+    this.revealOnOtherBoards(guess, guessRow, null);
+    const evaluation = this.rules.evaluateGuess(guess, this.secretWord);
+    this.ui.animateRowReveal(guessRow, guess, evaluation, () => {
+      this.isRevealing = false;
+      this.advanceCrossRound(fromId, this.getCrossOutcome(fromId, guess), guessRow, nextTurnId);
+    });
+  }
+
+  /** Após revelar um palpite do Cruzado: encerra a partida ou passa a vez. */
+  advanceCrossRound(fromId, outcome, row, nextTurnId) {
+    if (outcome && outcome.type === 'win') {
+      this.triggerWin(fromId, fromId === this.myId);
+      return;
+    }
+    if (outcome && outcome.type === 'nowinner') {
+      this.triggerNoWinner(
+        `${this.getPlayerName(outcome.guesserId)} acertou a palavra de ${this.getPlayerName(outcome.ownerId)}.`
+      );
+      return;
+    }
+
+    this.currentRow = row + 1;
+    this.currentTile = 0;
+    if (this.currentRow >= this.maxRows) {
+      this.triggerNoWinner(`Ninguém acertou em ${this.maxRows} tentativas.`);
+      return;
+    }
+    this.currentTurnId = this.getPlayer(nextTurnId) ? nextTurnId : this.nextPlayerId(fromId);
+    this.updateStatusBar();
+  }
+
+  // ==========================================
+  // MODO INDIVIDUAL (todos jogam ao mesmo tempo; quem acertar primeiro vence)
+  // ==========================================
+  submitIndividualGuess(guess, evaluation, isWin) {
+    this.isRevealing = true;
+    this.ui.keyboardElement.classList.add('locked');
+    this.refreshHighlight();
+
+    const submittedRow = this.currentRow;
+    this.ui.animateRowReveal(submittedRow, guess, evaluation, () => {
+      this.isRevealing = false;
+      this.network.send({
+        type: 'SUBMIT_GUESS',
+        from: this.myId,
+        guess,
+        row: submittedRow,
+        isWin
+      });
+      this.registerIndividualProgress(this.myId, submittedRow, isWin);
+
+      if (isWin) {
+        this.myDone = true;
+        if (this.role === 'host') this.decideIndividualWinner(this.myId);
+        else this.ui.showToast('Palavra certa! Aguardando confirmação...');
+      } else {
+        this.currentRow = submittedRow + 1;
+        this.currentTile = 0;
+        if (this.currentRow >= this.maxRows) {
+          this.myDone = true;
+          this.ui.showToast('Suas tentativas acabaram. Aguardando os demais...');
+        }
+      }
+
+      if (!this.myDone && !this.isGameOver) this.ui.keyboardElement.classList.remove('locked');
+      this.refreshHighlight();
+      this.checkIndividualEnd();
+    });
+  }
+
+  handleIndividualGuess(fromId, guess, row) {
+    const secret = this.secrets[fromId];
+    if (!secret || !this.getPlayer(fromId)) return;
+    const evaluation = this.rules.evaluateGuess(guess, secret);
+    const isWin = evaluation.every(s => s === 'correct');
+    this.mm.revealRow(fromId, row, guess, evaluation, this.revealLetters);
+    this.registerIndividualProgress(fromId, row, isWin);
+    if (isWin) this.decideIndividualWinner(fromId);
+    else this.checkIndividualEnd();
+  }
+
+  registerIndividualProgress(id, row, isWin) {
+    const prog = this.progress[id] || (this.progress[id] = { rows: 0, done: false });
+    prog.rows = Math.max(prog.rows, row + 1);
+    if (isWin || prog.rows >= this.maxRows) prog.done = true;
+    prog.won = Boolean(isWin);
+  }
+
+  /** Host: o primeiro palpite vencedor recebido define o vencedor e avisa todos. */
+  decideIndividualWinner(winnerId) {
+    if (this.role !== 'host' || this.winnerDecided) return;
+    this.winnerDecided = true;
+    this.network.send({ type: 'MM_RESULT', from: this.myId, winnerId });
+    this.applyIndividualResult(winnerId);
+  }
+
+  /** Host: se todos esgotaram as tentativas sem acertar, encerra sem vencedor. */
+  checkIndividualEnd() {
+    if (this.role !== 'host' || this.winnerDecided || this.isGameOver) return;
+    const allDone = this.players.length > 0 && this.players.every(p => this.progress[p.id] && this.progress[p.id].done);
+    if (!allDone) return;
+    this.winnerDecided = true;
+    this.network.send({ type: 'MM_RESULT', from: this.myId, winnerId: null });
+    this.applyIndividualResult(null);
+  }
+
+  applyIndividualResult(winnerId) {
+    if (this.isGameOver) return;
+    this.myDone = true;
+    this.ui.keyboardElement.classList.add('locked');
+    if (winnerId && this.getPlayer(winnerId)) {
+      const prog = this.progress[winnerId];
+      this.triggerWin(winnerId, winnerId === this.myId, prog ? `${prog.rows}/${this.maxRows}` : undefined);
+    } else {
+      this.triggerNoWinner(`Ninguém acertou em ${this.maxRows} tentativas.`);
+    }
+  }
+
+  /** Texto com a palavra secreta de cada grade (modos Cruzado/Individual) ou a palavra única do modo Normal. */
+  getSecretsDisplay() {
+    if (this.mode === 'normal') return this.secretWord;
+    return this.players
+      .filter(p => this.secrets[p.id])
+      .map(p => `${p.id === this.myId ? 'Você' : p.name}: ${this.secrets[p.id]}`)
+      .join('\n');
+  }
+
+  /** Fim de partida sem vencedor nos modos Cruzado/Individual. */
+  triggerNoWinner(detail) {
+    this.timer.stop();
+    this.isGameOver = true;
+    this.refreshScoreboard();
+    this.refreshHighlight();
+    setTimeout(() => {
+      this.ui.showGameOverModal({
+        title: 'FIM DA PARTIDA',
+        color: '#fff',
+        subtitle: `Não houve vencedor. ${detail || ''}`.trim(),
+        secretWord: this.getSecretsDisplay(),
+        secretLabel: 'Palavras Secretas:',
+        winnerName: 'Ninguém',
+        attemptsText: `${Math.min(this.currentRow + 1, this.maxRows)}/${this.maxRows}`,
+        playAgainText: 'Continuar Jogando'
+      });
+    }, 1200);
+  }
+
+  triggerWin(winnerId, isMe, attemptsText) {
     this.timer.stop();
     this.isGameOver = true;
 
@@ -1390,9 +1779,10 @@ class TermoMultiplayerGame {
         title: isMe ? 'VITÓRIA!' : 'DERROTA!',
         color: isMe ? 'var(--color-correct)' : 'var(--color-present)',
         subtitle: isMe ? 'Você acertou a palavra secreta!' : `${winnerName} acertou a palavra primeiro!`,
-        secretWord: this.secretWord,
+        secretWord: this.getSecretsDisplay(),
+        secretLabel: this.mode === 'normal' ? 'Palavra Secreta:' : 'Palavras Secretas:',
         winnerName: winnerName,
-        attemptsText: `${this.currentRow + 1}/${this.maxRows}`
+        attemptsText: attemptsText || `${this.currentRow + 1}/${this.maxRows}`
       });
     }, 1800);
   }
@@ -1434,6 +1824,7 @@ class TermoMultiplayerGame {
     this.roundStarterId = '';
     this.lastWinnerId = null;
     this.ui.updateScoreDisplay(0, 0);
+    this.mm.unmount();
     this.network.destroy();
 
     this.role = 'solo';

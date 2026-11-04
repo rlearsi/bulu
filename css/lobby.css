@@ -447,3 +447,83 @@
   text-align: center;
 }
 
+
+/* Seletor de modo de jogo (Normal / Cruzado / Individual) */
+.game-mode-wrap {
+  position: relative;
+  display: flex;
+}
+
+.game-mode-popover {
+  width: 250px;
+  gap: 6px;
+}
+
+.game-mode-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.game-mode-option strong {
+  font-size: 0.9rem;
+}
+
+.game-mode-option span {
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.game-mode-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.game-mode-option.selected {
+  background: rgba(106, 170, 100, 0.28);
+  color: #ffffff;
+}
+
+.reveal-letters-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.reveal-letters-row.hidden {
+  display: none;
+}
+
+.reveal-option {
+  flex: 1;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reveal-option.selected {
+  background: var(--color-correct);
+  color: #ffffff;
+}
+
+.game-mode-hint {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}

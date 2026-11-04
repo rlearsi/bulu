@@ -16,11 +16,12 @@ O projeto utiliza **JavaScript ES Modules puro** (sem dependências de runtime a
 | `js/network.js` | Camada WebRTC/PeerJS (`P2PNetwork`): topologia em estrela (host hub), salas públicas/privadas e reconexão |
 | `js/timer.js` | Cronômetro regressivo de turno (`TurnTimer`) |
 | `js/board-ui.js` | Renderização e animações do tabuleiro, teclado e placar (2 jogadores e 3–4 jogadores) |
+| `js/multi-board.js` | Layout multigrade (`MultiBoardLayout`) dos modos Cruzado e Individual: grade própria + miniaturas dos oponentes (2 lado a lado, 3 com oponentes empilhados à direita, 4 em 2×2) |
 | `js/game-rules.js` | Validação de palavras, normalização de acentos e cálculo de cores (`correct`, `present`, `absent`) |
 | `js/chat.js` | Chat em overlay com suporte a texto e mensagens de voz (WebM/Opus em Base64) |
 | `js/profile.js` | Gerenciamento de nome e avatar (compressão em canvas e persistência no `localStorage`) |
 | `js/audio.js` | Efeitos sonoros sintetizados via Web Audio API |
-| `css/*.css` | Estilos separados por componente (`lobby.css`, `scoreboard.css`, `board.css`, `keyboard.css`, `chat.css`, `modals.css`) |
+| `css/*.css` | Estilos separados por componente (`lobby.css`, `scoreboard.css`, `board.css`, `multiboard.css`, `keyboard.css`, `chat.css`, `modals.css`) |
 
 ---
 
@@ -154,6 +155,23 @@ Aumentar `MAX_PUBLIC_SLOTS` permite mais salas públicas simultâneas, mas aumen
 
 ---
 
+### 2.9. Modos de Jogo (Normal, Cruzado e Individual)
+
+O host escolhe o modo no botão ao lado do seletor de jogadores no lobby (`#btn-game-mode`, estado `this.gameMode` em `script.js`). O modo, `revealLetters` e as palavras (`secrets`) viajam no pacote `START_MATCH`. O treino solo é sempre Normal (`get mode()`).
+
+| Modo | Mecânica |
+| :--- | :--- |
+| `normal` | Uma grade compartilhada (6 linhas), jogada em turnos. |
+| `cross` (Cruzado) | Cada jogador tem sua grade e palavra secreta (`this.secrets[playerId]`). Só joga quem está na vez e **cada palpite preenche todas as grades**, avaliado contra a palavra de cada dono. Vence quem acertar a **própria** palavra; se o palpite acertar a palavra de **outro** jogador, a partida termina **sem vencedor** (`triggerNoWinner`, botão "Continuar Jogando"). Linhas: 2 jogadores = 7, 3 = 8, 4 = 9 (`getRowsForMode()`). Grades de quem não está na vez ficam esmaecidas (`.mm-slot.inactive`, `MultiBoardLayout.setActive`). |
+| `individual` | Cada jogador tem sua grade e palavra, **sem turnos** (6 linhas) e sem cronômetro. Vence quem acertar primeiro; o host decide o vencedor pela ordem de chegada dos palpites e envia `MM_RESULT` (`decideIndividualWinner`). Se todos esgotarem as tentativas, termina sem vencedor. Opção do host `revealLetters`: `false` = grades dos oponentes só com cores, `true` = com letras. |
+
+- Layout: `MultiBoardLayout.mount()` move o próprio `#board` para a primeira posição do `#mm-layout` e cria miniaturas para os oponentes; o estilo está em `css/multiboard.css` (classes `.n2`, `.n3`, `.n4`). As grades usam `container-type: size` em `.mm-area` e a variável `--bw` (`min(100cqw, (100cqh - 18px) * 5 / --rows)`) para manter os tiles sempre quadrados e centralizados, com o rótulo do jogador logo acima.
+- O placar (`renderScoreboard`) continua seguindo a quantidade de jogadores em qualquer modo; no Individual é chamado com `turnless: true` (sem destaque de vez/barra de tempo).
+- Para alterar o número de linhas do Cruzado, edite `getRowsForMode()` em `script.js`.
+- As palavras de todos os jogadores são enviadas a todos em `START_MATCH` (cada cliente avalia localmente); um jogador técnico poderia inspecioná-las no navegador.
+
+---
+
 ## 3. Protocolo de Mensagens WebRTC (`handleP2PMessage`)
 
 Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um pacote ao Host, o Host adiciona `from: peerId` e retransmite (`broadcast`) para os demais convidados:
@@ -165,9 +183,11 @@ Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um paco
 | `REJOIN` | Convidado | Reconecta ao novo Host após migração |
 | `LOBBY_UPDATE` | Host | Atualiza a lista de jogadores que aguardam na sala antes de começar |
 | `PLAYERS_SYNC` | Host | Sincroniza a lista de jogadores e placares após reconexão |
-| `START_MATCH` | Host | Inicia a partida enviando `players`, `secretWord` e `startingId` |
-| `LIVE_KEYSTROKE` | Jogador da vez | Espelha letras digitadas/apagadas em tempo real (`ADD` / `DELETE`) |
-| `SUBMIT_GUESS` | Jogador da vez | Submete a tentativa avaliada, informa se venceu (`isWin`) e passa a vez (`nextTurnId`) |
+| `START_MATCH` | Host | Inicia a partida enviando `players`, `secretWord`, `startingId`, `gameMode`, `revealLetters` e `secrets` (palavra de cada jogador nos modos Cruzado/Individual) |
+| `LIVE_KEYSTROKE` | Jogador da vez | Espelha letras digitadas/apagadas em tempo real (`ADD` / `DELETE`); não é enviado no modo Individual |
+| `SUBMIT_GUESS` | Jogador da vez | Submete a tentativa avaliada, informa se venceu (`isWin`) e passa a vez (`nextTurnId`). No Cruzado cada cliente reavalia o palpite contra a palavra de cada grade; no Individual qualquer jogador envia a qualquer momento (sem `nextTurnId`) |
+| `MM_RESULT` | Host | Modo Individual: informa o `winnerId` (ou `null` se ninguém acertou) |
+| `RESTART_REQUEST` | Convidado | Modos Cruzado/Individual: pede ao host para reiniciar a partida |
 | `TIME_EXPIRED` | Jogador da vez | Informa que o tempo de 1 minuto acabou e passa a vez (`nextTurnId`) |
 | `PLAYER_LEFT` | Host | Notifica que um participante desconectou da sala |
 | `UPDATE_PROFILE` | Qualquer jogador | Atualiza nome/avatar em tempo real no placar |

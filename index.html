@@ -140,6 +140,7 @@
         <div class="action-box">
           <h3>Criar Partida (Host)</h3>
           <p id="create-room-desc">Sala aberta para qualquer jogador entrar sem código. Toque no cadeado para trancar.</p>
+          <p id="game-mode-hint" class="game-mode-hint">Modo Normal: uma grade compartilhada, jogada em turnos.</p>
           <div class="create-room-row">
             <button id="btn-create-room" class="btn btn-primary">Criar Sala Privada</button>
             <div class="max-players-wrap">
@@ -156,6 +157,35 @@
                   <button type="button" class="max-players-option selected" data-value="2" role="menuitemradio">2</button>
                   <button type="button" class="max-players-option" data-value="3" role="menuitemradio">3</button>
                   <button type="button" class="max-players-option" data-value="4" role="menuitemradio">4</button>
+                </div>
+              </div>
+            </div>
+            <div class="game-mode-wrap">
+              <button type="button" id="btn-game-mode" class="btn-max-players" title="Modo de jogo" aria-label="Modo de jogo" aria-haspopup="true" aria-expanded="false">
+                <svg id="icon-mode-normal" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
+                <svg class="hidden" id="icon-mode-cross" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg>
+                <svg class="hidden" id="icon-mode-individual" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </button>
+              <div id="game-mode-popover" class="max-players-popover game-mode-popover hidden" role="menu">
+                <span class="max-players-title">Modo de jogo</span>
+                <button type="button" class="game-mode-option selected" data-mode="normal" role="menuitemradio">
+                  <strong>Normal</strong>
+                  <span>Uma grade compartilhada, jogada em turnos.</span>
+                </button>
+                <button type="button" class="game-mode-option" data-mode="cross" role="menuitemradio">
+                  <strong>Cruzado</strong>
+                  <span>Cada um com sua grade e palavra. Os palpites aparecem em todas as grades.</span>
+                </button>
+                <button type="button" class="game-mode-option" data-mode="individual" role="menuitemradio">
+                  <strong>Individual</strong>
+                  <span>Todos jogam ao mesmo tempo, quem acertar primeiro vence.</span>
+                </button>
+                <div id="reveal-letters-row" class="reveal-letters-row hidden">
+                  <span class="max-players-title">Grades dos oponentes</span>
+                  <div class="max-players-options">
+                    <button type="button" class="reveal-option selected" data-reveal="false">Só cores</button>
+                    <button type="button" class="reveal-option" data-reveal="true">Com letras</button>
+                  </div>
                 </div>
               </div>
             </div>

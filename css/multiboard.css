@@ -1,0 +1,111 @@
+/* ========================================================
+   LAYOUT MULTIGRADE (MODOS CRUZADO E INDIVIDUAL)
+   ======================================================== */
+
+.board-wrapper.mm-active {
+  min-height: 0;
+  padding: 6px 0;
+}
+
+.mm-layout {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  display: grid;
+  gap: 10px;
+}
+
+.mm-layout.n2 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.mm-layout.n3 {
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.mm-layout.n3 .mm-slot-own {
+  grid-row: 1 / span 2;
+}
+
+.mm-layout.n4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.mm-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  transition: opacity 0.35s ease;
+}
+
+.mm-slot.inactive {
+  opacity: 0.4;
+}
+
+.mm-label {
+  /* Rótulo grudado logo acima da grade centralizada */
+  --bw: min(100cqw, calc((100cqh - 18px) * 5 / var(--rows, 6)));
+  position: absolute;
+  left: 50%;
+  top: calc(50cqh + 9px - var(--bw) * var(--rows, 6) / 10 - 18px);
+  transform: translateX(-50%);
+  line-height: 15px;
+  max-width: 100%;
+  padding: 0 4px 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mm-slot-own .mm-label {
+  /* Rótulo grudado logo acima da grade centralizada */
+  --bw: min(100cqw, calc((100cqh - 18px) * 5 / var(--rows, 6)));
+  position: absolute;
+  left: 50%;
+  top: calc(50cqh + 9px - var(--bw) * var(--rows, 6) / 10 - 18px);
+  transform: translateX(-50%);
+  line-height: 15px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.mm-area {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  /* Container de tamanho: permite calcular a maior grade com tiles quadrados que cabe na área */
+  container-type: size;
+}
+
+/* Grades (própria e miniaturas): tiles sempre quadrados, centralizadas na área disponível */
+.mm-layout .board {
+  --bw: min(100cqw, calc((100cqh - 18px) * 5 / var(--rows, 6)));
+  position: absolute;
+  top: calc(50% + 9px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--bw);
+  height: calc(var(--bw) * var(--rows, 6) / 5);
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  grid-gap: 4px;
+}
+
+.mm-layout .board-row {
+  grid-gap: 4px;
+}
+
+.mm-layout .tile {
+  border-width: 1.5px;
+  border-radius: 4px;
+  font-size: calc(var(--bw) * 0.09);
+}
