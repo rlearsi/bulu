@@ -172,6 +172,14 @@ O host escolhe o modo no botão ao lado do seletor de jogadores no lobby (`#btn-
 
 ---
 
+### 2.10. Modos Solo (Clássico e Infinito)
+
+Na parte inferior do Lobby, ao lado do botão `#btn-practice` (`Jogar sozinho`), o botão `#btn-solo-mode` permite alternar `this.soloMode` entre:
+- **Clássico (`classic`):** Descubra 1 palavra secreta em até 6 tentativas.
+- **Infinito (`infinite`):** Acerte palavras em sequência sem parar (`advanceInfiniteWord(previousWord)` em `script.js`). A cada acerto, `this.infiniteStreak` aumenta (recorde persistido em `localStorage` na chave `termo_infinite_best`), o tabuleiro e o teclado são limpos, uma nova palavra secreta é sorteada e a palavra anterior sobe automaticamente para a linha `0` já avaliada contra o novo segredo, posicionando o cursor na linha `1`. O jogo continua até esgotar as 6 linhas sem acertar.
+
+---
+
 ## 3. Protocolo de Mensagens WebRTC (`handleP2PMessage`)
 
 Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um pacote ao Host, o Host adiciona `from: peerId` e retransmite (`broadcast`) para os demais convidados:

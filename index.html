@@ -98,6 +98,19 @@
 
       <!-- Placar compacto para 3 ou 4 jogadores (gerado via JS) -->
       <div id="multi-scoreboard" class="multi-scoreboard hidden"></div>
+
+      <!-- Placar do Modo Infinito Solo -->
+      <div id="infinite-scoreboard" class="infinite-scoreboard hidden">
+        <div class="infinite-stat">
+          <span class="infinite-label">Sequência</span>
+          <span id="infinite-streak-val" class="infinite-val">0</span>
+        </div>
+        <div class="infinite-divider"></div>
+        <div class="infinite-stat">
+          <span class="infinite-label">Recorde</span>
+          <span id="infinite-best-val" class="infinite-val">0</span>
+        </div>
+      </div>
     </div>
 
     <!-- TELA DO LOBBY / MULTIPLAYER CONEXÃO -->
@@ -238,7 +251,27 @@
 
       <!-- BOTÃO TREINO SOLO E PRIVACIDADE -->
       <div class="lobby-solo">
-        <button id="btn-practice" class="btn btn-outline">Jogar sozinho</button>
+        <div class="solo-row">
+          <button id="btn-practice" class="btn btn-outline">Jogar sozinho • Clássico</button>
+          <div class="solo-mode-wrap">
+            <button type="button" id="btn-solo-mode" class="btn-max-players" title="Modo do Jogo Solo" aria-label="Modo do Jogo Solo" aria-haspopup="true" aria-expanded="false">
+              <svg id="icon-solo-classic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
+              <svg class="hidden" id="icon-solo-infinite" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"></path></svg>
+            </button>
+            <div id="solo-mode-popover" class="max-players-popover solo-mode-popover hidden" role="menu">
+              <span class="max-players-title">Modo Solo</span>
+              <button type="button" class="solo-mode-option selected" data-solo-mode="classic" role="menuitemradio">
+                <strong>Clássico</strong>
+                <span>Descubra a palavra secreta em até 6 tentativas.</span>
+              </button>
+              <button type="button" class="solo-mode-option" data-solo-mode="infinite" role="menuitemradio">
+                <strong>Infinito</strong>
+                <span>Acerte palavras sem parar e supere seu recorde!</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p id="solo-mode-hint" class="game-mode-hint">Modo Clássico: descubra a palavra secreta em até 6 tentativas.</p>
       </div>
 
       <div class="lobby-footer">
@@ -369,11 +402,11 @@
 
       <div id="go-stats" class="go-stats">
         <div class="stat-item">
-          <span class="stat-label">Vencedor</span>
+          <span class="stat-label" id="go-winner-label">Vencedor</span>
           <span class="stat-val" id="go-winner-name">Você</span>
         </div>
         <div class="stat-item">
-          <span class="stat-label">Tentativas</span>
+          <span class="stat-label" id="go-attempts-label">Tentativas</span>
           <span class="stat-val" id="go-attempts-count">4/6</span>
         </div>
       </div>

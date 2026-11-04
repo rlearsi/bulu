@@ -44,6 +44,11 @@ class TermoMultiplayerGame {
     this.myDone = false; // Individual: já venceu ou esgotou as tentativas
     this.winnerDecided = false; // Individual (host): vencedor já definido
 
+    // Modo Solo: 'classic' (1 palavra em 6 tentativas) ou 'infinite' (sequência contínua)
+    this.soloMode = 'classic';
+    this.infiniteStreak = 0;
+    this.infiniteBest = Number(localStorage.getItem('termo_infinite_best') || 0);
+
     // Matriz de letras no tabuleiro [linha][coluna]
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
 
@@ -325,9 +330,7 @@ class TermoMultiplayerGame {
     if (!isInMatch) return;
 
     if (this.role === 'solo') {
-      this.secretWord = this.rules.getRandomSecretWord();
-      this.resetBoardState();
-      this.updateStatusBar();
+      this.startSoloGame();
       this.ui.showToast('Partida reiniciada!');
       return;
     }
@@ -373,6 +376,7 @@ class TermoMultiplayerGame {
       this.ui.btnMaxPlayers.addEventListener('click', (e) => {
         e.stopPropagation();
         this.ui.showGameModePopover(false);
+        this.ui.showSoloModePopover(false);
         const isOpen = !this.ui.maxPlayersPopover.classList.contains('hidden');
         this.ui.showMaxPlayersPopover(!isOpen);
       });
@@ -392,6 +396,7 @@ class TermoMultiplayerGame {
       this.ui.btnGameMode.addEventListener('click', (e) => {
         e.stopPropagation();
         this.ui.showMaxPlayersPopover(false);
+        this.ui.showSoloModePopover(false);
         const isOpen = !this.ui.gameModePopover.classList.contains('hidden');
         this.ui.showGameModePopover(!isOpen);
       });
@@ -414,6 +419,26 @@ class TermoMultiplayerGame {
         }
       });
       document.addEventListener('click', () => this.ui.showGameModePopover(false));
+    }
+    this.ui.updateSoloModeUI(this.soloMode);
+    if (this.ui.btnSoloMode) {
+      this.ui.btnSoloMode.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.ui.showMaxPlayersPopover(false);
+        this.ui.showGameModePopover(false);
+        const isOpen = !this.ui.soloModePopover.classList.contains('hidden');
+        this.ui.showSoloModePopover(!isOpen);
+      });
+    }
+    if (this.ui.soloModePopover) {
+      this.ui.soloModePopover.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const opt = e.target.closest('.solo-mode-option');
+        if (!opt) return;
+        this.setSoloMode(opt.dataset.soloMode);
+        this.ui.showSoloModePopover(false);
+      });
+      document.addEventListener('click', () => this.ui.showSoloModePopover(false));
     }
     if (this.ui.btnStartMatch) {
       this.ui.btnStartMatch.addEventListener('click', () => {
@@ -519,6 +544,12 @@ class TermoMultiplayerGame {
     if (!['normal', 'cross', 'individual'].includes(mode)) return;
     this.gameMode = mode;
     this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
+  }
+
+  setSoloMode(soloMode) {
+    if (!['classic', 'infinite'].includes(soloMode)) return;
+    this.soloMode = soloMode;
+    this.ui.updateSoloModeUI(this.soloMode);
   }
 
   /** Mensagem exibida ao tentar jogar quando não é possível digitar. */
@@ -1047,6 +1078,7 @@ class TermoMultiplayerGame {
     this.myId = '';
     this.currentTurnId = '';
     this.matchStarted = false;
+    this.infiniteStreak = 0;
     this.secretWord = this.rules.getRandomSecretWord();
 
     this.applyModeConfig();
@@ -1054,11 +1086,14 @@ class TermoMultiplayerGame {
     this.ui.lobbyScreen.classList.add('hidden');
     this.ui.boardContainer.classList.remove('hidden');
     this.ui.keyboardContainer.classList.remove('hidden');
-    this.ui.statusBar.classList.add('hidden');
     if (this.ui.btnHome) this.ui.btnHome.classList.remove('hidden');
 
     this.updateStatusBar();
-    this.ui.showToast('Jogo Solo iniciado! Boa sorte!');
+    this.ui.showToast(
+      this.soloMode === 'infinite'
+        ? 'Modo Infinito iniciado! Boa sorte!'
+        : 'Modo Clássico iniciado! Boa sorte!'
+    );
   }
 
   /** Ajusta número de linhas e layout multigrade conforme o modo da partida. */
@@ -1138,7 +1173,11 @@ class TermoMultiplayerGame {
   updateStatusBar() {
     if (this.role === 'solo') {
       this.timer.hide();
-      this.ui.statusBar.classList.add('hidden');
+      if (this.soloMode === 'infinite') {
+        this.ui.renderInfiniteScoreboard(this.infiniteStreak, this.infiniteBest);
+      } else {
+        this.ui.statusBar.classList.add('hidden');
+      }
       this.ui.keyboardElement.classList.remove('locked');
       this.refreshHighlight();
       return;
@@ -1492,6 +1531,10 @@ class TermoMultiplayerGame {
     this.ui.animateRowReveal(submittedRow, guess, evaluation, () => {
       this.isRevealing = false;
       if (isWin) {
+        if (this.role === 'solo' && this.soloMode === 'infinite') {
+          this.advanceInfiniteWord(guess);
+          return;
+        }
         this.triggerWin(this.myId, true);
         sendGuess(true);
       } else {
@@ -1510,6 +1553,68 @@ class TermoMultiplayerGame {
         }
       }
     });
+  }
+
+  /**
+   * Modo Infinito (Solo): ao acertar uma palavra, incrementa a sequência,
+   * limpa o tabuleiro e sobe a palavra acertada para a 1ª linha já avaliada contra a nova palavra secreta.
+   */
+  advanceInfiniteWord(previousWord) {
+    this.infiniteStreak++;
+    if (this.infiniteStreak > this.infiniteBest) {
+      this.infiniteBest = this.infiniteStreak;
+      try {
+        localStorage.setItem('termo_infinite_best', String(this.infiniteBest));
+      } catch (e) {}
+    }
+    this.ui.renderInfiniteScoreboard(this.infiniteStreak, this.infiniteBest);
+
+    if (window.confetti) {
+      confetti({
+        particleCount: 55,
+        spread: 60,
+        origin: { y: 0.65 }
+      });
+    }
+    this.ui.showToast(`+${this.infiniteStreak} • Próxima palavra!`);
+
+    this.isRevealing = true;
+    this.ui.keyboardElement.classList.add('locked');
+
+    setTimeout(() => {
+      if (this.isGameOver || this.role !== 'solo' || this.soloMode !== 'infinite') return;
+
+      let nextSecret = this.rules.getRandomSecretWord();
+      let tries = 0;
+      while (nextSecret === previousWord && tries < 50) {
+        nextSecret = this.rules.getRandomSecretWord();
+        tries++;
+      }
+      this.secretWord = nextSecret;
+
+      this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
+      this.ui.createBoard();
+      this.ui.createKeyboard();
+
+      // Preenche a linha 0 com a palavra que acabou de ser acertada
+      for (let c = 0; c < this.wordLength; c++) {
+        this.boardMatrix[0][c] = previousWord[c];
+        const tile = this.ui.getTileElement(0, c);
+        if (tile) {
+          tile.textContent = previousWord[c];
+          tile.classList.add('filled');
+        }
+      }
+
+      const evaluation = this.rules.evaluateGuess(previousWord, this.secretWord);
+      this.ui.animateRowReveal(0, previousWord, evaluation, () => {
+        this.isRevealing = false;
+        this.currentRow = 1;
+        this.currentTile = 0;
+        this.ui.keyboardElement.classList.remove('locked');
+        this.refreshHighlight();
+      });
+    }, 650);
   }
 
   handleOpponentGuess(fromId, guess, evaluation, nextTurnId, isWin, row) {
@@ -1793,7 +1898,24 @@ class TermoMultiplayerGame {
   triggerGameOverLoss() {
     this.timer.stop();
     this.isGameOver = true;
+    const isInfinite = this.role === 'solo' && this.soloMode === 'infinite';
     setTimeout(() => {
+      if (isInfinite) {
+        this.ui.showGameOverModal({
+          title: 'FIM DA SEQUÊNCIA',
+          color: 'var(--color-present)',
+          subtitle: this.infiniteStreak === 1
+            ? 'Você acertou 1 palavra seguida!'
+            : `Você acertou ${this.infiniteStreak} palavras seguidas!`,
+          secretWord: this.secretWord,
+          winnerLabel: 'Sequência',
+          winnerName: `${this.infiniteStreak}`,
+          attemptsLabel: 'Recorde',
+          attemptsText: `${this.infiniteBest}`,
+          playAgainText: 'Jogar Novamente'
+        });
+        return;
+      }
       this.ui.showGameOverModal({
         title: 'FIM DE JOGO',
         color: '#fff',
@@ -1844,6 +1966,8 @@ class TermoMultiplayerGame {
     this.ui.hostCodeDisplay.classList.add('hidden');
     if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.add('hidden');
     this.ui.showMaxPlayersPopover(false);
+    this.ui.showGameModePopover(false);
+    this.ui.showSoloModePopover(false);
     this.ui.joinStatus.classList.add('hidden');
     this.ui.btnCreateRoom.disabled = false;
     this.ui.btnJoinRoom.disabled = false;

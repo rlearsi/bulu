@@ -63,12 +63,18 @@ export class BoardUI {
     this.maxPlayersPopover = document.getElementById('max-players-popover');
     this.matchScoreboard = document.querySelector('.match-scoreboard');
     this.multiScoreboard = document.getElementById('multi-scoreboard');
+    this.infiniteScoreboard = document.getElementById('infinite-scoreboard');
+    this.infiniteStreakVal = document.getElementById('infinite-streak-val');
+    this.infiniteBestVal = document.getElementById('infinite-best-val');
 
     this.inputRoomCode = document.getElementById('input-room-code');
     this.btnJoinRoom = document.getElementById('btn-join-room');
     this.btnJoinPublicRoom = document.getElementById('btn-join-public-room');
     this.joinStatus = document.getElementById('join-status');
     this.btnPractice = document.getElementById('btn-practice');
+    this.btnSoloMode = document.getElementById('btn-solo-mode');
+    this.soloModePopover = document.getElementById('solo-mode-popover');
+    this.soloModeHint = document.getElementById('solo-mode-hint');
 
     // Modal de Salas Públicas
     this.publicRoomsModal = document.getElementById('public-rooms-modal');
@@ -90,7 +96,9 @@ export class BoardUI {
     this.goTitle = document.getElementById('go-title');
     this.goSubtitle = document.getElementById('go-subtitle');
     this.goSecretWord = document.getElementById('go-secret-word');
+    this.goWinnerLabel = document.getElementById('go-winner-label');
     this.goWinnerName = document.getElementById('go-winner-name');
+    this.goAttemptsLabel = document.getElementById('go-attempts-label');
     this.goAttemptsCount = document.getElementById('go-attempts-count');
     this.goSecretLabel = document.querySelector('.reveal-secret-box span');
     this.btnPlayAgain = document.getElementById('btn-play-again');
@@ -276,6 +284,7 @@ export class BoardUI {
    */
   renderScoreboard({ players, myId, currentTurnId, isMyTurn, silent = false, turnless = false }) {
     this.statusBar.classList.remove('hidden');
+    if (this.infiniteScoreboard) this.infiniteScoreboard.classList.add('hidden');
     const hostId = players.length ? players[0].id : '';
     const isMulti = players.length > 2;
 
@@ -436,6 +445,42 @@ export class BoardUI {
     if (this.btnMaxPlayers) this.btnMaxPlayers.setAttribute('aria-expanded', show ? 'true' : 'false');
   }
 
+  updateSoloModeUI(soloMode) {
+    const isInfinite = soloMode === 'infinite';
+    if (this.btnPractice) {
+      this.btnPractice.textContent = isInfinite ? 'Jogar sozinho • Infinito' : 'Jogar sozinho • Clássico';
+    }
+    if (this.soloModePopover) {
+      this.soloModePopover.querySelectorAll('.solo-mode-option').forEach((opt) => {
+        opt.classList.toggle('selected', opt.dataset.soloMode === soloMode);
+      });
+    }
+    ['classic', 'infinite'].forEach((m) => {
+      const icon = document.getElementById(`icon-solo-${m}`);
+      if (icon) icon.classList.toggle('hidden', m !== soloMode);
+    });
+    if (this.soloModeHint) {
+      this.soloModeHint.textContent = isInfinite
+        ? 'Modo Infinito: acerte palavras em sequência sem parar e supere seu recorde!'
+        : 'Modo Clássico: descubra a palavra secreta em até 6 tentativas.';
+    }
+  }
+
+  showSoloModePopover(show) {
+    if (!this.soloModePopover) return;
+    this.soloModePopover.classList.toggle('hidden', !show);
+    if (this.btnSoloMode) this.btnSoloMode.setAttribute('aria-expanded', show ? 'true' : 'false');
+  }
+
+  renderInfiniteScoreboard(streak, best) {
+    this.statusBar.classList.remove('hidden');
+    if (this.matchScoreboard) this.matchScoreboard.classList.add('hidden');
+    if (this.multiScoreboard) this.multiScoreboard.classList.add('hidden');
+    if (this.infiniteScoreboard) this.infiniteScoreboard.classList.remove('hidden');
+    if (this.infiniteStreakVal) this.infiniteStreakVal.textContent = streak;
+    if (this.infiniteBestVal) this.infiniteBestVal.textContent = best;
+  }
+
   showHelpModal(show) {
     if (show) {
       this.helpModal.classList.remove('hidden');
@@ -453,7 +498,7 @@ export class BoardUI {
     }
   }
 
-  showGameOverModal({ title, color, subtitle, secretWord, winnerName, attemptsText, secretLabel = 'Palavra Secreta:', playAgainText = 'Jogar Novamente' }) {
+  showGameOverModal({ title, color, subtitle, secretWord, winnerName, attemptsText, secretLabel = 'Palavra Secreta:', playAgainText = 'Jogar Novamente', winnerLabel = 'Vencedor', attemptsLabel = 'Tentativas' }) {
     this.goTitle.textContent = title;
     this.goTitle.style.color = color;
     this.goSubtitle.textContent = subtitle;
@@ -465,6 +510,8 @@ export class BoardUI {
     this.goSecretWord.style.lineHeight = isMulti ? '1.5' : '';
     if (this.goSecretLabel) this.goSecretLabel.textContent = secretLabel;
     if (this.btnPlayAgain) this.btnPlayAgain.textContent = playAgainText;
+    if (this.goWinnerLabel) this.goWinnerLabel.textContent = winnerLabel;
+    if (this.goAttemptsLabel) this.goAttemptsLabel.textContent = attemptsLabel;
     this.goWinnerName.textContent = winnerName;
     this.goAttemptsCount.textContent = attemptsText;
     this.gameoverModal.classList.remove('hidden');

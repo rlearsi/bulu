@@ -442,6 +442,63 @@
   text-align: center;
 }
 
+.solo-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.solo-row #btn-practice {
+  flex: 1;
+}
+
+.solo-mode-wrap {
+  position: relative;
+  display: flex;
+}
+
+.solo-mode-popover {
+  top: auto;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  gap: 6px;
+}
+
+.solo-mode-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.solo-mode-option strong {
+  font-size: 0.9rem;
+}
+
+.solo-mode-option span {
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.solo-mode-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.solo-mode-option.selected {
+  background: rgba(58, 163, 148, 0.28);
+  color: #ffffff;
+}
+
 .lobby-footer {
   margin-top: 14px;
   text-align: center;
