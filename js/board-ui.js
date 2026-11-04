@@ -498,7 +498,7 @@ export class BoardUI {
     }
   }
 
-  showGameOverModal({ title, color, subtitle, secretWord, winnerName, attemptsText, secretLabel = 'Palavra Secreta:', playAgainText = 'Jogar Novamente', winnerLabel = 'Vencedor', attemptsLabel = 'Tentativas' }) {
+  showGameOverModal({ title, color, subtitle, secretWord, winnerName, attemptsText, secretLabel = 'Palavra Secreta:', playAgainText = 'Continuar Jogando', winnerLabel = 'Vencedor', attemptsLabel = 'Tentativas' }) {
     this.goTitle.textContent = title;
     this.goTitle.style.color = color;
     this.goSubtitle.textContent = subtitle;
