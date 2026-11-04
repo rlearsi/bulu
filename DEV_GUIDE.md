@@ -137,8 +137,9 @@ Se o Host desconectar durante a partida (`handleHostLost(hostId)` em `script.js`
 ### 2.7. Adicionar ou Remover Palavras do Banco (`words.js`)
 
 Abra `words.js`:
-- Para adicionar palavras que podem ser **sorteadas como resposta** e também aceitas como chute, insira na lista principal exportada em `wordsData`.
-- As palavras podem conter acentos ou `ç` para exibição correta quando aplicável; o módulo `js/game-rules.js` normaliza automaticamente para letras de `A-Z` sem acento durante a validação e comparação.
+- **Palavras sorteadas como segredo (`secretWords`):** Contém apenas palavras base comuns do português (~1.788 substantivos no singular, adjetivos, verbos no infinitivo, advérbios e numerais, sem plurais terminados em `S` e sem conjugações verbais obscuras), seguindo o padrão do Termo original.
+- **Palavras válidas para tentativa (`validGuesses` / `wordsData`):** Contém todas as `secretWords` somadas a plurais e conjugações verbais válidas (~5.482 palavras de 5 letras) aceitas nos palpites dos jogadores.
+- As palavras podem conter acentos ou `ç` no campo `word`; o campo `normalized` mantém apenas letras de `A-Z` sem acento para validação e comparação em `js/game-rules.js`.
 
 ---
 

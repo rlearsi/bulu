@@ -4,15 +4,18 @@
  */
 
 export class GameRules {
-  constructor(wordsList, wordLength = 5) {
+  constructor(wordsList, wordLength = 5, secretWordsList = null) {
     this.wordsList = wordsList;
+    this.secretWordsList = Array.isArray(secretWordsList) && secretWordsList.length > 0
+      ? secretWordsList
+      : wordsList;
     this.wordLength = wordLength;
     this.validWordsSet = new Set(this.wordsList.map(w => (w.normalized || w.word).toUpperCase()));
   }
 
   getRandomSecretWord() {
-    const randomIndex = Math.floor(Math.random() * this.wordsList.length);
-    return this.wordsList[randomIndex].normalized.toUpperCase();
+    const randomIndex = Math.floor(Math.random() * this.secretWordsList.length);
+    return this.secretWordsList[randomIndex].normalized.toUpperCase();
   }
 
   isValidWord(guess) {

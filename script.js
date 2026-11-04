@@ -3,7 +3,7 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData } from './words.js?v=1.9.0';
+import { wordsData, secretWords } from './words.js?v=1.9.0';
 import { AudioManager } from './js/audio.js?v=1.9.0';
 import { GameRules } from './js/game-rules.js?v=1.9.0';
 import { TurnTimer } from './js/timer.js?v=1.9.0';
@@ -40,7 +40,7 @@ class TermoMultiplayerGame {
 
     // Inicialização dos Módulos com Responsabilidade Única
     this.audio = new AudioManager();
-    this.rules = new GameRules(wordsData, this.wordLength);
+    this.rules = new GameRules(wordsData, this.wordLength, secretWords);
 
     this.ui = new BoardUI({
       maxRows: this.maxRows,
