@@ -509,7 +509,10 @@ export class BoardUI {
     this.goSecretWord.style.fontSize = isMulti ? '1.05rem' : '';
     this.goSecretWord.style.lineHeight = isMulti ? '1.5' : '';
     if (this.goSecretLabel) this.goSecretLabel.textContent = secretLabel;
-    if (this.btnPlayAgain) this.btnPlayAgain.textContent = playAgainText;
+    if (this.btnPlayAgain) {
+      this.btnPlayAgain.disabled = false;
+      this.btnPlayAgain.textContent = playAgainText;
+    }
     if (this.goWinnerLabel) this.goWinnerLabel.textContent = winnerLabel;
     if (this.goAttemptsLabel) this.goAttemptsLabel.textContent = attemptsLabel;
     this.goWinnerName.textContent = winnerName;

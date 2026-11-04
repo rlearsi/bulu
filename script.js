@@ -34,6 +34,7 @@ class TermoMultiplayerGame {
     this.roundStarterId = '';
     this.lastWinnerId = null;
     this.matchStarted = false;
+    this.readyPlayers = new Set();
     this.hostMigrationTimer = null;
 
     // Modos de jogo: 'normal' (grade compartilhada), 'cross' (Cruzado) e 'individual' (corrida simultânea)
@@ -897,10 +898,9 @@ class TermoMultiplayerGame {
         break;
 
       case 'PLAY_AGAIN_REQUEST':
-        this.ui.showToast(`${this.getPlayerName(from)} quer jogar novamente!`);
-        if (this.role === 'host' && this.isGameOver) {
-          this.startNewRound(this.getNextRoundStarter());
-        }
+        this.readyPlayers.add(from);
+        this.ui.showToast(`${this.getPlayerName(from)} quer continuar jogando!`);
+        this.checkAllReadyForNextRound();
         break;
 
       default:
@@ -999,6 +999,7 @@ class TermoMultiplayerGame {
     if (this.mode === 'individual') {
       this.refreshScoreboard();
       this.checkIndividualEnd();
+      if (this.isGameOver) this.checkAllReadyForNextRound();
       return;
     }
 
@@ -1010,6 +1011,7 @@ class TermoMultiplayerGame {
       }
     } else {
       this.refreshScoreboard();
+      if (this.isGameOver) this.checkAllReadyForNextRound();
     }
   }
 
@@ -1131,6 +1133,11 @@ class TermoMultiplayerGame {
     this.currentTile = 0;
     this.isGameOver = false;
     this.isRevealing = false;
+    this.readyPlayers.clear();
+    if (this.ui.btnPlayAgain) {
+      this.ui.btnPlayAgain.disabled = false;
+      this.ui.btnPlayAgain.textContent = 'Continuar Jogando';
+    }
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
 
     this.ui.createBoard();
@@ -1930,11 +1937,23 @@ class TermoMultiplayerGame {
   handlePlayAgainRequest() {
     if (this.role === 'solo') {
       this.startSoloGame();
-    } else if (this.role === 'host') {
-      if (this.isGameOver) this.startNewRound(this.getNextRoundStarter());
-    } else {
-      this.network.send({ type: 'PLAY_AGAIN_REQUEST', from: this.myId });
-      this.ui.showToast('Pedido enviado ao host...');
+      return;
+    }
+    if (!this.isGameOver || this.readyPlayers.has(this.myId)) return;
+
+    this.readyPlayers.add(this.myId);
+    if (this.ui.btnPlayAgain) {
+      this.ui.btnPlayAgain.disabled = true;
+      this.ui.btnPlayAgain.textContent = 'Esperando oponente';
+    }
+    this.network.send({ type: 'PLAY_AGAIN_REQUEST', from: this.myId });
+    this.checkAllReadyForNextRound();
+  }
+
+  checkAllReadyForNextRound() {
+    if (this.role !== 'host' || !this.isGameOver) return;
+    if (this.players.length >= 2 && this.players.every(p => this.readyPlayers.has(p.id))) {
+      this.startNewRound(this.getNextRoundStarter());
     }
   }
 

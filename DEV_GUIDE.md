@@ -200,7 +200,7 @@ Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um paco
 | `PLAYER_LEFT` | Host | Notifica que um participante desconectou da sala |
 | `UPDATE_PROFILE` | Qualquer jogador | Atualiza nome/avatar em tempo real no placar |
 | `RESTART_MATCH` | Qualquer jogador | Sorteia nova palavra e reinicia o tabuleiro mantendo o placar |
-| `PLAY_AGAIN_REQUEST` | Convidado | Solicita nova rodada ao final da partida |
+| `PLAY_AGAIN_REQUEST` | Qualquer jogador | Marca o jogador como pronto ao final da partida ("Esperando oponente"); quando todos confirmam, o Host inicia a nova rodada |
 | `CHAT_MESSAGE` | Qualquer jogador | Mensagem de texto ou áudio (`audioData` em Base64) |
 
 ---

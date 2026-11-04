@@ -79,6 +79,13 @@ body {
   filter: brightness(1.1);
 }
 
+.btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.45);
+  cursor: not-allowed;
+  filter: none;
+}
+
 .btn-secondary {
   background: var(--color-present);
   color: #1f1b1d;
