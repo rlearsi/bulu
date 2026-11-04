@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TERMO MULTIPLAYER P2P</title>
-  <link rel="stylesheet" href="style.css?v=1.6.11">
+  <link rel="stylesheet" href="style.css?v=1.9.0">
   <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <!-- Confetti para comemoração da vitória -->
@@ -95,6 +95,9 @@
           <span class="p-name">Oponente</span>
         </div>
       </div>
+
+      <!-- Placar compacto para 3 ou 4 jogadores (gerado via JS) -->
+      <div id="multi-scoreboard" class="multi-scoreboard hidden"></div>
     </div>
 
     <!-- TELA DO LOBBY / MULTIPLAYER CONEXÃO -->
@@ -138,8 +141,25 @@
           <h3>Criar Partida (Host)</h3>
           <p id="create-room-desc">Sala aberta para qualquer jogador entrar sem código. Toque no cadeado para trancar.</p>
           <div class="create-room-row">
-            <button id="btn-create-room" class="btn btn-primary">Criar Sala Pública</button>
-            <button type="button" id="btn-lock-room" class="btn-lock-room" title="Trancar sala (tornar privada com código)" aria-label="Trancar ou destrancar sala">
+            <button id="btn-create-room" class="btn btn-primary">Criar Sala Privada</button>
+            <div class="max-players-wrap">
+              <button type="button" id="btn-max-players" class="btn-max-players" title="Máximo de jogadores na sala" aria-label="Máximo de jogadores na sala" aria-haspopup="true" aria-expanded="false">
+                <span id="max-players-val">2</span>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </button>
+              <div id="max-players-popover" class="max-players-popover hidden" role="menu">
+                <span class="max-players-title">Máximo de jogadores</span>
+                <div class="max-players-options">
+                  <button type="button" class="max-players-option selected" data-value="2" role="menuitemradio">2</button>
+                  <button type="button" class="max-players-option" data-value="3" role="menuitemradio">3</button>
+                  <button type="button" class="max-players-option" data-value="4" role="menuitemradio">4</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" id="btn-lock-room" class="btn-lock-room locked" title="Trancar sala (tornar privada com código)" aria-label="Trancar ou destrancar sala">
               <!-- Ícone Cadeado Aberto (Sala Pública) -->
               <svg id="icon-lock-open" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -160,6 +180,7 @@
               <button id="btn-copy-code" class="btn btn-secondary">Copiar Código</button>
             </div>
             <div id="host-status" class="status-text pulse">Aguardando adversário entrar...</div>
+            <button type="button" id="btn-start-match" class="btn btn-primary btn-block btn-start-match hidden">Iniciar partida</button>
           </div>
         </div>
 
@@ -462,7 +483,7 @@
     </div>
   </div>
 
-  <script type="module" src="script.js?v=1.6.11"></script>
+  <script type="module" src="script.js?v=1.9.0"></script>
 </body>
 </html>
 

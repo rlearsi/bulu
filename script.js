@@ -3,14 +3,14 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData } from './words.js?v=1.6.11';
-import { AudioManager } from './js/audio.js?v=1.6.11';
-import { GameRules } from './js/game-rules.js?v=1.6.11';
-import { TurnTimer } from './js/timer.js?v=1.6.11';
-import { ProfileManager } from './js/profile.js?v=1.6.11';
-import { P2PNetwork } from './js/network.js?v=1.6.11';
-import { ChatManager } from './js/chat.js?v=1.6.11';
-import { BoardUI } from './js/board-ui.js?v=1.6.11';
+import { wordsData } from './words.js?v=1.9.0';
+import { AudioManager } from './js/audio.js?v=1.9.0';
+import { GameRules } from './js/game-rules.js?v=1.9.0';
+import { TurnTimer } from './js/timer.js?v=1.9.0';
+import { ProfileManager } from './js/profile.js?v=1.9.0';
+import { P2PNetwork } from './js/network.js?v=1.9.0';
+import { ChatManager } from './js/chat.js?v=1.9.0';
+import { BoardUI } from './js/board-ui.js?v=1.9.0';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -24,12 +24,16 @@ class TermoMultiplayerGame {
 
     // Estado Multiplayer / Placar
     this.role = 'solo'; // 'host', 'guest', 'solo'
-    this.currentTurnRole = 'host';
-    this.isRoomLocked = false; // false = Sala Pública (sem código), true = Sala Privada (com código)
-    this.oppName = 'Oponente';
-    this.oppAvatar = '';
-    this.myScore = 0;
-    this.oppScore = 0;
+    this.isRoomLocked = true; // true = Sala Privada (com código, padrão), false = Sala Pública (sem código)
+    this.maxPlayers = 2; // Máximo de jogadores na sala (2 a 4)
+    this.myId = '';
+    // Jogadores na ordem de entrada na sala (o primeiro é sempre o host): { id, name, avatar, score }
+    this.players = [];
+    this.currentTurnId = '';
+    this.roundStarterId = '';
+    this.lastWinnerId = null;
+    this.matchStarted = false;
+    this.hostMigrationTimer = null;
 
     // Matriz de letras no tabuleiro [linha][coluna]
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
@@ -54,11 +58,18 @@ class TermoMultiplayerGame {
     });
 
     this.network = new P2PNetwork({
-      onMessage: (data) => this.handleP2PMessage(data),
-      onDisconnect: () => {
-        this.ui.showToast('Oponente se desconectou.');
-        setTimeout(() => this.resetToLobby(), 2500);
-      }
+      onMessage: (data, fromId) => this.handleP2PMessage(data, fromId),
+      onPeerLeft: (peerId) => this.handlePeerLeft(peerId),
+      onHostLost: (hostId) => this.handleHostLost(hostId),
+      onJoinRejected: () => this.handleJoinRejected(),
+      acceptJoin: (data, peerId) => this.acceptJoin(data, peerId),
+      getRoomInfo: () => ({
+        joinable: this.role === 'host' && !this.matchStarted && this.players.length < this.maxPlayers,
+        hostName: this.profile.myName,
+        hostAvatar: this.profile.myAvatar,
+        count: this.players.length,
+        max: this.maxPlayers
+      })
     });
 
     this.chat = new ChatManager({
@@ -78,6 +89,53 @@ class TermoMultiplayerGame {
     this.ui.createBoard();
     this.ui.createKeyboard();
     this.refreshHighlight();
+  }
+
+  // ==========================================
+  // JOGADORES E ORDEM DE TURNOS
+  // ==========================================
+  get hostId() {
+    return this.players.length ? this.players[0].id : '';
+  }
+
+  /** Nome(s) dos oponentes (usado pelo chat e por mensagens de toast). */
+  get oppName() {
+    const opps = this.players.filter(p => p.id !== this.myId);
+    if (this.role === 'solo') return 'Computador';
+    if (opps.length === 0) return 'Oponente';
+    return opps.map(p => p.name).join(', ');
+  }
+
+  getPlayer(id) {
+    return this.players.find(p => p.id === id) || null;
+  }
+
+  getPlayerName(id) {
+    const p = this.getPlayer(id);
+    return p ? p.name : 'Jogador';
+  }
+
+  /** Próximo jogador na fila (ordem de entrada na sala), de forma circular. */
+  nextPlayerId(afterId) {
+    if (this.players.length === 0) return '';
+    const idx = this.players.findIndex(p => p.id === afterId);
+    if (idx === -1) return this.players[0].id;
+    return this.players[(idx + 1) % this.players.length].id;
+  }
+
+  makeSelfPlayer() {
+    return { id: this.myId, name: this.profile.myName, avatar: this.profile.myAvatar, score: 0 };
+  }
+
+  /** Mescla lista de jogadores recebida do host, mantendo meu perfil atualizado localmente. */
+  applyPlayersList(list) {
+    if (!Array.isArray(list)) return;
+    this.players = list.map(p => ({
+      id: p.id,
+      name: p.name || 'Jogador',
+      avatar: p.avatar || '',
+      score: typeof p.score === 'number' ? p.score : 0
+    }));
   }
 
   // ==========================================
@@ -251,12 +309,14 @@ class TermoMultiplayerGame {
 
     if (this.network.isConnected()) {
       const nextSecret = this.rules.getRandomSecretWord();
+      const startingId = this.roundStarterId || this.hostId;
       this.secretWord = nextSecret;
-      this.currentTurnRole = 'host';
+      this.currentTurnId = startingId;
       this.network.send({
         type: 'RESTART_MATCH',
+        from: this.myId,
         secretWord: nextSecret,
-        startingRole: 'host',
+        startingId: startingId,
         senderName: this.profile.myName
       });
       this.resetBoardState();
@@ -268,9 +328,34 @@ class TermoMultiplayerGame {
   initEvents() {
     // Ações do Lobby
     this.ui.updateRoomLockUI(this.isRoomLocked);
+    this.ui.updateMaxPlayersUI(this.maxPlayers);
     this.ui.btnCreateRoom.addEventListener('click', () => this.handleCreateRoom());
     if (this.ui.btnLockRoom) {
       this.ui.btnLockRoom.addEventListener('click', () => this.toggleRoomLock());
+    }
+    if (this.ui.btnMaxPlayers) {
+      this.ui.btnMaxPlayers.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !this.ui.maxPlayersPopover.classList.contains('hidden');
+        this.ui.showMaxPlayersPopover(!isOpen);
+      });
+    }
+    if (this.ui.maxPlayersPopover) {
+      this.ui.maxPlayersPopover.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const opt = e.target.closest('.max-players-option');
+        if (!opt) return;
+        this.setMaxPlayers(Number(opt.dataset.value));
+        this.ui.showMaxPlayersPopover(false);
+      });
+      document.addEventListener('click', () => this.ui.showMaxPlayersPopover(false));
+    }
+    if (this.ui.btnStartMatch) {
+      this.ui.btnStartMatch.addEventListener('click', () => {
+        if (this.role === 'host' && !this.matchStarted && this.players.length >= 2) {
+          this.startNewRound(this.hostId);
+        }
+      });
     }
     this.ui.btnJoinRoom.addEventListener('click', () => this.handleJoinRoom());
     if (this.ui.btnJoinPublicRoom) {
@@ -331,7 +416,7 @@ class TermoMultiplayerGame {
 
   isMyTurn() {
     if (this.role === 'solo') return true;
-    return this.role === this.currentTurnRole;
+    return Boolean(this.myId) && this.currentTurnId === this.myId;
   }
 
   refreshHighlight() {
@@ -347,23 +432,56 @@ class TermoMultiplayerGame {
   // ==========================================
   // SALAS E CONEXÃO P2P
   // ==========================================
+  isHostWaitingInLobby() {
+    return this.role === 'host' && !this.matchStarted &&
+      this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
+  }
+
   toggleRoomLock() {
     this.isRoomLocked = !this.isRoomLocked;
     this.ui.updateRoomLockUI(this.isRoomLocked);
 
-    // Se já estiver aguardando adversário com sala aberta no Lobby, alterna o modo da sala em tempo real
-    const isWaitingHost = this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
+    // Se já estiver aguardando jogadores com sala aberta no Lobby, alterna o modo da sala em tempo real
     const isInLobby = this.ui.lobbyScreen && !this.ui.lobbyScreen.classList.contains('hidden');
-    if (isWaitingHost && isInLobby && !this.network.isConnected()) {
+    if (this.isHostWaitingInLobby() && isInLobby && !this.network.isConnected()) {
       this.handleCreateRoom();
+    }
+  }
+
+  setMaxPlayers(value) {
+    const v = Math.max(2, Math.min(4, Number(value) || 2));
+    const isWaitingHost = this.isHostWaitingInLobby();
+    if (isWaitingHost && v < this.players.length) {
+      this.ui.showToast(`Já há ${this.players.length} jogadores na sala.`);
+      return;
+    }
+    this.maxPlayers = v;
+    this.ui.updateMaxPlayersUI(v);
+
+    if (isWaitingHost && this.players.length > 0) {
+      this.broadcastLobbyUpdate();
+      this.updateHostLobbyStatus();
+      if (this.players.length >= this.maxPlayers) {
+        this.startNewRound(this.hostId);
+      }
     }
   }
 
   handleCreateRoom() {
     this.role = 'host';
+    this.matchStarted = false;
+    this.players = [];
+    this.myId = '';
     this.ui.btnCreateRoom.disabled = true;
     this.ui.hostCodeDisplay.classList.remove('hidden');
+    if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.add('hidden');
     this.ui.hostStatus.textContent = 'Inicializando rede P2P...';
+
+    const onRoomReady = () => {
+      this.myId = this.network.myId;
+      this.players = [this.makeSelfPlayer()];
+      this.updateHostLobbyStatus();
+    };
 
     if (this.isRoomLocked) {
       // Sala Privada (Trancada): gera e exibe código de 6 dígitos
@@ -371,9 +489,7 @@ class TermoMultiplayerGame {
         this.ui.hostPrivateCodeArea.classList.remove('hidden');
       }
       const code = this.network.createRoom({
-        onOpen: () => {
-          this.ui.hostStatus.textContent = 'Aguardando adversário entrar...';
-        },
+        onOpen: onRoomReady,
         onError: () => {
           this.ui.hostStatus.textContent = 'Erro ao criar sala. Tente novamente.';
           this.ui.btnCreateRoom.disabled = false;
@@ -386,19 +502,46 @@ class TermoMultiplayerGame {
         this.ui.hostPrivateCodeArea.classList.add('hidden');
       }
       this.network.createPublicRoom({
-        getHostProfile: () => ({
-          name: this.profile.myName,
-          avatar: this.profile.myAvatar
-        }),
-        onOpen: () => {
-          this.ui.hostStatus.textContent = 'Sala pública aberta! Aguardando oponente...';
-        },
+        onOpen: onRoomReady,
         onError: (err) => {
           this.ui.hostStatus.textContent = (err && err.message) || 'Erro ao abrir sala pública.';
           this.ui.btnCreateRoom.disabled = false;
         }
       });
     }
+  }
+
+  updateHostLobbyStatus() {
+    if (this.role !== 'host' || this.matchStarted) return;
+    const count = this.players.length;
+    let text;
+    if (count <= 1) {
+      const waitingFor = this.maxPlayers === 2 ? 'adversário' : 'jogadores';
+      text = this.isRoomLocked
+        ? `Aguardando ${waitingFor} entrar... (1/${this.maxPlayers})`
+        : `Sala pública aberta! Aguardando ${waitingFor}... (1/${this.maxPlayers})`;
+    } else {
+      text = `${count}/${this.maxPlayers} na sala: ${this.players.map(p => p.name).join(', ')}`;
+    }
+    this.ui.hostStatus.textContent = text;
+    if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.toggle('hidden', count < 2);
+  }
+
+  broadcastLobbyUpdate() {
+    if (this.role !== 'host') return;
+    this.network.send({
+      type: 'LOBBY_UPDATE',
+      from: this.myId,
+      players: this.players,
+      maxPlayers: this.maxPlayers
+    });
+  }
+
+  /** Host decide se aceita a conexão de um jogador (nova entrada ou reconexão após migração). */
+  acceptJoin(data, peerId) {
+    if (this.role !== 'host') return false;
+    if (data.type === 'REJOIN') return this.players.some(p => p.id === peerId);
+    return !this.matchStarted && this.players.length > 0 && this.players.length < this.maxPlayers;
   }
 
   openPublicRoomsModal() {
@@ -426,6 +569,18 @@ class TermoMultiplayerGame {
     });
   }
 
+  sendJoinGame() {
+    this.myId = this.network.myId;
+    this.matchStarted = false;
+    this.ui.joinStatus.textContent = 'Conectado! Aguardando o host...';
+    this.network.send({
+      type: 'JOIN_GAME',
+      from: this.myId,
+      name: this.profile.myName,
+      avatar: this.profile.myAvatar
+    });
+  }
+
   handleJoinPublicSlot(slotId) {
     if (!slotId) return;
     this.closePublicRoomsModal();
@@ -437,14 +592,7 @@ class TermoMultiplayerGame {
     if (this.ui.btnJoinPublicRoom) this.ui.btnJoinPublicRoom.disabled = true;
 
     this.network.joinPublicRoom(slotId, {
-      onConnected: () => {
-        this.ui.joinStatus.textContent = 'Conectado! Iniciando jogo...';
-        this.network.send({
-          type: 'JOIN_GAME',
-          name: this.profile.myName,
-          avatar: this.profile.myAvatar
-        });
-      },
+      onConnected: () => this.sendJoinGame(),
       onError: () => {
         this.ui.joinStatus.textContent = 'Esta sala pública já foi preenchida ou fechada.';
         this.ui.btnJoinRoom.disabled = false;
@@ -462,23 +610,30 @@ class TermoMultiplayerGame {
 
     this.role = 'guest';
     this.ui.joinStatus.classList.remove('hidden');
-    this.ui.joinStatus.textContent = 'Conectando ao oponente...';
+    this.ui.joinStatus.textContent = 'Conectando à sala...';
     this.ui.btnJoinRoom.disabled = true;
 
     this.network.joinRoom(code, {
-      onConnected: () => {
-        this.ui.joinStatus.textContent = 'Conectado! Iniciando jogo...';
-        this.network.send({
-          type: 'JOIN_GAME',
-          name: this.profile.myName,
-          avatar: this.profile.myAvatar
-        });
-      },
+      onConnected: () => this.sendJoinGame(),
       onError: () => {
         this.ui.joinStatus.textContent = 'Sala não encontrada ou indisponível.';
         this.ui.btnJoinRoom.disabled = false;
       }
     });
+  }
+
+  handleJoinRejected() {
+    if (this.matchStarted) {
+      this.ui.showToast('Não foi possível reconectar à sala.');
+      setTimeout(() => this.resetToLobby(), 2000);
+      return;
+    }
+    this.network.destroy();
+    this.role = 'solo';
+    this.ui.joinStatus.classList.remove('hidden');
+    this.ui.joinStatus.textContent = 'Sala cheia ou partida já em andamento.';
+    this.ui.btnJoinRoom.disabled = false;
+    if (this.ui.btnJoinPublicRoom) this.ui.btnJoinPublicRoom.disabled = false;
   }
 
   copyRoomCode() {
@@ -490,45 +645,80 @@ class TermoMultiplayerGame {
   }
 
   syncProfileWithPeer() {
+    const me = this.getPlayer(this.myId);
+    if (me) {
+      me.name = this.profile.myName;
+      me.avatar = this.profile.myAvatar;
+    }
     if (this.ui.lobbyScreen && this.ui.lobbyScreen.classList.contains('hidden')) {
-      this.updateStatusBar();
+      if (this.role === 'solo') this.updateStatusBar();
+      else this.refreshScoreboard();
     }
     if (this.role !== 'solo' && this.network.isConnected()) {
       this.network.send({
         type: 'UPDATE_PROFILE',
+        from: this.myId,
         name: this.profile.myName,
         avatar: this.profile.myAvatar
       });
     }
   }
 
-  handleP2PMessage(data) {
+  handleP2PMessage(data, fromId) {
+    const from = data.from || fromId;
+
     switch (data.type) {
       case 'JOIN_GAME':
-        if (this.role === 'host') {
-          this.oppName = data.name || 'Jogador 2';
-          this.oppAvatar = data.avatar || '';
-          this.secretWord = this.rules.getRandomSecretWord();
-          this.currentTurnRole = 'host';
-
-          this.network.send({
-            type: 'START_MATCH',
-            hostName: this.profile.myName,
-            hostAvatar: this.profile.myAvatar,
-            secretWord: this.secretWord,
-            startingRole: 'host'
+        if (this.role === 'host' && !this.getPlayer(fromId)) {
+          this.players.push({
+            id: fromId,
+            name: data.name || `Jogador ${this.players.length + 1}`,
+            avatar: data.avatar || '',
+            score: 0
           });
+          this.broadcastLobbyUpdate();
+          this.updateHostLobbyStatus();
+          if (this.players.length >= this.maxPlayers) {
+            this.startNewRound(this.hostId);
+          }
+        }
+        break;
 
-          this.startMultiplayerMatch();
+      case 'REJOIN':
+        // Jogador reconectado ao novo host após migração: sincroniza a lista de jogadores
+        if (this.role === 'host') {
+          this.network.send({
+            type: 'PLAYERS_SYNC',
+            from: this.myId,
+            players: this.players
+          });
+        }
+        break;
+
+      case 'LOBBY_UPDATE':
+        if (this.role === 'guest' && !this.matchStarted) {
+          this.applyPlayersList(data.players);
+          if (data.maxPlayers) this.maxPlayers = data.maxPlayers;
+          this.ui.joinStatus.textContent =
+            `Na sala (${this.players.length}/${this.maxPlayers}). Aguardando ${this.getPlayerName(this.hostId)} iniciar...`;
+        }
+        break;
+
+      case 'PLAYERS_SYNC':
+        if (this.role === 'guest') {
+          this.applyPlayersList(data.players);
+          if (this.matchStarted) this.refreshScoreboard();
         }
         break;
 
       case 'START_MATCH':
         if (this.role === 'guest') {
-          this.oppName = data.hostName || 'Jogador 1';
-          this.oppAvatar = data.hostAvatar || '';
+          this.applyPlayersList(data.players);
+          if (data.maxPlayers) this.maxPlayers = data.maxPlayers;
           this.secretWord = data.secretWord;
-          this.currentTurnRole = data.startingRole;
+          this.currentTurnId = data.startingId;
+          this.roundStarterId = data.startingId;
+          this.lastWinnerId = null;
           this.startMultiplayerMatch();
         }
         break;
@@ -538,34 +728,36 @@ class TermoMultiplayerGame {
         break;
 
       case 'SUBMIT_GUESS':
-        this.handleOpponentGuess(data.guess, data.evaluation, data.nextTurnRole, data.isWin, data.winnerRole, data.row);
+        this.handleOpponentGuess(from, data.guess, data.evaluation, data.nextTurnId, data.isWin, data.row);
         break;
 
       case 'TIME_EXPIRED':
-        this.handleTimeExpiredByOpponent(data.timedOutRole, data.nextTurnRole, data.row);
+        this.handleTimeExpiredByOpponent(from, data.nextTurnId, data.row);
         break;
 
-      case 'SYNC_SCORE':
-        if (typeof data.myScore === 'number' && typeof data.oppScore === 'number') {
-          this.oppScore = data.myScore;
-          this.myScore = data.oppScore;
-          this.ui.updateScoreDisplay(this.myScore, this.oppScore);
+      case 'UPDATE_PROFILE': {
+        const p = this.getPlayer(from);
+        if (p) {
+          if (data.name) p.name = data.name;
+          if (typeof data.avatar === 'string') p.avatar = data.avatar;
         }
+        if (this.matchStarted) this.refreshScoreboard();
+        else this.updateHostLobbyStatus();
         break;
+      }
 
-      case 'UPDATE_PROFILE':
-        if (data.name) this.oppName = data.name;
-        if (typeof data.avatar === 'string') this.oppAvatar = data.avatar;
-        this.updateStatusBar();
+      case 'PLAYER_LEFT':
+        if (this.role === 'guest') this.removePlayer(data.id);
         break;
 
       case 'RESTART_MATCH':
         if (data.secretWord) {
           this.secretWord = data.secretWord;
-          this.currentTurnRole = data.startingRole || 'host';
+          this.currentTurnId = data.startingId || this.hostId;
+          this.roundStarterId = this.currentTurnId;
           this.resetBoardState();
           this.startMultiplayerMatch();
-          this.ui.showToast(`${data.senderName || this.oppName} reiniciou a partida!`);
+          this.ui.showToast(`${data.senderName || this.getPlayerName(from)} reiniciou a partida!`);
         }
         break;
 
@@ -574,19 +766,9 @@ class TermoMultiplayerGame {
         break;
 
       case 'PLAY_AGAIN_REQUEST':
-        this.ui.showToast(`${this.oppName} quer jogar novamente!`);
-        if (this.role === 'host') {
-          this.secretWord = this.rules.getRandomSecretWord();
-          this.currentTurnRole = 'host';
-          this.network.send({
-            type: 'START_MATCH',
-            hostName: this.profile.myName,
-            hostAvatar: this.profile.myAvatar,
-            secretWord: this.secretWord,
-            startingRole: 'host'
-          });
-          this.resetBoardState();
-          this.startMultiplayerMatch();
+        this.ui.showToast(`${this.getPlayerName(from)} quer jogar novamente!`);
+        if (this.role === 'host' && this.isGameOver) {
+          this.startNewRound(this.getNextRoundStarter());
         }
         break;
 
@@ -596,15 +778,142 @@ class TermoMultiplayerGame {
   }
 
   // ==========================================
+  // ENTRADA / SAÍDA DE JOGADORES E MIGRAÇÃO DE HOST
+  // ==========================================
+  /** Host: inicia uma nova rodada para todos com o jogador inicial informado. */
+  startNewRound(starterId) {
+    if (this.role !== 'host') return;
+    this.secretWord = this.rules.getRandomSecretWord();
+    this.currentTurnId = this.getPlayer(starterId) ? starterId : this.hostId;
+    this.roundStarterId = this.currentTurnId;
+    this.lastWinnerId = null;
+
+    this.network.send({
+      type: 'START_MATCH',
+      from: this.myId,
+      players: this.players,
+      maxPlayers: this.maxPlayers,
+      secretWord: this.secretWord,
+      startingId: this.currentTurnId
+    });
+
+    this.startMultiplayerMatch();
+  }
+
+  /** Quem ganhou começa a próxima rodada; sem vencedor, segue a fila a partir de quem iniciou. */
+  getNextRoundStarter() {
+    if (this.lastWinnerId && this.getPlayer(this.lastWinnerId)) return this.lastWinnerId;
+    return this.nextPlayerId(this.roundStarterId || this.hostId);
+  }
+
+  /** Host: um convidado desconectou. */
+  handlePeerLeft(peerId) {
+    if (this.role !== 'host' || !this.getPlayer(peerId)) return;
+    this.network.send({ type: 'PLAYER_LEFT', from: this.myId, id: peerId });
+    this.removePlayer(peerId);
+  }
+
+  removePlayer(id) {
+    const player = this.getPlayer(id);
+    if (!player) return;
+
+    const wasTurn = this.currentTurnId === id;
+    const next = this.nextPlayerId(id);
+    if (this.roundStarterId === id) this.roundStarterId = next;
+    if (this.lastWinnerId === id) this.lastWinnerId = null;
+    this.players = this.players.filter(p => p.id !== id);
+    this.ui.showToast(`${player.name} saiu da sala.`);
+
+    if (!this.matchStarted) {
+      if (this.role === 'host') {
+        this.broadcastLobbyUpdate();
+        this.updateHostLobbyStatus();
+      }
+      return;
+    }
+
+    if (this.players.length < 2) {
+      this.ui.showToast('Todos os oponentes saíram da sala.');
+      setTimeout(() => this.resetToLobby(), 2500);
+      return;
+    }
+
+    if (wasTurn && !this.isGameOver) {
+      this.currentTurnId = next;
+      if (!this.isRevealing) {
+        this.clearUnsubmittedRow(this.currentRow);
+        this.updateStatusBar();
+      }
+    } else {
+      this.refreshScoreboard();
+    }
+  }
+
+  /** Convidado: a conexão com o host caiu. O próximo da fila assume como host. */
+  handleHostLost(hostId) {
+    if (this.role !== 'guest') return;
+    const hostName = this.getPlayerName(hostId);
+
+    if (!this.matchStarted) {
+      this.ui.showToast('O host encerrou a sala.');
+      this.resetToLobby();
+      return;
+    }
+
+    const remaining = this.players.filter(p => p.id !== hostId);
+    if (remaining.length < 2) {
+      this.ui.showToast(`${hostName} se desconectou.`);
+      setTimeout(() => this.resetToLobby(), 2500);
+      return;
+    }
+
+    const newHostId = remaining[0].id;
+    this.removePlayer(hostId);
+
+    if (newHostId === this.myId) {
+      this.role = 'host';
+      this.network.becomeHost();
+      this.ui.showToast('Você agora é o host da sala.');
+
+      // Remove quem não conseguir se reconectar ao novo host
+      clearTimeout(this.hostMigrationTimer);
+      this.hostMigrationTimer = setTimeout(() => {
+        if (this.role !== 'host') return;
+        this.players
+          .filter(p => p.id !== this.myId && !this.network.conns.has(p.id))
+          .forEach(p => {
+            this.network.send({ type: 'PLAYER_LEFT', from: this.myId, id: p.id });
+            this.removePlayer(p.id);
+          });
+      }, 8000);
+    } else {
+      this.ui.showToast(`${this.getPlayerName(newHostId)} agora é o host.`);
+      this.network.reconnectToHost(newHostId, {
+        onConnected: () => {
+          this.network.send({
+            type: 'REJOIN',
+            from: this.myId,
+            name: this.profile.myName,
+            avatar: this.profile.myAvatar
+          });
+        },
+        onError: () => {
+          this.ui.showToast('Não foi possível reconectar à sala.');
+          setTimeout(() => this.resetToLobby(), 2000);
+        }
+      });
+    }
+  }
+
+  // ==========================================
   // FLUXO DE PARTIDAS E TURNOS
   // ==========================================
   startSoloGame() {
     this.role = 'solo';
-    this.currentTurnRole = 'solo';
-    this.myScore = 0;
-    this.oppScore = 0;
-    this.oppName = 'Computador';
-    this.oppAvatar = '';
+    this.players = [];
+    this.myId = '';
+    this.currentTurnId = '';
+    this.matchStarted = false;
     this.secretWord = this.rules.getRandomSecretWord();
 
     this.resetBoardState();
@@ -619,6 +928,7 @@ class TermoMultiplayerGame {
   }
 
   startMultiplayerMatch() {
+    this.matchStarted = true;
     this.resetBoardState();
     this.ui.lobbyScreen.classList.add('hidden');
     this.ui.boardContainer.classList.remove('hidden');
@@ -643,6 +953,22 @@ class TermoMultiplayerGame {
     this.refreshHighlight();
   }
 
+  /** Re-renderiza o placar sem reiniciar o cronômetro do turno. */
+  refreshScoreboard() {
+    if (this.role === 'solo' || !this.matchStarted) return;
+    this.ui.renderScoreboard({
+      players: this.players,
+      myId: this.myId,
+      currentTurnId: this.currentTurnId,
+      isMyTurn: this.isMyTurn(),
+      silent: true
+    });
+    if (this.players.length > 2 && !this.isGameOver) {
+      this.ui.updateTurnBar(this.currentTurnId, this.timer.timeLeft, this.timer.turnDuration);
+    }
+    this.refreshHighlight();
+  }
+
   updateStatusBar() {
     if (this.role === 'solo') {
       this.timer.hide();
@@ -652,14 +978,11 @@ class TermoMultiplayerGame {
       return;
     }
 
+    const useBar = this.players.length > 2;
     this.ui.renderScoreboard({
-      role: this.role,
-      myName: this.profile.myName,
-      myAvatar: this.profile.myAvatar,
-      oppName: this.oppName,
-      oppAvatar: this.oppAvatar,
-      myScore: this.myScore,
-      oppScore: this.oppScore,
+      players: this.players,
+      myId: this.myId,
+      currentTurnId: this.currentTurnId,
       isMyTurn: this.isMyTurn()
     });
 
@@ -668,7 +991,9 @@ class TermoMultiplayerGame {
       isGameOver: this.isGameOver,
       role: this.role,
       isMyTurnFn: () => this.isMyTurn(),
-      onTimeout: () => this.handleTurnTimeout()
+      onTimeout: () => this.handleTurnTimeout(),
+      useBar,
+      onTick: useBar ? (timeLeft, duration) => this.ui.updateTurnBar(this.currentTurnId, timeLeft, duration) : null
     });
   }
 
@@ -677,30 +1002,33 @@ class TermoMultiplayerGame {
     if (this.isGameOver || this.isRevealing || this.role === 'solo') return;
 
     if (this.isMyTurn()) {
-      const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
-      this.ui.showToast('Tempo esgotado! Vez passada para o oponente.');
+      const nextTurnId = this.nextPlayerId(this.myId);
+      this.ui.showToast(this.players.length > 2
+        ? 'Tempo esgotado! Vez passada para o próximo jogador.'
+        : 'Tempo esgotado! Vez passada para o oponente.');
       this.clearUnsubmittedRow(this.currentRow);
 
       this.network.send({
         type: 'TIME_EXPIRED',
-        timedOutRole: this.role,
-        nextTurnRole: nextTurnRole,
+        from: this.myId,
+        nextTurnId: nextTurnId,
         row: this.currentRow
       });
 
-      this.currentTurnRole = nextTurnRole;
+      this.currentTurnId = nextTurnId;
       this.updateStatusBar();
     }
   }
 
-  handleTimeExpiredByOpponent(timedOutRole, nextTurnRole, row) {
+  handleTimeExpiredByOpponent(fromId, nextTurnId, row) {
     this.timer.stop();
     if (typeof row === 'number' && row >= 0 && row < this.maxRows) {
       this.currentRow = row;
     }
     this.clearUnsubmittedRow(this.currentRow);
-    this.ui.showToast(`Tempo de ${this.oppName} esgotou! Sua vez.`);
-    this.currentTurnRole = nextTurnRole;
+    const name = this.getPlayerName(fromId);
+    this.ui.showToast(nextTurnId === this.myId ? `Tempo de ${name} esgotou! Sua vez.` : `Tempo de ${name} esgotou!`);
+    this.currentTurnId = nextTurnId;
     this.updateStatusBar();
   }
 
@@ -954,7 +1282,7 @@ class TermoMultiplayerGame {
 
     const evaluation = this.rules.evaluateGuess(guess, this.secretWord);
     const isWin = evaluation.every(s => s === 'correct');
-    const nextTurnRole = this.role === 'host' ? 'guest' : 'host';
+    const nextTurnId = this.role === 'solo' ? '' : this.nextPlayerId(this.myId);
 
     this.timer.stop();
 
@@ -963,50 +1291,35 @@ class TermoMultiplayerGame {
     this.refreshHighlight();
 
     const submittedRow = this.currentRow;
+    const sendGuess = (win) => {
+      if (this.role === 'solo') return;
+      this.network.send({
+        type: 'SUBMIT_GUESS',
+        from: this.myId,
+        guess: guess,
+        evaluation: evaluation,
+        nextTurnId: nextTurnId,
+        isWin: win,
+        row: submittedRow
+      });
+    };
+
     this.ui.animateRowReveal(submittedRow, guess, evaluation, () => {
       this.isRevealing = false;
       if (isWin) {
-        this.triggerWin(this.profile.myName, true);
-        if (this.role !== 'solo') {
-          this.network.send({
-            type: 'SUBMIT_GUESS',
-            guess: guess,
-            evaluation: evaluation,
-            nextTurnRole: nextTurnRole,
-            isWin: true,
-            winnerRole: this.role,
-            row: submittedRow
-          });
-        }
+        this.triggerWin(this.myId, true);
+        sendGuess(true);
       } else {
         this.currentRow = submittedRow + 1;
         this.currentTile = 0;
 
         if (this.currentRow >= this.maxRows) {
           this.triggerGameOverLoss();
-          if (this.role !== 'solo') {
-            this.network.send({
-              type: 'SUBMIT_GUESS',
-              guess: guess,
-              evaluation: evaluation,
-              nextTurnRole: nextTurnRole,
-              isWin: false,
-              winnerRole: null,
-              row: submittedRow
-            });
-          }
+          sendGuess(false);
         } else {
           if (this.role !== 'solo') {
-            this.currentTurnRole = nextTurnRole;
-            this.network.send({
-              type: 'SUBMIT_GUESS',
-              guess: guess,
-              evaluation: evaluation,
-              nextTurnRole: nextTurnRole,
-              isWin: false,
-              winnerRole: null,
-              row: submittedRow
-            });
+            this.currentTurnId = nextTurnId;
+            sendGuess(false);
           }
           this.updateStatusBar();
         }
@@ -1014,7 +1327,7 @@ class TermoMultiplayerGame {
     });
   }
 
-  handleOpponentGuess(guess, evaluation, nextTurnRole, isWin, winnerRole, row) {
+  handleOpponentGuess(fromId, guess, evaluation, nextTurnId, isWin, row) {
     this.timer.stop();
     this.isRevealing = true;
     this.refreshHighlight();
@@ -1035,7 +1348,7 @@ class TermoMultiplayerGame {
     this.ui.animateRowReveal(opponentRow, guess, evaluation, () => {
       this.isRevealing = false;
       if (isWin) {
-        this.triggerWin(this.oppName, false);
+        this.triggerWin(fromId, false);
       } else {
         this.currentRow = opponentRow + 1;
         this.currentTile = 0;
@@ -1043,23 +1356,26 @@ class TermoMultiplayerGame {
         if (this.currentRow >= this.maxRows) {
           this.triggerGameOverLoss();
         } else {
-          this.currentTurnRole = nextTurnRole;
+          // Se o próximo da vez saiu durante a animação, segue a fila
+          this.currentTurnId = this.getPlayer(nextTurnId) ? nextTurnId : this.nextPlayerId(fromId);
           this.updateStatusBar();
         }
       }
     });
   }
 
-  triggerWin(winnerName, isMe) {
+  triggerWin(winnerId, isMe) {
     this.timer.stop();
     this.isGameOver = true;
 
-    if (isMe) {
-      this.myScore++;
-    } else {
-      this.oppScore++;
+    const winnerName = isMe ? this.profile.myName : this.getPlayerName(winnerId);
+    if (this.role !== 'solo') {
+      const winner = this.getPlayer(winnerId);
+      if (winner) winner.score++;
+      // Quem ganhou começa a próxima rodada
+      this.lastWinnerId = winnerId;
+      this.refreshScoreboard();
     }
-    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
 
     if (window.confetti && isMe) {
       confetti({
@@ -1099,31 +1415,25 @@ class TermoMultiplayerGame {
   handlePlayAgainRequest() {
     if (this.role === 'solo') {
       this.startSoloGame();
+    } else if (this.role === 'host') {
+      if (this.isGameOver) this.startNewRound(this.getNextRoundStarter());
     } else {
-      this.network.send({ type: 'PLAY_AGAIN_REQUEST' });
-      this.ui.showToast('Pedido enviado ao oponente...');
-      if (this.role === 'host') {
-        this.secretWord = this.rules.getRandomSecretWord();
-        this.currentTurnRole = 'host';
-        this.network.send({
-          type: 'START_MATCH',
-          hostName: this.profile.myName,
-          hostAvatar: this.profile.myAvatar,
-          secretWord: this.secretWord,
-          startingRole: 'host'
-        });
-        this.resetBoardState();
-        this.startMultiplayerMatch();
-      }
+      this.network.send({ type: 'PLAY_AGAIN_REQUEST', from: this.myId });
+      this.ui.showToast('Pedido enviado ao host...');
     }
   }
 
   resetToLobby() {
     this.timer.stop();
+    clearTimeout(this.hostMigrationTimer);
     this.isGameOver = true;
-    this.myScore = 0;
-    this.oppScore = 0;
-    this.ui.updateScoreDisplay(this.myScore, this.oppScore);
+    this.matchStarted = false;
+    this.players = [];
+    this.myId = '';
+    this.currentTurnId = '';
+    this.roundStarterId = '';
+    this.lastWinnerId = null;
+    this.ui.updateScoreDisplay(0, 0);
     this.network.destroy();
 
     this.role = 'solo';
@@ -1138,6 +1448,8 @@ class TermoMultiplayerGame {
     this.ui.statusBar.classList.add('hidden');
     if (this.ui.btnHome) this.ui.btnHome.classList.add('hidden');
     this.ui.hostCodeDisplay.classList.add('hidden');
+    if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.add('hidden');
+    this.ui.showMaxPlayersPopover(false);
     this.ui.joinStatus.classList.add('hidden');
     this.ui.btnCreateRoom.disabled = false;
     this.ui.btnJoinRoom.disabled = false;

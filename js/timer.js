@@ -11,8 +11,16 @@ export class TurnTimer {
     this.timerInterval = null;
   }
 
-  start({ isGameOver, role, isMyTurnFn, onTimeout }) {
+  /**
+   * @param {object} opts
+   * @param {boolean} [opts.useBar] Quando true (mais de 2 jogadores), oculta o relógio textual
+   *   e informa o tempo restante via onTick para a barra de progresso do badge.
+   * @param {(timeLeft: number, duration: number) => void} [opts.onTick]
+   */
+  start({ isGameOver, role, isMyTurnFn, onTimeout, useBar = false, onTick = null }) {
     this.stop();
+    this.useBar = useBar;
+    this.onTick = onTick;
     if (isGameOver || role === 'solo') {
       if (this.turnTimerElement) this.turnTimerElement.classList.add('hidden');
       return;
@@ -22,7 +30,7 @@ export class TurnTimer {
     this.updateDisplay(isMyTurnFn());
 
     if (this.turnTimerElement) {
-      this.turnTimerElement.classList.remove('hidden');
+      this.turnTimerElement.classList.toggle('hidden', useBar);
     }
 
     this.timerInterval = setInterval(() => {
@@ -55,7 +63,8 @@ export class TurnTimer {
   }
 
   updateDisplay(myTurn) {
-    if (!this.turnTimerElement) return;
+    if (this.onTick) this.onTick(this.timeLeft, this.turnDuration);
+    if (!this.turnTimerElement || this.useBar) return;
 
     const minutes = Math.floor(this.timeLeft / 60);
     const seconds = this.timeLeft % 60;

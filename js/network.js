@@ -1,21 +1,44 @@
 /**
  * Módulo de Rede P2P (WebRTC / PeerJS)
  * Responsável exclusivamente por criar salas (privadas e públicas), listar salas públicas abertas, conectar pares e enviar/receber pacotes WebRTC.
+ *
+ * Topologia em estrela: o host mantém uma conexão com cada convidado e retransmite
+ * as mensagens dos convidados para os demais. Se o host sair, um convidado pode
+ * assumir o papel de host (becomeHost) e os outros se reconectam a ele (reconnectToHost).
  */
 
 const PUBLIC_SLOT_PREFIX = 'termo-duelo-public-';
 const MAX_PUBLIC_SLOTS = 10;
 
 export class P2PNetwork {
-  constructor({ onMessage, onDisconnect }) {
+  /**
+   * @param {object} opts
+   * @param {(data: object, fromId: string) => void} opts.onMessage
+   * @param {(peerId: string) => void} opts.onPeerLeft      Host: um convidado desconectou
+   * @param {(hostId: string) => void} opts.onHostLost       Convidado: conexão com o host caiu
+   * @param {() => void} opts.onJoinRejected                 Convidado: host recusou (sala cheia/em jogo)
+   * @param {(data: object, peerId: string) => boolean} opts.acceptJoin  Host: aceita JOIN_GAME / REJOIN?
+   * @param {() => object} opts.getRoomInfo                  Host: dados para listagem pública
+   */
+  constructor({ onMessage, onPeerLeft, onHostLost, onJoinRejected, acceptJoin, getRoomInfo }) {
     this.peer = null;
-    this.peerConn = null;
+    this.isHost = false;
+    this.conns = new Map(); // Host: peerId -> DataConnection
+    this.hostConn = null;   // Convidado: conexão com o host
     this.scannerPeer = null;
     this.roomCode = '';
     this.publicSlotId = '';
     this.isPublicRoom = false;
     this.onMessage = onMessage;
-    this.onDisconnect = onDisconnect;
+    this.onPeerLeft = onPeerLeft;
+    this.onHostLost = onHostLost;
+    this.onJoinRejected = onJoinRejected;
+    this.acceptJoin = acceptJoin;
+    this.getRoomInfo = getRoomInfo;
+  }
+
+  get myId() {
+    return this.peer ? this.peer.id : '';
   }
 
   getIceServers() {
@@ -33,17 +56,26 @@ export class P2PNetwork {
   }
 
   isConnected() {
-    return Boolean(this.peerConn && this.peerConn.open);
+    if (this.isHost) {
+      for (const conn of this.conns.values()) {
+        if (conn.open) return true;
+      }
+      return false;
+    }
+    return Boolean(this.hostConn && this.hostConn.open);
   }
 
+  // ==========================================
+  // HOST
+  // ==========================================
   createRoom({ onOpen, onError }) {
     const code = String(Math.floor(100000 + Math.random() * 900000));
+    this.destroy();
     this.roomCode = code;
     this.publicSlotId = '';
     this.isPublicRoom = false;
+    this.isHost = true;
     const peerId = `termo-room-${code}`;
-
-    this.destroy();
 
     try {
       this.peer = new Peer(peerId, {
@@ -54,10 +86,7 @@ export class P2PNetwork {
         if (onOpen) onOpen(code, id);
       });
 
-      this.peer.on('connection', (conn) => {
-        this.peerConn = conn;
-        this.setupConnectionListeners(conn);
-      });
+      this.peer.on('connection', (conn) => this.setupIncomingConnection(conn));
 
       this.peer.on('error', (err) => {
         console.error('Peer error:', err);
@@ -70,10 +99,11 @@ export class P2PNetwork {
     return code;
   }
 
-  createPublicRoom({ getHostProfile, onOpen, onError }) {
+  createPublicRoom({ onOpen, onError }) {
     this.destroy();
     this.roomCode = '';
     this.isPublicRoom = true;
+    this.isHost = true;
 
     const trySlot = (slotIndex) => {
       if (slotIndex > MAX_PUBLIC_SLOTS) {
@@ -96,9 +126,7 @@ export class P2PNetwork {
           if (onOpen) onOpen(id);
         });
 
-        candidatePeer.on('connection', (conn) => {
-          this.setupPublicHostConnection(conn, getHostProfile);
-        });
+        candidatePeer.on('connection', (conn) => this.setupIncomingConnection(conn));
 
         candidatePeer.on('error', (err) => {
           if (!opened && err && err.type === 'unavailable-id') {
@@ -117,19 +145,22 @@ export class P2PNetwork {
     trySlot(1);
   }
 
-  setupPublicHostConnection(conn, getHostProfile) {
+  /** Conexões recebidas (host original ou convidado promovido a host). */
+  setupIncomingConnection(conn) {
     conn.on('data', (data) => {
       if (!data || typeof data !== 'object') return;
 
       // Consulta de listagem de salas públicas abertas
       if (data.type === 'QUERY_ROOM_INFO') {
-        if (!this.isConnected()) {
-          const profile = getHostProfile ? getHostProfile() : { name: 'Jogador 1', avatar: '' };
+        const info = this.getRoomInfo ? this.getRoomInfo() : null;
+        if (this.isHost && info && info.joinable) {
           conn.send({
             type: 'PUBLIC_ROOM_INFO',
             slotId: this.publicSlotId,
-            hostName: profile.name || 'Jogador 1',
-            hostAvatar: profile.avatar || ''
+            hostName: info.hostName || 'Jogador 1',
+            hostAvatar: info.hostAvatar || '',
+            count: info.count || 1,
+            max: info.max || 2
           });
         } else {
           conn.send({ type: 'ROOM_BUSY' });
@@ -137,9 +168,10 @@ export class P2PNetwork {
         return;
       }
 
-      // Jogador entrando efetivamente na sala pública para jogar
-      if (data.type === 'JOIN_GAME') {
-        if (this.peerConn && this.peerConn.open && this.peerConn !== conn) {
+      // Jogador entrando (ou reconectando após migração de host)
+      if (data.type === 'JOIN_GAME' || data.type === 'REJOIN') {
+        const accepted = this.isHost && this.acceptJoin && this.acceptJoin(data, conn.peer);
+        if (!accepted) {
           conn.send({ type: 'ROOM_BUSY' });
           setTimeout(() => {
             try { conn.close(); } catch (e) {}
@@ -147,27 +179,50 @@ export class P2PNetwork {
           return;
         }
 
-        this.peerConn = conn;
+        this.conns.set(conn.peer, conn);
         conn.on('close', () => {
-          if (this.peerConn === conn && this.onDisconnect) {
-            this.onDisconnect();
+          if (this.conns.get(conn.peer) === conn) {
+            this.conns.delete(conn.peer);
+            if (this.onPeerLeft) this.onPeerLeft(conn.peer);
           }
         });
         conn.on('error', (err) => {
           console.warn('P2P Conn error:', err);
         });
 
-        if (this.onMessage) this.onMessage(data);
+        if (this.onMessage) this.onMessage(data, conn.peer);
         return;
       }
 
-      // Demais mensagens da partida vindas do oponente conectado
-      if (this.peerConn === conn && this.onMessage) {
-        this.onMessage(data);
+      // Demais mensagens da partida: retransmite aos outros convidados e processa localmente
+      if (this.conns.get(conn.peer) === conn) {
+        const stamped = { ...data, from: conn.peer };
+        this.broadcast(stamped, conn.peer);
+        if (this.onMessage) this.onMessage(stamped, conn.peer);
       }
     });
   }
 
+  /** Convidado assume o papel de host após a saída do host original. */
+  becomeHost() {
+    this.isHost = true;
+    this.hostConn = null;
+    this.roomCode = '';
+    this.publicSlotId = '';
+    this.isPublicRoom = false;
+  }
+
+  removePeer(peerId) {
+    const conn = this.conns.get(peerId);
+    this.conns.delete(peerId);
+    if (conn) {
+      try { conn.close(); } catch (e) {}
+    }
+  }
+
+  // ==========================================
+  // LISTAGEM DE SALAS PÚBLICAS
+  // ==========================================
   scanPublicRooms({ onRoomFound, onComplete }) {
     this.destroyScanner();
 
@@ -219,7 +274,9 @@ export class P2PNetwork {
               const roomInfo = {
                 slotId: data.slotId,
                 hostName: data.hostName || 'Jogador',
-                hostAvatar: data.hostAvatar || ''
+                hostAvatar: data.hostAvatar || '',
+                count: data.count || 1,
+                max: data.max || 2
               };
               foundRooms.push(roomInfo);
               if (!finished && onRoomFound) {
@@ -250,6 +307,9 @@ export class P2PNetwork {
     }
   }
 
+  // ==========================================
+  // CONVIDADO
+  // ==========================================
   joinRoom(code, { onConnected, onError }) {
     const targetPeerId = `termo-room-${code}`;
     this.connectToTargetPeer(targetPeerId, { onConnected, onError });
@@ -261,6 +321,7 @@ export class P2PNetwork {
 
   connectToTargetPeer(targetPeerId, { onConnected, onError }) {
     this.destroy();
+    this.isHost = false;
 
     try {
       this.peer = new Peer({
@@ -268,14 +329,11 @@ export class P2PNetwork {
       });
 
       this.peer.on('open', () => {
-        const conn = this.peer.connect(targetPeerId, { reliable: true });
-        this.peerConn = conn;
-        this.setupConnectionListeners(conn);
-
-        conn.on('open', () => {
-          if (onConnected) onConnected();
-        });
+        this.openHostConnection(targetPeerId, { onConnected });
       });
+
+      // Permite receber conexões caso este convidado seja promovido a host
+      this.peer.on('connection', (conn) => this.setupIncomingConnection(conn));
 
       this.peer.on('error', (err) => {
         console.error('Guest peer error:', err);
@@ -286,17 +344,53 @@ export class P2PNetwork {
     }
   }
 
-  setupConnectionListeners(conn) {
+  /** Reconecta a um novo host usando o mesmo Peer (migração de host). */
+  reconnectToHost(newHostId, { onConnected, onError }) {
+    if (!this.peer || this.peer.destroyed) {
+      if (onError) onError(new Error('Peer indisponível'));
+      return;
+    }
+    this.isHost = false;
+    let done = false;
+    const timeoutId = setTimeout(() => {
+      if (!done && onError) onError(new Error('Tempo esgotado ao reconectar'));
+      done = true;
+    }, 8000);
+
+    this.openHostConnection(newHostId, {
+      onConnected: () => {
+        if (done) return;
+        done = true;
+        clearTimeout(timeoutId);
+        if (onConnected) onConnected();
+      }
+    });
+  }
+
+  openHostConnection(targetPeerId, { onConnected }) {
+    const conn = this.peer.connect(targetPeerId, { reliable: true });
+    this.hostConn = conn;
+
+    conn.on('open', () => {
+      if (onConnected) onConnected();
+    });
+
     conn.on('data', (data) => {
-      if (data && data.type === 'ROOM_BUSY') {
+      if (!data || typeof data !== 'object') return;
+      if (data.type === 'ROOM_BUSY') {
+        if (this.hostConn === conn) this.hostConn = null;
         try { conn.close(); } catch (e) {}
+        if (this.onJoinRejected) this.onJoinRejected();
         return;
       }
-      if (this.onMessage) this.onMessage(data);
+      if (this.onMessage) this.onMessage(data, data.from || conn.peer);
     });
 
     conn.on('close', () => {
-      if (this.onDisconnect) this.onDisconnect();
+      if (this.hostConn === conn) {
+        this.hostConn = null;
+        if (this.onHostLost) this.onHostLost(conn.peer);
+      }
     });
 
     conn.on('error', (err) => {
@@ -304,9 +398,23 @@ export class P2PNetwork {
     });
   }
 
+  // ==========================================
+  // ENVIO
+  // ==========================================
+  /** Host: envia a todos os convidados. Convidado: envia ao host (que retransmite). */
   send(data) {
-    if (this.peerConn && this.peerConn.open) {
-      this.peerConn.send(data);
+    if (this.isHost) {
+      this.broadcast(data);
+    } else if (this.hostConn && this.hostConn.open) {
+      this.hostConn.send(data);
+    }
+  }
+
+  broadcast(data, exceptId = null) {
+    for (const [peerId, conn] of this.conns) {
+      if (peerId !== exceptId && conn.open) {
+        conn.send(data);
+      }
     }
   }
 
@@ -319,13 +427,23 @@ export class P2PNetwork {
 
   destroy() {
     this.destroyScanner();
-    if (this.peerConn) {
-      try { this.peerConn.close(); } catch (e) {}
-    }
-    if (this.peer) {
-      try { this.peer.destroy(); } catch (e) {}
-    }
-    this.peerConn = null;
+    const hostConn = this.hostConn;
+    const conns = Array.from(this.conns.values());
+    const peer = this.peer;
+    // Zera referências antes de fechar para não disparar callbacks de desconexão
+    this.hostConn = null;
+    this.conns = new Map();
     this.peer = null;
+    this.isHost = false;
+
+    if (hostConn) {
+      try { hostConn.close(); } catch (e) {}
+    }
+    conns.forEach((conn) => {
+      try { conn.close(); } catch (e) {}
+    });
+    if (peer) {
+      try { peer.destroy(); } catch (e) {}
+    }
   }
 }

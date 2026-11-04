@@ -53,6 +53,12 @@ export class BoardUI {
     this.roomCodeVal = document.getElementById('room-code-val');
     this.btnCopyCode = document.getElementById('btn-copy-code');
     this.hostStatus = document.getElementById('host-status');
+    this.btnStartMatch = document.getElementById('btn-start-match');
+    this.btnMaxPlayers = document.getElementById('btn-max-players');
+    this.maxPlayersVal = document.getElementById('max-players-val');
+    this.maxPlayersPopover = document.getElementById('max-players-popover');
+    this.matchScoreboard = document.querySelector('.match-scoreboard');
+    this.multiScoreboard = document.getElementById('multi-scoreboard');
 
     this.inputRoomCode = document.getElementById('input-room-code');
     this.btnJoinRoom = document.getElementById('btn-join-room');
@@ -254,41 +260,138 @@ export class BoardUI {
     if (this.p2ScoreElement) this.p2ScoreElement.textContent = oppScore;
   }
 
-  renderScoreboard({ role, myName, myAvatar, oppName, oppAvatar, myScore, oppScore, isMyTurn }) {
+  /**
+   * Renderiza o placar conforme a quantidade de jogadores:
+   * - 2 jogadores: placar clássico (foto, nome e "X × Y" ao centro, com relógio)
+   * - 3 jogadores: badges compactos numa única linha
+   * - 4 jogadores: badges compactos em grade 2x2
+   * Em 3+ jogadores o tempo de turno é exibido como barra de progresso no badge.
+   */
+  renderScoreboard({ players, myId, currentTurnId, isMyTurn, silent = false }) {
     this.statusBar.classList.remove('hidden');
-    this.updateScoreDisplay(myScore, oppScore);
+    const hostId = players.length ? players[0].id : '';
+    const isMulti = players.length > 2;
 
-    if (this.p1Badge) {
-      const p1Label = role === 'host' ? `${myName} (Host)` : myName;
-      const p1NameEl = this.p1Badge.querySelector('.p-name');
-      if (p1NameEl) p1NameEl.textContent = p1Label;
-      ProfileManager.renderAvatarElement(this.p1AvatarImg, this.p1AvatarPh, myAvatar);
+    if (this.matchScoreboard) this.matchScoreboard.classList.toggle('hidden', isMulti);
+    if (this.multiScoreboard) this.multiScoreboard.classList.toggle('hidden', !isMulti);
+
+    if (isMulti) {
+      this.renderMultiScoreboard({ players, myId, hostId, currentTurnId });
+    } else {
+      const me = players.find(p => p.id === myId) || { name: 'Você', avatar: '', score: 0 };
+      const opp = players.find(p => p.id !== myId) || { name: 'Oponente', avatar: '', score: 0, id: '' };
+      this.updateScoreDisplay(me.score, opp.score);
+
+      if (this.p1Badge) {
+        const p1Label = myId === hostId ? `${me.name} (Host)` : me.name;
+        const p1NameEl = this.p1Badge.querySelector('.p-name');
+        if (p1NameEl) p1NameEl.textContent = p1Label;
+        ProfileManager.renderAvatarElement(this.p1AvatarImg, this.p1AvatarPh, me.avatar);
+      }
+
+      this.p2Badge.classList.remove('hidden');
+      if (this.p1ScoreElement) this.p1ScoreElement.classList.remove('hidden');
+      if (this.p2ScoreElement) this.p2ScoreElement.classList.remove('hidden');
+      if (this.scoreVsElement) this.scoreVsElement.classList.remove('hidden');
+
+      const p2Label = opp.id === hostId ? `${opp.name} (Host)` : opp.name;
+      const p2NameEl = this.p2Badge.querySelector('.p-name');
+      if (p2NameEl) p2NameEl.textContent = p2Label;
+      ProfileManager.renderAvatarElement(this.p2AvatarImg, this.p2AvatarPh, opp.avatar);
+
+      if (isMyTurn) {
+        this.p1Badge.classList.remove('opponent-turn');
+        this.p1Badge.classList.add('my-turn');
+        this.p2Badge.classList.remove('my-turn', 'opponent-turn');
+      } else {
+        this.p1Badge.classList.remove('my-turn', 'opponent-turn');
+        this.p2Badge.classList.remove('my-turn');
+        this.p2Badge.classList.add('opponent-turn');
+      }
     }
 
-    this.p2Badge.classList.remove('hidden');
-    if (this.p1ScoreElement) this.p1ScoreElement.classList.remove('hidden');
-    if (this.p2ScoreElement) this.p2ScoreElement.classList.remove('hidden');
-    if (this.scoreVsElement) this.scoreVsElement.classList.remove('hidden');
-
-    const p2Label = role === 'host' ? oppName : `${oppName} (Host)`;
-    const p2NameEl = this.p2Badge.querySelector('.p-name');
-    if (p2NameEl) p2NameEl.textContent = p2Label;
-    ProfileManager.renderAvatarElement(this.p2AvatarImg, this.p2AvatarPh, oppAvatar);
-
+    if (this.turnIndicator) this.turnIndicator.textContent = '';
     if (isMyTurn) {
-      if (this.turnIndicator) this.turnIndicator.textContent = '';
-      this.p1Badge.classList.remove('opponent-turn');
-      this.p1Badge.classList.add('my-turn');
-      this.p2Badge.classList.remove('my-turn', 'opponent-turn');
       this.keyboardElement.classList.remove('locked');
-      this.showToast('Sua vez de jogar');
+      if (!silent) this.showToast('Sua vez de jogar');
     } else {
-      if (this.turnIndicator) this.turnIndicator.textContent = '';
-      this.p1Badge.classList.remove('my-turn', 'opponent-turn');
-      this.p2Badge.classList.remove('my-turn');
-      this.p2Badge.classList.add('opponent-turn');
       this.keyboardElement.classList.add('locked');
     }
+  }
+
+  renderMultiScoreboard({ players, myId, hostId, currentTurnId }) {
+    if (!this.multiScoreboard) return;
+    this.multiScoreboard.classList.toggle('grid-2x2', players.length >= 4);
+    this.multiScoreboard.innerHTML = '';
+
+    players.forEach((p) => {
+      const badge = document.createElement('div');
+      badge.className = 'multi-badge';
+      badge.dataset.id = p.id;
+      if (p.id === currentTurnId) badge.classList.add(p.id === myId ? 'my-turn' : 'opponent-turn');
+      if (p.id === myId) badge.classList.add('is-me');
+
+      const bar = document.createElement('div');
+      bar.className = 'multi-badge-bar';
+      badge.appendChild(bar);
+
+      const avatar = document.createElement('div');
+      avatar.className = 'multi-badge-avatar';
+      if (p.avatar && p.avatar.startsWith('data:image')) {
+        const img = document.createElement('img');
+        img.src = p.avatar;
+        img.alt = p.name;
+        avatar.appendChild(img);
+      } else {
+        avatar.innerHTML = `
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>`;
+      }
+
+      const name = document.createElement('span');
+      name.className = 'multi-badge-name';
+      name.textContent = p.id === myId ? 'Você' : p.name;
+      if (p.id === hostId) name.title = `${p.name} (Host)`;
+
+      const score = document.createElement('span');
+      score.className = 'multi-badge-score';
+      score.textContent = p.score;
+
+      badge.appendChild(avatar);
+      badge.appendChild(name);
+      badge.appendChild(score);
+      this.multiScoreboard.appendChild(badge);
+    });
+  }
+
+  /** Atualiza a barra de tempo do jogador da vez (placar 3+ jogadores). */
+  updateTurnBar(currentTurnId, timeLeft, duration) {
+    if (!this.multiScoreboard) return;
+    const ratio = duration > 0 ? Math.max(0, Math.min(1, timeLeft / duration)) : 0;
+    this.multiScoreboard.querySelectorAll('.multi-badge').forEach((badge) => {
+      const bar = badge.querySelector('.multi-badge-bar');
+      if (!bar) return;
+      const isActive = badge.dataset.id === currentTurnId;
+      bar.style.width = isActive ? `${ratio * 100}%` : '0%';
+      badge.classList.toggle('warning', isActive && timeLeft <= 30);
+    });
+  }
+
+  updateMaxPlayersUI(value) {
+    if (this.maxPlayersVal) this.maxPlayersVal.textContent = value;
+    if (this.maxPlayersPopover) {
+      this.maxPlayersPopover.querySelectorAll('.max-players-option').forEach((opt) => {
+        opt.classList.toggle('selected', Number(opt.dataset.value) === value);
+      });
+    }
+  }
+
+  showMaxPlayersPopover(show) {
+    if (!this.maxPlayersPopover) return;
+    this.maxPlayersPopover.classList.toggle('hidden', !show);
+    if (this.btnMaxPlayers) this.btnMaxPlayers.setAttribute('aria-expanded', show ? 'true' : 'false');
   }
 
   showHelpModal(show) {
@@ -405,7 +508,7 @@ export class BoardUI {
       nameSpan.textContent = `Sala de ${room.hostName}`;
       const subSpan = document.createElement('span');
       subSpan.className = 'public-room-sub';
-      subSpan.textContent = 'Aberta • Aguardando oponente';
+      subSpan.textContent = `Aberta • ${room.count || 1}/${room.max || 2} jogadores`;
       infoDiv.appendChild(nameSpan);
       infoDiv.appendChild(subSpan);
 

@@ -182,3 +182,113 @@
   color: #ff3b30 !important;
 }
 
+
+/* ========================================================
+   PLACAR COMPACTO (3 OU 4 JOGADORES)
+   Badges finos [foto, nome, placar] com barra de tempo interna
+   ======================================================== */
+
+.multi-scoreboard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.multi-scoreboard.grid-2x2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.multi-scoreboard.hidden {
+  display: none;
+}
+
+.multi-badge {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 4px 8px 4px 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+/* Barra de tempo do turno (preenche o fundo do badge e vai reduzindo) */
+.multi-badge-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.07);
+  transition: width 1s linear, background 0.25s ease;
+  pointer-events: none;
+}
+
+.multi-badge.my-turn {
+  border-color: rgba(0, 255, 136, 0.45);
+}
+
+.multi-badge.my-turn .multi-badge-bar {
+  background: rgba(0, 255, 136, 0.14);
+}
+
+.multi-badge.opponent-turn {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.multi-badge.warning .multi-badge-bar {
+  background: rgba(255, 59, 48, 0.2);
+}
+
+.multi-badge-avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.multi-badge-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.multi-badge-name {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.multi-badge.my-turn .multi-badge-name,
+.multi-badge.opponent-turn .multi-badge-name {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.multi-badge-score {
+  position: relative;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+  line-height: 1;
+}
