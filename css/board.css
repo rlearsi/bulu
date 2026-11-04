@@ -206,3 +206,12 @@
   }
 }
 
+
+/* DICAS NA LINHA ATUAL: letra descartada / presente na mesma posição */
+.tile.hint-absent {
+  color: #e8707a;
+}
+
+.tile.hint-present {
+  color: var(--color-present);
+}

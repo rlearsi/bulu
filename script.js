@@ -711,7 +711,7 @@ class TermoMultiplayerGame {
       const tile = this.ui.getTileElement(row, c);
       if (tile && !tile.classList.contains('flip')) {
         tile.textContent = '';
-        tile.classList.remove('filled', 'opponent-typing', 'active-cursor');
+        tile.classList.remove('filled', 'opponent-typing', 'active-cursor', 'hint-absent', 'hint-present');
       }
     }
     this.currentTile = 0;
@@ -824,8 +824,10 @@ class TermoMultiplayerGame {
     const tileEl = this.ui.getTileElement(this.currentRow, col);
     if (tileEl) {
       tileEl.textContent = letter;
-      tileEl.classList.remove('opponent-typing');
+      tileEl.classList.remove('opponent-typing', 'hint-absent', 'hint-present');
       tileEl.classList.add('filled');
+      const hint = this.getLetterHint(letter, col);
+      if (hint) tileEl.classList.add(hint);
     }
 
     if (this.currentTile < this.wordLength - 1) {
@@ -846,6 +848,29 @@ class TermoMultiplayerGame {
     }
   }
 
+  // Dica visual: letra já descartada (vermelho) ou já vista como "presente" nesta mesma posição (amarelo)
+  getLetterHint(letter, col) {
+    if (this.role !== 'solo') return null;
+    let seenAbsent = false;
+    let seenInWord = false;
+    let presentHere = false;
+    for (let r = 0; r < this.currentRow; r++) {
+      for (let c = 0; c < this.wordLength; c++) {
+        const t = this.ui.getTileElement(r, c);
+        if (!t || t.textContent !== letter) continue;
+        if (t.classList.contains('absent')) seenAbsent = true;
+        else if (t.classList.contains('correct')) seenInWord = true;
+        else if (t.classList.contains('present')) {
+          seenInWord = true;
+          if (c === col) presentHere = true;
+        }
+      }
+    }
+    if (presentHere) return 'hint-present';
+    if (seenAbsent && !seenInWord) return 'hint-absent';
+    return null;
+  }
+
   deleteLetter() {
     if (this.isRevealing || this.currentRow >= this.maxRows) return;
 
@@ -864,7 +889,7 @@ class TermoMultiplayerGame {
     const tileEl = this.ui.getTileElement(this.currentRow, col);
     if (tileEl) {
       tileEl.textContent = '';
-      tileEl.classList.remove('filled', 'opponent-typing');
+      tileEl.classList.remove('filled', 'opponent-typing', 'hint-absent', 'hint-present');
     }
     this.refreshHighlight();
 

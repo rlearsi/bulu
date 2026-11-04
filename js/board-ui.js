@@ -197,7 +197,7 @@ export class BoardUI {
       const letter = guess[c];
 
       setTimeout(() => {
-        tile.classList.remove('opponent-typing');
+        tile.classList.remove('opponent-typing', 'hint-absent', 'hint-present');
         tile.classList.add('flip');
 
         // Na metade da rotação (90 graus) troca a cor do bloco
