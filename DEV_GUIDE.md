@@ -1,0 +1,188 @@
+# Guia do Desenvolvedor — Termo Duelo (Multiplayer P2P)
+
+Este guia documenta a arquitetura do projeto e mostra exatamente **quais arquivos e linhas alterar** para customizar regras, tempos, limites de jogadores, banco de palavras e interface.
+
+---
+
+## 1. Visão Geral da Arquitetura
+
+O projeto utiliza **JavaScript ES Modules puro** (sem dependências de runtime além do PeerJS e canvas-confetti carregados no `index.html`) e CSS modularizado:
+
+| Arquivo | Responsabilidade |
+| :--- | :--- |
+| `index.html` | Estrutura DOM do lobby, placar, tabuleiro, teclado, chat e modais |
+| `script.js` | Orquestrador principal (`TermoMultiplayerGame`): estado da partida, fila de turnos e eventos P2P |
+| `words.js` | Banco de palavras válidas (`validGuesses`) e lista de palavras sorteadas (`secretWords`) |
+| `js/network.js` | Camada WebRTC/PeerJS (`P2PNetwork`): topologia em estrela (host hub), salas públicas/privadas e reconexão |
+| `js/timer.js` | Cronômetro regressivo de turno (`TurnTimer`) |
+| `js/board-ui.js` | Renderização e animações do tabuleiro, teclado e placar (2 jogadores e 3–4 jogadores) |
+| `js/game-rules.js` | Validação de palavras, normalização de acentos e cálculo de cores (`correct`, `present`, `absent`) |
+| `js/chat.js` | Chat em overlay com suporte a texto e mensagens de voz (WebM/Opus em Base64) |
+| `js/profile.js` | Gerenciamento de nome e avatar (compressão em canvas e persistência no `localStorage`) |
+| `js/audio.js` | Efeitos sonoros sintetizados via Web Audio API |
+| `css/*.css` | Estilos separados por componente (`lobby.css`, `scoreboard.css`, `board.css`, `keyboard.css`, `chat.css`, `modals.css`) |
+
+---
+
+## 2. Receitas de Manutenção (Onde Alterar Cada Mecânica)
+
+### 2.1. Alterar o Tempo por Jogada (Cronômetro de Turno)
+
+Para mudar a duração do turno (atualmente **60 segundos / 1 minuto**) e o tempo de alerta vermelho (atualmente **15 segundos**):
+
+1. **`script.js`** (no construtor de `TermoMultiplayerGame`):
+   ```js
+   // Passe o novo tempo em segundos (ex.: 90 para 1m30s)
+   this.timer = new TurnTimer(this.ui.turnTimerElement, 60);
+   ```
+2. **`js/timer.js`**:
+   - Valor padrão do construtor: `constructor(turnTimerElement, turnDuration = 60)`
+   - Alerta vermelho do relógio (modo 2 jogadores) em `updateDisplay()`:
+     ```js
+     if (this.timeLeft <= 15) {
+       this.turnTimerElement.classList.add('warning');
+     }
+     ```
+3. **`js/board-ui.js`**:
+   - Alerta vermelho da barra de progresso (modo 3 ou 4 jogadores) em `updateTurnBar()`:
+     ```js
+     badge.classList.toggle('warning', isActive && timeLeft <= 15);
+     ```
+4. **`index.html`**:
+   - Texto inicial do elemento `#turn-timer` (`01:00`) e texto explicativo dentro do `#help-modal`.
+
+---
+
+### 2.2. Alterar o Limite de Jogadores na Sala
+
+O jogo suporta salas de **2 a 4 jogadores** na interface atual (topologia em estrela onde o Host retransmite os pacotes). Para alterar o limite máximo ou o valor padrão ao abrir o lobby:
+
+1. **`script.js`**:
+   - No construtor:
+     ```js
+     this.maxPlayers = 2; // Valor inicial selecionado ao abrir o lobby
+     ```
+   - No método `setMaxPlayers(value)`:
+     ```js
+     // Altere o limite superior (4) caso adicione mais opções
+     const v = Math.max(2, Math.min(4, Number(value) || 2));
+     ```
+2. **`index.html`**:
+   - Adicione ou remova botões `.max-players-option` dentro de `#max-players-popover`:
+     ```html
+     <button type="button" class="max-players-option" data-value="5" role="menuitemradio">5</button>
+     ```
+3. **`js/board-ui.js` e `css/scoreboard.css`**:
+   - Em `renderScoreboard()`, partidas com `players.length === 2` usam `.match-scoreboard` (placar clássico `0 × 0`) e partidas com `players.length > 2` usam `#multi-scoreboard` (badges finos com barra de progresso interna).
+   - Em `renderMultiScoreboard()`, a classe `.grid-2x2` organiza 4 jogadores em 2 colunas (`grid-template-columns: repeat(2, minmax(0, 1fr))`).
+
+---
+
+### 2.3. Alterar o Padrão do Cadeado (Sala Privada vs. Sala Pública)
+
+Por padrão, o cadeado inicia **trancado** (Sala Privada com código de 6 dígitos):
+
+1. **`script.js`** (no construtor):
+   ```js
+   this.isRoomLocked = true; // true = Sala Privada (padrão), false = Sala Pública
+   ```
+2. **`index.html`**:
+   - O método `this.ui.updateRoomLockUI(this.isRoomLocked)` chamado em `initEvents()` sincroniza automaticamente o texto do botão, a descrição e o ícone do cadeado ao carregar a página.
+
+---
+
+### 2.4. Alterar a Ordem da Fila de Turnos e Quem Começa a Próxima Rodada
+
+A fila de jogadores segue a ordem do array `this.players` em `script.js` (`this.players[0]` é sempre o Host atual):
+
+- **Passar a vez para o próximo da fila:** método `nextPlayerId(afterId)` em `script.js`:
+  ```js
+  nextPlayerId(afterId) {
+    if (this.players.length === 0) return '';
+    const idx = this.players.findIndex(p => p.id === afterId);
+    if (idx === -1) return this.players[0].id;
+    return this.players[(idx + 1) % this.players.length].id;
+  }
+  ```
+- **Definir quem inicia a próxima rodada:** método `getNextRoundStarter()` em `script.js`:
+  - Atualmente, se alguém venceu a rodada (`this.lastWinnerId`), **quem ganhou começa a próxima partida**, e depois dele segue a ordem normal da fila (`nextPlayerId`).
+  - Se houve empate (ninguém acertou as 6 tentativas), começa o jogador seguinte a quem iniciou a rodada anterior (`this.nextPlayerId(this.roundStarterId)`).
+
+---
+
+### 2.5. Migração de Host e Tempo de Tolerância
+
+Se o Host desconectar durante a partida (`handleHostLost(hostId)` em `script.js`):
+
+1. O **segundo da fila** (`remaining[0].id`) assume automaticamente o papel de Host (`this.network.becomeHost()`).
+2. Os demais convidados executam `this.network.reconnectToHost(newHostId)` e enviam o pacote `REJOIN`.
+3. O timeout de reconexão é de **8000 ms (8 segundos)** tanto em `script.js` (`this.hostMigrationTimer`) quanto em `js/network.js` (`reconnectToHost`). Para ajustar a tolerância em redes móveis lentas, altere esse valor nos dois pontos.
+
+---
+
+### 2.6. Alterar Número de Tentativas ou Tamanho da Palavra
+
+1. **`script.js`** (no construtor):
+   ```js
+   this.maxRows = 6;    // Número máximo de tentativas (linhas)
+   this.wordLength = 5; // Quantidade de letras por palavra (colunas)
+   ```
+2. **`css/board.css`**:
+   - Ajuste o grid das linhas (`.row`) caso mude `wordLength` de 5 para outro valor.
+3. **`words.js`**:
+   - Certifique-se de que as palavras em `wordsData` possuam o mesmo comprimento definido em `this.wordLength`.
+
+---
+
+### 2.7. Adicionar ou Remover Palavras do Banco (`words.js`)
+
+Abra `words.js`:
+- Para adicionar palavras que podem ser **sorteadas como resposta** e também aceitas como chute, insira na lista principal exportada em `wordsData`.
+- As palavras podem conter acentos ou `ç` para exibição correta quando aplicável; o módulo `js/game-rules.js` normaliza automaticamente para letras de `A-Z` sem acento durante a validação e comparação.
+
+---
+
+### 2.8. Alterar o Número de Vagas de Salas Públicas
+
+Em `js/network.js`:
+```js
+const PUBLIC_SLOT_PREFIX = 'termo-duelo-public-';
+const MAX_PUBLIC_SLOTS = 10; // Quantidade de canais públicos verificados pelo scanner
+```
+Aumentar `MAX_PUBLIC_SLOTS` permite mais salas públicas simultâneas, mas aumenta o número de conexões de sondagem feitas em `scanPublicRooms()`.
+
+---
+
+## 3. Protocolo de Mensagens WebRTC (`handleP2PMessage`)
+
+Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um pacote ao Host, o Host adiciona `from: peerId` e retransmite (`broadcast`) para os demais convidados:
+
+| Tipo (`data.type`) | Emissor | Descrição |
+| :--- | :--- | :--- |
+| `QUERY_ROOM_INFO` / `PUBLIC_ROOM_INFO` | Scanner / Host | Descoberta de salas públicas abertas e lotação (`count`/`max`) |
+| `JOIN_GAME` | Convidado | Solicita entrada na sala enviando `name` e `avatar` |
+| `REJOIN` | Convidado | Reconecta ao novo Host após migração |
+| `LOBBY_UPDATE` | Host | Atualiza a lista de jogadores que aguardam na sala antes de começar |
+| `PLAYERS_SYNC` | Host | Sincroniza a lista de jogadores e placares após reconexão |
+| `START_MATCH` | Host | Inicia a partida enviando `players`, `secretWord` e `startingId` |
+| `LIVE_KEYSTROKE` | Jogador da vez | Espelha letras digitadas/apagadas em tempo real (`ADD` / `DELETE`) |
+| `SUBMIT_GUESS` | Jogador da vez | Submete a tentativa avaliada, informa se venceu (`isWin`) e passa a vez (`nextTurnId`) |
+| `TIME_EXPIRED` | Jogador da vez | Informa que o tempo de 1 minuto acabou e passa a vez (`nextTurnId`) |
+| `PLAYER_LEFT` | Host | Notifica que um participante desconectou da sala |
+| `UPDATE_PROFILE` | Qualquer jogador | Atualiza nome/avatar em tempo real no placar |
+| `RESTART_MATCH` | Qualquer jogador | Sorteia nova palavra e reinicia o tabuleiro mantendo o placar |
+| `PLAY_AGAIN_REQUEST` | Convidado | Solicita nova rodada ao final da partida |
+| `CHAT_MESSAGE` | Qualquer jogador | Mensagem de texto ou áudio (`audioData` em Base64) |
+
+---
+
+## 4. Cache Busting e Build Android (Vite + Capacitor)
+
+- **Cache Busting (`?v=X.Y.Z`):** Sempre que editar `style.css`, `script.js` ou `words.js`, mantenha a query string `?v=X.Y.Z` em `index.html` e nos `import` do `script.js` sincronizada com a versão do arquivo `VERSION`.
+- **Atenção ao `style.css`:** Nunca coloque `?v=...` nos `@import './css/...'` dentro de `style.css`, pois o Vite precisa concatená-los sem query string ao gerar o pacote de produção (`npm run build`).
+- **Build e Sincronização Android:**
+  ```bash
+  npm run build
+  npx cap sync android
+  ```
+

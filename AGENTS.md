@@ -23,4 +23,8 @@
   - **Proibição de alterar `VERSION`:** O arquivo `VERSION` é somente leitura; o agente **NUNCA** deve editá-lo ou incrementá-lo sem pedido expresso do usuário.
   - **Sincronização de `?v=X.Y.Z`:** Manter a query string de versão em `index.html` (`style.css?v=X.Y.Z` e `script.js?v=X.Y.Z`) e em `script.js` (`./words.js?v=X.Y.Z`) alinhada ao valor lido em `VERSION`.
 
+- **Manutenção Contínua do Guia do Desenvolvedor ([`.agents/rules/dev_guide_maintenance.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/dev_guide_maintenance.md)):**
+  - **Preservação e atualização de [`DEV_GUIDE.md`](file:///opt/lampp/htdocs/bulu/DEV_GUIDE.md):** Nunca remover o arquivo `DEV_GUIDE.md` e sempre atualizá-lo automaticamente quando houver mudanças em mecânicas, tempos, limites de sala, protocolo WebRTC ou arquitetura de arquivos.
+
+
 
