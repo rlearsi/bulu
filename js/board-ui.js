@@ -375,7 +375,7 @@ export class BoardUI {
       if (!bar) return;
       const isActive = badge.dataset.id === currentTurnId;
       bar.style.width = isActive ? `${ratio * 100}%` : '0%';
-      badge.classList.toggle('warning', isActive && timeLeft <= 30);
+      badge.classList.toggle('warning', isActive && timeLeft <= 15);
     });
   }
 

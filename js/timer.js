@@ -1,10 +1,10 @@
 /**
  * Módulo de Cronômetro de Turno
- * Responsável exclusivamente pela contagem regressiva de 3 minutos por turno e exibição visual.
+ * Responsável exclusivamente pela contagem regressiva de 1 minuto por turno e exibição visual.
  */
 
 export class TurnTimer {
-  constructor(turnTimerElement, turnDuration = 180) {
+  constructor(turnTimerElement, turnDuration = 60) {
     this.turnTimerElement = turnTimerElement;
     this.turnDuration = turnDuration;
     this.timeLeft = this.turnDuration;
@@ -80,8 +80,8 @@ export class TurnTimer {
       this.turnTimerElement.classList.remove('my-turn');
     }
 
-    // Aos 30 segundos ou menos, fica vermelho
-    if (this.timeLeft <= 30) {
+    // Nos últimos 15 segundos, fica vermelho
+    if (this.timeLeft <= 15) {
       this.turnTimerElement.classList.add('warning');
     } else {
       this.turnTimerElement.classList.remove('warning');

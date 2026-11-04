@@ -50,7 +50,7 @@ class TermoMultiplayerGame {
       onVirtualKeyPress: (k) => this.handleVirtualKeyPress(k)
     });
 
-    this.timer = new TurnTimer(this.ui.turnTimerElement, 180);
+    this.timer = new TurnTimer(this.ui.turnTimerElement, 60);
 
     this.profile = new ProfileManager({
       onShowToast: (msg) => this.ui.showToast(msg),
