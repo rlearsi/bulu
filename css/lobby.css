@@ -260,6 +260,17 @@
   width: 0;
 }
 
+/* Na seção "Quem começa?": o 1º botão (Aleatório) tem tamanho fixo confortável e o 2º expande até o fim */
+.config-side-row .config-dropdown-wrap.wrap-starter-first {
+  flex: 0 0 148px;
+  width: 148px;
+}
+
+.config-side-row .config-dropdown-wrap.wrap-starter-next {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .config-side-row .btn-dropdown-mode {
   width: 100%;
   height: 44px;

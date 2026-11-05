@@ -389,7 +389,96 @@
             </div>
           </div>
 
-          <!-- SEÇÃO 3: ACESSO DA SALA (2 BOTÕES ALINHADOS HORIZONTALMENTE) -->
+          <!-- SEÇÃO 3: QUEM COMEÇA? (2 DROPDOWNS LADO A LADO) -->
+          <div class="config-section">
+            <span class="config-section-title">Quem começa?</span>
+            <div class="config-side-row">
+              <!-- Dropdown 1: Primeira rodada (Host ou Aleatório) -->
+              <div class="config-dropdown-wrap wrap-starter-first">
+                <button type="button" id="btn-cfg-starter-first-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Quem começa a 1ª rodada">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <!-- Ícone Host (Coroa / Líder) -->
+                      <svg id="cfg-icon-starter-first-host" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"></path>
+                      </svg>
+                      <!-- Ícone Aleatório (Dados / Sorte) -->
+                      <svg id="cfg-icon-starter-first-random" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 3 21 3 21 8"></polyline>
+                        <line x1="4" y1="20" x2="21" y2="3"></line>
+                        <polyline points="21 16 21 21 16 21"></polyline>
+                        <line x1="15" y1="15" x2="21" y2="21"></line>
+                        <line x1="4" y1="4" x2="9" y2="9"></line>
+                      </svg>
+                    </span>
+                    <span id="cfg-starter-first-label" class="cfg-mode-label">1ª: Host</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-starter-first-popover" class="config-popover mode-popover hidden" role="menu">
+                  <span class="config-popover-title">Primeira rodada</span>
+                  <button type="button" class="cfg-popover-option selected" data-starter-first="host" role="menuitemradio">
+                    <strong>Host</strong>
+                    <span>O criador da sala sempre inicia a 1ª rodada.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-starter-first="random" role="menuitemradio">
+                    <strong>Aleatório</strong>
+                    <span>Sorteia qualquer jogador da sala para começar a 1ª rodada.</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dropdown 2: Rodadas seguintes (Vencedor, Próximo da fila ou Sempre Host) -->
+              <div class="config-dropdown-wrap wrap-starter-next">
+                <button type="button" id="btn-cfg-starter-next-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Quem começa nas rodadas seguintes">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <!-- Ícone Vencedor (Troféu) -->
+                      <svg id="cfg-icon-starter-next-winner" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.45 1-1 1H8v4h8v-4h-1c-.55 0-1-.45-1-1v-2.34"></path>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+                      </svg>
+                      <!-- Ícone Próximo da fila (Passar a vez / Seta circular) -->
+                      <svg id="cfg-icon-starter-next-next_player" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="13 17 18 12 13 7"></polyline>
+                        <polyline points="6 17 11 12 6 7"></polyline>
+                      </svg>
+                      <!-- Ícone Sempre Host (Coroa) -->
+                      <svg id="cfg-icon-starter-next-host" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"></path>
+                      </svg>
+                    </span>
+                    <span id="cfg-starter-next-label" class="cfg-mode-label">Seguintes: Vencedor</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-starter-next-popover" class="config-popover mode-popover reveal-popover hidden" role="menu">
+                  <span class="config-popover-title">Rodadas seguintes</span>
+                  <button type="button" class="cfg-popover-option selected" data-starter-next="winner" role="menuitemradio">
+                    <strong>Quem ganhou</strong>
+                    <span>Quem ganhou na partida anterior começa a próxima.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-starter-next="next_player" role="menuitemradio">
+                    <strong>Próximo da fila</strong>
+                    <span>O próximo jogador da fila após o vencedor começa.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-starter-next="host" role="menuitemradio">
+                    <strong>Sempre o host</strong>
+                    <span>O host sempre começa, independente de quem ganha.</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO 4: ACESSO DA SALA (2 BOTÕES ALINHADOS HORIZONTALMENTE) -->
           <div class="config-section">
             <span class="config-section-title">Acesso da sala</span>
             <div class="config-grid">

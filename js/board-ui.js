@@ -68,6 +68,18 @@ export class BoardUI {
     this.cfgRevealDropdownLabel = document.getElementById('cfg-reveal-dropdown-label');
     this.cfgRevealPopover = document.getElementById('cfg-reveal-popover');
     this.cfgRevealGroup = document.getElementById('cfg-reveal-popover');
+
+    // Dropdowns Seção: Quem começa?
+    this.btnCfgStarterFirstDropdown = document.getElementById('btn-cfg-starter-first-dropdown');
+    this.cfgStarterFirstLabel = document.getElementById('cfg-starter-first-label');
+    this.cfgStarterFirstPopover = document.getElementById('cfg-starter-first-popover');
+    this.cfgStarterFirstGroup = document.getElementById('cfg-starter-first-popover');
+
+    this.btnCfgStarterNextDropdown = document.getElementById('btn-cfg-starter-next-dropdown');
+    this.cfgStarterNextLabel = document.getElementById('cfg-starter-next-label');
+    this.cfgStarterNextPopover = document.getElementById('cfg-starter-next-popover');
+    this.cfgStarterNextGroup = document.getElementById('cfg-starter-next-popover');
+
     this.cfgPrivacyGroup = document.getElementById('cfg-privacy-group');
 
     this.createRoomDesc = document.getElementById('create-room-desc');
@@ -508,7 +520,7 @@ export class BoardUI {
     if (this.gameModeHint) this.gameModeHint.textContent = info[mode];
   }
 
-  updateRoomConfigUI({ isRoomLocked, showOpponentSelection }) {
+  updateRoomConfigUI({ isRoomLocked, showOpponentSelection, firstRoundStarter, nextRoundStarterRule }) {
     if (this.cfgPrivacyGroup) {
       this.cfgPrivacyGroup.querySelectorAll('.cfg-toggle-btn').forEach((btn) => {
         btn.classList.toggle('selected', (btn.dataset.locked === 'true') === isRoomLocked);
@@ -528,6 +540,44 @@ export class BoardUI {
       iconAllow.classList.toggle('hidden', !showOpponentSelection);
       iconHide.classList.toggle('hidden', showOpponentSelection);
     }
+
+    if (firstRoundStarter) {
+      if (this.cfgStarterFirstGroup) {
+        this.cfgStarterFirstGroup.querySelectorAll('.cfg-popover-option').forEach((btn) => {
+          btn.classList.toggle('selected', btn.dataset.starterFirst === firstRoundStarter);
+        });
+      }
+      if (this.cfgStarterFirstLabel) {
+        this.cfgStarterFirstLabel.textContent = firstRoundStarter === 'random' ? '1ª: Aleatório' : '1ª: Host';
+      }
+      const iconFirstHost = document.getElementById('cfg-icon-starter-first-host');
+      const iconFirstRandom = document.getElementById('cfg-icon-starter-first-random');
+      if (iconFirstHost && iconFirstRandom) {
+        iconFirstHost.classList.toggle('hidden', firstRoundStarter === 'random');
+        iconFirstRandom.classList.toggle('hidden', firstRoundStarter !== 'random');
+      }
+    }
+
+    if (nextRoundStarterRule) {
+      if (this.cfgStarterNextGroup) {
+        this.cfgStarterNextGroup.querySelectorAll('.cfg-popover-option').forEach((btn) => {
+          btn.classList.toggle('selected', btn.dataset.starterNext === nextRoundStarterRule);
+        });
+      }
+      const nextLabels = {
+        winner: 'Seguintes: Vencedor',
+        next_player: 'Seguintes: Próximo',
+        host: 'Seguintes: Host'
+      };
+      if (this.cfgStarterNextLabel) {
+        this.cfgStarterNextLabel.textContent = nextLabels[nextRoundStarterRule] || 'Seguintes: Vencedor';
+      }
+      ['winner', 'next_player', 'host'].forEach((rule) => {
+        const icon = document.getElementById(`cfg-icon-starter-next-${rule}`);
+        if (icon) icon.classList.toggle('hidden', rule !== nextRoundStarterRule);
+      });
+    }
+
     if (this.btnCreateRoom) {
       this.btnCreateRoom.textContent = 'Criar Sala';
     }

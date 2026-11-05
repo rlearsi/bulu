@@ -42,6 +42,9 @@ class TermoMultiplayerGame {
     this.gameMode = 'normal';
     this.revealLetters = true; // Por padrão sempre mostra letras; nos modos multigrade pode alternar para cores
     this.showOpponentSelection = true; // Mostrar onde o oponente está selecionando
+    // Quem começa a partida
+    this.firstRoundStarter = 'host'; // 'host' ou 'random'
+    this.nextRoundStarterRule = 'winner'; // 'winner' (quem ganhou), 'next_player' (próximo da fila após quem ganhou) ou 'host' (sempre o host)
     this.secrets = {}; // id do jogador -> palavra secreta da sua grade (modos cross/individual)
     this.progress = {}; // Individual: id -> { rows, done }
     this.myDone = false; // Individual: já venceu ou esgotou as tentativas
@@ -448,7 +451,9 @@ class TermoMultiplayerGame {
     this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
     this.ui.updateRoomConfigUI({
       isRoomLocked: this.isRoomLocked,
-      showOpponentSelection: this.showOpponentSelection
+      showOpponentSelection: this.showOpponentSelection,
+      firstRoundStarter: this.firstRoundStarter,
+      nextRoundStarterRule: this.nextRoundStarterRule
     });
 
     if (this.ui.btnRoomConfigToggle) {
@@ -561,6 +566,60 @@ class TermoMultiplayerGame {
         if (!btn) return;
         this.revealLetters = btn.dataset.reveal === 'true';
         this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
+        this.closeAllConfigPopovers();
+      });
+    }
+
+    if (this.ui.btnCfgStarterFirstDropdown) {
+      this.ui.btnCfgStarterFirstDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !this.ui.cfgStarterFirstPopover.classList.contains('hidden');
+        this.closeAllConfigPopovers();
+        if (!isOpen) {
+          this.ui.cfgStarterFirstPopover.classList.remove('hidden');
+          this.ui.btnCfgStarterFirstDropdown.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    if (this.ui.cfgStarterFirstGroup) {
+      this.ui.cfgStarterFirstGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cfg-popover-option');
+        if (!btn) return;
+        this.firstRoundStarter = btn.dataset.starterFirst;
+        this.ui.updateRoomConfigUI({
+          isRoomLocked: this.isRoomLocked,
+          showOpponentSelection: this.showOpponentSelection,
+          firstRoundStarter: this.firstRoundStarter,
+          nextRoundStarterRule: this.nextRoundStarterRule
+        });
+        this.closeAllConfigPopovers();
+      });
+    }
+
+    if (this.ui.btnCfgStarterNextDropdown) {
+      this.ui.btnCfgStarterNextDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !this.ui.cfgStarterNextPopover.classList.contains('hidden');
+        this.closeAllConfigPopovers();
+        if (!isOpen) {
+          this.ui.cfgStarterNextPopover.classList.remove('hidden');
+          this.ui.btnCfgStarterNextDropdown.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    if (this.ui.cfgStarterNextGroup) {
+      this.ui.cfgStarterNextGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cfg-popover-option');
+        if (!btn) return;
+        this.nextRoundStarterRule = btn.dataset.starterNext;
+        this.ui.updateRoomConfigUI({
+          isRoomLocked: this.isRoomLocked,
+          showOpponentSelection: this.showOpponentSelection,
+          firstRoundStarter: this.firstRoundStarter,
+          nextRoundStarterRule: this.nextRoundStarterRule
+        });
         this.closeAllConfigPopovers();
       });
     }
@@ -750,10 +809,14 @@ class TermoMultiplayerGame {
     if (this.ui.cfgPlayersPopover) this.ui.cfgPlayersPopover.classList.add('hidden');
     if (this.ui.cfgCursorPopover) this.ui.cfgCursorPopover.classList.add('hidden');
     if (this.ui.cfgRevealPopover) this.ui.cfgRevealPopover.classList.add('hidden');
+    if (this.ui.cfgStarterFirstPopover) this.ui.cfgStarterFirstPopover.classList.add('hidden');
+    if (this.ui.cfgStarterNextPopover) this.ui.cfgStarterNextPopover.classList.add('hidden');
     if (this.ui.btnCfgModeDropdown) this.ui.btnCfgModeDropdown.setAttribute('aria-expanded', 'false');
     if (this.ui.btnCfgPlayersDropdown) this.ui.btnCfgPlayersDropdown.setAttribute('aria-expanded', 'false');
     if (this.ui.btnCfgCursorDropdown) this.ui.btnCfgCursorDropdown.setAttribute('aria-expanded', 'false');
     if (this.ui.btnCfgRevealDropdown) this.ui.btnCfgRevealDropdown.setAttribute('aria-expanded', 'false');
+    if (this.ui.btnCfgStarterFirstDropdown) this.ui.btnCfgStarterFirstDropdown.setAttribute('aria-expanded', 'false');
+    if (this.ui.btnCfgStarterNextDropdown) this.ui.btnCfgStarterNextDropdown.setAttribute('aria-expanded', 'false');
   }
 
   openRoomSetupScreen(autoStartRoom = false) {
@@ -767,7 +830,9 @@ class TermoMultiplayerGame {
       this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
       this.ui.updateRoomConfigUI({
         isRoomLocked: this.isRoomLocked,
-        showOpponentSelection: this.showOpponentSelection
+        showOpponentSelection: this.showOpponentSelection,
+        firstRoundStarter: this.firstRoundStarter,
+        nextRoundStarterRule: this.nextRoundStarterRule
       });
       this.handleCreateRoom();
     } else if (!this.isHostWaitingInLobby()) {
@@ -922,7 +987,8 @@ class TermoMultiplayerGame {
           this.ui.btnStartMatch.classList.remove('starting');
           this.ui.btnStartMatch.textContent = 'Iniciar partida';
         }
-        this.startNewRound(this.hostId);
+        const initialStarter = this.getFirstRoundStarter();
+        this.startNewRound(initialStarter);
       }
     }, 1000);
   }
@@ -1284,9 +1350,37 @@ class TermoMultiplayerGame {
     return map;
   }
 
-  /** Quem ganhou começa a próxima rodada; sem vencedor, segue a fila a partir de quem iniciou. */
+  /** Retorna quem deve começar a 1ª rodada (Host ou Aleatório). */
+  getFirstRoundStarter() {
+    if (this.firstRoundStarter === 'random' && this.players.length > 0) {
+      const randomIndex = Math.floor(Math.random() * this.players.length);
+      return this.players[randomIndex].id;
+    }
+    return this.hostId;
+  }
+
+  /**
+   * Determina quem começa a próxima rodada segundo a regra configurada pelo host:
+   * 1. 'winner': quem ganhou na partida anterior começa (sem vencedor, segue a fila).
+   * 2. 'next_player': quem ganhou então o próximo da fila começa (sem vencedor, próximo de quem iniciou).
+   * 3. 'host': sempre o host começa, independente de quem ganha.
+   */
   getNextRoundStarter() {
-    if (this.lastWinnerId && this.getPlayer(this.lastWinnerId)) return this.lastWinnerId;
+    if (this.nextRoundStarterRule === 'host') {
+      return this.hostId;
+    }
+
+    if (this.nextRoundStarterRule === 'next_player') {
+      if (this.lastWinnerId && this.getPlayer(this.lastWinnerId)) {
+        return this.nextPlayerId(this.lastWinnerId);
+      }
+      return this.nextPlayerId(this.roundStarterId || this.hostId);
+    }
+
+    // Regra padrão: 'winner' (quem ganhou começa)
+    if (this.lastWinnerId && this.getPlayer(this.lastWinnerId)) {
+      return this.lastWinnerId;
+    }
     return this.nextPlayerId(this.roundStarterId || this.hostId);
   }
 
@@ -2398,7 +2492,9 @@ class TermoMultiplayerGame {
     if (this.ui.btnJoinPublicRoom) this.ui.btnJoinPublicRoom.disabled = false;
     this.ui.updateRoomConfigUI({
       isRoomLocked: this.isRoomLocked,
-      showOpponentSelection: this.showOpponentSelection
+      showOpponentSelection: this.showOpponentSelection,
+      firstRoundStarter: this.firstRoundStarter,
+      nextRoundStarterRule: this.nextRoundStarterRule
     });
 
     this.chat.reset();

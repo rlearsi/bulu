@@ -116,9 +116,15 @@ A fila de jogadores segue a ordem do array `this.players` em `script.js` (`this.
     return this.players[(idx + 1) % this.players.length].id;
   }
   ```
-- **Definir quem inicia a próxima rodada:** método `getNextRoundStarter()` em `script.js`:
-  - Atualmente, se alguém venceu a rodada (`this.lastWinnerId`), **quem ganhou começa a próxima partida**, e depois dele segue a ordem normal da fila (`nextPlayerId`).
-  - Se houve empate (ninguém acertou as 6 tentativas), começa o jogador seguinte a quem iniciou a rodada anterior (`this.nextPlayerId(this.roundStarterId)`).
+- **Definir quem inicia a rodada:** métodos `getFirstRoundStarter()` e `getNextRoundStarter()` em `script.js`:
+  - **Primeira rodada (`this.firstRoundStarter`):**
+    - `'host'`: o criador da sala sempre começa a primeira rodada.
+    - `'random'`: sorteia aleatoriamente qualquer um dos jogadores presentes na sala (`getFirstRoundStarter()`).
+  - **Rodadas seguintes (`this.nextRoundStarterRule`):**
+    - `'winner'`: quem ganhou a rodada anterior começa a próxima partida (`this.lastWinnerId`). Se houve empate (ninguém acertou), o próximo jogador da fila começa (`this.nextPlayerId(this.roundStarterId || this.hostId)`).
+    - `'next_player'`: quem ganhou define a ordem, passando a vez para o próximo jogador da fila começar a próxima rodada (`this.nextPlayerId(this.lastWinnerId)`).
+    - `'host'`: o host sempre começa todas as rodadas seguintes, independentemente de quem venceu a rodada anterior.
+  - Essas opções são configuradas pelo host no lobby da sala dentro da seção **"Quem começa?"** usando 2 dropdowns com ícones correspondentes.
 
 ---
 
