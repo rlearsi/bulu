@@ -245,4 +245,88 @@
   margin-bottom: 22px;
 }
 
+/* MODAL DE PALAVRAS ACERTADAS DA PARTIDA */
+.modal-words-history {
+  max-width: 400px;
+}
+
+.words-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 290px;
+  overflow-y: auto;
+  margin-bottom: 18px;
+  padding-right: 4px;
+}
+
+.words-history-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.words-history-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+
+.words-history-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+
+.words-history-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.words-history-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 32px);
+  grid-gap: 4px;
+}
+
+.words-history-grid .tile {
+  width: 32px;
+  height: 32px;
+  font-size: 1.05rem;
+  border-radius: 5px;
+  border-width: 2px;
+}
+
+.words-history-winner {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.words-history-winner.is-me {
+  color: var(--color-correct);
+}
+
+.words-history-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 4px 2px;
+  flex-shrink: 0;
+}
+
+.words-history-empty {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 20px 14px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+
 

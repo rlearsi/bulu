@@ -112,6 +112,13 @@ export class BoardUI {
     this.btnCloseExit = document.getElementById('btn-close-exit');
     this.btnCancelExit = document.getElementById('btn-cancel-exit');
     this.btnConfirmExit = document.getElementById('btn-confirm-exit');
+
+    // Modal de Palavras Acertadas da Partida
+    this.wordsHistoryModal = document.getElementById('words-history-modal');
+    this.wordsHistoryList = document.getElementById('words-history-list');
+    this.btnWordsHistory = document.getElementById('btn-words-history');
+    this.btnCloseWordsHistory = document.getElementById('btn-close-words-history');
+    this.btnWordsHistoryOk = document.getElementById('btn-words-history-ok');
   }
 
   createBoard() {
@@ -487,6 +494,54 @@ export class BoardUI {
     } else {
       this.helpModal.classList.add('hidden');
     }
+  }
+
+  showWordsHistoryModal(show, history = []) {
+    if (!this.wordsHistoryModal) return;
+    if (show) {
+      this.renderWordsHistoryList(history);
+      this.wordsHistoryModal.classList.remove('hidden');
+    } else {
+      this.wordsHistoryModal.classList.add('hidden');
+    }
+  }
+
+  renderWordsHistoryList(history = []) {
+    if (!this.wordsHistoryList) return;
+    if (!Array.isArray(history) || history.length === 0) {
+      this.wordsHistoryList.innerHTML = '<div class="words-history-empty">Nenhuma palavra acertada ainda.</div>';
+      return;
+    }
+
+    this.wordsHistoryList.innerHTML = '';
+    history.forEach((item, index) => {
+      if (index > 0 && item.matchId !== history[index - 1].matchId) {
+        const divider = document.createElement('div');
+        divider.className = 'words-history-divider';
+        this.wordsHistoryList.appendChild(divider);
+      }
+
+      const rowEl = document.createElement('div');
+      rowEl.className = 'words-history-row';
+
+      const gridEl = document.createElement('div');
+      gridEl.className = 'words-history-grid';
+      const letters = String(item.word || '').toUpperCase().split('');
+      for (let i = 0; i < this.wordLength; i++) {
+        const tile = document.createElement('div');
+        tile.className = 'tile correct';
+        tile.textContent = letters[i] || '';
+        gridEl.appendChild(tile);
+      }
+
+      const winnerEl = document.createElement('span');
+      winnerEl.className = 'words-history-winner' + (item.isMe ? ' is-me' : '');
+      winnerEl.textContent = item.isMe ? 'Você' : (item.winnerName || 'Oponente');
+
+      rowEl.appendChild(gridEl);
+      rowEl.appendChild(winnerEl);
+      this.wordsHistoryList.appendChild(rowEl);
+    });
   }
 
   showPrivacyModal(show) {

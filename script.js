@@ -3,15 +3,15 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData, secretWords } from './words.js?v=1.10.1';
-import { AudioManager } from './js/audio.js?v=1.10.1';
-import { GameRules } from './js/game-rules.js?v=1.10.1';
-import { TurnTimer } from './js/timer.js?v=1.10.1';
-import { ProfileManager } from './js/profile.js?v=1.10.1';
-import { P2PNetwork } from './js/network.js?v=1.10.1';
-import { ChatManager } from './js/chat.js?v=1.10.1';
-import { BoardUI } from './js/board-ui.js?v=1.10.1';
-import { MultiBoardLayout } from './js/multi-board.js?v=1.10.1';
+import { wordsData, secretWords } from './words.js?v=1.10.3';
+import { AudioManager } from './js/audio.js?v=1.10.3';
+import { GameRules } from './js/game-rules.js?v=1.10.3';
+import { TurnTimer } from './js/timer.js?v=1.10.3';
+import { ProfileManager } from './js/profile.js?v=1.10.3';
+import { P2PNetwork } from './js/network.js?v=1.10.3';
+import { ChatManager } from './js/chat.js?v=1.10.3';
+import { BoardUI } from './js/board-ui.js?v=1.10.3';
+import { MultiBoardLayout } from './js/multi-board.js?v=1.10.3';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -49,6 +49,10 @@ class TermoMultiplayerGame {
     this.soloMode = 'classic';
     this.infiniteStreak = 0;
     this.infiniteBest = Number(localStorage.getItem('termo_infinite_best') || 0);
+
+    // Histórico de palavras acertadas (armazenado localmente em todas as partidas)
+    this.matchSessionId = Date.now();
+    this.guessedWordsHistory = this.loadGuessedWordsHistory();
 
     // Matriz de letras no tabuleiro [linha][coluna]
     this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
@@ -170,6 +174,40 @@ class TermoMultiplayerGame {
   }
 
   // ==========================================
+  // HISTÓRICO DE PALAVRAS ACERTADAS (LOCALSTORAGE)
+  // ==========================================
+  loadGuessedWordsHistory() {
+    try {
+      const raw = localStorage.getItem('termo_match_guessed_words');
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  saveGuessedWordsHistory() {
+    try {
+      localStorage.setItem('termo_match_guessed_words', JSON.stringify(this.guessedWordsHistory));
+    } catch (e) {}
+  }
+
+  startNewMatchHistoryGroup() {
+    this.matchSessionId = Date.now();
+  }
+
+  recordGuessedWord(word, isMe, winnerName) {
+    if (!word) return;
+    this.guessedWordsHistory.unshift({
+      word: String(word).toUpperCase(),
+      isMe: Boolean(isMe),
+      winnerName: isMe ? 'Você' : (winnerName || 'Oponente'),
+      matchId: this.matchSessionId
+    });
+    this.saveGuessedWordsHistory();
+  }
+
+  // ==========================================
   // PROTEÇÃO DO BOTÃO VOLTAR (ANDROID / MOBILE)
   // ==========================================
   initBackButtonProtection() {
@@ -232,6 +270,12 @@ class TermoMultiplayerGame {
     // 4. Se o modal de Ajuda estiver aberto, fecha apenas o modal de Ajuda
     if (this.ui.helpModal && !this.ui.helpModal.classList.contains('hidden')) {
       this.ui.showHelpModal(false);
+      return;
+    }
+
+    // 4b. Se o modal de Palavras Acertadas estiver aberto, fecha apenas ele
+    if (this.ui.wordsHistoryModal && !this.ui.wordsHistoryModal.classList.contains('hidden')) {
+      this.ui.showWordsHistoryModal(false);
       return;
     }
 
@@ -485,6 +529,15 @@ class TermoMultiplayerGame {
     this.ui.btnHelp.addEventListener('click', () => this.ui.showHelpModal(true));
     this.ui.btnCloseHelp.addEventListener('click', () => this.ui.showHelpModal(false));
     this.ui.btnHelpOk.addEventListener('click', () => this.ui.showHelpModal(false));
+    if (this.ui.btnWordsHistory) {
+      this.ui.btnWordsHistory.addEventListener('click', () => this.ui.showWordsHistoryModal(true, this.guessedWordsHistory));
+    }
+    if (this.ui.btnCloseWordsHistory) {
+      this.ui.btnCloseWordsHistory.addEventListener('click', () => this.ui.showWordsHistoryModal(false));
+    }
+    if (this.ui.btnWordsHistoryOk) {
+      this.ui.btnWordsHistoryOk.addEventListener('click', () => this.ui.showWordsHistoryModal(false));
+    }
     this.ui.btnBackLobby.addEventListener('click', () => this.resetToLobby());
     this.ui.btnRestart.addEventListener('click', () => this.handleRestartMatch());
     if (this.ui.btnHome) this.ui.btnHome.addEventListener('click', () => this.requestLeaveMatchConfirmation());
@@ -582,6 +635,7 @@ class TermoMultiplayerGame {
     this.matchStarted = false;
     this.players = [];
     this.myId = '';
+    this.startNewMatchHistoryGroup();
     this.ui.btnCreateRoom.disabled = true;
     this.ui.hostCodeDisplay.classList.remove('hidden');
     if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.add('hidden');
@@ -682,6 +736,7 @@ class TermoMultiplayerGame {
   sendJoinGame() {
     this.myId = this.network.myId;
     this.matchStarted = false;
+    this.startNewMatchHistoryGroup();
     this.ui.joinStatus.textContent = 'Conectado! Aguardando o host...';
     this.network.send({
       type: 'JOIN_GAME',
@@ -1081,6 +1136,7 @@ class TermoMultiplayerGame {
     this.currentTurnId = '';
     this.matchStarted = false;
     this.infiniteStreak = 0;
+    this.startNewMatchHistoryGroup();
     this.secretWord = this.rules.getRandomSecretWord();
 
     this.applyModeConfig();
@@ -1317,6 +1373,7 @@ class TermoMultiplayerGame {
   handlePhysicalKeyPress(e) {
     if (this.isGameOver || this.isRevealing || this.ui.lobbyScreen.offsetParent !== null) return;
     if (this.ui.helpModal.offsetParent !== null || this.ui.gameoverModal.offsetParent !== null) return;
+    if (this.ui.wordsHistoryModal && this.ui.wordsHistoryModal.offsetParent !== null) return;
     if (this.profile.isModalOpen()) return;
     if (this.ui.privacyModal && this.ui.privacyModal.offsetParent !== null) return;
     if (this.ui.exitConfirmModal && this.ui.exitConfirmModal.offsetParent !== null) return;
@@ -1567,6 +1624,7 @@ class TermoMultiplayerGame {
    * limpa o tabuleiro e sobe a palavra acertada para a 1ª linha já avaliada contra a nova palavra secreta.
    */
   advanceInfiniteWord(previousWord) {
+    this.recordGuessedWord(previousWord, true, 'Você');
     this.infiniteStreak++;
     if (this.infiniteStreak > this.infiniteBest) {
       this.infiniteBest = this.infiniteStreak;
@@ -1873,6 +1931,8 @@ class TermoMultiplayerGame {
     this.isGameOver = true;
 
     const winnerName = isMe ? this.profile.myName : this.getPlayerName(winnerId);
+    const guessedWord = this.mode === 'normal' ? this.secretWord : (this.secrets[winnerId] || this.secretWord);
+    this.recordGuessedWord(guessedWord, isMe, winnerName);
     if (this.role !== 'solo') {
       const winner = this.getPlayer(winnerId);
       if (winner) winner.score++;
@@ -1977,6 +2037,7 @@ class TermoMultiplayerGame {
     if (this.ui.privacyModal) this.ui.privacyModal.classList.add('hidden');
     if (this.ui.publicRoomsModal) this.ui.publicRoomsModal.classList.add('hidden');
     if (this.ui.exitConfirmModal) this.ui.exitConfirmModal.classList.add('hidden');
+    if (this.ui.wordsHistoryModal) this.ui.wordsHistoryModal.classList.add('hidden');
     this.ui.helpModal.classList.add('hidden');
     this.ui.boardContainer.classList.add('hidden');
     this.ui.keyboardContainer.classList.add('hidden');

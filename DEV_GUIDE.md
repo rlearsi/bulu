@@ -180,6 +180,22 @@ Na parte inferior do Lobby, ao lado do botão `#btn-practice` (`Jogar sozinho`),
 
 ---
 
+### 2.11. Histórico de Palavras Acertadas (`#words-history-modal`)
+
+Na barra de ações no topo (`#game-actions-bar`), o botão `#btn-words-history` abre o modal `#words-history-modal` listando todas as palavras acertadas em todas as partidas (com qualquer oponente na rede ou no modo solo):
+- **Layout e divisor por partida:** Cada item exibe em 2 colunas a palavra acertada com o mesmo estilo de mini-grade do tabuleiro (`.words-history-grid` com 5 `.tile.correct`) à esquerda e o nome de quem acertou (`Você` ou o nome do oponente) à direita, dentro de uma lista com rolagem (`.words-history-list`). Sempre que uma nova partida/sala é iniciada (`startNewMatchHistoryGroup()` em `script.js`), um novo `matchId` é gerado e a lista insere um divisor (`.words-history-divider`) separando verticalmente os grupos de partidas.
+- **Persistência local acumulativa:** Todo o histórico permanece salvo em `localStorage` na chave `termo_match_guessed_words` (`recordGuessedWord`, `loadGuessedWordsHistory`, `saveGuessedWordsHistory` em `script.js`).
+
+---
+
+### 2.11. Histórico de Palavras Acertadas (`#words-history-modal`)
+
+Na barra de ações no topo (`#game-actions-bar`), o botão `#btn-words-history` abre o modal `#words-history-modal` listando todas as palavras acertadas em todas as partidas (com qualquer oponente na rede ou no modo solo):
+- **Layout e divisor por partida:** Cada item exibe em 2 colunas a palavra acertada com o mesmo estilo de mini-grade do tabuleiro (`.words-history-grid` com 5 `.tile.correct`) à esquerda e o nome de quem acertou (`Você` ou o nome do oponente) à direita, dentro de uma lista com rolagem (`.words-history-list`). Sempre que uma nova partida/sala é iniciada (`startNewMatchHistoryGroup()` em `script.js`), um novo `matchId` é gerado e a lista insere um divisor (`.words-history-divider`) separando verticalmente os grupos de partidas.
+- **Persistência local acumulativa:** Todo o histórico permanece salvo em `localStorage` na chave `termo_match_guessed_words` (`recordGuessedWord`, `loadGuessedWordsHistory`, `saveGuessedWordsHistory` em `script.js`).
+
+---
+
 ## 3. Protocolo de Mensagens WebRTC (`handleP2PMessage`)
 
 Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um pacote ao Host, o Host adiciona `from: peerId` e retransmite (`broadcast`) para os demais convidados:
