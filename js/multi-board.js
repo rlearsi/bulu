@@ -153,7 +153,7 @@ export class MultiBoardLayout {
   }
 
   /** Espelha as letras digitadas (sem avaliação) da linha atual nas grades dos oponentes. */
-  mirrorRow(row, letters) {
+  mirrorRow(row, letters, showLetters = true) {
     this.minis.forEach((m) => {
       const rowTiles = m.tiles[row];
       if (!rowTiles) return;
@@ -161,7 +161,7 @@ export class MultiBoardLayout {
         const tile = rowTiles[c];
         if (tile.classList.contains('correct') || tile.classList.contains('present') || tile.classList.contains('absent')) continue;
         const letter = (letters && letters[c]) || '';
-        tile.textContent = letter;
+        tile.textContent = showLetters ? letter : '';
         tile.classList.toggle('filled', Boolean(letter));
         tile.classList.toggle('opponent-typing', Boolean(letter));
       }

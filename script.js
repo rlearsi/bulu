@@ -1472,7 +1472,7 @@ class TermoMultiplayerGame {
   /** Cruzado: espelha a linha digitada nas grades dos oponentes. */
   syncMirror(row = this.currentRow) {
     if (this.mode !== 'cross' || !this.mm.isMounted || row < 0 || row >= this.maxRows) return;
-    this.mm.mirrorRow(row, this.boardMatrix[row]);
+    this.mm.mirrorRow(row, this.boardMatrix[row], this.revealLetters);
   }
 
   updateStatusBar() {
@@ -2052,7 +2052,7 @@ class TermoMultiplayerGame {
     for (let c = 0; c < this.wordLength; c++) {
       this.boardMatrix[guessRow][c] = guess[c];
       const tile = this.ui.getTileElement(guessRow, c);
-      tile.textContent = this.revealLetters ? guess[c] : '';
+      tile.textContent = guess[c];
       tile.classList.add('filled');
     }
 
