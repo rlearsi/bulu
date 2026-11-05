@@ -194,6 +194,7 @@ export class VoiceManager {
     }
 
     this.state = 'incoming';
+    this.showRejectDot();
     this.updateButtonUI();
     const sender = data.senderName || 'Oponente';
     if (this.bannerMsg) {
@@ -210,6 +211,7 @@ export class VoiceManager {
    */
   async acceptIncomingRequest() {
     this.hideBanner();
+    this.clearRejectDot();
     const ctx = this.getContextInfo();
 
     try {
@@ -247,6 +249,7 @@ export class VoiceManager {
    */
   rejectIncomingRequest() {
     this.hideBanner();
+    this.showRejectDot();
     const ctx = this.getContextInfo();
     if (ctx.isConnected) {
       this.onSendP2P({
@@ -311,13 +314,12 @@ export class VoiceManager {
   }
 
   /**
-   * Oponente recusou nossa solicitação: ativa dot vermelho no ícone de microfone
+   * Oponente recusou nossa solicitação
    */
   handleVoiceRejected() {
     clearTimeout(this.requestTimeout);
     this.state = 'idle';
     this.stopLocalStream();
-    this.showRejectDot();
     this.updateButtonUI();
     this.onShowToast('Oponente recusou o chat de voz.');
   }
@@ -328,6 +330,7 @@ export class VoiceManager {
   handleVoiceCancelled() {
     if (this.state === 'incoming') {
       this.hideBanner();
+      this.clearRejectDot();
       this.state = 'idle';
       this.stopLocalStream();
       this.updateButtonUI();

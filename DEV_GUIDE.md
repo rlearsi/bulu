@@ -226,7 +226,7 @@ Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um paco
 | `CHAT_MESSAGE` | Qualquer jogador | Mensagem de texto ou áudio (`audioData` em Base64) |
 | `VOICE_REQUEST` | Qualquer jogador | Solicita início de chamada de voz em tempo real |
 | `VOICE_ACCEPT` | Convidado / Host | Aceita a solicitação e conecta a transmissão de voz via WebRTC |
-| `VOICE_REJECT` | Convidado / Host | Recusa a chamada de voz (ativa o dot vermelho de notificação no botão de voz do outro jogador) |
+| `VOICE_REJECT` | Convidado / Host | Recusa a chamada de voz (mantém o dot de notificação no botão de quem recusou) |
 | `VOICE_CANCEL` | Solicitante | Cancela a solicitação de voz antes do oponente responder |
 | `VOICE_END` | Qualquer jogador | Encerra a transmissão de voz ativa |
 
