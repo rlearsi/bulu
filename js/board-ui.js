@@ -129,6 +129,7 @@ export class BoardUI {
     this.joinStatus = document.getElementById('join-status');
     this.btnPractice = document.getElementById('btn-practice');
     this.btnSoloMode = document.getElementById('btn-solo-mode');
+    this.soloModeCurrentLabel = document.getElementById('solo-mode-current-label');
     this.soloModePopover = document.getElementById('solo-mode-popover');
     this.soloModeHint = document.getElementById('solo-mode-hint');
 
@@ -834,7 +835,10 @@ export class BoardUI {
   updateSoloModeUI(soloMode) {
     const isInfinite = soloMode === 'infinite';
     if (this.btnPractice) {
-      this.btnPractice.textContent = isInfinite ? 'Jogar sozinho • Infinito' : 'Jogar sozinho • Clássico';
+      this.btnPractice.textContent = 'Modo Solo';
+    }
+    if (this.soloModeCurrentLabel) {
+      this.soloModeCurrentLabel.textContent = isInfinite ? 'Infinito' : 'Clássico';
     }
     if (this.soloModePopover) {
       this.soloModePopover.querySelectorAll('.solo-mode-option').forEach((opt) => {

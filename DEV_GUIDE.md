@@ -192,7 +192,7 @@ O host escolhe o modo no botão ao lado do seletor de jogadores no lobby (`#btn-
 
 ### 2.10. Modos Solo (Clássico e Infinito)
 
-Na parte inferior do Lobby, ao lado do botão `#btn-practice` (`Jogar sozinho`), o botão `#btn-solo-mode` permite alternar `this.soloMode` entre:
+Na parte inferior do Lobby, ao lado do botão `#btn-practice` (`Modo Solo`), o botão seletor `#btn-solo-mode` exibe o rótulo do modo atual (`Clássico` ou `Infinito`) junto ao seu ícone e permite alternar `this.soloMode` entre:
 - **Clássico (`classic`):** Descubra 1 palavra secreta em até 6 tentativas.
 - **Infinito (`infinite`):** Acerte palavras em sequência sem parar (`advanceInfiniteWord(previousWord)` em `script.js`). A cada acerto, `this.infiniteStreak` aumenta (recorde persistido em `localStorage` na chave `termo_infinite_best`), o tabuleiro e o teclado são limpos, uma nova palavra secreta é sorteada e a palavra anterior sobe automaticamente para a linha `0` já avaliada contra o novo segredo, posicionando o cursor na linha `1`. O jogo continua até esgotar as 6 linhas sem acertar.
 
