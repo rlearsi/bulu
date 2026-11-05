@@ -4,11 +4,16 @@
  */
 
 export class TurnTimer {
-  constructor(turnTimerElement, turnDuration = 60) {
+  constructor(turnTimerElement, turnDuration = 60, audio = null) {
     this.turnTimerElement = turnTimerElement;
     this.turnDuration = turnDuration;
     this.timeLeft = this.turnDuration;
     this.timerInterval = null;
+    this.audio = audio;
+  }
+
+  setDuration(duration) {
+    this.turnDuration = Math.max(30, Number(duration) || 60);
   }
 
   /**
@@ -80,9 +85,12 @@ export class TurnTimer {
       this.turnTimerElement.classList.remove('my-turn');
     }
 
-    // Nos últimos 15 segundos, fica vermelho
+    // Nos últimos 15 segundos, fica vermelho e aciona tique-taque de tensão
     if (this.timeLeft <= 15) {
       this.turnTimerElement.classList.add('warning');
+      if (myTurn && this.audio && this.timeLeft > 0) {
+        this.audio.playTensionTickSound(this.timeLeft);
+      }
     } else {
       this.turnTimerElement.classList.remove('warning');
     }

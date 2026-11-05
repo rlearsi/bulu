@@ -69,6 +69,17 @@ export class BoardUI {
     this.cfgRevealPopover = document.getElementById('cfg-reveal-popover');
     this.cfgRevealGroup = document.getElementById('cfg-reveal-popover');
 
+    // Dropdowns Seção: Tempo e Turnos
+    this.btnCfgTimeDropdown = document.getElementById('btn-cfg-time-dropdown');
+    this.cfgTimeDropdownLabel = document.getElementById('cfg-time-dropdown-label');
+    this.cfgTimePopover = document.getElementById('cfg-time-popover');
+    this.cfgTimeGroup = document.getElementById('cfg-time-popover');
+
+    this.btnCfgCommsDropdown = document.getElementById('btn-cfg-comms-dropdown');
+    this.cfgCommsDropdownLabel = document.getElementById('cfg-comms-dropdown-label');
+    this.cfgCommsPopover = document.getElementById('cfg-comms-popover');
+    this.cfgCommsGroup = document.getElementById('cfg-comms-popover');
+
     // Dropdowns Seção: Quem começa?
     this.btnCfgStarterFirstDropdown = document.getElementById('btn-cfg-starter-first-dropdown');
     this.cfgStarterFirstLabel = document.getElementById('cfg-starter-first-label');
@@ -79,6 +90,13 @@ export class BoardUI {
     this.cfgStarterNextLabel = document.getElementById('cfg-starter-next-label');
     this.cfgStarterNextPopover = document.getElementById('cfg-starter-next-popover');
     this.cfgStarterNextGroup = document.getElementById('cfg-starter-next-popover');
+
+    // Reações e Emojis Flutuantes
+    this.btnReactions = document.getElementById('btn-reactions');
+    this.reactionsBar = document.getElementById('reactions-bar');
+    this.floatingEmojisContainer = document.getElementById('floating-emojis-container');
+    this.btnChat = document.getElementById('btn-chat');
+    this.btnVoice = document.getElementById('btn-voice');
 
     this.cfgPrivacyGroup = document.getElementById('cfg-privacy-group');
 
@@ -520,7 +538,7 @@ export class BoardUI {
     if (this.gameModeHint) this.gameModeHint.textContent = info[mode];
   }
 
-  updateRoomConfigUI({ isRoomLocked, showOpponentSelection, firstRoundStarter, nextRoundStarterRule }) {
+  updateRoomConfigUI({ isRoomLocked, showOpponentSelection, firstRoundStarter, nextRoundStarterRule, turnDuration, roomComms }) {
     if (this.cfgPrivacyGroup) {
       this.cfgPrivacyGroup.querySelectorAll('.cfg-toggle-btn').forEach((btn) => {
         btn.classList.toggle('selected', (btn.dataset.locked === 'true') === isRoomLocked);
@@ -539,6 +557,43 @@ export class BoardUI {
     if (iconAllow && iconHide) {
       iconAllow.classList.toggle('hidden', !showOpponentSelection);
       iconHide.classList.toggle('hidden', showOpponentSelection);
+    }
+
+    if (turnDuration) {
+      if (this.cfgTimeGroup) {
+        this.cfgTimeGroup.querySelectorAll('.cfg-popover-option').forEach((btn) => {
+          btn.classList.toggle('selected', Number(btn.dataset.time) === turnDuration);
+        });
+      }
+      const timeLabels = {
+        60: '1 Minuto',
+        120: '2 Minutos',
+        180: '3 Minutos'
+      };
+      if (this.cfgTimeDropdownLabel) {
+        this.cfgTimeDropdownLabel.textContent = timeLabels[turnDuration] || `${Math.round(turnDuration / 60)} Minutos`;
+      }
+    }
+
+    if (roomComms) {
+      if (this.cfgCommsGroup) {
+        this.cfgCommsGroup.querySelectorAll('.cfg-popover-option').forEach((btn) => {
+          btn.classList.toggle('selected', btn.dataset.comms === roomComms);
+        });
+      }
+      const commsLabels = {
+        both: 'Texto e Voz',
+        text: 'Apenas Texto',
+        voice: 'Apenas Voz',
+        none: 'Desativado'
+      };
+      if (this.cfgCommsDropdownLabel) {
+        this.cfgCommsDropdownLabel.textContent = commsLabels[roomComms] || 'Texto e Voz';
+      }
+      ['both', 'text', 'voice', 'none'].forEach((mode) => {
+        const icon = document.getElementById(`cfg-icon-comms-${mode}`);
+        if (icon) icon.classList.toggle('hidden', mode !== roomComms);
+      });
     }
 
     if (firstRoundStarter) {
@@ -589,6 +644,25 @@ export class BoardUI {
         ? 'Crie uma sala e compartilhe o código de 6 dígitos com quem você quer jogar.'
         : 'Sala pública aberta para qualquer jogador entrar sem código pela lista de salas.';
     }
+  }
+
+  /** Exibe um emoji flutuando na tela que desaparece no topo */
+  spawnFloatingEmoji(emoji) {
+    if (!this.floatingEmojisContainer) return;
+    const el = document.createElement('div');
+    el.className = 'floating-emoji';
+    el.textContent = emoji;
+
+    // Posição horizontal aleatória no terço central/inferior da tela
+    const leftPercent = 20 + Math.random() * 60;
+    const bottomPx = 100 + Math.random() * 40;
+    el.style.left = `${leftPercent}%`;
+    el.style.bottom = `${bottomPx}px`;
+
+    this.floatingEmojisContainer.appendChild(el);
+    setTimeout(() => {
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+    }, 2300);
   }
 
   showRoomSetupView(show) {

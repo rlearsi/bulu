@@ -255,7 +255,9 @@
 }
 
 .config-side-row .config-dropdown-wrap.wrap-cursor,
-.config-side-row .config-dropdown-wrap.wrap-reveal {
+.config-side-row .config-dropdown-wrap.wrap-reveal,
+.config-side-row .config-dropdown-wrap.wrap-turn-time,
+.config-side-row .config-dropdown-wrap.wrap-comms {
   flex: 1 1 0;
   width: 0;
 }

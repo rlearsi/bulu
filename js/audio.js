@@ -98,5 +98,83 @@ export class AudioManager {
       // Áudio silencioso se bloqueado pelo browser
     }
   }
+
+  /**
+   * Efeito de tique-taque / tensão nos últimos segundos do turno
+   * @param {number} timeLeft Segundos restantes (ex: 1 a 15)
+   */
+  playTensionTickSound(timeLeft = 10) {
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      // Frequência sobe sutilmente conforme o tempo se esgota (tensão crescente)
+      // de 600Hz (a 15s) até 950Hz (nos últimos 3s)
+      const baseFreq = 600 + Math.max(0, (15 - timeLeft) * 25);
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(baseFreq, now);
+      osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.5, now + 0.04);
+
+      // Volume muito sutil e percussivo (clique discreto)
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.035, now + 0.005);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.06);
+    } catch (e) {
+      // Silencioso se bloqueado
+    }
+  }
+
+  /**
+   * Efeito sonoro lúdico e curto ao disparar ou receber uma reação/provocação
+   */
+  playReactionSound(emoji) {
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+
+      // Tons alegres variados para emojis
+      const tones = {
+        '🔥': [523.25, 783.99], // C5 -> G5
+        '👏': [440, 659.25],    // A4 -> E5
+        '🤔': [392, 440],       // G4 -> A4
+        '😱': [659.25, 493.88], // E5 -> B4
+        '💀': [220, 164.81],    // A3 -> E3
+        '🎯': [587.33, 880]     // D5 -> A5
+      };
+
+      const [startF, endF] = tones[emoji] || [440, 660];
+
+      osc.frequency.setValueAtTime(startF, now);
+      osc.frequency.exponentialRampToValueAtTime(endF, now + 0.12);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.05, now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.18);
+    } catch (e) {
+      // Silencioso se bloqueado
+    }
+  }
 }
 

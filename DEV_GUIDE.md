@@ -28,30 +28,31 @@ O projeto utiliza **JavaScript ES Modules puro** (sem dependências de runtime a
 
 ## 2. Receitas de Manutenção (Onde Alterar Cada Mecânica)
 
-### 2.1. Alterar o Tempo por Jogada (Cronômetro de Turno)
+### 2.1. Alterar o Tempo por Jogada e Alertas de Tensão
 
-Para mudar a duração do turno (atualmente **60 segundos / 1 minuto**) e o tempo de alerta vermelho (atualmente **15 segundos**):
+A duração do turno pode ser configurada pelo host no lobby da sala entre **1 minuto (60s), 2 minutos (120s) ou 3 minutos (180s)** (`this.turnDuration` em `script.js` e `this.timer.setDuration()`):
 
-1. **`script.js`** (no construtor de `TermoMultiplayerGame`):
+1. **`script.js`** (no construtor e opções de configuração):
    ```js
-   // Passe o novo tempo em segundos (ex.: 90 para 1m30s)
-   this.timer = new TurnTimer(this.ui.turnTimerElement, 60);
+   this.turnDuration = 60; // 60s, 120s ou 180s
+   this.timer = new TurnTimer(this.ui.turnTimerElement, this.turnDuration, this.audio);
    ```
-2. **`js/timer.js`**:
-   - Valor padrão do construtor: `constructor(turnTimerElement, turnDuration = 60)`
-   - Alerta vermelho do relógio (modo 2 jogadores) em `updateDisplay()`:
-     ```js
-     if (this.timeLeft <= 15) {
-       this.turnTimerElement.classList.add('warning');
-     }
-     ```
-3. **`js/board-ui.js`**:
-   - Alerta vermelho da barra de progresso (modo 3 ou 4 jogadores) em `updateTurnBar()`:
-     ```js
-     badge.classList.toggle('warning', isActive && timeLeft <= 15);
-     ```
-4. **`index.html`**:
-   - Texto inicial do elemento `#turn-timer` (`01:00`) e texto explicativo dentro do `#help-modal`.
+2. **`js/timer.js` e Tique-taque com Efeito de Tensão:**
+   - Nos últimos 15 segundos (`this.timeLeft <= 15`), o texto do relógio fica vermelho (`.warning`) e é disparado o som de tique-taque acelerado (`this.audio.playTensionTickSound()`).
+   - Em 3 ou 4 jogadores, a barra horizontal de progresso do badge (`.multi-badge-bar`) recebe a classe `.warning`.
+
+---
+
+### 2.1.1. Controle de Comunicação e Reações Rápidas (Emojis Voadores)
+
+1. **Comunicação da Sala (`this.roomComms`):**
+   - `'both'`: Chat de texto e chamada de voz via WebRTC liberados.
+   - `'text'`: Apenas chat de texto disponível; botão de voz oculto.
+   - `'voice'`: Apenas voz liberada; botão de chat oculto.
+   - `'none'`: Modo silencioso / foco absoluto (chat e voz desativados).
+2. **Reações Rápidas e Provocações (`#btn-reactions` / `#reactions-bar`):**
+   - Durante a partida, jogadores podem enviar reações rápidas (👏, 🔥, 🤔, 😱, 💀, 🎯).
+   - O emoji flutua na tela (`.floating-emoji`) e transmite o pacote P2P `REACTION` com som personalizado (`playReactionSound`).
 
 ---
 
@@ -235,6 +236,7 @@ Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um paco
 | `VOICE_REJECT` | Convidado / Host | Recusa a chamada de voz (mantém o dot de notificação no botão de quem recusou) |
 | `VOICE_CANCEL` | Solicitante | Cancela a solicitação de voz antes do oponente responder |
 | `VOICE_END` | Qualquer jogador | Encerra a transmissão de voz ativa |
+| `REACTION` | Qualquer jogador | Dispara emoji voador na tela dos jogadores com efeito sonoro |
 
 ---
 

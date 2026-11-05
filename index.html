@@ -53,6 +53,9 @@
         </svg>
         <span id="voice-dot" class="voice-dot hidden"></span>
       </button>
+      <button id="btn-reactions" class="action-btn reactions-action-btn hidden" title="Reações e Emojis">
+        <span class="reactions-btn-icon">⚡</span>
+      </button>
       <button id="btn-words-history" class="action-btn" title="Palavras acertadas">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="8" y1="6" x2="21" y2="6"></line>
@@ -389,7 +392,100 @@
             </div>
           </div>
 
-          <!-- SEÇÃO 3: QUEM COMEÇA? (2 DROPDOWNS LADO A LADO) -->
+          <!-- SEÇÃO 3: TEMPO E QUEM COMEÇA (2 DROPDOWNS LADO A LADO) -->
+          <div class="config-section">
+            <span class="config-section-title">Tempo e Turnos</span>
+            <div class="config-side-row">
+              <!-- Dropdown 1: Tempo do turno (1 min, 2 min ou 3 min) -->
+              <div class="config-dropdown-wrap wrap-turn-time">
+                <button type="button" id="btn-cfg-time-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Duração do turno">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                    </span>
+                    <span id="cfg-time-dropdown-label" class="cfg-mode-label">1 Minuto</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-time-popover" class="config-popover mode-popover hidden" role="menu">
+                  <span class="config-popover-title">Duração do turno</span>
+                  <button type="button" class="cfg-popover-option selected" data-time="60" role="menuitemradio">
+                    <strong>1 Minuto (Padrão)</strong>
+                    <span>Turnos rápidos e dinâmicos com alerta final de tensão.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-time="120" role="menuitemradio">
+                    <strong>2 Minutos</strong>
+                    <span>Tempo moderado para pensar com mais calma em cada palavra.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-time="180" role="menuitemradio">
+                    <strong>3 Minutos</strong>
+                    <span>Partida relaxada e casual sem correria.</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dropdown 2: Comunicação (Texto & Voz, Apenas Texto, Apenas Voz ou Silencioso) -->
+              <div class="config-dropdown-wrap wrap-comms">
+                <button type="button" id="btn-cfg-comms-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Comunicação na partida">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <!-- Ícone Ambos (Chat + Mic) -->
+                      <svg id="cfg-icon-comms-both" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                      </svg>
+                      <!-- Ícone Apenas Texto -->
+                      <svg id="cfg-icon-comms-text" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                      <!-- Ícone Apenas Voz -->
+                      <svg id="cfg-icon-comms-voice" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                      </svg>
+                      <!-- Ícone Desativado -->
+                      <svg id="cfg-icon-comms-none" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                      </svg>
+                    </span>
+                    <span id="cfg-comms-dropdown-label" class="cfg-mode-label">Texto e Voz</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-comms-popover" class="config-popover mode-popover reveal-popover hidden" role="menu">
+                  <span class="config-popover-title">Comunicação</span>
+                  <button type="button" class="cfg-popover-option selected" data-comms="both" role="menuitemradio">
+                    <strong>Texto e Voz</strong>
+                    <span>Chat de mensagens e chamada de voz liberados.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-comms="text" role="menuitemradio">
+                    <strong>Apenas Texto</strong>
+                    <span>Chat de texto liberado; transmissão de voz desativada.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-comms="voice" role="menuitemradio">
+                    <strong>Apenas Voz</strong>
+                    <span>Chamada de voz liberada; chat de texto oculto.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-comms="none" role="menuitemradio">
+                    <strong>Desativado</strong>
+                    <span>Modo foco total: sem chat de texto e sem voz.</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO 4: QUEM COMEÇA? (2 DROPDOWNS LADO A LADO) -->
           <div class="config-section">
             <span class="config-section-title">Quem começa?</span>
             <div class="config-side-row">
@@ -478,7 +574,7 @@
             </div>
           </div>
 
-          <!-- SEÇÃO 4: ACESSO DA SALA (2 BOTÕES ALINHADOS HORIZONTALMENTE) -->
+          <!-- SEÇÃO 5: ACESSO DA SALA (2 BOTÕES ALINHADOS HORIZONTALMENTE) -->
           <div class="config-section">
             <span class="config-section-title">Acesso da sala</span>
             <div class="config-grid">
@@ -580,6 +676,19 @@
       
       <!-- Aviso de feedback rápido (Ex: 'Palavra não encontrada', 'Não é sua vez') -->
       <div id="toast-message" class="toast hidden"></div>
+
+      <!-- BANDEJA DE REAÇÕES RÁPIDAS / EMOJIS FLUTUANTES -->
+      <div id="reactions-bar" class="reactions-bar hidden">
+        <button type="button" class="reaction-item-btn" data-emoji="👏" title="Aplaudir">👏</button>
+        <button type="button" class="reaction-item-btn" data-emoji="🔥" title="Fogo">🔥</button>
+        <button type="button" class="reaction-item-btn" data-emoji="🤔" title="Pensando">🤔</button>
+        <button type="button" class="reaction-item-btn" data-emoji="😱" title="Chocado">😱</button>
+        <button type="button" class="reaction-item-btn" data-emoji="💀" title="Morto">💀</button>
+        <button type="button" class="reaction-item-btn" data-emoji="🎯" title="Na mosca">🎯</button>
+      </div>
+
+      <!-- CONTAINER PARA EMOJIS VOADORES -->
+      <div id="floating-emojis-container" class="floating-emojis-container"></div>
 
       <!-- Banner de solicitação de voz no topo com ações rápidas ('Aceitar' / 'Recusar') -->
       <div id="voice-request-banner" class="voice-request-banner hidden">
