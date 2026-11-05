@@ -422,8 +422,8 @@
           <div class="config-section">
             <span class="config-section-title">Comunicação</span>
             <div class="config-side-row">
-              <!-- Dropdown Comunicação (Texto & Voz, Apenas Texto, Apenas Voz ou Silencioso) -->
-              <div class="config-dropdown-wrap wrap-comms-full">
+              <!-- Dropdown Comunicação (Texto & Voz, Apenas Texto, Apenas Voz ou Silencioso) - Ocupa a maior parte -->
+              <div class="config-dropdown-wrap wrap-comms-main">
                 <button type="button" id="btn-cfg-comms-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Comunicação na partida">
                   <div class="cfg-dropdown-inner">
                     <span class="cfg-mode-icon-wrap">
@@ -474,6 +474,16 @@
                     <span>Modo foco total: sem chat de texto e sem voz.</span>
                   </button>
                 </div>
+              </div>
+
+              <!-- Botão 2: Habilitar Reações - Fixo e menor com ícone moderno exclusivo -->
+              <div class="config-dropdown-wrap wrap-reactions-toggle">
+                <button type="button" id="btn-cfg-reactions-toggle" class="cfg-toggle-btn btn-reactions-toggle selected" title="Habilitar reações rápidas e provocações">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                  <span id="cfg-reactions-toggle-label" class="cfg-reactions-label">Reações</span>
+                </button>
               </div>
             </div>
           </div>

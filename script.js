@@ -49,6 +49,7 @@ class TermoMultiplayerGame {
     this.turnDuration = 60;
     // Comunicação: 'both' (texto e voz), 'text' (apenas texto), 'voice' (apenas voz), 'none' (desativado)
     this.roomComms = 'both';
+    this.allowReactions = true; // Habilitar reações e provocações rápidas (emojis voadores)
     this.secrets = {}; // id do jogador -> palavra secreta da sua grade (modos cross/individual)
     this.progress = {}; // Individual: id -> { rows, done }
     this.myDone = false; // Individual: já venceu ou esgotou as tentativas
@@ -459,7 +460,8 @@ class TermoMultiplayerGame {
       firstRoundStarter: this.firstRoundStarter,
       nextRoundStarterRule: this.nextRoundStarterRule,
       turnDuration: this.turnDuration,
-      roomComms: this.roomComms
+      roomComms: this.roomComms,
+      allowReactions: this.allowReactions
     });
 
     if (this.ui.btnRoomConfigToggle) {
@@ -564,7 +566,8 @@ class TermoMultiplayerGame {
           firstRoundStarter: this.firstRoundStarter,
           nextRoundStarterRule: this.nextRoundStarterRule,
           turnDuration: this.turnDuration,
-          roomComms: this.roomComms
+          roomComms: this.roomComms,
+          allowReactions: this.allowReactions
         });
         this.closeAllConfigPopovers();
       });
@@ -604,7 +607,8 @@ class TermoMultiplayerGame {
           firstRoundStarter: this.firstRoundStarter,
           nextRoundStarterRule: this.nextRoundStarterRule,
           turnDuration: this.turnDuration,
-          roomComms: this.roomComms
+          roomComms: this.roomComms,
+          allowReactions: this.allowReactions
         });
         this.closeAllConfigPopovers();
       });
@@ -633,9 +637,26 @@ class TermoMultiplayerGame {
           firstRoundStarter: this.firstRoundStarter,
           nextRoundStarterRule: this.nextRoundStarterRule,
           turnDuration: this.turnDuration,
-          roomComms: this.roomComms
+          roomComms: this.roomComms,
+          allowReactions: this.allowReactions
         });
         this.closeAllConfigPopovers();
+      });
+    }
+
+    if (this.ui.btnCfgReactionsToggle) {
+      this.ui.btnCfgReactionsToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.allowReactions = !this.allowReactions;
+        this.ui.updateRoomConfigUI({
+          isRoomLocked: this.isRoomLocked,
+          showOpponentSelection: this.showOpponentSelection,
+          firstRoundStarter: this.firstRoundStarter,
+          nextRoundStarterRule: this.nextRoundStarterRule,
+          turnDuration: this.turnDuration,
+          roomComms: this.roomComms,
+          allowReactions: this.allowReactions
+        });
       });
     }
 
@@ -662,7 +683,8 @@ class TermoMultiplayerGame {
           firstRoundStarter: this.firstRoundStarter,
           nextRoundStarterRule: this.nextRoundStarterRule,
           turnDuration: this.turnDuration,
-          roomComms: this.roomComms
+          roomComms: this.roomComms,
+          allowReactions: this.allowReactions
         });
         this.closeAllConfigPopovers();
       });
@@ -691,7 +713,8 @@ class TermoMultiplayerGame {
           firstRoundStarter: this.firstRoundStarter,
           nextRoundStarterRule: this.nextRoundStarterRule,
           turnDuration: this.turnDuration,
-          roomComms: this.roomComms
+          roomComms: this.roomComms,
+          allowReactions: this.allowReactions
         });
         this.closeAllConfigPopovers();
       });
@@ -710,7 +733,8 @@ class TermoMultiplayerGame {
           firstRoundStarter: this.firstRoundStarter,
           nextRoundStarterRule: this.nextRoundStarterRule,
           turnDuration: this.turnDuration,
-          roomComms: this.roomComms
+          roomComms: this.roomComms,
+          allowReactions: this.allowReactions
         });
         if (changed && this.isHostWaitingInLobby() && !this.network.isConnected()) {
           this.handleCreateRoom();
@@ -944,7 +968,8 @@ class TermoMultiplayerGame {
         firstRoundStarter: this.firstRoundStarter,
         nextRoundStarterRule: this.nextRoundStarterRule,
         turnDuration: this.turnDuration,
-        roomComms: this.roomComms
+        roomComms: this.roomComms,
+        allowReactions: this.allowReactions
       });
       this.handleCreateRoom();
     } else if (!this.isHostWaitingInLobby()) {
@@ -1303,6 +1328,9 @@ class TermoMultiplayerGame {
           if (data.roomComms) {
             this.roomComms = data.roomComms;
           }
+          if (typeof data.allowReactions === 'boolean') {
+            this.allowReactions = data.allowReactions;
+          }
           this.currentTurnId = data.startingId;
           this.roundStarterId = data.startingId;
           this.lastWinnerId = null;
@@ -1454,6 +1482,7 @@ class TermoMultiplayerGame {
       showOpponentSelection: this.showOpponentSelection,
       turnDuration: this.turnDuration,
       roomComms: this.roomComms,
+      allowReactions: this.allowReactions,
       secrets: this.secrets
     });
 
@@ -2623,7 +2652,8 @@ class TermoMultiplayerGame {
       firstRoundStarter: this.firstRoundStarter,
       nextRoundStarterRule: this.nextRoundStarterRule,
       turnDuration: this.turnDuration,
-      roomComms: this.roomComms
+      roomComms: this.roomComms,
+      allowReactions: this.allowReactions
     });
 
     this.chat.reset();
@@ -2659,7 +2689,11 @@ class TermoMultiplayerGame {
     }
 
     if (this.ui.btnReactions) {
-      this.ui.btnReactions.classList.toggle('hidden', !this.matchStarted || !isMulti);
+      const showReactions = this.matchStarted && isMulti && this.allowReactions;
+      this.ui.btnReactions.classList.toggle('hidden', !showReactions);
+      if (!showReactions && this.ui.reactionsBar) {
+        this.ui.reactionsBar.classList.add('hidden');
+      }
     }
   }
 

@@ -246,9 +246,31 @@
   min-width: 0;
 }
 
-.config-side-row .config-dropdown-wrap.wrap-comms-full {
-  flex: 1 1 100%;
+.config-side-row .config-dropdown-wrap.wrap-comms-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.config-side-row .config-dropdown-wrap.wrap-reactions-toggle {
+  flex: 0 0 132px;
+  width: 132px;
+}
+
+.btn-reactions-toggle {
   width: 100%;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.btn-reactions-toggle .cfg-reactions-label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .config-side-row .btn-dropdown-compact {
@@ -505,6 +527,11 @@
   background: rgba(211, 173, 105, 0.2);
   border-color: rgba(211, 173, 105, 0.55);
   color: var(--color-present);
+}
+
+.cfg-toggle-btn.selected svg {
+  color: var(--color-present);
+  stroke: currentColor;
 }
 
 .max-players-option.selected {

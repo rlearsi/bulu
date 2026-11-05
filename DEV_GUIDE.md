@@ -219,7 +219,7 @@ Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um paco
 | `KICK_PLAYER` | Host | Expulsa um convidado específico (`targetId`) da sala de espera |
 | `START_COUNTDOWN` | Host | Notifica contagem regressiva de 3 segundos antes do início da partida |
 | `PLAYERS_SYNC` | Host | Sincroniza a lista de jogadores e placares após reconexão |
-| `START_MATCH` | Host | Inicia a partida enviando `players`, `secretWord`, `startingId`, `gameMode`, `revealLetters`, `showOpponentSelection` e `secrets` (palavra de cada jogador nos modos Cruzado/Individual) |
+| `START_MATCH` | Host | Inicia a partida enviando `players`, `secretWord`, `startingId`, `gameMode`, `revealLetters`, `showOpponentSelection`, `turnDuration`, `roomComms`, `allowReactions` e `secrets` (palavra de cada jogador nos modos Cruzado/Individual) |
 | `LIVE_KEYSTROKE` | Jogador da vez | Espelha letras digitadas/apagadas em tempo real (`ADD` / `DELETE`); não é enviado no modo Individual |
 | `CURSOR_MOVE` | Jogador ativo | Informa a posição selecionada (`row`, `col`) quando `showOpponentSelection` está habilitado |
 | `SUBMIT_GUESS` | Jogador da vez | Submete a tentativa avaliada, informa se venceu (`isWin`) e passa a vez (`nextTurnId`). No Cruzado cada cliente reavalia o palpite contra a palavra de cada grade; no Individual qualquer jogador envia a qualquer momento (sem `nextTurnId`) |

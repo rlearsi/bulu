@@ -80,6 +80,9 @@ export class BoardUI {
     this.cfgCommsPopover = document.getElementById('cfg-comms-popover');
     this.cfgCommsGroup = document.getElementById('cfg-comms-popover');
 
+    this.btnCfgReactionsToggle = document.getElementById('btn-cfg-reactions-toggle');
+    this.cfgReactionsToggleLabel = document.getElementById('cfg-reactions-toggle-label');
+
     // Dropdowns Seção: Quem começa?
     this.btnCfgStarterFirstDropdown = document.getElementById('btn-cfg-starter-first-dropdown');
     this.cfgStarterFirstLabel = document.getElementById('cfg-starter-first-label');
@@ -538,7 +541,7 @@ export class BoardUI {
     if (this.gameModeHint) this.gameModeHint.textContent = info[mode];
   }
 
-  updateRoomConfigUI({ isRoomLocked, showOpponentSelection, firstRoundStarter, nextRoundStarterRule, turnDuration, roomComms }) {
+  updateRoomConfigUI({ isRoomLocked, showOpponentSelection, firstRoundStarter, nextRoundStarterRule, turnDuration, roomComms, allowReactions }) {
     if (this.cfgPrivacyGroup) {
       this.cfgPrivacyGroup.querySelectorAll('.cfg-toggle-btn').forEach((btn) => {
         btn.classList.toggle('selected', (btn.dataset.locked === 'true') === isRoomLocked);
@@ -594,6 +597,16 @@ export class BoardUI {
         const icon = document.getElementById(`cfg-icon-comms-${mode}`);
         if (icon) icon.classList.toggle('hidden', mode !== roomComms);
       });
+    }
+
+    if (allowReactions !== undefined) {
+      if (this.btnCfgReactionsToggle) {
+        this.btnCfgReactionsToggle.classList.toggle('selected', !!allowReactions);
+        this.btnCfgReactionsToggle.setAttribute('aria-pressed', allowReactions ? 'true' : 'false');
+      }
+      if (this.cfgReactionsToggleLabel) {
+        this.cfgReactionsToggleLabel.textContent = allowReactions ? 'Reações' : 'Sem Reação';
+      }
     }
 
     if (firstRoundStarter) {
