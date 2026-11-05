@@ -62,10 +62,46 @@
   opacity: 0.55;
 }
 
-/* BLOQUEIO DO TECLADO NO TURNO DO ADVERSÁRIO */
+/* BLOQUEIO DO TECLADO NO TURNO DO ADVERSÁRIO (QUANDO SEM REAÇÕES) */
 .keyboard.locked {
   pointer-events: none;
   opacity: 0.45;
   filter: grayscale(40%);
+}
+
+/* MODO REAÇÕES NO TECLADO (QUANDO É VEZ DO OPONENTE) */
+.keyboard.reactions-mode {
+  pointer-events: auto;
+}
+
+.keyboard.reactions-mode .key-btn {
+  transition: transform 0.15s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Teclas vazias do teclado em modo reação */
+.keyboard.reactions-mode .key-btn.reaction-empty {
+  opacity: 0.18;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Teclas com emoji ativo */
+.keyboard.reactions-mode .key-btn.has-reaction {
+  font-size: 1.55rem;
+  line-height: 1;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transform: translateY(0);
+}
+
+.keyboard.reactions-mode .key-btn.has-reaction:hover {
+  background-color: rgba(211, 173, 105, 0.25);
+  border-color: rgba(211, 173, 105, 0.55);
+  transform: translateY(-2px) scale(1.08);
+}
+
+.keyboard.reactions-mode .key-btn.has-reaction:active {
+  transform: translateY(0) scale(0.92);
 }
 

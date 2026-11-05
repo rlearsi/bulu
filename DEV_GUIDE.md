@@ -206,6 +206,16 @@ Na barra de ações no topo (`#game-actions-bar`), o botão `#btn-words-history`
 
 ---
 
+### 2.12. Reações Rápidas e Emojis Integrados ao Teclado
+
+Durante a partida em modos multiplayer com reações ativas (`allowReactions: true`):
+- **Na vez do jogador:** O teclado virtual opera normalmente com letras, avaliações coloridas (`correct`, `present`, `absent`) e ações de `ENTER` / `BACKSPACE`.
+- **Na vez do oponente:** As letras são removidas das teclas e os emojis principais e mais expressivos são posicionados em um bloco central perfeitamente simétrico de 4x3 (Linha 1: `R`, `T`, `Y`, `U`; Linha 2: `F`, `G`, `H`, `J`; Linha 3: `C`, `V`, `B`, `N` com emojis 👏, 🔥, 🤔, 🎯, 😱, 💀, ❤️, 👀, 😂, 🤫, ⚡, 🎉). O jogador pode clicar diretamente nas teclas do centro para disparar reações flutuantes e efeitos sonoros sincronizados via WebRTC (`REACTION`).
+- Teclas fora da área de reações permanecem esmaecidas e inativas (`.reaction-empty`).
+- Quando a vez retorna ao jogador, as letras e as cores já avaliadas são restauradas imediatamente.
+
+---
+
 ## 3. Protocolo de Mensagens WebRTC (`handleP2PMessage`)
 
 Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um pacote ao Host, o Host adiciona `from: peerId` e retransmite (`broadcast`) para os demais convidados:

@@ -6,13 +6,15 @@
 import { ProfileManager } from './profile.js?v=1.6.11';
 
 export class BoardUI {
-  constructor({ maxRows = 6, wordLength = 5, audio, onTileClick, onVirtualKeyPress }) {
+  constructor({ maxRows = 6, wordLength = 5, audio, onTileClick, onVirtualKeyPress, onReactionSelect }) {
     this.maxRows = maxRows;
     this.wordLength = wordLength;
     this.audio = audio;
     this.onTileClick = onTileClick;
     this.onVirtualKeyPress = onVirtualKeyPress;
+    this.onReactionSelect = onReactionSelect;
     this.keyboardStatus = {};
+    this.isReactionsMode = false;
 
     this.initDOM();
   }
@@ -94,9 +96,7 @@ export class BoardUI {
     this.cfgStarterNextPopover = document.getElementById('cfg-starter-next-popover');
     this.cfgStarterNextGroup = document.getElementById('cfg-starter-next-popover');
 
-    // Reações e Emojis Flutuantes
-    this.btnReactions = document.getElementById('btn-reactions');
-    this.reactionsBar = document.getElementById('reactions-bar');
+    // Emojis Flutuantes
     this.floatingEmojisContainer = document.getElementById('floating-emojis-container');
     this.btnChat = document.getElementById('btn-chat');
     this.btnVoice = document.getElementById('btn-voice');
@@ -206,6 +206,7 @@ export class BoardUI {
   createKeyboard() {
     this.keyboardElement.innerHTML = '';
     this.keyboardStatus = {};
+    this.isReactionsMode = false;
     const layout = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'BACKSPACE'],
@@ -231,13 +232,85 @@ export class BoardUI {
           btn.textContent = k;
         }
 
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          if (this.isReactionsMode) {
+            const emoji = btn.dataset.reactionEmoji;
+            if (emoji && this.onReactionSelect) {
+              this.onReactionSelect(emoji);
+            }
+            return;
+          }
           if (this.onVirtualKeyPress) this.onVirtualKeyPress(k);
         });
         rowDiv.appendChild(btn);
       });
 
       this.keyboardElement.appendChild(rowDiv);
+    });
+  }
+
+  /**
+   * Alterna o teclado entre o modo de digitação padrão (letras)
+   * e o modo de reações rápidas com emojis centrais (quando é a vez do oponente).
+   */
+  setKeyboardReactionsMode(enabled) {
+    if (this.isReactionsMode === enabled) return;
+    this.isReactionsMode = enabled;
+
+    const emojiMap = {
+      // Linha 1 (10 teclas: Q, W, E [R, T, Y, U] I, O, P) -> 3 vazias de cada lado, 4 no centro
+      'R': '👏',
+      'T': '🔥',
+      'Y': '🤔',
+      'U': '🎯',
+      // Linha 2 (10 teclas: A, S, D [F, G, H, J] K, L, BACKSPACE) -> 3 vazias de cada lado, 4 no centro
+      'F': '😱',
+      'G': '💀',
+      'H': '❤️',
+      'J': '👀',
+      // Linha 3 (8 teclas: Z, X, [C, V, B, N] M, ENTER) -> 2 de cada lado, 4 no centro perfeitamente alinhadas
+      'C': '😂',
+      'V': '🤫',
+      'B': '⚡',
+      'N': '🎉'
+    };
+
+    this.keyboardElement.classList.toggle('reactions-mode', enabled);
+
+    this.keyboardElement.querySelectorAll('.key-btn').forEach(btn => {
+      const key = btn.dataset.key;
+      if (enabled) {
+        // Remove classes de feedback das letras enquanto estiver em reações
+        btn.classList.remove('correct', 'present', 'absent');
+        const emoji = emojiMap[key];
+        if (emoji) {
+          btn.textContent = emoji;
+          btn.dataset.reactionEmoji = emoji;
+          btn.classList.add('has-reaction');
+          btn.classList.remove('reaction-empty');
+          btn.title = `Reagir com ${emoji}`;
+        } else {
+          btn.textContent = '';
+          delete btn.dataset.reactionEmoji;
+          btn.classList.remove('has-reaction');
+          btn.classList.add('reaction-empty');
+          btn.removeAttribute('title');
+        }
+      } else {
+        // Restaura as letras e seus status avaliados
+        btn.classList.remove('has-reaction', 'reaction-empty');
+        delete btn.dataset.reactionEmoji;
+        btn.removeAttribute('title');
+        if (key === 'ENTER') {
+          btn.textContent = 'ENTER';
+        } else if (key === 'BACKSPACE') {
+          btn.innerHTML = '⌫';
+        } else {
+          btn.textContent = key;
+          const status = this.keyboardStatus[key];
+          if (status) btn.classList.add(status);
+        }
+      }
     });
   }
 
@@ -318,6 +391,7 @@ export class BoardUI {
     if (current === 'present' && status === 'absent') return;
 
     this.keyboardStatus[letter] = status;
+    if (this.isReactionsMode) return;
     const keyBtn = this.keyboardElement.querySelector(`.key-btn[data-key="${letter}"]`);
     if (keyBtn) {
       keyBtn.classList.remove('correct', 'present', 'absent');
@@ -354,7 +428,7 @@ export class BoardUI {
    * - 4 jogadores: badges compactos em grade 2x2
    * Em 3+ jogadores o tempo de turno é exibido como barra de progresso no badge.
    */
-  renderScoreboard({ players, myId, currentTurnId, isMyTurn, silent = false, turnless = false }) {
+  renderScoreboard({ players, myId, currentTurnId, isMyTurn, silent = false, turnless = false, allowReactions = false }) {
     this.statusBar.classList.remove('hidden');
     if (this.infiniteScoreboard) this.infiniteScoreboard.classList.add('hidden');
     const hostId = players.length ? players[0].id : '';
@@ -403,12 +477,20 @@ export class BoardUI {
 
     if (this.turnIndicator) this.turnIndicator.textContent = '';
     if (turnless) {
+      this.setKeyboardReactionsMode(false);
       this.keyboardElement.classList.toggle('locked', !isMyTurn);
     } else if (isMyTurn) {
+      this.setKeyboardReactionsMode(false);
       this.keyboardElement.classList.remove('locked');
       if (!silent) this.showToast('Sua vez de jogar');
     } else {
-      this.keyboardElement.classList.add('locked');
+      if (allowReactions) {
+        this.keyboardElement.classList.remove('locked');
+        this.setKeyboardReactionsMode(true);
+      } else {
+        this.setKeyboardReactionsMode(false);
+        this.keyboardElement.classList.add('locked');
+      }
     }
   }
 

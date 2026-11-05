@@ -78,7 +78,8 @@ class TermoMultiplayerGame {
       wordLength: this.wordLength,
       audio: this.audio,
       onTileClick: (r, c) => this.handleTileClick(r, c),
-      onVirtualKeyPress: (k) => this.handleVirtualKeyPress(k)
+      onVirtualKeyPress: (k) => this.handleVirtualKeyPress(k),
+      onReactionSelect: (emoji) => this.triggerReaction(emoji, true)
     });
 
     this.mm = new MultiBoardLayout({ ui: this.ui, wordLength: this.wordLength });
@@ -835,35 +836,6 @@ class TermoMultiplayerGame {
     if (this.ui.btnCloseExit) this.ui.btnCloseExit.addEventListener('click', () => this.ui.showExitConfirmModal(false));
     if (this.ui.btnCancelExit) this.ui.btnCancelExit.addEventListener('click', () => this.ui.showExitConfirmModal(false));
     if (this.ui.btnConfirmExit) this.ui.btnConfirmExit.addEventListener('click', () => this.handleConfirmExitAction());
-
-    // Reações Rápidas e Provocações (Emojis Voadores)
-    if (this.ui.btnReactions) {
-      this.ui.btnReactions.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (this.ui.reactionsBar) {
-          this.ui.reactionsBar.classList.toggle('hidden');
-        }
-      });
-    }
-
-    if (this.ui.reactionsBar) {
-      this.ui.reactionsBar.addEventListener('click', (e) => {
-        const btn = e.target.closest('.reaction-item-btn');
-        if (!btn) return;
-        const emoji = btn.dataset.emoji;
-        if (!emoji) return;
-        this.triggerReaction(emoji, true);
-        this.ui.reactionsBar.classList.add('hidden');
-      });
-    }
-
-    document.addEventListener('click', (e) => {
-      if (this.ui.reactionsBar && !this.ui.reactionsBar.classList.contains('hidden')) {
-        if (!e.target.closest('#reactions-bar') && !e.target.closest('#btn-reactions')) {
-          this.ui.reactionsBar.classList.add('hidden');
-        }
-      }
-    });
 
     // Desbloqueia contexto de áudio no primeiro toque/clique
     const unlockAudio = () => this.audio.getAudioContext();
@@ -1750,7 +1722,8 @@ class TermoMultiplayerGame {
       currentTurnId: this.currentTurnId,
       isMyTurn: this.isMyTurn(),
       silent: true,
-      turnless: this.mode === 'individual'
+      turnless: this.mode === 'individual',
+      allowReactions: this.allowReactions
     });
     this.refreshMultiBoards();
     if (this.players.length > 2 && !this.isGameOver && this.mode !== 'individual') {
@@ -1792,7 +1765,8 @@ class TermoMultiplayerGame {
       myId: this.myId,
       currentTurnId: this.currentTurnId,
       isMyTurn: this.isMyTurn(),
-      turnless
+      turnless,
+      allowReactions: this.allowReactions
     });
     this.refreshMultiBoards();
 
@@ -2662,14 +2636,12 @@ class TermoMultiplayerGame {
       this.voice.updateVisibility(false, false);
     }
     if (this.ui.btnChat) this.ui.btnChat.classList.remove('hidden');
-    if (this.ui.btnReactions) this.ui.btnReactions.classList.add('hidden');
-    if (this.ui.reactionsBar) this.ui.reactionsBar.classList.add('hidden');
 
     this.ui.lobbyScreen.classList.remove('hidden');
   }
 
   /**
-   * Atualiza a visibilidade do Chat, Botão de Voz e Reações Rápidas
+   * Atualiza a visibilidade do Chat e Botão de Voz
    * de acordo com a configuração de comunicação da sala (roomComms)
    */
   updateCommsAndReactionsVisibility() {
@@ -2686,14 +2658,6 @@ class TermoMultiplayerGame {
 
     if (this.voice) {
       this.voice.updateVisibility(this.matchStarted && allowVoice, isMulti && allowVoice);
-    }
-
-    if (this.ui.btnReactions) {
-      const showReactions = this.matchStarted && isMulti && this.allowReactions;
-      this.ui.btnReactions.classList.toggle('hidden', !showReactions);
-      if (!showReactions && this.ui.reactionsBar) {
-        this.ui.reactionsBar.classList.add('hidden');
-      }
     }
   }
 
