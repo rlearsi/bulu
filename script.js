@@ -39,11 +39,14 @@ class TermoMultiplayerGame {
 
     // Modos de jogo: 'normal' (grade compartilhada), 'cross' (Cruzado) e 'individual' (corrida simultânea)
     this.gameMode = 'normal';
-    this.revealLetters = false; // Individual: true = grades dos oponentes mostram letras; false = só cores
+    this.revealLetters = true; // Por padrão sempre mostra letras; nos modos multigrade pode alternar para cores
+    this.showOpponentSelection = true; // Mostrar onde o oponente está selecionando
     this.secrets = {}; // id do jogador -> palavra secreta da sua grade (modos cross/individual)
     this.progress = {}; // Individual: id -> { rows, done }
     this.myDone = false; // Individual: já venceu ou esgotou as tentativas
     this.winnerDecided = false; // Individual (host): vencedor já definido
+    this.countdownTimer = null;
+    this.opponentCursor = null; // { row, col } do oponente ativo
 
     // Modo Solo: 'classic' (1 palavra em 6 tentativas) ou 'infinite' (sequência contínua)
     this.soloMode = 'classic';
@@ -89,7 +92,8 @@ class TermoMultiplayerGame {
         hostName: this.profile.myName,
         hostAvatar: this.profile.myAvatar,
         count: this.players.length,
-        max: this.maxPlayers
+        max: this.maxPlayers,
+        mode: this.gameMode
       })
     });
 
@@ -318,6 +322,12 @@ class TermoMultiplayerGame {
       return;
     }
 
+    // 6b. Se estiver na tela de configurações de sala (sem sala criada ainda), volta para o menu inicial do lobby
+    if (this.ui.roomSetupView && !this.ui.roomSetupView.classList.contains('hidden')) {
+      this.ui.showRoomSetupView(false);
+      return;
+    }
+
     // 7. Se já estiver no Lobby com tudo fechado, pergunta se deseja sair do jogo
     this.pendingExitAction = 'leave_app';
     this.ui.showExitConfirmModal(true, {
@@ -411,66 +421,156 @@ class TermoMultiplayerGame {
 
   initEvents() {
     // Ações do Lobby
-    this.ui.updateRoomLockUI(this.isRoomLocked);
     this.ui.updateMaxPlayersUI(this.maxPlayers);
-    this.ui.btnCreateRoom.addEventListener('click', () => this.handleCreateRoom());
-    if (this.ui.btnLockRoom) {
-      this.ui.btnLockRoom.addEventListener('click', () => this.toggleRoomLock());
-    }
-    if (this.ui.btnMaxPlayers) {
-      this.ui.btnMaxPlayers.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.ui.showGameModePopover(false);
-        this.ui.showSoloModePopover(false);
-        const isOpen = !this.ui.maxPlayersPopover.classList.contains('hidden');
-        this.ui.showMaxPlayersPopover(!isOpen);
-      });
-    }
-    if (this.ui.maxPlayersPopover) {
-      this.ui.maxPlayersPopover.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const opt = e.target.closest('.max-players-option');
-        if (!opt) return;
-        this.setMaxPlayers(Number(opt.dataset.value));
-        this.ui.showMaxPlayersPopover(false);
-      });
-      document.addEventListener('click', () => this.ui.showMaxPlayersPopover(false));
-    }
     this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
-    if (this.ui.btnGameMode) {
-      this.ui.btnGameMode.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.ui.showMaxPlayersPopover(false);
-        this.ui.showSoloModePopover(false);
-        const isOpen = !this.ui.gameModePopover.classList.contains('hidden');
-        this.ui.showGameModePopover(!isOpen);
+    this.ui.updateRoomConfigUI({
+      isRoomLocked: this.isRoomLocked,
+      showOpponentSelection: this.showOpponentSelection
+    });
+
+    if (this.ui.btnRoomConfigToggle) {
+      this.ui.btnRoomConfigToggle.addEventListener('click', () => {
+        this.openRoomSetupScreen(false);
       });
     }
-    if (this.ui.gameModePopover) {
-      this.ui.gameModePopover.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const modeOpt = e.target.closest('.game-mode-option');
-        if (modeOpt) {
-          this.setGameMode(modeOpt.dataset.mode);
-          // No Individual mantém aberto para escolher cores/letras
-          if (modeOpt.dataset.mode !== 'individual') this.ui.showGameModePopover(false);
-          return;
-        }
-        const revealOpt = e.target.closest('.reveal-option');
-        if (revealOpt) {
-          this.revealLetters = revealOpt.dataset.reveal === 'true';
-          this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
-          this.ui.showGameModePopover(false);
+
+    if (this.ui.btnBackFromSetup) {
+      this.ui.btnBackFromSetup.addEventListener('click', () => {
+        if (this.isHostWaitingInLobby()) {
+          this.resetToLobby();
+        } else {
+          this.ui.showRoomSetupView(false);
         }
       });
-      document.addEventListener('click', () => this.ui.showGameModePopover(false));
     }
+
+    if (this.ui.btnSetupOpenRoom) {
+      this.ui.btnSetupOpenRoom.addEventListener('click', () => this.handleCreateRoom());
+    }
+
+    if (this.ui.btnCfgModeDropdown) {
+      this.ui.btnCfgModeDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !this.ui.cfgModePopover.classList.contains('hidden');
+        this.closeAllConfigPopovers();
+        if (!isOpen) {
+          this.ui.cfgModePopover.classList.remove('hidden');
+          this.ui.btnCfgModeDropdown.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    if (this.ui.btnCfgPlayersDropdown) {
+      this.ui.btnCfgPlayersDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !this.ui.cfgPlayersPopover.classList.contains('hidden');
+        this.closeAllConfigPopovers();
+        if (!isOpen) {
+          this.ui.cfgPlayersPopover.classList.remove('hidden');
+          this.ui.btnCfgPlayersDropdown.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    if (this.ui.cfgPlayersGroup) {
+      this.ui.cfgPlayersGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.max-players-option, .cfg-toggle-btn');
+        if (!btn) return;
+        this.setMaxPlayers(Number(btn.dataset.value));
+        this.closeAllConfigPopovers();
+      });
+    }
+
+    if (this.ui.cfgModeGroup) {
+      this.ui.cfgModeGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cfg-popover-option, .cfg-toggle-btn');
+        if (!btn) return;
+        this.setGameMode(btn.dataset.mode);
+        this.closeAllConfigPopovers();
+      });
+    }
+
+    document.addEventListener('click', () => {
+      this.closeAllConfigPopovers();
+    });
+
+    if (this.ui.btnCfgCursorDropdown) {
+      this.ui.btnCfgCursorDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !this.ui.cfgCursorPopover.classList.contains('hidden');
+        this.closeAllConfigPopovers();
+        if (!isOpen) {
+          this.ui.cfgCursorPopover.classList.remove('hidden');
+          this.ui.btnCfgCursorDropdown.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    if (this.ui.btnCfgRevealDropdown) {
+      this.ui.btnCfgRevealDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.gameMode === 'normal') return;
+        const isOpen = !this.ui.cfgRevealPopover.classList.contains('hidden');
+        this.closeAllConfigPopovers();
+        if (!isOpen) {
+          this.ui.cfgRevealPopover.classList.remove('hidden');
+          this.ui.btnCfgRevealDropdown.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    if (this.ui.cfgCursorGroup) {
+      this.ui.cfgCursorGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cfg-popover-option, .cfg-toggle-btn');
+        if (!btn) return;
+        this.showOpponentSelection = btn.dataset.cursor === 'true';
+        this.ui.updateRoomConfigUI({
+          isRoomLocked: this.isRoomLocked,
+          showOpponentSelection: this.showOpponentSelection
+        });
+        this.closeAllConfigPopovers();
+      });
+    }
+
+    if (this.ui.cfgRevealGroup) {
+      this.ui.cfgRevealGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cfg-popover-option, .cfg-toggle-btn');
+        if (!btn) return;
+        this.revealLetters = btn.dataset.reveal === 'true';
+        this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
+        this.closeAllConfigPopovers();
+      });
+    }
+
+    if (this.ui.cfgPrivacyGroup) {
+      this.ui.cfgPrivacyGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cfg-toggle-btn');
+        if (!btn) return;
+        const nextLocked = btn.dataset.locked === 'true';
+        const changed = this.isRoomLocked !== nextLocked;
+        this.isRoomLocked = nextLocked;
+        this.ui.updateRoomConfigUI({
+          isRoomLocked: this.isRoomLocked,
+          showOpponentSelection: this.showOpponentSelection
+        });
+        if (changed && this.isHostWaitingInLobby() && !this.network.isConnected()) {
+          this.handleCreateRoom();
+        }
+      });
+    }
+
+    this.ui.btnCreateRoom.addEventListener('click', () => {
+      this.openRoomSetupScreen(true);
+    });
+
+    if (this.ui.btnCancelRoom) {
+      this.ui.btnCancelRoom.addEventListener('click', () => this.resetToLobby());
+    }
+
     this.ui.updateSoloModeUI(this.soloMode);
     if (this.ui.btnSoloMode) {
       this.ui.btnSoloMode.addEventListener('click', (e) => {
         e.stopPropagation();
-        this.ui.showMaxPlayersPopover(false);
-        this.ui.showGameModePopover(false);
         const isOpen = !this.ui.soloModePopover.classList.contains('hidden');
         this.ui.showSoloModePopover(!isOpen);
       });
@@ -485,10 +585,11 @@ class TermoMultiplayerGame {
       });
       document.addEventListener('click', () => this.ui.showSoloModePopover(false));
     }
+
     if (this.ui.btnStartMatch) {
       this.ui.btnStartMatch.addEventListener('click', () => {
         if (this.role === 'host' && !this.matchStarted && this.players.length >= 2) {
-          this.startNewRound(this.hostId);
+          this.triggerCountdownAndStart();
         }
       });
     }
@@ -566,13 +667,18 @@ class TermoMultiplayerGame {
   }
 
   refreshHighlight() {
+    const cursor = this.showOpponentSelection ? this.opponentCursor : null;
     this.ui.updateActiveTileHighlight({
       currentRow: this.currentRow,
       currentTile: this.currentTile,
       isMyTurn: this.isMyTurn(),
       isGameOver: this.isGameOver,
-      isRevealing: this.isRevealing
+      isRevealing: this.isRevealing,
+      opponentCursor: this.mode !== 'individual' ? cursor : null
     });
+    if (this.mm && this.mm.isMounted) {
+      this.mm.setOpponentCursor(!this.isGameOver ? cursor : null, this.mode);
+    }
   }
 
   // ==========================================
@@ -581,17 +687,6 @@ class TermoMultiplayerGame {
   isHostWaitingInLobby() {
     return this.role === 'host' && !this.matchStarted &&
       this.ui.hostCodeDisplay && !this.ui.hostCodeDisplay.classList.contains('hidden');
-  }
-
-  toggleRoomLock() {
-    this.isRoomLocked = !this.isRoomLocked;
-    this.ui.updateRoomLockUI(this.isRoomLocked);
-
-    // Se já estiver aguardando jogadores com sala aberta no Lobby, alterna o modo da sala em tempo real
-    const isInLobby = this.ui.lobbyScreen && !this.ui.lobbyScreen.classList.contains('hidden');
-    if (this.isHostWaitingInLobby() && isInLobby && !this.network.isConnected()) {
-      this.handleCreateRoom();
-    }
   }
 
   setGameMode(mode) {
@@ -624,9 +719,37 @@ class TermoMultiplayerGame {
     if (isWaitingHost && this.players.length > 0) {
       this.broadcastLobbyUpdate();
       this.updateHostLobbyStatus();
-      if (this.players.length >= this.maxPlayers) {
-        this.startNewRound(this.hostId);
-      }
+    }
+  }
+
+  closeAllConfigPopovers() {
+    if (this.ui.cfgModePopover) this.ui.cfgModePopover.classList.add('hidden');
+    if (this.ui.cfgPlayersPopover) this.ui.cfgPlayersPopover.classList.add('hidden');
+    if (this.ui.cfgCursorPopover) this.ui.cfgCursorPopover.classList.add('hidden');
+    if (this.ui.cfgRevealPopover) this.ui.cfgRevealPopover.classList.add('hidden');
+    if (this.ui.btnCfgModeDropdown) this.ui.btnCfgModeDropdown.setAttribute('aria-expanded', 'false');
+    if (this.ui.btnCfgPlayersDropdown) this.ui.btnCfgPlayersDropdown.setAttribute('aria-expanded', 'false');
+    if (this.ui.btnCfgCursorDropdown) this.ui.btnCfgCursorDropdown.setAttribute('aria-expanded', 'false');
+    if (this.ui.btnCfgRevealDropdown) this.ui.btnCfgRevealDropdown.setAttribute('aria-expanded', 'false');
+  }
+
+  openRoomSetupScreen(autoStartRoom = false) {
+    this.ui.showRoomSetupView(true);
+    if (autoStartRoom) {
+      // Se foi direto pelo botão verde "Criar Sala", aplica o padrão (privada, 2 jogadores, modo normal)
+      this.isRoomLocked = true;
+      this.maxPlayers = 2;
+      this.gameMode = 'normal';
+      this.ui.updateMaxPlayersUI(this.maxPlayers);
+      this.ui.updateGameModeUI(this.gameMode, this.revealLetters);
+      this.ui.updateRoomConfigUI({
+        isRoomLocked: this.isRoomLocked,
+        showOpponentSelection: this.showOpponentSelection
+      });
+      this.handleCreateRoom();
+    } else if (!this.isHostWaitingInLobby()) {
+      if (this.ui.setupOpenRoomRow) this.ui.setupOpenRoomRow.classList.remove('hidden');
+      this.ui.hostCodeDisplay.classList.add('hidden');
     }
   }
 
@@ -636,14 +759,25 @@ class TermoMultiplayerGame {
     this.players = [];
     this.myId = '';
     this.startNewMatchHistoryGroup();
+    this.ui.showRoomSetupView(true);
+    if (this.ui.setupOpenRoomRow) this.ui.setupOpenRoomRow.classList.add('hidden');
     this.ui.btnCreateRoom.disabled = true;
+    if (this.ui.btnSetupOpenRoom) this.ui.btnSetupOpenRoom.disabled = true;
     this.ui.hostCodeDisplay.classList.remove('hidden');
-    if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.add('hidden');
+    if (this.ui.btnStartMatch) {
+      this.ui.btnStartMatch.classList.remove('hidden', 'ready', 'starting');
+      this.ui.btnStartMatch.disabled = true;
+      this.ui.btnStartMatch.textContent = 'Iniciar partida';
+    }
+    if (this.ui.btnCancelRoom) {
+      this.ui.btnCancelRoom.classList.remove('hidden');
+    }
     this.ui.hostStatus.textContent = 'Inicializando rede P2P...';
 
     const onRoomReady = () => {
       this.myId = this.network.myId;
       this.players = [this.makeSelfPlayer()];
+      if (this.ui.btnSetupOpenRoom) this.ui.btnSetupOpenRoom.disabled = false;
       this.updateHostLobbyStatus();
     };
 
@@ -657,6 +791,7 @@ class TermoMultiplayerGame {
         onError: () => {
           this.ui.hostStatus.textContent = 'Erro ao criar sala. Tente novamente.';
           this.ui.btnCreateRoom.disabled = false;
+          if (this.ui.btnSetupOpenRoom) this.ui.btnSetupOpenRoom.disabled = false;
         }
       });
       this.ui.roomCodeVal.textContent = code;
@@ -670,6 +805,7 @@ class TermoMultiplayerGame {
         onError: (err) => {
           this.ui.hostStatus.textContent = (err && err.message) || 'Erro ao abrir sala pública.';
           this.ui.btnCreateRoom.disabled = false;
+          if (this.ui.btnSetupOpenRoom) this.ui.btnSetupOpenRoom.disabled = false;
         }
       });
     }
@@ -688,7 +824,84 @@ class TermoMultiplayerGame {
       text = `${count}/${this.maxPlayers} na sala: ${this.players.map(p => p.name).join(', ')}`;
     }
     this.ui.hostStatus.textContent = text;
-    if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.toggle('hidden', count < 2);
+
+    // Renderiza lista de jogadores com opção de kick
+    this.ui.renderLobbyPlayersList(this.players, this.hostId, this.myId, (peerId) => this.kickPlayer(peerId));
+
+    if (this.ui.btnCancelRoom) {
+      this.ui.btnCancelRoom.classList.remove('hidden');
+    }
+
+    if (this.ui.btnStartMatch) {
+      this.ui.btnStartMatch.classList.remove('hidden');
+      const isFull = count >= this.maxPlayers;
+      this.ui.btnStartMatch.classList.toggle('ready', isFull);
+      this.ui.btnStartMatch.disabled = count < 2;
+      if (!this.countdownTimer) {
+        this.ui.btnStartMatch.textContent = 'Iniciar partida';
+      }
+    }
+  }
+
+  kickPlayer(peerId) {
+    if (this.role !== 'host' || !peerId || peerId === this.myId) return;
+    const player = this.getPlayer(peerId);
+    if (!player) return;
+
+    if (this.countdownTimer) {
+      clearInterval(this.countdownTimer);
+      this.countdownTimer = null;
+      if (this.ui.btnStartMatch) {
+        this.ui.btnStartMatch.classList.remove('starting');
+        this.ui.btnStartMatch.textContent = 'Iniciar partida';
+      }
+    }
+
+    // Envia mensagem de KICK ao participante
+    this.network.send({ type: 'KICK_PLAYER', targetId: peerId });
+    this.network.removePeer(peerId);
+    this.players = this.players.filter(p => p.id !== peerId);
+    this.ui.showToast(`${player.name} foi expulso da sala.`);
+    this.broadcastLobbyUpdate();
+    this.updateHostLobbyStatus();
+  }
+
+  triggerCountdownAndStart() {
+    if (this.role !== 'host' || this.matchStarted || this.players.length < 2) return;
+    if (this.countdownTimer) return;
+
+    let seconds = 3;
+    if (this.ui.btnStartMatch) {
+      this.ui.btnStartMatch.classList.add('starting');
+      this.ui.btnStartMatch.textContent = `Iniciando em ${seconds}...`;
+    }
+
+    this.network.send({
+      type: 'START_COUNTDOWN',
+      seconds: seconds
+    });
+    this.ui.showToast(`Partida iniciando em ${seconds} segundos...`);
+
+    this.countdownTimer = setInterval(() => {
+      seconds--;
+      if (seconds > 0) {
+        if (this.ui.btnStartMatch) {
+          this.ui.btnStartMatch.textContent = `Iniciando em ${seconds}...`;
+        }
+        this.network.send({
+          type: 'START_COUNTDOWN',
+          seconds: seconds
+        });
+      } else {
+        clearInterval(this.countdownTimer);
+        this.countdownTimer = null;
+        if (this.ui.btnStartMatch) {
+          this.ui.btnStartMatch.classList.remove('starting');
+          this.ui.btnStartMatch.textContent = 'Iniciar partida';
+        }
+        this.startNewRound(this.hostId);
+      }
+    }, 1000);
   }
 
   broadcastLobbyUpdate() {
@@ -843,9 +1056,6 @@ class TermoMultiplayerGame {
           });
           this.broadcastLobbyUpdate();
           this.updateHostLobbyStatus();
-          if (this.players.length >= this.maxPlayers) {
-            this.startNewRound(this.hostId);
-          }
         }
         break;
 
@@ -882,6 +1092,7 @@ class TermoMultiplayerGame {
           if (data.maxPlayers) this.maxPlayers = data.maxPlayers;
           this.gameMode = data.gameMode || 'normal';
           this.revealLetters = Boolean(data.revealLetters);
+          this.showOpponentSelection = typeof data.showOpponentSelection === 'boolean' ? data.showOpponentSelection : true;
           this.secrets = data.secrets || {};
           this.secretWord = this.gameMode === 'normal' ? data.secretWord : (this.secrets[this.myId] || data.secretWord);
           this.currentTurnId = data.startingId;
@@ -893,8 +1104,26 @@ class TermoMultiplayerGame {
 
       case 'LIVE_KEYSTROKE':
         if (this.mode === 'individual') break;
-        this.handleOpponentKeystroke(data.action, data.letter, data.row, data.col);
+        this.handleOpponentKeystroke(data.action, data.letter, data.row, data.col, from);
         this.syncMirror();
+        break;
+
+      case 'CURSOR_MOVE':
+        if (this.showOpponentSelection && from !== this.myId) {
+          this.opponentCursor = { from: from, row: data.row, col: data.col };
+          this.refreshHighlight();
+        }
+        break;
+
+      case 'KICK_PLAYER':
+        if (data.targetId === this.myId) {
+          this.ui.showToast('Você foi removido da sala pelo host.');
+          this.resetToLobby();
+        }
+        break;
+
+      case 'START_COUNTDOWN':
+        this.ui.showToast(`Partida iniciando em ${data.seconds}s...`);
         break;
 
       case 'SUBMIT_GUESS':
@@ -985,6 +1214,7 @@ class TermoMultiplayerGame {
       startingId: this.currentTurnId,
       gameMode: this.gameMode,
       revealLetters: this.revealLetters,
+      showOpponentSelection: this.showOpponentSelection,
       secrets: this.secrets
     });
 
@@ -1039,6 +1269,14 @@ class TermoMultiplayerGame {
 
     if (!this.matchStarted) {
       if (this.role === 'host') {
+        if (this.countdownTimer && this.players.length < 2) {
+          clearInterval(this.countdownTimer);
+          this.countdownTimer = null;
+          if (this.ui.btnStartMatch) {
+            this.ui.btnStartMatch.classList.remove('starting');
+            this.ui.btnStartMatch.textContent = 'Iniciar partida';
+          }
+        }
         this.broadcastLobbyUpdate();
         this.updateHostLobbyStatus();
       }
@@ -1141,6 +1379,7 @@ class TermoMultiplayerGame {
 
     this.applyModeConfig();
     this.resetBoardState();
+    this.ui.showRoomSetupView(false);
     this.ui.lobbyScreen.classList.add('hidden');
     this.ui.boardContainer.classList.remove('hidden');
     this.ui.keyboardContainer.classList.remove('hidden');
@@ -1174,6 +1413,7 @@ class TermoMultiplayerGame {
     this.matchStarted = true;
     this.applyModeConfig();
     this.resetBoardState();
+    this.ui.showRoomSetupView(false);
     this.ui.lobbyScreen.classList.add('hidden');
     this.ui.boardContainer.classList.remove('hidden');
     this.ui.keyboardContainer.classList.remove('hidden');
@@ -1181,12 +1421,14 @@ class TermoMultiplayerGame {
     if (this.ui.btnHome) this.ui.btnHome.classList.remove('hidden');
 
     this.updateStatusBar();
+    if (this.isMyTurn()) this.broadcastCursorMove();
   }
 
   resetBoardState() {
     this.timer.stop();
     this.currentRow = 0;
     this.currentTile = 0;
+    this.opponentCursor = null;
     this.isGameOver = false;
     this.isRevealing = false;
     this.readyPlayers.clear();
@@ -1291,7 +1533,9 @@ class TermoMultiplayerGame {
       });
 
       this.currentTurnId = nextTurnId;
+      this.opponentCursor = null;
       this.updateStatusBar();
+      if (this.isMyTurn()) this.broadcastCursorMove();
     }
   }
 
@@ -1300,11 +1544,13 @@ class TermoMultiplayerGame {
     if (typeof row === 'number' && row >= 0 && row < this.maxRows) {
       this.currentRow = row;
     }
+    this.opponentCursor = null;
     this.clearUnsubmittedRow(this.currentRow);
     const name = this.getPlayerName(fromId);
     this.ui.showToast(nextTurnId === this.myId ? `Tempo de ${name} esgotou! Sua vez.` : `Tempo de ${name} esgotou!`);
     this.currentTurnId = nextTurnId;
     this.updateStatusBar();
+    if (this.isMyTurn()) this.broadcastCursorMove();
   }
 
   clearUnsubmittedRow(row) {
@@ -1330,6 +1576,19 @@ class TermoMultiplayerGame {
 
     this.currentTile = Math.max(0, Math.min(this.wordLength - 1, c));
     this.refreshHighlight();
+    this.broadcastCursorMove();
+  }
+
+  broadcastCursorMove() {
+    if (this.role === 'solo' || !this.showOpponentSelection) return;
+    if (this.network && this.network.isConnected()) {
+      this.network.send({
+        type: 'CURSOR_MOVE',
+        from: this.myId,
+        row: this.currentRow,
+        col: Math.min(this.currentTile, this.wordLength - 1)
+      });
+    }
   }
 
   moveToNextEmptyTile() {
@@ -1353,6 +1612,7 @@ class TermoMultiplayerGame {
     if (nextEmpty !== -1) {
       this.currentTile = nextEmpty;
       this.refreshHighlight();
+      this.broadcastCursorMove();
     }
   }
 
@@ -1360,6 +1620,7 @@ class TermoMultiplayerGame {
     if (this.currentTile > 0) {
       this.currentTile--;
       this.refreshHighlight();
+      this.broadcastCursorMove();
     }
   }
 
@@ -1367,6 +1628,7 @@ class TermoMultiplayerGame {
     if (this.currentTile < this.wordLength - 1) {
       this.currentTile++;
       this.refreshHighlight();
+      this.broadcastCursorMove();
     }
   }
 
@@ -1441,6 +1703,7 @@ class TermoMultiplayerGame {
       this.currentTile = this.wordLength;
     }
     this.refreshHighlight();
+    this.broadcastCursorMove();
 
     this.syncMirror();
     if (this.role !== 'solo' && this.mode !== 'individual') {
@@ -1498,6 +1761,7 @@ class TermoMultiplayerGame {
       tileEl.classList.remove('filled', 'opponent-typing', 'hint-absent', 'hint-present');
     }
     this.refreshHighlight();
+    this.broadcastCursorMove();
 
     this.syncMirror();
     if (this.role !== 'solo' && this.mode !== 'individual') {
@@ -1510,7 +1774,7 @@ class TermoMultiplayerGame {
     }
   }
 
-  handleOpponentKeystroke(action, letter, row, col) {
+  handleOpponentKeystroke(action, letter, row, col, fromId) {
     const targetRow = row !== undefined ? row : this.currentRow;
     const targetCol = col !== undefined ? col : this.currentTile;
 
@@ -1534,6 +1798,14 @@ class TermoMultiplayerGame {
         }
         this.currentTile = targetCol;
       }
+    }
+    if (this.showOpponentSelection) {
+      this.opponentCursor = {
+        from: fromId,
+        row: targetRow,
+        col: Math.min(this.currentTile, this.wordLength - 1)
+      };
+      this.refreshHighlight();
     }
   }
 
@@ -1575,6 +1847,7 @@ class TermoMultiplayerGame {
     this.timer.stop();
 
     this.isRevealing = true;
+    this.opponentCursor = null;
     this.ui.keyboardElement.classList.add('locked');
     this.refreshHighlight();
 
@@ -1614,6 +1887,7 @@ class TermoMultiplayerGame {
             sendGuess(false);
           }
           this.updateStatusBar();
+          if (this.isMyTurn()) this.broadcastCursorMove();
         }
       }
     });
@@ -1685,6 +1959,7 @@ class TermoMultiplayerGame {
   handleOpponentGuess(fromId, guess, evaluation, nextTurnId, isWin, row) {
     this.timer.stop();
     this.isRevealing = true;
+    this.opponentCursor = null;
     this.refreshHighlight();
     const opponentRow = (typeof row === 'number' && row >= 0 && row < this.maxRows) ? row : this.currentRow;
     this.currentRow = opponentRow;
@@ -1696,7 +1971,7 @@ class TermoMultiplayerGame {
     for (let c = 0; c < this.wordLength; c++) {
       this.boardMatrix[opponentRow][c] = guess[c];
       const tile = this.ui.getTileElement(opponentRow, c);
-      tile.textContent = guess[c];
+      tile.textContent = this.revealLetters ? guess[c] : '';
       tile.classList.add('filled');
     }
 
@@ -1714,9 +1989,10 @@ class TermoMultiplayerGame {
           // Se o próximo da vez saiu durante a animação, segue a fila
           this.currentTurnId = this.getPlayer(nextTurnId) ? nextTurnId : this.nextPlayerId(fromId);
           this.updateStatusBar();
+          if (this.isMyTurn()) this.broadcastCursorMove();
         }
       }
-    });
+    }, this.revealLetters);
   }
 
   // ==========================================
@@ -1741,11 +2017,12 @@ class TermoMultiplayerGame {
   submitCrossGuess(guess, evaluation, nextTurnId) {
     this.timer.stop();
     this.isRevealing = true;
+    this.opponentCursor = null;
     this.ui.keyboardElement.classList.add('locked');
     this.refreshHighlight();
 
     const submittedRow = this.currentRow;
-    this.revealOnOtherBoards(guess, submittedRow, null);
+    this.revealOnOtherBoards(guess, submittedRow, null, this.revealLetters);
 
     this.ui.animateRowReveal(submittedRow, guess, evaluation, () => {
       this.isRevealing = false;
@@ -1765,6 +2042,7 @@ class TermoMultiplayerGame {
   handleCrossGuess(fromId, guess, nextTurnId, row) {
     this.timer.stop();
     this.isRevealing = true;
+    this.opponentCursor = null;
     this.refreshHighlight();
     const guessRow = (typeof row === 'number' && row >= 0 && row < this.maxRows) ? row : this.currentRow;
     this.currentRow = guessRow;
@@ -1774,12 +2052,12 @@ class TermoMultiplayerGame {
     for (let c = 0; c < this.wordLength; c++) {
       this.boardMatrix[guessRow][c] = guess[c];
       const tile = this.ui.getTileElement(guessRow, c);
-      tile.textContent = guess[c];
+      tile.textContent = this.revealLetters ? guess[c] : '';
       tile.classList.add('filled');
     }
 
     // Grades dos demais jogadores (inclusive a de quem palpitou) e a minha, cada uma com sua palavra
-    this.revealOnOtherBoards(guess, guessRow, null);
+    this.revealOnOtherBoards(guess, guessRow, null, this.revealLetters);
     const evaluation = this.rules.evaluateGuess(guess, this.secretWord);
     this.ui.animateRowReveal(guessRow, guess, evaluation, () => {
       this.isRevealing = false;
@@ -1808,6 +2086,7 @@ class TermoMultiplayerGame {
     }
     this.currentTurnId = this.getPlayer(nextTurnId) ? nextTurnId : this.nextPlayerId(fromId);
     this.updateStatusBar();
+    if (this.isMyTurn()) this.broadcastCursorMove();
   }
 
   // ==========================================
@@ -1836,7 +2115,8 @@ class TermoMultiplayerGame {
         else this.ui.showToast('Palavra certa! Aguardando confirmação...');
       } else {
         this.currentRow = submittedRow + 1;
-        this.currentTile = 0;
+          this.currentTile = 0;
+          this.broadcastCursorMove();
         if (this.currentRow >= this.maxRows) {
           this.myDone = true;
           this.ui.showToast('Suas tentativas acabaram. Aguardando os demais...');
@@ -1852,6 +2132,10 @@ class TermoMultiplayerGame {
   handleIndividualGuess(fromId, guess, row) {
     const secret = this.secrets[fromId];
     if (!secret || !this.getPlayer(fromId)) return;
+    if (this.opponentCursor && this.opponentCursor.from === fromId) {
+      this.opponentCursor = null;
+      this.refreshHighlight();
+    }
     const evaluation = this.rules.evaluateGuess(guess, secret);
     const isWin = evaluation.every(s => s === 'correct');
     this.mm.revealRow(fromId, row, guess, evaluation, this.revealLetters);
@@ -2019,6 +2303,10 @@ class TermoMultiplayerGame {
 
   resetToLobby() {
     this.timer.stop();
+    if (this.countdownTimer) {
+      clearInterval(this.countdownTimer);
+      this.countdownTimer = null;
+    }
     clearTimeout(this.hostMigrationTimer);
     this.isGameOver = true;
     this.matchStarted = false;
@@ -2027,6 +2315,7 @@ class TermoMultiplayerGame {
     this.currentTurnId = '';
     this.roundStarterId = '';
     this.lastWinnerId = null;
+    this.opponentCursor = null;
     this.ui.updateScoreDisplay(0, 0);
     this.mm.unmount();
     this.network.destroy();
@@ -2044,15 +2333,24 @@ class TermoMultiplayerGame {
     this.ui.statusBar.classList.add('hidden');
     if (this.ui.btnHome) this.ui.btnHome.classList.add('hidden');
     this.ui.hostCodeDisplay.classList.add('hidden');
-    if (this.ui.btnStartMatch) this.ui.btnStartMatch.classList.add('hidden');
-    this.ui.showMaxPlayersPopover(false);
-    this.ui.showGameModePopover(false);
+    if (this.ui.btnStartMatch) {
+      this.ui.btnStartMatch.classList.add('hidden');
+      this.ui.btnStartMatch.classList.remove('starting', 'ready');
+      this.ui.btnStartMatch.textContent = 'Iniciar partida';
+    }
+    if (this.ui.btnCancelRoom) this.ui.btnCancelRoom.classList.add('hidden');
+    if (this.ui.lobbyRoomPlayersWrap) this.ui.lobbyRoomPlayersWrap.classList.add('hidden');
+    if (this.ui.lobbyRoomPlayersList) this.ui.lobbyRoomPlayersList.innerHTML = '';
     this.ui.showSoloModePopover(false);
+    this.ui.showRoomSetupView(false);
     this.ui.joinStatus.classList.add('hidden');
     this.ui.btnCreateRoom.disabled = false;
     this.ui.btnJoinRoom.disabled = false;
     if (this.ui.btnJoinPublicRoom) this.ui.btnJoinPublicRoom.disabled = false;
-    this.ui.updateRoomLockUI(this.isRoomLocked);
+    this.ui.updateRoomConfigUI({
+      isRoomLocked: this.isRoomLocked,
+      showOpponentSelection: this.showOpponentSelection
+    });
 
     this.chat.reset();
 

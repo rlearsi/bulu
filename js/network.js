@@ -160,7 +160,8 @@ export class P2PNetwork {
             hostName: info.hostName || 'Jogador 1',
             hostAvatar: info.hostAvatar || '',
             count: info.count || 1,
-            max: info.max || 2
+            max: info.max || 2,
+            mode: info.mode || 'normal'
           });
         } else {
           conn.send({ type: 'ROOM_BUSY' });
@@ -276,7 +277,8 @@ export class P2PNetwork {
                 hostName: data.hostName || 'Jogador',
                 hostAvatar: data.hostAvatar || '',
                 count: data.count || 1,
-                max: data.max || 2
+                max: data.max || 2,
+                mode: data.mode || 'normal'
               };
               foundRooms.push(roomInfo);
               if (!finished && onRoomFound) {

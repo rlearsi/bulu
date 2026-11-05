@@ -158,134 +158,276 @@
         </div>
       </div>
 
-      <div class="lobby-actions">
-        <!-- CRIAR SALA -->
-        <div class="action-box">
-          <h3>Criar Partida (Host)</h3>
-          <p id="create-room-desc">Sala aberta para qualquer jogador entrar sem código. Toque no cadeado para trancar.</p>
-          <p id="game-mode-hint" class="game-mode-hint">Modo Normal: uma grade compartilhada, jogada em turnos.</p>
-          <div class="create-room-row">
-            <button id="btn-create-room" class="btn btn-primary">Criar Sala Privada</button>
-            <div class="max-players-wrap">
-              <button type="button" id="btn-max-players" class="btn-max-players" title="Máximo de jogadores na sala" aria-label="Máximo de jogadores na sala" aria-haspopup="true" aria-expanded="false">
-                <span id="max-players-val">2</span>
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
+      <!-- CONTEÚDO PRINCIPAL DO LOBBY (OCULTO QUANDO NA TELA DA SALA) -->
+      <div id="lobby-home-view">
+        <div class="lobby-actions">
+          <!-- CRIAR SALA -->
+          <div class="action-box">
+            <h3>Criar Partida (Host)</h3>
+            <p id="create-room-desc">Crie uma sala e compartilhe o código de 6 dígitos com quem você quer jogar.</p>
+            <p id="game-mode-hint" class="game-mode-hint">Modo Normal: uma grade compartilhada, jogada em turnos.</p>
+            <div class="create-room-row">
+              <button id="btn-create-room" class="btn btn-primary">Criar Sala</button>
+              <button type="button" id="btn-room-config-toggle" class="btn-config-gear" title="Configurações da sala" aria-label="Configurações da sala">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                 </svg>
               </button>
-              <div id="max-players-popover" class="max-players-popover hidden" role="menu">
-                <span class="max-players-title">Máximo de jogadores</span>
-                <div class="max-players-options">
-                  <button type="button" class="max-players-option selected" data-value="2" role="menuitemradio">2</button>
-                  <button type="button" class="max-players-option" data-value="3" role="menuitemradio">3</button>
-                  <button type="button" class="max-players-option" data-value="4" role="menuitemradio">4</button>
-                </div>
+            </div>
+          </div>
+
+          <div class="divider">OU</div>
+
+          <!-- ENTRAR EM SALA -->
+          <div class="action-box">
+            <h3>Entrar em Sala</h3>
+            <p>Você possui um código de sala? Digite abaixo para entrar.</p>
+            <div class="join-input-group">
+              <input type="text" id="input-room-code" maxlength="6" placeholder="Ex: 123456" inputmode="numeric" enterkeyhint="go">
+              <button id="btn-join-room" class="btn btn-secondary">Entrar</button>
+            </div>
+            <button type="button" id="btn-join-public-room" class="btn btn-public-rooms">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span>Entrar em sala pública</span>
+            </button>
+            <div id="join-status" class="status-text hidden">Conectando ao oponente...</div>
+          </div>
+        </div>
+
+        <!-- BOTÃO TREINO SOLO E PRIVACIDADE -->
+        <div class="lobby-solo">
+          <div class="solo-row">
+            <button id="btn-practice" class="btn btn-outline">Jogar sozinho • Clássico</button>
+            <div class="solo-mode-wrap">
+              <button type="button" id="btn-solo-mode" class="btn-max-players" title="Modo do Jogo Solo" aria-label="Modo do Jogo Solo" aria-haspopup="true" aria-expanded="false">
+                <svg id="icon-solo-classic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
+                <svg class="hidden" id="icon-solo-infinite" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"></path></svg>
+              </button>
+              <div id="solo-mode-popover" class="max-players-popover solo-mode-popover hidden" role="menu">
+                <span class="max-players-title">Modo Solo</span>
+                <button type="button" class="solo-mode-option selected" data-solo-mode="classic" role="menuitemradio">
+                  <strong>Clássico</strong>
+                  <span>Descubra a palavra secreta em até 6 tentativas.</span>
+                </button>
+                <button type="button" class="solo-mode-option" data-solo-mode="infinite" role="menuitemradio">
+                  <strong>Infinito</strong>
+                  <span>Acerte palavras sem parar e supere seu recorde!</span>
+                </button>
               </div>
             </div>
-            <div class="game-mode-wrap">
-              <button type="button" id="btn-game-mode" class="btn-max-players" title="Modo de jogo" aria-label="Modo de jogo" aria-haspopup="true" aria-expanded="false">
-                <svg id="icon-mode-normal" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
-                <svg class="hidden" id="icon-mode-cross" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg>
-                <svg class="hidden" id="icon-mode-individual" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              </button>
-              <div id="game-mode-popover" class="max-players-popover game-mode-popover hidden" role="menu">
-                <span class="max-players-title">Modo de jogo</span>
-                <button type="button" class="game-mode-option selected" data-mode="normal" role="menuitemradio">
-                  <strong>Normal</strong>
-                  <span>Uma grade compartilhada, jogada em turnos.</span>
+          </div>
+          <p id="solo-mode-hint" class="game-mode-hint">Modo Clássico: descubra a palavra secreta em até 6 tentativas.</p>
+        </div>
+
+        <div class="lobby-footer">
+          <button id="btn-privacy" class="link-btn">Privacidade</button>
+        </div>
+      </div>
+
+      <!-- TELA DE CONFIGURAÇÕES E CRIAÇÃO DA SALA (MESMA PÁGINA INICIAL, EXIBE APENAS ITENS DA SALA) -->
+      <div id="room-setup-view" class="room-setup-view hidden">
+        <div class="room-setup-header">
+          <h3>Configurações da Sala</h3>
+          <button type="button" id="btn-back-from-setup" class="btn-back-setup" title="Voltar ao início">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Voltar</span>
+          </button>
+        </div>
+
+        <!-- FORMULÁRIO COM OS BOTÕES ORGANIZADOS EM SEÇÕES -->
+        <div id="room-config-panel" class="room-config-panel">
+          <!-- SEÇÃO 1: MODO E QUANTIDADE DE JOGADORES (BOTÕES AO LADO) -->
+          <div class="config-section">
+            <span class="config-section-title">Modo e Jogadores</span>
+            <div class="config-side-row">
+              <!-- Botão Dropdown: Quantidade de Jogadores (Ícone original de 2 + usuário) -->
+              <div class="config-dropdown-wrap wrap-players">
+                <button type="button" id="btn-cfg-players-dropdown" class="cfg-dropdown-btn btn-dropdown-compact" aria-haspopup="true" aria-expanded="false" title="Quantidade de jogadores">
+                  <div class="cfg-dropdown-inner">
+                    <span id="cfg-players-dropdown-val" class="cfg-btn-digit">2</span>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
                 </button>
-                <button type="button" class="game-mode-option" data-mode="cross" role="menuitemradio">
-                  <strong>Cruzado</strong>
-                  <span>Cada um com sua grade e palavra. Os palpites aparecem em todas as grades.</span>
-                </button>
-                <button type="button" class="game-mode-option" data-mode="individual" role="menuitemradio">
-                  <strong>Individual</strong>
-                  <span>Todos jogam ao mesmo tempo, quem acertar primeiro vence.</span>
-                </button>
-                <div id="reveal-letters-row" class="reveal-letters-row hidden">
-                  <span class="max-players-title">Grades dos oponentes</span>
-                  <div class="max-players-options">
-                    <button type="button" class="reveal-option selected" data-reveal="false">Só cores</button>
-                    <button type="button" class="reveal-option" data-reveal="true">Com letras</button>
+                <div id="cfg-players-popover" class="config-popover players-popover hidden" role="menu">
+                  <span class="config-popover-title">Máximo de jogadores</span>
+                  <div class="max-players-options" id="cfg-players-group">
+                    <button type="button" class="max-players-option selected" data-value="2" role="menuitemradio">2</button>
+                    <button type="button" class="max-players-option" data-value="3" role="menuitemradio">3</button>
+                    <button type="button" class="max-players-option" data-value="4" role="menuitemradio">4</button>
                   </div>
                 </div>
               </div>
+
+              <!-- Botão Dropdown: Modo de Jogo (Ícone + Texto: Normal, Cruzado ou Individual) -->
+              <div class="config-dropdown-wrap wrap-mode">
+                <button type="button" id="btn-cfg-mode-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Modo de jogo">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <svg id="cfg-icon-mode-normal" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
+                      <svg class="hidden" id="cfg-icon-mode-cross" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"></rect><rect x="13" y="3" width="8" height="8" rx="1.5"></rect><rect x="3" y="13" width="8" height="8" rx="1.5"></rect><rect x="13" y="13" width="8" height="8" rx="1.5"></rect></svg>
+                      <svg class="hidden" id="cfg-icon-mode-individual" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </span>
+                    <span id="cfg-mode-dropdown-label" class="cfg-mode-label">Normal</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-mode-popover" class="config-popover mode-popover hidden" role="menu">
+                  <span class="config-popover-title">Modo de jogo</span>
+                  <button type="button" class="cfg-popover-option selected" data-mode="normal" role="menuitemradio">
+                    <strong>Normal</strong>
+                    <span>Uma grade compartilhada, jogada em turnos.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-mode="cross" role="menuitemradio">
+                    <strong>Cruzado</strong>
+                    <span>Cada um com sua grade e palavra. Os palpites aparecem em todas as grades.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-mode="individual" role="menuitemradio">
+                    <strong>Individual</strong>
+                    <span>Todos jogam ao mesmo tempo, quem acertar primeiro vence.</span>
+                  </button>
+                </div>
+              </div>
             </div>
-            <button type="button" id="btn-lock-room" class="btn-lock-room locked" title="Trancar sala (tornar privada com código)" aria-label="Trancar ou destrancar sala">
-              <!-- Ícone Cadeado Aberto (Sala Pública) -->
-              <svg id="icon-lock-open" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
-              </svg>
-              <!-- Ícone Cadeado Fechado (Sala Privada) -->
-              <svg id="icon-lock-closed" class="hidden" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-              </svg>
-            </button>
           </div>
-          
-          <div id="host-code-display" class="code-box hidden">
-            <div id="host-private-code-area">
-              <span>Código da Sala:</span>
-              <div id="room-code-val" class="room-code-number">------</div>
-              <button id="btn-copy-code" class="btn btn-secondary">Copiar Código</button>
+
+          <!-- SEÇÃO 2: PRIVACIDADE / VISIBILIDADE NA PARTIDA (2 DROPDOWNS LADO A LADO) -->
+          <div class="config-section">
+            <span class="config-section-title">Privacidade em jogo</span>
+            <div class="config-side-row">
+              <!-- Dropdown 1: Seleção do oponente -->
+              <div class="config-dropdown-wrap wrap-cursor">
+                <button type="button" id="btn-cfg-cursor-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Seleção do oponente">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <svg id="cfg-icon-cursor-allow" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      <svg id="cfg-icon-cursor-hide" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                      </svg>
+                    </span>
+                    <span id="cfg-cursor-dropdown-label" class="cfg-mode-label">Permitir Seleção</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-cursor-popover" class="config-popover mode-popover hidden" role="menu">
+                  <span class="config-popover-title">Seleção do oponente</span>
+                  <button type="button" class="cfg-popover-option selected" data-cursor="true" role="menuitemradio">
+                    <strong>Permitir seleção</strong>
+                    <span>Mostra onde o oponente está selecionando em tempo real.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-cursor="false" role="menuitemradio">
+                    <strong>Ocultar seleção</strong>
+                    <span>Não exibe o cursor do oponente durante a partida.</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dropdown 2: Grades dos oponentes (Letras ou Cores) -->
+              <div class="config-dropdown-wrap wrap-reveal" id="cfg-individual-reveal-item">
+                <button type="button" id="btn-cfg-reveal-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Grades dos oponentes">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <svg id="cfg-icon-reveal-letters" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                        <line x1="9" y1="20" x2="15" y2="20"></line>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                      </svg>
+                      <svg id="cfg-icon-reveal-colors" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                    <span id="cfg-reveal-dropdown-label" class="cfg-mode-label">Mostrar tudo</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-reveal-popover" class="config-popover mode-popover reveal-popover hidden" role="menu">
+                  <span class="config-popover-title">Grades dos oponentes</span>
+                  <button type="button" class="cfg-popover-option selected" data-reveal="true" role="menuitemradio">
+                    <strong>Com letras</strong>
+                    <span>Exibe as letras digitadas e avaliadas dos oponentes.</span>
+                  </button>
+                  <button type="button" class="cfg-popover-option" data-reveal="false" role="menuitemradio">
+                    <strong>Apenas cores</strong>
+                    <span>Exibe somente os blocos coloridos nas grades dos oponentes.</span>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div id="host-status" class="status-text pulse">Aguardando adversário entrar...</div>
-            <button type="button" id="btn-start-match" class="btn btn-primary btn-block btn-start-match hidden">Iniciar partida</button>
+          </div>
+
+          <!-- SEÇÃO 3: ACESSO DA SALA (2 BOTÕES ALINHADOS HORIZONTALMENTE) -->
+          <div class="config-section">
+            <span class="config-section-title">Acesso da sala</span>
+            <div class="config-grid">
+              <div class="config-item">
+                <div class="config-btn-group config-btn-group-horizontal" id="cfg-privacy-group">
+                  <button type="button" class="cfg-toggle-btn selected" data-locked="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Sala Privada</span>
+                  </button>
+                  <button type="button" class="cfg-toggle-btn" data-locked="false">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span>Pública</span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="divider">OU</div>
-
-        <!-- ENTRAR EM SALA -->
-        <div class="action-box">
-          <h3>Entrar em Sala</h3>
-          <p>Você possui um código de sala? Digite abaixo para entrar.</p>
-          <div class="join-input-group">
-            <input type="text" id="input-room-code" maxlength="6" placeholder="Ex: 123456" inputmode="numeric" enterkeyhint="go">
-            <button id="btn-join-room" class="btn btn-secondary">Entrar</button>
-          </div>
-          <button type="button" id="btn-join-public-room" class="btn btn-public-rooms">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span>Entrar em sala pública</span>
-          </button>
-          <div id="join-status" class="status-text hidden">Conectando ao oponente...</div>
+        <!-- Botão de abrir sala dentro da tela de configurações (visível quando a sala ainda não foi aberta) -->
+        <div id="setup-open-room-row" class="setup-open-room-row">
+          <button type="button" id="btn-setup-open-room" class="btn btn-primary btn-block">Criar Sala</button>
         </div>
-      </div>
 
-      <!-- BOTÃO TREINO SOLO E PRIVACIDADE -->
-      <div class="lobby-solo">
-        <div class="solo-row">
-          <button id="btn-practice" class="btn btn-outline">Jogar sozinho • Clássico</button>
-          <div class="solo-mode-wrap">
-            <button type="button" id="btn-solo-mode" class="btn-max-players" title="Modo do Jogo Solo" aria-label="Modo do Jogo Solo" aria-haspopup="true" aria-expanded="false">
-              <svg id="icon-solo-classic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
-              <svg class="hidden" id="icon-solo-infinite" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"></path></svg>
-            </button>
-            <div id="solo-mode-popover" class="max-players-popover solo-mode-popover hidden" role="menu">
-              <span class="max-players-title">Modo Solo</span>
-              <button type="button" class="solo-mode-option selected" data-solo-mode="classic" role="menuitemradio">
-                <strong>Clássico</strong>
-                <span>Descubra a palavra secreta em até 6 tentativas.</span>
-              </button>
-              <button type="button" class="solo-mode-option" data-solo-mode="infinite" role="menuitemradio">
-                <strong>Infinito</strong>
-                <span>Acerte palavras sem parar e supere seu recorde!</span>
-              </button>
-            </div>
+        <!-- ÁREA DA SALA CRIADA (CÓDIGO, LISTA DE JOGADORES ENTRANDO E AÇÕES) -->
+        <div id="host-code-display" class="code-box hidden">
+          <div id="host-private-code-area">
+            <span>Código da Sala:</span>
+            <div id="room-code-val" class="room-code-number">------</div>
+            <button id="btn-copy-code" class="btn btn-secondary">Copiar Código</button>
+          </div>
+          <div id="host-status" class="status-text pulse">Aguardando adversário entrar...</div>
+
+          <!-- LISTA DE QUEM ESTÁ ENTRANDO NA SALA -->
+          <div id="lobby-room-players-wrap" class="lobby-room-players-wrap hidden">
+            <span class="lobby-room-players-title">Jogadores na Sala</span>
+            <div id="lobby-room-players-list" class="lobby-room-players-list"></div>
+          </div>
+
+          <!-- AÇÕES: INICIAR PARTIDA E CANCELAR AO LADO DIREITO -->
+          <div class="host-match-actions-row">
+            <button type="button" id="btn-start-match" class="btn btn-start-match">Iniciar partida</button>
+            <button type="button" id="btn-cancel-room" class="btn btn-cancel-room" title="Cancelar criação da sala e limpar lista">Cancelar</button>
           </div>
         </div>
-        <p id="solo-mode-hint" class="game-mode-hint">Modo Clássico: descubra a palavra secreta em até 6 tentativas.</p>
-      </div>
-
-      <div class="lobby-footer">
-        <button id="btn-privacy" class="link-btn">Privacidade</button>
       </div>
     </div>
 

@@ -98,6 +98,555 @@
   gap: 8px;
 }
 
+.btn-config-gear {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  width: 44px;
+  min-width: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-config-gear:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: rotate(30deg);
+}
+
+.btn-config-gear:active {
+  transform: scale(0.95);
+}
+
+.btn-config-gear.active {
+  background: rgba(106, 170, 100, 0.25);
+  border-color: rgba(106, 170, 100, 0.5);
+  color: var(--color-correct);
+}
+
+/* Tela de Configurações e Criação de Sala (mesma página inicial) */
+.room-setup-view {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: configPanelFade 0.2s ease-out;
+}
+
+.room-setup-view.hidden {
+  display: none;
+}
+
+.room-setup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room-setup-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.btn-back-setup {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-back-setup:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.setup-open-room-row {
+  margin-top: 2px;
+}
+
+.setup-open-room-row.hidden {
+  display: none;
+}
+
+/* Painel de Configurações da Sala */
+.room-config-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.room-config-panel.hidden {
+  display: none;
+}
+
+@keyframes configPanelFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.config-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.config-section + .config-section {
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.config-section-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Dropdowns da Seção 1 (Modo e Jogadores - Botões lado a lado compactos) */
+.config-side-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.config-side-row .config-dropdown-wrap {
+  position: relative;
+  display: flex;
+}
+
+.config-side-row .config-dropdown-wrap.wrap-players {
+  flex: 0 0 auto;
+}
+
+.config-side-row .config-dropdown-wrap.wrap-mode {
+  flex: 1;
+}
+
+.config-side-row .btn-dropdown-compact {
+  min-width: 58px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.config-side-row .config-dropdown-wrap.wrap-cursor,
+.config-side-row .config-dropdown-wrap.wrap-reveal {
+  flex: 1 1 0;
+  width: 0;
+}
+
+.config-side-row .btn-dropdown-mode {
+  width: 100%;
+  height: 44px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cfg-dropdown-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cfg-mode-icon-wrap {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cfg-mode-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cfg-arrow {
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.cfg-dropdown-btn[aria-expanded="true"] .cfg-arrow {
+  transform: rotate(180deg);
+}
+
+.cfg-btn-digit {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+.config-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(40, 34, 37, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  animation: maxPlayersPop 0.16s ease-out;
+}
+
+.config-popover.hidden {
+  display: none;
+}
+
+.config-popover-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  text-align: center;
+}
+
+.config-popover.mode-popover {
+  width: 250px;
+}
+
+.config-popover.players-popover,
+.config-popover.reveal-popover {
+  right: 0;
+  left: auto;
+}
+
+.cfg-popover-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cfg-popover-option strong {
+  font-size: 0.88rem;
+  color: #fff;
+}
+
+.cfg-popover-option span {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.25;
+}
+
+.cfg-popover-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cfg-popover-option.selected {
+  background: rgba(211, 173, 105, 0.2);
+  border-color: rgba(211, 173, 105, 0.55);
+  color: var(--color-present);
+}
+
+.cfg-popover-option.selected strong {
+  color: var(--color-present);
+}
+
+.cfg-popover-option.selected span {
+  color: rgba(211, 173, 105, 0.85);
+}
+
+.config-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.config-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.config-dropdown-wrap.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+.config-dropdown-wrap.disabled .cfg-dropdown-btn {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.config-item.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+.config-item.hidden {
+  display: none;
+}
+
+.config-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.config-btn-group {
+  display: flex;
+  gap: 6px;
+}
+
+.config-btn-group-horizontal {
+  display: flex;
+  gap: 8px;
+}
+
+.cfg-toggle-btn {
+  flex: 1;
+  min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.cfg-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.cfg-toggle-btn.selected {
+  background: rgba(211, 173, 105, 0.2);
+  border-color: rgba(211, 173, 105, 0.55);
+  color: var(--color-present);
+}
+
+.max-players-option.selected {
+  background: rgba(211, 173, 105, 0.2);
+  border: 1px solid rgba(211, 173, 105, 0.55);
+  color: var(--color-present);
+}
+
+.cfg-popover-option.selected {
+  background: rgba(211, 173, 105, 0.2);
+  border-color: rgba(211, 173, 105, 0.55);
+  color: var(--color-present);
+}
+
+.cfg-popover-option.selected strong {
+  color: var(--color-present);
+}
+
+.cfg-popover-option.selected span {
+  color: rgba(211, 173, 105, 0.85);
+}
+
+/* Lista de jogadores aguardando na sala */
+.lobby-room-players-wrap {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lobby-room-players-wrap.hidden {
+  display: none;
+}
+
+.lobby-room-players-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.lobby-room-players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lobby-player-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.lobby-player-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lobby-player-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lobby-player-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lobby-player-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.lobby-player-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(211, 173, 105, 0.25);
+  color: var(--color-present);
+  margin-left: 6px;
+}
+
+.btn-kick-player {
+  background: rgba(255, 75, 75, 0.12);
+  border: 1px solid rgba(255, 75, 75, 0.35);
+  color: #ff6b6b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-kick-player:hover {
+  background: #ff4b4b;
+  color: #fff;
+}
+
+/* Ações de iniciar e cancelar */
+.host-match-actions-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-start-match {
+  flex: 1;
+  background: var(--color-present);
+  color: #fff;
+  border: none;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-start-match:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn-start-match.ready {
+  background: var(--color-correct);
+}
+
+.btn-start-match.starting {
+  background: var(--color-correct);
+  pointer-events: none;
+}
+
+.btn-cancel-room {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel-room:hover {
+  background: rgba(255, 75, 75, 0.15);
+  border-color: rgba(255, 75, 75, 0.4);
+  color: #ff6b6b;
+}
+
 .create-room-row {
   display: flex;
   align-items: stretch;
@@ -224,17 +773,13 @@
 }
 
 .max-players-option.selected {
-  background: var(--color-correct);
+  background: var(--color-present);
   color: #ffffff;
 }
 
 @keyframes maxPlayersPop {
   from { opacity: 0; transform: translateY(-4px) scale(0.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.btn-start-match {
-  margin-top: 10px;
 }
 
 .btn-public-rooms {

@@ -43,20 +43,43 @@ export class BoardUI {
     this.p2AvatarPh = document.getElementById('p2-avatar-ph');
 
     // Elementos do Lobby
+    this.lobbyHomeView = document.getElementById('lobby-home-view');
+    this.roomSetupView = document.getElementById('room-setup-view');
+    this.btnBackFromSetup = document.getElementById('btn-back-from-setup');
+    this.setupOpenRoomRow = document.getElementById('setup-open-room-row');
+    this.btnSetupOpenRoom = document.getElementById('btn-setup-open-room');
     this.btnCreateRoom = document.getElementById('btn-create-room');
-    this.btnLockRoom = document.getElementById('btn-lock-room');
-    this.iconLockOpen = document.getElementById('icon-lock-open');
-    this.iconLockClosed = document.getElementById('icon-lock-closed');
+    this.btnRoomConfigToggle = document.getElementById('btn-room-config-toggle');
+    this.roomConfigPanel = document.getElementById('room-config-panel');
+    this.btnCfgModeDropdown = document.getElementById('btn-cfg-mode-dropdown');
+    this.cfgModeDropdownLabel = document.getElementById('cfg-mode-dropdown-label');
+    this.cfgModePopover = document.getElementById('cfg-mode-popover');
+    this.btnCfgPlayersDropdown = document.getElementById('btn-cfg-players-dropdown');
+    this.cfgPlayersDropdownVal = document.getElementById('cfg-players-dropdown-val');
+    this.cfgPlayersPopover = document.getElementById('cfg-players-popover');
+    this.cfgPlayersGroup = document.getElementById('cfg-players-group');
+    this.cfgModeGroup = document.getElementById('cfg-mode-popover');
+    this.cfgIndividualRevealItem = document.getElementById('cfg-individual-reveal-item');
+    this.btnCfgCursorDropdown = document.getElementById('btn-cfg-cursor-dropdown');
+    this.cfgCursorDropdownLabel = document.getElementById('cfg-cursor-dropdown-label');
+    this.cfgCursorPopover = document.getElementById('cfg-cursor-popover');
+    this.cfgCursorGroup = document.getElementById('cfg-cursor-popover');
+    this.btnCfgRevealDropdown = document.getElementById('btn-cfg-reveal-dropdown');
+    this.cfgRevealDropdownLabel = document.getElementById('cfg-reveal-dropdown-label');
+    this.cfgRevealPopover = document.getElementById('cfg-reveal-popover');
+    this.cfgRevealGroup = document.getElementById('cfg-reveal-popover');
+    this.cfgPrivacyGroup = document.getElementById('cfg-privacy-group');
+
     this.createRoomDesc = document.getElementById('create-room-desc');
     this.hostCodeDisplay = document.getElementById('host-code-display');
     this.hostPrivateCodeArea = document.getElementById('host-private-code-area');
     this.roomCodeVal = document.getElementById('room-code-val');
     this.btnCopyCode = document.getElementById('btn-copy-code');
     this.hostStatus = document.getElementById('host-status');
+    this.lobbyRoomPlayersWrap = document.getElementById('lobby-room-players-wrap');
+    this.lobbyRoomPlayersList = document.getElementById('lobby-room-players-list');
     this.btnStartMatch = document.getElementById('btn-start-match');
-    this.btnGameMode = document.getElementById('btn-game-mode');
-    this.gameModePopover = document.getElementById('game-mode-popover');
-    this.revealLettersRow = document.getElementById('reveal-letters-row');
+    this.btnCancelRoom = document.getElementById('btn-cancel-room');
     this.gameModeHint = document.getElementById('game-mode-hint');
     this.btnMaxPlayers = document.getElementById('btn-max-players');
     this.maxPlayersVal = document.getElementById('max-players-val');
@@ -193,9 +216,12 @@ export class BoardUI {
     return this.boardElement.querySelector(`.board-row[data-row="${r}"]`);
   }
 
-  updateActiveTileHighlight({ currentRow, currentTile, isMyTurn, isGameOver, isRevealing }) {
+  updateActiveTileHighlight({ currentRow, currentTile, isMyTurn, isGameOver, isRevealing, opponentCursor = null }) {
     const allActive = this.boardElement.querySelectorAll('.tile.active-cursor');
     allActive.forEach(t => t.classList.remove('active-cursor'));
+
+    const allOppCursor = this.boardElement.querySelectorAll('.tile.opponent-cursor');
+    allOppCursor.forEach(t => t.classList.remove('opponent-cursor'));
 
     const allRows = this.boardElement.querySelectorAll('.board-row');
     allRows.forEach(row => {
@@ -206,6 +232,11 @@ export class BoardUI {
       }
     });
 
+    if (opponentCursor && !isGameOver && typeof opponentCursor.row === 'number' && typeof opponentCursor.col === 'number') {
+      const oppTile = this.getTileElement(opponentCursor.row, opponentCursor.col);
+      if (oppTile) oppTile.classList.add('opponent-cursor');
+    }
+
     if (isGameOver || isRevealing || !isMyTurn || currentRow >= this.maxRows) return;
 
     const colToHighlight = Math.min(currentTile, this.wordLength - 1);
@@ -215,7 +246,7 @@ export class BoardUI {
     }
   }
 
-  animateRowReveal(row, guess, evaluation, callback) {
+  animateRowReveal(row, guess, evaluation, callback, showLetters = true) {
     const flipDuration = 550; // ms
     const staggerDelay = 280; // ms entre cada letra
 
@@ -230,6 +261,7 @@ export class BoardUI {
 
         // Na metade da rotação (90 graus) troca a cor do bloco
         setTimeout(() => {
+          if (!showLetters) tile.textContent = '';
           tile.classList.add(status);
           this.updateKeyboardKeyColor(letter, status);
           if ((status === 'correct' || status === 'present') && this.audio) {
@@ -408,48 +440,176 @@ export class BoardUI {
   }
 
   updateMaxPlayersUI(value) {
-    if (this.maxPlayersVal) this.maxPlayersVal.textContent = value;
-    if (this.maxPlayersPopover) {
-      this.maxPlayersPopover.querySelectorAll('.max-players-option').forEach((opt) => {
-        opt.classList.toggle('selected', Number(opt.dataset.value) === value);
+    if (this.cfgPlayersGroup) {
+      this.cfgPlayersGroup.querySelectorAll('.max-players-option, .cfg-toggle-btn').forEach((btn) => {
+        btn.classList.toggle('selected', Number(btn.dataset.value) === value);
       });
+    }
+    if (this.cfgPlayersDropdownVal) {
+      this.cfgPlayersDropdownVal.textContent = String(value);
     }
   }
 
   updateGameModeUI(mode, revealLetters) {
     const info = {
-      normal: 'Modo Normal: uma grade compartilhada, jogada em turnos.',
-      cross: 'Modo Cruzado: cada um tem sua grade e palavra; cada palpite preenche as grades de todos.',
+      normal: revealLetters
+        ? 'Modo Normal: uma grade compartilhada, jogada em turnos.'
+        : 'Modo Normal: uma grade compartilhada, jogada em turnos (letras do oponente ocultas até enviar).' ,
+      cross: revealLetters
+        ? 'Modo Cruzado: cada um tem sua grade e palavra; palpites exibem letras.'
+        : 'Modo Cruzado: cada um tem sua grade e palavra; palpites dos oponentes exibem apenas cores.',
       individual: revealLetters
         ? 'Modo Individual: todos jogam ao mesmo tempo; grades dos oponentes com letras.'
         : 'Modo Individual: todos jogam ao mesmo tempo; grades dos oponentes só com cores.'
     };
-    if (this.gameModePopover) {
-      this.gameModePopover.querySelectorAll('.game-mode-option').forEach((opt) => {
-        opt.classList.toggle('selected', opt.dataset.mode === mode);
-      });
-      this.gameModePopover.querySelectorAll('.reveal-option').forEach((opt) => {
-        opt.classList.toggle('selected', (opt.dataset.reveal === 'true') === revealLetters);
+    const modeNames = {
+      normal: 'Normal',
+      cross: 'Cruzado',
+      individual: 'Individual'
+    };
+    if (this.cfgModeGroup) {
+      this.cfgModeGroup.querySelectorAll('.cfg-popover-option, .cfg-toggle-btn').forEach((btn) => {
+        btn.classList.toggle('selected', btn.dataset.mode === mode);
       });
     }
-    if (this.revealLettersRow) this.revealLettersRow.classList.toggle('hidden', mode !== 'individual');
+    if (this.cfgModeDropdownLabel) {
+      this.cfgModeDropdownLabel.textContent = modeNames[mode] || 'Normal';
+    }
     ['normal', 'cross', 'individual'].forEach((m) => {
-      const icon = document.getElementById(`icon-mode-${m}`);
+      const icon = document.getElementById(`cfg-icon-mode-${m}`);
       if (icon) icon.classList.toggle('hidden', m !== mode);
     });
+    if (this.cfgRevealGroup) {
+      this.cfgRevealGroup.querySelectorAll('.cfg-popover-option, .cfg-toggle-btn').forEach((btn) => {
+        btn.classList.toggle('selected', (btn.dataset.reveal === 'true') === revealLetters);
+      });
+    }
+    if (this.cfgRevealDropdownLabel) {
+      this.cfgRevealDropdownLabel.textContent = revealLetters ? 'Com Letras' : 'Apenas Cores';
+    }
+    const iconLetters = document.getElementById('cfg-icon-reveal-letters');
+    const iconColors = document.getElementById('cfg-icon-reveal-colors');
+    if (iconLetters && iconColors) {
+      iconLetters.classList.toggle('hidden', !revealLetters);
+      iconColors.classList.toggle('hidden', revealLetters);
+    }
+    if (this.cfgIndividualRevealItem) {
+      // No Modo Normal os jogadores dividem a mesma grade única, então exibe "Mostrar tudo" e fica inativo
+      const isMultiBoard = mode !== 'normal';
+      this.cfgIndividualRevealItem.classList.toggle('disabled', !isMultiBoard);
+      if (this.btnCfgRevealDropdown) {
+        this.btnCfgRevealDropdown.disabled = !isMultiBoard;
+        this.btnCfgRevealDropdown.tabIndex = isMultiBoard ? 0 : -1;
+      }
+      if (!isMultiBoard && this.cfgRevealDropdownLabel) {
+        this.cfgRevealDropdownLabel.textContent = 'Mostrar tudo';
+      }
+    }
     if (this.gameModeHint) this.gameModeHint.textContent = info[mode];
   }
 
-  showGameModePopover(show) {
-    if (!this.gameModePopover) return;
-    this.gameModePopover.classList.toggle('hidden', !show);
-    if (this.btnGameMode) this.btnGameMode.setAttribute('aria-expanded', show ? 'true' : 'false');
+  updateRoomConfigUI({ isRoomLocked, showOpponentSelection }) {
+    if (this.cfgPrivacyGroup) {
+      this.cfgPrivacyGroup.querySelectorAll('.cfg-toggle-btn').forEach((btn) => {
+        btn.classList.toggle('selected', (btn.dataset.locked === 'true') === isRoomLocked);
+      });
+    }
+    if (this.cfgCursorGroup) {
+      this.cfgCursorGroup.querySelectorAll('.cfg-popover-option, .cfg-toggle-btn').forEach((btn) => {
+        btn.classList.toggle('selected', (btn.dataset.cursor === 'true') === showOpponentSelection);
+      });
+    }
+    if (this.cfgCursorDropdownLabel) {
+      this.cfgCursorDropdownLabel.textContent = showOpponentSelection ? 'Permitir Seleção' : 'Ocultar Seleção';
+    }
+    const iconAllow = document.getElementById('cfg-icon-cursor-allow');
+    const iconHide = document.getElementById('cfg-icon-cursor-hide');
+    if (iconAllow && iconHide) {
+      iconAllow.classList.toggle('hidden', !showOpponentSelection);
+      iconHide.classList.toggle('hidden', showOpponentSelection);
+    }
+    if (this.btnCreateRoom) {
+      this.btnCreateRoom.textContent = 'Criar Sala';
+    }
+    if (this.btnSetupOpenRoom) {
+      this.btnSetupOpenRoom.textContent = 'Criar Sala';
+    }
+    if (this.createRoomDesc) {
+      this.createRoomDesc.textContent = isRoomLocked
+        ? 'Crie uma sala e compartilhe o código de 6 dígitos com quem você quer jogar.'
+        : 'Sala pública aberta para qualquer jogador entrar sem código pela lista de salas.';
+    }
   }
 
-  showMaxPlayersPopover(show) {
-    if (!this.maxPlayersPopover) return;
-    this.maxPlayersPopover.classList.toggle('hidden', !show);
-    if (this.btnMaxPlayers) this.btnMaxPlayers.setAttribute('aria-expanded', show ? 'true' : 'false');
+  showRoomSetupView(show) {
+    if (this.lobbyHomeView) this.lobbyHomeView.classList.toggle('hidden', show);
+    if (this.roomSetupView) this.roomSetupView.classList.toggle('hidden', !show);
+  }
+
+  renderLobbyPlayersList(players, hostId, myId, onKick) {
+    if (!this.lobbyRoomPlayersList) return;
+    this.lobbyRoomPlayersList.innerHTML = '';
+    if (!players || players.length === 0) {
+      if (this.lobbyRoomPlayersWrap) this.lobbyRoomPlayersWrap.classList.add('hidden');
+      return;
+    }
+
+    if (this.lobbyRoomPlayersWrap) this.lobbyRoomPlayersWrap.classList.remove('hidden');
+
+    players.forEach((p) => {
+      const row = document.createElement('div');
+      row.className = 'lobby-player-entry';
+
+      const left = document.createElement('div');
+      left.className = 'lobby-player-left';
+
+      const thumb = document.createElement('div');
+      thumb.className = 'lobby-player-thumb';
+      if (p.avatar && p.avatar.startsWith('data:image')) {
+        const img = document.createElement('img');
+        img.src = p.avatar;
+        img.alt = p.name;
+        thumb.appendChild(img);
+      } else {
+        thumb.innerHTML = `
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        `;
+      }
+
+      const name = document.createElement('span');
+      name.className = 'lobby-player-title';
+      name.textContent = p.id === myId ? `${p.name} (Você)` : p.name;
+
+      left.appendChild(thumb);
+      left.appendChild(name);
+
+      if (p.id === hostId) {
+        const badge = document.createElement('span');
+        badge.className = 'lobby-player-badge';
+        badge.textContent = 'Host';
+        left.appendChild(badge);
+      }
+
+      row.appendChild(left);
+
+      // Botão kick disponível se quem está visualizando é o Host e o alvo não é ele mesmo
+      if (myId === hostId && p.id !== hostId) {
+        const kickBtn = document.createElement('button');
+        kickBtn.type = 'button';
+        kickBtn.className = 'btn-kick-player';
+        kickBtn.textContent = 'Expulsar';
+        kickBtn.title = `Expulsar ${p.name} da sala`;
+        kickBtn.addEventListener('click', () => {
+          if (onKick) onKick(p.id);
+        });
+        row.appendChild(kickBtn);
+      }
+
+      this.lobbyRoomPlayersList.appendChild(row);
+    });
   }
 
   updateSoloModeUI(soloMode) {
@@ -662,7 +822,8 @@ export class BoardUI {
       nameSpan.textContent = `Sala de ${room.hostName}`;
       const subSpan = document.createElement('span');
       subSpan.className = 'public-room-sub';
-      subSpan.textContent = `Aberta • ${room.count || 1}/${room.max || 2} jogadores`;
+      const modeLabel = room.mode === 'cross' ? 'Cruzado' : (room.mode === 'individual' ? 'Individual' : 'Normal');
+      subSpan.textContent = `Aberta • ${modeLabel} • ${room.count || 1}/${room.max || 2} jogadores`;
       infoDiv.appendChild(nameSpan);
       infoDiv.appendChild(subSpan);
 

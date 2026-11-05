@@ -62,6 +62,13 @@
   cursor: pointer;
 }
 
+/* Indicador de cursor do oponente */
+.tile.opponent-cursor {
+  outline: 2px solid #5fa8d3 !important;
+  outline-offset: -2px;
+  box-shadow: 0 0 8px rgba(95, 168, 211, 0.55);
+}
+
 .board-row[data-row] .tile {
   cursor: default;
 }

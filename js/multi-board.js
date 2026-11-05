@@ -134,6 +134,24 @@ export class MultiBoardLayout {
     this.minis.forEach((m, id) => set(m.slot, id));
   }
 
+  /** Destaca ou limpa o tile selecionado pelo oponente. */
+  setOpponentCursor(cursor, mode = 'cross') {
+    if (!this.root) return;
+    this.root.querySelectorAll('.tile.opponent-cursor').forEach(t => t.classList.remove('opponent-cursor'));
+    if (!cursor || typeof cursor.row !== 'number' || typeof cursor.col !== 'number') return;
+
+    if (mode === 'cross') {
+      this.minis.forEach((m) => {
+        const t = m.tiles[cursor.row] && m.tiles[cursor.row][cursor.col];
+        if (t) t.classList.add('opponent-cursor');
+      });
+    } else if (cursor.from && this.minis.has(cursor.from)) {
+      const m = this.minis.get(cursor.from);
+      const t = m.tiles[cursor.row] && m.tiles[cursor.row][cursor.col];
+      if (t) t.classList.add('opponent-cursor');
+    }
+  }
+
   /** Espelha as letras digitadas (sem avaliação) da linha atual nas grades dos oponentes. */
   mirrorRow(row, letters) {
     this.minis.forEach((m) => {

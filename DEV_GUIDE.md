@@ -79,16 +79,26 @@ O jogo suporta salas de **2 a 4 jogadores** na interface atual (topologia em est
 
 ---
 
-### 2.3. Alterar o Padrão do Cadeado (Sala Privada vs. Sala Pública)
+### 2.3. Configurações de Sala (Host) e Tela de Criação de Sala (`#room-setup-view`)
 
-Por padrão, o cadeado inicia **trancado** (Sala Privada com código de 6 dígitos):
-
-1. **`script.js`** (no construtor):
-   ```js
-   this.isRoomLocked = true; // true = Sala Privada (padrão), false = Sala Pública
-   ```
-2. **`index.html`**:
-   - O método `this.ui.updateRoomLockUI(this.isRoomLocked)` chamado em `initEvents()` sincroniza automaticamente o texto do botão, a descrição e o ícone do cadeado ao carregar a página.
+Na tela inicial do Lobby (`#lobby-home-view`), ao lado do botão verde **"Criar Sala"** (`#btn-create-room`), o botão de engrenagem moderno (`#btn-room-config-toggle`) abre a tela dedicada de configurações e criação da sala (`#room-setup-view`) na mesma página inicial (ocultando `#lobby-home-view` e exibindo apenas os itens da sala):
+- **Padrão inicial (criação direta pelo botão verde "Criar Sala"):** Sala privada (com código), 2 jogadores, modo Normal, seleção do oponente ativada.
+- **Formulário de Configurações (`#room-config-panel`):**
+  1. Seção 1 (Modo e Jogadores): 2 botões dropdown alinhados horizontalmente:
+     - Quantidade de jogadores (`#btn-cfg-players-dropdown`: 2, 3 ou 4 com popover rápido e ícone compacto).
+     - Modo de jogo (`#btn-cfg-mode-dropdown`: Normal, Cruzado e Individual com ícones originais e rótulo de texto).
+  2. Seção 2 (Privacidade em jogo): 2 botões dropdown alinhados horizontalmente:
+     - Seleção do oponente (`#btn-cfg-cursor-dropdown`: "Permitir Seleção" ou "Ocultar Seleção" com ícone de olho).
+     - Grades dos oponentes (`#btn-cfg-reveal-dropdown`: por padrão mostra letras em todos os modos; no modo Normal exibe "Mostrar tudo" e fica inativo pois a grade é única compartilhada; ao escolher Cruzado ou Individual, a opção fica ativa para alternar entre "Com Letras" e "Apenas Cores").
+  3. Seção 3 (Acesso da sala): 2 botões de alternância horizontal:
+     - Sala Privada (com ícone de cadeado) vs. Pública (com ícone de globo).
+  - Padrão visual de seleção: amarelo translúcido (`rgba(211, 173, 105, 0.2)` com borda dourada suave), mantendo consistência e sem sobrecarregar a interface.
+- **Lista de Jogadores e Ações do Host:**
+  - Jogadores que entram na sala são listados abaixo em `#lobby-room-players-list`. O host pode expulsar qualquer convidado pelo botão **"Expulsar"** (`KICK_PLAYER`).
+  - O botão **"Iniciar partida"** (`#btn-start-match`) fica amarelado enquanto houver menos que o total configurado de jogadores e fica verde (`.ready`) ao atingir a meta de jogadores.
+  - Ao clicar em **"Iniciar partida"**, inicia-se uma contagem regressiva de 3 segundos (`START_COUNTDOWN`) antes de abrir o tabuleiro.
+  - Ao lado direito de "Iniciar partida", o botão **"Cancelar"** (`#btn-cancel-room`) cancela a criação da sala, limpa a lista e retorna à visão principal do lobby.
+  - Na lista de salas públicas disponíveis (`#public-rooms-modal`), cada sala exibe a informação do modo de jogo (`Modo Normal`, `Modo Cruzado`, `Modo Individual`).
 
 ---
 
@@ -188,27 +198,22 @@ Na barra de ações no topo (`#game-actions-bar`), o botão `#btn-words-history`
 
 ---
 
-### 2.11. Histórico de Palavras Acertadas (`#words-history-modal`)
-
-Na barra de ações no topo (`#game-actions-bar`), o botão `#btn-words-history` abre o modal `#words-history-modal` listando todas as palavras acertadas em todas as partidas (com qualquer oponente na rede ou no modo solo):
-- **Layout e divisor por partida:** Cada item exibe em 2 colunas a palavra acertada com o mesmo estilo de mini-grade do tabuleiro (`.words-history-grid` com 5 `.tile.correct`) à esquerda e o nome de quem acertou (`Você` ou o nome do oponente) à direita, dentro de uma lista com rolagem (`.words-history-list`). Sempre que uma nova partida/sala é iniciada (`startNewMatchHistoryGroup()` em `script.js`), um novo `matchId` é gerado e a lista insere um divisor (`.words-history-divider`) separando verticalmente os grupos de partidas.
-- **Persistência local acumulativa:** Todo o histórico permanece salvo em `localStorage` na chave `termo_match_guessed_words` (`recordGuessedWord`, `loadGuessedWordsHistory`, `saveGuessedWordsHistory` em `script.js`).
-
----
-
 ## 3. Protocolo de Mensagens WebRTC (`handleP2PMessage`)
 
 Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um pacote ao Host, o Host adiciona `from: peerId` e retransmite (`broadcast`) para os demais convidados:
 
 | Tipo (`data.type`) | Emissor | Descrição |
 | :--- | :--- | :--- |
-| `QUERY_ROOM_INFO` / `PUBLIC_ROOM_INFO` | Scanner / Host | Descoberta de salas públicas abertas e lotação (`count`/`max`) |
+| `QUERY_ROOM_INFO` / `PUBLIC_ROOM_INFO` | Scanner / Host | Descoberta de salas públicas abertas, lotação (`count`/`max`) e modo (`mode`) |
 | `JOIN_GAME` | Convidado | Solicita entrada na sala enviando `name` e `avatar` |
 | `REJOIN` | Convidado | Reconecta ao novo Host após migração |
 | `LOBBY_UPDATE` | Host | Atualiza a lista de jogadores que aguardam na sala antes de começar |
+| `KICK_PLAYER` | Host | Expulsa um convidado específico (`targetId`) da sala de espera |
+| `START_COUNTDOWN` | Host | Notifica contagem regressiva de 3 segundos antes do início da partida |
 | `PLAYERS_SYNC` | Host | Sincroniza a lista de jogadores e placares após reconexão |
-| `START_MATCH` | Host | Inicia a partida enviando `players`, `secretWord`, `startingId`, `gameMode`, `revealLetters` e `secrets` (palavra de cada jogador nos modos Cruzado/Individual) |
+| `START_MATCH` | Host | Inicia a partida enviando `players`, `secretWord`, `startingId`, `gameMode`, `revealLetters`, `showOpponentSelection` e `secrets` (palavra de cada jogador nos modos Cruzado/Individual) |
 | `LIVE_KEYSTROKE` | Jogador da vez | Espelha letras digitadas/apagadas em tempo real (`ADD` / `DELETE`); não é enviado no modo Individual |
+| `CURSOR_MOVE` | Jogador ativo | Informa a posição selecionada (`row`, `col`) quando `showOpponentSelection` está habilitado |
 | `SUBMIT_GUESS` | Jogador da vez | Submete a tentativa avaliada, informa se venceu (`isWin`) e passa a vez (`nextTurnId`). No Cruzado cada cliente reavalia o palpite contra a palavra de cada grade; no Individual qualquer jogador envia a qualquer momento (sem `nextTurnId`) |
 | `MM_RESULT` | Host | Modo Individual: informa o `winnerId` (ou `null` se ninguém acertou) |
 | `RESTART_REQUEST` | Convidado | Modos Cruzado/Individual: pede ao host para reiniciar a partida |
