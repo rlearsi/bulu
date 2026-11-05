@@ -19,8 +19,9 @@ export class P2PNetwork {
    * @param {() => void} opts.onJoinRejected                 Convidado: host recusou (sala cheia/em jogo)
    * @param {(data: object, peerId: string) => boolean} opts.acceptJoin  Host: aceita JOIN_GAME / REJOIN?
    * @param {() => object} opts.getRoomInfo                  Host: dados para listagem pública
+   * @param {(call: any) => void} [opts.onIncomingCall]      Chamada de mídia WebRTC recebida (Voz)
    */
-  constructor({ onMessage, onPeerLeft, onHostLost, onJoinRejected, acceptJoin, getRoomInfo }) {
+  constructor({ onMessage, onPeerLeft, onHostLost, onJoinRejected, acceptJoin, getRoomInfo, onIncomingCall }) {
     this.peer = null;
     this.isHost = false;
     this.conns = new Map(); // Host: peerId -> DataConnection
@@ -35,6 +36,7 @@ export class P2PNetwork {
     this.onJoinRejected = onJoinRejected;
     this.acceptJoin = acceptJoin;
     this.getRoomInfo = getRoomInfo;
+    this.onIncomingCall = onIncomingCall;
   }
 
   get myId() {
@@ -87,6 +89,9 @@ export class P2PNetwork {
       });
 
       this.peer.on('connection', (conn) => this.setupIncomingConnection(conn));
+      this.peer.on('call', (call) => {
+        if (this.onIncomingCall) this.onIncomingCall(call);
+      });
 
       this.peer.on('error', (err) => {
         console.error('Peer error:', err);
@@ -127,6 +132,9 @@ export class P2PNetwork {
         });
 
         candidatePeer.on('connection', (conn) => this.setupIncomingConnection(conn));
+        candidatePeer.on('call', (call) => {
+          if (this.onIncomingCall) this.onIncomingCall(call);
+        });
 
         candidatePeer.on('error', (err) => {
           if (!opened && err && err.type === 'unavailable-id') {
@@ -336,6 +344,9 @@ export class P2PNetwork {
 
       // Permite receber conexões caso este convidado seja promovido a host
       this.peer.on('connection', (conn) => this.setupIncomingConnection(conn));
+      this.peer.on('call', (call) => {
+        if (this.onIncomingCall) this.onIncomingCall(call);
+      });
 
       this.peer.on('error', (err) => {
         console.error('Guest peer error:', err);

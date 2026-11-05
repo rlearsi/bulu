@@ -37,6 +37,22 @@
         </svg>
         <span id="chat-badge" class="chat-badge hidden">0</span>
       </button>
+      <button id="btn-voice" class="action-btn voice-action-btn hidden" title="Iniciar chat de voz">
+        <svg id="icon-voice-unmuted" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+        <svg id="icon-voice-muted" class="hidden" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="1" y1="1" x2="23" y2="23"></line>
+          <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
+          <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+        <span id="voice-dot" class="voice-dot hidden"></span>
+      </button>
       <button id="btn-words-history" class="action-btn" title="Palavras acertadas">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="8" y1="6" x2="21" y2="6"></line>
@@ -477,6 +493,25 @@
       
       <!-- Aviso de feedback rápido (Ex: 'Palavra não encontrada', 'Não é sua vez') -->
       <div id="toast-message" class="toast hidden"></div>
+
+      <!-- Banner de solicitação de voz no topo com ações rápidas ('Aceitar' / 'Recusar') -->
+      <div id="voice-request-banner" class="voice-request-banner hidden">
+        <div class="voice-banner-content">
+          <div class="voice-banner-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </div>
+          <span id="voice-banner-msg" class="voice-banner-msg">Oponente quer iniciar um chat de voz</span>
+        </div>
+        <div class="voice-banner-actions">
+          <button id="btn-voice-accept" class="btn-voice-action btn-voice-accept" title="Aceitar voz">Aceitar</button>
+          <button id="btn-voice-reject" class="btn-voice-action btn-voice-reject" title="Recusar voz">Recusar</button>
+        </div>
+      </div>
     </main>
 
     <!-- TECLADO VIRTUAL -->

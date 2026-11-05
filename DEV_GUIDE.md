@@ -19,6 +19,7 @@ O projeto utiliza **JavaScript ES Modules puro** (sem dependências de runtime a
 | `js/multi-board.js` | Layout multigrade (`MultiBoardLayout`) dos modos Cruzado e Individual: grade própria + miniaturas dos oponentes (2 lado a lado, 3 com oponentes empilhados à direita, 4 em 2×2) |
 | `js/game-rules.js` | Validação de palavras, normalização de acentos e cálculo de cores (`correct`, `present`, `absent`) |
 | `js/chat.js` | Chat em overlay com suporte a texto e mensagens de voz (WebM/Opus em Base64) |
+| `js/voice.js` | Chat de voz em tempo real (`VoiceManager`): solicitação mútua com banner toast, transmissão de áudio bidirecional via WebRTC (`peer.call()`), mute/unmute e dot de notificação |
 | `js/profile.js` | Gerenciamento de nome e avatar (compressão em canvas e persistência no `localStorage`) |
 | `js/audio.js` | Efeitos sonoros sintetizados via Web Audio API |
 | `css/*.css` | Estilos separados por componente (`lobby.css`, `scoreboard.css`, `board.css`, `multiboard.css`, `keyboard.css`, `chat.css`, `modals.css`) |
@@ -223,6 +224,11 @@ Todas as mensagens trafegam pelo `P2PNetwork`. Quando um convidado envia um paco
 | `RESTART_MATCH` | Qualquer jogador | Sorteia nova palavra e reinicia o tabuleiro mantendo o placar |
 | `PLAY_AGAIN_REQUEST` | Qualquer jogador | Marca o jogador como pronto ao final da partida ("Esperando oponente"); quando todos confirmam, o Host inicia a nova rodada |
 | `CHAT_MESSAGE` | Qualquer jogador | Mensagem de texto ou áudio (`audioData` em Base64) |
+| `VOICE_REQUEST` | Qualquer jogador | Solicita início de chamada de voz em tempo real |
+| `VOICE_ACCEPT` | Convidado / Host | Aceita a solicitação e conecta a transmissão de voz via WebRTC |
+| `VOICE_REJECT` | Convidado / Host | Recusa a chamada de voz (ativa o dot vermelho de notificação no botão de voz do outro jogador) |
+| `VOICE_CANCEL` | Solicitante | Cancela a solicitação de voz antes do oponente responder |
+| `VOICE_END` | Qualquer jogador | Encerra a transmissão de voz ativa |
 
 ---
 

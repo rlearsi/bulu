@@ -12,6 +12,7 @@ import { P2PNetwork } from './js/network.js?v=1.11.0';
 import { ChatManager } from './js/chat.js?v=1.11.0';
 import { BoardUI } from './js/board-ui.js?v=1.11.0';
 import { MultiBoardLayout } from './js/multi-board.js?v=1.11.0';
+import { VoiceManager } from './js/voice.js?v=1.11.0';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -87,6 +88,7 @@ class TermoMultiplayerGame {
       onHostLost: (hostId) => this.handleHostLost(hostId),
       onJoinRejected: () => this.handleJoinRejected(),
       acceptJoin: (data, peerId) => this.acceptJoin(data, peerId),
+      onIncomingCall: (call) => this.voice && this.voice.handleIncomingPeerCall(call),
       getRoomInfo: () => ({
         joinable: this.role === 'host' && !this.matchStarted && this.players.length < this.maxPlayers,
         hostName: this.profile.myName,
@@ -107,6 +109,22 @@ class TermoMultiplayerGame {
         isConnected: this.network.isConnected()
       }),
       onSendP2P: (msgData) => this.network.send(msgData)
+    });
+
+    this.voice = new VoiceManager({
+      audio: this.audio,
+      onShowToast: (msg) => this.ui.showToast(msg),
+      getContextInfo: () => ({
+        myName: this.profile.myName,
+        oppName: this.oppName,
+        role: this.role,
+        isInMatch: this.matchStarted && !this.isGameOver,
+        isConnected: this.network.isConnected(),
+        myPeerId: this.myId,
+        oppPeerId: this.getOpponentPeerId()
+      }),
+      onSendP2P: (msgData) => this.network.send(msgData),
+      getPeerInstance: () => this.network.peer
     });
 
     this.initEvents();
@@ -143,6 +161,11 @@ class TermoMultiplayerGame {
     if (this.role === 'solo') return 'Computador';
     if (opps.length === 0) return 'Oponente';
     return opps.map(p => p.name).join(', ');
+  }
+
+  getOpponentPeerId() {
+    const opp = this.players.find(p => p.id !== this.myId);
+    return opp ? opp.id : null;
   }
 
   getPlayer(id) {
@@ -1181,6 +1204,29 @@ class TermoMultiplayerGame {
         this.chat.handleIncomingMessage(data);
         break;
 
+      case 'VOICE_REQUEST':
+        if (this.voice) this.voice.handleIncomingRequest(data);
+        break;
+
+      case 'VOICE_ACCEPT':
+        if (this.voice) this.voice.handleVoiceAccepted(from);
+        break;
+
+      case 'VOICE_REJECT':
+        if (this.voice) this.voice.handleVoiceRejected();
+        break;
+
+      case 'VOICE_CANCEL':
+        if (this.voice) this.voice.handleVoiceCancelled();
+        break;
+
+      case 'VOICE_END':
+        if (this.voice) {
+          this.voice.endVoiceCall(false);
+          this.ui.showToast('Chat de voz encerrado pelo oponente.');
+        }
+        break;
+
       case 'PLAY_AGAIN_REQUEST':
         this.readyPlayers.add(from);
         this.ui.showToast(`${this.getPlayerName(from)} quer continuar jogando!`);
@@ -1421,6 +1467,7 @@ class TermoMultiplayerGame {
     if (this.ui.btnHome) this.ui.btnHome.classList.remove('hidden');
 
     this.updateStatusBar();
+    if (this.voice) this.voice.updateVisibility(true, true);
     if (this.isMyTurn()) this.broadcastCursorMove();
   }
 
@@ -1550,6 +1597,7 @@ class TermoMultiplayerGame {
     this.ui.showToast(nextTurnId === this.myId ? `Tempo de ${name} esgotou! Sua vez.` : `Tempo de ${name} esgotou!`);
     this.currentTurnId = nextTurnId;
     this.updateStatusBar();
+    if (this.voice) this.voice.updateVisibility(true, true);
     if (this.isMyTurn()) this.broadcastCursorMove();
   }
 
@@ -2086,6 +2134,7 @@ class TermoMultiplayerGame {
     }
     this.currentTurnId = this.getPlayer(nextTurnId) ? nextTurnId : this.nextPlayerId(fromId);
     this.updateStatusBar();
+    if (this.voice) this.voice.updateVisibility(true, true);
     if (this.isMyTurn()) this.broadcastCursorMove();
   }
 
@@ -2353,6 +2402,10 @@ class TermoMultiplayerGame {
     });
 
     this.chat.reset();
+    if (this.voice) {
+      this.voice.reset();
+      this.voice.updateVisibility(false, false);
+    }
 
     this.ui.lobbyScreen.classList.remove('hidden');
   }
