@@ -112,9 +112,16 @@
   transition: all 0.2s ease;
 }
 
+.btn-config-gear svg {
+  transition: transform 0.3s ease;
+}
+
 .btn-config-gear:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
+}
+
+.btn-config-gear:hover svg {
   transform: rotate(30deg);
 }
 

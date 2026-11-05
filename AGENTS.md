@@ -18,6 +18,8 @@
   - **Evitar backgrounds agressivos:** Empregar tons e transparências suaves integradas ao fundo principal (`rgba(255, 255, 255, 0.04-0.06)`).
   - **Sem estilo quote:** Não utilizar barras laterais de citação (`border-left` chamativo).
   - **Sem linhas e bordas excessivas:** Eliminar bordas tracejadas ou divisórias pesadas, priorizando acabamento minimalista.
+  - **Ícones sempre à esquerda:** Em todos os botões e seletores da interface com ícone e texto, o ícone deve vir posicionado à esquerda do texto (`[Ícone] [Texto]`).
+  - **Animações em botões:** Rotações em hover devem ser aplicadas estritamente no elemento `svg` interno e nunca na caixa do botão.
 
 - **Cache Busting e Versionamento de Assets ([`.agents/rules/cache_busting.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/cache_busting.md)):**
   - **Proibição de alterar `VERSION`:** O arquivo `VERSION` é somente leitura; o agente **NUNCA** deve editá-lo ou incrementá-lo sem pedido expresso do usuário.
