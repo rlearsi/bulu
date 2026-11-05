@@ -594,7 +594,7 @@ class TermoMultiplayerGame {
 
     if (this.ui.cfgTimeGroup) {
       this.ui.cfgTimeGroup.addEventListener('click', (e) => {
-        const btn = e.target.closest('.cfg-popover-option');
+        const btn = e.target.closest('.turn-time-option, .cfg-popover-option');
         if (!btn) return;
         this.turnDuration = Number(btn.dataset.time) || 60;
         this.timer.setDuration(this.turnDuration);

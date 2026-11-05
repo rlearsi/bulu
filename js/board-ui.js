@@ -561,17 +561,17 @@ export class BoardUI {
 
     if (turnDuration) {
       if (this.cfgTimeGroup) {
-        this.cfgTimeGroup.querySelectorAll('.cfg-popover-option').forEach((btn) => {
+        this.cfgTimeGroup.querySelectorAll('.turn-time-option, .cfg-popover-option').forEach((btn) => {
           btn.classList.toggle('selected', Number(btn.dataset.time) === turnDuration);
         });
       }
       const timeLabels = {
-        60: '1 Minuto',
-        120: '2 Minutos',
-        180: '3 Minutos'
+        60: '1min',
+        120: '2min',
+        180: '3min'
       };
       if (this.cfgTimeDropdownLabel) {
-        this.cfgTimeDropdownLabel.textContent = timeLabels[turnDuration] || `${Math.round(turnDuration / 60)} Minutos`;
+        this.cfgTimeDropdownLabel.textContent = timeLabels[turnDuration] || `${Math.round(turnDuration / 60)}min`;
       }
     }
 

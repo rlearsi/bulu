@@ -235,8 +235,20 @@
   flex: 0 0 auto;
 }
 
+/* Na Seção 1 (Modo e Jogadores): Duração do Turno tem tamanho fixo confortável (1min, 2min, 3min) e Modo ocupa o restante */
+.config-side-row .config-dropdown-wrap.wrap-turn-time {
+  flex: 0 0 102px;
+  width: 102px;
+}
+
 .config-side-row .config-dropdown-wrap.wrap-mode {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.config-side-row .config-dropdown-wrap.wrap-comms-full {
+  flex: 1 1 100%;
+  width: 100%;
 }
 
 .config-side-row .btn-dropdown-compact {
@@ -255,9 +267,7 @@
 }
 
 .config-side-row .config-dropdown-wrap.wrap-cursor,
-.config-side-row .config-dropdown-wrap.wrap-reveal,
-.config-side-row .config-dropdown-wrap.wrap-turn-time,
-.config-side-row .config-dropdown-wrap.wrap-comms {
+.config-side-row .config-dropdown-wrap.wrap-reveal {
   flex: 1 1 0;
   width: 0;
 }
@@ -762,12 +772,14 @@
   text-align: center;
 }
 
-.max-players-options {
+.max-players-options,
+.turn-time-options {
   display: flex;
   gap: 6px;
 }
 
-.max-players-option {
+.max-players-option,
+.turn-time-option {
   width: 38px;
   height: 36px;
   border-radius: 8px;
@@ -780,12 +792,14 @@
   transition: all 0.15s ease;
 }
 
-.max-players-option:hover {
+.max-players-option:hover,
+.turn-time-option:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
 }
 
-.max-players-option.selected {
+.max-players-option.selected,
+.turn-time-option.selected {
   background: var(--color-present);
   color: #ffffff;
 }

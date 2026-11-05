@@ -260,11 +260,11 @@
 
         <!-- FORMULÁRIO COM OS BOTÕES ORGANIZADOS EM SEÇÕES -->
         <div id="room-config-panel" class="room-config-panel">
-          <!-- SEÇÃO 1: MODO E QUANTIDADE DE JOGADORES (BOTÕES AO LADO) -->
+          <!-- SEÇÃO 1: MODO, DURAÇÃO E JOGADORES (3 BOTÕES LADO A LADO) -->
           <div class="config-section">
             <span class="config-section-title">Modo e Jogadores</span>
             <div class="config-side-row">
-              <!-- Botão Dropdown: Quantidade de Jogadores (Ícone original de 2 + usuário) -->
+              <!-- Botão 1: Quantidade de Jogadores (Ícone 2 + usuário, tamanho compacto) -->
               <div class="config-dropdown-wrap wrap-players">
                 <button type="button" id="btn-cfg-players-dropdown" class="cfg-dropdown-btn btn-dropdown-compact" aria-haspopup="true" aria-expanded="false" title="Quantidade de jogadores">
                   <div class="cfg-dropdown-inner">
@@ -285,7 +285,33 @@
                 </div>
               </div>
 
-              <!-- Botão Dropdown: Modo de Jogo (Ícone + Texto: Normal, Cruzado ou Individual) -->
+              <!-- Botão 2: Duração do Turno (Ícone de relógio + "1min", "2min", "3min", tamanho fixo) -->
+              <div class="config-dropdown-wrap wrap-turn-time">
+                <button type="button" id="btn-cfg-time-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Duração do turno">
+                  <div class="cfg-dropdown-inner">
+                    <span class="cfg-mode-icon-wrap">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                    </span>
+                    <span id="cfg-time-dropdown-label" class="cfg-mode-label">1min</span>
+                  </div>
+                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                <div id="cfg-time-popover" class="config-popover players-popover hidden" role="menu">
+                  <span class="config-popover-title">Duração (min)</span>
+                  <div class="turn-time-options" id="cfg-time-group">
+                    <button type="button" class="turn-time-option selected" data-time="60" role="menuitemradio">1</button>
+                    <button type="button" class="turn-time-option" data-time="120" role="menuitemradio">2</button>
+                    <button type="button" class="turn-time-option" data-time="180" role="menuitemradio">3</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botão 3: Modo de Jogo (Ocupa todo o resto da linha) -->
               <div class="config-dropdown-wrap wrap-mode">
                 <button type="button" id="btn-cfg-mode-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Modo de jogo">
                   <div class="cfg-dropdown-inner">
@@ -300,7 +326,7 @@
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </button>
-                <div id="cfg-mode-popover" class="config-popover mode-popover hidden" role="menu">
+                <div id="cfg-mode-popover" class="config-popover mode-popover reveal-popover hidden" role="menu">
                   <span class="config-popover-title">Modo de jogo</span>
                   <button type="button" class="cfg-popover-option selected" data-mode="normal" role="menuitemradio">
                     <strong>Normal</strong>
@@ -392,45 +418,12 @@
             </div>
           </div>
 
-          <!-- SEÇÃO 3: TEMPO E QUEM COMEÇA (2 DROPDOWNS LADO A LADO) -->
+          <!-- SEÇÃO 3: COMUNICAÇÃO NA PARTIDA -->
           <div class="config-section">
-            <span class="config-section-title">Tempo e Turnos</span>
+            <span class="config-section-title">Comunicação</span>
             <div class="config-side-row">
-              <!-- Dropdown 1: Tempo do turno (1 min, 2 min ou 3 min) -->
-              <div class="config-dropdown-wrap wrap-turn-time">
-                <button type="button" id="btn-cfg-time-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Duração do turno">
-                  <div class="cfg-dropdown-inner">
-                    <span class="cfg-mode-icon-wrap">
-                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
-                    </span>
-                    <span id="cfg-time-dropdown-label" class="cfg-mode-label">1 Minuto</span>
-                  </div>
-                  <svg class="cfg-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                <div id="cfg-time-popover" class="config-popover mode-popover hidden" role="menu">
-                  <span class="config-popover-title">Duração do turno</span>
-                  <button type="button" class="cfg-popover-option selected" data-time="60" role="menuitemradio">
-                    <strong>1 Minuto (Padrão)</strong>
-                    <span>Turnos rápidos e dinâmicos com alerta final de tensão.</span>
-                  </button>
-                  <button type="button" class="cfg-popover-option" data-time="120" role="menuitemradio">
-                    <strong>2 Minutos</strong>
-                    <span>Tempo moderado para pensar com mais calma em cada palavra.</span>
-                  </button>
-                  <button type="button" class="cfg-popover-option" data-time="180" role="menuitemradio">
-                    <strong>3 Minutos</strong>
-                    <span>Partida relaxada e casual sem correria.</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Dropdown 2: Comunicação (Texto & Voz, Apenas Texto, Apenas Voz ou Silencioso) -->
-              <div class="config-dropdown-wrap wrap-comms">
+              <!-- Dropdown Comunicação (Texto & Voz, Apenas Texto, Apenas Voz ou Silencioso) -->
+              <div class="config-dropdown-wrap wrap-comms-full">
                 <button type="button" id="btn-cfg-comms-dropdown" class="cfg-dropdown-btn btn-dropdown-mode" aria-haspopup="true" aria-expanded="false" title="Comunicação na partida">
                   <div class="cfg-dropdown-inner">
                     <span class="cfg-mode-icon-wrap">
@@ -462,7 +455,7 @@
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </button>
-                <div id="cfg-comms-popover" class="config-popover mode-popover reveal-popover hidden" role="menu">
+                <div id="cfg-comms-popover" class="config-popover mode-popover hidden" role="menu">
                   <span class="config-popover-title">Comunicação</span>
                   <button type="button" class="cfg-popover-option selected" data-comms="both" role="menuitemradio">
                     <strong>Texto e Voz</strong>
