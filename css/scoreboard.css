@@ -337,3 +337,48 @@
   height: 18px;
   background: rgba(255, 255, 255, 0.1);
 }
+
+/* Placar do Modo Carreira Solo */
+.career-scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 8px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.career-scoreboard.hidden {
+  display: none;
+}
+
+.career-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.career-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.career-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.career-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+}

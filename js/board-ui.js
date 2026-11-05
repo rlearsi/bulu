@@ -122,6 +122,9 @@ export class BoardUI {
     this.infiniteScoreboard = document.getElementById('infinite-scoreboard');
     this.infiniteStreakVal = document.getElementById('infinite-streak-val');
     this.infiniteBestVal = document.getElementById('infinite-best-val');
+    this.careerScoreboard = document.getElementById('career-scoreboard');
+    this.careerStageVal = document.getElementById('career-stage-val');
+    this.careerLettersVal = document.getElementById('career-letters-val');
 
     this.inputRoomCode = document.getElementById('input-room-code');
     this.btnJoinRoom = document.getElementById('btn-join-room');
@@ -181,6 +184,7 @@ export class BoardUI {
   createBoard() {
     this.boardElement.innerHTML = '';
     this.boardElement.style.setProperty('--rows', this.maxRows);
+    this.boardElement.style.setProperty('--cols', this.wordLength);
     this.boardElement.style.gridTemplateRows = `repeat(${this.maxRows}, 1fr)`;
     for (let r = 0; r < this.maxRows; r++) {
       const rowDiv = document.createElement('div');
@@ -432,6 +436,7 @@ export class BoardUI {
   renderScoreboard({ players, myId, currentTurnId, isMyTurn, silent = false, turnless = false, allowReactions = false }) {
     this.statusBar.classList.remove('hidden');
     if (this.infiniteScoreboard) this.infiniteScoreboard.classList.add('hidden');
+    if (this.careerScoreboard) this.careerScoreboard.classList.add('hidden');
     const hostId = players.length ? players[0].id : '';
     const isMulti = players.length > 2;
 
@@ -833,26 +838,34 @@ export class BoardUI {
   }
 
   updateSoloModeUI(soloMode) {
-    const isInfinite = soloMode === 'infinite';
     if (this.btnPractice) {
       this.btnPractice.textContent = 'Modo Solo';
     }
+    const labels = {
+      classic: 'Clássico',
+      infinite: 'Infinito',
+      career: 'Carreira'
+    };
     if (this.soloModeCurrentLabel) {
-      this.soloModeCurrentLabel.textContent = isInfinite ? 'Infinito' : 'Clássico';
+      this.soloModeCurrentLabel.textContent = labels[soloMode] || 'Clássico';
     }
     if (this.soloModePopover) {
       this.soloModePopover.querySelectorAll('.solo-mode-option').forEach((opt) => {
         opt.classList.toggle('selected', opt.dataset.soloMode === soloMode);
       });
     }
-    ['classic', 'infinite'].forEach((m) => {
+    ['classic', 'infinite', 'career'].forEach((m) => {
       const icon = document.getElementById(`icon-solo-${m}`);
       if (icon) icon.classList.toggle('hidden', m !== soloMode);
     });
     if (this.soloModeHint) {
-      this.soloModeHint.textContent = isInfinite
-        ? 'Modo Infinito: acerte palavras em sequência sem parar e supere seu recorde!'
-        : 'Modo Clássico: descubra a palavra secreta em até 6 tentativas.';
+      if (soloMode === 'career') {
+        this.soloModeHint.textContent = 'Modo Carreira: avance de 3 a 8 letras ao longo de 6 rodadas com 6 tentativas cada!';
+      } else if (soloMode === 'infinite') {
+        this.soloModeHint.textContent = 'Modo Infinito: acerte palavras em sequência sem parar e supere seu recorde!';
+      } else {
+        this.soloModeHint.textContent = 'Modo Clássico: descubra a palavra secreta em até 6 tentativas.';
+      }
     }
   }
 
@@ -866,9 +879,20 @@ export class BoardUI {
     this.statusBar.classList.remove('hidden');
     if (this.matchScoreboard) this.matchScoreboard.classList.add('hidden');
     if (this.multiScoreboard) this.multiScoreboard.classList.add('hidden');
+    if (this.careerScoreboard) this.careerScoreboard.classList.add('hidden');
     if (this.infiniteScoreboard) this.infiniteScoreboard.classList.remove('hidden');
     if (this.infiniteStreakVal) this.infiniteStreakVal.textContent = streak;
     if (this.infiniteBestVal) this.infiniteBestVal.textContent = best;
+  }
+
+  renderCareerScoreboard(stage, totalStages, wordLength) {
+    this.statusBar.classList.remove('hidden');
+    if (this.matchScoreboard) this.matchScoreboard.classList.add('hidden');
+    if (this.multiScoreboard) this.multiScoreboard.classList.add('hidden');
+    if (this.infiniteScoreboard) this.infiniteScoreboard.classList.add('hidden');
+    if (this.careerScoreboard) this.careerScoreboard.classList.remove('hidden');
+    if (this.careerStageVal) this.careerStageVal.textContent = `${stage}/${totalStages}`;
+    if (this.careerLettersVal) this.careerLettersVal.textContent = `${wordLength} letras`;
   }
 
   showHelpModal(show) {
@@ -910,7 +934,8 @@ export class BoardUI {
       const gridEl = document.createElement('div');
       gridEl.className = 'words-history-grid';
       const letters = String(item.word || '').toUpperCase().split('');
-      for (let i = 0; i < this.wordLength; i++) {
+      gridEl.style.setProperty('--cols', letters.length);
+      for (let i = 0; i < letters.length; i++) {
         const tile = document.createElement('div');
         tile.className = 'tile correct';
         tile.textContent = letters[i] || '';

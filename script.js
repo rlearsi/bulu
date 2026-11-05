@@ -3,16 +3,17 @@
  * Conecta os módulos de Áudio, Perfil, Rede P2P, Cronômetro, Chat, UI do Tabuleiro e Regras.
  */
 
-import { wordsData, secretWords } from './words.js?v=1.11.0';
-import { AudioManager } from './js/audio.js?v=1.11.0';
-import { GameRules } from './js/game-rules.js?v=1.11.0';
-import { TurnTimer } from './js/timer.js?v=1.11.0';
-import { ProfileManager } from './js/profile.js?v=1.11.0';
-import { P2PNetwork } from './js/network.js?v=1.11.0';
-import { ChatManager } from './js/chat.js?v=1.11.0';
-import { BoardUI } from './js/board-ui.js?v=1.11.0';
-import { MultiBoardLayout } from './js/multi-board.js?v=1.11.0';
-import { VoiceManager } from './js/voice.js?v=1.11.0';
+import { wordsData, secretWords } from './words.js?v=v1.11.1_new-room-settings_0.4.4';
+import { careerWordsByLength } from './js/career-words.js?v=v1.11.1_new-room-settings_0.4.4';
+import { AudioManager } from './js/audio.js?v=v1.11.1_new-room-settings_0.4.4';
+import { GameRules } from './js/game-rules.js?v=v1.11.1_new-room-settings_0.4.4';
+import { TurnTimer } from './js/timer.js?v=v1.11.1_new-room-settings_0.4.4';
+import { ProfileManager } from './js/profile.js?v=v1.11.1_new-room-settings_0.4.4';
+import { P2PNetwork } from './js/network.js?v=v1.11.1_new-room-settings_0.4.4';
+import { ChatManager } from './js/chat.js?v=v1.11.1_new-room-settings_0.4.4';
+import { BoardUI } from './js/board-ui.js?v=v1.11.1_new-room-settings_0.4.4';
+import { MultiBoardLayout } from './js/multi-board.js?v=v1.11.1_new-room-settings_0.4.4';
+import { VoiceManager } from './js/voice.js?v=v1.11.1_new-room-settings_0.4.4';
 
 class TermoMultiplayerGame {
   constructor() {
@@ -57,10 +58,13 @@ class TermoMultiplayerGame {
     this.countdownTimer = null;
     this.opponentCursor = null; // { row, col } do oponente ativo
 
-    // Modo Solo: 'classic' (1 palavra em 6 tentativas) ou 'infinite' (sequência contínua)
+    // Modo Solo: 'classic' (1 palavra em 6 tentativas), 'infinite' (sequência contínua) ou 'career' (progressão 3 a 8 letras)
     this.soloMode = 'classic';
     this.infiniteStreak = 0;
     this.infiniteBest = Number(localStorage.getItem('termo_infinite_best') || 0);
+    this.careerStage = 1;
+    this.careerMaxStage = 6;
+    this.careerLengths = [3, 4, 5, 6, 7, 8];
 
     // Histórico de palavras acertadas (armazenado localmente em todas as partidas)
     this.matchSessionId = Date.now();
@@ -880,9 +884,20 @@ class TermoMultiplayerGame {
   }
 
   setSoloMode(soloMode) {
-    if (!['classic', 'infinite'].includes(soloMode)) return;
+    if (!['classic', 'infinite', 'career'].includes(soloMode)) return;
     this.soloMode = soloMode;
     this.ui.updateSoloModeUI(this.soloMode);
+  }
+
+  initRulesForCurrentLength() {
+    if (this.role === 'solo' && this.soloMode === 'career') {
+      const lengthData = careerWordsByLength[this.wordLength];
+      if (lengthData) {
+        this.rules = new GameRules(lengthData.validGuesses, this.wordLength, lengthData.secretWords);
+        return;
+      }
+    }
+    this.rules = new GameRules(wordsData, this.wordLength, secretWords);
   }
 
   /** Mensagem exibida ao tentar jogar quando não é possível digitar. */
@@ -1642,8 +1657,8 @@ class TermoMultiplayerGame {
     this.currentTurnId = '';
     this.matchStarted = false;
     this.infiniteStreak = 0;
+    this.careerStage = 1;
     this.startNewMatchHistoryGroup();
-    this.secretWord = this.rules.getRandomSecretWord();
 
     this.applyModeConfig();
     this.resetBoardState();
@@ -1654,22 +1669,33 @@ class TermoMultiplayerGame {
     if (this.ui.btnHome) this.ui.btnHome.classList.remove('hidden');
 
     this.updateStatusBar();
-    this.ui.showToast(
-      this.soloMode === 'infinite'
-        ? 'Modo Infinito iniciado! Boa sorte!'
-        : 'Modo Clássico iniciado! Boa sorte!'
-    );
+    const startToast = {
+      career: 'Modo Carreira iniciado! Fase 1 (3 letras). Boa sorte!',
+      infinite: 'Modo Infinito iniciado! Boa sorte!',
+      classic: 'Modo Clássico iniciado! Boa sorte!'
+    };
+    this.ui.showToast(startToast[this.soloMode] || 'Modo Solo iniciado! Boa sorte!');
   }
 
   /** Ajusta número de linhas e layout multigrade conforme o modo da partida. */
   applyModeConfig() {
+    if (this.role === 'solo' && this.soloMode === 'career') {
+      const stageIdx = Math.max(0, Math.min(this.careerLengths.length - 1, this.careerStage - 1));
+      this.wordLength = this.careerLengths[stageIdx];
+    } else {
+      this.wordLength = 5;
+    }
+    this.ui.wordLength = this.wordLength;
     this.maxRows = this.getRowsForMode();
     this.ui.maxRows = this.maxRows;
     this.myDone = false;
     this.winnerDecided = false;
     this.progress = {};
 
-    if (this.mode === 'normal') {
+    this.initRulesForCurrentLength();
+    this.secretWord = this.rules.getRandomSecretWord();
+
+    if (this.mode === 'normal' || this.role === 'solo') {
       this.mm.unmount();
       return;
     }
@@ -1750,6 +1776,8 @@ class TermoMultiplayerGame {
       this.timer.hide();
       if (this.soloMode === 'infinite') {
         this.ui.renderInfiniteScoreboard(this.infiniteStreak, this.infiniteBest);
+      } else if (this.soloMode === 'career') {
+        this.ui.renderCareerScoreboard(this.careerStage, this.careerMaxStage, this.wordLength);
       } else {
         this.ui.statusBar.classList.add('hidden');
       }
@@ -2144,6 +2172,10 @@ class TermoMultiplayerGame {
           this.advanceInfiniteWord(guess);
           return;
         }
+        if (this.role === 'solo' && this.soloMode === 'career') {
+          this.advanceCareerStage(guess);
+          return;
+        }
         this.triggerWin(this.myId, true);
         sendGuess(true);
       } else {
@@ -2163,6 +2195,50 @@ class TermoMultiplayerGame {
         }
       }
     });
+  }
+
+  advanceCareerStage(guessedWord) {
+    this.recordGuessedWord(guessedWord, true, 'Você');
+
+    if (this.careerStage >= this.careerMaxStage) {
+      // Chegou e concluiu a 6ª rodada (palavra de 8 letras) - Fim de jogo e vitória total!
+      this.triggerWin(this.myId, true);
+      return;
+    }
+
+    if (window.confetti) {
+      confetti({
+        particleCount: 55,
+        spread: 60,
+        origin: { y: 0.65 }
+      });
+    }
+
+    this.careerStage++;
+    const nextLen = this.careerLengths[this.careerStage - 1];
+    this.ui.showToast(`Fase ${this.careerStage}/${this.careerMaxStage}: Palavra com ${nextLen} letras!`);
+
+    this.isRevealing = true;
+    this.ui.keyboardElement.classList.add('locked');
+
+    setTimeout(() => {
+      if (this.isGameOver || this.role !== 'solo' || this.soloMode !== 'career') return;
+
+      this.wordLength = nextLen;
+      this.ui.wordLength = this.wordLength;
+      this.initRulesForCurrentLength();
+      this.secretWord = this.rules.getRandomSecretWord();
+
+      this.currentRow = 0;
+      this.currentTile = 0;
+      this.boardMatrix = Array.from({ length: this.maxRows }, () => Array(this.wordLength).fill(''));
+      this.ui.createBoard();
+      this.ui.createKeyboard();
+      this.ui.keyboardElement.classList.remove('locked');
+      this.isRevealing = false;
+      this.updateStatusBar();
+      this.refreshHighlight();
+    }, 850);
   }
 
   /**
@@ -2507,6 +2583,22 @@ class TermoMultiplayerGame {
     }
 
     setTimeout(() => {
+      if (this.role === 'solo' && this.soloMode === 'career') {
+        const isFinal = this.careerStage >= this.careerMaxStage;
+        this.ui.showGameOverModal({
+          title: 'CARREIRA CONCLUÍDA!',
+          color: 'var(--color-correct)',
+          subtitle: 'Parabéns! Você completou todas as 6 fases da Carreira (de 3 a 8 letras)!',
+          secretWord: this.secretWord,
+          winnerLabel: 'Fases',
+          winnerName: `${this.careerMaxStage}/${this.careerMaxStage}`,
+          attemptsLabel: 'Fase Final',
+          attemptsText: attemptsText || `${this.currentRow + 1}/${this.maxRows}`,
+          playAgainText: 'Jogar Novamente'
+        });
+        return;
+      }
+
       this.ui.showGameOverModal({
         title: isMe ? 'VITÓRIA!' : 'DERROTA!',
         color: isMe ? 'var(--color-correct)' : 'var(--color-present)',
@@ -2523,7 +2615,22 @@ class TermoMultiplayerGame {
     this.timer.stop();
     this.isGameOver = true;
     const isInfinite = this.role === 'solo' && this.soloMode === 'infinite';
+    const isCareer = this.role === 'solo' && this.soloMode === 'career';
     setTimeout(() => {
+      if (isCareer) {
+        this.ui.showGameOverModal({
+          title: 'FIM DA CARREIRA',
+          color: 'var(--color-present)',
+          subtitle: `Você parou na fase ${this.careerStage} de ${this.careerMaxStage} (${this.wordLength} letras).`,
+          secretWord: this.secretWord,
+          winnerLabel: 'Fase Alcançada',
+          winnerName: `${this.careerStage}/${this.careerMaxStage}`,
+          attemptsLabel: 'Tentativas',
+          attemptsText: `${this.maxRows}/${this.maxRows}`,
+          playAgainText: 'Tentar Novamente'
+        });
+        return;
+      }
       if (isInfinite) {
         this.ui.showGameOverModal({
           title: 'FIM DA SEQUÊNCIA',
@@ -2594,6 +2701,9 @@ class TermoMultiplayerGame {
     this.network.destroy();
 
     this.role = 'solo';
+    this.wordLength = 5;
+    this.ui.wordLength = 5;
+    this.initRulesForCurrentLength();
 
     this.ui.gameoverModal.classList.add('hidden');
     if (this.ui.privacyModal) this.ui.privacyModal.classList.add('hidden');

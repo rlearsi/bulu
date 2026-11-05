@@ -28,5 +28,8 @@
 - **Manutenção Contínua do Guia do Desenvolvedor ([`.agents/rules/dev_guide_maintenance.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/dev_guide_maintenance.md)):**
   - **Preservação e atualização de [`DEV_GUIDE.md`](file:///opt/lampp/htdocs/bulu/DEV_GUIDE.md):** Nunca remover o arquivo `DEV_GUIDE.md` e sempre atualizá-lo automaticamente quando houver mudanças em mecânicas, tempos, limites de sala, protocolo WebRTC ou arquitetura de arquivos.
 
+- **Regra de Idioma e Dicionário ([`.agents/rules/language_dictionary.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/language_dictionary.md)):**
+  - **Qualidade Vocabular, Siglas e Arcaísmos:** Foco rigoroso no português brasileiro natural. Proibição absoluta de palavras em inglês (`ICE`, `BOY`, `DATE`), siglas/acrônimos (`BMG`, `BLI`, `BPI`, `ACD`, `ACP`, `ACL`, etc.) e palavras arcaicas ou em desuso (`MOR`, `MUI`, `OIS`, etc.) nas listas de palavras secretas e palpites. Toda palavra deve ser um vocábulo por extenso da língua portuguesa.
+
 
 

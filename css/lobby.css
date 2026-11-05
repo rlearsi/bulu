@@ -1115,8 +1115,17 @@
 }
 
 .solo-mode-option.selected {
-  background: rgba(58, 163, 148, 0.28);
-  color: #ffffff;
+  background: rgba(211, 173, 105, 0.2);
+  border: 1px solid rgba(211, 173, 105, 0.55);
+  color: var(--color-present);
+}
+
+.solo-mode-option.selected strong {
+  color: var(--color-present);
+}
+
+.solo-mode-option.selected span {
+  color: rgba(211, 173, 105, 0.85);
 }
 
 .lobby-footer {

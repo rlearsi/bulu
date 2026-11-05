@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TERMO MULTIPLAYER P2P</title>
-  <link rel="stylesheet" href="style.css?v=1.11.0">
+  <link rel="stylesheet" href="style.css?v=v1.11.1_new-room-settings_0.4.4">
   <!-- PeerJS WebRTC da mesma tecnologia usada no Relatum -->
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <!-- Confetti para comemoração da vitória -->
@@ -137,6 +137,19 @@
           <span id="infinite-best-val" class="infinite-val">0</span>
         </div>
       </div>
+
+      <!-- Placar do Modo Carreira Solo -->
+      <div id="career-scoreboard" class="career-scoreboard hidden">
+        <div class="career-stat">
+          <span class="career-label">Fase</span>
+          <span id="career-stage-val" class="career-val">1/6</span>
+        </div>
+        <div class="career-divider"></div>
+        <div class="career-stat">
+          <span class="career-label">Tamanho</span>
+          <span id="career-letters-val" class="career-val">3 letras</span>
+        </div>
+      </div>
     </div>
 
     <!-- TELA DO LOBBY / MULTIPLAYER CONEXÃO -->
@@ -221,6 +234,7 @@
               <button type="button" id="btn-solo-mode" class="btn-max-players" title="Modo do Jogo Solo" aria-label="Modo do Jogo Solo" aria-haspopup="true" aria-expanded="false">
                 <svg id="icon-solo-classic" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg>
                 <svg class="hidden" id="icon-solo-infinite" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"></path></svg>
+                <svg class="hidden" id="icon-solo-career" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                 <span id="solo-mode-current-label">Clássico</span>
               </button>
               <div id="solo-mode-popover" class="max-players-popover solo-mode-popover hidden" role="menu">
@@ -232,6 +246,10 @@
                 <button type="button" class="solo-mode-option" data-solo-mode="infinite" role="menuitemradio">
                   <strong>Infinito</strong>
                   <span>Acerte palavras sem parar e supere seu recorde!</span>
+                </button>
+                <button type="button" class="solo-mode-option" data-solo-mode="career" role="menuitemradio">
+                  <strong>Carreira</strong>
+                  <span>Evolua de 3 a 8 letras ao longo de 6 rodadas!</span>
                 </button>
               </div>
             </div>
@@ -936,7 +954,7 @@
     </div>
   </div>
 
-  <script type="module" src="script.js?v=1.11.0"></script>
+  <script type="module" src="script.js?v=v1.11.1_new-room-settings_0.4.4"></script>
 </body>
 </html>
 

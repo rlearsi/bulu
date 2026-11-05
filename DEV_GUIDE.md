@@ -190,11 +190,20 @@ O host escolhe o modo no botão ao lado do seletor de jogadores no lobby (`#btn-
 
 ---
 
-### 2.10. Modos Solo (Clássico e Infinito)
+### 2.10. Modos Solo (Clássico, Infinito e Carreira)
 
-Na parte inferior do Lobby, ao lado do botão `#btn-practice` (`Modo Solo`), o botão seletor `#btn-solo-mode` exibe o rótulo do modo atual (`Clássico` ou `Infinito`) junto ao seu ícone e permite alternar `this.soloMode` entre:
-- **Clássico (`classic`):** Descubra 1 palavra secreta em até 6 tentativas.
+Na parte inferior do Lobby, ao lado do botão `#btn-practice` (`Modo Solo`), o botão seletor `#btn-solo-mode` exibe o rótulo do modo atual (`Clássico`, `Infinito` ou `Carreira`) junto ao seu ícone e permite alternar `this.soloMode` entre:
+- **Clássico (`classic`):** Descubra 1 palavra secreta de 5 letras em até 6 tentativas.
 - **Infinito (`infinite`):** Acerte palavras em sequência sem parar (`advanceInfiniteWord(previousWord)` em `script.js`). A cada acerto, `this.infiniteStreak` aumenta (recorde persistido em `localStorage` na chave `termo_infinite_best`), o tabuleiro e o teclado são limpos, uma nova palavra secreta é sorteada e a palavra anterior sobe automaticamente para a linha `0` já avaliada contra o novo segredo, posicionando o cursor na linha `1`. O jogo continua até esgotar as 6 linhas sem acertar.
+- **Carreira (`career`):** Progressão desafiadora ao longo de 6 rodadas/fases (`advanceCareerStage(guessedWord)` em `script.js`). Cada fase mantém sempre o mesmo limite de 6 linhas (tentativas), mas o comprimento da palavra secreta aumenta gradativamente:
+  1. Rodada 1: 3 letras
+  2. Rodada 2: 4 letras
+  3. Rodada 3: 5 letras (utiliza o banco tradicional de 5 letras)
+  4. Rodada 4: 6 letras
+  5. Rodada 5: 7 letras
+  6. Rodada 6: 8 letras (palavra secreta final de 8 letras que conclui o modo com vitória total).
+  - **Isolamento de palavras:** As palavras de 3, 4, 6, 7 e 8 letras ficam isoladas em `js/career-words.js`, garantindo que palavras que não sejam de 5 letras jamais entrem nos modos multiplayer ou solo clássico/infinito.
+  - **Placar dedicado:** Exibe a fase atual (`#career-stage-val`, ex: `1/6`) e a quantidade de letras (`#career-letters-val`, ex: `3 letras`).
 
 ---
 

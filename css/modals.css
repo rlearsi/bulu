@@ -286,7 +286,7 @@
 
 .words-history-grid {
   display: grid;
-  grid-template-columns: repeat(5, 32px);
+  grid-template-columns: repeat(var(--cols, 5), 32px);
   grid-gap: 4px;
 }
 
