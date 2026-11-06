@@ -1712,7 +1712,11 @@ class TermoMultiplayerGame {
     this.progress = {};
 
     this.initRulesForCurrentLength();
-    this.secretWord = this.rules.getRandomSecretWord();
+    if (this.gameMode === 'normal' || this.role === 'solo' || !this.secrets || !this.secrets[this.myId]) {
+      this.secretWord = this.rules.getRandomSecretWord();
+    } else {
+      this.secretWord = this.secrets[this.myId];
+    }
 
     if (this.mode === 'normal' || this.role === 'solo') {
       this.mm.unmount();
@@ -1762,17 +1766,21 @@ class TermoMultiplayerGame {
   /** Re-renderiza o placar sem reiniciar o cronômetro do turno. */
   refreshScoreboard() {
     if (this.role === 'solo' || !this.matchStarted) return;
+    const isCrossSingleActive = this.mode === 'cross' && this.crossFinishedPlayers && this.crossFinishedPlayers.size > 0;
+    const turnless = this.mode === 'individual' || isCrossSingleActive;
     this.ui.renderScoreboard({
       players: this.players,
       myId: this.myId,
       currentTurnId: this.currentTurnId,
       isMyTurn: this.isMyTurn(),
       silent: true,
-      turnless: this.mode === 'individual',
+      turnless,
       allowReactions: this.allowReactions
     });
     this.refreshMultiBoards();
-    if (this.players.length > 2 && !this.isGameOver && this.mode !== 'individual') {
+    if (turnless) {
+      this.timer.hide();
+    } else if (this.players.length > 2 && !this.isGameOver) {
       this.ui.updateTurnBar(this.currentTurnId, this.timer.timeLeft, this.timer.turnDuration);
     }
     this.refreshHighlight();
@@ -1807,7 +1815,8 @@ class TermoMultiplayerGame {
     }
 
     const useBar = this.players.length > 2;
-    const turnless = this.mode === 'individual';
+    const isCrossSingleActive = this.mode === 'cross' && this.crossFinishedPlayers && this.crossFinishedPlayers.size > 0;
+    const turnless = this.mode === 'individual' || isCrossSingleActive;
     this.ui.renderScoreboard({
       players: this.players,
       myId: this.myId,
