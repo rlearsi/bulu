@@ -31,5 +31,9 @@
 - **Regra de Idioma e Dicionário ([`.agents/rules/language_dictionary.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/language_dictionary.md)):**
   - **Qualidade Vocabular, Siglas e Arcaísmos:** Foco rigoroso no português brasileiro natural. Proibição absoluta de palavras em inglês (`ICE`, `BOY`, `DATE`), siglas/acrônimos (`BMG`, `BLI`, `BPI`, `ACD`, `ACP`, `ACL`, etc.) e palavras arcaicas ou em desuso (`MOR`, `MUI`, `OIS`, etc.) nas listas de palavras secretas e palpites. Toda palavra deve ser um vocábulo por extenso da língua portuguesa.
 
+- **Prevenção de Loops e Execução Eficiente ([`.agents/rules/tool_execution.md`](file:///opt/lampp/htdocs/bulu/.agents/rules/tool_execution.md)):**
+  - **Proibição de Comandos Repetitivos (Anti-Loop):** Não reexecutar buscas idênticas mais de 2 vezes consecutivas.
+  - **Ação Rápida e Decisiva:** Ao localizar o trecho a ser alterado, partir imediatamente para a edição (`edit_file`) sem consultas redundantes que consomem cota.
+
 
 
