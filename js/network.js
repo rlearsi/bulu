@@ -31,8 +31,6 @@ function makeRelayPeerId() {
   return 'bulu-r-' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
 }
 
-<<<<<<< Updated upstream
-=======
 export const PEER_SERVER_OPTIONS = {
   host: '0.peerjs.com',
   port: 443,
@@ -54,7 +52,6 @@ export const PEER_SERVER_OPTIONS = {
   }
 };
 
->>>>>>> Stashed changes
 export class P2PNetwork {
   /**
    * @param {object} opts
@@ -138,12 +135,8 @@ export class P2PNetwork {
 
     try {
       this.peer = new Peer(peerId, {
-<<<<<<< Updated upstream
-        config: { iceServers: this.getIceServers() }
-=======
         ...PEER_SERVER_OPTIONS,
         config: { iceServers: this.getIceServers(), iceCandidatePoolSize: 10 }
->>>>>>> Stashed changes
       });
 
       this.peer.on('open', (id) => {
@@ -202,12 +195,8 @@ export class P2PNetwork {
       const slotId = `${PUBLIC_SLOT_PREFIX}${slotIndex}`;
       try {
         const candidatePeer = new Peer(slotId, {
-<<<<<<< Updated upstream
-          config: { iceServers: this.getIceServers() }
-=======
           ...PEER_SERVER_OPTIONS,
           config: { iceServers: this.getIceServers(), iceCandidatePoolSize: 10 }
->>>>>>> Stashed changes
         });
 
         let opened = false;
@@ -389,12 +378,8 @@ export class P2PNetwork {
     // 1. Varredura via PeerJS
     try {
       const scanner = new Peer({
-<<<<<<< Updated upstream
-        config: { iceServers: this.getIceServers() }
-=======
         ...PEER_SERVER_OPTIONS,
         config: { iceServers: this.getIceServers(), iceCandidatePoolSize: 10 }
->>>>>>> Stashed changes
       });
       this.scannerPeer = scanner;
 
@@ -519,12 +504,8 @@ export class P2PNetwork {
 
     try {
       this.peer = new Peer({
-<<<<<<< Updated upstream
-        config: { iceServers: this.getIceServers() }
-=======
         ...PEER_SERVER_OPTIONS,
         config: { iceServers: this.getIceServers(), iceCandidatePoolSize: 10 }
->>>>>>> Stashed changes
       });
 
       this.peer.on('open', (id) => {
